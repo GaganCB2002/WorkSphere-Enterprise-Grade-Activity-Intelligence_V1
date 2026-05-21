@@ -38,8 +38,8 @@ import {
   Area
 } from 'recharts'
 import type { User } from '../../models/types'
-import { checkServices, type ServiceStatus } from '../lib/serviceHealth'
-import { getModuleUrl } from '../lib/roleRouting'
+import { checkServices, type ServiceStatus } from '../../lib/serviceHealth'
+import { getModuleUrl } from '../../lib/roleRouting'
 
 interface MasterDashboardPageProps {
   user: User
@@ -75,7 +75,7 @@ export function MasterDashboardPage({ user, onLogout }: MasterDashboardPageProps
   useEffect(() => {
     const verifyConnectivity = async () => {
       const results = await checkServices()
-      const down = results.filter(s => s.status === 'DOWN')
+      const down = results.filter((s: ServiceStatus) => s.status === 'DOWN')
       setDownServices(down)
     }
     verifyConnectivity()

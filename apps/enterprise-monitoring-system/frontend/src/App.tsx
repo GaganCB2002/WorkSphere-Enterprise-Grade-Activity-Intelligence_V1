@@ -3,7 +3,7 @@ import { Navigate, Route, Routes, useNavigate, useLocation } from 'react-router-
 import { api } from './api/client'
 import { socket } from './api/socket'
 import { AppShell } from './components/layout/AppShell'
-import { HrExecutiveDashboard } from '../roles/hr_executive/HrExecutiveDashboard'
+import { HrExecutiveDashboard } from './modules/hr_executive/HrExecutiveDashboard'
 import { LoginPage } from './pages/LoginPage'
 import { LandingPage } from './pages/LandingPage'
 import { ProductPage } from './pages/Product/ProductPage'
@@ -39,7 +39,7 @@ import { MailPage } from './pages/MailPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { DocumentationPage } from './pages/DocumentationPage'
 import { HumanResourcesPage, HumanResourcesPage as LeaveManagementPage } from './modules/hr_executive/HumanResourcesPage'
-import { EmployeeDashboardPage } from './modules/hr_executive/HR_Employee_Dashboard'
+import { EmployeeModule } from './modules/employee/EmployeeModule'
 import { ProjectManagementPage } from './pages/ProjectManagementPage'
 import { MeetingRoom } from './pages/MeetingRoom'
 import { useTracking } from './hooks/useTracking'
@@ -205,7 +205,7 @@ function App() {
                   <Route path="ceo-dashboard" element={<CEODashboardPage user={user} platform={platform} />} />
                   <Route path="manager-dashboard" element={<ManagerDashboardPage user={user} platform={platform} />} />
                   <Route path="hr-dashboard" element={<HrExecutiveDashboard user={user} token={token!} platform={platform} feed={feed} onRefresh={async () => { await refreshPlatform(); }} />} />
-                  <Route path="employee-dashboard" element={<EmployeeDashboardPage user={user} platform={platform} token={token!} />} />
+                  <Route path="employee-dashboard" element={<EmployeeModule user={user} platform={platform} token={token!} />} />
                   <Route path="techlead-dashboard" element={<TechLeadDashboard user={user} platform={platform} />} />
                   <Route path="teamlead-dashboard" element={<TeamLeadDashboardPage user={user} platform={platform} />} />
                   

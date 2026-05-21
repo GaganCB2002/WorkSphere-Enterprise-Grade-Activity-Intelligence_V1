@@ -29,8 +29,8 @@ import {
   Pie,
   Cell,
 } from 'recharts'
-import { SectionCard } from '../../web-page/frontend/src/components/ui/SectionCard'
-import { MetricCard } from '../../web-page/frontend/src/components/ui/MetricCard'
+import { SectionCard } from '../../../components/ui/SectionCard'
+import { MetricCard } from '../../../components/ui/MetricCard'
 
 // Shared Data
 const salesData = [

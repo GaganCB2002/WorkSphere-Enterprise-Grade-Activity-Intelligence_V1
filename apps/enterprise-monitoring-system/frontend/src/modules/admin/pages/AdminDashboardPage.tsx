@@ -37,7 +37,7 @@ import {
   PieChart, Pie, Cell,
   BarChart, Bar
 } from 'recharts';
-import { SectionCard } from '../../web-page/frontend/src/components/ui/SectionCard';
+import { SectionCard } from '../../../components/ui/SectionCard';
 
 export function AdminDashboardPage({ user, platform }: { user: any, platform: any }) {
   const [activeTab, setActiveTab] = useState('Dashboard');

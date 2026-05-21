@@ -22,8 +22,8 @@ import {
   Filter,
   DollarSign
 } from 'lucide-react';
-import { SectionCard } from '../web-page/frontend/src/components/ui/SectionCard';
-import type { User } from '../web-page/frontend/src/types';
+import { SectionCard } from '../../components/ui/SectionCard';
+import type { User } from '../../types';
 import { 
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell 
