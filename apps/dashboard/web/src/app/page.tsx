@@ -22,7 +22,7 @@ import { FinanceManagerDashboard } from '@new_project/src/modules/finance_manage
 import { MarketingManagerDashboard } from '@new_project/src/modules/marketing_manager/MarketingManagerDashboard';
 import { SalesManagerDashboard } from '@new_project/src/modules/sales_manager/SalesManagerDashboard';
 import { ProjectManagerDashboard } from '@new_project/src/modules/project_manager/ProjectManagerDashboard';
-import { TechLeadDashboard } from '@new_project/src/modules/tech_lead/TechLeadDashboard';
+import TechLeadDashboard from '@new_project/src/modules/hr_executive/HR_TechLead_Dashboard';
 import { DevOpsEngineerDashboard } from '@new_project/src/modules/devops_engineer/DevOpsEngineerDashboard';
 import { QaEngineerDashboard } from '@new_project/src/modules/qa_engineer/QaEngineerDashboard';
 import { SoftwareEngineerDashboard } from '@new_project/src/modules/software_engineer/SoftwareEngineerDashboard';

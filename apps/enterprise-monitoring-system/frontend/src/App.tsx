@@ -47,10 +47,11 @@ import type { ActivityItem, PlatformData, User } from './types'
 import { ProtectedRoute } from './components/auth/ProtectedRoute'
 import TechLeadDashboard, { TeamLeadDashboardPage, AnalysisModule } from './modules/hr_executive/HR_TechLead_Dashboard'
 import { MarketingDashboard, SalesPipeline, AIInsights } from './modules/marketing/pages/MarketingPages'
-import { ManagerDashboardPage } from './modules/manager/pages/ManagerDashboardPage'
+import { ManagerModule } from './modules/manager/ManagerModule'
 import { CEODashboardPage } from './modules/ceo/CeoDashboard'
 import { AdminDashboardPage } from './modules/admin/pages/AdminDashboardPage'
 import { ContactProvider } from './components/layout/ContactContext'
+import { InternModule } from './modules/intern/InternModule'
 
 const TOKEN_KEY = 'aurahr-token'
 
@@ -162,11 +163,12 @@ function App() {
     const role = user.role.toUpperCase()
     if (role === 'ADMIN' || role === 'SUPERADMIN') return '/admin-dashboard'
     if (role === 'CEO') return '/ceo-dashboard'
-    if (role === 'MANAGER') return '/manager-dashboard'
+    if (role === 'MANAGER') return '/manager'
     if (role === 'HR') return '/hr-dashboard'
     if (role === 'EMPLOYEE') return '/employee-dashboard'
     if (role === 'LEAD' || role === 'TECH_LEAD') return '/techlead-dashboard'
     if (role === 'MARKETING') return '/marketing-hub'
+    if (role === 'INTERN') return '/intern'
     return '/hr-dashboard'
   }, [user])
 
@@ -196,14 +198,26 @@ function App() {
         <Route path="/" element={(token && roleRedirection) ? <Navigate to={roleRedirection} replace /> : <LandingPage />} />
 
         {/* Protected Dashboard Routes */}
+        {/* Intern and Manager Dashboards — use their own Shells, mounted outside AppShell */}
+        <Route path="/intern/*" element={
+          <ProtectedRoute user={user} allowedRoles={['INTERN', 'HR', 'ADMIN', 'SUPERADMIN']}>
+            {user ? <InternModule user={user} /> : <Navigate to="/login" replace />}
+          </ProtectedRoute>
+        } />
+        
+        <Route path="/manager/*" element={
+          <ProtectedRoute user={user} allowedRoles={['MANAGER', 'HR', 'ADMIN', 'SUPERADMIN']}>
+            {user ? <ManagerModule user={user} platform={platform} /> : <Navigate to="/login" replace />}
+          </ProtectedRoute>
+        } />
+
         <Route path="/*" element={
-          <ProtectedRoute user={user} allowedRoles={['CEO', 'HR', 'MANAGER', 'LEAD', 'TECH_LEAD', 'EMPLOYEE', 'MARKETING', 'ADMIN', 'SUPERADMIN']}>
+          <ProtectedRoute user={user} allowedRoles={['CEO', 'HR', 'MANAGER', 'LEAD', 'TECH_LEAD', 'EMPLOYEE', 'MARKETING', 'ADMIN', 'SUPERADMIN', 'INTERN']}>
             {user && platform ? (
               <AppShell user={user} onLogout={logout}>
                 <Routes>
                   <Route path="admin-dashboard" element={<AdminDashboardPage user={user} platform={platform} />} />
                   <Route path="ceo-dashboard" element={<CEODashboardPage user={user} platform={platform} />} />
-                  <Route path="manager-dashboard" element={<ManagerDashboardPage user={user} platform={platform} />} />
                   <Route path="hr-dashboard" element={<HrExecutiveDashboard user={user} token={token!} platform={platform} feed={feed} onRefresh={async () => { await refreshPlatform(); }} />} />
                   <Route path="employee-dashboard" element={<EmployeeModule user={user} platform={platform} token={token!} />} />
                   <Route path="techlead-dashboard" element={<TechLeadDashboard user={user} platform={platform} />} />

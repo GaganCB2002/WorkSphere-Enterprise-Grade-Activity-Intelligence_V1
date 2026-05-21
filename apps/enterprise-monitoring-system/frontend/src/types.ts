@@ -1,4 +1,4 @@
-export type Role = 'CEO' | 'HR' | 'Manager' | 'MANAGER' | 'Lead' | 'LEAD' | 'Employee' | 'EMPLOYEE' | 'TECH_LEAD' | 'Marketing' | 'MARKETING' | 'ADMIN' | 'SUPERADMIN' | 'IT' | 'SUPPORT' | 'STAFF'
+export type Role = 'CEO' | 'HR' | 'Manager' | 'MANAGER' | 'Lead' | 'LEAD' | 'Employee' | 'EMPLOYEE' | 'TECH_LEAD' | 'Marketing' | 'MARKETING' | 'ADMIN' | 'SUPERADMIN' | 'IT' | 'SUPPORT' | 'STAFF' | 'INTERN' | 'Intern'
 export type CandidateStage = 'New' | 'Screening' | 'Interview' | 'Offer' | 'Hired' | 'Rejected'
 
 export interface User {
