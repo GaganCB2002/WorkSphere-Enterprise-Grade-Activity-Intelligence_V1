@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { authenticate } from '../middleware/auth';
+import { authenticate, authorize } from '../middleware/auth';
 
 const router = Router();
 
@@ -36,7 +36,7 @@ router.post('/update', (req, res) => {
     }
 });
 
-router.get('/live', authenticate, (_req, res) => {
+router.get('/live', authenticate, authorize('SUPERADMIN' as any, 'SUPER_ADMIN' as any), (_req, res) => {
     res.json(Object.values(liveLocations));
 });
 

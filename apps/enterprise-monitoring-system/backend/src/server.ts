@@ -10,6 +10,7 @@ import hrRoutes from './routes/hr.routes'
 import analysisRoutes from './routes/analysis.routes'
 import locationRoutes from './routes/location.routes'
 import contactRoutes from './routes/contact.routes'
+import helpdeskRoutes from './routes/helpdesk.routes'
 import connectDB from './config/db'
 import { seedDatabase } from './scripts/seed'
 
@@ -69,6 +70,7 @@ app.get('/health', (_req, res) => {
 app.use('/api/auth', authRoutes)
 app.use('/api/techlead/analysis', analysisRoutes)
 app.use('/api/location', locationRoutes)
+app.use('/api/helpdesk', helpdeskRoutes)
 app.use('/api', hrRoutes)
 app.use('/api/contact', contactRoutes)
 

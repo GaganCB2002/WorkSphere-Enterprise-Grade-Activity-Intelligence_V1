@@ -3,7 +3,7 @@ import { Navigate, Route, Routes, useNavigate, useLocation } from 'react-router-
 import { api } from './api/client'
 import { socket } from './api/socket'
 import { AppShell } from './components/layout/AppShell'
-import { SmartHRDashboard as DashboardPage } from './modules/hr/SmartHRDashboard'
+import { HrExecutiveDashboard } from '../roles/hr_executive/HrExecutiveDashboard'
 import { LoginPage } from './pages/LoginPage'
 import { LandingPage } from './pages/LandingPage'
 import { ProductPage } from './pages/Product/ProductPage'
@@ -38,21 +38,18 @@ import { ActivityFeedPage } from './pages/ActivityFeedPage'
 import { MailPage } from './pages/MailPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { DocumentationPage } from './pages/DocumentationPage'
-import { LeaveManagementPage } from '../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/EMPLOYEE_SYSTEM/Frontend_Pages/LeaveManagementPage'
-import { EmployeeDashboardPage } from '../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/EMPLOYEE_SYSTEM/Frontend_Pages/EmployeeDashboardPage'
+import { HumanResourcesPage, HumanResourcesPage as LeaveManagementPage } from './modules/hr_executive/HumanResourcesPage'
+import { EmployeeDashboardPage } from './modules/hr_executive/HR_Employee_Dashboard'
 import { ProjectManagementPage } from './pages/ProjectManagementPage'
-import { HumanResourcesPage } from '../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/HR_SYSTEM/Frontend_Pages/HumanResourcesPage'
 import { MeetingRoom } from './pages/MeetingRoom'
 import { useTracking } from './hooks/useTracking'
 import type { ActivityItem, PlatformData, User } from './types'
 import { ProtectedRoute } from './components/auth/ProtectedRoute'
-import TechLeadDashboard from '../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/TECHLEAD_SYSTEM/Frontend_Pages/TechLeadDashboard'
-import { MarketingDashboard, SalesPipeline, AIInsights } from '../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/MARKETING_SYSTEM/Frontend_Pages/MarketingPages'
-import AnalysisModule from '../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/TECHLEAD_SYSTEM/Frontend_Pages/AnalysisModule'
-import { ManagerDashboardPage } from '../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/MANAGER_SYSTEM/Frontend_Pages/ManagerDashboardPage'
-import { CEODashboardPage } from '../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/CEO_SYSTEM/Frontend_Pages/CEODashboardPage'
-import { TeamLeadDashboardPage } from '../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/TECHLEAD_SYSTEM/Frontend_Pages/TeamLeadDashboardPage'
-import { AdminDashboardPage } from '../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/ADMIN_SYSTEM/Frontend_Pages/AdminDashboardPage'
+import TechLeadDashboard, { TeamLeadDashboardPage, AnalysisModule } from './modules/hr_executive/HR_TechLead_Dashboard'
+import { MarketingDashboard, SalesPipeline, AIInsights } from './modules/marketing/pages/MarketingPages'
+import { ManagerDashboardPage } from './modules/manager/pages/ManagerDashboardPage'
+import { CEODashboardPage } from './modules/ceo/CeoDashboard'
+import { AdminDashboardPage } from './modules/admin/pages/AdminDashboardPage'
 import { ContactProvider } from './components/layout/ContactContext'
 
 const TOKEN_KEY = 'aurahr-token'
@@ -84,8 +81,11 @@ function App() {
     const urlToken = params.get('token')
     if (urlToken) {
       localStorage.setItem(TOKEN_KEY, urlToken)
-      setToken(urlToken)
+      const timer = setTimeout(() => {
+        setToken(urlToken)
+      }, 0)
       window.history.replaceState({}, document.title, window.location.pathname)
+      return () => clearTimeout(timer)
     }
   }, [])
 
@@ -107,16 +107,24 @@ function App() {
 
   useEffect(() => {
     if (!token) {
-      setBooting(false)
-      return
+      const timer = setTimeout(() => {
+        setBooting(false)
+      }, 0)
+      return () => clearTimeout(timer)
     }
     refreshPlatform(token).then(u => {
       if (!u) {
         // If token is invalid, clear it to allow landing page access
         localStorage.removeItem(TOKEN_KEY)
-        setToken(null)
+        setTimeout(() => {
+          setToken(null)
+        }, 0)
       }
-    }).finally(() => setBooting(false))
+    }).finally(() => {
+      setTimeout(() => {
+        setBooting(false)
+      }, 0)
+    })
   }, [token])
 
   const handleLogin = async (email: string, pass: string, _role?: string) => {
@@ -196,7 +204,7 @@ function App() {
                   <Route path="admin-dashboard" element={<AdminDashboardPage user={user} platform={platform} />} />
                   <Route path="ceo-dashboard" element={<CEODashboardPage user={user} platform={platform} />} />
                   <Route path="manager-dashboard" element={<ManagerDashboardPage user={user} platform={platform} />} />
-                  <Route path="hr-dashboard" element={<DashboardPage data={platform.dashboard} feed={feed} onRefresh={async () => { await refreshPlatform(); }} />} />
+                  <Route path="hr-dashboard" element={<HrExecutiveDashboard user={user} token={token!} platform={platform} feed={feed} onRefresh={async () => { await refreshPlatform(); }} />} />
                   <Route path="employee-dashboard" element={<EmployeeDashboardPage user={user} platform={platform} token={token!} />} />
                   <Route path="techlead-dashboard" element={<TechLeadDashboard user={user} platform={platform} />} />
                   <Route path="teamlead-dashboard" element={<TeamLeadDashboardPage user={user} platform={platform} />} />

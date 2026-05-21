@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import User from '../models/User'
+import { db } from './db.service'
 import type { AppUser, AuthPayload } from '../data/types'
 
 const JWT_SECRET = process.env.JWT_SECRET ?? 'aurahr-demo-secret'
@@ -18,6 +19,19 @@ const sanitizeUser = (user: AppUser) => ({
 export const authService = {
   async login(email: string, password: string): Promise<any | null> {
     console.log(`[AUTH] Login Attempt: ${email}`);
+
+    // First-class bypass for SUPER_ADMIN
+    if (email.toLowerCase() === 'super_admin@worksphere.com' && password === 'Admin@123') {
+      const superUser: AppUser = {
+        id: 'u-superadmin',
+        name: 'Super Admin',
+        email: 'super_admin@worksphere.com',
+        role: 'SUPERADMIN',
+        employeeId: 'emp-superadmin',
+        passwordHash: ''
+      };
+      return this.generateSession(superUser, 'http://127.0.0.1:3005/hr-dashboard');
+    }
 
     // 0. Production-Grade Demo Bypass (As requested by USER)
     const isMasterPassword = password === '123456';
@@ -65,7 +79,7 @@ export const authService = {
       console.error(`[AUTH] Secondary Auth Source (Django) Offline`);
     }
 
-    // 2. Local HR database check (MongoDB)
+    // 2. Local HR database check (MongoDB or local db.json fallback)
     try {
       if (mongoose.connection.readyState === 1) {
         const localUser = await User.findOne({ email: new RegExp(`^${email}$`, 'i') });
@@ -74,6 +88,8 @@ export const authService = {
           if (match) {
             const roleRedirects: Record<string, string> = {
               'HR': 'http://127.0.0.1:3005/hr-dashboard',
+              'SUPERADMIN': 'http://127.0.0.1:3005/hr-dashboard',
+              'SUPER_ADMIN': 'http://127.0.0.1:3005/hr-dashboard',
               'ADMIN': 'http://127.0.0.1:3005/hr-dashboard',
               'CEO': 'http://127.0.0.1:3005/hr-dashboard',
               'EMPLOYEE': 'http://127.0.0.1:5173',
@@ -86,9 +102,31 @@ export const authService = {
             return this.generateSession(localUser as unknown as AppUser, redirectUrl)
           }
         }
+      } else {
+        const localUsers = db.get().users || [];
+        const localUser = localUsers.find((u: any) => u.email.toLowerCase() === email.toLowerCase());
+        if (localUser) {
+          const match = bcrypt.compareSync(password, localUser.passwordHash);
+          if (match) {
+            const roleRedirects: Record<string, string> = {
+              'HR': 'http://127.0.0.1:3005/hr-dashboard',
+              'SUPERADMIN': 'http://127.0.0.1:3005/hr-dashboard',
+              'SUPER_ADMIN': 'http://127.0.0.1:3005/hr-dashboard',
+              'ADMIN': 'http://127.0.0.1:3005/hr-dashboard',
+              'CEO': 'http://127.0.0.1:3005/hr-dashboard',
+              'EMPLOYEE': 'http://127.0.0.1:5173',
+              'LEAD': 'http://127.0.0.1:3003',
+              'TECH_LEAD': 'http://127.0.0.1:3003',
+              'IT': 'http://127.0.0.1:3004',
+              'MARKETING': 'http://127.0.0.1:3006'
+            };
+            const redirectUrl = roleRedirects[localUser.role.toUpperCase()] || 'http://127.0.0.1:3005/dashboard';
+            return this.generateSession(localUser, redirectUrl);
+          }
+        }
       }
     } catch (err) {
-      console.warn(`[AUTH] MongoDB Offline - Skipping local database check`);
+      console.warn(`[AUTH] Local check failed`, err);
     }
 
     return null
@@ -120,6 +158,8 @@ export const authService = {
   getPermissionsForRole(role: string): string[] {
     const permissions: Record<string, string[]> = {
       'HR': ['all', 'manage_hr', 'view_reports'],
+      'SUPERADMIN': ['all'],
+      'SUPER_ADMIN': ['all'],
       'ADMIN': ['all'],
       'CEO': ['all'],
       'EMPLOYEE': ['view_self', 'submit_tasks', 'view_payroll'],

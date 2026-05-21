@@ -12,24 +12,24 @@ import { generateEnterpriseReport } from './utils/reportEngine';
 import LandingPage from './components/LandingPage';
 
 // Import 18 Enterprise Role Dashboards
-import { SuperAdminDashboard } from '@new_project/roles/super_admin/SuperAdminDashboard';
-import { AdminDashboard } from '@new_project/roles/admin/AdminDashboard';
-import { CeoDashboard } from '@new_project/roles/ceo/CeoDashboard';
-import { CtoDashboard } from '@new_project/roles/cto/CtoDashboard';
-import { HrManagerDashboard } from '@new_project/roles/hr_manager/HrManagerDashboard';
-import { HrExecutiveDashboard } from '@new_project/roles/hr_executive/HrExecutiveDashboard';
-import { FinanceManagerDashboard } from '@new_project/roles/finance_manager/FinanceManagerDashboard';
-import { MarketingManagerDashboard } from '@new_project/roles/marketing_manager/MarketingManagerDashboard';
-import { SalesManagerDashboard } from '@new_project/roles/sales_manager/SalesManagerDashboard';
-import { ProjectManagerDashboard } from '@new_project/roles/project_manager/ProjectManagerDashboard';
-import { TechLeadDashboard } from '@new_project/roles/tech_lead/TechLeadDashboard';
-import { DevOpsEngineerDashboard } from '@new_project/roles/devops_engineer/DevOpsEngineerDashboard';
-import { QaEngineerDashboard } from '@new_project/roles/qa_engineer/QaEngineerDashboard';
-import { SoftwareEngineerDashboard } from '@new_project/roles/software_engineer/SoftwareEngineerDashboard';
-import { SecurityAnalystDashboard } from '@new_project/roles/security_analyst/SecurityAnalystDashboard';
-import { SupportAgentDashboard } from '@new_project/roles/support_agent/SupportAgentDashboard';
-import { EmployeeDashboard } from '@new_project/roles/employee/EmployeeDashboard';
-import { InternDashboard } from '@new_project/roles/intern/InternDashboard';
+import { SuperAdminDashboard } from '@new_project/src/modules/super_admin/SuperAdminDashboard';
+import { AdminDashboard } from '@new_project/src/modules/admin/AdminDashboard';
+import { CeoDashboard } from '@new_project/src/modules/ceo/CeoDashboard';
+import { CtoDashboard } from '@new_project/src/modules/cto/CtoDashboard';
+import { HrManagerDashboard } from '@new_project/src/modules/hr_manager/HrManagerDashboard';
+import { HrExecutiveDashboard } from '@new_project/src/modules/hr_executive/HrExecutiveDashboard';
+import { FinanceManagerDashboard } from '@new_project/src/modules/finance_manager/FinanceManagerDashboard';
+import { MarketingManagerDashboard } from '@new_project/src/modules/marketing_manager/MarketingManagerDashboard';
+import { SalesManagerDashboard } from '@new_project/src/modules/sales_manager/SalesManagerDashboard';
+import { ProjectManagerDashboard } from '@new_project/src/modules/project_manager/ProjectManagerDashboard';
+import { TechLeadDashboard } from '@new_project/src/modules/tech_lead/TechLeadDashboard';
+import { DevOpsEngineerDashboard } from '@new_project/src/modules/devops_engineer/DevOpsEngineerDashboard';
+import { QaEngineerDashboard } from '@new_project/src/modules/qa_engineer/QaEngineerDashboard';
+import { SoftwareEngineerDashboard } from '@new_project/src/modules/software_engineer/SoftwareEngineerDashboard';
+import { SecurityAnalystDashboard } from '@new_project/src/modules/security_analyst/SecurityAnalystDashboard';
+import { SupportAgentDashboard } from '@new_project/src/modules/support_agent/SupportAgentDashboard';
+import { EmployeeDashboard } from '@new_project/src/modules/employee/EmployeeDashboard';
+import { InternDashboard } from '@new_project/src/modules/intern/InternDashboard';
 import { EnterpriseRole } from '@new_project/models/types';
 import { EnterpriseChat } from '@new_project/modules/chat/EnterpriseChat';
 import { VideoMeeting } from '@new_project/modules/meeting/VideoMeeting';
@@ -179,6 +179,60 @@ function VelocityChart({ events }: any) {
   );
 }
 
+const rolePaths: Record<string, string> = {
+  SUPER_ADMIN: 'super-admin',
+  ADMIN: 'admin',
+  CEO: 'ceo',
+  CTO: 'cto',
+  HR_MANAGER: 'hr-manager',
+  HR_EXECUTIVE: 'hr',
+  FINANCE_MANAGER: 'finance',
+  MARKETING_MANAGER: 'marketing',
+  SALES_MANAGER: 'sales',
+  PROJECT_MANAGER: 'project-manager',
+  TECH_LEAD: 'tech-lead',
+  DEVOPS_ENGINEER: 'devops',
+  QA_ENGINEER: 'qa',
+  SOFTWARE_ENGINEER: 'developer',
+  SECURITY_ANALYST: 'security',
+  SUPPORT_AGENT: 'support',
+  EMPLOYEE: 'employee',
+  INTERN: 'intern'
+};
+
+const getRoleFromPath = (path: string): EnterpriseRole | null => {
+  const cleanPath = path.toLowerCase().replace(/^\/+|\/+$/g, '').trim();
+  if (!cleanPath) return null;
+  
+  for (const [role, rolePath] of Object.entries(rolePaths)) {
+    if (rolePath === cleanPath) return role as EnterpriseRole;
+  }
+  
+  const normalized = cleanPath.replace(/[-_]/g, '');
+  if (normalized === 'hr' || normalized === 'hrexecutive' || normalized === 'hrexec') return 'HR_EXECUTIVE';
+  if (normalized === 'hrmanager' || normalized === 'hrm') return 'HR_MANAGER';
+  if (normalized === 'employee' || normalized === 'emp') return 'EMPLOYEE';
+  if (normalized === 'superadmin' || normalized === 'sa') return 'SUPER_ADMIN';
+  if (normalized === 'financemanager' || normalized === 'fin') return 'FINANCE_MANAGER';
+  if (normalized === 'marketingmanager' || normalized === 'mkt') return 'MARKETING_MANAGER';
+  if (normalized === 'salesmanager') return 'SALES_MANAGER';
+  if (normalized === 'projectmanager' || normalized === 'pm') return 'PROJECT_MANAGER';
+  if (normalized === 'techlead' || normalized === 'tl') return 'TECH_LEAD';
+  if (normalized === 'devopsengineer') return 'DEVOPS_ENGINEER';
+  if (normalized === 'qaengineer') return 'QA_ENGINEER';
+  if (normalized === 'softwareengineer' || normalized === 'eng' || normalized === 'se') return 'SOFTWARE_ENGINEER';
+  if (normalized === 'securityanalyst' || normalized === 'sec') return 'SECURITY_ANALYST';
+  if (normalized === 'supportagent') return 'SUPPORT_AGENT';
+
+  for (const roleKey of Object.keys(rolePaths)) {
+    if (roleKey.toLowerCase() === cleanPath || roleKey.toLowerCase().replace(/_/g, '') === normalized) {
+      return roleKey as EnterpriseRole;
+    }
+  }
+  
+  return null;
+};
+
 const roleCredentials: Record<EnterpriseRole, { email: string; pass: string; title: string; icon: string; desc: string; image: string }> = {
   SUPER_ADMIN: { email: 'super_admin@worksphere.com', pass: 'Admin@123', title: 'Super Admin', icon: '🛡️', desc: 'Infrastructure & RBAC', image: 'https://images.unsplash.com/photo-1510519138161-5884a4c65321?auto=format&fit=crop&q=80&w=800' },
   ADMIN: { email: 'admin@worksphere.com', pass: 'Admin@123', title: 'System Admin', icon: '👥', desc: 'User Management', image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800' },
@@ -200,6 +254,124 @@ const roleCredentials: Record<EnterpriseRole, { email: string; pass: string; tit
   INTERN: { email: 'intern@worksphere.com', pass: 'Admin@123', title: 'Intern', icon: '📚', desc: 'Learning Modules & Mentorship', image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800' },
 };
 
+const mockHRPlatformData: any = {
+  dashboard: {
+    hero: {
+      title: 'Workforce Intelligence Command',
+      subtitle: 'Real-time telemetry, AI attrition risk modeling, and department budget tracking.',
+      modules: ['Attendance Sync', 'Leave Control', 'AI Pulse', 'Budget Forecast']
+    },
+    aiInsights: {
+      recommendations: [
+        'Engineering department shows 12% increase in overtime hours. Consider workload rebalancing.',
+        'Leave approval backlog in DevOps squad exceeds SLA by 4 hours. Automated reminders dispatched.'
+      ],
+      attritionHotspots: [
+        { name: 'Frontend Engineering Squad', department: 'Engineering', risk: 35 },
+        { name: 'Customer Support Tier 1', department: 'Support', risk: 18 }
+      ]
+    },
+    metrics: [
+      { id: 'm1', label: 'Active Workforce', value: '1,420', change: '+5.2% vs last month', tone: 'positive' },
+      { id: 'm2', label: 'Today Attendance', value: '96.4%', change: '+1.4% vs benchmark', tone: 'positive' },
+      { id: 'm3', label: 'Monthly Payroll', value: '$12.4M', change: 'Fully verified', tone: 'neutral' }
+    ],
+    attendanceTrend: [
+      { label: 'Week 1', value: 94 }, { label: 'Week 2', value: 95 }, { label: 'Week 3', value: 96 }, { label: 'Week 4', value: 96.4 }
+    ],
+    productivityTrend: [
+      { label: 'Week 1', value: 88 }, { label: 'Week 2', value: 91 }, { label: 'Week 3', value: 93 }, { label: 'Week 4', value: 94.2 }
+    ],
+    alerts: [
+      'Biometric attendance sync delay detected in regional office #4.',
+      '3 high-priority leave requests pending CEO final sign-off.'
+    ],
+    budgetUtilization: [
+      { department: 'Engineering', utilization: 84, forecast: 4500000 },
+      { department: 'Sales & Marketing', utilization: 92, forecast: 3200000 },
+      { department: 'HR & Operations', utilization: 65, forecast: 1800000 }
+    ],
+    activity: []
+  },
+  recruitment: {
+    jobBoardCoverage: [],
+    pipeline: [],
+    candidates: [
+      { id: 'c-1', name: 'Alice Smith', email: 'alice@example.com', appliedFor: 'Software Engineer', stage: 'Interview', department: 'Engineering', source: 'LinkedIn', aiMatch: 95, experience: 5, skills: ['React', 'Node'], interviewDate: '2026-05-18', recruiter: 'HR Executive', location: 'Remote', compensationExpectation: 120000, backgroundCheck: { status: 'Passed', vendor: 'Checkr' } }
+    ],
+    pipelineCounts: []
+  },
+  onboarding: {
+    records: [
+      { id: 'onb-1', employeeId: 'James Wilson', buddy: 'Sarah', completion: 60, status: 'IN_PROGRESS', documents: [], eSignatureComplete: true, assets: [], accessProvisioned: [], tasks: [] }
+    ],
+    progressSummary: {
+      pending: 3,
+      avgCompletion: 85
+    }
+  },
+  employees: {
+    employees: [],
+    departments: []
+  },
+  attendance: {
+    overview: {
+      attendanceRate: 96.4,
+      presentToday: 1380,
+      remoteToday: 400,
+      lateMarkings: 12,
+      overtimeHours: 24,
+      leaveBalanceUtilization: 68
+    },
+    trend: [],
+    leaveRequests: [
+      { id: 'lr-1', employeeId: 'EMP-001', employeeName: 'John Doe', type: 'SICK', from: '2026-05-18', to: '2026-05-21', status: 'Pending', reason: 'Fever' }
+    ]
+  },
+  payroll: null,
+  performance: {
+    records: [],
+    averageReview: 4.2
+  },
+  projects: {
+    tasks: [],
+    utilization: []
+  },
+  engagement: {
+    records: [],
+    avgSentiment: 82
+  },
+  compliance: {
+    items: [],
+    overdue: 0
+  },
+  exits: null,
+  budget: null,
+  analytics: {
+    employeeCount: 1420,
+    attritionRate: 2.1,
+    avgEngagement: 82,
+    avgPerformance: 4.2,
+    attendanceRate: 96.4,
+    hiringCostPerEmployee: 4500,
+    trends: {
+      attendance: [],
+      attrition: [],
+      productivity: [],
+      salary: []
+    },
+    aiInsights: {
+      attritionHotspots: [],
+      recommendations: []
+    }
+  },
+  activity: []
+};
+
+const mockHRFeed: any[] = [
+  { id: 'f-1', title: 'Leave Synchronized', detail: 'John Doe sick leave synced with payroll.', category: 'Success', actor: 'System', timestamp: String(Date.now()) }
+];
+
 export default function Dashboard() {
   const [mounted, setMounted] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -217,6 +389,22 @@ export default function Dashboard() {
   // Set default tab to Enterprise Portal to instantly showcase RBAC & 18 Role Modules
   const [currentTab, setCurrentTab] = useState('Enterprise Portal');
   const [activeRole, setActiveRole] = useState<EnterpriseRole>('CEO');
+
+  const [suspendedList, setSuspendedList] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const fetchSuspended = () => {
+      fetch('http://localhost:4000/api/tracking/suspended')
+        .then(res => res.json())
+        .then(data => setSuspendedList(new Set(data)))
+        .catch(e => {});
+    };
+    fetchSuspended();
+    const interval = setInterval(fetchSuspended, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const isLocalSuspended = suspendedList.has('EMP-GAGAN');
 
   const [loginUserId, setLoginUserId] = useState('ceo@worksphere.com');
   const [loginPassword, setLoginPassword] = useState('Admin@123');
@@ -238,32 +426,11 @@ export default function Dashboard() {
   const [hasLoggedInToday, setHasLoggedInToday] = useState(false);
   const [lastLoginInfo, setLastLoginInfo] = useState<any>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [showLoginGrid, setShowLoginGrid] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('show_login_grid') === 'true';
-    }
-    return false;
-  });
+  const [showLoginGrid, setShowLoginGrid] = useState(false);
+  const isHRUser = mounted && (activeRole === 'HR_EXECUTIVE' || activeRole === 'HR_MANAGER');
 
   useEffect(() => {
     setMounted(true);
-    
-    const fetchTelemetry = async () => {
-      try {
-        const res = await fetch('/api/telemetry');
-        if (res.ok) {
-          const data = await res.json();
-          setTelemetry(data);
-        }
-      } catch (e) {
-        console.error('Telemetry Fetch Error:', e);
-      }
-    };
-
-    fetchTelemetry();
-    const interval = setInterval(() => {
-      fetchTelemetry();
-    }, 1000);
 
     const lastLogin = localStorage.getItem('last_login_date');
     const today = new Date().toLocaleDateString();
@@ -283,6 +450,10 @@ export default function Dashboard() {
     const sessionAuth = localStorage.getItem('is_authenticated');
     if (sessionAuth === 'true') setIsAuthenticated(true);
 
+    const savedLoginGrid = localStorage.getItem('show_login_grid');
+    if (savedLoginGrid === 'true') setShowLoginGrid(true);
+
+    // Load saved role from localStorage (not from URL — URL only matters after auth)
     const savedRole = localStorage.getItem('active_enterprise_role');
     if (savedRole) {
       setActiveRole(savedRole as EnterpriseRole);
@@ -292,8 +463,107 @@ export default function Dashboard() {
       }
     }
 
-    return () => clearInterval(interval);
+    // Set initial URL based on auth state
+    if (sessionAuth === 'true' && savedRole) {
+      // User is already authenticated — show role path in URL
+      const targetPath = rolePaths[savedRole] || savedRole.toLowerCase();
+      window.history.replaceState(null, '', `/${targetPath}`);
+    } else if (savedLoginGrid === 'true') {
+      // User is on login grid — show /login
+      window.history.replaceState(null, '', '/login');
+    } else {
+      // Landing page — show root /
+      window.history.replaceState(null, '', '/');
+    }
+
+    // Listen for browser back/forward navigation
+    const handlePopState = () => {
+      const path = window.location.pathname.toLowerCase().replace(/^\/+|\/+$/g, '');
+      if (path === '' || path === 'login') return; // Don't override role for landing/login
+
+      const currentPathRole = getRoleFromPath(window.location.pathname);
+      if (currentPathRole) {
+        setActiveRole(currentPathRole);
+        localStorage.setItem('active_enterprise_role', currentPathRole);
+        if (roleCredentials[currentPathRole]) {
+          setLoginUserId(roleCredentials[currentPathRole].email);
+          setLoginPassword(roleCredentials[currentPathRole].pass);
+        }
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
+
+  // Sync browser tab title based on auth state and active role
+  useEffect(() => {
+    if (!mounted) return;
+    if (isAuthenticated) {
+      const creds = roleCredentials[activeRole];
+      const roleName = creds?.title || activeRole.replace(/_/g, ' ');
+      document.title = `WorkSphere · ${roleName}`;
+
+      // Keep the URL in sync with the active role (only when authenticated)
+      const targetPath = rolePaths[activeRole] || activeRole.toLowerCase();
+      if (window.location.pathname !== `/${targetPath}`) {
+        window.history.replaceState(null, '', `/${targetPath}`);
+      }
+    } else if (showLoginGrid) {
+      document.title = 'WorkSphere · Login';
+    } else {
+      document.title = 'WorkSphere Enterprise Portal';
+    }
+  }, [activeRole, mounted, isAuthenticated, showLoginGrid]);
+
+  useEffect(() => {
+    if (activeRole !== 'SUPER_ADMIN') return;
+
+    const fetchTelemetry = async () => {
+      try {
+        const res = await fetch(`/api/telemetry?role=${activeRole}`, {
+          headers: {
+            'x-role': activeRole
+          }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setTelemetry(data);
+        }
+      } catch (e) {
+        console.error('Telemetry Fetch Error:', e);
+      }
+    };
+
+    fetchTelemetry();
+    const interval = setInterval(() => {
+      fetchTelemetry();
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [activeRole]);
+
+  useEffect(() => {
+    const trackingTabs = ['Overview', 'Activity', 'Analytics', 'Live Tracking', 'Reports', 'Attendance', 'System Audit'];
+    if (activeRole !== 'SUPER_ADMIN' && trackingTabs.includes(currentTab)) {
+      setCurrentTab('Enterprise Portal');
+    }
+  }, [activeRole, currentTab]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).require) {
+      try {
+        const { ipcRenderer } = (window as any).require('electron');
+        ipcRenderer.send('rbac-role-changed', {
+          role: activeRole,
+          email: profile.email || `${activeRole.toLowerCase()}@worksphere.com`,
+          id: profile.id || `EMP-${activeRole}`
+        });
+      } catch (e) {
+        console.error('Electron IPC Send Error:', e);
+      }
+    }
+  }, [activeRole, profile.email, profile.id]);
+
 
   useEffect(() => {
     if (telemetry.employeeId && !isEditingProfile) {
@@ -306,6 +576,11 @@ export default function Dashboard() {
   const handleRoleChange = (newRole: EnterpriseRole) => {
     setActiveRole(newRole);
     localStorage.setItem('active_enterprise_role', newRole);
+    const path = rolePaths[newRole] || newRole.toLowerCase();
+    window.history.pushState(null, '', `/${path}`);
+    if (newRole !== 'SUPER_ADMIN') {
+      setCurrentTab('Enterprise Portal');
+    }
     setNotifications(prev => [{ id: Date.now(), title: 'RBAC Role Switched', message: `Active workspace changed to ${newRole.replace('_', ' ')}.`, time: 'Just now', type: 'info' }, ...prev]);
   };
 
@@ -314,6 +589,11 @@ export default function Dashboard() {
     localStorage.setItem('active_enterprise_role', role);
     setLoginUserId(roleCredentials[role].email);
     setLoginPassword(roleCredentials[role].pass);
+    const path = rolePaths[role] || role.toLowerCase();
+    window.history.pushState(null, '', `/${path}`);
+    if (role !== 'SUPER_ADMIN') {
+      setCurrentTab('Enterprise Portal');
+    }
     setNotifications(prev => [{ id: Date.now(), title: 'RBAC Role Switched', message: `Active workspace changed to ${role.replace('_', ' ')}.`, time: 'Just now', type: 'info' }, ...prev]);
   };
 
@@ -338,7 +618,7 @@ export default function Dashboard() {
 
   if (!isAuthenticated) {
     if (!showLoginGrid) {
-      return <LandingPage onStartLogin={() => setShowLoginGrid(true)} />;
+      return <LandingPage onStartLogin={() => { setShowLoginGrid(true); localStorage.setItem('show_login_grid', 'true'); window.history.pushState(null, '', '/login'); document.title = 'WorkSphere · Login'; }} />;
     }
 
     return (
@@ -355,7 +635,7 @@ export default function Dashboard() {
           {/* Back to Landing Page Button */}
           <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'flex-start' }}>
             <button 
-              onClick={() => setShowLoginGrid(false)}
+              onClick={() => { setShowLoginGrid(false); localStorage.removeItem('show_login_grid'); window.history.pushState(null, '', '/'); document.title = 'WorkSphere Enterprise Portal'; }}
               style={{ 
                 background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)', 
                 color: '#94a3b8', padding: '0.6rem 1.25rem', borderRadius: '50px', cursor: 'pointer', 
@@ -521,6 +801,23 @@ export default function Dashboard() {
                     alert('Please enter both User ID and Password.');
                     return;
                   }
+                  
+                  // Match active role based on the entered credentials
+                  const matchedRoleEntry = Object.entries(roleCredentials).find(([role, creds]) => 
+                    creds.email.toLowerCase() === loginUserId.trim().toLowerCase()
+                  );
+                  
+                  if (!matchedRoleEntry) {
+                    alert('Invalid enterprise credentials.');
+                    return;
+                  }
+                  
+                  const matchedRole = matchedRoleEntry[0] as EnterpriseRole;
+                  setActiveRole(matchedRole);
+                  localStorage.setItem('active_enterprise_role', matchedRole);
+                  const path = rolePaths[matchedRole] || matchedRole.toLowerCase();
+                  window.history.pushState(null, '', `/${path}`);
+
                   setCaptureType('login');
                   setShowCapture(true);
                 }}
@@ -581,6 +878,9 @@ export default function Dashboard() {
                 localStorage.setItem('last_login_date', new Date().toLocaleDateString());
                 localStorage.removeItem('show_login_grid');
                 setShowCapture(false);
+                // Update URL to reflect the active role dashboard
+                const path = rolePaths[activeRole] || activeRole.toLowerCase();
+                window.history.pushState(null, '', `/${path}`);
               }
             }}
             onClose={() => setShowCapture(false)}
@@ -596,91 +896,97 @@ export default function Dashboard() {
       color: 'var(--text-primary)', fontFamily: 'var(--font-geist-sans), Inter, system-ui, sans-serif'
     }}>
       {/* Sidebar */}
-      <aside style={{ 
-        width: sidebarCollapsed ? '64px' : '250px', borderRight: '1px solid var(--border-subtle)', 
-        display: 'flex', flexDirection: 'column', background: 'var(--bg-primary)',
-        transition: 'width 0.3s cubic-bezier(0.16, 1, 0.3, 1)', overflow: 'visible',
-        position: 'relative', zIndex: 50
-      }}>
-        <div style={{ 
-          height: '56px', background: 'transparent', display: 'flex', alignItems: 'center',
-          justifyContent: sidebarCollapsed ? 'center' : 'flex-start', padding: sidebarCollapsed ? '0' : '0 1rem', flexShrink: 0
+      {!isHRUser && (
+        <aside style={{ 
+          width: sidebarCollapsed ? '64px' : '250px', borderRight: '1px solid var(--border-subtle)', 
+          display: 'flex', flexDirection: 'column', background: 'var(--bg-primary)',
+          transition: 'width 0.3s cubic-bezier(0.16, 1, 0.3, 1)', overflow: 'visible',
+          position: 'relative', zIndex: 50
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <div style={{ 
-              background: 'linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%)', 
-              width: '32px', height: '32px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center',
-              flexShrink: 0, boxShadow: '0 0 15px rgba(31, 111, 235, 0.3)'
-            }}>
-              <Shield size={18} color="#fff" fill="#fff" />
-            </div>
-            {!sidebarCollapsed && <span style={{ fontSize: '1.1rem', fontWeight: 900, color: 'var(--text-primary)', letterSpacing: '-0.03em', whiteSpace: 'nowrap', textTransform: 'uppercase' }}>WorkSphere</span>}
-          </div>
-
-          <button 
-            onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-            style={{
-              background: 'var(--bg-secondary)', border: '1px solid var(--border-strong)', color: 'var(--accent-blue)',
-              width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-              cursor: 'pointer', position: 'absolute', right: '-16px', top: '12px', transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
-              outline: 'none', zIndex: 60, boxShadow: '0 4px 12px rgba(0,0,0,0.5)', padding: 0
-            }}
-            onMouseOver={(e) => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderColor = 'var(--accent-blue)'; e.currentTarget.style.transform = 'scale(1.1)'; }}
-            onMouseOut={(e) => { e.currentTarget.style.color = 'var(--accent-blue)'; e.currentTarget.style.borderColor = 'var(--border-strong)'; e.currentTarget.style.transform = 'scale(1)'; }}
-          >
-            {sidebarCollapsed ? <ChevronRight size={18} strokeWidth={3} /> : <ChevronLeft size={18} strokeWidth={3} />}
-          </button>
-        </div>
-
-        <div style={{ padding: '1rem 0.75rem', width: '100%' }}>
           <div style={{ 
-            background: 'linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)', 
-            borderRadius: '16px', padding: sidebarCollapsed ? '0.75rem 0.25rem' : '1rem',
-            border: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column',
-            alignItems: sidebarCollapsed ? 'center' : 'flex-start', gap: '0.75rem', overflow: 'hidden', width: '100%',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.2)'
+            height: '56px', background: 'transparent', display: 'flex', alignItems: 'center',
+            justifyContent: sidebarCollapsed ? 'center' : 'flex-start', padding: sidebarCollapsed ? '0' : '0 1rem', flexShrink: 0
           }}>
-            {!sidebarCollapsed && <div style={{ fontSize: '0.65rem', fontWeight: 800, color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Active Session</div>}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: sidebarCollapsed ? 'center' : 'flex-start', gap: '0.75rem', width: '100%' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <div style={{ 
-                width: '36px', height: '36px', borderRadius: '12px', background: 'var(--bg-tertiary)', 
-                display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--border-strong)', flexShrink: 0
+                background: 'linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%)', 
+                width: '32px', height: '32px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                flexShrink: 0, boxShadow: '0 0 15px rgba(31, 111, 235, 0.3)'
               }}>
-                <User size={18} color="var(--accent-blue)" />
+                <Shield size={18} color="#fff" fill="#fff" />
               </div>
-              {!sidebarCollapsed && (
-                <div style={{ overflow: 'hidden', flex: 1 }}>
-                  <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{telemetry.employeeId}</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--accent-blue)', fontWeight: 700 }}>{activeRole.replace('_', ' ')}</div>
+              {!sidebarCollapsed && <span style={{ fontSize: '1.1rem', fontWeight: 900, color: 'var(--text-primary)', letterSpacing: '-0.03em', whiteSpace: 'nowrap', textTransform: 'uppercase' }}>WorkSphere</span>}
+            </div>
+
+            <button 
+              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+              style={{
+                background: 'var(--bg-secondary)', border: '1px solid var(--border-strong)', color: 'var(--accent-blue)',
+                width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer', position: 'absolute', right: '-16px', top: '12px', transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                outline: 'none', zIndex: 60, boxShadow: '0 4px 12px rgba(0,0,0,0.5)', padding: 0
+              }}
+              onMouseOver={(e) => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderColor = 'var(--accent-blue)'; e.currentTarget.style.transform = 'scale(1.1)'; }}
+              onMouseOut={(e) => { e.currentTarget.style.color = 'var(--accent-blue)'; e.currentTarget.style.borderColor = 'var(--border-strong)'; e.currentTarget.style.transform = 'scale(1)'; }}
+            >
+              {sidebarCollapsed ? <ChevronRight size={18} strokeWidth={3} /> : <ChevronLeft size={18} strokeWidth={3} />}
+            </button>
+          </div>
+
+          <div style={{ padding: '1rem 0.75rem', width: '100%' }}>
+            <div style={{ 
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)', 
+              borderRadius: '16px', padding: sidebarCollapsed ? '0.75rem 0.25rem' : '1rem',
+              border: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column',
+              alignItems: sidebarCollapsed ? 'center' : 'flex-start', gap: '0.75rem', overflow: 'hidden', width: '100%',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.2)'
+            }}>
+              {!sidebarCollapsed && <div style={{ fontSize: '0.65rem', fontWeight: 800, color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Active Session</div>}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: sidebarCollapsed ? 'center' : 'flex-start', gap: '0.75rem', width: '100%' }}>
+                <div style={{ 
+                  width: '36px', height: '36px', borderRadius: '12px', background: 'var(--bg-tertiary)', 
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--border-strong)', flexShrink: 0
+                }}>
+                  <User size={18} color="var(--accent-blue)" />
                 </div>
-              )}
+                {!sidebarCollapsed && (
+                  <div style={{ overflow: 'hidden', flex: 1 }}>
+                    <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{telemetry.employeeId}</div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--accent-blue)', fontWeight: 700 }}>{activeRole.replace('_', ' ')}</div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Navigation Section */}
-        <nav style={{ flex: 1, padding: '0 0.75rem', width: '100%', overflowY: 'auto' }}>
-          <SidebarLink active={currentTab === 'Enterprise Portal'} icon={<Layers size={18} />} label={sidebarCollapsed ? "" : "Enterprise Portal"} onClick={() => setCurrentTab('Enterprise Portal')} collapsed={sidebarCollapsed} />
-          <SidebarLink active={currentTab === 'Enterprise Chat'} icon={<MessageSquare size={18} />} label={sidebarCollapsed ? "" : "Enterprise Chat"} onClick={() => setCurrentTab('Enterprise Chat')} collapsed={sidebarCollapsed} />
-          <SidebarLink active={currentTab === 'Video Meetings'} icon={<Video size={18} />} label={sidebarCollapsed ? "" : "Video Meetings"} onClick={() => setCurrentTab('Video Meetings')} collapsed={sidebarCollapsed} />
-          <SidebarLink active={currentTab === 'Enterprise Webmail'} icon={<Mail size={18} />} label={sidebarCollapsed ? "" : "Enterprise Webmail"} onClick={() => setCurrentTab('Enterprise Webmail')} collapsed={sidebarCollapsed} />
-          <SidebarLink active={currentTab === 'Overview'} icon={<LayoutDashboard size={18} />} label={sidebarCollapsed ? "" : "Overview"} onClick={() => setCurrentTab('Overview')} collapsed={sidebarCollapsed} />
-          <SidebarLink active={currentTab === 'Activity'} icon={<Radar size={18} />} label={sidebarCollapsed ? "" : "Activity"} onClick={() => setCurrentTab('Activity')} collapsed={sidebarCollapsed} />
-          <SidebarLink active={currentTab === 'Analytics'} icon={<LineChart size={18} />} label={sidebarCollapsed ? "" : "Analytics"} onClick={() => setCurrentTab('Analytics')} collapsed={sidebarCollapsed} />
-          <SidebarLink active={currentTab === 'Live Tracking'} icon={<Target size={18} />} label={sidebarCollapsed ? "" : "Live Tracking"} onClick={() => setCurrentTab('Live Tracking')} collapsed={sidebarCollapsed} />
-          <SidebarLink active={currentTab === 'Reports'} icon={<FileSearch size={18} />} label={sidebarCollapsed ? "" : "Reports"} onClick={() => setCurrentTab('Reports')} collapsed={sidebarCollapsed} />
-          <SidebarLink active={currentTab === 'Attendance'} icon={<UserCheck size={18} />} label={sidebarCollapsed ? "" : "Attendance"} onClick={() => setCurrentTab('Attendance')} collapsed={sidebarCollapsed} />
-          <SidebarLink active={currentTab === 'System Audit'} icon={<Fingerprint size={18} />} label={sidebarCollapsed ? "" : "System Audit"} onClick={() => setCurrentTab('System Audit')} collapsed={sidebarCollapsed} />
-        </nav>
+          {/* Navigation Section */}
+          <nav style={{ flex: 1, padding: '0 0.75rem', width: '100%', overflowY: 'auto' }}>
+            <SidebarLink active={currentTab === 'Enterprise Portal'} icon={<Layers size={18} />} label={sidebarCollapsed ? "" : "Enterprise Portal"} onClick={() => setCurrentTab('Enterprise Portal')} collapsed={sidebarCollapsed} />
+            <SidebarLink active={currentTab === 'Enterprise Chat'} icon={<MessageSquare size={18} />} label={sidebarCollapsed ? "" : "Enterprise Chat"} onClick={() => setCurrentTab('Enterprise Chat')} collapsed={sidebarCollapsed} />
+            <SidebarLink active={currentTab === 'Video Meetings'} icon={<Video size={18} />} label={sidebarCollapsed ? "" : "Video Meetings"} onClick={() => setCurrentTab('Video Meetings')} collapsed={sidebarCollapsed} />
+            <SidebarLink active={currentTab === 'Enterprise Webmail'} icon={<Mail size={18} />} label={sidebarCollapsed ? "" : "Enterprise Webmail"} onClick={() => setCurrentTab('Enterprise Webmail')} collapsed={sidebarCollapsed} />
+            {activeRole === 'SUPER_ADMIN' && (
+              <>
+                <SidebarLink active={currentTab === 'Overview'} icon={<LayoutDashboard size={18} />} label={sidebarCollapsed ? "" : "Overview"} onClick={() => setCurrentTab('Overview')} collapsed={sidebarCollapsed} />
+                <SidebarLink active={currentTab === 'Activity'} icon={<Radar size={18} />} label={sidebarCollapsed ? "" : "Activity"} onClick={() => setCurrentTab('Activity')} collapsed={sidebarCollapsed} />
+                <SidebarLink active={currentTab === 'Analytics'} icon={<LineChart size={18} />} label={sidebarCollapsed ? "" : "Analytics"} onClick={() => setCurrentTab('Analytics')} collapsed={sidebarCollapsed} />
+                <SidebarLink active={currentTab === 'Live Tracking'} icon={<Target size={18} />} label={sidebarCollapsed ? "" : "Live Tracking"} onClick={() => setCurrentTab('Live Tracking')} collapsed={sidebarCollapsed} />
+                <SidebarLink active={currentTab === 'Reports'} icon={<FileSearch size={18} />} label={sidebarCollapsed ? "" : "Reports"} onClick={() => setCurrentTab('Reports')} collapsed={sidebarCollapsed} />
+                <SidebarLink active={currentTab === 'Attendance'} icon={<UserCheck size={18} />} label={sidebarCollapsed ? "" : "Attendance"} onClick={() => setCurrentTab('Attendance')} collapsed={sidebarCollapsed} />
+                <SidebarLink active={currentTab === 'System Audit'} icon={<Fingerprint size={18} />} label={sidebarCollapsed ? "" : "System Audit"} onClick={() => setCurrentTab('System Audit')} collapsed={sidebarCollapsed} />
+              </>
+            )}
+          </nav>
 
-        {/* Footer Section */}
-        <div style={{ padding: '1.5rem 0.75rem', borderTop: '1px solid #27272a', width: '100%' }}>
-          <SidebarLink 
-            icon={<LogOut size={18} color="#ef4444" />} label={sidebarCollapsed ? "" : "Logout System"} collapsed={sidebarCollapsed}
-            onClick={async () => { setCaptureType('logout'); setShowCapture(true); }} 
-          />
-        </div>
-      </aside>
+          {/* Footer Section */}
+          <div style={{ padding: '1.5rem 0.75rem', borderTop: '1px solid #27272a', width: '100%' }}>
+            <SidebarLink 
+              icon={<LogOut size={18} color="#ef4444" />} label={sidebarCollapsed ? "" : "Logout System"} collapsed={sidebarCollapsed}
+              onClick={async () => { setCaptureType('logout'); setShowCapture(true); }} 
+            />
+          </div>
+        </aside>
+      )}
 
       {/* Main Content Area */}
       <main style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', position: 'relative' }}>
@@ -691,47 +997,76 @@ export default function Dashboard() {
           backdropFilter: 'blur(12px)', position: 'sticky', top: 0, zIndex: 40
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <h2 style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>Command Center</h2>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'var(--bg-secondary)', padding: '0.2rem 0.6rem', borderRadius: '4px', border: '1px solid var(--border-strong)' }}>
-              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: statusColor, boxShadow: `0 0 8px ${statusColor}` }}></div>
-              <span style={{ fontSize: '0.65rem', fontWeight: 600, color: statusColor, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{statusText}</span>
-            </div>
+            <h2 style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>
+              {isHRUser ? "WorkSphere HR Suite" : "Command Center"}
+            </h2>
+            {activeRole === 'SUPER_ADMIN' ? (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'var(--bg-secondary)', padding: '0.2rem 0.6rem', borderRadius: '4px', border: '1px solid var(--border-strong)' }}>
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: statusColor, boxShadow: `0 0 8px ${statusColor}` }}></div>
+                <span style={{ fontSize: '0.65rem', fontWeight: 600, color: statusColor, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{statusText}</span>
+              </div>
+            ) : (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'var(--bg-secondary)', padding: '0.2rem 0.6rem', borderRadius: '4px', border: '1px solid var(--border-strong)' }}>
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px #22c55e' }}></div>
+                <span style={{ fontSize: '0.65rem', fontWeight: 600, color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.05em' }}>SYSTEM ONLINE</span>
+              </div>
+            )}
             <div style={{ height: '12px', width: '1px', background: 'var(--border-strong)' }}></div>
+
             
             {/* Quick RBAC Role Switcher */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase' }}>RBAC Role:</span>
-              <select 
-                value={activeRole} 
-                onChange={(e) => handleRoleChange(e.target.value as EnterpriseRole)}
-                style={{ 
-                  background: 'var(--bg-tertiary)', border: '1px solid var(--border-strong)', color: 'var(--accent-blue)', 
-                  padding: '0.25rem 0.6rem', borderRadius: '8px', fontSize: '0.75rem', fontWeight: 800, outline: 'none', cursor: 'pointer' 
-                }}
-              >
-                <option value="SUPER_ADMIN">SUPER ADMIN</option>
-                <option value="ADMIN">ADMIN</option>
-                <option value="CEO">CEO</option>
-                <option value="CTO">CTO</option>
-                <option value="HR_MANAGER">HR MANAGER</option>
-                <option value="HR_EXECUTIVE">HR EXECUTIVE</option>
-                <option value="FINANCE_MANAGER">FINANCE MANAGER</option>
-                <option value="MARKETING_MANAGER">MARKETING MANAGER</option>
-                <option value="SALES_MANAGER">SALES MANAGER</option>
-                <option value="PROJECT_MANAGER">PROJECT MANAGER</option>
-                <option value="TECH_LEAD">TECH LEAD</option>
-                <option value="DEVOPS_ENGINEER">DEVOPS ENGINEER</option>
-                <option value="QA_ENGINEER">QA ENGINEER</option>
-                <option value="SOFTWARE_ENGINEER">SOFTWARE ENGINEER</option>
-                <option value="SECURITY_ANALYST">SECURITY ANALYST</option>
-                <option value="SUPPORT_AGENT">SUPPORT AGENT</option>
-                <option value="EMPLOYEE">EMPLOYEE</option>
-                <option value="INTERN">INTERN</option>
-              </select>
-            </div>
+            {!isHRUser && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase' }}>RBAC Role:</span>
+                <select 
+                  value={activeRole} 
+                  onChange={(e) => handleRoleChange(e.target.value as EnterpriseRole)}
+                  style={{ 
+                    background: 'var(--bg-tertiary)', border: '1px solid var(--border-strong)', color: 'var(--accent-blue)', 
+                    padding: '0.25rem 0.6rem', borderRadius: '8px', fontSize: '0.75rem', fontWeight: 800, outline: 'none', cursor: 'pointer' 
+                  }}
+                >
+                  <option value="SUPER_ADMIN">SUPER ADMIN</option>
+                  <option value="ADMIN">ADMIN</option>
+                  <option value="CEO">CEO</option>
+                  <option value="CTO">CTO</option>
+                  <option value="HR_MANAGER">HR MANAGER</option>
+                  <option value="HR_EXECUTIVE">HR EXECUTIVE</option>
+                  <option value="FINANCE_MANAGER">FINANCE MANAGER</option>
+                  <option value="MARKETING_MANAGER">MARKETING MANAGER</option>
+                  <option value="SALES_MANAGER">SALES MANAGER</option>
+                  <option value="PROJECT_MANAGER">PROJECT MANAGER</option>
+                  <option value="TECH_LEAD">TECH LEAD</option>
+                  <option value="DEVOPS_ENGINEER">DEVOPS ENGINEER</option>
+                  <option value="QA_ENGINEER">QA ENGINEER</option>
+                  <option value="SOFTWARE_ENGINEER">SOFTWARE ENGINEER</option>
+                  <option value="SECURITY_ANALYST">SECURITY ANALYST</option>
+                  <option value="SUPPORT_AGENT">SUPPORT AGENT</option>
+                  <option value="EMPLOYEE">EMPLOYEE</option>
+                  <option value="INTERN">INTERN</option>
+                </select>
+              </div>
+            )}
           </div>
           
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+            {isHRUser && (
+              <button 
+                onClick={async () => { setCaptureType('logout'); setShowCapture(true); }}
+                style={{
+                  background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)',
+                  color: '#ef4444', padding: '0.4rem 1.25rem', borderRadius: '12px', fontSize: '0.75rem',
+                  fontWeight: 800, textTransform: 'uppercase', cursor: 'pointer', display: 'flex',
+                  alignItems: 'center', gap: '0.4rem', transition: 'all 0.2s', outline: 'none',
+                  boxShadow: '0 4px 12px rgba(239, 68, 68, 0.1)'
+                }}
+                onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(239, 68, 68, 0.2)'; }}
+                onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(239, 68, 68, 0.1)'; }}
+              >
+                <LogOut size={14} />
+                Logout Shift
+              </button>
+            )}
             <div style={{ textAlign: 'right' }}>
               <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>
                 Session: {mounted ? new Date(telemetry.loginTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '--:--'}
@@ -778,12 +1113,13 @@ export default function Dashboard() {
           {currentTab === 'Enterprise Portal' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
               {/* Role Header Banner */}
-              <div style={{ 
-                position: 'relative', overflow: 'hidden',
-                border: '1px solid var(--border-strong)', borderRadius: '28px', padding: '2.5rem', 
-                display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem',
-                boxShadow: '0 20px 40px -15px rgba(0,0,0,0.7)', background: '#0f172a'
-              }}>
+              {!isHRUser && (
+                <div style={{ 
+                  position: 'relative', overflow: 'hidden',
+                  border: '1px solid var(--border-strong)', borderRadius: '28px', padding: '2.5rem', 
+                  display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem',
+                  boxShadow: '0 20px 40px -15px rgba(0,0,0,0.7)', background: '#0f172a'
+                }}>
                 {/* Background Role Image Banner */}
                 <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
                   <img 
@@ -818,6 +1154,7 @@ export default function Dashboard() {
                   </div>
                 </div>
               </div>
+            )}
 
               {/* Render Active Role Dashboard */}
               <div style={{ animation: 'fadeIn 0.4s ease-out' }}>
@@ -825,8 +1162,22 @@ export default function Dashboard() {
                 {activeRole === 'ADMIN' && <AdminDashboard />}
                 {activeRole === 'CEO' && <CeoDashboard />}
                 {activeRole === 'CTO' && <CtoDashboard />}
-                {activeRole === 'HR_MANAGER' && <HrManagerDashboard />}
-                {activeRole === 'HR_EXECUTIVE' && <HrExecutiveDashboard />}
+                {(activeRole === 'HR_EXECUTIVE' || activeRole === 'HR_MANAGER') && (
+                  <HrExecutiveDashboard 
+                    user={{
+                      id: profile.id || 'EMP-GAGAN',
+                      name: profile.name || 'Gagan',
+                      email: activeRole === 'HR_MANAGER' ? 'hr_manager@worksphere.com' : 'hr_executive@worksphere.com',
+                      role: 'HR',
+                      employeeId: profile.id || 'EMP-GAGAN',
+                      department: 'HR & Operations'
+                    }}
+                    token="mock-jwt-token"
+                    platform={mockHRPlatformData}
+                    feed={mockHRFeed}
+                    onRefresh={async () => {}}
+                  />
+                )}
                 {activeRole === 'FINANCE_MANAGER' && <FinanceManagerDashboard />}
                 {activeRole === 'MARKETING_MANAGER' && <MarketingManagerDashboard />}
                 {activeRole === 'SALES_MANAGER' && <SalesManagerDashboard />}
@@ -863,7 +1214,31 @@ export default function Dashboard() {
 
           {currentTab === 'Overview' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+              {isLocalSuspended && (
+                <div style={{
+                  background: 'rgba(239, 68, 68, 0.15)',
+                  border: '1px solid rgba(239, 68, 68, 0.3)',
+                  borderRadius: '16px',
+                  padding: '1.25rem 1.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '1rem',
+                  color: '#ef4444',
+                  fontWeight: 600,
+                  fontSize: '0.9rem',
+                  boxShadow: '0 4px 12px rgba(239, 68, 68, 0.1)'
+                }}>
+                  <Shield size={20} />
+                  <div>
+                    <div style={{ fontWeight: 850 }}>TRACKING SUSPENDED BY OVERRIDE</div>
+                    <div style={{ fontSize: '0.75rem', opacity: 0.8, marginTop: '2px' }}>
+                      All automatic activity tracking, telemetry collection, and background logging have been administratively suspended by SUPER_ADMIN command.
+                    </div>
+                  </div>
+                </div>
+              )}
               {isStandby && (
+
                 <div style={{ 
                   background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)', padding: '2.5rem', 
                   borderRadius: '20px', border: '1px solid #1e293b', display: 'flex', flexDirection: 'column',
@@ -1003,7 +1378,31 @@ export default function Dashboard() {
 
           {currentTab === 'Activity' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {isLocalSuspended && (
+                <div style={{
+                  background: 'rgba(239, 68, 68, 0.15)',
+                  border: '1px solid rgba(239, 68, 68, 0.3)',
+                  borderRadius: '16px',
+                  padding: '1.25rem 1.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '1rem',
+                  color: '#ef4444',
+                  fontWeight: 600,
+                  fontSize: '0.9rem',
+                  boxShadow: '0 4px 12px rgba(239, 68, 68, 0.1)'
+                }}>
+                  <Shield size={20} />
+                  <div>
+                    <div style={{ fontWeight: 850 }}>TRACKING SUSPENDED BY OVERRIDE</div>
+                    <div style={{ fontSize: '0.75rem', opacity: 0.8, marginTop: '2px' }}>
+                      All automatic activity tracking, telemetry collection, and background logging have been administratively suspended by SUPER_ADMIN command.
+                    </div>
+                  </div>
+                </div>
+              )}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '0.5rem' }}>
+
                 <div>
                   <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>Audit Intelligence</h2>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '0.25rem' }}>Comprehensive real-time activity ledger and event sequencing.</p>
@@ -1399,7 +1798,7 @@ export default function Dashboard() {
           
           {currentTab === 'System Audit' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-              <SystemGuardian />
+              <SystemGuardian currentUser={{ id: profile.id, name: profile.name, role: activeRole }} />
             </div>
           )}
         </div>
@@ -1423,6 +1822,9 @@ export default function Dashboard() {
               localStorage.setItem('last_login_date', new Date().toLocaleDateString());
               localStorage.removeItem('show_login_grid');
               setShowCapture(false);
+              // Update URL to reflect the active role dashboard
+              const path = rolePaths[activeRole] || activeRole.toLowerCase();
+              window.history.pushState(null, '', `/${path}`);
             } else {
               localStorage.removeItem('is_authenticated');
               localStorage.removeItem('last_login_date');
@@ -1430,6 +1832,8 @@ export default function Dashboard() {
               setIsAuthenticated(false);
               setHasLoggedInToday(false);
               setShowLoginGrid(true);
+              // Reset URL to login page on logout
+              window.history.pushState(null, '', '/login');
               fetch('/api/logout', { method: 'POST' }).then(() => {
                 alert('Shift ended successfully. WorkSphere session terminated.');
                 window.location.reload();

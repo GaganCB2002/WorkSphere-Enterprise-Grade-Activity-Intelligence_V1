@@ -8,10 +8,6 @@ export function LiveTrackingView() {
   const [selectedEmp, setSelectedEmp] = useState('EMP-003');
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  useEffect(() => {
-    fetchLogs();
-  }, [selectedEmp]);
-
   const fetchLogs = () => {
     setIsRefreshing(true);
     smartHRApi.getTrackingLogs(selectedEmp).then(res => {
@@ -19,6 +15,13 @@ export function LiveTrackingView() {
       setIsRefreshing(false);
     });
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetchLogs();
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [selectedEmp]);
 
   const handleSimulateMove = (lat: number, lng: number, violation: boolean, zone: string) => {
     smartHRApi.logLocation({ employeeId: selectedEmp, employeeName: selectedEmp === 'EMP-003' ? 'Rohan Desai' : 'Arjun Mehta', latitude: lat, longitude: lng, geofenceViolation: violation, geofenceZoneName: zone }).then(res => {

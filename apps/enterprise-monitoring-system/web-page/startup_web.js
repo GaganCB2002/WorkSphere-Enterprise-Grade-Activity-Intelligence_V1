@@ -19,16 +19,16 @@ function runService(name, dir, command, args = '') {
 }
 
 // Launch Backend
-runService('AuraHR Backend', 'web-page/backend', 'npm', 'run dev');
+runService('AuraHR Backend', './backend', 'npm', 'run dev');
 
 // Launch Frontend
-runService('AuraHR Frontend', 'web-page/frontend', 'npm', 'run dev');
+runService('AuraHR Frontend', './frontend', 'npm', 'run dev');
 
 console.log('Centralized AuraHR Platform launched.');
-console.log('Backend: http://127.0.0.1:8081');
-console.log('Frontend: http://127.0.0.1:3005');
+console.log('Backend: http://localhost:8081');
+console.log('Frontend: http://localhost:3005');
 
 setTimeout(() => {
     console.log('Opening AuraHR Hub...');
-    spawn('powershell', ['-Command', `Start-Process "http://127.0.0.1:3005"`], { shell: true });
+    spawn('powershell', ['-Command', `Start-Process "http://localhost:3005"`], { shell: true });
 }, 5000);

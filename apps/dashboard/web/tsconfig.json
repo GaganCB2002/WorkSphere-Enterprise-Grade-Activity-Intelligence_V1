@@ -62,13 +62,13 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts",
-    "../../enterprise-monitoring-system/frontend/**/*"
+    "**/*.mts"
   ],
   "exclude": [
     "node_modules",
     "src/external",
     "../../enterprise-monitoring-system/frontend/node_modules",
-    "../../enterprise-monitoring-system/frontend/dist"
+    "../../enterprise-monitoring-system/frontend/dist",
+    "../../enterprise-monitoring-system/frontend/**/venv"
   ]
 }

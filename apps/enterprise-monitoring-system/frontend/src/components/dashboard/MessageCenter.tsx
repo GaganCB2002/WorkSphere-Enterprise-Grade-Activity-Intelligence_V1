@@ -29,7 +29,10 @@ export function MessageCenter() {
   }
 
   useEffect(() => {
-    fetchMessages()
+    const timer = setTimeout(() => {
+      fetchMessages()
+    }, 0)
+    return () => clearTimeout(timer)
   }, [])
 
   const updateStatus = async (id: string, status: string) => {

@@ -1,10 +1,19 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
     try {
+        const roleHeader = request.headers.get('x-role');
+        const roleParam = request.nextUrl.searchParams.get('role');
+        const activeRole = roleHeader || roleParam;
+
+        const isSuperAdmin = activeRole === 'SUPER_ADMIN' || activeRole === 'SUPERADMIN';
+        if (!isSuperAdmin) {
+            return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+        }
+
         const logPath = path.join(os.homedir(), 'AppData', 'Roaming', 'worksphere-agent', 'activity_log.jsonl');
         
         if (!fs.existsSync(logPath)) {

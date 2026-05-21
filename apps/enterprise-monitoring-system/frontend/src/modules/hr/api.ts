@@ -16,7 +16,7 @@ import type {
 const BASE_URL = 'http://localhost:8083/api/v1/hr';
 
 // Fallback Mock Data in case backend is offline
-let mockEmployees: Employee[] = [
+const mockEmployees: Employee[] = [
   {
     id: '1', employeeId: 'EMP-001', name: 'Arjun Mehta', email: 'arjun.mehta@worksphere.com',
     title: 'Senior Tech Lead', department: 'Engineering', roleLevel: 'TECH_LEAD',
@@ -42,7 +42,7 @@ let mockEmployees: Employee[] = [
   }
 ];
 
-let mockAttendance: AttendanceRecord[] = [
+const mockAttendance: AttendanceRecord[] = [
   {
     id: '1', employeeId: 'EMP-001', date: new Date().toISOString().split('T')[0],
     checkInTime: new Date(Date.now() - 8 * 3600 * 1000).toISOString(),
@@ -57,7 +57,7 @@ let mockAttendance: AttendanceRecord[] = [
   }
 ];
 
-let mockLeaves: LeaveRequest[] = [
+const mockLeaves: LeaveRequest[] = [
   {
     id: '1', employeeId: 'EMP-003', employeeName: 'Rohan Desai', type: 'Sick',
     startDate: new Date(Date.now() + 2 * 86400 * 1000).toISOString().split('T')[0],
@@ -67,7 +67,7 @@ let mockLeaves: LeaveRequest[] = [
   }
 ];
 
-let mockPayrolls: PayrollRecord[] = [
+const mockPayrolls: PayrollRecord[] = [
   {
     id: '1', employeeId: 'EMP-001', employeeName: 'Arjun Mehta', month: '2026-04',
     department: 'Engineering', basicSalary: 925000, hra: 462500, specialAllowance: 277500,
@@ -76,7 +76,7 @@ let mockPayrolls: PayrollRecord[] = [
   }
 ];
 
-let mockPerformance: PerformanceReview[] = [
+const mockPerformance: PerformanceReview[] = [
   {
     id: '1', employeeId: 'EMP-001', employeeName: 'Arjun Mehta', reviewerId: 'EMP-002',
     reviewerName: 'Priya Sharma', reviewDate: '2026-05-01', kpiScore: 4.8, goalCompletionRate: 4.9,
@@ -86,7 +86,7 @@ let mockPerformance: PerformanceReview[] = [
   }
 ];
 
-let mockCourses: TrainingCourse[] = [
+const mockCourses: TrainingCourse[] = [
   {
     id: '1', title: 'Advanced Kubernetes & Service Mesh', description: 'Mastering K8s networking, Istio service mesh, and enterprise security policies.',
     category: 'Engineering', certificationName: 'CKA Enterprise Certified', durationHours: 24,
@@ -94,7 +94,7 @@ let mockCourses: TrainingCourse[] = [
   }
 ];
 
-let mockSurveys: EngagementSurvey[] = [
+const mockSurveys: EngagementSurvey[] = [
   {
     id: '1', title: 'Q2 Hybrid Work & Workplace Experience Survey', category: 'Work Environment',
     publishedDate: '2026-05-02', participationRate: 92.4, averageSentimentScore: 88.5,
@@ -102,7 +102,7 @@ let mockSurveys: EngagementSurvey[] = [
   }
 ];
 
-let mockMessages: ChatMessage[] = [
+const mockMessages: ChatMessage[] = [
   {
     id: '1', senderId: 'EMP-002', senderName: 'Priya Sharma', receiverId: 'EMP-001',
     content: 'Hi Arjun, please verify the onboarding workflow for the new Davangere engineering hires.',
@@ -110,7 +110,7 @@ let mockMessages: ChatMessage[] = [
   }
 ];
 
-let mockTrackingLogs: LiveTrackingLog[] = [
+const mockTrackingLogs: LiveTrackingLog[] = [
   {
     id: '1', employeeId: 'EMP-003', employeeName: 'Rohan Desai', latitude: 14.4644, longitude: 75.9218,
     timestamp: new Date().toISOString(), wifiSsid: 'WorkSphere-Corp-Davangere', ipAddress: '192.168.10.45',
@@ -118,7 +118,7 @@ let mockTrackingLogs: LiveTrackingLog[] = [
   }
 ];
 
-let mockProofOfWorks: ProofOfWork[] = [
+const mockProofOfWorks: ProofOfWork[] = [
   {
     id: '1', employeeId: 'EMP-003', employeeName: 'Rohan Desai', taskTitle: 'Frontend Dashboard UI Grid Refactoring',
     mediaUrl: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
@@ -127,7 +127,7 @@ let mockProofOfWorks: ProofOfWork[] = [
   }
 ];
 
-let mockViolations: AIViolationLog[] = [
+const mockViolations: AIViolationLog[] = [
   {
     id: '1', employeeId: 'EMP-003', employeeName: 'Rohan Desai', violationType: 'INACTIVITY_DETECTED',
     timestamp: new Date(Date.now() - 86400 * 1000).toISOString(), confidenceScore: 0.89,
@@ -136,7 +136,7 @@ let mockViolations: AIViolationLog[] = [
   }
 ];
 
-let mockAssets: InventoryAsset[] = [
+const mockAssets: InventoryAsset[] = [
   {
     id: '1', assetTag: 'AST-LPT-101', name: 'MacBook Pro 16 M3 Max', category: 'Laptop',
     assignedToEmployeeId: 'EMP-001', assignedToEmployeeName: 'Arjun Mehta', assignmentDate: '2024-01-10',

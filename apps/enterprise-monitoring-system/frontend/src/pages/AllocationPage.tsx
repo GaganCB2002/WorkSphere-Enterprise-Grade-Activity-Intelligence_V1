@@ -50,23 +50,6 @@ export function AllocationPage({ platform, token, onRefresh }: AllocationPagePro
     expectedDuration: '12 Months'
   })
 
-  useEffect(() => {
-    fetchData()
-
-    const refresh = () => fetchData()
-    socket.on('allocation_updated', refresh)
-    socket.on('allocation_deleted', refresh)
-    socket.on('asset_allocation_updated', refresh)
-    socket.on('asset_allocation_revoked', refresh)
-
-    return () => {
-      socket.off('allocation_updated', refresh)
-      socket.off('allocation_deleted', refresh)
-      socket.off('asset_allocation_updated', refresh)
-      socket.off('asset_allocation_revoked', refresh)
-    }
-  }, [])
-
   const fetchData = async () => {
     setLoading(true)
     try {
@@ -82,6 +65,26 @@ export function AllocationPage({ platform, token, onRefresh }: AllocationPagePro
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetchData()
+    }, 0)
+
+    const refresh = () => fetchData()
+    socket.on('allocation_updated', refresh)
+    socket.on('allocation_deleted', refresh)
+    socket.on('asset_allocation_updated', refresh)
+    socket.on('asset_allocation_revoked', refresh)
+
+    return () => {
+      clearTimeout(timer)
+      socket.off('allocation_updated', refresh)
+      socket.off('allocation_deleted', refresh)
+      socket.off('asset_allocation_updated', refresh)
+      socket.off('asset_allocation_revoked', refresh)
+    }
+  }, [])
 
   const handleAddProject = async (e: React.FormEvent) => {
     e.preventDefault()

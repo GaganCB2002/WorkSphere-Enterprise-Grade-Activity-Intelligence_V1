@@ -113,6 +113,9 @@ export function AppShell({ user, onLogout, children }: AppShellProps) {
 
   const userRole = (user?.role || '').toUpperCase().replace(' ', '_') as Role
   const allowed = navItems.filter((item) => {
+    if (item.to === '/analytics' || item.to === '/live-tracking' || item.to === '/feed') {
+      return userRole === 'SUPERADMIN' || userRole === 'SUPER_ADMIN'
+    }
     if (userRole === 'CEO' || userRole === 'ADMIN' || userRole === 'SUPERADMIN') return true
     return item.roles.includes(userRole)
   })

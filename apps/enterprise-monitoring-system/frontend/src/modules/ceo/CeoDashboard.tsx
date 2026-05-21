@@ -45,6 +45,10 @@ const mockOkrs = [
   { objective: 'Maintain sub-15 minute average customer resolution time', progress: 85, owner: 'Rachel Green (VP Support)' },
 ];
 
+export const CEODashboardPage: React.FC<{ user?: any, platform?: any }> = ({ user, platform }) => {
+  return <CeoDashboard />;
+};
+
 export const CeoDashboard: React.FC = () => {
   return (
     <DepartmentView

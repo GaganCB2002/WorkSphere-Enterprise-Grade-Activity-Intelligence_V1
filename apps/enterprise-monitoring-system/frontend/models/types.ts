@@ -18,6 +18,15 @@ export type EnterpriseRole =
   | 'EMPLOYEE'
   | 'INTERN';
 
+export interface User {
+  id: string;
+  email: string;
+  name: string;
+  role: EnterpriseRole | string;
+  department?: string;
+  employeeId?: string;
+}
+
 export interface UserProfile {
   id: string;
   email: string;

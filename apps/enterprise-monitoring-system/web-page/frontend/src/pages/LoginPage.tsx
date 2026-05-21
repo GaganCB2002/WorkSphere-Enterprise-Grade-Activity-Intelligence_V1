@@ -97,6 +97,10 @@ export function LoginPage({
                     setEmail('ceo@company.com')
                     setPassword('123456')
                   }
+                  if (role === 'HR') {
+                    setEmail('hr@company.com')
+                    setPassword('123456')
+                  }
                 }}
                 className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 dark:text-white outline-none transition-all focus:border-luxury-blue/50 focus:bg-white dark:focus:bg-white/10 appearance-none cursor-pointer"
               >
@@ -135,7 +139,7 @@ export function LoginPage({
               { label: 'CEO Command',  email: 'ceo@company.com',      role: 'CEO',        color: 'bg-slate-900 dark:bg-white text-white dark:text-slate-900' },
               { label: 'Manager Hub', email: 'manager@company.com',   role: 'Manager',    color: 'bg-luxury-blue/10 text-luxury-blue border border-luxury-blue/20' },
               { label: 'Team Lead',   email: 'teamlead@company.com',  role: 'Lead',       color: '' },
-              { label: 'HR Director', email: 'hr@company.com',        role: 'HR',         color: '' },
+              { label: 'HR Executive (AuraHR)', email: 'hr@company.com', role: 'HR', color: 'bg-gradient-to-r from-blue-600 to-teal-500 text-white shadow-lg shadow-blue-500/25 border-none' },
               { label: 'Employee',    email: 'employee@company.com',  role: 'Employee',   color: '' },
               { label: 'Marketing',  email: 'marketing@company.com', role: 'Marketing',  color: '' },
               { label: 'Super Admin', email: 'admin@company.com',     role: 'ADMIN',      color: 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' },

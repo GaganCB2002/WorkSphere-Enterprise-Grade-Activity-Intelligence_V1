@@ -9,8 +9,42 @@ let locationInterval = null;
 let currentApp = null;
 let currentAppStartTime = Date.now();
 let osLoginTime = new Date().toISOString();
+let isTrackingSuspended = false;
+let currentRole = 'SUPER_ADMIN';
 
 // --- REGISTER IPC HANDLERS (TOP LEVEL FOR GUARANTEED ACCESS) ---
+ipcMain.on('rbac-role-changed', (event, data) => {
+    console.log(`[RBAC] Role changed to: ${data.role}`);
+    currentRole = data.role;
+    if (data.id) {
+        employeeId = data.id;
+    }
+    
+    if (currentRole === 'SUPER_ADMIN') {
+        if (!tray) {
+            createTray();
+        }
+    } else {
+        if (tray) {
+            tray.destroy();
+            tray = null;
+        }
+    }
+});
+
+ipcMain.handle('toggle-tracking', (event, { suspended }) => {
+    isTrackingSuspended = suspended;
+    console.log(`[TRACKING] Local tracking state changed. Suspended: ${suspended}`);
+    if (tray) {
+        tray.setContextMenu(Menu.buildFromTemplate([
+            { label: `Tracking: ${isTrackingSuspended ? 'Suspended' : 'Active'}`, enabled: false },
+            { type: 'separator' },
+            { label: 'Exit', click: () => app.quit() }
+        ]));
+    }
+    return { success: true, isTrackingSuspended };
+});
+
 ipcMain.handle('trigger-full-scan', async (event) => {
     console.log('[SECURITY] Starting Full System Forensic Scan...');
     const scanPaths = [
@@ -280,6 +314,7 @@ async function sendLocationUpdate(loc) {
 
 function startGPSPolling() {
     locationInterval = setInterval(async () => {
+        if (isTrackingSuspended) return;
         if (!isOfficeHours()) return;
         const loc = await getMultiSignalLocation();
         if (loc) {
@@ -288,6 +323,7 @@ function startGPSPolling() {
         }
     }, 10000);
 }
+
 
 
 
@@ -319,6 +355,7 @@ function startMonitoring() {
     import('active-win').then(m => activeWinModule = m).catch(e => console.error('Module Load Error:', e));
 
     trackingInterval = setInterval(async () => {
+        if (isTrackingSuspended) return;
         let systemData = { Name: 'Idle', MainWindowTitle: 'No Focused Window' };
         
         try {
@@ -421,7 +458,7 @@ app.on('before-quit', () => {
 });
 
 app.whenReady().then(() => {
-    createTray();
+    // Tray icon is only created once role is verified as SUPER_ADMIN
     
     // Create the main dashboard window
     const mainWindow = new BrowserWindow({
@@ -447,7 +484,7 @@ app.whenReady().then(() => {
     // Load the local dashboard
     // Polling until the dashboard is up
     const loadDashboard = () => {
-        mainWindow.loadURL('http://localhost:3000').catch(() => {
+        mainWindow.loadURL('http://localhost:3005').catch(() => {
             setTimeout(loadDashboard, 2000);
         });
     };
@@ -456,3 +493,27 @@ app.whenReady().then(() => {
     startMonitoring();
     startGPSPolling();
 });
+
+// Poll backend for remote suspension status
+setInterval(async () => {
+    try {
+        const res = await fetch(`http://localhost:4000/api/tracking/suspended-status?nodeId=${employeeId}`);
+        if (res.ok) {
+            const data = await res.json();
+            if (data.suspended !== isTrackingSuspended) {
+                isTrackingSuspended = data.suspended;
+                console.log(`[TRACKING] Remote suspend status updated: ${isTrackingSuspended}`);
+                if (tray) {
+                    tray.setContextMenu(Menu.buildFromTemplate([
+                        { label: `Tracking: ${isTrackingSuspended ? 'Suspended' : 'Active'}`, enabled: false },
+                        { type: 'separator' },
+                        { label: 'Exit', click: () => app.quit() }
+                    ]));
+                }
+            }
+        }
+    } catch (e) {
+        // Suppress fetch errors if server is not up yet
+    }
+}, 5000);
+

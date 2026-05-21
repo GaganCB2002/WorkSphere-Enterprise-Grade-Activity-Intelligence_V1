@@ -692,15 +692,16 @@ export function PayrollPage({ platform, token, onRefresh }: { platform: Platform
 }
 
 export function PerformancePage({ platform }: { platform: PlatformData }) {
+  const performanceRecords = platform.performance?.records
   const radarData = useMemo(
     () =>
-      (platform.performance?.records || []).map((record: any) => ({
+      (performanceRecords || []).map((record: any) => ({
         subject: record.employeeName.split(' ')[0],
         review: record.reviewScore * 20,
         feedback: record.feedback360 * 20,
         goals: record.goalCompletion,
       })),
-    [platform.performance?.records],
+    [performanceRecords],
   )
 
   return (
@@ -1041,8 +1042,11 @@ export function HelpDeskPage({ platform, token }: { platform: PlatformData; toke
     }
   }
 
-  useMemo(() => {
-    loadIssues()
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      loadIssues()
+    }, 0)
+    return () => clearTimeout(timer)
   }, [])
 
   return (

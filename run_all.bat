@@ -25,8 +25,8 @@ echo Agent: OK (Hardware Verified)
 
 echo [4/4] Launching Monitoring Dashboard...
 cd ../dashboard/web
-start cmd /k "npm run dev"
-echo Dashboard: OK (http://localhost:3000)
+start cmd /k "npm run dev -- -p 3005"
+echo Dashboard: OK (http://localhost:3005)
 
 echo.
 echo ==========================================

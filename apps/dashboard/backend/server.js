@@ -51,6 +51,8 @@ pool.on('error', (err) => {
 
 // In-memory fallback if Redis/PG connection fails during demo
 const liveTrackingCache = new Map();
+const suspendedNodes = new Set();
+
 
 // --- Exact System Monitoring Engine (Integrated from System_momter) ---
 const getExactMetrics = async () => {
@@ -274,6 +276,33 @@ app.get('/api/tracking/live', async (req, res) => {
     // Always serve from in-memory cache (most reliable)
     res.json(Array.from(liveTrackingCache.values()));
 });
+
+app.get('/api/tracking/suspended', (req, res) => {
+    res.json(Array.from(suspendedNodes));
+});
+
+app.get('/api/tracking/suspended-status', (req, res) => {
+    const { nodeId } = req.query;
+    res.json({ suspended: suspendedNodes.has(nodeId) });
+});
+
+app.post('/api/tracking/suspend', (req, res) => {
+    const { nodeId, suspended } = req.body;
+    if (!nodeId) return res.status(400).json({ error: 'Missing nodeId' });
+    
+    if (suspended) {
+        suspendedNodes.add(nodeId);
+    } else {
+        suspendedNodes.delete(nodeId);
+    }
+    
+    // Broadcast to all clients
+    io.emit('node_suspend_changed', { nodeId, suspended });
+    
+    console.log(`[TRACKING] Node ${nodeId} suspend state set to ${suspended}`);
+    res.json({ success: true, nodeId, suspended });
+});
+
 
 app.get('/api/tracking/history/:deviceId', async (req, res) => {
     const { deviceId } = req.params;

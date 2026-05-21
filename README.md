@@ -337,14 +337,14 @@ Use the provided universal batch orchestration script for a seamless, one-click 
 .\run_all.bat
 ```
 
-This script automatically initializes the Node.js telemetry server, launches the Electron desktop monitoring agent in the background, and spins up the Next.js analytics dashboard at `http://localhost:3000`.
+This script automatically initializes the Node.js telemetry server, launches the Electron desktop monitoring agent in the background, and spins up the Next.js analytics dashboard at `http://localhost:3005`.
 
 ---
 
 ## 7. 📑 Operational Task Guide
 
 ### **Task A: Role-Based Dashboard Navigation**
-1. Open the analytics portal at `http://localhost:3000`.
+1. Open the analytics portal at `http://localhost:3005`.
 2. Complete the biometric facial scan authentication flow.
 3. Use the **Enterprise Role Switcher** in the top navigation bar to seamlessly transition between departmental portals (e.g., switching from `CEO` view to `Tech Lead` or `HR Manager`).
 4. Explore tailored widgets, Kanban boards, and financial metrics specific to the active role.

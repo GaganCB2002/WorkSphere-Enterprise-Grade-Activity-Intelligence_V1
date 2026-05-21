@@ -11,25 +11,25 @@ import MFA from '../auth/MFA';
 import SessionTimeout from '../auth/SessionTimeout';
 import ProtectedRoute from './ProtectedRoute';
 
-// 18 Role Dashboard Named Imports
-import { SuperAdminDashboard } from '../../roles/super_admin/SuperAdminDashboard';
-import { AdminDashboard } from '../../roles/admin/AdminDashboard';
-import { CeoDashboard } from '../../roles/ceo/CeoDashboard';
-import { CtoDashboard } from '../../roles/cto/CtoDashboard';
-import { HrManagerDashboard } from '../../roles/hr_manager/HrManagerDashboard';
-import { HrExecutiveDashboard } from '../../roles/hr_executive/HrExecutiveDashboard';
-import { FinanceManagerDashboard } from '../../roles/finance_manager/FinanceManagerDashboard';
-import { MarketingManagerDashboard } from '../../roles/marketing_manager/MarketingManagerDashboard';
-import { SalesManagerDashboard } from '../../roles/sales_manager/SalesManagerDashboard';
-import { ProjectManagerDashboard } from '../../roles/project_manager/ProjectManagerDashboard';
-import { TechLeadDashboard } from '../../roles/tech_lead/TechLeadDashboard';
-import { DevOpsEngineerDashboard } from '../../roles/devops_engineer/DevOpsEngineerDashboard';
-import { QaEngineerDashboard } from '../../roles/qa_engineer/QaEngineerDashboard';
-import { SoftwareEngineerDashboard } from '../../roles/software_engineer/SoftwareEngineerDashboard';
-import { SecurityAnalystDashboard } from '../../roles/security_analyst/SecurityAnalystDashboard';
-import { SupportAgentDashboard } from '../../roles/support_agent/SupportAgentDashboard';
-import { EmployeeDashboard } from '../../roles/employee/EmployeeDashboard';
-import { InternDashboard } from '../../roles/intern/InternDashboard';
+// 18 Role Dashboard Lazy Imports
+const SuperAdminDashboard = React.lazy(() => import('../../roles/super_admin/SuperAdminDashboard').then(m => ({ default: m.SuperAdminDashboard })));
+const AdminDashboard = React.lazy(() => import('../../roles/admin/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
+const CeoDashboard = React.lazy(() => import('../../roles/ceo/CeoDashboard').then(m => ({ default: m.CeoDashboard })));
+const CtoDashboard = React.lazy(() => import('../../roles/cto/CtoDashboard').then(m => ({ default: m.CtoDashboard })));
+const HrManagerDashboard = React.lazy(() => import('../../roles/hr_manager/HrManagerDashboard').then(m => ({ default: m.HrManagerDashboard })));
+const HrExecutiveDashboard = React.lazy(() => import('../../roles/hr_executive/HrExecutiveDashboard').then(m => ({ default: m.HrExecutiveDashboard })));
+const FinanceManagerDashboard = React.lazy(() => import('../../roles/finance_manager/FinanceManagerDashboard').then(m => ({ default: m.FinanceManagerDashboard })));
+const MarketingManagerDashboard = React.lazy(() => import('../../roles/marketing_manager/MarketingManagerDashboard').then(m => ({ default: m.MarketingManagerDashboard })));
+const SalesManagerDashboard = React.lazy(() => import('../../roles/sales_manager/SalesManagerDashboard').then(m => ({ default: m.SalesManagerDashboard })));
+const ProjectManagerDashboard = React.lazy(() => import('../../roles/project_manager/ProjectManagerDashboard').then(m => ({ default: m.ProjectManagerDashboard })));
+const TechLeadDashboard = React.lazy(() => import('../../roles/tech_lead/TechLeadDashboard').then(m => ({ default: m.TechLeadDashboard })));
+const DevOpsEngineerDashboard = React.lazy(() => import('../../roles/devops_engineer/DevOpsEngineerDashboard').then(m => ({ default: m.DevOpsEngineerDashboard })));
+const QaEngineerDashboard = React.lazy(() => import('../../roles/qa_engineer/QaEngineerDashboard').then(m => ({ default: m.QaEngineerDashboard })));
+const SoftwareEngineerDashboard = React.lazy(() => import('../../roles/software_engineer/SoftwareEngineerDashboard').then(m => ({ default: m.SoftwareEngineerDashboard })));
+const SecurityAnalystDashboard = React.lazy(() => import('../../roles/security_analyst/SecurityAnalystDashboard').then(m => ({ default: m.SecurityAnalystDashboard })));
+const SupportAgentDashboard = React.lazy(() => import('../../roles/support_agent/SupportAgentDashboard').then(m => ({ default: m.SupportAgentDashboard })));
+const EmployeeDashboard = React.lazy(() => import('../../roles/employee/EmployeeDashboard').then(m => ({ default: m.EmployeeDashboard })));
+const InternDashboard = React.lazy(() => import('../../roles/intern/InternDashboard').then(m => ({ default: m.InternDashboard })));
 
 const MainLayout = () => {
   const user = useSelector(state => state.auth.user) || { id: 'usr-1', name: 'Gagan CB', role: 'SUPER_ADMIN', department: 'Global Security' };
@@ -114,7 +114,13 @@ const MainLayout = () => {
 
       {/* Main Dashboard Content Area */}
       <main className="flex-1 p-6 lg:p-8 max-w-[1600px] w-full mx-auto">
-        {renderRoleDashboard()}
+        <React.Suspense fallback={
+          <div className="flex items-center justify-center h-96">
+            <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        }>
+          {renderRoleDashboard()}
+        </React.Suspense>
       </main>
     </div>
   );

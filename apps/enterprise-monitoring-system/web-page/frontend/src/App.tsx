@@ -3,7 +3,7 @@ import { Navigate, Route, Routes, useNavigate, useLocation } from 'react-router-
 import { api } from './api/client'
 import { socket } from './api/socket'
 import { AppShell } from './components/layout/AppShell'
-import { DashboardPage } from '../../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/HR_SYSTEM/Frontend_Pages/DashboardPage'
+import { HrExecutiveDashboard } from '../roles/hr_executive/HrExecutiveDashboard'
 import { LoginPage } from './pages/LoginPage'
 import { LandingPage } from './pages/LandingPage'
 import { ProductPage } from './pages/Product/ProductPage'
@@ -38,21 +38,18 @@ import { ActivityFeedPage } from './pages/ActivityFeedPage'
 import { MailPage } from './pages/MailPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { DocumentationPage } from './pages/DocumentationPage'
-import { LeaveManagementPage } from '../../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/EMPLOYEE_SYSTEM/Frontend_Pages/LeaveManagementPage'
-import { EmployeeDashboardPage } from '../../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/EMPLOYEE_SYSTEM/Frontend_Pages/EmployeeDashboardPage'
+import { HumanResourcesPage, HumanResourcesPage as LeaveManagementPage } from './modules/hr_executive/HumanResourcesPage'
+import { EmployeeDashboardPage } from './modules/hr_executive/HR_Employee_Dashboard'
 import { ProjectManagementPage } from './pages/ProjectManagementPage'
-import { HumanResourcesPage } from '../../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/HR_SYSTEM/Frontend_Pages/HumanResourcesPage'
 import { MeetingRoom } from './pages/MeetingRoom'
 import { useTracking } from './hooks/useTracking'
 import type { ActivityItem, PlatformData, User } from './types'
 import { ProtectedRoute } from './components/auth/ProtectedRoute'
-import TechLeadDashboard from '../../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/TECHLEAD_SYSTEM/Frontend_Pages/TechLeadDashboard'
-import { MarketingDashboard, SalesPipeline, AIInsights } from '../../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/MARKETING_SYSTEM/Frontend_Pages/MarketingPages'
-import AnalysisModule from '../../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/TECHLEAD_SYSTEM/Frontend_Pages/AnalysisModule'
-import { ManagerDashboardPage } from '../../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/MANAGER_SYSTEM/Frontend_Pages/ManagerDashboardPage'
-import { CEODashboardPage } from '../../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/CEO_SYSTEM/Frontend_Pages/CEODashboardPage'
-import { TeamLeadDashboardPage } from '../../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/TECHLEAD_SYSTEM/Frontend_Pages/TeamLeadDashboardPage'
-import { AdminDashboardPage } from '../../../../../../Recruitment & Hiring_1/Recruitment & Hiring_1/ADMIN_SYSTEM/Frontend_Pages/AdminDashboardPage'
+import TechLeadDashboard, { TeamLeadDashboardPage, AnalysisModule } from './modules/hr_executive/HR_TechLead_Dashboard'
+import { MarketingDashboard, SalesPipeline, AIInsights } from './modules/marketing/pages/MarketingPages'
+import { ManagerDashboardPage } from './modules/manager/pages/ManagerDashboardPage'
+import { CEODashboardPage } from './modules/ceo/CeoDashboard'
+import { AdminDashboardPage } from './modules/admin/pages/AdminDashboardPage'
 import { ContactProvider } from './components/layout/ContactContext'
 
 const TOKEN_KEY = 'aurahr-token'
@@ -62,6 +59,14 @@ function App() {
   const location = useLocation()
   const [token, setToken] = useState<string | null>(() => localStorage.getItem(TOKEN_KEY))
   const [user, setUser] = useState<User | null>(null)
+
+  // Smooth scroll animation on route change
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }, [location.pathname])
   
   // Start global GPS tracking
   useTracking(user, token)
@@ -188,12 +193,14 @@ function App() {
                   <Route path="admin-dashboard" element={<AdminDashboardPage user={user} platform={platform} />} />
                   <Route path="ceo-dashboard" element={<CEODashboardPage user={user} platform={platform} />} />
                   <Route path="manager-dashboard" element={<ManagerDashboardPage user={user} platform={platform} />} />
-                  <Route path="hr-dashboard" element={<DashboardPage data={platform.dashboard} feed={feed} onRefresh={async () => { await refreshPlatform(); }} />} />
+                  <Route path="hr-dashboard" element={<HrExecutiveDashboard user={user} token={token!} platform={platform} feed={feed} onRefresh={async () => { await refreshPlatform(); }} />} />
                   <Route path="employee-dashboard" element={<EmployeeDashboardPage user={user} platform={platform} token={token!} />} />
                   <Route path="techlead-dashboard" element={<TechLeadDashboard user={user} platform={platform} />} />
                   <Route path="teamlead-dashboard" element={<TeamLeadDashboardPage user={user} platform={platform} />} />
                   
-                  <Route path="feed" element={<ActivityFeedPage feed={feed} />} />
+                  {(user.role.toUpperCase() === 'SUPERADMIN' || user.role.toUpperCase() === 'SUPER_ADMIN') && (
+                    <Route path="feed" element={<ActivityFeedPage feed={feed} />} />
+                  )}
                   <Route path="recruitment" element={<RecruitmentPage platform={platform} token={token!} role={user.role} onRefresh={async () => { await refreshPlatform(); }} />} />
                   <Route path="allocation" element={<AllocationPage platform={platform} token={token!} onRefresh={async () => { await refreshPlatform(); }} />} />
                   <Route path="leave-approvals" element={<HumanResourcesPage />} />
@@ -211,8 +218,12 @@ function App() {
                   <Route path="projects" element={<ProjectManagementPage />} />
                   <Route path="engagement" element={<EngagementPage platform={platform} />} />
                   <Route path="compliance" element={<CompliancePage platform={platform} />} />
-                  <Route path="analytics" element={<AnalyticsPage platform={platform} />} />
-                  <Route path="live-tracking" element={<LiveTrackingPage token={token!} />} />
+                  {(user.role.toUpperCase() === 'SUPERADMIN' || user.role.toUpperCase() === 'SUPER_ADMIN') && (
+                    <>
+                      <Route path="analytics" element={<AnalyticsPage platform={platform} />} />
+                      <Route path="live-tracking" element={<LiveTrackingPage token={token!} />} />
+                    </>
+                  )}
                   <Route path="help-desk" element={<HelpDeskPage platform={platform} token={token!} />} />
                   <Route path="meetings" element={<MeetingRoom />} />
                   <Route path="analysis-sync" element={<AnalysisModule />} />

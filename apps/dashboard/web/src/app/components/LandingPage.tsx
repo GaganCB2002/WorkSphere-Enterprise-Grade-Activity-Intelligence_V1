@@ -568,7 +568,7 @@ export default function LandingPage({ onStartLogin }: LandingPageProps) {
                   <span style={{ color: '#3b82f6' }}>Integrity.</span>
                 </h1>
                 <p style={{ fontSize: '1.2rem', color: '#94a3b8', lineHeight: 1.7, marginBottom: '3rem', fontWeight: 500 }}>
-                  WorkSphere is a high-performance operating system designed for the complexities of the modern global enterprise. We've replaced legacy friction with precision-engineered automation.
+                  WorkSphere is a high-performance operating system designed for the complexities of the modern global enterprise. We&apos;ve replaced legacy friction with precision-engineered automation.
                 </p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem' }}>
                   <button onClick={onStartLogin} style={{ padding: '1.2rem 2.75rem', background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)', color: 'white', border: 'none', borderRadius: '50px', fontSize: '0.85rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.2em', cursor: 'pointer', boxShadow: '0 15px 30px -10px rgba(59, 130, 246, 0.5)', transition: 'all 0.2s' }}>
@@ -631,7 +631,7 @@ export default function LandingPage({ onStartLogin }: LandingPageProps) {
           <section style={{ padding: '8rem 2rem', background: '#0f172a', borderTop: '1px solid rgba(255,255,255,0.05)', color: 'white', textAlign: 'center' }}>
             <div style={{ maxWidth: '800px', margin: '0 auto' }}>
               <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 950, textTransform: 'uppercase', marginBottom: '2rem', lineHeight: 1 }}>Upgrade Your Infrastructure.</h2>
-              <p style={{ fontSize: '1.3rem', color: '#94a3b8', marginBottom: '3.5rem', fontWeight: 500 }}>Deploy the world's most advanced workforce operating system today.</p>
+              <p style={{ fontSize: '1.3rem', color: '#94a3b8', marginBottom: '3.5rem', fontWeight: 500 }}>Deploy the world&apos;s most advanced workforce operating system today.</p>
               <button onClick={onStartLogin} style={{ padding: '1.4rem 3.5rem', background: '#3b82f6', color: 'white', border: 'none', borderRadius: '50px', fontSize: '0.9rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.25em', cursor: 'pointer', boxShadow: '0 20px 40px -10px rgba(59, 130, 246, 0.4)', transition: 'all 0.2s' }}>
                 Initialize Deployment
               </button>
@@ -651,7 +651,7 @@ export default function LandingPage({ onStartLogin }: LandingPageProps) {
               <span style={{ color: '#3b82f6' }}>Manifesto.</span>
             </h1>
             <p style={{ fontSize: '1.25rem', color: '#94a3b8', lineHeight: 1.7, fontWeight: 500 }}>
-              We didn't just build features. We engineered a seamless interface between human potential and enterprise efficiency.
+              We didn&apos;t just build features. We engineered a seamless interface between human potential and enterprise efficiency.
             </p>
           </section>
 
@@ -733,7 +733,7 @@ export default function LandingPage({ onStartLogin }: LandingPageProps) {
               <span style={{ color: '#3b82f6' }}>Solutions.</span>
             </h1>
             <p style={{ fontSize: '1.25rem', color: '#94a3b8', lineHeight: 1.7, fontWeight: 500 }}>
-              Tailored ecosystems engineered to solve the most complex organizational challenges for the world's most demanding enterprises.
+              Tailored ecosystems engineered to solve the most complex organizational challenges for the world&apos;s most demanding enterprises.
             </p>
           </section>
 

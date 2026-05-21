@@ -21,9 +21,16 @@ export function ChatPage({ user, token }: ChatPageProps) {
   const [activeChannel, setActiveChannel] = useState(channels[0])
   const scrollRef = useRef<HTMLDivElement>(null)
 
+  const fetchMessages = async () => {
+    const data = await api.getChatMessages(token, undefined, activeChannel.id)
+    setMessages(data)
+  }
+
   useEffect(() => {
     socket.emit('join_room', activeChannel.id)
-    fetchMessages()
+    const timer = setTimeout(() => {
+      fetchMessages()
+    }, 0)
 
     const handleNewMessage = (msg: any) => {
       if (msg.groupId === activeChannel.id) {
@@ -32,17 +39,15 @@ export function ChatPage({ user, token }: ChatPageProps) {
     }
 
     socket.on('new_message', handleNewMessage)
-    return () => { socket.off('new_message', handleNewMessage) }
+    return () => {
+      clearTimeout(timer)
+      socket.off('new_message', handleNewMessage)
+    }
   }, [activeChannel])
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
-
-  const fetchMessages = async () => {
-    const data = await api.getChatMessages(token, undefined, activeChannel.id)
-    setMessages(data)
-  }
 
   const handleSend = async (e: React.FormEvent, fileData?: { name: string; url: string }) => {
     e.preventDefault()

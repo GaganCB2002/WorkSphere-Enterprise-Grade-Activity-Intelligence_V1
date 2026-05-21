@@ -23,10 +23,6 @@ export function MailPage({ user, token }: MailPageProps) {
     body: ''
   })
 
-  useEffect(() => {
-    fetchMails()
-  }, [activeTab])
-
   const fetchMails = async () => {
     setLoading(true)
     try {
@@ -42,6 +38,13 @@ export function MailPage({ user, token }: MailPageProps) {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetchMails()
+    }, 0)
+    return () => clearTimeout(timer)
+  }, [activeTab])
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault()
