@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   LayoutDashboard, Users, GitPullRequest, Activity, 
   LineChart, ChevronLeft, ChevronRight, Kanban, 
-  TerminalSquare, MessageSquare, Mail, Video
+  TerminalSquare, MessageSquare, Mail, Video, LogOut
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -138,11 +138,20 @@ export const TechLeadSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle 
         ))}
       </nav>
 
-      {/* Collapse Toggle */}
-      <div className="p-3 border-t border-[#21262d]">
+      {/* Footer Controls */}
+      <div className="p-3 border-t border-[#21262d] flex flex-col gap-2">
+        <button
+          onClick={() => { window.location.href = '/' }}
+          className="w-full flex items-center justify-center h-10 rounded-md text-[#8b949e] hover:bg-rose-500/10 hover:text-rose-400 transition-colors group"
+          title="Logout"
+        >
+          <LogOut className="w-5 h-5 group-hover:scale-110 transition-transform" />
+          {!isCollapsed && <span className="ml-3 text-sm font-semibold">Logout</span>}
+        </button>
         <button
           onClick={onToggle}
           className="w-full flex items-center justify-center h-10 rounded-md text-[#8b949e] hover:bg-[#21262d] hover:text-slate-200 transition-colors"
+          title="Toggle Sidebar"
         >
           {isCollapsed ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
         </button>

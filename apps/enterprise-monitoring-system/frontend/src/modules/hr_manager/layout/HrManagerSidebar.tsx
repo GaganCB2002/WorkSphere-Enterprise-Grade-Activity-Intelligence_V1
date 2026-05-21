@@ -5,7 +5,7 @@ import {
   LayoutDashboard, Users, UserPlus, Clock, CalendarDays, 
   Wallet, TrendingUp, GraduationCap, FileText, MonitorDot, 
   MessageSquare, BarChart3, ShieldCheck, Settings, 
-  ChevronRight, ChevronLeft, Menu, Radio, Mail, Video
+  ChevronRight, ChevronLeft, Menu, Radio, Mail, Video, LogOut
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -184,13 +184,17 @@ export const HrManagerSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle
             exit={{ opacity: 0 }}
             className="p-4 border-t border-[#21262d] bg-[#0E1117]"
           >
-            <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-3 flex items-center gap-3">
-               <div className="w-8 h-8 rounded-lg bg-indigo-900/50 flex items-center justify-center text-indigo-400 font-bold border border-indigo-500/30">
-                 H
+            <div 
+              onClick={() => { window.location.href = '/' }}
+              className="bg-[#161b22] border border-[#30363d] rounded-xl p-3 flex items-center gap-3 relative group cursor-pointer hover:border-rose-500/50 hover:bg-rose-500/5 transition-colors"
+            >
+               <div className="w-8 h-8 rounded-lg bg-indigo-900/50 flex items-center justify-center text-indigo-400 font-bold border border-indigo-500/30 group-hover:bg-rose-500/20 group-hover:text-rose-400 group-hover:border-rose-500/30 transition-colors relative">
+                 <LogOut className="w-4 h-4 opacity-0 group-hover:opacity-100 absolute transition-opacity" />
+                 <span className="group-hover:opacity-0 transition-opacity">H</span>
                </div>
                <div className="min-w-0 flex-1">
-                 <div className="text-sm font-bold text-slate-200 truncate">HR Operations</div>
-                 <div className="text-[10px] text-[#8b949e] truncate">Admin Level</div>
+                 <div className="text-sm font-bold text-slate-200 truncate group-hover:text-rose-400 transition-colors">HR Operations</div>
+                 <div className="text-[10px] text-[#8b949e] truncate group-hover:text-rose-400/70 transition-colors">Click to Logout</div>
                </div>
             </div>
           </motion.div>

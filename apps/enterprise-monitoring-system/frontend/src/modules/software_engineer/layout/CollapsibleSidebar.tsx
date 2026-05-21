@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { 
   LayoutDashboard, KanbanSquare, GitPullRequest, 
   Terminal, Timer, Users, CalendarOff, Bug, 
-  ChevronLeft, ChevronRight, BookOpen
+  ChevronLeft, ChevronRight, BookOpen, LogOut
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -82,11 +82,20 @@ export const CollapsibleSidebar: React.FC<SidebarProps> = ({ isCollapsed, onTogg
         ))}
       </nav>
 
-      {/* Toggle Button */}
-      <div className="p-3 border-t border-[#21262d]">
+      {/* Footer Controls */}
+      <div className="p-3 border-t border-[#21262d] flex flex-col gap-2">
+        <button 
+          onClick={() => { window.location.href = '/' }}
+          className="flex items-center justify-center w-full p-2 text-[#8b949e] hover:bg-rose-500/10 hover:text-rose-400 rounded-md transition-colors group"
+          title="Logout"
+        >
+          <LogOut className="w-5 h-5 group-hover:scale-110 transition-transform" />
+          {!isCollapsed && <span className="ml-3 text-sm font-semibold">Logout</span>}
+        </button>
         <button 
           onClick={onToggle}
           className="flex items-center justify-center w-full p-2 text-[#8b949e] hover:bg-[#21262d] hover:text-[#c9d1d9] rounded-md transition-colors"
+          title="Toggle Sidebar"
         >
           {isCollapsed ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
         </button>
