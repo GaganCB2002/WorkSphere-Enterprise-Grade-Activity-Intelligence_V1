@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import {
   Search, Bell, Calendar, MessageCircle, Sparkles,
-  Sun, Moon, ChevronDown, Command
+  Sun, Moon, ChevronDown, Command, LogOut
 } from 'lucide-react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 interface TopbarProps {
   user: any;
@@ -10,6 +12,14 @@ interface TopbarProps {
 
 export const InternTopbar: React.FC<TopbarProps> = ({ user }) => {
   const [isDark, setIsDark] = useState(true);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    localStorage.removeItem('aurahr-token');
+    localStorage.removeItem('token');
+    dispatch({ type: 'LOGOUT' });
+    window.location.href = '/login';
+  };
 
   return (
     <header className="h-14 shrink-0 bg-[#0d1117] border-b border-[#1b1f27] flex items-center justify-between px-5 z-10">
@@ -84,6 +94,15 @@ export const InternTopbar: React.FC<TopbarProps> = ({ user }) => {
           </div>
           <ChevronDown className="w-3.5 h-3.5 text-[#484f58] group-hover:text-slate-200 transition-colors" />
         </div>
+
+        {/* Logout Button */}
+        <button 
+          onClick={handleLogout}
+          title="Logout"
+          className="p-2 ml-1 text-rose-500 hover:bg-rose-500/10 hover:text-rose-400 rounded-lg transition-colors border border-transparent hover:border-rose-500/20"
+        >
+          <LogOut className="w-[18px] h-[18px]" />
+        </button>
       </div>
     </header>
   );
