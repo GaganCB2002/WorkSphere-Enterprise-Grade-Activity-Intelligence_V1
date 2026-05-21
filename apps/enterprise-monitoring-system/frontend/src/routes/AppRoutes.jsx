@@ -29,7 +29,7 @@ const SoftwareEngineerDashboard = React.lazy(() => import('../modules/software_e
 const SecurityAnalystDashboard = React.lazy(() => import('../modules/security_analyst/SecurityAnalystDashboard').then(m => ({ default: m.SecurityAnalystDashboard })));
 const SupportAgentDashboard = React.lazy(() => import('../modules/support_agent/SupportAgentDashboard').then(m => ({ default: m.SupportAgentDashboard })));
 const EmployeeDashboard = React.lazy(() => import('../modules/employee/EmployeeModule').then(m => ({ default: m.EmployeeModule })));
-const InternDashboard = React.lazy(() => import('../modules/intern/InternDashboard').then(m => ({ default: m.InternDashboard })));
+const InternModule = React.lazy(() => import('../modules/intern/InternModule').then(m => ({ default: m.InternModule })));
 
 const MainLayout = () => {
   const user = useSelector(state => state.auth.user) || { id: 'usr-1', name: 'Gagan CB', role: 'SUPER_ADMIN', department: 'Global Security' };
@@ -60,13 +60,13 @@ const MainLayout = () => {
       case 'SECURITY_ANALYST': return <SecurityAnalystDashboard />;
       case 'SUPPORT_AGENT': return <SupportAgentDashboard />;
       case 'EMPLOYEE': return <EmployeeDashboard user={user} platform={{ id: 'platform-1', name: 'Core Platform' }} token="mock-token" />;
-      case 'INTERN': return <InternDashboard />;
+      case 'INTERN': return <InternModule user={user} />;
       default: return <SuperAdminDashboard />;
     }
   };
 
   // Roles that have their own full-screen layout (Sidebar + Topbar) built-in
-  const isFullScreenRole = ['EMPLOYEE', 'SOFTWARE_ENGINEER', 'TECH_LEAD', 'HR_MANAGER'].includes(user.role);
+  const isFullScreenRole = ['EMPLOYEE', 'SOFTWARE_ENGINEER', 'TECH_LEAD', 'HR_MANAGER', 'INTERN'].includes(user.role);
 
   if (isFullScreenRole) {
     return (

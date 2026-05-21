@@ -347,6 +347,7 @@ export function AppShell({ user, onLogout, children }: AppShellProps) {
                 {isDark ? <Sun className="h-5 w-5 text-amber-400" /> : <Moon className="h-5 w-5 text-slate-400" />}
               </button>
 
+
               {/* Profile Menu */}
               <div className="relative">
                 <button 
@@ -373,6 +374,15 @@ export function AppShell({ user, onLogout, children }: AppShellProps) {
                   </div>
                 )}
               </div>
+
+              {/* Logout Button */}
+              <button
+                onClick={onLogout}
+                title="Logout"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/5 bg-white/5 text-rose-500 transition hover:bg-rose-500/10 active:scale-95"
+              >
+                <LogOut className="h-5 w-5" />
+              </button>
             </div>
           </header>
 

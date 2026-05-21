@@ -43,8 +43,10 @@ export const EngineeringTopbar: React.FC = () => {
         
         <button 
           onClick={() => {
+            localStorage.removeItem('aurahr-token');
+            localStorage.removeItem('token');
             dispatch({ type: 'LOGOUT' });
-            navigate('/login');
+            window.location.href = '/login';
           }}
           className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#f85149]/10 hover:bg-[#f85149]/20 border border-[#f85149]/20 text-[#f85149] text-xs font-semibold transition-colors"
         >

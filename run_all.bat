@@ -23,9 +23,9 @@ cd ../../agent
 start /min cmd /k "npm start"
 echo Agent: OK (Hardware Verified)
 
-echo [4/4] Launching Monitoring Dashboard...
-cd ../dashboard/web
-start cmd /k "npm run dev -- -p 3005"
+echo [4/4] Launching Modern UI (Vite)...
+cd ../enterprise-monitoring-system/frontend
+start cmd /k "npm run dev"
 echo Dashboard: OK (http://localhost:3005)
 echo.
 echo Launching default web browser...

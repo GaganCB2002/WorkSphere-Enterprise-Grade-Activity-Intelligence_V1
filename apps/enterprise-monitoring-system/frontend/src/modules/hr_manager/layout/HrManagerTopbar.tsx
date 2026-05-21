@@ -15,8 +15,10 @@ export const HrManagerTopbar: React.FC<TopbarProps> = ({ user }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    localStorage.removeItem('aurahr-token');
+    localStorage.removeItem('token');
     dispatch({ type: 'LOGOUT' });
-    navigate('/login');
+    window.location.href = '/login';
   };
 
   return (
@@ -78,8 +80,16 @@ export const HrManagerTopbar: React.FC<TopbarProps> = ({ user }) => {
             </div>
             <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-[#0E1117] rounded-full"></div>
           </div>
-          <ChevronDown className="w-4 h-4 text-[#8b949e] group-hover:text-slate-200 transition-colors" />
         </div>
+
+        {/* Logout Button */}
+        <button 
+          onClick={handleLogout}
+          title="Logout"
+          className="p-2 ml-2 text-rose-500 hover:bg-rose-500/10 hover:text-rose-400 rounded-lg transition-colors border border-transparent hover:border-rose-500/20"
+        >
+          <LogOut className="w-5 h-5" />
+        </button>
       </div>
     </header>
   );
