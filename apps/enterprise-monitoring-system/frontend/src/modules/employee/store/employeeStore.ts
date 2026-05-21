@@ -338,7 +338,7 @@ export const useAttendanceStore = () => {
 
   const endBreak = useCallback(() => {
     const endedTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    let addedBreakMinutes = 15; // default estimation
+    const addedBreakMinutes = 15; // default estimation
 
     globalSession = {
       ...globalSession,

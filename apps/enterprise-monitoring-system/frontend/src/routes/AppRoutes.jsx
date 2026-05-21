@@ -16,7 +16,7 @@ const SuperAdminDashboard = React.lazy(() => import('../modules/super_admin/Supe
 const AdminDashboard = React.lazy(() => import('../modules/admin/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
 const CeoDashboard = React.lazy(() => import('../modules/ceo/CeoDashboard').then(m => ({ default: m.CeoDashboard })));
 const CtoDashboard = React.lazy(() => import('../modules/cto/CtoDashboard').then(m => ({ default: m.CtoDashboard })));
-const HrManagerDashboard = React.lazy(() => import('../modules/hr_manager/HrManagerDashboard').then(m => ({ default: m.HrManagerDashboard })));
+const HrManagerModule = React.lazy(() => import('../modules/hr_manager/HrManagerModule').then(m => ({ default: m.HrManagerModule })));
 const HrExecutiveDashboard = React.lazy(() => import('../modules/hr_executive/HrExecutiveDashboard').then(m => ({ default: m.HrExecutiveDashboard })));
 const FinanceManagerDashboard = React.lazy(() => import('../modules/finance_manager/FinanceManagerDashboard').then(m => ({ default: m.FinanceManagerDashboard })));
 const MarketingManagerDashboard = React.lazy(() => import('../modules/marketing_manager/MarketingManagerDashboard').then(m => ({ default: m.MarketingManagerDashboard })));
@@ -47,7 +47,7 @@ const MainLayout = () => {
       case 'ADMIN': return <AdminDashboard />;
       case 'CEO': return <CeoDashboard />;
       case 'CTO': return <CtoDashboard />;
-      case 'HR_MANAGER': return <HrManagerDashboard />;
+      case 'HR_MANAGER': return <HrManagerModule user={user} />;
       case 'HR_EXECUTIVE': return <HrExecutiveDashboard />;
       case 'FINANCE_MANAGER': return <FinanceManagerDashboard />;
       case 'MARKETING_MANAGER': return <MarketingManagerDashboard />;
@@ -66,7 +66,7 @@ const MainLayout = () => {
   };
 
   // Roles that have their own full-screen layout (Sidebar + Topbar) built-in
-  const isFullScreenRole = ['EMPLOYEE', 'SOFTWARE_ENGINEER', 'TECH_LEAD'].includes(user.role);
+  const isFullScreenRole = ['EMPLOYEE', 'SOFTWARE_ENGINEER', 'TECH_LEAD', 'HR_MANAGER'].includes(user.role);
 
   if (isFullScreenRole) {
     return (

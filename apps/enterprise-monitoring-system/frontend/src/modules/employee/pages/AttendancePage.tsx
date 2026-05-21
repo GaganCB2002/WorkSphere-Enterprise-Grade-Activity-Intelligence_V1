@@ -18,7 +18,8 @@ export function AttendancePage() {
     if (session.isActive) {
       const parseTimeString = (timeStr: string) => {
         const [time, modifier] = timeStr.split(' ');
-        let [hours, minutes] = time.split(':').map(Number);
+        let hours = Number(time.split(':')[0]);
+        const minutes = Number(time.split(':')[1]);
         if (modifier === 'PM' && hours < 12) hours += 12;
         if (modifier === 'AM' && hours === 12) hours = 0;
         
@@ -55,6 +56,7 @@ export function AttendancePage() {
       updateTimer();
       interval = setInterval(updateTimer, 60000); // update every minute
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTimerText('00h 00m');
     }
     return () => clearInterval(interval);

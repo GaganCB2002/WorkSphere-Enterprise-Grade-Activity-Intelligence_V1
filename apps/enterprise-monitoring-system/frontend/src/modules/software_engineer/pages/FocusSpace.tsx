@@ -11,6 +11,7 @@ export const FocusSpace: React.FC = () => {
     if (isActive && timeLeft > 0) {
       interval = setInterval(() => setTimeLeft(timeLeft - 1), 1000);
     } else if (timeLeft === 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsActive(false);
       // Auto-switch mode
       if (mode === 'FOCUS') {

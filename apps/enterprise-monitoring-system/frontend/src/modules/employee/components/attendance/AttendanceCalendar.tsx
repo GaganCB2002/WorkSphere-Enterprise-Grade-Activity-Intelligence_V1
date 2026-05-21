@@ -135,7 +135,7 @@ export function AttendanceCalendar({ records }: AttendanceCalendarProps) {
           const isWeekend = idx % 7 === 0 || idx % 7 === 6;
           
           let displayStatus: AttendanceStatus = record ? record.status : (isWeekend ? 'holiday' : 'absent');
-          let displayLate = record ? record.isLate : false;
+          const displayLate = record ? record.isLate : false;
           
           // If no record but day is in future, don't show as absent
           const isFuture = new Date(cell.dateStr) > new Date(2026, 4, 21);

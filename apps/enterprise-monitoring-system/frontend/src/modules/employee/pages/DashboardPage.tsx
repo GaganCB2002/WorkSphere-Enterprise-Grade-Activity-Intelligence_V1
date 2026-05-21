@@ -19,6 +19,7 @@ export function DashboardPage({ user, onNavigate }: DashboardPageProps) {
 
   // Sync elapsed minutes when store session workedMinutes changes
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setElapsedMinutes(session.workedMinutes);
   }, [session.workedMinutes]);
 

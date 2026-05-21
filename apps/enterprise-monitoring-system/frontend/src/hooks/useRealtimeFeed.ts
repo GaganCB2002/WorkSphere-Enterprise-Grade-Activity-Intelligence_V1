@@ -4,7 +4,10 @@ import type { ActivityItem } from '../types'
 
 export function useRealtimeFeed(token: string | null, onEvent: (item: ActivityItem) => void) {
   const onEventRef = useRef(onEvent)
-  onEventRef.current = onEvent
+  
+  useEffect(() => {
+    onEventRef.current = onEvent
+  }, [onEvent])
 
   useEffect(() => {
     if (!token) {

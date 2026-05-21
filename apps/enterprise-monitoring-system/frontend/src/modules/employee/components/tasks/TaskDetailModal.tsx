@@ -28,6 +28,7 @@ export function TaskDetailModal({
   // Sync subtasks locally when task opens
   React.useEffect(() => {
     if (task) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLocalSubtasks(task.subtasks || []);
     }
   }, [task]);
