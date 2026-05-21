@@ -8,24 +8,24 @@
 ```mermaid
 graph TD
     subgraph Clients
-        WEB[Web Dashboard]
-        MOB[Mobile App]
-        AGENT[Desktop Tracker]
+        WEB["Web Dashboard"]
+        MOB["Mobile App"]
+        AGENT["Desktop Tracker"]
     end
 
-    subgraph API_Gateway [Enterprise Gateway - Kong/Nginx]
-        SSL[SSL Termination]
-        WAF[WAF / Firewall]
-        RATE[Rate Limiting (Redis)]
-        JWT[JWT Validator]
-        ROUTER[URL Path Router]
+    subgraph API_Gateway ["Enterprise Gateway - Kong/Nginx"]
+        SSL["SSL Termination"]
+        WAF["WAF / Firewall"]
+        RATE["Rate Limiting (Redis)"]
+        JWT["JWT Validator"]
+        ROUTER["URL Path Router"]
     end
 
-    subgraph Microservices [Internal Cluster]
-        AUTH[Auth Service :8081]
-        HR[HR Core Service :8082]
-        TRACK[Tracking Service :8083]
-        AI[AI Engine :8084]
+    subgraph Microservices ["Internal Cluster"]
+        AUTH["Auth Service :8081"]
+        HR["HR Core Service :8082"]
+        TRACK["Tracking Service :8083"]
+        AI["AI Engine :8084"]
     end
 
     WEB --> SSL
@@ -37,10 +37,10 @@ graph TD
     RATE --> JWT
     JWT --> ROUTER
 
-    ROUTER -->|/api/v1/auth/*| AUTH
-    ROUTER -->|/api/v1/hr/*| HR
-    ROUTER -->|/api/v1/track/*| TRACK
-    ROUTER -->|/api/v1/ai/*| AI
+    ROUTER -->|"/api/v1/auth/*"| AUTH
+    ROUTER -->|"/api/v1/hr/*"| HR
+    ROUTER -->|"/api/v1/track/*"| TRACK
+    ROUTER -->|"/api/v1/ai/*"| AI
 ```
 
 ## 2. Gateway Capabilities
