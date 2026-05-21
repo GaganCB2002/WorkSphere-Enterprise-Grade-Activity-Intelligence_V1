@@ -8,39 +8,43 @@
 The architecture utilizes a loosely coupled, highly cohesive microservices design pattern. Each domain is isolated, allowing independent scaling and deployment.
 
 ```mermaid
-architecture-beta
-    group frontend(Frontend Client Apps)
-    service hrDash(Next.js HR Dashboard) in frontend
-    service empApp(React Employee Portal) in frontend
+graph TD
+    subgraph frontend [Frontend Client Apps]
+        hrDash[Next.js HR Dashboard]
+        empApp[React Employee Portal]
+    end
     
-    group edge(Edge Network)
-    service apiGw(Kong API Gateway) in edge
-    service wss(WebSocket Cluster) in edge
+    subgraph edge [Edge Network]
+        apiGw[Kong API Gateway]
+        wss[WebSocket Cluster]
+    end
     
-    group backend(Backend Microservices)
-    service nodeApp(Node.js/Express APIs) in backend
-    service trackSvc(Tracking Engine) in backend
-    service aiSvc(AI Analytics Engine) in backend
+    subgraph backend [Backend Microservices]
+        nodeApp[Node.js/Express APIs]
+        trackSvc[Tracking Engine]
+        aiSvc[AI Analytics Engine]
+    end
     
-    group data(Data Persistence)
-    service pgSql(PostgreSQL HR DB) in data
-    service redis(Redis Cache) in data
-    service kafka(Kafka Event Stream) in data
+    subgraph data [Data Persistence]
+        pgSql[(PostgreSQL HR DB)]
+        redis[(Redis Cache)]
+        kafka{Kafka Event Stream}
+    end
     
-    hrDash:R --> L:apiGw
-    empApp:R --> L:apiGw
-    empApp:R --> L:wss
+    hrDash -->|REST| apiGw
+    empApp -->|REST| apiGw
+    empApp -->|WebSocket| wss
     
-    apiGw:R --> L:nodeApp
-    apiGw:R --> L:trackSvc
-    wss:R --> L:kafka
+    apiGw -->|Route| nodeApp
+    apiGw -->|Route| trackSvc
+    wss -->|Publish| kafka
     
-    nodeApp:B --> T:pgSql
-    nodeApp:B --> T:redis
-    trackSvc:B --> T:kafka
+    nodeApp -->|Read/Write| pgSql
+    nodeApp -->|Cache| redis
+    trackSvc -->|Publish| kafka
     
-    kafka:R --> L:aiSvc
-    aiSvc:B --> T:pgSql
+    kafka -->|Consume| aiSvc
+    aiSvc -->|Write Metrics| pgSql
 ```
 
 ## 2. Technology Stack Breakdown
