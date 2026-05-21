@@ -27,11 +27,14 @@ echo [4/4] Launching Monitoring Dashboard...
 cd ../dashboard/web
 start cmd /k "npm run dev -- -p 3005"
 echo Dashboard: OK (http://localhost:3005)
-
+echo.
+echo Launching default web browser...
+timeout /t 3 >nul
+start http://localhost:3005
 echo.
 echo ==========================================
 echo        ALL SYSTEMS OPERATIONAL
 echo ==========================================
 echo.
-echo Please wait 10 seconds for the dashboard to load.
+echo Press any key to exit setup monitor.
 pause

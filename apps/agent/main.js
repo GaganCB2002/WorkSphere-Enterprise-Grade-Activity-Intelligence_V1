@@ -460,7 +460,8 @@ app.on('before-quit', () => {
 app.whenReady().then(() => {
     // Tray icon is only created once role is verified as SUPER_ADMIN
     
-    // Create the main dashboard window
+    // BrowserWindow is disabled to run headless / open in browser only
+    /*
     const mainWindow = new BrowserWindow({
         width: 1400,
         height: 900,
@@ -489,6 +490,7 @@ app.whenReady().then(() => {
         });
     };
     loadDashboard();
+    */
 
     startMonitoring();
     startGPSPolling();
