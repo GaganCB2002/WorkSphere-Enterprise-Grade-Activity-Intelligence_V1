@@ -32,7 +32,6 @@ const NAV_GROUPS: NavGroupProps[] = [
     isCollapsed: false,
     items: [
       { label: 'HR Overview', path: '/hr/overview', icon: <LayoutDashboard className="w-5 h-5" /> },
-      { label: 'Workforce Analytics', path: '/hr/analytics', icon: <BarChart3 className="w-5 h-5" /> },
     ]
   },
   {
@@ -42,7 +41,6 @@ const NAV_GROUPS: NavGroupProps[] = [
       { label: 'Employee Directory', path: '/hr/directory', icon: <Users className="w-5 h-5" /> },
       { label: 'Recruitment', path: '/hr/recruitment', icon: <UserPlus className="w-5 h-5" />, badge: 3 },
       { label: 'Performance', path: '/hr/performance', icon: <TrendingUp className="w-5 h-5" /> },
-      { label: 'Training', path: '/hr/training', icon: <GraduationCap className="w-5 h-5" /> },
     ]
   },
   {
@@ -51,7 +49,6 @@ const NAV_GROUPS: NavGroupProps[] = [
     items: [
       { label: 'Attendance & Leave', path: '/hr/time-leave', icon: <Clock className="w-5 h-5" />, badge: 12 },
       { label: 'Payroll & Finance', path: '/hr/payroll', icon: <Wallet className="w-5 h-5" /> },
-      { label: 'Assets', path: '/hr/assets', icon: <MonitorDot className="w-5 h-5" /> },
     ]
   },
   {
@@ -69,8 +66,6 @@ const NAV_GROUPS: NavGroupProps[] = [
     isCollapsed: false,
     items: [
       { label: 'Documents & Policies', path: '/hr/documents', icon: <FileText className="w-5 h-5" /> },
-      { label: 'Compliance', path: '/hr/compliance', icon: <ShieldCheck className="w-5 h-5" /> },
-      { label: 'Settings', path: '/hr/settings', icon: <Settings className="w-5 h-5" /> },
     ]
   }
 ];

@@ -6,7 +6,7 @@
 /* ── Custom Scrollbar ────────────────────────────────────── */
 .mgr-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgba(99, 102, 241, 0.15) transparent;
+  scrollbar-color: rgba(75, 73, 172, 0.15) transparent;
 }
 .mgr-scrollbar::-webkit-scrollbar {
   width: 4px;
@@ -16,11 +16,11 @@
   background: transparent;
 }
 .mgr-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.15);
+  background: rgba(75, 73, 172, 0.15);
   border-radius: 100px;
 }
 .mgr-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.3);
+  background: rgba(75, 73, 172, 0.3);
 }
 
 .mgr-scrollbar-hidden {
@@ -53,7 +53,7 @@
   transition: opacity 0.15s ease, transform 0.15s ease;
   transform: translateY(-50%) translateX(-4px);
   z-index: 1000;
-  border: 1px solid rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(75, 73, 172, 0.15);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 .mgr-tooltip:hover::after {
@@ -64,24 +64,24 @@
 /* ── Glass Panel Overrides (Manager) ─────────────────────── */
 .mgr-glass {
   background: rgba(13, 17, 23, 0.6);
-  border: 1px solid rgba(99, 102, 241, 0.06);
+  border: 1px solid rgba(75, 73, 172, 0.06);
   border-radius: 16px;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .mgr-glass:hover {
-  border-color: rgba(99, 102, 241, 0.12);
+  border-color: rgba(75, 73, 172, 0.12);
 }
 
 .mgr-glass-elevated {
   background: rgba(13, 17, 23, 0.8);
-  border: 1px solid rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(75, 73, 172, 0.08);
   border-radius: 20px;
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
   box-shadow:
-    0 0 0 1px rgba(99, 102, 241, 0.04),
+    0 0 0 1px rgba(75, 73, 172, 0.04),
     0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
@@ -91,7 +91,7 @@
 }
 .mgr-card-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.08);
+  box-shadow: 0 8px 30px rgba(75, 73, 172, 0.08);
 }
 
 /* ── KPI Card Accent Variants ────────────────────────────── */
@@ -141,7 +141,7 @@
 .mgr-badge-success { background: rgba(16, 185, 129, 0.1); color: #10b981; }
 .mgr-badge-warning { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
 .mgr-badge-danger  { background: rgba(244, 63, 94, 0.1);  color: #f43f5e; }
-.mgr-badge-info    { background: rgba(99, 102, 241, 0.1);  color: #6366f1; }
+.mgr-badge-info    { background: rgba(75, 73, 172, 0.1);  color: #4B49AC; }
 .mgr-badge-neutral { background: rgba(148, 163, 184, 0.1); color: #94a3b8; }
 
 /* ── Kanban Card Drag Styles ─────────────────────────────── */
@@ -164,7 +164,7 @@
 .mgr-heatmap-cell:hover {
   transform: scale(1.3);
   z-index: 10;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 0 2px rgba(75, 73, 172, 0.3);
 }
 
 /* ── Table Row Hover ─────────────────────────────────────── */
@@ -172,7 +172,7 @@
   transition: background-color 0.15s ease;
 }
 .mgr-table-row:hover {
-  background-color: rgba(99, 102, 241, 0.03);
+  background-color: rgba(75, 73, 172, 0.03);
 }
 
 /* ── Micro Animations ────────────────────────────────────── */
@@ -224,9 +224,9 @@
 .mgr-skeleton {
   background: linear-gradient(
     90deg,
-    rgba(99, 102, 241, 0.04) 25%,
-    rgba(99, 102, 241, 0.08) 50%,
-    rgba(99, 102, 241, 0.04) 75%
+    rgba(75, 73, 172, 0.04) 25%,
+    rgba(75, 73, 172, 0.08) 50%,
+    rgba(75, 73, 172, 0.04) 75%
   );
   background-size: 200% 100%;
   animation: mgr-shimmer 1.5s infinite;
@@ -248,7 +248,7 @@
 /* ── Progress Bar ────────────────────────────────────────── */
 .mgr-progress-bar {
   height: 6px;
-  background: rgba(99, 102, 241, 0.08);
+  background: rgba(75, 73, 172, 0.08);
   border-radius: 100px;
   overflow: hidden;
 }
@@ -256,13 +256,13 @@
   height: 100%;
   border-radius: 100px;
   transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  background: linear-gradient(90deg, #6366f1, #818cf8);
+  background: linear-gradient(90deg, #4B49AC, #98BDFF);
 }
 
 /* ── Focus Ring ──────────────────────────────────────────── */
 .mgr-focus-ring:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 0 2px rgba(75, 73, 172, 0.5);
 }
 
 /* ── Tab Indicator ───────────────────────────────────────── */
@@ -276,6 +276,6 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #6366f1;
+  background: #4B49AC;
   border-radius: 2px 2px 0 0;
 }

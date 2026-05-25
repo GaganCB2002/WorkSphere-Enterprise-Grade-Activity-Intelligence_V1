@@ -35,19 +35,7 @@ app.use(
   cors({
     origin: [
       process.env.HR_URL || 'http://127.0.0.1:3005',
-      process.env.HR_DASHBOARD_URL || 'http://127.0.0.1:3001',
-      process.env.EMPLOYEE_HUB_URL || 'http://127.0.0.1:5173',
-      process.env.TECH_LEAD_HUB_URL || 'http://127.0.0.1:3003',
-      process.env.HELP_DESK_URL || 'http://127.0.0.1:3004',
       'http://localhost:3005',
-      'http://localhost:3001',
-      'http://localhost:5173',
-      'http://localhost:3003',
-      'http://localhost:3004',
-      'http://127.0.0.1:3006',
-      'http://127.0.0.1:3007',
-      'http://localhost:3006',
-      'http://localhost:3007'
     ],
     credentials: true,
     optionsSuccessStatus: 200

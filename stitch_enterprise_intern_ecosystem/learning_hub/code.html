@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Learning Hub | Sahara Intern</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+        }
+        .sahara-shadow {
+            box-shadow: 0 2px 16px rgba(58, 48, 42, 0.04);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#8a4518",
+                        "primary-fixed": "#fbe8d8",
+                        "tertiary-fixed-dim": "#e8a0a0",
+                        "tertiary-fixed": "#fce0e0",
+                        "secondary-fixed-dim": "#cec6be",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#e08850",
+                        "on-secondary-fixed": "#2a2420",
+                        "surface-container-high": "#ece6dc",
+                        "on-surface-variant": "#605850",
+                        "background": "#faf5ee",
+                        "surface-container-highest": "#e6e0d6",
+                        "on-secondary-fixed-variant": "#504840",
+                        "error-container": "#fce4e0",
+                        "outline-variant": "#d8d0c8",
+                        "inverse-primary": "#f0a878",
+                        "on-error-container": "#7a1a10",
+                        "surface-tint": "#c2652a",
+                        "on-error": "#ffffff",
+                        "secondary": "#78706a",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f6f0e8",
+                        "secondary-fixed": "#eae2da",
+                        "surface-dim": "#dcd6cc",
+                        "surface-container": "#f2ece4",
+                        "on-tertiary-container": "#3a2020",
+                        "on-primary-container": "#fbe8d8",
+                        "inverse-surface": "#3a302a",
+                        "tertiary": "#8c3c3c",
+                        "surface-bright": "#faf5ee",
+                        "tertiary-container": "#d47070",
+                        "on-secondary-container": "#605850",
+                        "surface": "#faf5ee",
+                        "on-tertiary-fixed": "#2e1515",
+                        "secondary-container": "#eae2da",
+                        "primary": "#c2652a",
+                        "outline": "#9a9088",
+                        "on-tertiary-fixed-variant": "#6e3030",
+                        "on-primary-fixed": "#401a08",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#ece6dc",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#3a302a",
+                        "error": "#c0392b",
+                        "on-background": "#3a302a",
+                        "primary-fixed-dim": "#f0a878",
+                        "inverse-on-surface": "#faf5ee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["EB Garamond", "serif"],
+                        "display": ["EB Garamond", "serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 backdrop-blur-md dark:bg-surface-dim/80 fixed top-0 right-0 w-[calc(100%-16rem)] h-16 z-40 border-b border-outline-variant/30 flex justify-between items-center px-8">
+<div class="flex items-center gap-4 text-on-surface">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-body w-64 placeholder:text-outline-variant" placeholder="Search courses, skills, paths..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="toggle_off">toggle_off</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="flex items-center gap-2 bg-primary/10 text-primary-fixed-dim hover:bg-primary/20 px-4 py-2 rounded-lg font-label text-xs transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="smart_toy">smart_toy</span>
+                AI Assistant
+            </button>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant/50 overflow-hidden">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A professional headshot of a young woman with warm lighting, wearing a minimalist beige top against a soft neutral background. The aesthetic is clean, corporate yet inviting, matching a high-end editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnWNj8pGoUMfjCovRUCSSDrk4uBFRPp9AK0OYxY_iUq6zbDXoW_iTprmGUy0kKj9YoAgzipQeXQW6oiKu3Hl3X32QVYSSqiBoqmVDs_Q4CTVc3I81t0NhbwyeSVh2J10BVtpZOorgbC_Z7COego2sh-0Sn7gF5iJUBYkNGYNqs3h3RdvM3WwLF419SYJBWv4kE4rxb7zPFKsaMucdH3sXyngal-MgY5IbqqdYpXHhORNQ4l2oSTLCYjSkI8pec08b-LcKtjFUZ260"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="bg-inverse-surface dark:bg-surface-dim h-screen w-64 fixed left-0 top-0 bg-inverse-surface border-r border-outline-variant/20 shadow-sm flex flex-col h-full py-6 z-50">
+<div class="px-6 mb-8 flex flex-col gap-1">
+<h1 class="font-headline text-xl font-bold text-primary-fixed dark:text-primary">Sahara Intern</h1>
+<span class="font-body text-xs text-secondary-fixed-dim">Enterprise Portal</span>
+</div>
+<nav class="flex-1 overflow-y-auto flex flex-col gap-1">
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label text-sm">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label text-sm">Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-label text-sm">Projects</span>
+</a>
+<!-- Active: Learning -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary-fixed-dim rounded-lg mx-2 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-label text-sm font-semibold">Learning</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label text-sm">Evaluations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label text-sm">Team</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label text-sm">Chat</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-label text-sm">AI</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-label text-sm">Attendance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-label text-sm">Notifications</span>
+</a>
+<div class="mt-auto pt-4 border-t border-outline-variant/10">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label text-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="font-label text-sm">Admin</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen bg-background">
+<div class="p-10 max-w-7xl mx-auto space-y-12">
+<!-- Page Header -->
+<header class="flex justify-between items-end">
+<div>
+<h2 class="font-headline text-4xl text-on-surface mb-2 tracking-tight">Learning Hub</h2>
+<p class="font-body text-on-surface-variant max-w-2xl text-lg">Curated knowledge paths designed to elevate your professional trajectory. Continue your journey.</p>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Streak & Radar (Span 4) -->
+<div class="lg:col-span-4 space-y-8 flex flex-col">
+<!-- Daily Streak Widget -->
+<div class="bg-surface-container-low rounded-xl p-8 sahara-shadow border border-outline-variant/30 flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="absolute -right-12 -top-12 w-40 h-40 bg-primary-fixed-dim/20 rounded-full blur-3xl"></div>
+<div class="w-20 h-20 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-4xl" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<h3 class="font-headline text-5xl text-on-surface mb-1">12</h3>
+<p class="font-label text-on-surface-variant font-semibold tracking-wide uppercase text-xs mb-6">Day Learning Streak</p>
+<div class="flex gap-2">
+<div class="w-8 h-10 rounded bg-primary/20 flex flex-col items-center justify-center text-primary font-label text-xs"><span>M</span><div class="w-1 h-1 rounded-full bg-primary mt-1"></div></div>
+<div class="w-8 h-10 rounded bg-primary/20 flex flex-col items-center justify-center text-primary font-label text-xs"><span>T</span><div class="w-1 h-1 rounded-full bg-primary mt-1"></div></div>
+<div class="w-8 h-10 rounded bg-primary text-on-primary flex flex-col items-center justify-center font-label text-xs shadow-sm"><span>W</span><div class="w-1 h-1 rounded-full bg-on-primary mt-1"></div></div>
+<div class="w-8 h-10 rounded bg-surface-variant border border-outline-variant/50 flex flex-col items-center justify-center text-outline font-label text-xs"><span>T</span></div>
+<div class="w-8 h-10 rounded bg-surface-variant border border-outline-variant/50 flex flex-col items-center justify-center text-outline font-label text-xs"><span>F</span></div>
+</div>
+</div>
+<!-- Skill Matrix Radar Chart -->
+<div class="bg-surface-container-highest rounded-xl p-8 sahara-shadow border border-outline-variant/20 flex-1 flex flex-col">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline text-2xl text-on-surface">Skill Matrix</h3>
+<button class="text-tertiary hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+<div class="relative w-full aspect-square flex items-center justify-center bg-surface rounded-full border border-outline-variant/20 inner-shadow">
+<!-- Stylized Radar Visual using SVG -->
+<svg class="w-full h-full p-4 absolute inset-0 opacity-20" viewbox="0 0 100 100">
+<polygon fill="none" points="50,5 95,27 95,73 50,95 5,73 5,27" stroke="currentColor" stroke-width="0.5"></polygon>
+<polygon fill="none" points="50,20 80,35 80,65 50,80 20,65 20,35" stroke="currentColor" stroke-width="0.5"></polygon>
+<polygon fill="none" points="50,35 65,45 65,55 50,65 35,55 35,45" stroke="currentColor" stroke-width="0.5"></polygon>
+<line stroke="currentColor" stroke-width="0.5" x1="50" x2="50" y1="50" y2="5"></line>
+<line stroke="currentColor" stroke-width="0.5" x1="50" x2="95" y1="50" y2="27"></line>
+<line stroke="currentColor" stroke-width="0.5" x1="50" x2="95" y1="50" y2="73"></line>
+<line stroke="currentColor" stroke-width="0.5" x1="50" x2="50" y1="50" y2="95"></line>
+<line stroke="currentColor" stroke-width="0.5" x1="50" x2="5" y1="50" y2="73"></line>
+<line stroke="currentColor" stroke-width="0.5" x1="50" x2="5" y1="50" y2="27"></line>
+</svg>
+<!-- Data Polygon -->
+<svg class="w-full h-full p-4 absolute inset-0 z-10 text-primary drop-shadow-md" viewbox="0 0 100 100">
+<polygon fill="currentColor" fill-opacity="0.2" points="50,25 85,35 70,65 50,70 30,55 20,35" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"></polygon>
+</svg>
+<!-- Labels -->
+<span class="absolute top-2 left-1/2 -translate-x-1/2 text-[10px] font-label text-on-surface-variant font-semibold">Leadership</span>
+<span class="absolute top-1/4 right-2 text-[10px] font-label text-on-surface-variant font-semibold">Strategy</span>
+<span class="absolute bottom-1/4 right-2 text-[10px] font-label text-on-surface-variant font-semibold">Data</span>
+<span class="absolute bottom-2 left-1/2 -translate-x-1/2 text-[10px] font-label text-on-surface-variant font-semibold">Design</span>
+<span class="absolute bottom-1/4 left-2 text-[10px] font-label text-on-surface-variant font-semibold">Tech</span>
+<span class="absolute top-1/4 left-2 text-[10px] font-label text-on-surface-variant font-semibold">Comms</span>
+</div>
+<div class="mt-6 flex items-center justify-between text-sm">
+<span class="text-on-surface-variant">Growth Index: <strong class="text-primary">+14%</strong></span>
+<span class="text-on-surface-variant text-xs">Last 30 days</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Courses & Paths (Span 8) -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Enrolled Courses -->
+<section>
+<div class="flex justify-between items-baseline mb-6">
+<h3 class="font-headline text-2xl text-on-surface">Enrolled Courses</h3>
+<a class="font-label text-sm text-primary hover:text-on-primary-fixed-variant transition-colors underline decoration-primary/30 underline-offset-4" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Course Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 sahara-shadow overflow-hidden group hover:border-primary/30 transition-all duration-300">
+<div class="h-32 bg-secondary-container relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-inverse-surface/80 to-transparent z-10"></div>
+<img alt="Strategic Planning Course" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A warm, editorial photograph of a modern office meeting room table scattered with blueprint documents, a sleek laptop, and a ceramic cup of coffee. Sunlight streams across the table, creating high-contrast golden hour shadows. The mood is focused, professional, and minimalist, utilizing a palette of warm beiges, soft whites, and earthy browns." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEPfVwHsicScFmWBufnXvfg0mJ216X4TzRr_A-VC2bnidwAfFlcZe26YMdWqaT6npFmaYi9-JzlQDpKC7JZsVp0eRARwnYRkFqqIc5W7qA_AUrNqenK5T_1av8l60z7fOfyrgu2ztchNXBJLLwcZfb964eBKuXqxMXoiVVYryj5iSg6HjjOBUlWJijm_Dv0Zk2Ahzfdxku_JPl4d8b2uP6dRvLDjCwQ8XxiSemymOTOe4ibmk9iXk9KfXttpHxxp_in5neSkrjCFc"/>
+<span class="absolute top-4 right-4 z-20 bg-surface/90 backdrop-blur text-on-surface px-2 py-1 text-[10px] font-label uppercase tracking-widest rounded shadow-sm border border-outline-variant/20">In Progress</span>
+</div>
+<div class="p-6">
+<h4 class="font-headline text-xl text-on-surface mb-2 line-clamp-1">Enterprise Strategic Planning</h4>
+<p class="font-body text-sm text-on-surface-variant mb-6 line-clamp-2">Master the art of aligning departmental objectives with overarching corporate warm minimalist goals.</p>
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-xs font-label">
+<span class="text-on-surface-variant">Module 4 of 8</span>
+<span class="text-primary font-semibold">50%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-1/2"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/20">
+<div class="flex items-center gap-1.5 text-secondary text-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span>45 mins left</span>
+</div>
+<button class="bg-primary text-on-primary hover:bg-surface-tint px-4 py-2 rounded-lg font-label text-sm transition-colors flex items-center gap-2">
+                                            Continue
+                                            <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 sahara-shadow overflow-hidden group hover:border-primary/30 transition-all duration-300">
+<div class="h-32 bg-secondary-container relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-inverse-surface/80 to-transparent z-10"></div>
+<div class="w-full h-full bg-gradient-to-br from-tertiary-fixed-dim to-primary-container group-hover:scale-105 transition-transform duration-700" data-alt="A smooth, abstract background featuring a warm, soft gradient transitioning from dusty rose to burnt sienna. The texture is completely smooth, reminiscent of high-end editorial paper stock or a subtle desert sunrise. The aesthetic is purely minimalist, focusing entirely on the interplay of the Sahara color palette."></div>
+<span class="absolute top-4 right-4 z-20 bg-surface/90 backdrop-blur text-on-surface px-2 py-1 text-[10px] font-label uppercase tracking-widest rounded shadow-sm border border-outline-variant/20">Just Started</span>
+</div>
+<div class="p-6">
+<h4 class="font-headline text-xl text-on-surface mb-2 line-clamp-1">Design Systems &amp; Tokenization</h4>
+<p class="font-body text-sm text-on-surface-variant mb-6 line-clamp-2">Learn to build scalable design languages using modern visual tokens and warm styling.</p>
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-xs font-label">
+<span class="text-on-surface-variant">Module 1 of 5</span>
+<span class="text-primary font-semibold">10%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[10%]"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/20">
+<div class="flex items-center gap-1.5 text-secondary text-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span>2.5 hrs left</span>
+</div>
+<button class="bg-surface text-on-surface border border-outline-variant hover:border-primary px-4 py-2 rounded-lg font-label text-sm transition-colors flex items-center gap-2">
+                                            Resume
+                                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Recommended Paths -->
+<section class="bg-primary-fixed/30 rounded-xl p-8 border border-primary/10 relative overflow-hidden">
+<!-- Decorative bg element -->
+<div class="absolute right-0 top-0 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+<div class="flex items-start gap-4 mb-8 relative z-10">
+<div class="w-10 h-10 rounded-lg bg-surface text-primary flex items-center justify-center shadow-sm border border-outline-variant/30">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+</div>
+<div>
+<h3 class="font-headline text-2xl text-on-surface">Recommended Paths</h3>
+<p class="font-body text-sm text-on-surface-variant mt-1">Curated based on your recent skill matrix growth and active projects.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 relative z-10">
+<!-- Path 1 -->
+<div class="bg-surface rounded-lg p-5 flex items-center gap-6 border border-outline-variant/30 hover:shadow-md transition-shadow cursor-pointer group">
+<div class="w-12 h-12 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline text-lg text-on-surface group-hover:text-primary transition-colors">Advanced Cognitive Empathy</h4>
+<div class="flex items-center gap-3 mt-1 text-xs font-label text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]" data-icon="book">book</span> 3 Courses</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]" data-icon="timer">timer</span> 6 Hours</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<!-- Path 2 -->
+<div class="bg-surface rounded-lg p-5 flex items-center gap-6 border border-outline-variant/30 hover:shadow-md transition-shadow cursor-pointer group">
+<div class="w-12 h-12 rounded bg-secondary-fixed text-on-secondary-fixed-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="data_exploration">data_exploration</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline text-lg text-on-surface group-hover:text-primary transition-colors">Data Storytelling for Leaders</h4>
+<div class="flex items-center gap-3 mt-1 text-xs font-label text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]" data-icon="book">book</span> 5 Courses</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]" data-icon="timer">timer</span> 12 Hours</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</body></html>

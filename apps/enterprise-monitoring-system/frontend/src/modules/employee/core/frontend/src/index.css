@@ -39,7 +39,7 @@
   --color-bg-tertiary: rgb(241 245 249);
   --color-text-primary: rgb(15 23 42);
   --color-text-secondary: rgb(71 85 105);
-  --color-accent: rgb(20 184 166);
+  --color-accent: rgb(75 73 172);
 }
 
 .dark {
@@ -48,7 +48,7 @@
   --color-bg-tertiary: rgb(51 65 85);
   --color-text-primary: rgb(241 245 249);
   --color-text-secondary: rgb(148 163 184);
-  --color-accent: rgb(59 130 246);
+  --color-accent: rgb(125 160 250);
 }
 
 .light .text-slate-100,

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Development Sprint 4 - Task Board</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#2e1515",
+                        "secondary-container": "#eae2da",
+                        "inverse-surface": "#3a302a",
+                        "on-primary-fixed": "#401a08",
+                        "on-primary-fixed-variant": "#8a4518",
+                        "tertiary": "#8c3c3c",
+                        "secondary-fixed-dim": "#cec6be",
+                        "surface-container-high": "#ece6dc",
+                        "surface": "#faf5ee",
+                        "tertiary-fixed": "#fce0e0",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#f2ece4",
+                        "primary": "#c2652a",
+                        "background": "#faf5ee",
+                        "surface-bright": "#faf5ee",
+                        "secondary": "#78706a",
+                        "error": "#c0392b",
+                        "primary-fixed": "#fbe8d8",
+                        "on-surface": "#3a302a",
+                        "on-secondary-fixed-variant": "#504840",
+                        "on-background": "#3a302a",
+                        "surface-tint": "#c2652a",
+                        "surface-dim": "#dcd6cc",
+                        "surface-container-low": "#f6f0e8",
+                        "on-secondary-container": "#605850",
+                        "inverse-primary": "#f0a878",
+                        "error-container": "#fce4e0",
+                        "secondary-fixed": "#eae2da",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#ece6dc",
+                        "on-tertiary-container": "#3a2020",
+                        "on-secondary-fixed": "#2a2420",
+                        "inverse-on-surface": "#faf5ee",
+                        "primary-fixed-dim": "#f0a878",
+                        "outline-variant": "#d8d0c8",
+                        "on-tertiary-fixed-variant": "#6e3030",
+                        "on-error-container": "#7a1a10",
+                        "outline": "#9a9088",
+                        "tertiary-fixed-dim": "#e8a0a0",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e6e0d6",
+                        "primary-container": "#e08850",
+                        "tertiary-container": "#d47070",
+                        "on-surface-variant": "#605850",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#fbe8d8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["EB Garamond", "serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'EB Garamond', serif; }
+        
+        /* Hide scrollbar for horizontal scrolling tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Snap scrolling */
+        .snap-x-mandatory {
+            scroll-snap-type: x mandatory;
+        }
+        .snap-center {
+            scroll-snap-align: center;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-20 md:pb-0 flex flex-col md:flex-row">
+<!-- Mobile Nav Anchor Point (Hidden on Web) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-inverse-surface border-t border-outline-variant/20 shadow-sm flex justify-around items-center h-16 pb-safe px-4">
+<a class="flex flex-col items-center justify-center w-full h-full text-secondary-fixed-dim hover:text-surface-bright transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label text-[10px] mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-primary-fixed-dim bg-primary/10 rounded-lg py-1 px-2 mx-1 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="assignment" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="font-label text-[10px] mt-1 font-semibold">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-secondary-fixed-dim hover:text-surface-bright transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label text-[10px] mt-1">Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-secondary-fixed-dim hover:text-surface-bright transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+<!-- SideNavBar (Web Only) -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-inverse-surface border-r border-outline-variant/20 shadow-sm py-6 z-40 transition-all duration-200 ease-in-out">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary font-headline text-xl font-bold">S</div>
+<div>
+<h1 class="font-headline text-xl font-bold text-primary-fixed">Sahara Intern</h1>
+<p class="font-body text-xs text-secondary-fixed-dim">Enterprise Portal</p>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto no-scrollbar">
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:bg-primary/5 hover:text-primary-fixed mx-2 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:bg-primary/5 hover:text-primary-fixed mx-2 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-body text-sm">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary-fixed-dim rounded-lg mx-2 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="assignment" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="font-body text-sm font-semibold">Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:bg-primary/5 hover:text-primary-fixed mx-2 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-body text-sm">Projects</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 w-full flex flex-col min-h-screen">
+<!-- Top Header Area -->
+<header class="bg-surface/90 backdrop-blur-md sticky top-0 z-30 px-4 md:px-8 py-4 border-b border-outline-variant/30">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h1 class="font-headline text-2xl md:text-3xl font-bold text-on-surface">Development Sprint 4</h1>
+<p class="font-body text-sm text-secondary mt-1">October 12 - October 26 • 4 active tasks</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Search and Filter (Mobile Optimized) -->
+<div class="flex gap-3 items-center">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-xl" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-low border border-outline-variant/50 rounded-lg text-sm font-body text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Search tasks..." type="text"/>
+</div>
+<button class="flex items-center justify-center px-4 py-2.5 bg-surface-container-low border border-outline-variant/50 rounded-lg text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</header>
+<!-- Kanban Mobile Tabs -->
+<div class="md:hidden sticky top-[132px] z-20 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30">
+<div class="flex overflow-x-auto no-scrollbar py-3 px-4 gap-6" id="kanbanTabs">
+<button class="tab-btn font-label text-sm font-semibold text-primary whitespace-nowrap relative active-tab" data-target="todo">
+                    To Do <span class="ml-1 bg-primary-container text-on-primary-container text-[10px] px-1.5 py-0.5 rounded-full">2</span>
+<div class="absolute -bottom-3 left-0 w-full h-[2px] bg-primary rounded-t-full"></div>
+</button>
+<button class="tab-btn font-label text-sm font-medium text-secondary whitespace-nowrap relative" data-target="inprogress">
+                    In Progress <span class="ml-1 bg-surface-container-high text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded-full">1</span>
+<div class="absolute -bottom-3 left-0 w-full h-[2px] bg-transparent rounded-t-full tab-indicator"></div>
+</button>
+<button class="tab-btn font-label text-sm font-medium text-secondary whitespace-nowrap relative" data-target="review">
+                    Review <span class="ml-1 bg-surface-container-high text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded-full">1</span>
+<div class="absolute -bottom-3 left-0 w-full h-[2px] bg-transparent rounded-t-full tab-indicator"></div>
+</button>
+<button class="tab-btn font-label text-sm font-medium text-secondary whitespace-nowrap relative" data-target="completed">
+                    Completed <span class="ml-1 bg-surface-container-high text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded-full">0</span>
+<div class="absolute -bottom-3 left-0 w-full h-[2px] bg-transparent rounded-t-full tab-indicator"></div>
+</button>
+</div>
+</div>
+<!-- Task Content Area -->
+<div class="flex-1 p-4 md:p-8 bg-surface-container-low/30 overflow-x-hidden">
+<!-- Mobile View: Tabbed Sections -->
+<div class="md:hidden relative w-full overflow-hidden">
+<div class="flex transition-transform duration-300 ease-in-out w-[400%]" id="tabContentContainer">
+<!-- To Do Column (Mobile) -->
+<div class="w-1/4 px-1" id="col-todo">
+<div class="flex flex-col gap-4">
+<!-- Task Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-4 shadow-[0_2px_16px_rgba(58,48,42,0.04)] active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start mb-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-label font-bold tracking-wide uppercase bg-secondary-container text-on-secondary-container">Low Priority</span>
+<button class="text-outline hover:text-on-surface"><span class="material-symbols-outlined text-lg" data-icon="more_horiz">more_horiz</span></button>
+</div>
+<h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-tight">Research competitor onboarding flows</h3>
+<p class="font-body text-sm text-secondary line-clamp-2 mb-4">Analyze the first 5 minutes of user experience for top 3 competitors. Document drop-off points.</p>
+<div class="flex justify-between items-center pt-3 border-t border-outline-variant/30">
+<div class="flex items-center gap-1.5 text-secondary text-xs font-label">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span>Oct 15</span>
+</div>
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-xs font-bold border-2 border-surface-container-lowest">
+                                        JS
+                                    </div>
+</div>
+</div>
+<!-- Task Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-4 shadow-[0_2px_16px_rgba(58,48,42,0.04)] active:scale-[0.98] transition-transform border-l-4 border-l-tertiary">
+<div class="flex justify-between items-start mb-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-label font-bold tracking-wide uppercase bg-tertiary-container text-on-tertiary-container">High Priority</span>
+<button class="text-outline hover:text-on-surface"><span class="material-symbols-outlined text-lg" data-icon="more_horiz">more_horiz</span></button>
+</div>
+<h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-tight">Define API endpoints</h3>
+<p class="font-body text-sm text-secondary line-clamp-2 mb-4">Draft Swagger documentation for the new user profile management endpoints.</p>
+<div class="flex justify-between items-center pt-3 border-t border-outline-variant/30">
+<div class="flex items-center gap-1.5 text-tertiary text-xs font-label font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+<span>Tomorrow</span>
+</div>
+<img alt="Avatar" class="w-7 h-7 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A small circular avatar portrait of a professional woman with a warm smile, well-lit in a studio setting, used as a UI assignee indicator. Warm tone photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtymx3c2fmFfQCzjKO14KKZp5VJ7VZ9UFqVuxxdROCuV27dHPpfAC4RrVL7qNqHJKiy_pyFuRCEW_2Z_g2fgDqPKHoCeA2dHh2ZlItJXl1N_bRjvi7KurL1DVVTRjsihU8HK9OJ-LIzVDRo13P1VXAh7ScfSxd8J-WNqIjkktDghOG_fZ-RL4eTwpKR7hxZIaaK2VwBJ2vK55qwVZjd1_CFICHe6yZUa_eUhyBOErXxaqRME9vk3OLbh_DjanctH2wk7c9xSzU1Os"/>
+</div>
+</div>
+</div>
+</div>
+<!-- In Progress Column (Mobile) -->
+<div class="w-1/4 px-1" id="col-inprogress">
+<div class="flex flex-col gap-4">
+<!-- Task Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-4 shadow-[0_2px_16px_rgba(58,48,42,0.04)] active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start mb-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-label font-bold tracking-wide uppercase bg-primary-container text-on-primary-container">Medium Priority</span>
+<button class="text-outline hover:text-on-surface"><span class="material-symbols-outlined text-lg" data-icon="more_horiz">more_horiz</span></button>
+</div>
+<h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-tight">Design System Review</h3>
+<p class="font-body text-sm text-secondary line-clamp-2 mb-4">Audit current Figma components against the new 'Sahara' brand guidelines.</p>
+<div class="flex justify-between items-center pt-3 border-t border-outline-variant/30">
+<div class="flex items-center gap-1.5 text-secondary text-xs font-label">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span>Oct 18</span>
+</div>
+<div class="flex -space-x-2">
+<img alt="Avatar" class="w-7 h-7 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A small circular avatar portrait of a professional woman with a warm smile, well-lit in a studio setting, used as a UI assignee indicator. Warm tone photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwYPvfCZeBIo3K3Viy3rNj5Oq1xkD3I6w9Y8ixICw1HNuaiaBUnoRHkzM3OHSjssWYYr7j_3ugN3bbSwfv_o51KmmK7HBFD6nn7FaZmBx0DtBb3vnC8VwKMnMYBAZn5zRi8kDrv1SX-2KiXOgD0O44WE4P_oLeAoAF78fCxlzN8HZizfQRNTMNVyxWDoVH69efkhX5eyfGzC6vmP_cpeUS8K4IVD8z3KZkSRAOY35hZSfbuYGHliimVwb06wCOrVSNXBWy5ERCZy8"/>
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-[10px] font-bold border-2 border-surface-container-lowest z-10">
+                                            +1
+                                        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Review Column (Mobile) -->
+<div class="w-1/4 px-1" id="col-review">
+<div class="flex flex-col gap-4">
+<!-- Task Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-4 shadow-[0_2px_16px_rgba(58,48,42,0.04)] active:scale-[0.98] transition-transform border-l-4 border-l-tertiary">
+<div class="flex justify-between items-start mb-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-label font-bold tracking-wide uppercase bg-tertiary-container text-on-tertiary-container">High Priority</span>
+<button class="text-outline hover:text-on-surface"><span class="material-symbols-outlined text-lg" data-icon="more_horiz">more_horiz</span></button>
+</div>
+<h3 class="font-headline text-lg font-bold text-on-surface mb-1 leading-tight">Implement TopAppBar</h3>
+<p class="font-body text-sm text-secondary line-clamp-2 mb-4">Build responsive TopAppBar adhering to the Shared Components JSON logic.</p>
+<div class="flex justify-between items-center pt-3 border-t border-outline-variant/30">
+<div class="flex items-center gap-1.5 text-secondary text-xs font-label">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+<span>Ready for QA</span>
+</div>
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-xs font-bold border-2 border-surface-container-lowest">
+                                        AK
+                                    </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Completed Column (Mobile) -->
+<div class="w-1/4 px-1" id="col-completed">
+<div class="flex flex-col items-center justify-center h-48 border-2 border-dashed border-outline-variant/50 rounded-xl bg-surface-container-lowest/50">
+<span class="material-symbols-outlined text-outline mb-2 text-3xl" data-icon="done_all">done_all</span>
+<p class="font-body text-sm text-secondary">No completed tasks yet.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Desktop View: Grid (Hidden on Mobile) -->
+<div class="hidden md:flex gap-6 h-full min-h-[500px]">
+<!-- Columns would normally be replicated here for web view, 
+                     but omitting to save space as requested focus is Mobile adaptation. 
+                     A true responsive implementation would use CSS Grid/Flex adjustments 
+                     rather than duplicate DOM, but tabs vs columns often requires structural changes. -->
+<div class="w-full text-center py-20 text-secondary font-body">
+                    Desktop grid view hidden. Please view on mobile breakpoint to see the tabbed adaptation.
+                </div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed md:hidden bottom-20 right-4 w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-lg flex items-center justify-center hover:bg-primary/90 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+</main>
+<script>
+        // Simple JS for Mobile Tab Switching
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const container = document.getElementById('tabContentContainer');
+            
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    // Reset all tabs
+                    tabs.forEach(t => {
+                        t.classList.remove('text-primary', 'font-semibold', 'active-tab');
+                        t.classList.add('text-secondary', 'font-medium');
+                        const indicator = t.querySelector('.bg-primary, .bg-transparent');
+                        if(indicator) {
+                            indicator.classList.remove('bg-primary');
+                            indicator.classList.add('bg-transparent');
+                        }
+                    });
+                    
+                    // Activate clicked tab
+                    tab.classList.add('text-primary', 'font-semibold', 'active-tab');
+                    tab.classList.remove('text-secondary', 'font-medium');
+                    const indicator = tab.querySelector('div');
+                    if(indicator) {
+                        indicator.classList.remove('bg-transparent');
+                        indicator.classList.add('bg-primary');
+                    }
+                    
+                    // Slide content
+                    container.style.transform = `translateX(-${index * 25}%)`;
+                    
+                    // Optional: Scroll tab into view if partially hidden
+                    tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                });
+            });
+        });
+    </script>
+</body></html>

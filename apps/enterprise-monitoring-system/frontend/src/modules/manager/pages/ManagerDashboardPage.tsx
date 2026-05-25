@@ -20,7 +20,7 @@ import {
   Send,
   Eye,
   Filter,
-  DollarSign
+  IndianRupee
 } from 'lucide-react';
 import { SectionCard } from '../../../components/ui/SectionCard';
 import type { User } from '../../../types';
@@ -43,7 +43,7 @@ export function ManagerDashboardPage({ user, platform }: { user: User, platform:
       { id: '2', label: 'Active Projects', value: projectCount, trend: '+8.2%', icon: Briefcase, color: 'amber' },
       { id: '3', label: 'Tasks Completed', value: '2,456', trend: '+18.7%', icon: CheckCircle2, color: 'emerald' },
       { id: '4', label: 'Pending Tasks', value: taskCount, trend: '-6.4%', icon: Clock, color: 'rose' },
-      { id: '5', label: 'Revenue Target', value: '$48,650', trend: '+15.3%', icon: DollarSign, color: 'purple' },
+      { id: '5', label: 'Revenue Target', value: '₹48,650', trend: '+15.3%', icon: IndianRupee, color: 'purple' },
     ];
   }, [platform]);
 

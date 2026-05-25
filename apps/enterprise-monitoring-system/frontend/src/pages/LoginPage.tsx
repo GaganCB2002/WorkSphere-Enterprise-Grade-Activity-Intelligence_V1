@@ -33,9 +33,9 @@ export function LoginPage({
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-luxury-black flex items-center justify-center p-6 selection:bg-luxury-blue/30 overflow-hidden font-sans transition-colors duration-500">
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-luxury-blue/5 rounded-full blur-[150px] animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[150px] animate-pulse delay-1000" />
+    <div className="min-h-screen bg-[#f8f6ff] dark:bg-[#12111f] flex items-center justify-center p-6 selection:bg-[#4B49AC]/30 overflow-hidden font-sans transition-colors duration-500">
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#4B49AC]/5 rounded-full blur-[150px] animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#7978E9]/5 rounded-full blur-[150px] animate-pulse delay-1000" />
       
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
@@ -46,27 +46,27 @@ export function LoginPage({
           <motion.div 
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
-            className="h-16 w-16 bg-luxury-blue rounded-[24px] flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-luxury-blue/20"
+            className="h-16 w-16 bg-[#4B49AC] rounded-[24px] flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-[#4B49AC]/20"
           >
             <Zap className="h-8 w-8 text-white" />
           </motion.div>
-          <h1 className="text-4xl font-display font-black tracking-tighter uppercase italic text-slate-900 dark:text-white mb-2">System <span className="text-luxury-blue">Auth.</span></h1>
+          <h1 className="text-4xl font-display font-black tracking-tighter uppercase italic text-[#1a1a2e] dark:text-[#f0eef8] mb-2">System <span className="text-[#4B49AC]">Auth.</span></h1>
           <p className="text-slate-500 font-medium tracking-wide">Enter the WorkPulse Secure Perimeter</p>
         </div>
 
-        <div className="glass-panel p-10 rounded-[48px] border-slate-200 dark:border-white/5 bg-white dark:bg-white/5 shadow-premium">
+        <div className="rounded-[48px] border border-[#e5e0f5] dark:border-white/5 bg-white dark:bg-[#1a1930]/80 shadow-premium p-10 backdrop-blur-2xl">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 px-1">Infrastructure Identity</label>
               <div className="relative group">
-                <Mail className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500 group-focus-within:text-luxury-blue transition-colors" />
+                <Mail className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500 group-focus-within:text-[#4B49AC] transition-colors" />
                 <input 
                   type="email" 
                   required
                   placeholder="name@company.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 rounded-2xl py-4 pl-14 pr-6 text-sm font-bold text-slate-900 dark:text-white outline-none transition-all focus:border-luxury-blue/50 focus:bg-white dark:focus:bg-white/10"
+                  className="w-full bg-[#f8f6ff] dark:bg-white/5 border border-[#e5e0f5] dark:border-white/5 rounded-2xl py-4 pl-14 pr-6 text-sm font-bold text-[#1a1a2e] dark:text-[#f0eef8] outline-none transition-all focus:border-[#4B49AC]/50 focus:bg-white dark:focus:bg-white/10"
                 />
               </div>
             </div>
@@ -74,14 +74,14 @@ export function LoginPage({
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 px-1">Access Protocol</label>
               <div className="relative group">
-                <Lock className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500 group-focus-within:text-luxury-blue transition-colors" />
+                <Lock className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500 group-focus-within:text-[#4B49AC] transition-colors" />
                 <input 
                   type="password" 
                   required
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 rounded-2xl py-4 pl-14 pr-6 text-sm font-bold text-slate-900 dark:text-white outline-none transition-all focus:border-luxury-blue/50 focus:bg-white dark:focus:bg-white/10"
+                  className="w-full bg-[#f8f6ff] dark:bg-white/5 border border-[#e5e0f5] dark:border-white/5 rounded-2xl py-4 pl-14 pr-6 text-sm font-bold text-[#1a1a2e] dark:text-[#f0eef8] outline-none transition-all focus:border-[#4B49AC]/50 focus:bg-white dark:focus:bg-white/10"
                 />
               </div>
             </div>
@@ -102,9 +102,9 @@ export function LoginPage({
                     setPassword('123456')
                   }
                 }}
-                className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 dark:text-white outline-none transition-all focus:border-luxury-blue/50 focus:bg-white dark:focus:bg-white/10 appearance-none cursor-pointer"
+                className="w-full bg-[#f8f6ff] dark:bg-white/5 border border-[#e5e0f5] dark:border-white/5 rounded-2xl py-4 px-6 text-sm font-bold text-[#1a1a2e] dark:text-[#f0eef8] outline-none transition-all focus:border-[#4B49AC]/50 focus:bg-white dark:focus:bg-white/10 appearance-none cursor-pointer"
               >
-                {roles.map(r => <option key={r} value={r} className="bg-white dark:bg-luxury-black text-slate-900 dark:text-white">{r}</option>)}
+                {roles.map(r => <option key={r} value={r} className="bg-white dark:bg-[#12111f] text-[#1a1a2e] dark:text-[#f0eef8]">{r}</option>)}
               </select>
             </div>
 
@@ -121,7 +121,7 @@ export function LoginPage({
             <button 
               type="submit"
               disabled={loading}
-              className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-luxury-black rounded-full font-black text-xs uppercase tracking-[0.3em] shadow-xl shadow-slate-200 dark:shadow-white/5 hover:bg-luxury-blue hover:text-white transition-all duration-500 flex items-center justify-center gap-3 disabled:opacity-50"
+              className="w-full py-5 bg-[#1a1a2e] dark:bg-[#f0eef8] text-[#f0eef8] dark:text-[#1a1a2e] rounded-full font-black text-xs uppercase tracking-[0.3em] shadow-xl shadow-[#e5e0f5] dark:shadow-white/5 hover:bg-[#4B49AC] hover:text-white transition-all duration-500 flex items-center justify-center gap-3 disabled:opacity-50"
             >
               {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : (
                 <>
@@ -136,13 +136,13 @@ export function LoginPage({
              <p className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-4 text-center">Demo Credentials — One-Click Login</p>
              <div className="grid grid-cols-2 gap-3">
             { [
-              { label: 'CEO Command',  email: 'ceo@company.com',      role: 'CEO',        color: 'bg-slate-900 dark:bg-white text-white dark:text-slate-900' },
-              { label: 'Manager Hub', email: 'manager@company.com',   role: 'Manager',    color: 'bg-luxury-blue/10 text-luxury-blue border border-luxury-blue/20' },
+              { label: 'CEO Command',  email: 'ceo@company.com',      role: 'CEO',        color: 'bg-[#1a1a2e] dark:bg-[#f0eef8] text-[#f0eef8] dark:text-[#1a1a2e]' },
+              { label: 'Manager Hub', email: 'manager@company.com',   role: 'Manager',    color: 'bg-[#4B49AC]/10 text-[#4B49AC] border border-[#4B49AC]/20' },
               { label: 'Team Lead',   email: 'teamlead@company.com',  role: 'Lead',       color: '' },
-              { label: 'HR Executive (AuraHR)', email: 'hr@company.com', role: 'HR', color: 'bg-gradient-to-r from-blue-600 to-teal-500 text-white shadow-lg shadow-blue-500/25 border-none' },
+              { label: 'HR Executive (AuraHR)', email: 'hr@company.com', role: 'HR', color: 'bg-gradient-to-r from-[#4B49AC] to-[#7DA0FA] text-white shadow-lg shadow-[#4B49AC]/25 border-none' },
               { label: 'Employee',    email: 'employee@company.com',  role: 'Employee',   color: '' },
               { label: 'Marketing',  email: 'marketing@company.com', role: 'Marketing',  color: '' },
-              { label: 'Super Admin', email: 'admin@company.com',     role: 'ADMIN',      color: 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' },
+              { label: 'Super Admin', email: 'admin@company.com',     role: 'ADMIN',      color: 'bg-[#4B49AC] text-white shadow-lg shadow-[#4B49AC]/20' },
             ].map(p => (
               <button 
                 key={p.label}
@@ -163,7 +163,7 @@ export function LoginPage({
                     setLoading(false)
                   }
                 }}
-                className={`p-3 rounded-xl text-[9px] font-bold uppercase tracking-widest transition-all text-left shadow-sm hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed ${p.color || 'bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:border-luxury-blue/30'}`}
+                className={`p-3 rounded-xl text-[9px] font-bold uppercase tracking-widest transition-all text-left shadow-sm hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed ${p.color || 'bg-[#f0edff] dark:bg-white/5 border border-[#e5e0f5] dark:border-white/5 text-[#6e6c8a] dark:text-[#9d9bb5] hover:text-[#1a1a2e] dark:hover:text-[#f0eef8] hover:border-[#4B49AC]/30'}`}
               >
                 <div className={`${p.color ? '' : 'text-slate-900 dark:text-white'} mb-0.5`}>{p.label}</div>
                 <div className="opacity-60">{p.email}</div>

@@ -1,9 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-const savedUser = localStorage.getItem('user');
 const initialAuthState = { 
-  isAuthenticated: !!savedUser, 
-  user: savedUser ? JSON.parse(savedUser) : null, 
+  isAuthenticated: false, 
+  user: null, 
   loading: false, 
   error: null 
 };

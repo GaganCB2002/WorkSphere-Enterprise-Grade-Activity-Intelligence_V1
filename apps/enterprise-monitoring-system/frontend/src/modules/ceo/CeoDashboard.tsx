@@ -5,10 +5,10 @@ import {
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid,
   RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 } from 'recharts';
-import { Shield, TrendingUp, Users, DollarSign, Award, FileText, CheckCircle } from 'lucide-react';
+import { Shield, TrendingUp, Users, IndianRupee, Award, FileText, CheckCircle } from 'lucide-react';
 
 const initialStats: StatCardData[] = [
-  { title: 'Annual Recurring Revenue', value: '$148.5M', trend: '+18.4% YoY', trendType: 'up', icon: '💰', color: 'emerald' },
+  { title: 'Annual Recurring Revenue', value: '₹148.5M', trend: '+18.4% YoY', trendType: 'up', icon: '💰', color: 'emerald' },
   { title: 'Total Headcount', value: '1,420', trend: 'Across 17 Depts', trendType: 'up', icon: '👥', color: 'blue' },
   { title: 'Enterprise Productivity', value: '92.4%', trend: 'AI Benchmark', trendType: 'up', icon: '⚡', color: 'purple' },
   { title: 'Client Retention Rate', value: '98.7%', trend: '+0.5% QoQ', trendType: 'up', icon: '⭐', color: 'amber' },
@@ -97,7 +97,7 @@ export const CeoDashboard: React.FC = () => {
           <div className="flex items-center justify-between border-b border-slate-800 pb-4">
             <div>
               <h3 className="text-xl font-bold text-white">12-Month Revenue Performance</h3>
-              <p className="text-slate-400 text-xs mt-1">Actual Revenue vs Target Quota ($ Millions)</p>
+              <p className="text-slate-400 text-xs mt-1">Actual Revenue vs Target Quota (₹ Millions)</p>
             </div>
             <div className="flex items-center gap-4 text-xs font-bold">
               <div className="flex items-center gap-2">
@@ -180,7 +180,7 @@ export const CeoDashboard: React.FC = () => {
             <strong className="text-white">Productivity & AI Monitoring:</strong> Overall employee productivity scores have stabilized at 92.4% following the rollout of the LSTM behavior prediction engine. Engineering squad velocity shows a 14% increase in sprint burndown efficiency with zero critical security regressions.
           </p>
           <p>
-            <strong className="text-white">Strategic Recommendation:</strong> Accelerate hiring within the DevOps and Cybersecurity squads to support the upcoming multi-region AWS infrastructure scaling. Capital allocation remains well within the projected $150M annual budget ceiling.
+            <strong className="text-white">Strategic Recommendation:</strong> Accelerate hiring within the DevOps and Cybersecurity squads to support the upcoming multi-region AWS infrastructure scaling. Capital allocation remains well within the projected ₹150M annual budget ceiling.
           </p>
         </div>
       </div>

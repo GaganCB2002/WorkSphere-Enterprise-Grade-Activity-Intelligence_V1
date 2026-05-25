@@ -66,7 +66,7 @@ const MainLayout = () => {
   };
 
   // Roles that have their own full-screen layout (Sidebar + Topbar) built-in
-  const isFullScreenRole = ['EMPLOYEE', 'SOFTWARE_ENGINEER', 'TECH_LEAD', 'HR_MANAGER', 'INTERN'].includes(user.role);
+  const isFullScreenRole = ['EMPLOYEE', 'SOFTWARE_ENGINEER', 'TECH_LEAD', 'HR_MANAGER', 'INTERN', 'FINANCE_MANAGER'].includes(user.role);
 
   if (isFullScreenRole) {
     return (

@@ -4,12 +4,12 @@ import { StatCardData } from '../../../models/types';
 import { 
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid
 } from 'recharts';
-import { Server, Cpu, HardDrive, DollarSign, CheckCircle, AlertTriangle } from 'lucide-react';
+import { Server, Cpu, HardDrive, IndianRupee, CheckCircle, AlertTriangle } from 'lucide-react';
 
 const initialStats: StatCardData[] = [
   { title: 'Kubernetes Pods', value: '482', trend: '99.99% healthy', trendType: 'up', icon: '🐳', color: 'blue' },
   { title: 'Avg CPU Utilization', value: '42.8%', trend: 'Optimal load', trendType: 'neutral', icon: '⚡', color: 'emerald' },
-  { title: 'Monthly AWS/GCP Cost', value: '$84.2K', trend: 'Within budget', trendType: 'neutral', icon: '💰', color: 'purple' },
+  { title: 'Monthly AWS/GCP Cost', value: '₹84.2K', trend: 'Within budget', trendType: 'neutral', icon: '💰', color: 'purple' },
   { title: 'Pending CI/CD Builds', value: '3', trend: 'Building', trendType: 'up', icon: '🔄', color: 'amber' },
 ];
 
@@ -36,7 +36,7 @@ export const DevOpsEngineerDashboard: React.FC = () => {
       onRefresh={() => alert('Refreshing AWS EKS & Prometheus metrics...')}
       quickActions={[
         { label: 'Scale K8s Cluster', icon: <Server className="w-4 h-4" />, action: 'scale', variant: 'primary' },
-        { label: 'Cloud Cost Audit', icon: <DollarSign className="w-4 h-4" />, action: 'cost', variant: 'secondary' }
+        { label: 'Cloud Cost Audit', icon: <IndianRupee className="w-4 h-4" />, action: 'cost', variant: 'secondary' }
       ]}
       onQuickAction={(action) => {
         if (action === 'scale') alert('Initiating Kubernetes Horizontal Pod Autoscaler (HPA) override...');
@@ -46,7 +46,7 @@ export const DevOpsEngineerDashboard: React.FC = () => {
       {/* Cloud Cost Bar Chart */}
       <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-3xl p-6 lg:p-8 shadow-2xl space-y-6">
         <div className="border-b border-slate-800 pb-4">
-          <h3 className="text-xl font-bold text-white">Monthly Cloud Infrastructure Cost ($ Thousands)</h3>
+          <h3 className="text-xl font-bold text-white">Monthly Cloud Infrastructure Cost (₹ Thousands)</h3>
           <p className="text-slate-400 text-xs mt-1">Resource expenditure breakdown across AWS production managed services</p>
         </div>
 
@@ -60,7 +60,7 @@ export const DevOpsEngineerDashboard: React.FC = () => {
                 contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '1rem', color: '#fff' }}
               />
               <Legend />
-              <Bar dataKey="cost" name="Monthly Cost ($K)" fill="#3b82f6" radius={[8, 8, 0, 0]} />
+              <Bar dataKey="cost" name="Monthly Cost (₹K)" fill="#3b82f6" radius={[8, 8, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

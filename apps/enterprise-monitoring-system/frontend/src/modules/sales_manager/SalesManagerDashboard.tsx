@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { DepartmentView } from '../../../dashboards/DepartmentView';
 import { StatCardData } from '../../../models/types';
-import { DollarSign, Users, Award, TrendingUp, ArrowRight, CheckCircle, Clock } from 'lucide-react';
+import { IndianRupee, Users, Award, TrendingUp, ArrowRight, CheckCircle, Clock } from 'lucide-react';
 
 const initialStats: StatCardData[] = [
-  { title: 'Q2 Revenue Quota', value: '$35.0M', trend: '88% achieved', trendType: 'up', icon: '💰', color: 'emerald' },
-  { title: 'Active CRM Deals', value: '142', trend: '$42M Pipeline', trendType: 'up', icon: '🤝', color: 'blue' },
+  { title: 'Q2 Revenue Quota', value: '₹35.0M', trend: '88% achieved', trendType: 'up', icon: '💰', color: 'emerald' },
+  { title: 'Active CRM Deals', value: '142', trend: '₹42M Pipeline', trendType: 'up', icon: '🤝', color: 'blue' },
   { title: 'Win Rate', value: '64.5%', trend: '+3.2% QoQ', trendType: 'up', icon: '📈', color: 'purple' },
-  { title: 'Sales Rep Commissions', value: '$1.2M', trend: 'Disbursed', trendType: 'neutral', icon: '⭐', color: 'amber' },
+  { title: 'Sales Rep Commissions', value: '₹1.2M', trend: 'Disbursed', trendType: 'neutral', icon: '⭐', color: 'amber' },
 ];
 
 const mockDeals = [
@@ -32,12 +32,12 @@ export const SalesManagerDashboard: React.FC = () => {
       stats={initialStats}
       onRefresh={() => alert('Refreshing Salesforce CRM pipeline...')}
       quickActions={[
-        { label: 'Add New Deal', icon: <DollarSign className="w-4 h-4" />, action: 'add_deal', variant: 'primary' },
+        { label: 'Add New Deal', icon: <IndianRupee className="w-4 h-4" />, action: 'add_deal', variant: 'primary' },
         { label: 'Disburse Commissions', icon: <Award className="w-4 h-4" />, action: 'commissions', variant: 'secondary' }
       ]}
       onQuickAction={(action) => {
         if (action === 'add_deal') alert('Opening Add CRM Deal Modal...');
-        if (action === 'commissions') alert('Processing sales representative commission payouts ($1.2M)...');
+        if (action === 'commissions') alert('Processing sales representative commission payouts (₹1.2M)...');
       }}
     >
       {/* Kanban CRM Pipeline View */}
@@ -56,7 +56,7 @@ export const SalesManagerDashboard: React.FC = () => {
                 <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
                   <div>
                     <h5 className="font-bold text-white text-xs uppercase tracking-wider">{stage}</h5>
-                    <span className="text-[10px] text-emerald-400 font-bold">${(totalVal / 1000000).toFixed(1)}M</span>
+                    <span className="text-[10px] text-emerald-400 font-bold">₹{(totalVal / 1000000).toFixed(1)}M</span>
                   </div>
                   <span className="px-2 py-0.5 rounded-full bg-slate-800 text-[10px] font-bold text-slate-400 border border-slate-700">
                     {stageDeals.length}
@@ -71,7 +71,7 @@ export const SalesManagerDashboard: React.FC = () => {
                           <span className="px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[10px] font-extrabold">
                             Score: {deal.score}
                           </span>
-                          <span className="text-xs font-bold text-emerald-400">${(deal.value / 1000000).toFixed(1)}M</span>
+                          <span className="text-xs font-bold text-emerald-400">₹{(deal.value / 1000000).toFixed(1)}M</span>
                         </div>
                         <h6 className="font-bold text-white text-sm group-hover:text-blue-400 transition-colors">{deal.client}</h6>
                         <span className="text-[10px] text-slate-500 block mt-0.5">Rep: {deal.rep}</span>

@@ -4,7 +4,7 @@ import {
   Briefcase, 
   CheckCircle2, 
   Clock, 
-  DollarSign, 
+  IndianRupee, 
   Activity, 
   Shield, 
   Lock, 
@@ -49,7 +49,7 @@ export function AdminDashboardPage({ user, platform }: { user: any, platform: an
       { label: 'Active Projects', value: metrics.find((m:any) => m.id === 'projects')?.value || '85', trend: '+8.2%', icon: Briefcase, color: 'blue' },
       { label: 'Total Tasks', value: metrics.find((m:any) => m.id === 'tasks')?.value || '3,652', trend: '+15.3%', icon: Activity, color: 'orange' },
       { label: 'Tasks Completed', value: '2,456', trend: '+15.3%', icon: CheckCircle2, color: 'emerald' },
-      { label: 'Total Revenue', value: '$256,850', trend: '+14.7%', icon: DollarSign, color: 'red' },
+      { label: 'Total Revenue', value: '₹256,850', trend: '+14.7%', icon: IndianRupee, color: 'red' },
       { label: 'System Uptime', value: '99.9%', trend: '+0.5%', icon: Cpu, color: 'blue' },
     ];
   }, [platform]);

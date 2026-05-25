@@ -1,5 +1,5 @@
 import React from 'react';
-import { DollarSign, FileDown, ArrowUpRight, ArrowDownRight, CreditCard, Building2, Send } from 'lucide-react';
+import { IndianRupee, FileDown, ArrowUpRight, ArrowDownRight, CreditCard, Building2, Send } from 'lucide-react';
 
 export const PayrollManager: React.FC = () => {
   return (
@@ -24,10 +24,10 @@ export const PayrollManager: React.FC = () => {
       {/* Financial Summary */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {[
-          { label: 'Total Payroll Cost', value: '$2.4M', sub: 'May 2026', icon: DollarSign, trend: 'up' },
-          { label: 'Tax Deductions', value: '$450K', sub: 'Compliance', icon: Building2, trend: 'neutral' },
-          { label: 'Bonuses & Incentives', value: '$120K', sub: 'Performance', icon: ArrowUpRight, trend: 'up' },
-          { label: 'Reimbursements', value: '$15K', sub: 'Pending Approval', icon: CreditCard, trend: 'down' },
+          { label: 'Total Payroll Cost', value: '₹2.4M', sub: 'May 2026', icon: IndianRupee, trend: 'up' },
+          { label: 'Tax Deductions', value: '₹450K', sub: 'Compliance', icon: Building2, trend: 'neutral' },
+          { label: 'Bonuses & Incentives', value: '₹120K', sub: 'Performance', icon: ArrowUpRight, trend: 'up' },
+          { label: 'Reimbursements', value: '₹15K', sub: 'Pending Approval', icon: CreditCard, trend: 'down' },
         ].map((stat, i) => (
           <div key={i} className="bg-[#161b22] border border-[#30363d] p-5 rounded-2xl">
             <div className="flex justify-between items-start mb-4">
@@ -61,9 +61,9 @@ export const PayrollManager: React.FC = () => {
           <h3 className="text-sm font-bold text-slate-200 mb-4">Recent Payroll Runs</h3>
           <div className="flex-1 space-y-4">
             {[
-              { date: 'Apr 30, 2026', type: 'Standard Run', amount: '$2,380,000', status: 'Completed' },
-              { date: 'Apr 15, 2026', type: 'Off-cycle (Bonuses)', amount: '$45,000', status: 'Completed' },
-              { date: 'Mar 31, 2026', type: 'Standard Run', amount: '$2,350,000', status: 'Completed' },
+              { date: 'Apr 30, 2026', type: 'Standard Run', amount: '₹2,380,000', status: 'Completed' },
+              { date: 'Apr 15, 2026', type: 'Off-cycle (Bonuses)', amount: '₹45,000', status: 'Completed' },
+              { date: 'Mar 31, 2026', type: 'Standard Run', amount: '₹2,350,000', status: 'Completed' },
             ].map((run, i) => (
               <div key={i} className="bg-[#0E1117] border border-[#30363d] p-4 rounded-xl">
                 <div className="flex justify-between items-center mb-2">

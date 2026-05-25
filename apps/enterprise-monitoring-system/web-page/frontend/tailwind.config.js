@@ -9,20 +9,22 @@ export default {
         display: ['Outfit', 'sans-serif'],
       },
       colors: {
-        luxury: {
-          black: '#020617',
-          graphite: '#0f172a',
-          silver: '#e2e8f0',
-          blue: '#0066b1',
-          accent: '#3b82f6',
+        pastry: {
+          primary: '#4B49AC',
+          'primary-light': '#98BDFF',
+          'blue-light': '#7DA0FA',
+          'purple-light': '#7978E9',
+          coral: '#F3797E',
         },
-        brand: '#0066b1',
+        brand: '#4B49AC',
       },
       boxShadow: {
         premium: '0 30px 100px rgba(0, 0, 0, 0.5)',
+        pastry: '0 8px 32px rgba(75, 73, 172, 0.15)',
       },
       backgroundImage: {
-        'luxury-gradient': 'linear-gradient(180deg, #020617 0%, #0f172a 100%)',
+        'pastry-gradient': 'linear-gradient(135deg, #4B49AC 0%, #98BDFF 50%, #7DA0FA 100%)',
+        'pastry-soft': 'linear-gradient(180deg, #f8f6ff 0%, #eef3ff 100%)',
       },
     },
   },

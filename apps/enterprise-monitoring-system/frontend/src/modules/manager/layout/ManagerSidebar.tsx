@@ -30,7 +30,6 @@ const NAV_GROUPS: NavGroupDef[] = [
     title: 'Command Center',
     items: [
       { label: 'Dashboard', path: '/manager/overview', icon: <LayoutDashboard className="w-[18px] h-[18px]" /> },
-      { label: 'My Profile', path: '/manager/profile', icon: <User className="w-[18px] h-[18px]" /> },
     ]
   },
   {
@@ -43,27 +42,9 @@ const NAV_GROUPS: NavGroupDef[] = [
     ]
   },
   {
-    title: 'Performance & Projects',
+    title: 'Performance',
     items: [
       { label: 'Performance', path: '/manager/performance', icon: <TrendingUp className="w-[18px] h-[18px]" /> },
-      { label: 'Projects', path: '/manager/projects', icon: <FolderKanban className="w-[18px] h-[18px]" /> },
-      { label: 'Resource Allocation', path: '/manager/resources', icon: <Boxes className="w-[18px] h-[18px]" /> },
-    ]
-  },
-  {
-    title: 'Analytics & AI',
-    items: [
-      { label: 'Analytics', path: '/manager/analytics', icon: <BarChart3 className="w-[18px] h-[18px]" /> },
-      { label: 'AI Insights', path: '/manager/ai', icon: <Sparkles className="w-[18px] h-[18px]" /> },
-    ]
-  },
-  {
-    title: 'System',
-    items: [
-      { label: 'Communication', path: '/manager/communication', icon: <MessageCircle className="w-[18px] h-[18px]" />, badge: 12 },
-      { label: 'Notifications', path: '/manager/notifications', icon: <Bell className="w-[18px] h-[18px]" />, badge: 4 },
-      { label: 'Documents', path: '/manager/documents', icon: <FileText className="w-[18px] h-[18px]" /> },
-      { label: 'Settings', path: '/manager/settings', icon: <Settings className="w-[18px] h-[18px]" /> },
     ]
   }
 ];

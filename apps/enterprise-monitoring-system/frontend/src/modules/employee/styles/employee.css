@@ -11,10 +11,10 @@
   --emp-status-leave-bg: rgba(239, 68, 68, 0.08);
   --emp-status-pending: #f59e0b;
   --emp-status-pending-bg: rgba(245, 158, 11, 0.08);
-  --emp-status-working: #3b82f6;
-  --emp-status-working-bg: rgba(59, 130, 246, 0.08);
-  --emp-status-admin: #8b5cf6;
-  --emp-status-admin-bg: rgba(139, 92, 246, 0.08);
+  --emp-status-working: #4B49AC;
+  --emp-status-working-bg: rgba(75, 73, 172, 0.08);
+  --emp-status-admin: #7978E9;
+  --emp-status-admin-bg: rgba(121, 120, 233, 0.08);
 
   /* Priority system */
   --emp-priority-critical: #dc2626;
@@ -33,9 +33,9 @@
   --emp-text-tertiary: #94a3b8;
 
   /* Accent */
-  --emp-accent: #3b82f6;
-  --emp-accent-hover: #2563eb;
-  --emp-accent-subtle: rgba(59, 130, 246, 0.08);
+  --emp-accent: #4B49AC;
+  --emp-accent-hover: #3a3890;
+  --emp-accent-subtle: rgba(75, 73, 172, 0.08);
 
   /* Sidebar */
   --emp-sidebar-w-open: 260px;

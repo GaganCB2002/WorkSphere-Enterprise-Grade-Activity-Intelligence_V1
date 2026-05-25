@@ -92,11 +92,11 @@ export const authService = {
               'SUPER_ADMIN': 'http://127.0.0.1:3005/hr-dashboard',
               'ADMIN': 'http://127.0.0.1:3005/hr-dashboard',
               'CEO': 'http://127.0.0.1:3005/hr-dashboard',
-              'EMPLOYEE': 'http://127.0.0.1:5173',
-              'LEAD': 'http://127.0.0.1:3003',
-              'TECH_LEAD': 'http://127.0.0.1:3003',
-              'IT': 'http://127.0.0.1:3004',
-              'MARKETING': 'http://127.0.0.1:3006'
+              'EMPLOYEE': 'http://127.0.0.1:3005',
+              'LEAD': 'http://127.0.0.1:3005',
+              'TECH_LEAD': 'http://127.0.0.1:3005',
+              'IT': 'http://127.0.0.1:3005',
+              'MARKETING': 'http://127.0.0.1:3005'
             };
             const redirectUrl = roleRedirects[localUser.role.toUpperCase()] || 'http://127.0.0.1:3005/dashboard';
             return this.generateSession(localUser as unknown as AppUser, redirectUrl)
@@ -114,11 +114,11 @@ export const authService = {
               'SUPER_ADMIN': 'http://127.0.0.1:3005/hr-dashboard',
               'ADMIN': 'http://127.0.0.1:3005/hr-dashboard',
               'CEO': 'http://127.0.0.1:3005/hr-dashboard',
-              'EMPLOYEE': 'http://127.0.0.1:5173',
-              'LEAD': 'http://127.0.0.1:3003',
-              'TECH_LEAD': 'http://127.0.0.1:3003',
-              'IT': 'http://127.0.0.1:3004',
-              'MARKETING': 'http://127.0.0.1:3006'
+              'EMPLOYEE': 'http://127.0.0.1:3005',
+              'LEAD': 'http://127.0.0.1:3005',
+              'TECH_LEAD': 'http://127.0.0.1:3005',
+              'IT': 'http://127.0.0.1:3005',
+              'MARKETING': 'http://127.0.0.1:3005'
             };
             const redirectUrl = roleRedirects[localUser.role.toUpperCase()] || 'http://127.0.0.1:3005/dashboard';
             return this.generateSession(localUser, redirectUrl);

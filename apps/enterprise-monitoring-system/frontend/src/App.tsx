@@ -52,13 +52,14 @@ import { CEODashboardPage } from './modules/ceo/CeoDashboard'
 import { AdminDashboardPage } from './modules/admin/pages/AdminDashboardPage'
 import { ContactProvider } from './components/layout/ContactContext'
 import { InternModule } from './modules/intern/InternModule'
+import { FinanceManagerDashboard as FinanceManagerModule } from './modules/finance_manager/FinanceManagerDashboard'
 
 const TOKEN_KEY = 'aurahr-token'
 
 function App() {
   const navigate = useNavigate()
   const location = useLocation()
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem(TOKEN_KEY))
+  const [token, setToken] = useState<string | null>(null)
   const [user, setUser] = useState<User | null>(null)
 
   // Smooth scroll animation on route change
@@ -169,6 +170,7 @@ function App() {
     if (role === 'LEAD' || role === 'TECH_LEAD') return '/techlead-dashboard'
     if (role === 'MARKETING') return '/marketing-hub'
     if (role === 'INTERN') return '/intern'
+    if (role === 'FINANCE_MANAGER') return '/finance-hub'
     return '/hr-dashboard'
   }, [user])
 
@@ -195,13 +197,19 @@ function App() {
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/security" element={<SecurityPage />} />
-        <Route path="/" element={(token && roleRedirection) ? <Navigate to={roleRedirection} replace /> : <LandingPage />} />
+        <Route path="/" element={(token && roleRedirection) ? <Navigate to={roleRedirection} replace /> : <Navigate to="/login" replace />} />
 
         {/* Protected Dashboard Routes */}
         {/* Intern and Manager Dashboards — use their own Shells, mounted outside AppShell */}
         <Route path="/intern/*" element={
           <ProtectedRoute user={user} allowedRoles={['INTERN', 'HR', 'ADMIN', 'SUPERADMIN']}>
             {user ? <InternModule user={user} /> : <Navigate to="/login" replace />}
+          </ProtectedRoute>
+        } />
+        
+        <Route path="/finance-hub/*" element={
+          <ProtectedRoute user={user} allowedRoles={['FINANCE_MANAGER', 'HR', 'ADMIN', 'SUPERADMIN']}>
+            {user ? <FinanceManagerModule user={user} /> : <Navigate to="/login" replace />}
           </ProtectedRoute>
         } />
         
@@ -212,48 +220,52 @@ function App() {
         } />
 
         <Route path="/*" element={
-          <ProtectedRoute user={user} allowedRoles={['CEO', 'HR', 'MANAGER', 'LEAD', 'TECH_LEAD', 'EMPLOYEE', 'MARKETING', 'ADMIN', 'SUPERADMIN', 'INTERN']}>
+          <ProtectedRoute user={user} allowedRoles={['CEO', 'HR', 'MANAGER', 'LEAD', 'TECH_LEAD', 'EMPLOYEE', 'MARKETING', 'ADMIN', 'SUPERADMIN', 'INTERN', 'FINANCE_MANAGER']}>
             {user && platform ? (
-              <AppShell user={user} onLogout={logout}>
-                <Routes>
-                  <Route path="admin-dashboard" element={<AdminDashboardPage user={user} platform={platform} />} />
-                  <Route path="ceo-dashboard" element={<CEODashboardPage user={user} platform={platform} />} />
-                  <Route path="hr-dashboard" element={<HrExecutiveDashboard user={user} token={token!} platform={platform} feed={feed} onRefresh={async () => { await refreshPlatform(); }} />} />
-                  <Route path="employee-dashboard" element={<EmployeeModule user={user} platform={platform} token={token!} />} />
-                  <Route path="techlead-dashboard" element={<TechLeadDashboard user={user} platform={platform} />} />
-                  <Route path="teamlead-dashboard" element={<TeamLeadDashboardPage user={user} platform={platform} />} />
-                  
-                  <Route path="feed" element={<ActivityFeedPage feed={feed} />} />
-                  <Route path="recruitment" element={<RecruitmentPage platform={platform} token={token!} role={user.role} onRefresh={async () => { await refreshPlatform(); }} />} />
-                  <Route path="allocation" element={<AllocationPage platform={platform} token={token!} onRefresh={async () => { await refreshPlatform(); }} />} />
-                  <Route path="leave-approvals" element={<HumanResourcesPage />} />
-                  <Route path="payroll" element={<PayrollPage platform={platform} token={token!} onRefresh={async () => { await refreshPlatform(); }} />} />
-                  <Route path="budget" element={<BudgetPage platform={platform} />} />
-                  <Route path="exit" element={<ExitPage platform={platform} />} />
-                  <Route path="profile" element={<ProfilePage user={user} token={token!} onUpdate={(u) => setUser(u)} />} />
-                  <Route path="onboarding" element={<OnboardingPage platform={platform} />} />
-                  <Route path="documentation" element={<DocumentationPage platform={platform} />} />
-                  <Route path="people" element={<PeoplePage platform={platform} token={token!} />} />
-                  <Route path="chat" element={<ChatPage user={user} token={token!} />} />
-                  <Route path="mail" element={<MailPage user={user} token={token!} />} />
-                  <Route path="attendance" element={<HumanResourcesPage />} />
-                  <Route path="performance" element={<PerformancePage platform={platform} />} />
-                  <Route path="projects" element={<ProjectManagementPage />} />
-                  <Route path="engagement" element={<EngagementPage platform={platform} />} />
-                  <Route path="compliance" element={<CompliancePage platform={platform} />} />
-                  <Route path="analytics" element={<AnalyticsPage platform={platform} />} />
-                  <Route path="live-tracking" element={<LiveTrackingPage token={token!} />} />
-                  <Route path="help-desk" element={<HelpDeskPage platform={platform} token={token!} />} />
-                  <Route path="meetings" element={<MeetingRoom />} />
-                  <Route path="analysis-sync" element={<AnalysisModule />} />
-                  
-                  <Route path="marketing-hub" element={<MarketingDashboard />} />
-                  <Route path="sales" element={<SalesPipeline />} />
-                  <Route path="ai-insights" element={<AIInsights />} />
-                  
-                  <Route path="*" element={<Navigate to={roleRedirection || '/'} replace />} />
-                </Routes>
-              </AppShell>
+              (user.role.toUpperCase() === 'INTERN' || user.role.toUpperCase() === 'MANAGER' || user.role.toUpperCase() === 'FINANCE_MANAGER') ? (
+                <Navigate to={roleRedirection || '/'} replace />
+              ) : (
+                <AppShell user={user} onLogout={logout}>
+                  <Routes>
+                    <Route path="admin-dashboard" element={<AdminDashboardPage user={user} platform={platform} />} />
+                    <Route path="ceo-dashboard" element={<CEODashboardPage user={user} platform={platform} />} />
+                    <Route path="hr-dashboard" element={<HrExecutiveDashboard user={user} token={token!} platform={platform} feed={feed} onRefresh={async () => { await refreshPlatform(); }} />} />
+                    <Route path="employee-dashboard" element={<EmployeeModule user={user} platform={platform} token={token!} />} />
+                    <Route path="techlead-dashboard" element={<TechLeadDashboard user={user} platform={platform} />} />
+                    <Route path="teamlead-dashboard" element={<TeamLeadDashboardPage user={user} platform={platform} />} />
+                    
+                    <Route path="feed" element={<ActivityFeedPage feed={feed} />} />
+                    <Route path="recruitment" element={<RecruitmentPage platform={platform} token={token!} role={user.role} onRefresh={async () => { await refreshPlatform(); }} />} />
+                    <Route path="allocation" element={<AllocationPage platform={platform} token={token!} onRefresh={async () => { await refreshPlatform(); }} />} />
+                    <Route path="leave-approvals" element={<HumanResourcesPage />} />
+                    <Route path="payroll" element={<PayrollPage platform={platform} token={token!} onRefresh={async () => { await refreshPlatform(); }} />} />
+                    <Route path="budget" element={<BudgetPage platform={platform} />} />
+                    <Route path="exit" element={<ExitPage platform={platform} />} />
+                    <Route path="profile" element={<ProfilePage user={user} token={token!} onUpdate={(u) => setUser(u)} />} />
+                    <Route path="onboarding" element={<OnboardingPage platform={platform} />} />
+                    <Route path="documentation" element={<DocumentationPage platform={platform} />} />
+                    <Route path="people" element={<PeoplePage platform={platform} token={token!} />} />
+                    <Route path="chat" element={<ChatPage user={user} token={token!} />} />
+                    <Route path="mail" element={<MailPage user={user} token={token!} />} />
+                    <Route path="attendance" element={<HumanResourcesPage />} />
+                    <Route path="performance" element={<PerformancePage platform={platform} />} />
+                    <Route path="projects" element={<ProjectManagementPage />} />
+                    <Route path="engagement" element={<EngagementPage platform={platform} />} />
+                    <Route path="compliance" element={<CompliancePage platform={platform} />} />
+                    <Route path="analytics" element={<AnalyticsPage platform={platform} />} />
+                    <Route path="live-tracking" element={<LiveTrackingPage token={token!} />} />
+                    <Route path="help-desk" element={<HelpDeskPage platform={platform} token={token!} />} />
+                    <Route path="meetings" element={<MeetingRoom />} />
+                    <Route path="analysis-sync" element={<AnalysisModule />} />
+                    
+                    <Route path="marketing-hub" element={<MarketingDashboard />} />
+                    <Route path="sales" element={<SalesPipeline />} />
+                    <Route path="ai-insights" element={<AIInsights />} />
+                    
+                    <Route path="*" element={<Navigate to={roleRedirection || '/'} replace />} />
+                  </Routes>
+                </AppShell>
+              )
             ) : (
               <Navigate to="/login" replace />
             )}

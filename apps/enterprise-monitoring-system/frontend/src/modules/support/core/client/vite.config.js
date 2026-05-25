@@ -10,7 +10,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: 3004,
+    port: 3005,
     host: '127.0.0.1',
     proxy: {
       '/api/auth': 'http://127.0.0.1:8081',

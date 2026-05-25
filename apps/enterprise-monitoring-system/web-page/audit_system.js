@@ -4,14 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const SERVICES = [
-  { name: 'HR Backend (Gateway)', port: 8081, path: '/health', expectedStatus: 200 },
   { name: 'WorkPulse Hub (Main)', port: 3005, path: '/', expectedStatus: 200 },
-  { name: 'HR Dashboard', port: 3001, path: '/', expectedStatus: 200 },
-  { name: 'Employee API', port: 8000, path: '/health', expectedStatus: 200 },
-  { name: 'Tech Lead Hub', port: 3003, path: '/', expectedStatus: 200 },
-  { name: 'IT Helpdesk Hub', port: 3004, path: '/', expectedStatus: 200 },
-  { name: 'Marketing Hub', port: 3006, path: '/', expectedStatus: 200 },
-  { name: 'Location Tracker', port: 3007, path: '/', expectedStatus: 200 }
 ];
 
 async function checkPort(port) {

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Intern Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Eb+Garamond:wght@400;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#8a4518",
+                        "primary-fixed": "#fbe8d8",
+                        "tertiary-fixed-dim": "#e8a0a0",
+                        "tertiary-fixed": "#fce0e0",
+                        "secondary-fixed-dim": "#cec6be",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#e08850",
+                        "on-secondary-fixed": "#2a2420",
+                        "surface-container-high": "#ece6dc",
+                        "on-surface-variant": "#605850",
+                        "background": "#faf5ee",
+                        "surface-container-highest": "#e6e0d6",
+                        "on-secondary-fixed-variant": "#504840",
+                        "error-container": "#fce4e0",
+                        "outline-variant": "#d8d0c8",
+                        "inverse-primary": "#f0a878",
+                        "on-error-container": "#7a1a10",
+                        "surface-tint": "#c2652a",
+                        "on-error": "#ffffff",
+                        "secondary": "#78706a",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f6f0e8",
+                        "secondary-fixed": "#eae2da",
+                        "surface-dim": "#dcd6cc",
+                        "surface-container": "#f2ece4",
+                        "on-tertiary-container": "#3a2020",
+                        "on-primary-container": "#fbe8d8",
+                        "inverse-surface": "#3a302a",
+                        "tertiary": "#8c3c3c",
+                        "surface-bright": "#faf5ee",
+                        "tertiary-container": "#d47070",
+                        "on-secondary-container": "#605850",
+                        "surface": "#faf5ee",
+                        "on-tertiary-fixed": "#2e1515",
+                        "secondary-container": "#eae2da",
+                        "primary": "#c2652a",
+                        "outline": "#9a9088",
+                        "on-tertiary-fixed-variant": "#6e3030",
+                        "on-primary-fixed": "#401a08",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#ece6dc",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#3a302a",
+                        "error": "#c0392b",
+                        "on-background": "#3a302a",
+                        "primary-fixed-dim": "#f0a878",
+                        "inverse-on-surface": "#faf5ee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Eb Garamond", "serif"],
+                        "display": ["Eb Garamond", "serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-headline { font-family: 'Eb Garamond', serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+        
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #dcd6cc; border-radius: 3px; }
+        .dark ::-webkit-scrollbar-thumb { background: #605850; }
+        ::-webkit-scrollbar-thumb:hover { background: #9a9088; }
+    </style>
+</head>
+<body class="bg-surface-dim text-on-surface antialiased flex">
+<!-- SideNavBar -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface-dim border-r border-outline-variant/20 shadow-sm z-50">
+<div class="flex flex-col h-full py-6">
+<!-- Brand Logo & Header -->
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined icon-fill">school</span>
+</div>
+<div>
+<h1 class="font-headline text-xl font-bold text-primary">Sahara Intern</h1>
+<p class="font-label text-xs text-on-surface-variant">Enterprise Portal</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto overflow-x-hidden px-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary-fixed-dim rounded-lg mx-2 transition-all duration-200 ease-in-out font-medium" href="#">
+<span class="material-symbols-outlined icon-fill">person</span>
+<span class="font-body text-sm">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed rounded-lg" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-body text-sm font-medium">Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed rounded-lg" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-body text-sm font-medium">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed rounded-lg" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-body text-sm font-medium">Learning</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed rounded-lg" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-body text-sm font-medium">Evaluations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed rounded-lg" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-body text-sm font-medium">Team</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed rounded-lg" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-body text-sm font-medium">Chat</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed rounded-lg" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-body text-sm font-medium">AI</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed rounded-lg" href="#">
+<span class="material-symbols-outlined">event_available</span>
+<span class="font-body text-sm font-medium">Attendance</span>
+</a>
+</div>
+<!-- Bottom Settings -->
+<div class="mt-auto px-2 space-y-1 pt-4 border-t border-outline-variant/20">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed rounded-lg" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-body text-sm font-medium">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-surface-bright mx-2 transition-colors hover:bg-primary/5 hover:text-primary-fixed rounded-lg" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-body text-sm font-medium">Admin</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-64 w-full min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 z-40 bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant/30">
+<div class="flex justify-between items-center px-8 w-full h-full">
+<!-- Brand/Product Name (Left aligned contextually here, overriding left search for layout balance if needed, but following JSON search preference if specified - JSON says on_left but doesn't define search component itself, so placing title left) -->
+<h2 class="font-headline text-xl font-semibold text-on-primary-fixed">Intern Management</h2>
+<!-- Right Actions -->
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-outline focus-within:ring-2 focus-within:ring-primary/20">
+<button class="hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined">toggle_off</span>
+</button>
+<button class="hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<div class="h-6 w-px bg-outline-variant/30"></div>
+<button class="flex items-center gap-2 text-primary-fixed-dim hover:text-primary-fixed transition-colors font-body text-sm font-medium">
+<span class="material-symbols-outlined">smart_toy</span>
+                        AI Assistant
+                    </button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/50">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A professional headshot of a young woman with warm, natural lighting. She is smiling subtly, wearing a light beige top against a slightly darker warm grey background. The mood is approachable and professional, fitting for a corporate profile. The color palette emphasizes warm skin tones and earthy neutrals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCARQqff6eWCa3Eoi5mLY1chXbtOsEponsFtxZueSFZdaSCNTeD_bahjhubf--3mxGCV-24WW8UwZHtHLU3sKiJsy0WmJzSPsj_-SR58UJzIeZ3QCRrnN-EpNH4sgl5WowsH0fZMmQ77ZzYS1EVOVREMtm74H93gh7lEEU8VeQ6ObWKsyfbPzjBTU8C3M0sTlw6xZ0aHEOzQnYTx9RCX-7rfMFVff0B1Xg_w6q7Eg0QQM9sHxukxr-8UvwURj38zbz-Te-eMZDO6x0"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="pt-24 px-8 pb-12 w-full max-w-7xl mx-auto flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Profile Card & Details -->
+<aside class="col-span-1 lg:col-span-4 space-y-8">
+<!-- Main Profile Glass Card -->
+<div class="bg-surface-dim border border-outline-variant/30 rounded-2xl p-8 relative overflow-hidden group">
+<!-- Decorative subtle gradient blob -->
+<div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-700"></div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="relative mb-6">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface-dim shadow-[0_2px_16px_rgba(58,48,42,0.04)] ring-2 ring-outline-variant/50">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young woman with warm, natural lighting. She is smiling subtly, wearing a light beige top against a slightly darker warm grey background. The mood is approachable and professional, fitting for a corporate profile. The color palette emphasizes warm skin tones and earthy neutrals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVzkAiZBqP9epYMGppVBrver0ozaNmSnC879COqOEdb1RuluWl3MfSJB8KfGxvUuSSCjQGJVLzK3CmW2FIX9UneNkE_ZGYcUELk2ACd8jn9j4W1o3pacsDeymDn1nch7fA1A2o7zYnGDHXYsZyZJOPFmoAuMH5ChOrO-PE2VdvwdOa-I95xAPK6B8mhC49bLorkoRpA-5g4DzzU_YVHn9dA23OQulz02fc4Z2n8XnXKr58cC2el6CpDGcgOyRZ6hJlM3dPHZTwlLg"/>
+</div>
+<div class="absolute bottom-1 right-1 w-6 h-6 bg-primary rounded-full border-2 border-surface-dim flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+</div>
+</div>
+<h1 class="font-headline text-3xl font-bold text-on-surface mb-1">Elena Rostova</h1>
+<p class="font-body text-sm text-primary mb-4 font-medium tracking-wide">UX Design Intern</p>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">
+                            Passionate about creating intuitive, human-centered digital experiences. Currently exploring the intersection of warmth and minimalism in enterprise software design.
+                        </p>
+<div class="flex flex-col w-full gap-3">
+<button class="w-full py-2.5 px-4 bg-primary text-on-primary rounded-lg font-body text-sm font-semibold hover:bg-primary/90 transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                                Edit Profile
+                            </button>
+<button class="w-full py-2.5 px-4 bg-transparent text-on-surface border border-outline-variant/60 rounded-lg font-body text-sm font-semibold hover:bg-surface-container-high hover:border-outline-variant transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">upload_file</span>
+                                Upload Resume
+                            </button>
+</div>
+</div>
+</div>
+<!-- Contact & Info -->
+<div class="bg-surface-dim border border-outline-variant/30 rounded-2xl p-8">
+<h3 class="font-headline text-xl font-bold text-on-surface mb-6 border-b border-outline-variant/30 pb-4">Details</h3>
+<ul class="space-y-5">
+<li class="flex items-start gap-4">
+<div class="mt-0.5 text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<div>
+<p class="font-label text-xs text-on-surface-variant mb-0.5">Email</p>
+<p class="font-body text-sm text-on-surface font-medium">elena.rostova@sahara.com</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="mt-0.5 text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+</div>
+<div>
+<p class="font-label text-xs text-on-surface-variant mb-0.5">Location</p>
+<p class="font-body text-sm text-on-surface font-medium">San Francisco, CA (Hybrid)</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="mt-0.5 text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[20px]">domain</span>
+</div>
+<div>
+<p class="font-label text-xs text-on-surface-variant mb-0.5">Department</p>
+<p class="font-body text-sm text-on-surface font-medium">Product Design</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="mt-0.5 text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[20px]">supervisor_account</span>
+</div>
+<div>
+<p class="font-label text-xs text-on-surface-variant mb-0.5">Manager</p>
+<p class="font-body text-sm text-on-surface font-medium">Marcus Chen</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Skills Badges -->
+<div class="bg-surface-dim border border-outline-variant/30 rounded-2xl p-8">
+<h3 class="font-headline text-xl font-bold text-on-surface mb-6 border-b border-outline-variant/30 pb-4">Skills &amp; Tools</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 bg-primary/10 text-primary-fixed-dim text-xs font-semibold rounded-md border border-primary/20">Figma</span>
+<span class="px-3 py-1.5 bg-primary/10 text-primary-fixed-dim text-xs font-semibold rounded-md border border-primary/20">UI/UX Design</span>
+<span class="px-3 py-1.5 bg-primary/10 text-primary-fixed-dim text-xs font-semibold rounded-md border border-primary/20">Wireframing</span>
+<span class="px-3 py-1.5 bg-surface-container-high text-on-surface text-xs font-medium rounded-md border border-outline-variant/50">Prototyping</span>
+<span class="px-3 py-1.5 bg-surface-container-high text-on-surface text-xs font-medium rounded-md border border-outline-variant/50">User Research</span>
+<span class="px-3 py-1.5 bg-surface-container-high text-on-surface text-xs font-medium rounded-md border border-outline-variant/50">HTML/CSS</span>
+<span class="px-3 py-1.5 bg-surface-container-high text-on-surface text-xs font-medium rounded-md border border-outline-variant/50">Design Systems</span>
+</div>
+</div>
+</aside>
+<!-- Main Area: Timeline & Content Bento -->
+<div class="col-span-1 lg:col-span-8 space-y-8">
+<!-- Bento Grid for Milestones & Stats -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Internship Timeline/Milestones -->
+<div class="bg-surface-dim border border-outline-variant/30 rounded-2xl p-8 md:col-span-2 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-tertiary/5 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
+<div class="flex justify-between items-center mb-8 relative z-10">
+<h3 class="font-headline text-2xl font-bold text-on-surface">Internship Journey</h3>
+<span class="text-xs font-label text-primary-fixed-dim bg-primary/10 px-3 py-1 rounded-full border border-primary/20">Week 8 of 12</span>
+</div>
+<div class="relative z-10 pl-4 border-l border-outline-variant/50 space-y-8">
+<!-- Milestone 1 (Completed) -->
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-surface-dim"></div>
+<div class="mb-1">
+<span class="text-xs font-label text-on-surface-variant mr-2">June 1 - June 14</span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-primary">Onboarding</span>
+</div>
+<h4 class="font-headline text-lg font-semibold text-on-surface mb-2">Foundation &amp; Setup</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">Completed company orientation, team introductions, and setup of primary design tools and environment.</p>
+</div>
+<!-- Milestone 2 (Active) -->
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-primary/20 animate-pulse"></div>
+<div class="mb-1">
+<span class="text-xs font-label text-on-surface-variant mr-2">June 15 - Present</span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-tertiary-fixed-dim">Active Phase</span>
+</div>
+<h4 class="font-headline text-lg font-semibold text-on-surface mb-2">Project: Shared Components UI</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">Leading the redesign of the enterprise navigation shell using the new warm-minimalism design tokens.</p>
+<!-- Interactive sub-task list -->
+<div class="mt-4 space-y-2">
+<label class="flex items-center gap-3 group cursor-pointer">
+<input checked="" class="form-checkbox h-4 w-4 text-primary border-outline-variant rounded bg-transparent focus:ring-primary/20 focus:ring-offset-surface-dim" type="checkbox"/>
+<span class="font-body text-sm text-on-surface-variant group-hover:text-on-surface transition-colors line-through opacity-70">Audit existing navigation JSON</span>
+</label>
+<label class="flex items-center gap-3 group cursor-pointer">
+<input checked="" class="form-checkbox h-4 w-4 text-primary border-outline-variant rounded bg-transparent focus:ring-primary/20 focus:ring-offset-surface-dim" type="checkbox"/>
+<span class="font-body text-sm text-on-surface-variant group-hover:text-on-surface transition-colors line-through opacity-70">Define active state logic</span>
+</label>
+<label class="flex items-center gap-3 group cursor-pointer">
+<input class="form-checkbox h-4 w-4 text-primary border-outline-variant rounded bg-transparent focus:ring-primary/20 focus:ring-offset-surface-dim" type="checkbox"/>
+<span class="font-body text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Implement responsive structural shifts</span>
+</label>
+</div>
+</div>
+<!-- Milestone 3 (Future) -->
+<div class="relative opacity-60">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-outline-variant ring-4 ring-surface-dim"></div>
+<div class="mb-1">
+<span class="text-xs font-label text-on-surface-variant mr-2">Aug 1 - Aug 15</span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-outline">Upcoming</span>
+</div>
+<h4 class="font-headline text-lg font-semibold text-on-surface mb-2">Final Presentation</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">Showcase internship impact, key learnings, and present the final UI implementation to the design guild.</p>
+</div>
+</div>
+</div>
+<!-- Certifications Carousel (Simplified to scrollable area) -->
+<div class="bg-surface-dim border border-outline-variant/30 rounded-2xl p-8 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline text-xl font-bold text-on-surface">Certifications</h3>
+<button class="text-primary hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="flex-1 overflow-x-auto pb-2 -mx-2 px-2 snap-x flex gap-4 hide-scrollbar">
+<!-- Cert Card 1 -->
+<div class="min-w-[200px] flex-shrink-0 bg-surface-container-high rounded-xl p-5 border border-outline-variant/40 snap-start hover:border-primary/30 transition-colors group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[20px]">workspace_premium</span>
+</div>
+<h4 class="font-body text-sm font-bold text-on-surface mb-1">Design Systems Foundation</h4>
+<p class="font-label text-xs text-on-surface-variant mb-4">Issued by Sahara Guild</p>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary">Completed</span>
+</div>
+<!-- Cert Card 2 -->
+<div class="min-w-[200px] flex-shrink-0 bg-surface-container-high rounded-xl p-5 border border-outline-variant/40 snap-start hover:border-primary/30 transition-colors group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[20px]">accessibility_new</span>
+</div>
+<h4 class="font-body text-sm font-bold text-on-surface mb-1">A11y Core Principles</h4>
+<p class="font-label text-xs text-on-surface-variant mb-4">Issued by A11y Project</p>
+<span class="text-[10px] font-bold uppercase tracking-wider text-outline">In Progress</span>
+</div>
+</div>
+<style>.hide-scrollbar::-webkit-scrollbar { display: none; } .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }</style>
+</div>
+<!-- Quick Stats/Manager Feedback -->
+<div class="bg-primary/5 border border-primary/10 rounded-2xl p-8 flex flex-col justify-center relative overflow-hidden">
+<div class="absolute bottom-0 right-0 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]">format_quote</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Manager" class="w-full h-full object-cover" data-alt="A professional headshot of an adult man wearing a casual collared shirt, smiling confidently. Warm, natural lighting highlights his features against a blurred, neutral background. The tone is professional, supportive, and grounded in a modern corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg7Sjk5dY-QiDIP5ji79OYcwAnJvz6VQ8Qyoez8koU-wQ18TzuSXBD9qkpCkIyxnxgdzA7y4YHx1gCzzBjdT-WDC3tm5fugijYQK51iDyRG_l__02u6Iq4VkFLe0YakM2vzSzJjudVjhNL3IdmCNwHhzMAGZHPZh3OmDzQgSJ3m8YB40bRcF3gFYOp8C1YTWi3CCokW0nFRhvK2gDsvWomMC8YEnHqsF3XthQRr0d088Q5QRMnqZYfb3NE2eQlcYpEOdYh1IqjlBY"/>
+</div>
+<div>
+<p class="font-body text-sm font-bold text-on-surface">Marcus Chen</p>
+<p class="font-label text-xs text-on-surface-variant">Mid-Term Review</p>
+</div>
+</div>
+<p class="font-headline text-lg italic text-on-surface-variant leading-relaxed">
+                                "Elena has shown an exceptional grasp of our warm minimalism design language. Her work on the navigation hierarchy is both elegant and structurally sound."
+                            </p>
+</div>
+</div>
+</div>
+<!-- Achievements Gallery -->
+<div class="bg-surface-dim border border-outline-variant/30 rounded-2xl p-8">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-1">Achievements Gallery</h3>
+<p class="font-body text-sm text-on-surface-variant">Visual highlights from recent projects</p>
+</div>
+<button class="font-body text-sm font-semibold text-primary hover:text-primary-fixed transition-colors">View All</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Gallery Item 1 -->
+<div class="group relative rounded-xl overflow-hidden aspect-[4/3] border border-outline-variant/20 cursor-pointer">
+<img alt="Project Thumbnail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A close-up shot of a modern laptop screen displaying complex design system components and wireframes. The lighting is warm and ambient, reflecting off the screen slightly. Beside the laptop is a stylish notebook and a ceramic mug filled with coffee on a wooden desk. The aesthetic is warm minimalism, industrious, and focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdfFR_dZyNzPNLuJgC7HCVxk6E54rfYKaw4pcrxSYXbsGZZqXU3jcCCKfRpqTxY33L7U0lSXiOPBf41CzfcSiLnOAhnaiUsGdJcAisGEd2oGwMKtLnCtZBozbzVpNlykoQ8GiIZq9wM0omLJMMyVdU8EsGOawoDgGIHKX7XTSNnYfC2ChyRr0-JdRb3l5DznYe7HNIjn29L_T2cs5v97vdS6EoGd55zpeE0l8YGqKVLBUsPIKvGt_ycSFU66uPGc4x2qKrC3wLj9M"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/90 via-inverse-surface/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+<h4 class="font-headline text-lg font-bold text-surface-bright mb-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">Nav Shell Redesign</h4>
+<p class="font-body text-xs text-surface-dim translate-y-2 group-hover:translate-y-0 transition-transform duration-300 delay-75">Figma prototype implementation</p>
+</div>
+</div>
+<!-- Gallery Item 2 -->
+<div class="group relative rounded-xl overflow-hidden aspect-[4/3] border border-outline-variant/20 cursor-pointer">
+<img alt="Workshop Thumbnail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A warm, candid photo of hands arranging colorful sticky notes on a glass board during a brainstorming session. The scene is brightly lit with a warm hue, suggesting a creative and collaborative environment. The focus is sharp on the notes, with the background softly blurred in a modern office setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd8FxrVQzivQAt1B_Aldlc9heSvZZUDqCCB_-mjMygo861XWKUIvfr2IFnBz0mH2epaTn6UQ_E7i7VLmgdXcqTPxfcOxJokMbhDYobb_PiFvyn5NCYg4Rial6Qkfi0Ml7bILbcVusb4Zo0FbcypdUkNbZUjoQCuvlzZ9Umi1ePQ9_BfKEskmbKiZkKj2Vc_XDYVegmhIvljKgPvfDlp0biz_kYw-ZRHu9LJBahRnYZnRsSL6jTZwVn25WJOoKMYVz_A-EAWCRzk7s"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/90 via-inverse-surface/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+<h4 class="font-headline text-lg font-bold text-surface-bright mb-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">Ideation Workshop</h4>
+<p class="font-body text-xs text-surface-dim translate-y-2 group-hover:translate-y-0 transition-transform duration-300 delay-75">Facilitated synthesis session</p>
+</div>
+</div>
+<!-- Gallery Item 3 -->
+<div class="group relative rounded-xl overflow-hidden aspect-[4/3] border border-outline-variant/20 cursor-pointer bg-surface-container-high flex flex-col items-center justify-center hover:bg-surface-container-highest transition-colors">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[24px]">add_photo_alternate</span>
+</div>
+<span class="font-body text-sm font-semibold text-on-surface-variant">Add Achievement</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

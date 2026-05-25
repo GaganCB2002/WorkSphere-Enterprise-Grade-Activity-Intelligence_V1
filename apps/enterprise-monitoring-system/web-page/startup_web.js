@@ -25,8 +25,7 @@ runService('AuraHR Backend', './backend', 'npm', 'run dev');
 runService('AuraHR Frontend', './frontend', 'npm', 'run dev');
 
 console.log('Centralized AuraHR Platform launched.');
-console.log('Backend: http://localhost:8081');
-console.log('Frontend: http://localhost:3005');
+console.log('Platform: http://localhost:3005');
 
 setTimeout(() => {
     console.log('Opening AuraHR Hub...');

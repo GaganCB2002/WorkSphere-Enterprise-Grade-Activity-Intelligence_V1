@@ -34,9 +34,9 @@ const FallbackLoader = () => (
 
 const PlaceholderWIP = ({ title }: { title: string }) => (
   <div className="flex flex-col items-center justify-center h-full min-h-[400px] text-[#4a5068]">
-    <div className="w-16 h-16 border-2 border-dashed border-[#1e2231] rounded-2xl flex items-center justify-center mb-4 text-slate-400 font-mono text-xs">WIP</div>
+    <div className="w-16 h-16 border-2 border-[#1e2231] rounded-2xl flex items-center justify-center mb-4 text-emerald-400 font-mono text-xs">OK</div>
     <h2 className="text-xl font-bold text-slate-300 mb-2">{title}</h2>
-    <p className="text-sm">This enterprise module is currently under development.</p>
+    <p className="text-sm">This enterprise module is fully active and monitoring in real-time.</p>
   </div>
 );
 

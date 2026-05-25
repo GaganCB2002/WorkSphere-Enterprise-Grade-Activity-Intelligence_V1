@@ -1,6 +1,5 @@
 export const services = [
-  { name: "AuraHR Frontend", url: "http://127.0.0.1:3005", port: 3005 },
-  { name: "AuraHR Command API", url: "http://127.0.0.1:8081/health", port: 8081 },
+  { name: "WorkSphere Platform", url: "http://127.0.0.1:3005", port: 3005 },
 ];
 
 export interface ServiceStatus {
@@ -15,11 +14,11 @@ export const checkServices = async (): Promise<ServiceStatus[]> => {
     services.map(async (service) => {
       try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 3000); // 3s timeout
+        const timeoutId = setTimeout(() => controller.abort(), 3000);
         
         const response = await fetch(service.url, { 
           signal: controller.signal,
-          mode: 'no-cors' // Use no-cors to avoid preflight issues for simple health checks
+          mode: 'no-cors'
         });
         
         clearTimeout(timeoutId);
