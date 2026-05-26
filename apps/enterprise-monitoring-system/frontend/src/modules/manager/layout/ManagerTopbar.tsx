@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   Search, Bell, Calendar, MessageCircle, Sparkles,
-  Sun, Moon, ChevronDown, Plus, Mail, LogOut
+  Sun, Moon, ChevronDown, Plus, Mail, LogOut, Zap
 } from 'lucide-react';
 import { useDispatch } from 'react-redux';
 
@@ -11,7 +11,7 @@ interface TopbarProps {
 }
 
 export const ManagerTopbar: React.FC<TopbarProps> = ({ user, onOpenCommand }) => {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -22,86 +22,65 @@ export const ManagerTopbar: React.FC<TopbarProps> = ({ user, onOpenCommand }) =>
   };
 
   return (
-    <header className="h-[60px] shrink-0 bg-[#0a0c14] border-b border-[#161a26] flex items-center justify-between px-5 z-10 select-none">
+    <header className="h-[80px] shrink-0 bg-background border-b border-surface-variant flex items-center justify-between px-8 z-10 select-none">
 
       {/* ── Global Search ──────────────────────────────── */}
-      <div className="flex items-center flex-1 max-w-lg">
+      <div className="flex items-center flex-1 max-w-xl">
         <div className="relative w-full group cursor-pointer" onClick={onOpenCommand}>
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#4a5068] group-hover:text-indigo-400 transition-colors" />
-          <div className="w-full bg-[#12151f] border border-[#1e2231] group-hover:border-indigo-500/30 rounded-xl py-2 pl-10 pr-20 text-[13px] text-[#4a5068] transition-all flex items-center">
-            Search team, projects, tasks...
-          </div>
-          <div className="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1">
-            <kbd className="px-1.5 py-0.5 rounded-md border border-[#1e2231] bg-[#0a0c14] text-[10px] font-mono text-[#6b7280] font-bold shadow-sm">⌘</kbd>
-            <kbd className="px-1.5 py-0.5 rounded-md border border-[#1e2231] bg-[#0a0c14] text-[10px] font-mono text-[#6b7280] font-bold shadow-sm">K</kbd>
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-outline group-hover:text-primary transition-colors" />
+          <div className="w-full bg-[#f6efe9] border border-transparent hover:border-primary/30 rounded-lg py-3 pl-11 pr-20 text-[13px] text-on-surface-variant transition-all flex items-center">
+            Search team members, sprints, or tasks...
           </div>
         </div>
       </div>
 
       {/* ── Right Controls ─────────────────────────────── */}
-      <div className="flex items-center gap-1.5 ml-4">
+      <div className="flex items-center gap-3 ml-4">
         
         {/* Quick Create Action */}
-        <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-[13px] font-semibold transition-all mr-2 shadow-sm shadow-indigo-500/20 active:scale-95">
-          <Plus className="w-4 h-4" />
-          <span className="hidden sm:inline">New Action</span>
+        <button className="flex items-center gap-2 px-4 py-2 rounded-lg border border-outline-variant hover:border-primary text-on-surface text-[13px] font-bold transition-all mr-2 shadow-soft active:scale-95 group">
+          <Zap className="w-4 h-4 text-on-surface group-hover:text-primary transition-colors" />
+          <span className="hidden sm:inline">Quick Actions</span>
         </button>
 
-        <div className="h-6 w-px bg-[#1e2231] mx-1"></div>
-
         {/* Action Icons */}
-        <div className="flex items-center gap-1">
-          <button className="p-2 text-[#6b7280] hover:text-slate-200 hover:bg-[#12151f] rounded-lg transition-colors" title="Calendar">
-            <Calendar className="w-[18px] h-[18px]" />
+        <div className="flex items-center gap-2">
+          <button className="relative p-2 text-outline hover:text-primary hover:bg-surface-variant rounded-full transition-colors group" title="Notifications">
+            <Bell className="w-5 h-5" />
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full border-[1.5px] border-background"></span>
           </button>
-          <button className="p-2 text-[#6b7280] hover:text-slate-200 hover:bg-[#12151f] rounded-lg transition-colors" title="Mail">
-            <Mail className="w-[18px] h-[18px]" />
-          </button>
-          <button className="relative p-2 text-[#6b7280] hover:text-slate-200 hover:bg-[#12151f] rounded-lg transition-colors" title="Chat">
-            <MessageCircle className="w-[18px] h-[18px]" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-indigo-500 rounded-full border-2 border-[#0a0c14]"></span>
-          </button>
-          <button className="relative p-2 text-[#6b7280] hover:text-slate-200 hover:bg-[#12151f] rounded-lg transition-colors group" title="Notifications">
-            <Bell className="w-[18px] h-[18px]" />
-            <span className="absolute top-1 right-1 bg-rose-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full border border-[#0a0c14] min-w-[18px] text-center leading-none flex items-center justify-center">
-              4
-            </span>
+          <button
+            onClick={() => setIsDark(!isDark)}
+            className="p-2 text-outline hover:text-primary hover:bg-surface-variant rounded-full transition-colors"
+            title="Toggle theme"
+          >
+            {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
         </div>
 
-        {/* Theme Toggle */}
-        <button
-          onClick={() => setIsDark(!isDark)}
-          className="p-2 text-[#6b7280] hover:text-amber-400 hover:bg-[#12151f] rounded-lg transition-colors ml-1"
-          title="Toggle theme"
-        >
-          {isDark ? <Sun className="w-[18px] h-[18px]" /> : <Moon className="w-[18px] h-[18px]" />}
-        </button>
-
-        <div className="h-6 w-px bg-[#1e2231] mx-2"></div>
+        <div className="h-6 w-px bg-outline-variant mx-1"></div>
 
         {/* User Profile */}
-        <div className="flex items-center gap-3 pl-1 cursor-pointer group hover:bg-[#12151f] p-1.5 rounded-xl transition-colors">
+        <div className="flex items-center gap-3 pl-1 cursor-pointer group hover:bg-surface-variant p-1.5 rounded-xl transition-colors">
           <div className="text-right hidden md:block">
-            <div className="text-[13px] font-bold text-slate-200 leading-tight group-hover:text-indigo-400 transition-colors">{user?.name || 'Manager'}</div>
-            <div className="text-[10px] font-semibold text-slate-500">{user?.department || 'Operations'}</div>
+            <div className="text-[13px] font-bold text-on-surface leading-tight group-hover:text-primary transition-colors">{user?.name || 'Elena Sands'}</div>
+            <div className="text-[10px] font-semibold text-outline">{user?.department || 'Operations Director'}</div>
           </div>
           <div className="relative">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center text-white font-bold text-[13px] shadow-sm">
-              {user?.name ? user.name.charAt(0).toUpperCase() : 'M'}
+            <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-[13px] border border-primary/20 overflow-hidden shadow-soft">
+               {user?.avatar ? <img src={user.avatar} alt="User" className="w-full h-full object-cover" /> : (user?.name ? user.name.charAt(0).toUpperCase() : 'E')}
             </div>
-            <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-[2.5px] border-[#0a0c14] rounded-full"></div>
+            <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 border-[2px] border-background rounded-full"></div>
           </div>
-          <ChevronDown className="w-4 h-4 text-[#4a5068] group-hover:text-slate-300 transition-colors hidden sm:block" />
         </div>
 
         {/* Logout Button */}
         <button 
           onClick={handleLogout}
           title="Logout"
-          className="p-2 ml-1 text-rose-500 hover:bg-rose-500/10 hover:text-rose-400 rounded-lg transition-colors border border-transparent hover:border-rose-500/20"
+          className="p-2 ml-1 text-outline hover:bg-rose-50 hover:text-rose-500 rounded-lg transition-colors"
         >
-          <LogOut className="w-[18px] h-[18px]" />
+          <LogOut className="w-5 h-5" />
         </button>
       </div>
     </header>

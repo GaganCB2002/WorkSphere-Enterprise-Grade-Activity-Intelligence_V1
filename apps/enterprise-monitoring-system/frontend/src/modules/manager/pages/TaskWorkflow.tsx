@@ -1,75 +1,86 @@
 import React, { useState } from 'react';
 import {
   KanbanSquare, List, Calendar, SlidersHorizontal, Plus, Search,
-  MoreHorizontal, MessageSquare, Paperclip, Clock, CheckCircle2,
-  AlertTriangle
+  MoreHorizontal, MessageSquare, Clock, CheckCircle2,
+  AlertCircle
 } from 'lucide-react';
-import { tasks, teamMembers } from '../data/managerMockData';
-import type { Task } from '../data/managerMockData';
+
+const tasksData = [
+  { id: 'T-101', title: 'Vendor Contract Renewal', status: 'backlog', priority: 'Critical', department: 'Legal', dueDate: 'Oct 15', progress: 0, avatar: 'E', comments: 3 },
+  { id: 'T-102', title: 'Update Security Protocols', status: 'backlog', priority: 'Medium', department: 'IT Sec', dueDate: 'Oct 20', progress: 0, avatar: 'S', comments: 0 },
+  { id: 'T-103', title: 'Cloud Migration Phase 2', status: 'in-progress', priority: 'High', department: 'Infrastructure', dueDate: 'Oct 12', progress: 45, avatar: 'S', comments: 8 },
+  { id: 'T-104', title: 'Q4 Marketing Campaign Assets', status: 'in-progress', priority: 'Medium', department: 'Design', dueDate: 'Oct 18', progress: 75, avatar: 'M', comments: 12 },
+  { id: 'T-105', title: 'New Employee Onboarding Flow', status: 'review', priority: 'High', department: 'HR', dueDate: 'Oct 05', progress: 100, avatar: 'E', comments: 2 },
+];
 
 const KANBAN_COLUMNS = [
-  { id: 'pending', title: 'Pending', color: 'slate' },
-  { id: 'in-progress', title: 'In Progress', color: 'indigo' },
-  { id: 'review', title: 'Under Review', color: 'amber' },
-  { id: 'blocked', title: 'Blocked', color: 'rose' },
-  { id: 'completed', title: 'Completed', color: 'emerald' }
+  { id: 'backlog', title: 'BACKLOG', count: 4 },
+  { id: 'in-progress', title: 'IN PROGRESS', count: 6 },
+  { id: 'review', title: 'IN REVIEW', count: 3 },
+  { id: 'completed', title: 'COMPLETED', count: 24 }
 ];
 
 export const TaskWorkflow: React.FC<{ user: any }> = () => {
-  const [viewMode, setViewMode] = useState<'kanban' | 'list'>('kanban');
+  const [viewMode, setViewMode] = useState<'kanban' | 'list' | 'timeline'>('kanban');
   const [searchQuery, setSearchQuery] = useState('');
-
-  const filteredTasks = tasks.filter(t => 
-    t.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    t.assignee.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'critical': return 'text-rose-400 bg-rose-500/10 border-rose-500/20';
-      case 'high': return 'text-amber-400 bg-amber-500/10 border-amber-500/20';
-      case 'medium': return 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20';
-      case 'low': return 'text-slate-400 bg-slate-500/10 border-slate-500/20';
-      default: return 'text-slate-400 bg-slate-500/10 border-slate-500/20';
-    }
-  };
-
-  const getColumnColor = (color: string) => {
-    switch (color) {
-      case 'slate': return 'bg-slate-500';
-      case 'indigo': return 'bg-indigo-500';
-      case 'amber': return 'bg-amber-500';
-      case 'rose': return 'bg-rose-500';
-      case 'emerald': return 'bg-emerald-500';
-      default: return 'bg-slate-500';
+      case 'Critical': return 'text-[#d47070] bg-[#d47070]/10 border-[#d47070]/20';
+      case 'High': return 'text-[#c27650] bg-[#c27650]/10 border-[#c27650]/20';
+      case 'Medium': return 'text-[#c88d40] bg-[#c88d40]/10 border-[#c88d40]/20';
+      default: return 'text-outline bg-surface-variant border-outline-variant';
     }
   };
 
   return (
-    <div className="space-y-6 pb-12 animate-in fade-in slide-in-from-bottom-4 duration-500 h-full flex flex-col">
+    <div className="space-y-8 max-w-7xl mx-auto pb-12 h-full flex flex-col">
       
       {/* ── Page Header ───────────────────────────────── */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 shrink-0">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Task & Workflow</h1>
-          <p className="text-sm text-[#8b949e] mt-1">Manage sprints, track progress, and unblock your team.</p>
+          <h1 className="font-headline text-4xl text-[#3a302a] mb-2 tracking-tight">Task Board: Q4 Logistics</h1>
+          <p className="font-body text-[#605850] text-[15px]">Managing delivery timelines and critical path items for end-of-year execution.</p>
         </div>
-        <div className="flex gap-2">
-          <button className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-[13px] font-semibold text-white transition-colors shadow-sm shadow-indigo-500/20">
-            <Plus className="w-4 h-4" />
-            Create Task
-          </button>
+      </div>
+
+      {/* ── KPI Grid ──────────────────────────────────── */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 shrink-0">
+        <div className="bg-surface border border-outline-variant rounded-xl p-6 shadow-soft">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-outline mb-3">Total Tasks</p>
+          <p className="text-3xl font-headline text-[#3a302a] mb-1">142</p>
+          <span className="text-[11px] font-bold text-[#5b8c63]">24 New</span>
+        </div>
+
+        <div className="bg-surface border border-outline-variant rounded-xl p-6 shadow-soft">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-outline mb-3">Critical Path</p>
+          <p className="text-3xl font-headline text-[#9b593e] mb-1">12</p>
+          <span className="text-[11px] font-bold text-[#c27650]">Attention Needed</span>
+        </div>
+
+        <div className="bg-surface border border-outline-variant rounded-xl p-6 shadow-soft">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-outline mb-3">Completion Rate</p>
+          <p className="text-3xl font-headline text-[#3a302a] mb-3">68%</p>
+          <div className="h-1.5 bg-[#eae2da] rounded-full overflow-hidden">
+            <div className="h-full bg-[#5b8c63]" style={{ width: '68%' }}></div>
+          </div>
+        </div>
+
+        <div className="bg-surface border border-outline-variant rounded-xl p-6 shadow-soft">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-outline mb-3">Blocked Items</p>
+          <p className="text-3xl font-headline text-[#9b593e] mb-1">4</p>
+          <span className="text-[11px] font-bold text-[#c27650]">Requires Review</span>
         </div>
       </div>
 
       {/* ── Toolbar ───────────────────────────────────── */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-2 bg-[#0a0c14] border border-[#1e2231] rounded-2xl shrink-0">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-surface p-2 rounded-xl border border-outline-variant shadow-sm shrink-0">
         
-        <div className="flex items-center gap-1 bg-[#12151f] p-1 rounded-xl">
+        <div className="flex items-center bg-[#FAF6F0] p-1 rounded-lg border border-outline-variant">
           <button 
             onClick={() => setViewMode('kanban')}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-[12px] font-semibold transition-all ${
-              viewMode === 'kanban' ? 'bg-[#1e2231] text-white shadow-sm' : 'text-[#6b7280] hover:text-slate-300'
+            className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-[13px] font-bold transition-all ${
+              viewMode === 'kanban' ? 'bg-surface border border-outline-variant text-[#3a302a] shadow-sm' : 'text-on-surface-variant hover:text-on-surface'
             }`}
           >
             <KanbanSquare className="w-4 h-4" />
@@ -77,65 +88,105 @@ export const TaskWorkflow: React.FC<{ user: any }> = () => {
           </button>
           <button 
             onClick={() => setViewMode('list')}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-[12px] font-semibold transition-all ${
-              viewMode === 'list' ? 'bg-[#1e2231] text-white shadow-sm' : 'text-[#6b7280] hover:text-slate-300'
+            className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-[13px] font-bold transition-all ${
+              viewMode === 'list' ? 'bg-surface border border-outline-variant text-[#3a302a] shadow-sm' : 'text-on-surface-variant hover:text-on-surface'
             }`}
           >
             <List className="w-4 h-4" />
             <span className="hidden sm:inline">List</span>
           </button>
+          <button 
+            onClick={() => setViewMode('timeline')}
+            className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-[13px] font-bold transition-all ${
+              viewMode === 'timeline' ? 'bg-surface border border-outline-variant text-[#3a302a] shadow-sm' : 'text-on-surface-variant hover:text-on-surface'
+            }`}
+          >
+            <Calendar className="w-4 h-4" />
+            <span className="hidden sm:inline">Timeline</span>
+          </button>
         </div>
 
-        <div className="flex items-center gap-3 w-full sm:w-auto px-2">
-          <div className="relative w-full sm:w-64">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6b7280]" />
-            <input 
-              type="text" 
-              placeholder="Search tasks..." 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#12151f] border border-[#1e2231] rounded-lg py-1.5 pl-9 pr-4 text-[12px] text-slate-200 focus:border-indigo-500/50 outline-none transition-colors"
-            />
-          </div>
-          <button className="p-1.5 text-[#6b7280] hover:text-slate-300 bg-[#12151f] border border-[#1e2231] rounded-lg transition-colors shrink-0">
-            <SlidersHorizontal className="w-4 h-4" />
+        <div className="flex items-center gap-3 w-full md:w-auto px-2">
+          <button className="flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-on-surface hover:bg-surface-variant rounded border border-outline-variant transition-colors">
+            <SlidersHorizontal className="w-4 h-4 text-outline" /> Filter by Status
+          </button>
+          <button className="flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-on-surface hover:bg-surface-variant rounded border border-outline-variant transition-colors">
+            Sort by Priority
+          </button>
+          <button className="flex items-center gap-2 px-4 py-1.5 bg-[#9b593e] hover:bg-[#8a4a33] text-white rounded text-sm font-bold shadow-warm transition-colors ml-2">
+            <Plus className="w-4 h-4" /> New Task
           </button>
         </div>
       </div>
 
       {/* ── Kanban Board ──────────────────────────────── */}
       {viewMode === 'kanban' && (
-        <div className="flex-1 min-h-0 overflow-x-auto mgr-scrollbar pb-2">
-          <div className="flex gap-4 h-full min-w-max">
+        <div className="flex-1 min-h-[500px] overflow-x-auto">
+          <div className="flex gap-6 h-full min-w-max pb-4">
             {KANBAN_COLUMNS.map(column => {
-              const columnTasks = filteredTasks.filter(t => t.status === column.id);
+              const columnTasks = tasksData.filter(t => t.status === column.id);
               
               return (
-                <div key={column.id} className="w-[320px] flex flex-col shrink-0">
+                <div key={column.id} className="w-[340px] flex flex-col shrink-0 bg-[#FAF6F0] rounded-xl border border-outline-variant p-4">
                   {/* Column Header */}
-                  <div className="flex items-center justify-between mb-4 px-1">
+                  <div className="flex items-center justify-between mb-6 px-1">
                     <div className="flex items-center gap-2">
-                      <div className={`w-2.5 h-2.5 rounded-full ${getColumnColor(column.color)}`} />
-                      <h3 className="text-[13px] font-bold text-slate-200">{column.title}</h3>
-                      <span className="px-2 py-0.5 rounded-md bg-[#12151f] border border-[#1e2231] text-[10px] font-bold text-[#6b7280]">
-                        {columnTasks.length}
+                      <h3 className="text-[12px] font-bold text-[#3a302a] tracking-widest">{column.title}</h3>
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold text-[#8a4a33] bg-[#e6dcd2]">
+                        {column.count}
                       </span>
                     </div>
-                    <button className="p-1 text-[#6b7280] hover:text-slate-300 transition-colors">
+                    <button className="p-1 text-outline hover:text-on-surface transition-colors">
                       <MoreHorizontal className="w-4 h-4" />
                     </button>
                   </div>
                   
                   {/* Column Body */}
-                  <div className="flex-1 bg-[#0a0c14] border border-[#161a26] rounded-2xl p-2.5 overflow-y-auto mgr-scrollbar space-y-3">
+                  <div className="flex-1 space-y-4 overflow-y-auto pr-1">
                     {columnTasks.map(task => (
-                      <TaskCard key={task.id} task={task} getPriorityColor={getPriorityColor} />
-                    ))}
-                    {columnTasks.length === 0 && (
-                      <div className="h-24 flex items-center justify-center border-2 border-dashed border-[#1e2231] rounded-xl">
-                        <span className="text-[11px] font-semibold text-[#4a5068]">No tasks</span>
+                      <div key={task.id} className="bg-surface border border-outline-variant rounded-xl p-5 shadow-soft hover:shadow-md transition-shadow cursor-grab group">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className={`px-2 py-0.5 rounded text-[10px] font-bold tracking-wider ${getPriorityColor(task.priority)}`}>
+                            {task.priority}
+                          </span>
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-outline">{task.department}</span>
+                        </div>
+                        
+                        <h4 className="text-[15px] font-bold text-[#3a302a] mb-4 leading-snug group-hover:text-[#9b593e] transition-colors">
+                          {task.title}
+                        </h4>
+
+                        {task.progress > 0 ? (
+                          <div className="mb-4">
+                            <div className="flex items-center justify-between text-[10px] font-bold text-on-surface-variant mb-1.5">
+                              <span>Progress</span>
+                              <span>{task.progress}%</span>
+                            </div>
+                            <div className="h-1.5 bg-[#eae2da] rounded-full overflow-hidden">
+                              <div className="h-full bg-[#5b8c63]" style={{ width: `${task.progress}%` }}></div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="mb-4 flex items-center gap-2 text-[11px] font-semibold text-on-surface-variant">
+                             <Clock className="w-3.5 h-3.5" /> Due {task.dueDate}
+                          </div>
+                        )}
+
+                        <div className="flex items-center justify-between pt-4 border-t border-outline-variant">
+                          <div className="w-7 h-7 rounded-full bg-[#e6dcd2] border border-surface flex items-center justify-center text-[10px] font-bold text-[#8a4a33]">
+                            {task.avatar}
+                          </div>
+                          
+                          <div className="flex items-center gap-3 text-outline">
+                            {task.comments > 0 && (
+                              <div className="flex items-center gap-1.5 text-[11px] font-bold">
+                                <MessageSquare className="w-3.5 h-3.5" /> {task.comments}
+                              </div>
+                            )}
+                          </div>
+                        </div>
                       </div>
-                    )}
+                    ))}
                   </div>
                 </div>
               );
@@ -144,79 +195,6 @@ export const TaskWorkflow: React.FC<{ user: any }> = () => {
         </div>
       )}
 
-      {/* ── List View (Placeholder) ───────────────────── */}
-      {viewMode === 'list' && (
-        <div className="mgr-glass flex-1 flex items-center justify-center">
-           <div className="text-center">
-             <List className="w-12 h-12 text-[#1e2231] mx-auto mb-3" />
-             <p className="text-[#6b7280] text-sm font-semibold">List view is under construction</p>
-           </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-// ── Subcomponents ──────────────────────────────────────
-
-const TaskCard = ({ task, getPriorityColor }: { task: Task, getPriorityColor: (p: string) => string }) => {
-  const isOverdue = new Date(task.dueDate) < new Date('2026-05-22') && task.status !== 'completed';
-  const completedSubtasks = task.subtasks.filter(s => s.completed).length;
-
-  return (
-    <div className="bg-[#12151f] border border-[#1e2231] rounded-xl p-4 hover:border-indigo-500/30 transition-all mgr-kanban-card group">
-      
-      {/* Header: ID + Priority */}
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-[10px] font-bold text-[#6b7280]">{task.id}</span>
-        <span className={`px-2 py-0.5 rounded border text-[9px] font-bold uppercase tracking-wider ${getPriorityColor(task.priority)}`}>
-          {task.priority}
-        </span>
-      </div>
-      
-      {/* Title */}
-      <h4 className="text-[13px] font-semibold text-slate-200 mb-3 leading-tight group-hover:text-indigo-400 transition-colors">
-        {task.title}
-      </h4>
-
-      {/* Progress Bar (if subtasks exist) */}
-      {task.subtasks.length > 0 && (
-        <div className="mb-4 space-y-1.5">
-          <div className="flex items-center justify-between text-[10px] font-bold text-[#6b7280]">
-            <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3" /> {completedSubtasks}/{task.subtasks.length}</span>
-            <span>{Math.round((completedSubtasks / task.subtasks.length) * 100)}%</span>
-          </div>
-          <div className="h-1 bg-[#0a0c14] rounded-full overflow-hidden">
-            <div 
-              className={`h-full rounded-full ${task.status === 'completed' ? 'bg-emerald-500' : 'bg-indigo-500'}`} 
-              style={{ width: `${(completedSubtasks / task.subtasks.length) * 100}%` }} 
-            />
-          </div>
-        </div>
-      )}
-
-      {/* Footer: Assignee + Meta */}
-      <div className="flex items-center justify-between pt-3 border-t border-[#1e2231]/50">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-full bg-[#1e2231] border border-[#2d3345] flex items-center justify-center text-[9px] font-bold text-slate-300" title={task.assignee}>
-            {task.assigneeAvatar}
-          </div>
-          {isOverdue && <span title="Overdue"><AlertTriangle className="w-3.5 h-3.5 text-rose-500" /></span>}
-        </div>
-        
-        <div className="flex items-center gap-2.5 text-[#6b7280]">
-          {task.comments > 0 && (
-            <div className="flex items-center gap-1 text-[10px] font-bold">
-              <MessageSquare className="w-3 h-3" />
-              {task.comments}
-            </div>
-          )}
-          <div className={`flex items-center gap-1 text-[10px] font-bold ${isOverdue ? 'text-rose-400' : ''}`}>
-            <Clock className="w-3 h-3" />
-            {new Date(task.dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

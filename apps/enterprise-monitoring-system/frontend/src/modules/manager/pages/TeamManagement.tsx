@@ -1,161 +1,192 @@
 import React, { useState } from 'react';
 import {
   Search, Filter, Plus, User, MessageCircle, Mail, MoreHorizontal,
-  ChevronDown, LayoutGrid, List, Briefcase, Activity
+  ChevronDown, ChevronLeft, ChevronRight, LayoutGrid, List, Briefcase, Activity
 } from 'lucide-react';
-import { teamMembers } from '../data/managerMockData';
+
+// Mock data based on the screenshot
+const teamMembers = [
+  { id: 1, name: 'Elias Thorne', role: 'Lead Architect', department: 'Strategic Design', workload: 85, workloadStatus: 'High', productivity: 94.2, attendance: 98.5, avatar: 'E', trend: 'up' },
+  { id: 2, name: 'Sarah Al-Zahrani', role: 'UX Strategist', department: 'Strategic Design', workload: 42, workloadStatus: 'Optimal', productivity: 88.5, attendance: 92.0, avatar: 'S', trend: 'flat' },
+  { id: 3, name: 'Marcus Chen', role: 'Systems Engineer', department: 'DevOps', workload: 98, workloadStatus: 'Critical', productivity: 76.0, attendance: 84.5, avatar: 'M', trend: 'down' },
+  { id: 4, name: 'Elena Rodriguez', role: 'Growth Manager', department: 'Market Intel', workload: 65, workloadStatus: 'Steady', productivity: 91.0, attendance: 99.1, avatar: 'E', trend: 'up' },
+];
 
 export const TeamManagement: React.FC = () => {
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const filteredTeam = teamMembers.filter(member => 
-    member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    member.designation.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const [activeTab, setActiveTab] = useState('All Employees');
 
   return (
-    <div className="space-y-6 pb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="space-y-8 max-w-7xl mx-auto pb-12">
       
-      {/* ── Page Header ───────────────────────────────── */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Team Operations</h1>
-          <p className="text-sm text-[#8b949e] mt-1">Manage workforce allocation, performance, and capacity.</p>
-        </div>
-        <div className="flex gap-2">
-          <button className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-[13px] font-semibold text-white transition-colors shadow-sm shadow-indigo-500/20">
-            <Plus className="w-4 h-4" />
-            Add Member
-          </button>
-        </div>
-      </div>
-
-      {/* ── Action Bar ────────────────────────────────── */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 mgr-glass">
-        <div className="flex items-center gap-3 w-full sm:w-auto">
-          <div className="relative w-full sm:w-64">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6b7280]" />
-            <input 
-              type="text" 
-              placeholder="Search team members..." 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#0a0c14] border border-[#1e2231] rounded-lg py-2 pl-9 pr-4 text-[13px] text-slate-200 focus:border-indigo-500/50 outline-none transition-colors"
-            />
+      {/* ── KPI Cards ──────────────────────────────── */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        
+        <div className="bg-surface border border-outline-variant rounded-xl p-6 shadow-soft flex flex-col justify-between">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-outline mb-2">Top Performing Dept</p>
+          <div className="flex items-end justify-between">
+            <h3 className="text-2xl font-headline text-[#9b593e] leading-tight">Strategic<br/>Design</h3>
+            <span className="text-sm font-bold text-[#5b8c63]">~12%</span>
           </div>
-          <button className="flex items-center gap-2 px-3 py-2 bg-[#0a0c14] border border-[#1e2231] rounded-lg text-[12px] font-semibold text-slate-300 hover:bg-[#12151f] transition-colors shrink-0">
-            <Filter className="w-4 h-4" />
-            Filters
-          </button>
         </div>
 
-        <div className="flex items-center gap-2 bg-[#0a0c14] border border-[#1e2231] rounded-lg p-1">
-          <button 
-            onClick={() => setViewMode('grid')}
-            className={`p-1.5 rounded-md transition-colors ${viewMode === 'grid' ? 'bg-indigo-500/20 text-indigo-400' : 'text-[#6b7280] hover:text-slate-300'}`}
-          >
-            <LayoutGrid className="w-4 h-4" />
-          </button>
-          <button 
-            onClick={() => setViewMode('list')}
-            className={`p-1.5 rounded-md transition-colors ${viewMode === 'list' ? 'bg-indigo-500/20 text-indigo-400' : 'text-[#6b7280] hover:text-slate-300'}`}
-          >
-            <List className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-
-      {/* ── Team Grid View ────────────────────────────── */}
-      {viewMode === 'grid' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-          {filteredTeam.map(member => (
-            <div key={member.id} className="mgr-glass p-5 hover:border-indigo-500/30 mgr-card-hover group relative overflow-hidden">
-              {/* Background gradient hint based on status */}
-              <div className={`absolute top-0 right-0 w-32 h-32 blur-3xl opacity-10 rounded-full pointer-events-none ${
-                member.status === 'online' ? 'bg-emerald-500' : 
-                member.status === 'on-leave' ? 'bg-amber-500' : 
-                'bg-slate-500'
-              }`} />
-              
-              <div className="flex items-start justify-between mb-4 relative">
-                <div className="flex items-center gap-3">
-                  <div className="relative">
-                    <div className="w-12 h-12 rounded-xl bg-[#1e2231] border border-[#2d3345] flex items-center justify-center text-slate-300 font-bold text-[16px] shadow-sm">
-                      {member.avatar}
-                    </div>
-                    <div className={`absolute -bottom-1 -right-1 w-3.5 h-3.5 border-2 border-[#0d1117] rounded-full ${
-                      member.status === 'online' ? 'bg-emerald-500' : 
-                      member.status === 'away' ? 'bg-amber-500' : 
-                      member.status === 'on-leave' ? 'bg-purple-500' : 'bg-slate-500'
-                    }`} title={member.status} />
-                  </div>
-                  <div>
-                    <h3 className="text-[14px] font-bold text-slate-100 group-hover:text-indigo-400 transition-colors">{member.name}</h3>
-                    <p className="text-[11px] font-semibold text-[#6b7280]">{member.designation}</p>
-                  </div>
-                </div>
-                <button className="p-1.5 text-[#6b7280] hover:text-slate-300 hover:bg-[#12151f] rounded-md transition-colors">
-                  <MoreHorizontal className="w-4 h-4" />
-                </button>
-              </div>
-
-              <div className="space-y-3 mb-5 relative">
-                <div className="flex items-center gap-2 text-[12px] text-slate-300">
-                  <Briefcase className="w-3.5 h-3.5 text-[#6b7280]" />
-                  <span className="truncate">{member.currentTask}</span>
-                </div>
-                
-                <div className="space-y-1.5">
-                  <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-[#6b7280]">
-                    <span>Capacity</span>
-                    <span className={member.workload > 85 ? 'text-amber-400' : 'text-slate-300'}>{member.workload}%</span>
-                  </div>
-                  <div className="h-1.5 bg-[#12151f] rounded-full overflow-hidden border border-[#1e2231]">
-                    <div 
-                      className={`h-full rounded-full ${member.workload > 85 ? 'bg-amber-500' : 'bg-indigo-500'}`} 
-                      style={{ width: `${member.workload}%` }} 
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between pt-4 border-t border-[#1e2231] relative">
-                <div className="flex items-center gap-4">
-                  <div className="text-center">
-                    <p className="text-[13px] font-black text-slate-200">{member.productivityScore}</p>
-                    <p className="text-[9px] font-bold uppercase tracking-widest text-[#6b7280]">Score</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-[13px] font-black text-slate-200">{member.tasksCompleted}</p>
-                    <p className="text-[9px] font-bold uppercase tracking-widest text-[#6b7280]">Tasks</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-1">
-                  <button className="p-2 text-[#6b7280] hover:text-indigo-400 hover:bg-indigo-500/10 rounded-lg transition-colors" title="Message">
-                    <MessageCircle className="w-[15px] h-[15px]" />
-                  </button>
-                  <button className="p-2 text-[#6b7280] hover:text-indigo-400 hover:bg-indigo-500/10 rounded-lg transition-colors" title="Email">
-                    <Mail className="w-[15px] h-[15px]" />
-                  </button>
-                </div>
-              </div>
-
+        <div className="bg-surface border border-outline-variant rounded-xl p-6 shadow-soft flex flex-col justify-between">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-outline mb-2">Avg Team Morale</p>
+          <div className="flex items-end justify-between">
+            <h3 className="text-3xl font-headline text-[#3a302a]">4.8 <span className="text-lg text-outline">/ 5.0</span></h3>
+            <div className="flex items-end gap-1 h-6">
+              <div className="w-1.5 h-3 bg-[#c27650]"></div>
+              <div className="w-1.5 h-4 bg-[#c27650]"></div>
+              <div className="w-1.5 h-6 bg-[#9b593e]"></div>
             </div>
-          ))}
-        </div>
-      )}
-
-      {/* ── Empty State ───────────────────────────────── */}
-      {filteredTeam.length === 0 && (
-        <div className="mgr-glass p-12 flex flex-col items-center justify-center text-center">
-          <div className="w-16 h-16 bg-[#12151f] rounded-2xl flex items-center justify-center mb-4 border border-[#1e2231]">
-            <Search className="w-6 h-6 text-[#4a5068]" />
           </div>
-          <h3 className="text-lg font-bold text-white mb-2">No team members found</h3>
-          <p className="text-sm text-[#6b7280]">No one matches the search criteria "{searchQuery}"</p>
         </div>
-      )}
+
+        <div className="bg-surface border border-outline-variant rounded-xl p-6 shadow-soft flex flex-col justify-between">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-outline mb-2">Resource Gaps</p>
+          <div className="flex items-end justify-between">
+            <h3 className="text-3xl font-headline text-[#9b593e] leading-none">3 Key<br/>Roles</h3>
+            <span className="bg-[#d47070]/10 text-[#d47070] px-2 py-1 rounded text-[9px] font-black uppercase tracking-widest">High Priority</span>
+          </div>
+        </div>
+
+        <div className="bg-[#faf5ee] border border-[#e6dcd2] rounded-xl p-5 shadow-soft">
+          <div className="flex items-center justify-between mb-4">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[#8a4a33]">Bulk Actions</p>
+            <LayoutGrid className="w-4 h-4 text-[#8a4a33]" />
+          </div>
+          <div className="space-y-2">
+            <button className="w-full py-2 bg-[#9b593e] hover:bg-[#8a4a33] text-white rounded text-sm font-bold transition-colors shadow-warm">
+              Export Team Audit
+            </button>
+            <button className="w-full py-2 bg-surface hover:bg-surface-variant border border-outline-variant text-on-surface rounded text-sm font-bold transition-colors">
+              Assign Training
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      {/* ── Filters Bar ──────────────────────────────── */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-2">
+          <div className="flex bg-surface border border-outline-variant rounded-lg p-1 shadow-sm">
+            {['All Employees', 'Contractors', 'Interns'].map(tab => (
+              <button 
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-4 py-1.5 rounded-md text-[13px] font-bold transition-colors ${activeTab === tab ? 'bg-background text-[#9b593e] shadow-sm' : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-variant'}`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+          <button className="flex items-center gap-2 px-4 py-2 bg-surface border border-outline-variant hover:bg-surface-variant rounded-lg text-[13px] font-semibold text-on-surface transition-colors shadow-sm">
+            Department <ChevronDown className="w-4 h-4 text-outline" />
+          </button>
+          <button className="flex items-center gap-2 px-4 py-2 bg-surface border border-outline-variant hover:bg-surface-variant rounded-lg text-[13px] font-semibold text-on-surface transition-colors shadow-sm">
+            Expertise <ChevronDown className="w-4 h-4 text-outline" />
+          </button>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <span className="text-[12px] font-semibold text-outline">Viewing 24 of 142 members</span>
+          <button className="p-2 bg-surface border border-outline-variant hover:bg-surface-variant rounded-lg text-on-surface transition-colors shadow-sm">
+            <Filter className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      {/* ── Team Table ────────────────────────────── */}
+      <div className="bg-surface border border-outline-variant rounded-xl shadow-soft overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left">
+            <thead className="bg-[#FAF6F0]">
+              <tr className="border-b border-outline-variant text-[10px] font-black uppercase text-outline tracking-widest">
+                <th className="px-6 py-4">Member</th>
+                <th className="px-6 py-4">Department</th>
+                <th className="px-6 py-4">Workload</th>
+                <th className="px-6 py-4 text-center">Productivity</th>
+                <th className="px-6 py-4 text-center">Attendance</th>
+                <th className="px-6 py-4 text-center">Metric Trend</th>
+                <th className="px-6 py-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-outline-variant">
+              {teamMembers.map(member => (
+                <tr key={member.id} className="group hover:bg-[#faf5ee] transition-colors">
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-[#e6dcd2] text-[#8a4a33] border border-outline-variant flex items-center justify-center font-bold text-[15px] shadow-sm">
+                        {member.avatar}
+                      </div>
+                      <div>
+                        <h3 className="text-[14px] font-bold text-[#3a302a]">{member.name}</h3>
+                        <p className="text-[11px] font-semibold text-outline">{member.role}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="text-[12px] font-bold text-[#3a302a]">{member.department}</span>
+                  </td>
+                  <td className="px-6 py-4 w-48">
+                    <div className="flex items-center justify-between mb-1 text-[10px] font-bold uppercase tracking-widest">
+                      <span className="text-[#3a302a]">{member.workload}%</span>
+                      <span className={
+                        member.workloadStatus === 'Critical' ? 'text-[#d47070]' : 
+                        member.workloadStatus === 'High' ? 'text-[#c27650]' : 
+                        member.workloadStatus === 'Optimal' ? 'text-[#5b8c63]' : 'text-[#c88d40]'
+                      }>{member.workloadStatus}</span>
+                    </div>
+                    <div className="h-1.5 bg-[#eae2da] rounded-full overflow-hidden">
+                      <div 
+                        className={`h-full ${
+                          member.workloadStatus === 'Critical' ? 'bg-[#d47070]' : 
+                          member.workloadStatus === 'High' ? 'bg-[#c27650]' : 
+                          member.workloadStatus === 'Optimal' ? 'bg-[#5b8c63]' : 'bg-[#c88d40]'
+                        }`} 
+                        style={{ width: `${member.workload}%` }} 
+                      />
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 text-center">
+                    <span className="text-[14px] font-bold text-[#3a302a]">{member.productivity}</span>
+                  </td>
+                  <td className="px-6 py-4 text-center">
+                    <span className={member.attendance < 90 ? 'text-[#c88d40] text-[14px] font-bold' : 'text-[#5b8c63] text-[14px] font-bold'}>
+                      {member.attendance.toFixed(1)}%
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 w-32">
+                    {/* Dummy Sparkline */}
+                    <div className="flex items-center h-6 justify-center">
+                       {member.trend === 'up' && <svg viewBox="0 0 100 30" className="w-full h-full stroke-[#5b8c63] fill-none stroke-2"><path d="M0 25 Q 10 20, 20 22 T 40 15 T 60 18 T 80 5 T 100 2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                       {member.trend === 'flat' && <svg viewBox="0 0 100 30" className="w-full h-full stroke-[#7a937a] fill-none stroke-2"><path d="M0 15 Q 20 18, 40 15 T 60 12 T 80 15 T 100 14" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                       {member.trend === 'down' && <svg viewBox="0 0 100 30" className="w-full h-full stroke-[#d47070] fill-none stroke-2"><path d="M0 5 Q 10 10, 20 8 T 40 15 T 60 12 T 80 25 T 100 28" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 text-right">
+                    <div className="flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button className="p-1.5 text-outline hover:text-[#9b593e] rounded transition-colors"><MoreHorizontal className="w-4 h-4" /></button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        
+        {/* Pagination */}
+        <div className="p-4 border-t border-outline-variant bg-[#FAF6F0] flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <button className="w-8 h-8 flex items-center justify-center bg-surface border border-outline-variant rounded text-outline hover:text-on-surface hover:bg-surface-variant transition-colors"><ChevronLeft className="w-4 h-4" /></button>
+            <button className="w-8 h-8 flex items-center justify-center bg-[#9b593e] text-white rounded font-bold text-xs shadow-sm">1</button>
+            <button className="w-8 h-8 flex items-center justify-center bg-surface border border-outline-variant rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant text-xs font-bold transition-colors">2</button>
+            <button className="w-8 h-8 flex items-center justify-center bg-surface border border-outline-variant rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant text-xs font-bold transition-colors">3</button>
+            <button className="w-8 h-8 flex items-center justify-center bg-surface border border-outline-variant rounded text-outline hover:text-on-surface hover:bg-surface-variant transition-colors"><ChevronRight className="w-4 h-4" /></button>
+          </div>
+          <span className="text-[10px] font-bold text-[#9b593e] uppercase tracking-widest cursor-pointer hover:underline">Deep-Dive Analytics Dashboard</span>
+        </div>
+      </div>
 
     </div>
   );

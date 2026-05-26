@@ -19,7 +19,7 @@ const CtoDashboard = React.lazy(() => import('../modules/cto/CtoDashboard').then
 const HrManagerModule = React.lazy(() => import('../modules/hr_manager/HrManagerModule').then(m => ({ default: m.HrManagerModule })));
 const HrExecutiveDashboard = React.lazy(() => import('../modules/hr_executive/HrExecutiveDashboard').then(m => ({ default: m.HrExecutiveDashboard })));
 const FinanceManagerDashboard = React.lazy(() => import('../modules/finance_manager/FinanceManagerDashboard').then(m => ({ default: m.FinanceManagerDashboard })));
-const MarketingManagerDashboard = React.lazy(() => import('../modules/marketing_manager/MarketingManagerDashboard').then(m => ({ default: m.MarketingManagerDashboard })));
+const MarketingManagerModule = React.lazy(() => import('../modules/marketing_manager/MarketingManagerModule').then(m => ({ default: m.MarketingManagerModule })));
 const SalesManagerDashboard = React.lazy(() => import('../modules/sales_manager/SalesManagerDashboard').then(m => ({ default: m.SalesManagerDashboard })));
 const ProjectManagerDashboard = React.lazy(() => import('../modules/project_manager/ProjectManagerDashboard').then(m => ({ default: m.ProjectManagerDashboard })));
 const TechLeadModule = React.lazy(() => import('../modules/tech_lead/TechLeadModule').then(m => ({ default: m.TechLeadModule })));
@@ -50,7 +50,7 @@ const MainLayout = () => {
       case 'HR_MANAGER': return <HrManagerModule user={user} />;
       case 'HR_EXECUTIVE': return <HrExecutiveDashboard />;
       case 'FINANCE_MANAGER': return <FinanceManagerDashboard />;
-      case 'MARKETING_MANAGER': return <MarketingManagerDashboard />;
+      case 'MARKETING_MANAGER': return <MarketingManagerModule user={user} />;
       case 'SALES_MANAGER': return <SalesManagerDashboard />;
       case 'PROJECT_MANAGER': return <ProjectManagerDashboard />;
       case 'TECH_LEAD': return <TechLeadModule user={user} />;
@@ -66,7 +66,7 @@ const MainLayout = () => {
   };
 
   // Roles that have their own full-screen layout (Sidebar + Topbar) built-in
-  const isFullScreenRole = ['EMPLOYEE', 'SOFTWARE_ENGINEER', 'TECH_LEAD', 'HR_MANAGER', 'INTERN', 'FINANCE_MANAGER'].includes(user.role);
+  const isFullScreenRole = ['EMPLOYEE', 'SOFTWARE_ENGINEER', 'TECH_LEAD', 'HR_MANAGER', 'INTERN', 'FINANCE_MANAGER', 'MARKETING_MANAGER'].includes(user.role);
 
   if (isFullScreenRole) {
     return (

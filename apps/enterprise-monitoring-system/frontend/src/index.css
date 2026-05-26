@@ -2,7 +2,7 @@
 
 @import "tailwindcss";
 
-@variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 .dark {
   --color-background: #1B1613;
@@ -152,4 +152,14 @@ body {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.dark .recharts-default-tooltip {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .recharts-tooltip-item {
+  color: #f8fafc !important;
 }

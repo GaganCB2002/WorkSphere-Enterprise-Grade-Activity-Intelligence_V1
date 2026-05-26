@@ -10,7 +10,7 @@ export const ManagerShell: React.FC<{ user: any }> = ({ user }) => {
   const [isCommandOpen, setIsCommandOpen] = useState(false);
 
   return (
-    <div className="flex h-screen w-full bg-[#0a0c14] text-slate-200 overflow-hidden font-sans selection:bg-indigo-500/30">
+    <div className="flex h-screen w-full bg-background text-on-surface overflow-hidden font-body selection:bg-primary/20">
       
       {/* ── Sidebar ────────────────────────────────────── */}
       <ManagerSidebar 
@@ -19,10 +19,10 @@ export const ManagerShell: React.FC<{ user: any }> = ({ user }) => {
       />
       
       {/* ── Main Content Area ──────────────────────────── */}
-      <div className="flex-1 flex flex-col min-w-0 bg-[#06080d]">
+      <div className="flex-1 flex flex-col min-w-0 bg-transparent">
         <ManagerTopbar user={user} onOpenCommand={() => setIsCommandOpen(true)} />
         
-        <main className="flex-1 overflow-y-auto p-4 md:p-6 relative mgr-scrollbar">
+        <main className="flex-1 overflow-y-auto p-4 md:p-8 relative mgr-scrollbar">
           <Outlet />
         </main>
       </div>
