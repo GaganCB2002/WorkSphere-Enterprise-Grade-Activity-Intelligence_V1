@@ -24,7 +24,7 @@ const SalesManagerDashboard = React.lazy(() => import('../modules/sales_manager/
 const ProjectManagerDashboard = React.lazy(() => import('../modules/project_manager/ProjectManagerDashboard').then(m => ({ default: m.ProjectManagerDashboard })));
 const TechLeadModule = React.lazy(() => import('../modules/tech_lead/TechLeadModule').then(m => ({ default: m.TechLeadModule })));
 const DevOpsEngineerDashboard = React.lazy(() => import('../modules/devops_engineer/DevOpsEngineerDashboard').then(m => ({ default: m.DevOpsEngineerDashboard })));
-const QaEngineerDashboard = React.lazy(() => import('../modules/qa_engineer/QaEngineerDashboard').then(m => ({ default: m.QaEngineerDashboard })));
+const QaEngineerModule = React.lazy(() => import('../modules/qa_engineer/QaEngineerModule').then(m => ({ default: m.QaEngineerModule })));
 const SoftwareEngineerDashboard = React.lazy(() => import('../modules/software_engineer/SoftwareEngineerDashboard').then(m => ({ default: m.SoftwareEngineerDashboard })));
 const SecurityAnalystDashboard = React.lazy(() => import('../modules/security_analyst/SecurityAnalystDashboard').then(m => ({ default: m.SecurityAnalystDashboard })));
 const SupportAgentDashboard = React.lazy(() => import('../modules/support_agent/SupportAgentDashboard').then(m => ({ default: m.SupportAgentDashboard })));
@@ -55,7 +55,7 @@ const MainLayout = () => {
       case 'PROJECT_MANAGER': return <ProjectManagerDashboard />;
       case 'TECH_LEAD': return <TechLeadModule user={user} />;
       case 'DEVOPS_ENGINEER': return <DevOpsEngineerDashboard />;
-      case 'QA_ENGINEER': return <QaEngineerDashboard />;
+      case 'QA_ENGINEER': return <QaEngineerModule user={user} />;
       case 'SOFTWARE_ENGINEER': return <SoftwareEngineerDashboard />;
       case 'SECURITY_ANALYST': return <SecurityAnalystDashboard />;
       case 'SUPPORT_AGENT': return <SupportAgentDashboard />;
@@ -66,7 +66,7 @@ const MainLayout = () => {
   };
 
   // Roles that have their own full-screen layout (Sidebar + Topbar) built-in
-  const isFullScreenRole = ['EMPLOYEE', 'SOFTWARE_ENGINEER', 'TECH_LEAD', 'HR_MANAGER', 'INTERN', 'FINANCE_MANAGER', 'MARKETING_MANAGER'].includes(user.role);
+  const isFullScreenRole = ['EMPLOYEE', 'SOFTWARE_ENGINEER', 'TECH_LEAD', 'HR_MANAGER', 'INTERN', 'FINANCE_MANAGER', 'MARKETING_MANAGER', 'QA_ENGINEER'].includes(user.role);
 
   if (isFullScreenRole) {
     return (
