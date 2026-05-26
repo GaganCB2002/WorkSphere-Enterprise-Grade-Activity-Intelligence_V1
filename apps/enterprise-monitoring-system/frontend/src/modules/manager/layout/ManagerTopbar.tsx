@@ -3,7 +3,6 @@ import {
   Search, Bell, Calendar, MessageCircle, Sparkles,
   Sun, Moon, ChevronDown, Plus, Mail, LogOut, Zap
 } from 'lucide-react';
-import { useDispatch } from 'react-redux';
 
 interface TopbarProps {
   user: any;
@@ -12,12 +11,12 @@ interface TopbarProps {
 
 export const ManagerTopbar: React.FC<TopbarProps> = ({ user, onOpenCommand }) => {
   const [isDark, setIsDark] = useState(false);
-  const dispatch = useDispatch();
 
   const handleLogout = () => {
-    localStorage.removeItem('aurahr-token');
-    localStorage.removeItem('token');
-    dispatch({ type: 'LOGOUT' });
+    try {
+      localStorage.removeItem('aurahr-token');
+      localStorage.removeItem('token');
+    } catch (e) {}
     window.location.href = '/login';
   };
 
