@@ -1,26 +1,38 @@
 # WorkSphere Enterprise — Flow Diagrams
 
+> Color-coded architecture, sequence, and process flow diagrams for the complete enterprise monitoring platform.
+
 ---
 
 ## 1. System Architecture Flow (7-Tier)
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
 graph TB
-    subgraph Tier1["TIER 1: CLIENTS"]
+
+    classDef client fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
+    classDef gateway fill:#0891b2,stroke:#0e7490,color:#fff,stroke-width:2px
+    classDef micro fill:#059669,stroke:#047857,color:#fff,stroke-width:2px
+    classDef ai fill:#d97706,stroke:#b45309,color:#fff,stroke-width:2px
+    classDef data fill:#7c3aed,stroke:#6d28d9,color:#fff,stroke-width:2px
+    classDef engine fill:#dc2626,stroke:#b91c1c,color:#fff,stroke-width:2px
+    classDef obsrv fill:#64748b,stroke:#475569,color:#fff,stroke-width:2px
+
+    subgraph Tier1["<b>TIER 1: CLIENTS</b>"]
         B[Browser React SPA]
         E[Electron Desktop Agent]
         M[React Native Mobile App]
         API[External API Consumers]
     end
 
-    subgraph Tier2["TIER 2: API GATEWAY :8080"]
+    subgraph Tier2["<b>TIER 2: API GATEWAY :8080</b>"]
         GW[Spring Cloud Gateway]
         JWT[JWT Validation Filter]
         RL[Rate Limiter]
         GW --> JWT --> RL
     end
 
-    subgraph Tier3["TIER 3: MICROSERVICES"]
+    subgraph Tier3["<b>TIER 3: MICROSERVICES</b>"]
         AS[auth-service :8081]
         ES[employee-service :8082]
         HS[hr-service :8083]
@@ -32,7 +44,7 @@ graph TB
         RS[report-service :8089]
     end
 
-    subgraph Tier4["TIER 4: AI INFERENCE"]
+    subgraph Tier4["<b>TIER 4: AI INFERENCE</b>"]
         PY[Python FastAPI :5000]
         AD[anomaly_detection]
         FR[face_recognition]
@@ -50,19 +62,19 @@ graph TB
         PY --> RA
     end
 
-    subgraph Tier5["TIER 5: DATA LAYER"]
+    subgraph Tier5["<b>TIER 5: DATA LAYER</b>"]
         PG[(PostgreSQL 15)]
         RD[(Redis 7)]
         KF[Apache Kafka]
     end
 
-    subgraph Tier6["TIER 6: ANALYTICS ENGINE"]
+    subgraph Tier6["<b>TIER 6: ANALYTICS ENGINE</b>"]
         AE[Aggregation Engine]
         SC[Cron Scheduler]
         RP[Report Generator]
     end
 
-    subgraph Tier7["TIER 7: OBSERVABILITY"]
+    subgraph Tier7["<b>TIER 7: OBSERVABILITY</b>"]
         PM[Prometheus]
         GF[Grafana]
         EL[ELK Stack]
@@ -109,6 +121,14 @@ graph TB
     GF -->|Query| PM
     EL -->|Ingest Logs| MS
     EL -->|Ingest Logs| AS
+
+    class B,E,M,API client
+    class GW,JWT,RL gateway
+    class AS,ES,HS,ANS,AIS,NS,MS,GS,RS micro
+    class PY,AD,FR,PP,SA,VD,TA,RA ai
+    class PG,RD,KF data
+    class AE,SC,RP engine
+    class PM,GF,EL obsrv
 ```
 
 ---
@@ -116,6 +136,7 @@ graph TB
 ## 2. User Authentication & RBAC Flow
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
 sequenceDiagram
     participant U as User (Browser)
     participant F as React Frontend
@@ -131,7 +152,7 @@ sequenceDiagram
     AS->>PG: SELECT * FROM users WHERE username=?
     PG-->>AS: User record + hashed password
     AS->>AS: BCrypt.verify(password, hash)
-    
+
     alt Invalid credentials
         AS-->>F: 401 Unauthorized
         F-->>U: Show error message
@@ -153,14 +174,14 @@ sequenceDiagram
     GW->>GW: Validate JWT signature + expiry
     GW->>GW: Extract roles/permissions from JWT claims
     GW->>RD: Check rate limit for userId
-    
+
     alt Missing/invalid JWT
         GW-->>F: 401 Unauthorized
         F->>F: Redirect to /login
     else Valid JWT
         GW->>AS: Forward request with userId + roles
         AS->>AS: @PreAuthorize("hasRole('HR_MANAGER')")
-        
+
         alt Insufficient permissions
             AS-->>GW: 403 Forbidden
             GW-->>F: 403 Forbidden
@@ -180,6 +201,7 @@ sequenceDiagram
 ## 3. Desktop Agent Telemetry Flow
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
 sequenceDiagram
     participant Agent as Electron Agent
     participant WinRT as WinRT GPS API
@@ -200,7 +222,7 @@ sequenceDiagram
     loop Every 10 seconds (GPS Poll)
         Agent->>WinRT: powershell get_gps.ps1
         WinRT-->>Agent: lat, lng, accuracy, network
-        
+
         alt Accuracy < 500m
             Agent->>Agent: Mark as "Hardware (High)"
         else Accuracy < 2500m
@@ -217,7 +239,7 @@ sequenceDiagram
         NS->>MS: POST /api/v1/monitoring/gps
         MS->>MS: Persist to live_tracking table
         MS->>MS: Check geofence boundaries
-        
+
         alt Geofence breach detected
             MS->>MS: Create security alert event
             MS->>KF: Produce geofence-breach event
@@ -230,7 +252,7 @@ sequenceDiagram
     loop Every 5 seconds (Remote Control)
         Agent->>NS: GET /api/tracking/suspended-status?nodeId=EMP-XXX
         NS-->>Agent: { suspended: true/false }
-        
+
         alt Suspended
             Agent->>Agent: Stop tracking, update tray icon
         else Active
@@ -251,7 +273,13 @@ sequenceDiagram
 ## 4. Kafka Event Streaming Flow
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
 graph LR
+
+    classDef producer fill:#059669,stroke:#047857,color:#fff,stroke-width:2px
+    classDef topic fill:#7c3aed,stroke:#6d28d9,color:#fff,stroke-width:2px
+    classDef consumer fill:#0891b2,stroke:#0e7490,color:#fff,stroke-width:2px
+
     subgraph Producers
         MS[Monitoring Service]
         GS[GPS Service]
@@ -296,6 +324,10 @@ graph LR
     T5 -->|Consume| ANS
     T5 -->|Consume| RS
     T6 -->|Consume| EL
+
+    class MS,GS,AS,HS producer
+    class T1,T2,T3,T4,T5,T6 topic
+    class NS,ANS,RS,WS,EL consumer
 ```
 
 ---
@@ -303,7 +335,17 @@ graph LR
 ## 5. Database Migration & Schema Flow
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
 flowchart TD
+
+    classDef schema fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
+    classDef action fill:#059669,stroke:#047857,color:#fff,stroke-width:2px
+    classDef db fill:#7c3aed,stroke:#6d28d9,color:#fff,stroke-width:2px
+    classDef proc fill:#0891b2,stroke:#0e7490,color:#fff,stroke-width:2px
+    classDef trig fill:#d97706,stroke:#b45309,color:#fff,stroke-width:2px
+    classDef idx fill:#dc2626,stroke:#b91c1c,color:#fff,stroke-width:2px
+    classDef output fill:#64748b,stroke:#475569,color:#fff,stroke-width:2px
+
     A[Database Schema Files] --> B[users.sql]
     A --> C[roles.sql]
     A --> D[permissions.sql]
@@ -345,6 +387,15 @@ flowchart TD
     P --> Y[productivity_analytics Table]
     Q --> Z[Attendance Summary Reports]
     R --> AA[forensic_reports Table]
+
+    class A,B,C,D,E,F,G,H,I,J schema
+    class K action
+    class L db
+    class M,N,O proc
+    class P,Q,R trig
+    class S,T,U idx
+    class V,W,X idx
+    class Y,Z,AA output
 ```
 
 ---
@@ -352,7 +403,18 @@ flowchart TD
 ## 6. CI/CD Pipeline Flow
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
 flowchart LR
+
+    classDef trigger fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
+    classDef build fill:#059669,stroke:#047857,color:#fff,stroke-width:2px
+    classDef test fill:#0891b2,stroke:#0e7490,color:#fff,stroke-width:2px
+    classDef quality fill:#d97706,stroke:#b45309,color:#fff,stroke-width:2px
+    classDef deploy fill:#7c3aed,stroke:#6d28d9,color:#fff,stroke-width:2px
+    classDef rollback fill:#dc2626,stroke:#b91c1c,color:#fff,stroke-width:2px
+    classDef notify fill:#64748b,stroke:#475569,color:#fff,stroke-width:2px
+    classDef decision fill:#f59e0b,stroke:#d97706,color:#000,stroke-width:2px
+
     A[Developer Push] --> B[GitHub Repository]
     B --> C[GitHub Actions Trigger]
 
@@ -398,6 +460,15 @@ flowchart LR
         AC --> AD[Prometheus Scrape New Version]
         AD --> AE[Grafana Dashboards Auto-Update]
     end
+
+    class A,B,C trigger
+    class D,E,F,G1,G2,G3 build
+    class H1,H2,H3,O,S test
+    class I1,J,L quality
+    class M,N,R,V,W,X,AA deploy
+    class K,Q,U,Z rollback
+    class AB,AC,AD,AE notify
+    class J,P,T,Y decision
 ```
 
 ---
@@ -405,7 +476,16 @@ flowchart LR
 ## 7. Frontend Component Data Flow
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
 graph TB
+
+    classDef state fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
+    classDef api fill:#0891b2,stroke:#0e7490,color:#fff,stroke-width:2px
+    classDef service fill:#059669,stroke:#047857,color:#fff,stroke-width:2px
+    classDef comp fill:#7c3aed,stroke:#6d28d9,color:#fff,stroke-width:2px
+    classDef hook fill:#d97706,stroke:#b45309,color:#fff,stroke-width:2px
+    classDef page fill:#dc2626,stroke:#b91c1c,color:#fff,stroke-width:2px
+
     subgraph State_Mgmt["State Management"]
         RTK[Redux Toolkit Store]
         SAGA[Redux Saga]
@@ -492,6 +572,13 @@ graph TB
     DASH --> TABLE
     DASH --> FORM
     DASH --> NOTIF
+
+    class RTK,SAGA,CTX state
+    class AXIOS,WS,INT api
+    class AUTH,EMP,HR,MON,GPS,AI,RPT service
+    class DASH,CHART,MAP,KANBAN,TABLE,FORM,NOTIF comp
+    class HP,HT,HL,HA,HW hook
+    class SA,CEO,HRM,EMPP,SEC,DEV page
 ```
 
 ---
@@ -499,6 +586,7 @@ graph TB
 ## 8. WebSocket Real-Time Event Flow
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
 sequenceDiagram
     participant Agent as Electron Agent
     participant NS as Node.js Telemetry Server
@@ -553,7 +641,15 @@ sequenceDiagram
 ## 9. Deployment Architecture Flow
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
 graph TB
+
+    classDef local fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
+    classDef dev fill:#059669,stroke:#047857,color:#fff,stroke-width:2px
+    classDef prod fill:#7c3aed,stroke:#6d28d9,color:#fff,stroke-width:2px
+    classDef iac fill:#d97706,stroke:#b45309,color:#fff,stroke-width:2px
+    classDef registry fill:#0891b2,stroke:#0e7490,color:#fff,stroke-width:2px
+
     subgraph Local["Local Development"]
         DEV[Developer Machine]
         DC[Docker Compose]
@@ -591,7 +687,7 @@ graph TB
         ECR[(ElastiCache Cluster)]
         MSK2[MSK Multi-AZ]
         S3[S3 Static Assets]
-        
+
         CDN -->|Static| S3
         User --> CDN
         User --> WAF --> ALB --> INGR2 --> GW2
@@ -623,6 +719,12 @@ graph TB
     K8s_Dev -->|promote| K8s_Prod
     IaC -->|terraform apply| K8s_Dev
     IaC -->|terraform apply| K8s_Prod
+
+    class DEV,DC,FE,BE,PG,RD,KF,PM,GF local
+    class INGR,GW,PODS,DB,RC,MK dev
+    class CDN,WAF,ALB,INGR2,GW2,MS_PODS,HPA,RDS,ECR,MSK2,S3,User prod
+    class TF,VPC,EKS,RDS_M,RC_M,KFK_M iac
+    class Reg registry
 ```
 
 ---
@@ -630,11 +732,21 @@ graph TB
 ## 10. Role-Based Dashboard Navigation Flow
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
 flowchart TD
+
+    classDef start fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
+    classDef auth fill:#0891b2,stroke:#0e7490,color:#fff,stroke-width:2px
+    classDef decision fill:#f59e0b,stroke:#d97706,color:#000,stroke-width:2px
+    classDef role fill:#059669,stroke:#047857,color:#fff,stroke-width:2px
+    classDef dash fill:#7c3aed,stroke:#6d28d9,color:#fff,stroke-width:2px
+    classDef switch fill:#d97706,stroke:#b45309,color:#fff,stroke-width:2px
+    classDef denied fill:#dc2626,stroke:#b91c1c,color:#fff,stroke-width:2px
+
     A[User visits /] --> B{Has JWT Token?}
     B -->|No| C[Show Login Page]
     B -->|Yes| D[Decode JWT - Extract Role]
-    
+
     C --> E[Enter credentials]
     E --> F[POST /api/v1/auth/login]
     F --> G{Valid?}
@@ -643,7 +755,7 @@ flowchart TD
     H --> D
 
     D --> I{Route Role to Dashboard}
-    
+
     I -->|SUPER_ADMIN| SA[super_admin/dashboard]
     I -->|ADMIN| AD[admin/dashboard]
     I -->|CEO| CEO[ceo/dashboard]
@@ -692,6 +804,14 @@ flowchart TD
         P --> Q[Re-render dashboard layout]
         Q --> I
     end
+
+    class A start
+    class C,E,H auth
+    class B,G,I,M decision
+    class SA,AD,CEO,CTO,HRM,HRE,FM,MM,SM,PM,TL,DE,QA,SA2,SWE,SUA,EMP,INT role
+    class SA_W,AD_W,CEO_W,CTO_W,HRM_W,HRE_W,FM_W,MM_W,SM_W,PM_W,TL_W,DE_W,QA_W,SA2_W,SWE_W,SUA_W,EMP_W,INT_W dash
+    class J,K,L,O,P,Q switch
+    class N denied
 ```
 
 ---
@@ -699,7 +819,17 @@ flowchart TD
 ## 11. Microservices Inter-Communication Flow
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
 graph TB
+
+    classDef gateway fill:#0891b2,stroke:#0e7490,color:#fff,stroke-width:2px
+    classDef auth fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
+    classDef core fill:#059669,stroke:#047857,color:#fff,stroke-width:2px
+    classDef intel fill:#d97706,stroke:#b45309,color:#fff,stroke-width:2px
+    classDef comm fill:#7c3aed,stroke:#6d28d9,color:#fff,stroke-width:2px
+    classDef data fill:#dc2626,stroke:#b91c1c,color:#fff,stroke-width:2px
+    classDef infra fill:#64748b,stroke:#475569,color:#fff,stroke-width:2px
+
     subgraph Gateway["API Gateway :8080"]
         GW[Spring Cloud Gateway]
     end
@@ -775,6 +905,14 @@ graph TB
     NOTIF -->|WebSocket| WS
     MON -->|WebSocket| WS
     GPS -->|WebSocket| WS
+
+    class GW gateway
+    class AUTH,AUTH_DB auth
+    class EMP,HR,EMP_DB,HR_DB core
+    class AN,AI,AN_DB intel
+    class NOTIF,WS comm
+    class MON,GPS,RPT,MON_DB,GPS_DB data
+    class RD,KF infra
 ```
 
 ---
@@ -782,6 +920,7 @@ graph TB
 ## 12. Data Flow: End-to-End Request Example
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
 sequenceDiagram
     participant U as HR Manager User
     participant F as React Frontend
@@ -800,7 +939,7 @@ sequenceDiagram
     GW->>GW: Extract roles: [HR_MANAGER]
     GW->>GW: Check permissions: hasPermission(MANAGE_EMPLOYEE)
     GW->>RD: INCR rate:limit:{userId}:attendance
-    
+
     alt Rate limit exceeded
         RD-->>GW: 101 → limit reached
         GW-->>F: 429 Too Many Requests
@@ -811,7 +950,7 @@ sequenceDiagram
 
     HS->>HS: @PreAuthorize("hasRole('HR_MANAGER')")
     HS->>RD: GET cache:attendance:engineering:2026-05-27
-    
+
     alt Cache Hit
         RD-->>HS: Cached attendance data
     else Cache Miss
@@ -819,10 +958,10 @@ sequenceDiagram
         ES->>PG: SELECT id, employee_id FROM employees WHERE department='engineering'
         PG-->>ES: [emp1, emp2, ...]
         ES-->>HS: Employee list with IDs
-        
+
         HS->>PG: SELECT * FROM workstation_telemetry WHERE employee_id IN (...) AND recorded_at::date = '2026-05-27'
         PG-->>HS: Telemetry records
-        
+
         HS->>HS: Calculate productive_hours, idle_hours, attendance_compliance
         HS->>RD: SETEX cache:attendance:engineering:2026-05-27 300 serializedData
     end

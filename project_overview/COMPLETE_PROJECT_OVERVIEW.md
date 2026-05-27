@@ -188,108 +188,136 @@ Status: ✅ DONE (Code Complete)
 
 ## 4. System Architecture (7-Tier)
 
-```
- ┌─────────────────────────────────────────────────────────────────────┐
- │  TIER 1: CLIENTS                                                    │
- │  ┌──────────┐  ┌──────────┐  ┌────────────────┐  ┌──────────────┐  │
- │  │ Browser  │  │ Electron │  │ Mobile App     │  │ External API │  │
- │  │ (React)  │  │ (Agent)  │  │ (React Native) │  │ Consumers    │  │
- │  └────┬─────┘  └────┬─────┘  └───────┬────────┘  └──────┬───────┘  │
- │       │ HTTPS/WSS   │ HTTP/WSS       │ HTTPS/WSS        │ HTTPS    │
- └───────┼─────────────┼────────────────┼──────────────────┼──────────┘
-         │             │                │                  │
- ┌───────┼─────────────┼────────────────┼──────────────────┼──────────┐
- │  TIER 2: API GATEWAY (Spring Cloud Gateway :8080)                  │
- │  ┌────────────────────────────────────────────────────────────────┐ │
- │  │  Route: /api/v1/auth/*      → auth-service:8081               │ │
- │  │  Route: /api/v1/employee/*  → employee-service:8082           │ │
- │  │  Route: /api/v1/hr/*        → hr-service:8083                  │ │
- │  │  Route: /api/v1/analytics/* → analytics-service:8084          │ │
- │  │  Route: /api/v1/ai/*        → ai-service:8085                  │ │
- │  │  Route: /api/v1/notification/* → notification-service:8086    │ │
- │  │  Route: /api/v1/monitoring/* → monitoring-service:8087        │ │
- │  │  Route: /api/v1/gps/*       → gps-service:8088                │ │
- │  │  Route: /api/v1/report/*    → report-service:8089             │ │
- │  └────────────────────────────────────────────────────────────────┘ │
- └───────┼──────────────────────────────────────────────────────────────┘
-         │
- ┌───────┼──────────────────────────────────────────────────────────────┐
- │  TIER 3: MICROSERVICES CLUSTER (Spring Boot :8081-8089)             │
- │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌───────────┐ │
- │  │ Auth     │ │ Employee │ │ HR       │ │Analytics │ │ AI Bridge │ │
- │  │:8081     │ │:8082     │ │:8083     │ │:8084     │ │:8085      │ │
- │  └──────────┘ └──────────┘ └──────────┘ └──────────┘ └───────────┘ │
- │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌───────────┐ │
- │  │Notificatn│ │Monitoring│ │ GPS      │ │ Report   │ │Gateway    │ │
- │  │:8086     │ │:8087     │ │:8088     │ │:8089     │ │(Central)  │ │
- │  └──────────┘ └──────────┘ └──────────┘ └──────────┘ └───────────┘ │
- └───────┼──────────────────────────────────────────────────────────────┘
-         │
- ┌───────┼──────────────────────────────────────────────────────────────┐
- │  TIER 4: AI INFERENCE CLUSTER (Python FastAPI :8085)                 │
- │  ┌──────────────────┐ ┌──────────────────┐ ┌────────────────────┐   │
- │  │ Anomaly Detection│ │ Face Recognition │ │Productivity Predict│   │
- │  │ (PyTorch)        │ │ (OpenCV/PyTorch) │ │(Neural Network)    │   │
- │  └──────────────────┘ └──────────────────┘ └────────────────────┘   │
- │  ┌──────────────────┐ ┌──────────────────┐ ┌────────────────────┐   │
- │  │ Behavior Analysis│ │Sentiment Analysis│ │ Violence Detection │   │
- │  └──────────────────┘ └──────────────────┘ └────────────────────┘   │
- │  ┌──────────────────┐ ┌──────────────────┐                          │
- │  │ Tracking Analysis│ │  Report AI (LLM) │                          │
- │  └──────────────────┘ └──────────────────┘                          │
- └──────────────────────────────────────────────────────────────────────┘
-         │
- ┌───────┼──────────────────────────────────────────────────────────────┐
- │  TIER 5: DATA LAYER                                                  │
- │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────────┐ │
- │  │ PostgreSQL  │  │   Redis 7   │  │   Apache Kafka              │ │
- │  │ (Primary DB)│  │  (Cache)    │  │   (Event Stream)            │ │
- │  │ ┌─────────┐ │  │ ┌─────────┐ │  │ ┌─────────────────────────┐ │ │
- │  │ │ users   │ │  │ │Sessions │ │  │ │telemetry-events         │ │ │
- │  │ │ roles   │ │  │ │Pub/Sub  │ │  │ │location-updates         │ │ │
- │  │ │employees│ │  │ │Rate Lim │ │  │ │security-threats         │ │ │
- │  │ │monitor. │ │  │ └─────────┘ │  │ │notification-queue       │ │ │
- │  │ │tracking │ │  │             │  │ └─────────────────────────┘ │ │
- │  │ │analytics│ │  │             │  │                             │ │
- │  │ │reports  │ │  │             │  │                             │ │
- │  │ └─────────┘ │  │             │  │                             │ │
- │  └─────────────┘  └─────────────┘  └─────────────────────────────┘ │
- └───────┼──────────────────────────────────────────────────────────────┘
-         │
- ┌───────┼──────────────────────────────────────────────────────────────┐
- │  TIER 6: ANALYTICS & AGGREGATION ENGINE                              │
- │  ┌────────────────────────────────────────────────────────────────┐ │
- │  │  Scheduled cron jobs for:                                      │ │
- │  │  - Daily productivity aggregation                              │ │
- │  │  - Burnout risk scoring                                        │ │
- │  │  - Attendance compliance reports                                │ │
- │  │  - Automated PDF/Excel report generation                       │ │
- │  └────────────────────────────────────────────────────────────────┘ │
- └───────┼──────────────────────────────────────────────────────────────┘
-         │
- ┌───────┼──────────────────────────────────────────────────────────────┐
- │  TIER 7: MONITORING & OBSERVABILITY                                  │
- │  ┌──────────────┐  ┌──────────────┐  ┌──────────────────────────┐  │
- │  │  Prometheus  │  │   Grafana    │  │  ELK / Log Aggregation   │  │
- │  │  (Metrics)   │  │ (Dashboards) │  │  (Logs)                  │  │
- │  └──────────────┘  └──────────────┘  └──────────────────────────┘  │
- └──────────────────────────────────────────────────────────────────────┘
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0', 'fontSize': '14px'}}}%%
+graph TB
+
+    classDef tier1 fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
+    classDef tier2 fill:#0891b2,stroke:#0e7490,color:#fff,stroke-width:2px
+    classDef tier3 fill:#059669,stroke:#047857,color:#fff,stroke-width:2px
+    classDef tier4 fill:#d97706,stroke:#b45309,color:#fff,stroke-width:2px
+    classDef tier5 fill:#7c3aed,stroke:#6d28d9,color:#fff,stroke-width:2px
+    classDef tier6 fill:#dc2626,stroke:#b91c1c,color:#fff,stroke-width:2px
+    classDef tier7 fill:#64748b,stroke:#475569,color:#fff,stroke-width:2px
+
+    subgraph CLIENTS["TIER 1: CLIENTS"]
+        B[Browser React SPA]
+        EL[Electron Desktop Agent]
+        MB[React Native Mobile App]
+        EXT[External API Consumers]
+    end
+
+    subgraph GATEWAY["TIER 2: API GATEWAY (Spring Cloud Gateway :8080)"]
+        GW[Gateway Routes]
+        R1[/api/v1/auth/* → auth-service:8081]
+        R2[/api/v1/employee/* → employee-service:8082]
+        R3[/api/v1/hr/* → hr-service:8083]
+        R4[/api/v1/analytics/* → analytics-service:8084]
+        R5[/api/v1/ai/* → ai-service:8085]
+        R6[/api/v1/notification/* → notification-service:8086]
+        R7[/api/v1/monitoring/* → monitoring-service:8087]
+        R8[/api/v1/gps/* → gps-service:8088]
+        R9[/api/v1/report/* → report-service:8089]
+    end
+
+    subgraph MICROSERVICES["TIER 3: MICROSERVICES CLUSTER (Spring Boot :8081-8089)"]
+        AS[auth-service :8081]
+        EM[employee-service :8082]
+        HR[hr-service :8083]
+        AN[analytics-service :8084]
+        AI[ai-service :8085]
+        NT[notification-service :8086]
+        MN[monitoring-service :8087]
+        GP[gps-service :8088]
+        RP[report-service :8089]
+    end
+
+    subgraph AI_CLUSTER["TIER 4: AI INFERENCE CLUSTER (Python FastAPI)"]
+        AD[Anomaly Detection<br/>(PyTorch)]
+        FC[Face Recognition<br/>(OpenCV/PyTorch)]
+        PP[Productivity Predict<br/>(Neural Network)]
+        BA[Behavior Analysis]
+        SA[Sentiment Analysis]
+        VD[Violence Detection]
+        TA[Tracking Analysis]
+        RA[Report AI (LLM)]
+    end
+
+    subgraph DATA["TIER 5: DATA LAYER"]
+        PG[(PostgreSQL 15<br/>users, roles, employees<br/>monitoring, tracking<br/>analytics, reports)]
+        RD[(Redis 7<br/>Sessions<br/>Pub/Sub<br/>Rate Limit)]
+        KF[Apache Kafka<br/>telemetry-events<br/>location-updates<br/>security-threats<br/>notification-queue]
+    end
+
+    subgraph ANALYTICS["TIER 6: ANALYTICS & AGGREGATION ENGINE"]
+        AE[Daily Productivity Aggregation<br/>Burnout Risk Scoring<br/>Attendance Compliance Reports<br/>Automated PDF/Excel Generation]
+    end
+
+    subgraph OBSERV["TIER 7: MONITORING & OBSERVABILITY"]
+        PM[Prometheus<br/>Metrics]
+        GR[Grafana<br/>Dashboards]
+        EL[ELK / Log Aggregation<br/>Logs]
+    end
+
+    B & EL & MB & EXT -->|HTTPS/WSS| GW
+    GW --> AS & EM & HR & AN & AI & NT & MN & GP & RP
+    AI -->|Feign Client| AD & FC & PP & BA & SA & VD & TA & RA
+    AS & EM & HR & MN & GP --> PG
+    AS & EM & MN --> RD
+    MN & GP -->|Produce| KF
+    NT & AN -->|Consume| KF
+    PG -->|Daily Aggregation| AE
+    KF -->|Stream Events| AE
+    AE -->|Store Results| PG
+    PM -->|Scrape| GW & MN
+    GR -->|Query| PM
+    EL -->|Ingest Logs| MN & AS
+    AE -->|Reports| RP
+
+    class B,EL,MB,EXT tier1
+    class GW,R1,R2,R3,R4,R5,R6,R7,R8,R9 tier2
+    class AS,EM,HR,AN,AI,NT,MN,GP,RP tier3
+    class AD,FC,PP,BA,SA,VD,TA,RA tier4
+    class PG,RD,KF tier5
+    class AE tier6
+    class PM,GR,EL tier7
 ```
 
 ### Request Flow
 
-```
-User Login (Browser)
-    ↓
-Frontend React SPA (HTTPS/WSS)
-    ↓
-Spring Cloud Gateway (:8080) — JWT Validation
-    ↓
-Microservice (REST/Feign) ←→ AI Cluster (Python FastAPI)
-    ↓
-PostgreSQL + Redis + Kafka
-    ↓
-Analytics Aggregation → Intelligence Views
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff'}}}%%
+flowchart TD
+
+    classDef user fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
+    classDef front fill:#0891b2,stroke:#0e7490,color:#fff,stroke-width:2px
+    classDef gateway fill:#059669,stroke:#047857,color:#fff,stroke-width:2px
+    classDef micro fill:#d97706,stroke:#b45309,color:#fff,stroke-width:2px
+    classDef data fill:#7c3aed,stroke:#6d28d9,color:#fff,stroke-width:2px
+    classDef output fill:#dc2626,stroke:#b91c1c,color:#fff,stroke-width:2px
+
+    U[User Login Browser]
+    F[Frontend React SPA<br/>HTTPS/WSS]
+    GW[Spring Cloud Gateway :8080<br/>JWT Validation]
+    MS[Microservice<br/>REST/Feign]
+    AI[AI Cluster<br/>Python FastAPI]
+    DB[PostgreSQL + Redis + Kafka]
+    AE[Analytics Aggregation<br/>→ Intelligence Views]
+
+    U -->|Credentials| F
+    F -->|API Calls| GW
+    GW -->|Route| MS
+    MS <-->|Inference| AI
+    MS -->|Persist| DB
+    DB -->|Stream| AE
+    AE -->|Results| MS
+
+    class U user
+    class F front
+    class GW gateway
+    class MS,AI micro
+    class DB data
+    class AE output
 ```
 
 ---
@@ -298,79 +326,106 @@ Analytics Aggregation → Intelligence Views
 
 ### Entity Relationship Diagram (Logical)
 
-```
-┌─────────────────────┐       ┌─────────────────────┐
-│       users         │       │       roles          │
-├─────────────────────┤       ├─────────────────────┤
-│ PK │ id (BIGSERIAL) │       │ PK │ id (BIGSERIAL) │
-│    │ username(UNIQ) │       │    │ name (UNIQ)     │
-│    │ password       │       │    │ description     │
-│    │ email (UNIQ)   │       │    │ created_at      │
-│    │ is_active      │◄──────┘    └─────────────────┘
-│    │ created_at     │       ┌────────────────────────┐
-│    │ updated_at     │       │     user_roles          │
-└─────────┬───────────┘       ├────────────────────────┤
-          │                   │ FK │ user_id           │
-          │                   │ FK │ role_id           │
-          │                   └─────┬──────────────────┘
-          │                         │
-          │              ┌──────────┴──────────┐
-          │              │    permissions       │
-          │              ├─────────────────────┤
-          │              │ PK │ id (BIGSERIAL) │
-          │              │    │ name (UNIQ)     │
-          │              │    │ description     │
-          │              └─────────────────────┘
-          │              ┌─────────────────────────┐
-          │              │    role_permissions      │
-          │              ├─────────────────────────┤
-          │              │ FK │ role_id            │
-          │              │ FK │ permission_id      │
-          │              └─────────────────────────┘
-          │
-          │ 1:1
-┌─────────┴─────────────────────┐
-│          employees            │
-├───────────────────────────────┤
-│ PK │ id (BIGSERIAL)           │
-│ FK │ user_id (UNIQ, →users)   │
-│    │ employee_id (UNIQ)       │
-│    │ first_name               │
-│    │ last_name                │
-│    │ department               │
-│    │ designation              │
-│    │ joining_date             │
-│    │ created_at               │
-│    │ updated_at               │
-└─────────┬─────────────────────┘
-          │ 1:N
-          ├─────────────────────────────────────────────────┐
-          │                                                 │
-┌─────────┴─────────────────────┐   ┌───────────────────────┴────────┐
-│    workstation_telemetry      │   │      live_tracking              │
-├───────────────────────────────┤   ├────────────────────────────────┤
-│ PK │ id (BIGSERIAL)           │   │ PK │ id (BIGSERIAL)            │
-│ FK │ employee_id (→employees) │   │ FK │ employee_id (→employees)  │
-│    │ cpu_usage (NUMERIC 5,2)  │   │    │ latitude (NUMERIC 10,7)   │
-│    │ memory_usage (NUMERIC)   │   │    │ longitude (NUMERIC 10,7)  │
-│    │ active_window (VARCHAR)  │   │    │ accuracy_meters (NUMERIC) │
-│    │ keystroke_rate (INT)     │   │    │ signal_source (VARCHAR)   │
-│    │ mouse_clicks (INT)       │   │    │ recorded_at (TIMESTAMPTZ) │
-│    │ screenshot_url (VARCHAR) │   └────────────────────────────────┘
-│    │ recorded_at (TIMESTAMPTZ)│
-└───────────────────────────────┘   ┌──────────────────────────────┐
-                                    │   productivity_analytics     │
-┌───────────────────────────────┐   ├──────────────────────────────┤
-│     forensic_reports          │   │ PK │ id (BIGSERIAL)          │
-├───────────────────────────────┤   │ FK │ employee_id (→employees)│
-│ PK │ id (BIGSERIAL)           │   │    │ date (DATE)             │
-│    │ report_id (UNIQ)         │   │    │ productive_hours        │
-│ FK │ generated_by (→users)    │   │    │ idle_hours              │
-│    │ title                    │   │    │ burnout_risk_score      │
-│    │ summary                  │   │    │ UNIQUE(employee_id,date)│
-│    │ file_url                 │   └──────────────────────────────┘
-│    │ created_at               │
-└───────────────────────────────┘
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
+erDiagram
+
+    users {
+        BIGINT id PK
+        VARCHAR username UK
+        VARCHAR password
+        VARCHAR email UK
+        BOOLEAN is_active
+        TIMESTAMP created_at
+        TIMESTAMP updated_at
+    }
+
+    roles {
+        BIGINT id PK
+        VARCHAR name UK
+        TEXT description
+        TIMESTAMP created_at
+    }
+
+    user_roles {
+        BIGINT user_id FK
+        BIGINT role_id FK
+    }
+
+    permissions {
+        BIGINT id PK
+        VARCHAR name UK
+        TEXT description
+    }
+
+    role_permissions {
+        BIGINT role_id FK
+        BIGINT permission_id FK
+    }
+
+    employees {
+        BIGINT id PK
+        BIGINT user_id FK UK
+        VARCHAR employee_id UK
+        VARCHAR first_name
+        VARCHAR last_name
+        VARCHAR department
+        VARCHAR designation
+        DATE joining_date
+        TIMESTAMP created_at
+        TIMESTAMP updated_at
+    }
+
+    workstation_telemetry {
+        BIGINT id PK
+        BIGINT employee_id FK
+        NUMERIC cpu_usage
+        NUMERIC memory_usage
+        VARCHAR active_window
+        INT keystroke_rate
+        INT mouse_clicks
+        VARCHAR screenshot_url
+        TIMESTAMPTZ recorded_at
+    }
+
+    live_tracking {
+        BIGINT id PK
+        BIGINT employee_id FK
+        NUMERIC latitude
+        NUMERIC longitude
+        NUMERIC accuracy_meters
+        VARCHAR signal_source
+        TIMESTAMPTZ recorded_at
+    }
+
+    productivity_analytics {
+        BIGINT id PK
+        BIGINT employee_id FK
+        DATE date
+        NUMERIC productive_hours
+        NUMERIC idle_hours
+        NUMERIC burnout_risk_score
+    }
+
+    forensic_reports {
+        BIGINT id PK
+        VARCHAR report_id UK
+        BIGINT generated_by FK
+        VARCHAR title
+        TEXT summary
+        VARCHAR file_url
+        TIMESTAMP created_at
+    }
+
+    users ||--o{ user_roles : has
+    roles ||--o{ user_roles : includes
+    roles ||--o{ role_permissions : grants
+    permissions ||--o{ role_permissions : assigned
+    users ||--|| employees : "1:1"
+    employees ||--o{ workstation_telemetry : "1:N"
+    employees ||--o{ live_tracking : "1:N"
+    employees ||--o{ productivity_analytics : "1:N"
+    users ||--o{ forensic_reports : generates
 ```
 
 ### Complete Schema Inventory
@@ -416,25 +471,60 @@ Analytics Aggregation → Intelligence Views
 
 ### Role Hierarchy
 
-```
-SUPER_ADMIN (Tenant Orchestration)
-    └── ADMIN (System Configuration)
-         ├── CEO (Executive Oversight)
-         │    └── CTO (Technical Oversight)
-         │         ├── TECH_LEAD (Engineering Squad)
-         │         │    ├── SOFTWARE_ENGINEER
-         │         │    └── QA_ENGINEER
-         │         └── DEVOPS_ENGINEER
-         ├── HR_MANAGER
-         │    └── HR_EXECUTIVE
-         ├── FINANCE_MANAGER
-         ├── MARKETING_MANAGER
-         ├── SALES_MANAGER
-         ├── PROJECT_MANAGER
-         ├── SECURITY_ANALYST
-         ├── SUPPORT_AGENT
-         ├── EMPLOYEE
-         └── INTERN
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
+graph TB
+
+    classDef super fill:#dc2626,stroke:#b91c1c,color:#fff,stroke-width:2px
+    classDef admin fill:#7c3aed,stroke:#6d28d9,color:#fff,stroke-width:2px
+    classDef cLevel fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
+    classDef tech fill:#059669,stroke:#047857,color:#fff,stroke-width:2px
+    classDef dept fill:#0891b2,stroke:#0e7490,color:#fff,stroke-width:2px
+    classDef base fill:#64748b,stroke:#475569,color:#fff,stroke-width:2px
+
+    SA[SUPER_ADMIN<br/>Tenant Orchestration]
+    AD[ADMIN<br/>System Configuration]
+    CEO[CEO<br/>Executive Oversight]
+    CTO[CTO<br/>Technical Oversight]
+    TL[TECH_LEAD<br/>Engineering Squad]
+    SWE[SOFTWARE_ENGINEER]
+    QA[QA_ENGINEER]
+    DEVOPS[DEVOPS_ENGINEER]
+    HRM[HR_MANAGER]
+    HRE[HR_EXECUTIVE]
+    FIN[FINANCE_MANAGER]
+    MKT[MARKETING_MANAGER]
+    SAL[SALES_MANAGER]
+    PM[PROJECT_MANAGER]
+    SEC[SECURITY_ANALYST]
+    SUP[SUPPORT_AGENT]
+    EMP[EMPLOYEE]
+    INT[INTERN]
+
+    SA --> AD
+    AD --> CEO
+    CEO --> CTO
+    CTO --> TL
+    CTO --> DEVOPS
+    TL --> SWE
+    TL --> QA
+    AD --> HRM
+    HRM --> HRE
+    AD --> FIN
+    AD --> MKT
+    AD --> SAL
+    AD --> PM
+    AD --> SEC
+    AD --> SUP
+    AD --> EMP
+    EMP --> INT
+
+    class SA super
+    class AD admin
+    class CEO,CTO cLevel
+    class TL,SWE,QA,DEVOPS tech
+    class HRM,HRE,FIN,MKT,SAL,PM,SEC,SUP dept
+    class EMP,INT base
 ```
 
 ### Role Detail Matrix
@@ -521,18 +611,48 @@ The Python FastAPI cluster runs alongside the microservices and provides 8 speci
 
 ### AI Service Architecture
 
-```
-Monolith FastAPI Application (main.py)
-    │
-    ├── /api/v1/ai/anomaly          → anomaly_detection/
-    ├── /api/v1/ai/behavior         → behavior_analysis/
-    ├── /api/v1/ai/face-recognize   → face_recognition/
-    ├── /api/v1/ai/productivity     → productivity_prediction/
-    ├── /api/v1/ai/recommend        → recommendation_engine/
-    ├── /api/v1/ai/report           → report_ai/
-    ├── /api/v1/ai/sentiment        → sentiment_analysis/
-    ├── /api/v1/ai/tracking         → tracking_analysis/
-    └── /api/v1/ai/violence         → violence_detection/
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
+graph TB
+
+    classDef fastapi fill:#dc2626,stroke:#b91c1c,color:#fff,stroke-width:3px
+    classDef route fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
+    classDef module fill:#059669,stroke:#047857,color:#fff,stroke-width:2px
+
+    MAIN[Monolith FastAPI Application<br/>main.py :5000]
+    R1[/api/v1/ai/anomaly/]
+    R2[/api/v1/ai/behavior/]
+    R3[/api/v1/ai/face-recognize/]
+    R4[/api/v1/ai/productivity/]
+    R5[/api/v1/ai/recommend/]
+    R6[/api/v1/ai/report/]
+    R7[/api/v1/ai/sentiment/]
+    R8[/api/v1/ai/tracking/]
+    R9[/api/v1/ai/violence/]
+
+    M1[anomaly_detection<br/>PyTorch]
+    M2[behavior_analysis<br/>scikit-learn]
+    M3[face_recognition<br/>OpenCV + PyTorch]
+    M4[productivity_prediction<br/>PyTorch NN]
+    M5[recommendation_engine<br/>scikit-learn]
+    M6[report_ai<br/>Transformers LLM]
+    M7[sentiment_analysis<br/>Transformers]
+    M8[tracking_analysis<br/>scikit-learn]
+    M9[violence_detection<br/>OpenCV + PyTorch]
+
+    MAIN --> R1 --> M1
+    MAIN --> R2 --> M2
+    MAIN --> R3 --> M3
+    MAIN --> R4 --> M4
+    MAIN --> R5 --> M5
+    MAIN --> R6 --> M6
+    MAIN --> R7 --> M7
+    MAIN --> R8 --> M8
+    MAIN --> R9 --> M9
+
+    class MAIN fastapi
+    class R1,R2,R3,R4,R5,R6,R7,R8,R9 route
+    class M1,M2,M3,M4,M5,M6,M7,M8,M9 module
 ```
 
 ---

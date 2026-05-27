@@ -1533,7 +1533,16 @@ https://chatgpt.com/share/6a048fb4-7734-8323-913e-ccfeedc941b2
 ## 🏛️ Enterprise 7-Tier Architecture & Request Flow
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#ffffff', 'lineColor': '#e2e8f0'}}}%%
 graph TD
+
+    classDef client fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
+    classDef gateway fill:#0891b2,stroke:#0e7490,color:#fff,stroke-width:2px
+    classDef micro fill:#059669,stroke:#047857,color:#fff,stroke-width:2px
+    classDef ai fill:#d97706,stroke:#b45309,color:#fff,stroke-width:2px
+    classDef data fill:#7c3aed,stroke:#6d28d9,color:#fff,stroke-width:2px
+    classDef engine fill:#dc2626,stroke:#b91c1c,color:#fff,stroke-width:2px
+
     U[Users / Clients] -->|HTTPS / WSS| F[Frontend React SPA]
     F -->|Bearer JWT| G[Spring Cloud API Gateway :8080]
     G -->|Path Routing| M[Core Microservices Cluster :8081-8089]
@@ -1542,6 +1551,13 @@ graph TD
     AI -->|Tensors / Features| DB
     DB -->|Event Streams| AE[Analytics & Aggregation Engine]
     AE -->|Intelligence Views| M
+
+    class U,F client
+    class G gateway
+    class M micro
+    class AI ai
+    class DB data
+    class AE engine
 ```
 
 The WorkSphere platform operates on a highly decoupled, production-ready 7-tier microservices architecture. For the exhaustive architectural specification, data flow sequences, and component breakdowns, please review the [Full Architecture Documentation](apps/enterprise-monitoring-system/docs/ARCHITECTURE.md).
