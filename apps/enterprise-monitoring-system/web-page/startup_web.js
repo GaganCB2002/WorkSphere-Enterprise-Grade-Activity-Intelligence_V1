@@ -18,11 +18,11 @@ function runService(name, dir, command, args = '') {
     return child;
 }
 
-// Launch Backend
-runService('AuraHR Backend', './backend', 'npm', 'run dev');
+// Launch Backend (relative to web-page directory, go up one level)
+runService('AuraHR Backend', '../backend', 'npm', 'run dev');
 
-// Launch Frontend
-runService('AuraHR Frontend', './frontend', 'npm', 'run dev');
+// Launch Frontend (relative to web-page directory, go up one level)
+runService('AuraHR Frontend', '../frontend', 'npm', 'run dev');
 
 console.log('Centralized AuraHR Platform launched.');
 console.log('Platform: http://localhost:3005');
