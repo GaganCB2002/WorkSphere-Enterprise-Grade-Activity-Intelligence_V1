@@ -163,7 +163,7 @@ export const TaskWorkflow: React.FC<{ user: any }> = () => {
                               <span>{task.progress}%</span>
                             </div>
                             <div className="h-1.5 bg-[#eae2da] rounded-full overflow-hidden">
-                              <div className="h-full bg-[#5b8c63]" style={{ width: `${task.progress}%` }}></div>
+                              <div className="h-full bg-[#5b8c63]" style={{ width: `₹${task.progress}%` }}></div>
                             </div>
                           </div>
                         ) : (

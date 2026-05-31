@@ -33,9 +33,9 @@ export function Avatar({ name, src, size = 'md', status, showStatus = true, clas
   return (
     <div className={`relative inline-flex flex-shrink-0 ${className}`}>
       {src ? (
-        <img src={src} alt={name} className={`${sizeMap[size]} rounded-xl object-cover ring-2 ring-white dark:ring-slate-900`} />
+        <img src={src} alt={name} className={`₹${sizeMap[size]} rounded-xl object-cover ring-2 ring-white dark:ring-slate-900`} />
       ) : (
-        <div className={`${sizeMap[size]} ${getColor(name)} rounded-xl flex items-center justify-center font-bold text-white ring-2 ring-white dark:ring-slate-900 select-none`}>
+        <div className={`₹${sizeMap[size]} ${getColor(name)} rounded-xl flex items-center justify-center font-bold text-white ring-2 ring-white dark:ring-slate-900 select-none`}>
           {getInitials(name)}
         </div>
       )}
@@ -56,7 +56,7 @@ export function AvatarGroup({ members, max = 4, size = 'sm' }: { members: { name
         <Avatar key={i} name={m.name} src={m.avatar} status={m.status} size={size} showStatus={false} />
       ))}
       {remaining > 0 && (
-        <div className={`${sizeMap[size]} rounded-xl bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-slate-600 dark:text-slate-300 ring-2 ring-white dark:ring-slate-900`}>
+        <div className={`₹${sizeMap[size]} rounded-xl bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-slate-600 dark:text-slate-300 ring-2 ring-white dark:ring-slate-900`}>
           +{remaining}
         </div>
       )}

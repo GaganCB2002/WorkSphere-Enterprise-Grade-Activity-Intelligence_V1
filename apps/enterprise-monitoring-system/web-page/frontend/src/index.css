@@ -6,15 +6,15 @@
 
 @layer base {
   :root {
-    --bg-main: #f8f6ff;
-    --bg-surface: #ffffff;
-    --text-primary: #1a1a2e;
-    --text-secondary: #5a5a7a;
-    --pastry-primary: #4B49AC;
-    --pastry-primary-light: #98BDFF;
-    --pastry-blue-light: #7DA0FA;
-    --pastry-purple-light: #7978E9;
-    --pastry-coral: #F3797E;
+    --bg-main: #F8FAFC;
+    --bg-surface: #FFFFFF;
+    --text-primary: #111827;
+    --text-secondary: #6B7280;
+    --pastry-primary: #8B7CF6; /* Soft Lavender */
+    --pastry-primary-light: #7CC6FE; /* Pastel Blue */
+    --pastry-blue-light: #7CC6FE;
+    --pastry-purple-light: #8B7CF6;
+    --pastry-coral: #FFBFA3; /* Soft Peach */
     
     color: var(--text-primary);
     font-family: 'Outfit', sans-serif;
@@ -25,15 +25,15 @@
   }
 
   .dark {
-    --bg-main: #12111f;
-    --bg-surface: #1a1930;
-    --text-primary: #f0eef8;
-    --text-secondary: #9d9bb5;
-    --pastry-primary: #7DA0FA;
-    --pastry-primary-light: #4B49AC;
-    --pastry-blue-light: #98BDFF;
-    --pastry-purple-light: #7978E9;
-    --pastry-coral: #F3797E;
+    --bg-main: #0B0F19;
+    --bg-surface: #161D30;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --pastry-primary: #8B7CF6;
+    --pastry-primary-light: #7CC6FE;
+    --pastry-blue-light: #7CC6FE;
+    --pastry-purple-light: #8B7CF6;
+    --pastry-coral: #FFBFA3;
   }
 
   * {
@@ -46,16 +46,16 @@
     background-color: var(--bg-main);
     color: var(--text-primary);
     background-image:
-      radial-gradient(circle at top left, rgba(75, 73, 172, 0.06), transparent 40%),
-      radial-gradient(circle at bottom right, rgba(152, 189, 255, 0.08), transparent 40%);
-    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      radial-gradient(circle at top left, rgba(139, 124, 246, 0.05), transparent 40%),
+      radial-gradient(circle at bottom right, rgba(124, 198, 254, 0.06), transparent 40%);
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark body {
     background-image:
-      radial-gradient(circle at top left, rgba(125, 160, 250, 0.12), transparent 50%),
-      radial-gradient(circle at bottom right, rgba(75, 73, 172, 0.15), transparent 50%),
-      linear-gradient(180deg, #12111f 0%, #1a1930 100%);
+      radial-gradient(circle at top left, rgba(139, 124, 246, 0.1), transparent 50%),
+      radial-gradient(circle at bottom right, rgba(124, 198, 254, 0.1), transparent 50%),
+      linear-gradient(180deg, #0B0F19 0%, #161D30 100%);
   }
 
   h1 { @apply text-5xl lg:text-7xl font-bold tracking-tighter leading-tight; }
@@ -74,11 +74,11 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#4B49AC] to-[#98BDFF];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#8B7CF6] to-[#7CC6FE];
   }
 
   .btn-primary {
-    @apply px-8 py-4 bg-[#4B49AC] text-white rounded-full font-bold uppercase tracking-widest hover:bg-[#7DA0FA] hover:scale-105 transition-all duration-300 shadow-lg shadow-[#4B49AC]/20;
+    @apply px-8 py-4 bg-[#8B7CF6] text-white rounded-full font-bold uppercase tracking-widest hover:bg-[#7CC6FE] hover:scale-105 transition-all duration-300 shadow-lg shadow-[#8B7CF6]/20;
   }
 
   .section-title {
@@ -88,7 +88,6 @@
   .section-subtitle {
     @apply text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed;
   }
-
 }
 
 /* Global Custom Scrollbar Override */
@@ -101,4 +100,3 @@
   width: 0 !important;
   height: 0 !important;
 }
-

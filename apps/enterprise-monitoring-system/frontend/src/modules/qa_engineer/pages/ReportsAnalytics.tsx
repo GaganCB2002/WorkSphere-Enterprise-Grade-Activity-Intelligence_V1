@@ -36,7 +36,7 @@ export const ReportsAnalytics: React.FC = () => {
           { label: 'Avg Pass Rate', value: '92.3%', trend: '+2.1%', up: true, icon: Activity, color: 'text-emerald-600' },
           { label: 'Defect Escape Rate', value: '3.2%', trend: '-0.8%', up: true, icon: Bug, color: 'text-red-600' },
           { label: 'Automation ROI', value: '184%', trend: '+22%', up: true, icon: TrendingUp, color: 'text-violet-600' },
-          { label: 'Test Coverage', value: `${metrics.automationCoverage}%`, trend: '+5%', up: true, icon: Target, color: 'text-purple-600' },
+          { label: 'Test Coverage', value: `₹${metrics.automationCoverage}%`, trend: '+5%', up: true, icon: Target, color: 'text-purple-600' },
         ].map((s, i) => (
           <div key={i} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
             <div className="flex items-start justify-between mb-3">

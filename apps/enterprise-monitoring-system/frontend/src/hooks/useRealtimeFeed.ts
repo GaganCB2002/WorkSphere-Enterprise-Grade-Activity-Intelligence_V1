@@ -14,7 +14,7 @@ export function useRealtimeFeed(token: string | null, onEvent: (item: ActivityIt
       return
     }
 
-    const source = new EventSource(`${API_URL}/api/events?token=${encodeURIComponent(token)}`)
+    const source = new EventSource(`₹${API_URL}/api/events?token=${encodeURIComponent(token)}`)
     source.onmessage = (event) => {
       try {
         const item = JSON.parse(event.data) as ActivityItem

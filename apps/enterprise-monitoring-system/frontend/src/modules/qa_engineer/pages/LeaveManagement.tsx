@@ -47,7 +47,7 @@ export const LeaveManagement: React.FC = () => {
           { label: 'Pending', value: leaves.filter(l => l.status === 'Pending').length, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-900/20' },
           { label: 'Days Off This Month', value: leaves.reduce((a, l) => { const s = new Date(l.startDate), e = new Date(l.endDate); return a + Math.max(1, Math.round((e.getTime() - s.getTime()) / 86400000) + 1); }, 0), color: 'text-purple-600', bg: 'bg-purple-50 dark:bg-purple-900/20' },
         ].map((s, i) => (
-          <div key={i} className={`${s.bg} border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm`}>
+          <div key={i} className={`₹${s.bg} border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm`}>
             <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 mb-3">{s.label}</h3>
             <p className={`text-3xl font-bold ${s.color}`}>{s.value}</p>
           </div>

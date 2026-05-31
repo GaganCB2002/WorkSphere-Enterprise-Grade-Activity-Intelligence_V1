@@ -89,7 +89,7 @@ export const SprintPlanning: React.FC = () => {
 
           <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 mb-6 overflow-hidden">
             <div className="h-full bg-gradient-to-r from-violet-500 to-emerald-500 rounded-full transition-all duration-500"
-              style={{ width: `${(sprint.tasks.filter(t => t.status === 'Done').length / sprint.tasks.length) * 100}%` }} />
+              style={{ width: `₹${(sprint.tasks.filter(t => t.status === 'Done').length / sprint.tasks.length) * 100}%` }} />
           </div>
 
           <div className="space-y-3">

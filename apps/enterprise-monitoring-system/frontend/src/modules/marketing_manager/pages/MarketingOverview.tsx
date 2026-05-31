@@ -64,7 +64,7 @@ export const MarketingOverview: React.FC = () => {
 
         <div className="bg-white dark:bg-slate-900 border border-[#e2e8f0] dark:border-slate-800 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow">
           <p className="text-[11px] font-bold text-[#475569] dark:text-slate-300 mb-4 leading-tight">Ad Spend</p>
-          <p className="text-3xl font-bold text-[#0f172a] dark:text-slate-100 mb-4">$1.2M</p>
+          <p className="text-3xl font-bold text-[#0f172a] dark:text-slate-100 mb-4">₹1.2M</p>
           <div className="h-1.5 w-full bg-[#f1f5f9] dark:bg-slate-800 rounded-full overflow-hidden">
             <div className="h-full bg-[#0d47a1] dark:bg-blue-600" style={{ width: '65%' }}></div>
           </div>

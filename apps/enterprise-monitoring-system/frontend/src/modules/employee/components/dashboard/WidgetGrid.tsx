@@ -96,7 +96,7 @@ export function WidgetGrid({
                       <span>{task.progress}%</span>
                     </div>
                     <div className="h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                      <div className="h-full rounded-full" style={{ width: `${task.progress}%`, backgroundColor: task.projectColor }} />
+                      <div className="h-full rounded-full" style={{ width: `₹${task.progress}%`, backgroundColor: task.projectColor }} />
                     </div>
                   </div>
                 </div>

@@ -179,7 +179,7 @@ export const PerformanceManagement: React.FC = () => {
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="flex-1 h-1.5 bg-[#12151f] rounded-full overflow-hidden border border-[#1e2231]">
-                          <div className="h-full bg-indigo-500 rounded-full" style={{ width: `${goal.progress}%` }} />
+                          <div className="h-full bg-indigo-500 rounded-full" style={{ width: `₹${goal.progress}%` }} />
                         </div>
                         <span className="text-[11px] font-black text-slate-300 w-8">{goal.progress}%</span>
                       </div>

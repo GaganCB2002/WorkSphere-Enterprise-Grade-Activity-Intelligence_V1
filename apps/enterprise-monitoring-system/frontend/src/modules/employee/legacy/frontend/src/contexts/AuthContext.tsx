@@ -62,7 +62,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           const redirectUrl = role === 'HR' || role === 'CEO' || role === 'MANAGER' 
             ? 'http://127.0.0.1:3000' 
             : 'http://127.0.0.1:3001';
-          window.location.href = `${redirectUrl}?token=${currentToken}`;
+          window.location.href = `₹${redirectUrl}?token=${currentToken}`;
           return;
         }
 

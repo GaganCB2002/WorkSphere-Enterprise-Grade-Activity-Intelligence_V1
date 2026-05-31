@@ -54,14 +54,14 @@ export const ReportsAnalytics: React.FC = () => {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-slate-900 border border-[#e2e8f0] dark:border-slate-800 rounded-2xl p-5 shadow-sm">
           <p className="text-[11px] font-bold text-[#475569] dark:text-slate-300 mb-4">Customer Acquisition Cost (CAC)</p>
-          <p className="text-3xl font-bold text-[#0f172a] dark:text-slate-100 mb-2">$850</p>
+          <p className="text-3xl font-bold text-[#0f172a] dark:text-slate-100 mb-2">₹850</p>
           <span className="inline-flex items-center text-[11px] font-bold text-emerald-600">
             <ArrowUpRight className="w-3 h-3 mr-1" /> -5.4% (Improving)
           </span>
         </div>
         <div className="bg-white dark:bg-slate-900 border border-[#e2e8f0] dark:border-slate-800 rounded-2xl p-5 shadow-sm">
           <p className="text-[11px] font-bold text-[#475569] dark:text-slate-300 mb-4">Customer Lifetime Value (LTV)</p>
-          <p className="text-3xl font-bold text-[#0d47a1] dark:text-blue-400 mb-2">$12,400</p>
+          <p className="text-3xl font-bold text-[#0d47a1] dark:text-blue-400 mb-2">₹12,400</p>
           <span className="inline-flex items-center text-[11px] font-bold text-emerald-600">
             <ArrowUpRight className="w-3 h-3 mr-1" /> +12.5%
           </span>
@@ -75,7 +75,7 @@ export const ReportsAnalytics: React.FC = () => {
         </div>
         <div className="bg-[#f0f6ff] dark:bg-blue-900/20 border border-[#bfdbfe] dark:border-blue-900/50 rounded-2xl p-5 shadow-sm">
           <p className="text-[11px] font-bold text-[#0d47a1] dark:text-blue-400 mb-4">Total Pipeline Generated</p>
-          <p className="text-3xl font-bold text-[#0f172a] dark:text-slate-100 mb-2">$8.5M</p>
+          <p className="text-3xl font-bold text-[#0f172a] dark:text-slate-100 mb-2">₹8.5M</p>
           <span className="inline-flex items-center text-[11px] font-bold text-[#0d47a1] dark:text-blue-400">
             <TrendingUp className="w-3 h-3 mr-1" /> Q4 Projections Met
           </span>
@@ -98,10 +98,10 @@ export const ReportsAnalytics: React.FC = () => {
                 <AreaChart data={spendRevenueData} margin={{ top: 10, right: 0, left: -10, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
                   <XAxis dataKey="month" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} />
-                  <YAxis yAxisId="left" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(val) => `$${val/1000}k`} />
+                  <YAxis yAxisId="left" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(val) => `₹${val/1000}k`} />
                   <Tooltip 
                     contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}
-                    formatter={(value: number) => `$${value.toLocaleString()}`}
+                    formatter={(value: number) => `₹${value.toLocaleString()}`}
                   />
                   <Area yAxisId="left" type="monotone" dataKey="revenue" stroke="#10b981" strokeWidth={3} fill="#d1fae5" fillOpacity={0.4} name="Revenue" />
                   <Area yAxisId="left" type="monotone" dataKey="spend" stroke="#0d47a1" strokeWidth={3} fill="none" name="Spend" />
@@ -121,12 +121,12 @@ export const ReportsAnalytics: React.FC = () => {
                <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={channelData} layout="vertical" margin={{ top: 0, right: 20, left: 40, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#e2e8f0" />
-                  <XAxis type="number" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(val) => `${val}%`} />
+                  <XAxis type="number" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(val) => `₹${val}%`} />
                   <YAxis dataKey="name" type="category" stroke="#475569" fontSize={11} tickLine={false} axisLine={false} width={100} />
                   <Tooltip 
                     cursor={{fill: '#f8fafc'}}
                     contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }}
-                    formatter={(value: number) => `${value}%`}
+                    formatter={(value: number) => `₹${value}%`}
                   />
                   <Bar dataKey="conversion" fill="#0d47a1" radius={[0, 4, 4, 0]} barSize={24} name="Conv. Rate" />
                 </BarChart>

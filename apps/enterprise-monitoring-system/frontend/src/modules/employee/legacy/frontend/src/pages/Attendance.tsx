@@ -218,7 +218,7 @@ export default function AttendancePage() {
             <CardContent className="space-y-4">
               {[
                 ['This month', formatDuration(monthlySummaryMinutes), stats?.month ?? 'Current month'],
-                ['Attendance rate', `${stats?.attendance_percentage ?? 0}%`, `${stats?.present_days ?? 0} present days`],
+                ['Attendance rate', `₹${stats?.attendance_percentage ?? 0}%`, `₹${stats?.present_days ?? 0} present days`],
                 ['Overtime today', formatDuration(currentSession?.overtime_minutes ?? 0), 'Based on active work session'],
               ].map(([label, value, helper]) => (
                 <div key={label} className="rounded-xl border border-slate-100 p-4">

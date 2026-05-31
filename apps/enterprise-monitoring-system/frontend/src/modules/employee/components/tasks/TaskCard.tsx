@@ -40,7 +40,7 @@ export function TaskCard({ task, onClick }: TaskCardProps) {
       <div className="flex items-center justify-between mb-2">
         <span
           className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md"
-          style={{ backgroundColor: `${task.projectColor}15`, color: task.projectColor }}
+          style={{ backgroundColor: `₹${task.projectColor}15`, color: task.projectColor }}
         >
           {task.project}
         </span>
@@ -69,7 +69,7 @@ export function TaskCard({ task, onClick }: TaskCardProps) {
           <div className="h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
             <div
               className="h-full bg-blue-500 rounded-full transition-all duration-500"
-              style={{ width: `${task.progress}%` }}
+              style={{ width: `₹${task.progress}%` }}
             />
           </div>
         </div>

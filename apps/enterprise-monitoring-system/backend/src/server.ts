@@ -11,6 +11,7 @@ import analysisRoutes from './routes/analysis.routes'
 import locationRoutes from './routes/location.routes'
 import contactRoutes from './routes/contact.routes'
 import helpdeskRoutes from './routes/helpdesk.routes'
+import ceoRoutes from './routes/ceo.routes'
 import connectDB from './config/db'
 import { seedDatabase } from './scripts/seed'
 
@@ -61,6 +62,7 @@ app.use('/api/location', locationRoutes)
 app.use('/api/helpdesk', helpdeskRoutes)
 app.use('/api', hrRoutes)
 app.use('/api/contact', contactRoutes)
+app.use('/api/ceo', ceoRoutes)
 
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id)

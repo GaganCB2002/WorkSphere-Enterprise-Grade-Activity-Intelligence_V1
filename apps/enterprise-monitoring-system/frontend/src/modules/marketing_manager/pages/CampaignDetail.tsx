@@ -60,8 +60,8 @@ export const CampaignDetail: React.FC<{ setView: (v: string) => void }> = ({ set
             <Wallet className="w-4 h-4 text-[#94a3b8] dark:text-slate-500" />
           </div>
           <div className="flex items-baseline gap-2 mb-3">
-            <p className="text-3xl font-bold text-[#0f172a] dark:text-slate-100">$500k</p>
-            <p className="text-xs font-semibold text-[#64748b] dark:text-slate-400">/ $850k</p>
+            <p className="text-3xl font-bold text-[#0f172a] dark:text-slate-100">₹500k</p>
+            <p className="text-xs font-semibold text-[#64748b] dark:text-slate-400">/ ₹850k</p>
           </div>
           <div className="h-1.5 w-full bg-[#f1f5f9] dark:bg-slate-800 rounded-full overflow-hidden">
             <div className="h-full bg-[#f59e0b]" style={{ width: '60%' }}></div>
@@ -161,9 +161,9 @@ export const CampaignDetail: React.FC<{ setView: (v: string) => void }> = ({ set
                       <span className="text-sm font-semibold text-[#334155] dark:text-slate-200">LinkedIn Ads</span>
                     </div>
                   </td>
-                  <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">$250,000</td>
+                  <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">₹250,000</td>
                   <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">850k</td>
-                  <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">$12.50</td>
+                  <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">₹12.50</td>
                   <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">4,200</td>
                   <td className="py-4">
                     <div className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-600">
@@ -178,9 +178,9 @@ export const CampaignDetail: React.FC<{ setView: (v: string) => void }> = ({ set
                       <span className="text-sm font-semibold text-[#334155] dark:text-slate-200">Google Search</span>
                     </div>
                   </td>
-                  <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">$180,000</td>
+                  <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">₹180,000</td>
                   <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">1.2M</td>
-                  <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">$4.20</td>
+                  <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">₹4.20</td>
                   <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">6,100</td>
                   <td className="py-4">
                     <div className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-600">
@@ -195,9 +195,9 @@ export const CampaignDetail: React.FC<{ setView: (v: string) => void }> = ({ set
                       <span className="text-sm font-semibold text-[#334155] dark:text-slate-200">Meta (FB/IG)</span>
                     </div>
                   </td>
-                  <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">$70,000</td>
+                  <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">₹70,000</td>
                   <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">450k</td>
-                  <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">$2.15</td>
+                  <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">₹2.15</td>
                   <td className="py-4 text-sm font-semibold text-[#0f172a] dark:text-slate-100">2,150</td>
                   <td className="py-4">
                     <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#f59e0b] dark:text-amber-400">

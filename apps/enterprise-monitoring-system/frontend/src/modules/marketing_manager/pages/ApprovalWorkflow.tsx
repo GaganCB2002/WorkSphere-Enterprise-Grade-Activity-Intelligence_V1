@@ -5,7 +5,7 @@ const approvalItems = [
   { id: 'APP-1042', title: 'Q4 Enterprise SaaS Campaign Brief', requester: 'Alex Rivera', type: 'Strategy', submitted: '2 hours ago', priority: 'High' },
   { id: 'APP-1043', title: 'Google Ads Search Copy - Nov', requester: 'Mike Ross', type: 'Ad Copy', submitted: '4 hours ago', priority: 'Medium' },
   { id: 'APP-1044', title: 'Holiday Email Template Design', requester: 'Sarah Jenkins', type: 'Creative', submitted: 'Yesterday', priority: 'Low' },
-  { id: 'APP-1045', title: 'Webinar Budget Allocation ($5k)', requester: 'Alex Rivera', type: 'Budget', submitted: 'Yesterday', priority: 'High' },
+  { id: 'APP-1045', title: 'Webinar Budget Allocation (₹5k)', requester: 'Alex Rivera', type: 'Budget', submitted: 'Yesterday', priority: 'High' },
 ];
 
 export const ApprovalWorkflow: React.FC = () => {

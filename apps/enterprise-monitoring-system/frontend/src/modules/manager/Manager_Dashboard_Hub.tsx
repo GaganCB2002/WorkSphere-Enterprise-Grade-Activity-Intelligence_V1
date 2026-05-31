@@ -28,7 +28,7 @@ export function ManagerDashboardPage({ user, platform }: { user: User, platform:
 
         <div className="bg-surface border border-outline-variant rounded-xl p-6 shadow-soft hover:shadow-md transition-shadow">
           <p className="text-[10px] font-bold uppercase tracking-widest text-outline mb-4">Budget Utilization</p>
-          <p className="text-4xl font-headline text-[#9b593e] mb-6">$1.4M</p>
+          <p className="text-4xl font-headline text-[#9b593e] mb-6">₹1.4M</p>
           <div className="flex items-center gap-3">
             <div className="flex-1 h-1.5 bg-[#eae2da] rounded-full overflow-hidden">
               <div className="h-full bg-[#c27650]" style={{ width: '68%' }}></div>
@@ -95,7 +95,7 @@ export function ManagerDashboardPage({ user, platform }: { user: User, platform:
                     </div>
                     <div className="text-right">
                       <p className="text-[9px] font-bold uppercase tracking-widest text-outline mb-0.5">Budget</p>
-                      <p className="text-xs font-bold text-on-surface">$420k / $600k</p>
+                      <p className="text-xs font-bold text-on-surface">₹420k / ₹600k</p>
                     </div>
                   </div>
                   <div className="flex-1 h-1.5 bg-[#eae2da] rounded-full overflow-hidden mt-2">

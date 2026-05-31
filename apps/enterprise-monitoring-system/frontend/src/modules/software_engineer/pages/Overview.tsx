@@ -69,7 +69,7 @@ export const Overview: React.FC = () => {
               {/* Fake Bar Chart */}
               <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_19px,#30363d_20px)] bg-[length:100%_20px] opacity-20 pointer-events-none" />
               {[60, 58, 52, 49, 44, 38, 30, 28, 20, 15].map((val, i) => (
-                <div key={i} className="flex-1 bg-blue-600/20 hover:bg-blue-600/40 border border-blue-500/30 rounded-t transition-colors relative group" style={{ height: `${val}%` }}>
+                <div key={i} className="flex-1 bg-blue-600/20 hover:bg-blue-600/40 border border-blue-500/30 rounded-t transition-colors relative group" style={{ height: `₹${val}%` }}>
                   <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#21262d] text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none text-white whitespace-nowrap shadow-xl border border-[#30363d]">
                     {val} points left
                   </div>

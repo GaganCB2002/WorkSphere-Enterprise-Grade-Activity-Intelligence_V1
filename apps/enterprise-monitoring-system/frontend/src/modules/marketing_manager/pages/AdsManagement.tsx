@@ -12,9 +12,9 @@ const adData = [
 ];
 
 const adSets = [
-  { name: 'Retargeting - Q3 Enterprise', platform: 'LinkedIn', budget: '$15,000', spent: '85%', cpa: '$120' },
-  { name: 'Brand Awareness - Global', platform: 'Google Ads', budget: '$45,000', spent: '42%', cpa: '$85' },
-  { name: 'Webinar Signups', platform: 'Meta', budget: '$5,000', spent: '90%', cpa: '$45' },
+  { name: 'Retargeting - Q3 Enterprise', platform: 'LinkedIn', budget: '₹15,000', spent: '85%', cpa: '₹120' },
+  { name: 'Brand Awareness - Global', platform: 'Google Ads', budget: '₹45,000', spent: '42%', cpa: '₹85' },
+  { name: 'Webinar Signups', platform: 'Meta', budget: '₹5,000', spent: '90%', cpa: '₹45' },
 ];
 
 export const AdsManagement: React.FC = () => {
@@ -30,18 +30,18 @@ export const AdsManagement: React.FC = () => {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-slate-900 border border-[#e2e8f0] dark:border-slate-800 rounded-2xl p-5 shadow-sm">
           <p className="text-[11px] font-bold text-[#475569] dark:text-slate-300 mb-4">Total Ad Spend (30d)</p>
-          <p className="text-3xl font-bold text-[#0f172a] dark:text-slate-100 mb-2">$40k</p>
+          <p className="text-3xl font-bold text-[#0f172a] dark:text-slate-100 mb-2">₹40k</p>
         </div>
         <div className="bg-white dark:bg-slate-900 border border-[#e2e8f0] dark:border-slate-800 rounded-2xl p-5 shadow-sm">
           <p className="text-[11px] font-bold text-[#475569] dark:text-slate-300 mb-4">Cost Per Click (CPC)</p>
-          <p className="text-3xl font-bold text-[#0d47a1] dark:text-blue-400 mb-2">$4.50</p>
+          <p className="text-3xl font-bold text-[#0d47a1] dark:text-blue-400 mb-2">₹4.50</p>
           <span className="inline-flex items-center text-[11px] font-bold text-emerald-600">
             <ArrowUpRight className="w-3 h-3 mr-1" /> -12% (Improving)
           </span>
         </div>
         <div className="bg-[#f0f6ff] dark:bg-blue-900/20 border border-[#bfdbfe] dark:border-blue-900/50 rounded-2xl p-5 shadow-sm">
           <p className="text-[11px] font-bold text-[#0d47a1] dark:text-blue-400 mb-4">Cost Per Acquisition (CPA)</p>
-          <p className="text-3xl font-bold text-[#0f172a] dark:text-slate-100 mb-2">$85</p>
+          <p className="text-3xl font-bold text-[#0f172a] dark:text-slate-100 mb-2">₹85</p>
         </div>
         <div className="bg-white dark:bg-slate-900 border border-[#e2e8f0] dark:border-slate-800 rounded-2xl p-5 shadow-sm">
           <p className="text-[11px] font-bold text-[#475569] dark:text-slate-300 mb-4">ROAS</p>
@@ -63,7 +63,7 @@ export const AdsManagement: React.FC = () => {
                 <AreaChart data={adData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
                   <XAxis dataKey="month" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} />
-                  <YAxis yAxisId="left" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v)=>`$${v/1000}k`} />
+                  <YAxis yAxisId="left" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v)=>`₹${v/1000}k`} />
                   <YAxis yAxisId="right" orientation="right" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} />
                   <Tooltip contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }} />
                   <Area yAxisId="right" type="monotone" dataKey="conversions" stroke="#10b981" strokeWidth={3} fill="#d1fae5" fillOpacity={0.4} name="Conversions" />

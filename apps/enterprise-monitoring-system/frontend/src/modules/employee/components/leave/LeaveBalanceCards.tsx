@@ -26,7 +26,7 @@ export function LeaveBalanceCards({ balances }: LeaveBalanceCardsProps) {
               <div
                 className="h-full rounded-full transition-all duration-500"
                 style={{
-                  width: `${(balance.used / balance.total) * 100}%`,
+                  width: `₹${(balance.used / balance.total) * 100}%`,
                   backgroundColor: balance.color
                 }}
               />

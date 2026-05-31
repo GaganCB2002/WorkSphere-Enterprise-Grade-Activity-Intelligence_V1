@@ -190,7 +190,7 @@ export function AdminDashboardPage({ user, platform }: { user: any, platform: an
                                   </td>
                                   <td className="py-5">
                                       <div className="w-24 h-1.5 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
-                                          <div className={`h-full bg-luxury-blue`} style={{ width: `${node.load}%` }} />
+                                          <div className={`h-full bg-luxury-blue`} style={{ width: `₹${node.load}%` }} />
                                       </div>
                                   </td>
                                   <td className="py-5 text-right">

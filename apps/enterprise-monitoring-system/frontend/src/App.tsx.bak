@@ -219,6 +219,12 @@ function App() {
           </ProtectedRoute>
         } />
 
+        <Route path="/ceo-dashboard" element={
+          <ProtectedRoute user={user} allowedRoles={['CEO', 'ADMIN', 'SUPERADMIN']}>
+            {user ? <CEODashboardPage user={user} platform={platform} onLogout={logout} /> : <Navigate to="/login" replace />}
+          </ProtectedRoute>
+        } />
+
         <Route path="/*" element={
           <ProtectedRoute user={user} allowedRoles={['CEO', 'HR', 'MANAGER', 'LEAD', 'TECH_LEAD', 'EMPLOYEE', 'MARKETING', 'ADMIN', 'SUPERADMIN', 'INTERN', 'FINANCE_MANAGER']}>
             {user && platform ? (
@@ -228,7 +234,6 @@ function App() {
                 <AppShell user={user} onLogout={logout}>
                   <Routes>
                     <Route path="admin-dashboard" element={<AdminDashboardPage user={user} platform={platform} />} />
-                    <Route path="ceo-dashboard" element={<CEODashboardPage user={user} platform={platform} />} />
                     <Route path="hr-dashboard" element={<HrExecutiveDashboard user={user} token={token!} platform={platform} feed={feed} onRefresh={async () => { await refreshPlatform(); }} />} />
                     <Route path="employee-dashboard" element={<EmployeeModule user={user} platform={platform} token={token!} />} />
                     <Route path="techlead-dashboard" element={<TechLeadDashboard user={user} platform={platform} />} />

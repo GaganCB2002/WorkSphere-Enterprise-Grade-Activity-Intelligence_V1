@@ -1,4 +1,4 @@
-﻿package com.company.enterprise.config;
+package com.company.enterprise.config;
 
 import com.company.enterprise.security.JwtAuthenticationEntryPoint;
 import com.company.enterprise.security.CustomUserDetailsService;
@@ -48,6 +48,8 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/auth/**", "/swagger-ui/**", "/v3/api-docs/**", "/ws/**").permitAll()
+                .requestMatchers("/ceo/**").hasAnyRole("CEO", "ADMIN", "SUPER_ADMIN")
+                .requestMatchers("/cto/**").hasAnyRole("CTO", "ADMIN", "SUPER_ADMIN")
                 .anyRequest().authenticated()
             );
 

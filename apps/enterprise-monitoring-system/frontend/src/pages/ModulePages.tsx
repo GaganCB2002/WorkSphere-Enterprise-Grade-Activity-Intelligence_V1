@@ -131,7 +131,7 @@ export function RecruitmentPage({
       </SectionCard>
 
       <SectionCard 
-        title={selectedStage ? `${selectedStage} Candidates` : "All Candidates"} 
+        title={selectedStage ? `₹${selectedStage} Candidates` : "All Candidates"} 
         subtitle={selectedStage ? `Viewing only applicants currently in the ${selectedStage} stage.` : "Resume parsing outcomes, interview plans, and background verification."}
         action={selectedStage && (
           <button 
@@ -246,7 +246,7 @@ export function OnboardingPage({ platform }: { platform: PlatformData }) {
           metric={{
             id: 'avg-completion',
             label: 'Average completion',
-            value: `${platform.onboarding.progressSummary.avgCompletion}%`,
+            value: `₹${platform.onboarding.progressSummary.avgCompletion}%`,
             delta: 'KYC, assets, access, payroll, and welcome tasks',
             tone: 'positive',
           }}
@@ -265,7 +265,7 @@ export function OnboardingPage({ platform }: { platform: PlatformData }) {
               </div>
 
               <div className="mt-4 h-3 rounded-full bg-slate-100 dark:bg-slate-800">
-                <div className="h-3 rounded-full bg-brand" style={{ width: `${record.completion}%` }} />
+                <div className="h-3 rounded-full bg-brand" style={{ width: `₹${record.completion}%` }} />
               </div>
 
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -273,7 +273,7 @@ export function OnboardingPage({ platform }: { platform: PlatformData }) {
                   <p className="text-xs uppercase tracking-[0.16em] text-slate-400">Documents</p>
                   <ul className="mt-2 space-y-2 text-sm text-slate-600 dark:text-slate-300">
                     {record.documents.map((document, idx) => (
-                      <li key={`${document}-${idx}`}>{document}</li>
+                      <li key={`₹${document}-${idx}`}>{document}</li>
                     ))}
                   </ul>
                 </div>
@@ -281,7 +281,7 @@ export function OnboardingPage({ platform }: { platform: PlatformData }) {
                   <p className="text-xs uppercase tracking-[0.16em] text-slate-400">Assets and access</p>
                   <ul className="mt-2 space-y-2 text-sm text-slate-600 dark:text-slate-300">
                     {[...record.assets, ...record.accessProvisioned].map((item, idx) => (
-                      <li key={`${item}-${idx}`}>{item}</li>
+                      <li key={`₹${item}-${idx}`}>{item}</li>
                     ))}
                   </ul>
                 </div>
@@ -352,7 +352,7 @@ export function PeoplePage({ platform, token }: { platform: PlatformData; token:
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 {employee.skills.map((skill, idx) => (
-                  <span key={`${skill}-${idx}`} className="rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">
+                  <span key={`₹${skill}-${idx}`} className="rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">
                     {skill}
                   </span>
                 ))}
@@ -390,12 +390,12 @@ export function AttendancePage({
     <div className="space-y-4">
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {[
-          ['Attendance rate', `${platform.attendance.overview.attendanceRate}%`, 'positive'],
-          ['Present today', `${platform.attendance.overview.presentToday}`, 'neutral'],
-          ['Remote today', `${platform.attendance.overview.remoteToday}`, 'neutral'],
-          ['Late markings', `${platform.attendance.overview.lateMarkings}`, 'warning'],
-          ['Overtime hours', `${platform.attendance.overview.overtimeHours}`, 'warning'],
-          ['Leave utilization', `${platform.attendance.overview.leaveBalanceUtilization}%`, 'positive'],
+          ['Attendance rate', `₹${platform.attendance.overview.attendanceRate}%`, 'positive'],
+          ['Present today', `₹${platform.attendance.overview.presentToday}`, 'neutral'],
+          ['Remote today', `₹${platform.attendance.overview.remoteToday}`, 'neutral'],
+          ['Late markings', `₹${platform.attendance.overview.lateMarkings}`, 'warning'],
+          ['Overtime hours', `₹${platform.attendance.overview.overtimeHours}`, 'warning'],
+          ['Leave utilization', `₹${platform.attendance.overview.leaveBalanceUtilization}%`, 'positive'],
         ].map(([label, value, tone]) => (
           <MetricCard
             key={label}
@@ -740,7 +740,7 @@ export function PerformancePage({ platform }: { platform: PlatformData }) {
                 </div>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {record.strengths.map((strength, idx) => (
-                    <span key={`${strength}-${idx}`} className="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand">
+                    <span key={`₹${strength}-${idx}`} className="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand">
                       {strength}
                     </span>
                   ))}
@@ -819,7 +819,7 @@ export function EngagementPage({ platform }: { platform: PlatformData }) {
           metric={{
             id: 'sentiment',
             label: 'Average sentiment',
-            value: `${platform.engagement.avgSentiment}%`,
+            value: `₹${platform.engagement.avgSentiment}%`,
             delta: 'Announcements, rewards, surveys, and chat energy',
             tone: 'positive',
           }}
@@ -963,7 +963,7 @@ export function BudgetPage({ platform }: { platform: PlatformData }) {
           metric={{
             id: 'roi',
             label: 'Average ROI',
-            value: `${(
+            value: `₹${(
               platform.budget.records.reduce((sum, item) => sum + item.roi, 0) / platform.budget.records.length
             ).toFixed(2)}x`,
             delta: 'Productivity and cost return indicator',
@@ -1150,11 +1150,11 @@ export function AnalyticsPage({ platform }: { platform: PlatformData }) {
   return (
     <div className="space-y-4">
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        <MetricCard metric={{ id: 'count', label: 'Employee count', value: `${platform.analytics.employeeCount}`, delta: 'Active workforce', tone: 'positive' }} />
-        <MetricCard metric={{ id: 'attrition', label: 'Attrition rate', value: `${platform.analytics.attritionRate}%`, delta: 'AI attrition forecast', tone: 'warning' }} />
-        <MetricCard metric={{ id: 'engagement', label: 'Engagement', value: `${platform.analytics.avgEngagement}%`, delta: 'Average employee sentiment', tone: 'positive' }} />
-        <MetricCard metric={{ id: 'performance', label: 'Performance', value: `${platform.analytics.avgPerformance}/5`, delta: 'Average review score', tone: 'positive' }} />
-        <MetricCard metric={{ id: 'attendance', label: 'Attendance', value: `${platform.analytics.attendanceRate}%`, delta: 'Workforce presence trend', tone: 'positive' }} />
+        <MetricCard metric={{ id: 'count', label: 'Employee count', value: `₹${platform.analytics.employeeCount}`, delta: 'Active workforce', tone: 'positive' }} />
+        <MetricCard metric={{ id: 'attrition', label: 'Attrition rate', value: `₹${platform.analytics.attritionRate}%`, delta: 'AI attrition forecast', tone: 'warning' }} />
+        <MetricCard metric={{ id: 'engagement', label: 'Engagement', value: `₹${platform.analytics.avgEngagement}%`, delta: 'Average employee sentiment', tone: 'positive' }} />
+        <MetricCard metric={{ id: 'performance', label: 'Performance', value: `₹${platform.analytics.avgPerformance}/5`, delta: 'Average review score', tone: 'positive' }} />
+        <MetricCard metric={{ id: 'attendance', label: 'Attendance', value: `₹${platform.analytics.attendanceRate}%`, delta: 'Workforce presence trend', tone: 'positive' }} />
         <MetricCard metric={{ id: 'hiring-cost', label: 'Hiring cost/employee', value: currency(platform.analytics.hiringCostPerEmployee), delta: 'Budget planning driver', tone: 'neutral' }} />
       </section>
 

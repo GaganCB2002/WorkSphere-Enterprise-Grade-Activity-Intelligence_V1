@@ -104,7 +104,7 @@ export const SuperAdminDashboard: React.FC = () => {
           {Object.entries(aiToggles).map(([key, value]) => (
             <div key={key} className="bg-slate-950/80 border border-slate-800 rounded-2xl p-5 flex items-center justify-between shadow-lg">
               <div>
-                <h5 className="font-bold text-white text-sm capitalize">{key.replace(/([A-Z])/g, ' $1')}</h5>
+                <h5 className="font-bold text-white text-sm capitalize">{key.replace(/([A-Z])/g, ' ₹1')}</h5>
                 <span className="text-xs text-slate-500 font-medium block mt-0.5">
                   {value ? 'Active & Polling' : 'Suspended'}
                 </span>

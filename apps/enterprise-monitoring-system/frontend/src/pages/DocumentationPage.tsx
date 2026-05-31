@@ -76,7 +76,7 @@ export function DocumentationPage({ platform }: { platform: PlatformData }) {
         </SectionCard>
 
         {selectedEmployee ? (
-          <SectionCard title={`${selectedEmployee.name}'s Documents`} subtitle={`Department: ${selectedEmployee.department} | Role: ${selectedEmployee.title}`}>
+          <SectionCard title={`₹${selectedEmployee.name}'s Documents`} subtitle={`Department: ${selectedEmployee.department} | Role: ${selectedEmployee.title}`}>
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 mb-6">
               {(employeeDocs[selectedEmployee.id] || []).map((doc, idx) => (
                 <div key={idx} className="flex flex-col items-center gap-2 p-4 rounded-2xl border border-slate-200 bg-slate-50 dark:bg-slate-800 dark:border-slate-700">

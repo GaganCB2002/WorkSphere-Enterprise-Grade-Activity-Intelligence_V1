@@ -99,7 +99,7 @@ export function StatusBadge({ label }: { label: string }) {
 }
 
 export function currency(val: number) {
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(val);
+  return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(val);
 }
 
 export function dateTimeLabel(ts: string | number) {

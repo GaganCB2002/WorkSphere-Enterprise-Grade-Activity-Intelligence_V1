@@ -14,7 +14,7 @@ async function request<T>(path: string, options: RequestOptions = {}) {
     headers.set('Authorization', `Bearer ${options.token}`)
   }
 
-  const response = await fetch(`${API_URL}${path}`, {
+  const response = await fetch(`₹${API_URL}${path}`, {
     ...options,
     headers,
   })

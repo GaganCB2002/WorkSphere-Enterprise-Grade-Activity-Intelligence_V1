@@ -7,6 +7,10 @@ echo    WORKSPHERE ENTERPRISE STARTUP
 echo ==========================================
 echo.
 
+echo [0.5/5] Updating Activity Log...
+node scripts/update-activity.js
+echo.
+
 echo [0/5] Installing dependencies...
 cd apps\dashboard\backend
 if not exist node_modules (

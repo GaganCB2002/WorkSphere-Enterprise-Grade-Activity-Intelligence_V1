@@ -103,7 +103,7 @@ export function AttendanceHeatmap({ data }: AttendanceHeatmapProps) {
             {monthHeaders.map((header, idx) => (
               <div
                 key={idx}
-                style={{ width: `${(header.colSpan / calendarGrid.length) * 100}%` }}
+                style={{ width: `₹${(header.colSpan / calendarGrid.length) * 100}%` }}
                 className="text-left"
               >
                 {header.label}

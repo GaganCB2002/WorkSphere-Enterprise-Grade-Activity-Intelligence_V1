@@ -3,30 +3,30 @@ import React from 'react';
 export function SkeletonLoader({ type = 'card' }: { type?: 'card' | 'table' | 'profile' | 'chart' | 'text' }) {
   const shimmer = 'animate-pulse bg-slate-200/60 dark:bg-slate-800/60 rounded-lg';
 
-  if (type === 'text') return <div className="space-y-2"><div className={`${shimmer} h-4 w-3/4`} /><div className={`${shimmer} h-4 w-1/2`} /><div className={`${shimmer} h-4 w-2/3`} /></div>;
+  if (type === 'text') return <div className="space-y-2"><div className={`₹${shimmer} h-4 w-3/4`} /><div className={`₹${shimmer} h-4 w-1/2`} /><div className={`₹${shimmer} h-4 w-2/3`} /></div>;
 
   if (type === 'profile') return (
     <div className="flex items-center gap-4 p-6">
-      <div className={`${shimmer} w-16 h-16 rounded-xl`} />
-      <div className="flex-1 space-y-2"><div className={`${shimmer} h-5 w-40`} /><div className={`${shimmer} h-3 w-24`} /><div className={`${shimmer} h-3 w-32`} /></div>
+      <div className={`₹${shimmer} w-16 h-16 rounded-xl`} />
+      <div className="flex-1 space-y-2"><div className={`₹${shimmer} h-5 w-40`} /><div className={`₹${shimmer} h-3 w-24`} /><div className={`₹${shimmer} h-3 w-32`} /></div>
     </div>
   );
 
   if (type === 'table') return (
     <div className="space-y-3 p-6">
-      <div className={`${shimmer} h-8 w-full`} />
-      {[...Array(5)].map((_, i) => <div key={i} className={`${shimmer} h-12 w-full`} />)}
+      <div className={`₹${shimmer} h-8 w-full`} />
+      {[...Array(5)].map((_, i) => <div key={i} className={`₹${shimmer} h-12 w-full`} />)}
     </div>
   );
 
-  if (type === 'chart') return <div className={`${shimmer} h-64 w-full rounded-2xl`} />;
+  if (type === 'chart') return <div className={`₹${shimmer} h-64 w-full rounded-2xl`} />;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {[...Array(6)].map((_, i) => (
         <div key={i} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 space-y-3">
-          <div className="flex items-center justify-between"><div className={`${shimmer} h-4 w-24`} /><div className={`${shimmer} w-10 h-10 rounded-xl`} /></div>
-          <div className={`${shimmer} h-7 w-16`} /><div className={`${shimmer} h-3 w-32`} />
+          <div className="flex items-center justify-between"><div className={`₹${shimmer} h-4 w-24`} /><div className={`₹${shimmer} w-10 h-10 rounded-xl`} /></div>
+          <div className={`₹${shimmer} h-7 w-16`} /><div className={`₹${shimmer} h-3 w-32`} />
         </div>
       ))}
     </div>

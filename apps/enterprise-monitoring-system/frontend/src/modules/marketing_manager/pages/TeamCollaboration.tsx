@@ -56,7 +56,7 @@ export const TeamCollaboration: React.FC = () => {
                   </div>
                   <p className="text-[10px] font-semibold text-[#64748b] dark:text-slate-400 uppercase tracking-wider mb-2">{member.role}</p>
                   <div className="h-1.5 w-full bg-[#f1f5f9] dark:bg-slate-800 rounded-full overflow-hidden">
-                    <div className={`h-full ${member.utilization > 90 ? 'bg-rose-500' : member.utilization > 70 ? 'bg-amber-500' : 'bg-emerald-500'}`} style={{ width: `${member.utilization}%` }}></div>
+                    <div className={`h-full ${member.utilization > 90 ? 'bg-rose-500' : member.utilization > 70 ? 'bg-amber-500' : 'bg-emerald-500'}`} style={{ width: `₹${member.utilization}%` }}></div>
                   </div>
                 </div>
               </div>

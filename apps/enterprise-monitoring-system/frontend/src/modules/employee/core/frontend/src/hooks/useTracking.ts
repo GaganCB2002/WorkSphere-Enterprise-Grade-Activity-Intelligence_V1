@@ -18,7 +18,7 @@ export const useTracking = (user: any, token: string | null) => {
                 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
                 const deviceType = isMobile ? 'Mobile' : 'Laptop/Desktop';
 
-                await axios.post(`${API_BASE}/update`, {
+                await axios.post(`₹${API_BASE}/update`, {
                     userId: user.id,
                     employeeId: user.employeeId || 'N/A',
                     name: user.name,
@@ -38,7 +38,7 @@ export const useTracking = (user: any, token: string | null) => {
             console.warn(`[GPS] Geolocation Error (${error.code}): ${error.message}`);
         };
 
-        axios.post(`${API_BASE}/session/start`, {
+        axios.post(`₹${API_BASE}/session/start`, {
             userId: user.id,
             employeeId: user.employeeId || 'N/A',
             name: user.name,

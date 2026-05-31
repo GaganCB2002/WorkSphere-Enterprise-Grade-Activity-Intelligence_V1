@@ -51,7 +51,7 @@ export function TeamGrid({ members, onMessageClick }: TeamGridProps) {
                   className={`h-full rounded-full transition-all duration-500 ${
                     member.workload > 85 ? 'bg-rose-500' : member.workload > 60 ? 'bg-amber-500' : 'bg-emerald-500'
                   }`}
-                  style={{ width: `${member.workload}%` }}
+                  style={{ width: `₹${member.workload}%` }}
                 />
               </div>
             </div>

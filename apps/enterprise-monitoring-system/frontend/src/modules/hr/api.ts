@@ -151,7 +151,7 @@ const mockAssets: InventoryAsset[] = [
 
 async function fetchWithFallback<T>(endpoint: string, fallbackData: T, options?: RequestInit): Promise<T> {
   try {
-    const res = await fetch(`${BASE_URL}${endpoint}`, {
+    const res = await fetch(`₹${BASE_URL}${endpoint}`, {
       ...options,
       headers: {
         'Content-Type': 'application/json',

@@ -13,6 +13,9 @@ import {
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   AreaChart, Area
 } from 'recharts';
+import { HrBudgetModule } from './components/HrBudgetModule';
+import { HrResourceAllocationModule } from './components/HrResourceAllocationModule';
+import { HrLeaveApprovalsModule } from './components/HrLeaveApprovalsModule';
 
 interface HrExecutiveDashboardProps {
   user?: any;
@@ -234,10 +237,7 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
         {/* ==================================================== */}
         <motion.aside
           animate={{ width: sidebarOpen ? 280 : 80 }}
-          className={`fixed top-4 bottom-4 z-40 transition-all duration-300 flex flex-col rounded-[32px] border overflow-hidden ${sidebarOpen ? 'left-4' : '-left-[320px] lg:left-4'
-            } ${isDark
-              ? 'bg-[#0b1329]/80 border-white/10 backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)]'
-              : 'bg-white/90 border-slate-200 backdrop-blur-2xl shadow-[0_10px_40px_rgba(0,0,0,0.08)]'
+          className={`fixed top-4 bottom-4 z-40 transition-all duration-300 flex flex-col skeuo-panel overflow-hidden ${sidebarOpen ? 'left-4' : '-left-[320px] lg:left-4'
             }`}
         >
           {/* Top Logo Section */}
@@ -299,21 +299,20 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setActiveMenu(item.id)}
-                  className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-xs font-bold transition-all duration-300 relative group ${isActive
-                    ? 'bg-gradient-to-r from-blue-600 to-teal-500 text-white shadow-lg shadow-blue-500/25 border border-white/20'
-                    : isDark
-                      ? 'text-slate-400 hover:text-white hover:bg-white/5'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                    }`}
+                  className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group ${
+                    isActive
+                      ? 'skeuo-inset text-blue-500'
+                      : 'skeuo-btn text-slate-500 hover:text-slate-300'
+                  }`}
                 >
-                  <Icon className={`w-5 h-5 flex-shrink-0 transition-colors ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-blue-400'}`} />
+                  <Icon className={`w-5 h-5 flex-shrink-0 transition-colors ${isActive ? 'text-blue-400' : 'text-slate-400 group-hover:text-blue-400'}`} />
                   {sidebarOpen && (
                     <span className="tracking-wide text-left flex-1 truncate">{item.label}</span>
                   )}
                   {isActive && sidebarOpen && (
                     <motion.div
                       layoutId="activeIndicator"
-                      className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"
+                      className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"
                     />
                   )}
                 </motion.button>
@@ -321,48 +320,35 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
             })}
           </div>
 
-          {/* Sidebar Footer */}
           <div className="p-4 border-t border-white/5 mx-4 mb-4 flex items-center justify-between text-[10px] font-bold text-slate-500">
             {sidebarOpen && <span>AuraHR OS v2.4</span>}
             <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
           </div>
         </motion.aside>
 
-        {/* ==================================================== */}
-        {/* DYNAMIC CONTENT WORKSPACE */}
-        {/* ==================================================== */}
         <div className={`flex-1 flex flex-col min-w-0 p-4 lg:p-6 space-y-6 transition-all duration-300 ${sidebarOpen ? 'lg:pl-[312px]' : 'lg:pl-[112px]'
           }`}>
 
-          {/* ==================================================== */}
-          {/* TOP HEADER / NAVBAR */}
-          {/* ==================================================== */}
-          <header className={`h-20 rounded-[32px] border flex items-center justify-between px-6 transition-all duration-500 ${isDark
-            ? 'bg-[#0b1329]/80 border-white/10 backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.3)]'
-            : 'bg-white/90 border-slate-200 backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.05)]'
-            }`}>
-            {/* Left Section */}
+          <header className={`h-20 rounded-[32px] skeuo-panel flex items-center justify-between px-6 transition-all duration-500`}>
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className={`p-3 rounded-2xl border transition-colors ${isDark ? 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10' : 'bg-slate-100 border-slate-200 text-slate-600 hover:bg-slate-200'}`}
+                className={`p-3 rounded-2xl skeuo-btn transition-colors`}
               >
                 <LayoutDashboard className="w-5 h-5" />
               </button>
 
               <button
                 onClick={() => setActiveMenu('Dashboard')}
-                className={`hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-2xl border text-xs font-bold transition-all ${isDark ? 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10' : 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200'
-                  }`}
+                className={`hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-2xl skeuo-btn text-xs font-bold transition-all`}
               >
                 <ArrowLeft className="w-4 h-4 text-blue-400" />
                 <span>BACK TO DASHBOARD</span>
               </button>
             </div>
 
-            {/* Center Section */}
             <div className="flex items-center gap-6 flex-1 max-w-xl mx-8">
-              <div className="hidden xl:flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold tracking-wider uppercase flex-shrink-0 shadow-inner">
+              <div className="hidden xl:flex items-center gap-2 px-4 py-2 rounded-full skeuo-panel border-emerald-500/20 text-emerald-400 text-xs font-bold tracking-wider uppercase flex-shrink-0">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span>LIVE INFRASTRUCTURE LINKED</span>
               </div>
@@ -374,30 +360,22 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                   placeholder="Search system..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className={`w-full pl-11 pr-4 py-3 rounded-2xl text-xs font-bold border transition-all outline-none ${isDark
-                    ? 'bg-black/40 border-white/10 text-white placeholder-slate-500 focus:border-blue-500/50 focus:bg-black/60'
-                    : 'bg-slate-100 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-blue-500/50 focus:bg-white'
-                    }`}
+                  className={`w-full pl-11 pr-4 py-3 rounded-2xl text-xs font-bold skeuo-inset transition-all outline-none`}
                 />
               </div>
             </div>
 
-            {/* Right Section */}
             <div className="flex items-center gap-4">
-              <button className={`p-3 rounded-2xl border relative transition-colors ${isDark ? 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10' : 'bg-slate-100 border-slate-200 text-slate-600 hover:bg-slate-200'}`}>
+              <button className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all skeuo-btn relative`}>
                 <Bell className="w-5 h-5" />
                 <span className="absolute top-2 right-2 w-2 h-2 bg-teal-400 rounded-full animate-ping" />
-                <span className="absolute top-2 right-2 w-2 h-2 bg-teal-400 rounded-full" />
               </button>
 
-              <button
-                onClick={toggleTheme}
-                className={`p-3 rounded-2xl border transition-colors ${isDark ? 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10' : 'bg-slate-100 border-slate-200 text-slate-600 hover:bg-slate-200'}`}
-              >
-                {isDark ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-blue-600" />}
+              <button className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all skeuo-btn`} onClick={toggleTheme}>
+                {isDark ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-indigo-500" />}
               </button>
 
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-teal-400 p-[2px] shadow-lg shadow-blue-500/20 cursor-pointer hover:scale-105 transition-transform">
+              <div className="w-12 h-12 rounded-2xl skeuo-panel p-[2px] cursor-pointer hover:scale-105 transition-transform">
                 <div className="w-full h-full rounded-[14px] bg-[#0b1329] flex items-center justify-center font-bold text-white text-base shadow-inner">
                   H
                 </div>
@@ -405,14 +383,8 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
             </div>
           </header>
 
-          {/* ==================================================== */}
-          {/* MAIN CONTENT AREA */}
-          {/* ==================================================== */}
           <main className="flex-1 space-y-6">
 
-            {/* ==================================================== */}
-            {/* VIEW 1: DOCUMENTATION (Employee Documentation) */}
-            {/* ==================================================== */}
             {activeMenu === 'Documentation' && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -420,12 +392,11 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                 transition={{ duration: 0.4 }}
                 className="space-y-6"
               >
-                {/* Page Title */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-blue-900/20 via-transparent to-transparent p-6 rounded-[32px] border border-white/5">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 skeuo-panel p-6 rounded-[32px]">
                   <div>
                     <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-3">
                       Employee Documentation
-                      <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                      <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest skeuo-panel text-blue-400">
                         Secure Vault
                       </span>
                     </h1>
@@ -436,20 +407,16 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
 
                   <button
                     onClick={() => alert('Opening Bulk Upload Modal...')}
-                    className="flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 text-white rounded-2xl font-bold text-xs uppercase tracking-wider shadow-xl shadow-blue-500/25 hover:scale-105 transition-all duration-300 w-fit"
+                    className="flex items-center gap-2 px-6 py-3.5 skeuo-btn hover:scale-105 transition-all duration-300 w-fit"
                   >
                     <Upload className="w-4 h-4" />
                     <span>Upload New Document</span>
                   </button>
                 </div>
 
-                {/* Two Column Layout */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-                  {/* LEFT DOCUMENT PANEL */}
-                  <div className={`lg:col-span-5 rounded-[32px] border p-6 relative overflow-hidden transition-all duration-500 ${isDark ? 'bg-[#0b1329]/60 border-white/10 backdrop-blur-xl shadow-2xl' : 'bg-white border-slate-200 shadow-xl'
-                    }`}>
-                    {/* Big Background Text */}
+                  <div className={`lg:col-span-5 rounded-[32px] skeuo-panel p-6 relative overflow-hidden transition-all duration-500`}>
                     <div className="absolute -bottom-10 -right-10 text-[110px] font-black leading-none text-slate-500/5 dark:text-white/[0.02] pointer-events-none select-none tracking-tighter uppercase font-display">
                       EMPLOYEE<br />FOLDERS
                     </div>
@@ -465,7 +432,6 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                         </p>
                       </div>
 
-                      {/* Search Bar */}
                       <div className="relative">
                         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                         <input
@@ -473,14 +439,10 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                           placeholder="Search by name or ID..."
                           value={docSearchQuery}
                           onChange={(e) => setDocSearchQuery(e.target.value)}
-                          className={`w-full pl-11 pr-4 py-3 rounded-2xl text-xs font-bold border transition-all outline-none ${isDark
-                            ? 'bg-black/40 border-white/10 text-white placeholder-slate-500 focus:border-blue-500/50 focus:bg-black/60'
-                            : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-blue-500/50 focus:bg-white'
-                            }`}
+                          className={`w-full pl-11 pr-4 py-3 rounded-2xl text-xs font-bold skeuo-inset transition-all outline-none`}
                         />
                       </div>
 
-                      {/* Employee Folder List */}
                       <div className="space-y-3 max-h-[500px] overflow-y-auto custom-scrollbar pr-1">
                         {filteredFolders.map((folder) => {
                           const isSelected = selectedFolder?.id === folder.id;
@@ -490,16 +452,10 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                               whileHover={{ scale: 1.01 }}
                               whileTap={{ scale: 0.99 }}
                               onClick={() => setSelectedFolder(folder)}
-                              className={`p-4 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center justify-between group ${isSelected
-                                ? 'bg-gradient-to-r from-blue-600/20 to-teal-500/10 border-blue-500/50 shadow-lg shadow-blue-500/10'
-                                : isDark
-                                  ? 'bg-white/5 border-white/5 hover:border-white/10 hover:bg-white/10'
-                                  : 'bg-slate-50 border-slate-100 hover:border-slate-200 hover:bg-slate-100'
-                                }`}
+                              className={`p-4 rounded-2xl skeuo-btn transition-all duration-300 cursor-pointer flex items-center justify-between group ${isSelected ? 'skeuo-inset' : ''}`}
                             >
                               <div className="flex items-center gap-3.5 min-w-0">
-                                <div className={`p-3 rounded-xl border transition-colors flex-shrink-0 ${isSelected ? 'bg-blue-600 border-blue-500 text-white shadow-md shadow-blue-500/30' : isDark ? 'bg-white/5 border-white/10 text-blue-400 group-hover:bg-blue-500/10' : 'bg-white border-slate-200 text-blue-600 group-hover:bg-blue-50'
-                                  }`}>
+                                <div className={`p-3 rounded-xl skeuo-btn transition-colors flex-shrink-0 ${isSelected ? 'skeuo-inset' : ''}`}>
                                   <FolderOpen className="w-5 h-5" />
                                 </div>
                                 <div className="min-w-0">
@@ -520,32 +476,24 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                     </div>
                   </div>
 
-                  {/* RIGHT DOCUMENT VIEW PANEL */}
-                  <div className={`lg:col-span-7 rounded-[32px] border p-8 flex flex-col justify-center transition-all duration-500 relative overflow-hidden ${isDark ? 'bg-[#0b1329]/40 border-white/10 backdrop-blur-xl shadow-2xl' : 'bg-white border-slate-200 shadow-xl'
-                    }`}>
+                  <div className={`lg:col-span-7 rounded-[32px] skeuo-panel p-8 flex flex-col justify-center transition-all duration-500 relative overflow-hidden`}>
                     <AnimatePresence mode="wait">
                       {!selectedFolder ? (
-                        /* Empty State */
                         <motion.div
                           key="empty"
                           initial={{ opacity: 0, scale: 0.95 }}
                           animate={{ opacity: 1, scale: 1 }}
                           exit={{ opacity: 0, scale: 0.95 }}
-                          className={`w-full h-[500px] rounded-[28px] border-2 border-dashed flex flex-col items-center justify-center p-8 text-center transition-colors ${isDark ? 'border-white/10 bg-white/[0.02] hover:border-blue-500/30' : 'border-slate-300 bg-slate-50 hover:border-blue-500/30'
-                            }`}
+                          className={`w-full h-[500px] rounded-[28px] skeuo-inset flex flex-col items-center justify-center p-8 text-center`}
                         >
-                          <div className="w-20 h-20 rounded-3xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 shadow-inner animate-bounce duration-1000">
+                          <div className="w-20 h-20 rounded-3xl skeuo-btn flex items-center justify-center mb-6 animate-bounce duration-1000">
                             <FolderOpen className="w-10 h-10 text-blue-400" />
                           </div>
                           <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                             Select an employee folder to view details
                           </h3>
-                          <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto font-medium leading-relaxed">
-                            Choose a folder from the left panel to inspect verified identity proofs, employment agreements, tax filings, and compliance certificates.
-                          </p>
                         </motion.div>
                       ) : (
-                        /* Active Folder View */
                         <motion.div
                           key="active"
                           initial={{ opacity: 0, x: 20 }}
@@ -553,11 +501,10 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                           exit={{ opacity: 0, x: -20 }}
                           className="space-y-6"
                         >
-                          {/* Folder Header */}
                           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
                             <div className="flex items-center gap-4">
-                              <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-teal-500 p-[2px] shadow-lg shadow-blue-500/20">
-                                <div className={`w-full h-full rounded-[14px] flex items-center justify-center font-bold text-xl ${isDark ? 'bg-[#0b1329] text-white' : 'bg-white text-slate-900'}`}>
+                              <div className="w-14 h-14 rounded-2xl skeuo-panel p-[2px]">
+                                <div className={`w-full h-full rounded-[14px] flex items-center justify-center font-bold text-xl`}>
                                   {selectedFolder.name.split(' ').map(n => n[0]).join('')}
                                 </div>
                               </div>
@@ -576,7 +523,7 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                             <div className="flex items-center gap-2">
                               <button
                                 onClick={() => alert(`Adding new document for ${selectedFolder.name}...`)}
-                                className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold text-xs shadow-lg shadow-blue-600/20 transition-all"
+                                className="flex items-center gap-2 px-4 py-2.5 skeuo-btn rounded-xl font-bold text-xs"
                               >
                                 <Plus className="w-4 h-4" />
                                 <span>Add File</span>
@@ -584,16 +531,14 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                             </div>
                           </div>
 
-                          {/* Documents Grid */}
                           <div className="space-y-4 max-h-[400px] overflow-y-auto custom-scrollbar pr-1">
                             {selectedFolder.documents.map((doc) => (
                               <div
                                 key={doc.id}
-                                className={`p-5 rounded-2xl border flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-300 hover:scale-[1.01] ${isDark ? 'bg-white/5 border-white/10 hover:border-blue-500/50 hover:bg-white/10' : 'bg-slate-50 border-slate-200 hover:border-blue-500/50 hover:bg-slate-100'
-                                  }`}
+                                className={`p-5 rounded-2xl skeuo-btn transition-all duration-300 hover:scale-[1.01]`}
                               >
                                 <div className="flex items-start gap-4 min-w-0">
-                                  <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex-shrink-0 shadow-inner">
+                                  <div className="p-3 rounded-xl skeuo-inset text-blue-400 flex-shrink-0">
                                     <FileText className="w-6 h-6" />
                                   </div>
                                   <div className="min-w-0 flex-1">
@@ -601,7 +546,7 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                                       {doc.title}
                                     </h4>
                                     <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400 font-medium mt-1">
-                                      <span className="px-2 py-0.5 rounded bg-slate-500/10 border border-slate-500/20 text-slate-300 font-bold">
+                                      <span className="px-2 py-0.5 rounded skeuo-panel text-slate-300 font-bold">
                                         {doc.type}
                                       </span>
                                       <span>{doc.size}</span>
@@ -611,29 +556,22 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                                 </div>
 
                                 <div className="flex items-center gap-3 justify-end border-t sm:border-t-0 pt-3 sm:pt-0 border-white/5">
-                                  <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 ${doc.status === 'Verified' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
-                                    doc.status === 'Pending Review' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' :
-                                      'bg-rose-500/10 text-rose-400 border border-rose-500/20'
+                                  <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 ${doc.status === 'Verified' ? 'text-emerald-400 skeuo-panel' : 'text-rose-400 skeuo-panel'
                                     }`}>
-                                    <span className={`w-1.5 h-1.5 rounded-full ${doc.status === 'Verified' ? 'bg-emerald-400' :
-                                      doc.status === 'Pending Review' ? 'bg-amber-400' :
-                                        'bg-rose-400'
-                                      }`} />
+                                    <span className={`w-1.5 h-1.5 rounded-full ${doc.status === 'Verified' ? 'bg-emerald-400' : 'bg-rose-400'}`} />
                                     {doc.status}
                                   </span>
 
                                   <div className="flex items-center gap-1">
                                     <button
                                       onClick={() => alert(`Viewing document: ${doc.title}`)}
-                                      className="p-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-slate-300 transition-colors"
-                                      title="Preview"
+                                      className="p-2 rounded-xl skeuo-btn text-slate-300 transition-colors"
                                     >
                                       <Eye className="w-4 h-4" />
                                     </button>
                                     <button
                                       onClick={() => alert(`Downloading document: ${doc.title}`)}
-                                      className="p-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-blue-400 transition-colors"
-                                      title="Download"
+                                      className="p-2 rounded-xl skeuo-btn text-blue-400 transition-colors"
                                     >
                                       <Download className="w-4 h-4" />
                                     </button>
@@ -643,18 +581,13 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                             ))}
                           </div>
 
-                          {/* Upload Dropzone */}
                           <div
                             onClick={() => alert('Opening File Picker...')}
-                            className={`p-6 rounded-2xl border-2 border-dashed flex flex-col items-center justify-center text-center cursor-pointer transition-all ${isDark ? 'border-white/10 bg-white/5 hover:border-blue-500/50 hover:bg-blue-500/5' : 'border-slate-300 bg-slate-50 hover:border-blue-500/50 hover:bg-blue-50'
-                              }`}
+                            className={`p-6 rounded-2xl skeuo-btn flex flex-col items-center justify-center text-center cursor-pointer`}
                           >
                             <Upload className="w-8 h-8 text-blue-400 mb-2 animate-bounce duration-1000" />
                             <p className="text-sm font-bold text-slate-900 dark:text-white">
                               Drop compliance files here or click to browse
-                            </p>
-                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
-                              Supports PDF, DOCX, PNG, JPG up to 25MB
                             </p>
                           </div>
                         </motion.div>
@@ -665,9 +598,6 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
               </motion.div>
             )}
 
-            {/* ==================================================== */}
-            {/* VIEW 2: RECRUITMENT (Recruitment & Hiring) */}
-            {/* ==================================================== */}
             {activeMenu === 'Recruitment' && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -675,142 +605,94 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                 transition={{ duration: 0.4 }}
                 className="space-y-6"
               >
-                {/* Page Title */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-blue-900/20 via-transparent to-transparent p-6 rounded-[32px] border border-white/5">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 skeuo-panel p-6 rounded-[32px]">
                   <div>
                     <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-3">
                       Recruitment and hiring
-                      <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-teal-500/10 text-teal-400 border border-teal-500/20">
+                      <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest skeuo-panel text-teal-400">
                         AI ATS Active
                       </span>
                     </h1>
-                    <p className="text-slate-500 dark:text-slate-400 text-sm mt-1 font-medium">
-                      ATS workflow with AI parsing, pipeline control, and offer tracking.
-                    </p>
                   </div>
 
                   <button
                     onClick={() => alert('Opening AI Resume Parser Modal...')}
-                    className="flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 text-white rounded-2xl font-bold text-xs uppercase tracking-wider shadow-xl shadow-blue-500/25 hover:scale-105 transition-all duration-300 w-fit"
+                    className="flex items-center gap-2 px-6 py-3.5 skeuo-btn"
                   >
                     <Plus className="w-4 h-4" />
                     <span>Create Requisition</span>
                   </button>
                 </div>
 
-                {/* METRIC CARDS */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                   {[
-                    { label: 'Applied', value: '1', color: 'border-blue-500/30 text-blue-400', bg: 'bg-blue-500/5' },
-                    { label: 'Shortlisted', value: '1', color: 'border-purple-500/30 text-purple-400', bg: 'bg-purple-500/5' },
-                    { label: 'Interview', value: '0', color: 'border-amber-500/30 text-amber-400', bg: 'bg-amber-500/5' },
-                    { label: 'Selected', value: '1', color: 'border-emerald-500/30 text-emerald-400', bg: 'bg-emerald-500/5' },
-                    { label: 'Offered', value: '1', color: 'border-teal-500/30 text-teal-400', bg: 'bg-teal-500/5' },
-                    { label: 'Background Check', value: '1', color: 'border-indigo-500/30 text-indigo-400', bg: 'bg-indigo-500/5' },
+                    { label: 'Applied', value: '1', color: 'text-blue-400' },
+                    { label: 'Shortlisted', value: '1', color: 'text-purple-400' },
+                    { label: 'Interview', value: '0', color: 'text-amber-400' },
+                    { label: 'Selected', value: '1', color: 'text-emerald-400' },
+                    { label: 'Offered', value: '1', color: 'text-teal-400' },
+                    { label: 'Background Check', value: '1', color: 'text-indigo-400' },
                   ].map((metric, idx) => (
                     <div
                       key={metric.label}
-                      className={`p-6 rounded-2xl border transition-all duration-300 hover:scale-105 shadow-lg ${isDark ? `bg-white/5 ${metric.color.split(' ')[0]}` : `bg-white border-slate-200`
-                        } ${metric.bg}`}
+                      className={`p-6 rounded-2xl skeuo-panel transition-all duration-300`}
                     >
-                      <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2">
+                      <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">
                         {metric.label}
                       </div>
-                      <div className={`text-4xl font-extrabold font-display ${isDark ? metric.color.split(' ')[1] : 'text-slate-900'}`}>
+                      <div className={`text-4xl font-extrabold font-display ${metric.color}`}>
                         {metric.value}
-                      </div>
-                      <div className="w-full h-1 bg-white/10 rounded-full mt-4 overflow-hidden">
-                        <div className={`h-full ${metric.value !== '0' ? 'w-full bg-gradient-to-r from-blue-500 to-teal-400' : 'w-0'}`} />
                       </div>
                     </div>
                   ))}
                 </div>
 
-                {/* TWO COLUMN CONTENT: CANDIDATES TABLE & RIGHT ANALYTICS CHART */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-                  {/* Candidates Table */}
-                  <div className={`lg:col-span-8 rounded-[32px] border p-6 transition-all duration-500 ${isDark ? 'bg-[#0b1329]/60 border-white/10 backdrop-blur-xl shadow-2xl' : 'bg-white border-slate-200 shadow-xl'
-                    }`}>
+                  <div className={`lg:col-span-8 rounded-[32px] skeuo-panel p-6 transition-all duration-500`}>
                     <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
                       <div>
                         <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
                           <Users className="w-5 h-5 text-blue-400" />
                           Active Candidate Pipeline
                         </h3>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
-                          AI-scored candidate ranking and automated screening progression
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <button className="p-2.5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-300 transition-colors">
-                          <Filter className="w-4 h-4" />
-                        </button>
                       </div>
                     </div>
 
                     <div className="overflow-x-auto">
                       <table className="w-full text-left border-collapse">
                         <thead>
-                          <tr className="border-b border-white/10 text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+                          <tr className="border-b border-white/10 text-[10px] font-black text-slate-500 uppercase tracking-widest">
                             <th className="pb-4 pl-4">Candidate</th>
                             <th className="pb-4">Target Role</th>
                             <th className="pb-4 text-center">AI Score</th>
                             <th className="pb-4 text-center">Stage</th>
-                            <th className="pb-4 text-right pr-4">Actions</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-white/5">
                           {candidates.map((cand) => (
-                            <tr key={cand.id} className="hover:bg-white/5 transition-colors group">
+                            <tr key={cand.id} className="hover:bg-white/5 transition-colors">
                               <td className="py-4 pl-4 flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-teal-500 p-[2px] shadow-md">
+                                <div className="w-10 h-10 rounded-xl skeuo-btn p-[2px]">
                                   <div className="w-full h-full rounded-[10px] bg-[#0b1329] flex items-center justify-center font-bold text-white text-xs">
                                     {cand.name.split(' ').map(n => n[0]).join('')}
                                   </div>
                                 </div>
                                 <div>
-                                  <h5 className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-blue-400 transition-colors">
-                                    {cand.name}
-                                  </h5>
-                                  <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-                                    {cand.experience} exp • Applied {cand.date}
-                                  </span>
+                                  <h5 className="font-bold text-sm text-slate-900 dark:text-white">{cand.name}</h5>
                                 </div>
                               </td>
-                              <td className="py-4">
-                                <span className="font-bold text-xs text-slate-200 block">{cand.role}</span>
-                                <span className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Engineering</span>
-                              </td>
+                              <td className="py-4 text-xs font-bold">{cand.role}</td>
                               <td className="py-4 text-center">
-                                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-black text-xs shadow-inner">
-                                  <Zap className="w-3 h-3 animate-pulse" />
+                                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full skeuo-panel text-blue-400 font-black text-xs">
+                                  <Zap className="w-3 h-3" />
                                   {cand.score}
                                 </span>
                               </td>
                               <td className="py-4 text-center">
-                                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${cand.stage === 'Selected' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
-                                  cand.stage === 'Offered' ? 'bg-teal-500/10 text-teal-400 border border-teal-500/20' :
-                                    cand.stage === 'Shortlisted' ? 'bg-purple-500/10 text-purple-400 border border-purple-500/20' :
-                                      cand.stage === 'Background Check' ? 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20' :
-                                        'bg-blue-500/10 text-blue-400 border border-blue-500/20'
-                                  }`}>
-                                  <span className={`w-1.5 h-1.5 rounded-full ${cand.stage === 'Selected' ? 'bg-emerald-400' :
-                                    cand.stage === 'Offered' ? 'bg-teal-400' :
-                                      cand.stage === 'Shortlisted' ? 'bg-purple-400' :
-                                        cand.stage === 'Background Check' ? 'bg-indigo-400' :
-                                          'bg-blue-400'
-                                    }`} />
+                                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold skeuo-panel text-emerald-400`}>
                                   {cand.stage}
                                 </span>
-                              </td>
-                              <td className="py-4 text-right pr-4">
-                                <button
-                                  onClick={() => alert(`Advancing candidate ${cand.name} to next ATS stage...`)}
-                                  className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:bg-blue-600 hover:border-blue-500 text-xs font-bold text-slate-300 hover:text-white transition-all shadow-sm"
-                                >
-                                  Advance Stage
-                                </button>
                               </td>
                             </tr>
                           ))}
@@ -819,61 +701,35 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                     </div>
                   </div>
 
-                  {/* RIGHT ANALYTICS CHART */}
-                  <div className={`lg:col-span-4 rounded-[32px] border p-6 flex flex-col justify-between transition-all duration-500 ${isDark ? 'bg-[#0b1329]/60 border-white/10 backdrop-blur-xl shadow-2xl' : 'bg-white border-slate-200 shadow-xl'
-                    }`}>
-                    <div>
-                      <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 tracking-tight uppercase font-display">
-                          <BarChart3 className="w-5 h-5 text-teal-400" />
-                          PIPELINE DISTRIBUTION
-                        </h3>
-                      </div>
-
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mb-6 font-medium leading-relaxed">
-                        Visual breakdown of candidate volume across primary assessment stages. Optimized for AI screening throughput.
-                      </p>
-
-                      {/* Bar Chart Representation */}
-                      <div className="space-y-4">
+                  <div className={`lg:col-span-4 rounded-[32px] skeuo-panel p-6 flex flex-col transition-all duration-500`}>
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 tracking-tight uppercase font-display">
+                        <BarChart3 className="w-5 h-5 text-teal-400" />
+                        PIPELINE DISTRIBUTION
+                      </h3>
+                      <div className="space-y-4 mt-6">
                         {[
-                          { label: 'Applied (Top of Funnel)', count: 1, pct: 20, color: 'bg-blue-500' },
-                          { label: 'AI Screened / Shortlisted', count: 1, pct: 20, color: 'bg-purple-500' },
-                          { label: 'Technical Interview', count: 0, pct: 5, color: 'bg-amber-500' },
-                          { label: 'Selected / Final Round', count: 1, pct: 20, color: 'bg-emerald-500' },
-                          { label: 'Formal Offer Extended', count: 1, pct: 20, color: 'bg-teal-500' },
-                          { label: 'Background Verification', count: 1, pct: 20, color: 'bg-indigo-500' },
+                          { label: 'Applied', count: 1 },
+                          { label: 'Screened', count: 1 },
+                          { label: 'Interviewed', count: 0 },
+                          { label: 'Selected', count: 1 },
+                          { label: 'Offered', count: 1 },
                         ].map((bar) => (
                           <div key={bar.label} className="space-y-1">
                             <div className="flex justify-between text-xs font-bold">
                               <span className="text-slate-300">{bar.label}</span>
                               <span className="text-blue-400 font-mono">{bar.count}</span>
                             </div>
-                            <div className="w-full h-3 bg-white/5 rounded-full overflow-hidden border border-white/10 p-[1px]">
-                              <motion.div
-                                initial={{ width: 0 }}
-                                animate={{ width: `${bar.pct}%` }}
-                                transition={{ duration: 1, ease: 'easeOut' }}
-                                className={`h-full rounded-full ${bar.color} shadow-lg shadow-${bar.color.split('-')[1]}-500/30`}
-                              />
+                            <div className="w-full h-3 skeuo-inset rounded-full overflow-hidden p-[1px]">
+                                <div className="h-full rounded-full bg-blue-500 w-1/2" />
                             </div>
                           </div>
                         ))}
                       </div>
-                    </div>
-
-                    <div className="mt-8 p-4 rounded-2xl bg-gradient-to-r from-blue-500/10 to-teal-500/10 border border-blue-500/20 text-xs text-slate-300 font-medium flex items-center gap-3 shadow-inner">
-                      <Zap className="w-5 h-5 text-teal-400 flex-shrink-0 animate-pulse" />
-                      <span>AI Model predicts 92% offer acceptance rate based on historical compensation alignment.</span>
-                    </div>
                   </div>
                 </div>
               </motion.div>
             )}
 
-            {/* ==================================================== */}
-            {/* VIEW 3: DASHBOARD (Workforce Intelligence) */}
-            {/* ==================================================== */}
             {activeMenu === 'Dashboard' && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -881,114 +737,35 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                 transition={{ duration: 0.4 }}
                 className="space-y-6"
               >
-                {/* Hero Section */}
-                <div className="p-8 rounded-[32px] bg-gradient-to-r from-blue-900/40 via-indigo-950/40 to-slate-900/40 border border-blue-500/20 shadow-2xl relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-                  <div className="relative z-10 max-w-3xl space-y-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest">
-                      <Zap className="w-3.5 h-3.5 animate-pulse" />
-                      <span>Workforce Intelligence Command</span>
-                    </div>
-                    <h1 className="text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
-                      Real-time telemetry, AI attrition risk modeling, and department budget tracking.
-                    </h1>
-                    <p className="text-slate-400 text-base font-medium leading-relaxed">
-                      AuraHR continuously ingests biometric attendance logs, GitHub commit patterns, and Jira velocity to model human capital health and forecast operational bottlenecks.
-                    </p>
-                    <div className="pt-2 flex flex-wrap gap-3">
-                      {['Attendance Sync', 'Leave Control', 'AI Pulse', 'Budget Forecast'].map((tag) => (
-                        <span key={tag} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-slate-300 shadow-sm">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                <div className="p-8 rounded-[32px] skeuo-panel relative overflow-hidden">
+                  <h1 className="text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+                    Workforce Intelligence
+                  </h1>
                 </div>
 
-                {/* Metrics Row */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {[
-                    { label: 'Active Workforce', value: '1,420', change: '+5.2% vs last month', icon: Users, color: 'text-blue-400' },
-                    { label: 'Today Attendance', value: '96.4%', change: '+1.4% vs benchmark', icon: Calendar, color: 'text-emerald-400' },
-                    { label: 'Monthly Payroll', value: '₹12.4 Cr', change: 'Fully verified & disbursed', icon: IndianRupee, color: 'text-purple-400' },
+                    { label: 'Active Workforce', value: '1,420', icon: Users, color: 'text-blue-400' },
+                    { label: 'Today Attendance', value: '96.4%', icon: Calendar, color: 'text-emerald-400' },
+                    { label: 'Monthly Payroll', value: '₹12.4 Cr', icon: IndianRupee, color: 'text-purple-400' },
                   ].map((m) => {
                     const Icon = m.icon;
                     return (
-                      <div key={m.label} className={`p-6 rounded-[32px] border transition-all duration-300 hover:scale-[1.02] shadow-xl ${isDark ? 'bg-[#0b1329]/60 border-white/10 backdrop-blur-xl' : 'bg-white border-slate-200'
-                        }`}>
+                      <div key={m.label} className={`p-6 rounded-[32px] skeuo-panel`}>
                         <div className="flex items-center justify-between mb-4">
-                          <span className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">{m.label}</span>
-                          <div className={`p-3 rounded-2xl bg-white/5 border border-white/10 ${m.color} shadow-inner`}>
+                          <span className="text-xs font-black uppercase tracking-widest text-slate-500">{m.label}</span>
+                          <div className={`p-3 rounded-2xl skeuo-btn ${m.color}`}>
                             <Icon className="w-6 h-6" />
                           </div>
                         </div>
-                        <div className="text-4xl font-extrabold font-display text-slate-900 dark:text-white mb-2">{m.value}</div>
-                        <div className="text-xs font-bold text-emerald-400 flex items-center gap-1">
-                          <CheckCircle2 className="w-4 h-4" />
-                          <span>{m.change}</span>
-                        </div>
+                        <div className="text-4xl font-extrabold font-display text-slate-900 dark:text-white">{m.value}</div>
                       </div>
                     );
                   })}
                 </div>
-
-                {/* AI Insights & Department Telemetry */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                  <div className={`lg:col-span-7 rounded-[32px] border p-6 transition-all duration-500 ${isDark ? 'bg-[#0b1329]/60 border-white/10 backdrop-blur-xl shadow-2xl' : 'bg-white border-slate-200 shadow-xl'
-                    }`}>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2 border-b border-white/10 pb-4">
-                      <Zap className="w-5 h-5 text-teal-400 animate-pulse" />
-                      <span>AI Prescriptive Intelligence</span>
-                    </h3>
-                    <div className="space-y-4">
-                      {[
-                        { title: 'Workload Imbalance Detected', desc: 'Engineering department shows 12% increase in overtime hours over the last 14 days. Consider workload rebalancing or contractor augmentation.', type: 'warning' },
-                        { title: 'SLA Breach Warning', desc: 'Leave approval backlog in DevOps squad exceeds SLA by 4 hours. Automated escalation reminders have been dispatched to Tech Leads.', type: 'alert' },
-                      ].map((insight, idx) => (
-                        <div key={idx} className="p-5 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 shadow-md flex items-start gap-4">
-                          <div className="p-3 rounded-xl bg-blue-500/20 border border-blue-500/30 text-blue-400 flex-shrink-0">
-                            <Activity className="w-6 h-6" />
-                          </div>
-                          <div>
-                            <h5 className="font-bold text-sm text-slate-900 dark:text-white mb-1">{insight.title}</h5>
-                            <p className="text-xs text-slate-400 font-medium leading-relaxed">{insight.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className={`lg:col-span-5 rounded-[32px] border p-6 transition-all duration-500 ${isDark ? 'bg-[#0b1329]/60 border-white/10 backdrop-blur-xl shadow-2xl' : 'bg-white border-slate-200 shadow-xl'
-                    }`}>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2 border-b border-white/10 pb-4">
-                      <TrendingUp className="w-5 h-5 text-purple-400" />
-                      <span>Department Attrition Hotspots</span>
-                    </h3>
-                    <div className="space-y-4">
-                      {[
-                        { name: 'Frontend Engineering Squad', dept: 'Engineering', risk: 35, color: 'bg-amber-500' },
-                        { name: 'Customer Support Tier 1', dept: 'Support', risk: 18, color: 'bg-emerald-500' },
-                        { name: 'Global Sales Pipeline', dept: 'Sales', risk: 24, color: 'bg-blue-500' },
-                      ].map((hotspot) => (
-                        <div key={hotspot.name} className="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-2">
-                          <div className="flex justify-between items-center text-xs font-bold">
-                            <span className="text-slate-200">{hotspot.name}</span>
-                            <span className="text-amber-400 font-mono">{hotspot.risk}% Risk</span>
-                          </div>
-                          <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden border border-white/10">
-                            <div className={`h-full ${hotspot.color} rounded-full`} style={{ width: `${hotspot.risk}%` }} />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
               </motion.div>
             )}
 
-            {/* ==================================================== */}
-            {/* VIEW 4: INTERNAL MAIL (Inbox, Folder structure, Details) */}
-            {/* ==================================================== */}
             {activeMenu === 'Internal Mail' && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -996,105 +773,17 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                 transition={{ duration: 0.4 }}
                 className="space-y-6"
               >
-                {/* Page Title */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-blue-900/20 via-transparent to-transparent p-6 rounded-[32px] border border-white/5">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 skeuo-panel p-6 rounded-[32px]">
                   <div>
-                    <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-3">
-                      Internal Mail Box
-                      <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                        Secure Inbox
-                      </span>
-                    </h1>
-                    <p className="text-slate-500 dark:text-slate-400 text-sm mt-1 font-medium">
-                      Encrypted employee communications and formal policy distributions.
-                    </p>
+                    <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">Internal Mail Box</h1>
                   </div>
-
-                  <button
-                    onClick={() => {
-                      alert('Opening draft composer...');
-                    }}
-                    className="flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white rounded-2xl font-bold text-xs uppercase tracking-wider shadow-xl shadow-teal-500/25 hover:scale-105 transition-all duration-300 w-fit"
-                  >
+                  <button className="flex items-center gap-2 px-6 py-3.5 skeuo-btn">
                     <Plus className="w-4 h-4" />
                     <span>New Message</span>
                   </button>
                 </div>
 
-                {/* 3-Column Mailbox Layout */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-
-                  {/* Left Column: Folders & Labels */}
-                  <div className={`lg:col-span-2 rounded-[32px] border p-6 flex flex-col justify-between ${isDark ? 'bg-[#0b1329]/60 border-white/10 backdrop-blur-xl' : 'bg-white border-slate-200'}`}>
-                    <div className="space-y-6">
-                      <div className="space-y-2">
-                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-500">Folders</span>
-                        {[
-                          { id: 'inbox', label: 'Inbox', count: 4, icon: Mail, active: true },
-                          { id: 'starred', label: 'Starred', count: 1, icon: Star, active: false },
-                          { id: 'sent', label: 'Sent', count: 0, icon: Send, active: false },
-                          { id: 'drafts', label: 'Drafts', count: 2, icon: FileText, active: false },
-                          { id: 'spam', label: 'Spam', count: 0, icon: AlertCircle, active: false },
-                          { id: 'trash', label: 'Trash', count: 0, icon: Trash, active: false }
-                        ].map(folder => {
-                          const FolderIcon = folder.icon;
-                          return (
-                            <button key={folder.id} className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all ${folder.active ? 'bg-teal-500/10 text-teal-400 border border-teal-500/20' : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'}`}>
-                              <div className="flex items-center gap-2">
-                                <FolderIcon className="w-4 h-4" />
-                                <span>{folder.label}</span>
-                              </div>
-                              {folder.count > 0 && <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/20 text-teal-300">{folder.count}</span>}
-                            </button>
-                          );
-                        })}
-                      </div>
-
-                      <div className="space-y-2">
-                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-500">Labels</span>
-                        {[
-                          { label: 'HR Dept', color: 'bg-teal-500' },
-                          { label: 'Leave Requests', color: 'bg-amber-500' },
-                          { label: 'Interviews', color: 'bg-blue-500' },
-                          { label: 'Admin Notes', color: 'bg-rose-500' }
-                        ].map(label => (
-                          <div key={label.label} className="flex items-center gap-2 px-3 py-1.5 text-xs text-slate-300 font-semibold cursor-pointer hover:text-white">
-                            <span className={`w-2.5 h-2.5 rounded-full ${label.color}`} />
-                            <span>{label.label}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Middle Column: Email List */}
-                  <div className={`lg:col-span-4 rounded-[32px] border p-6 flex flex-col ${isDark ? 'bg-[#0b1329]/60 border-white/10 backdrop-blur-xl' : 'bg-white border-slate-200'}`}>
-                    <div className="relative mb-4">
-                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
-                      <input
-                        type="text"
-                        placeholder="Search emails..."
-                        className="w-full pl-9 pr-4 py-2.5 rounded-xl text-xs bg-black/40 border border-white/10 text-white outline-none focus:border-teal-500/50"
-                      />
-                    </div>
-
-                    <div className="flex-1 overflow-y-auto space-y-2 pr-1 max-h-[500px] custom-scrollbar">
-                      {[
-                        { id: '1', sender: 'Olivia Mason', subject: 'Leave Request Approval', snippet: 'Hi Nisha, I wanted to follow up on my annual...', time: '10:42 AM', active: true, tag: 'Leave Requests', labelColor: 'bg-amber-500' },
-                        { id: '2', sender: 'Ethan Ray', subject: 'Updated Contact Info', snippet: 'Just a quick note to say I have updated my...', time: 'Yesterday', active: false, tag: 'HR Dept', labelColor: 'bg-teal-500' },
-                        { id: '3', sender: 'Lisa Armand', subject: 'Medical Leave Submission', snippet: 'Please find attached my medical certificate...', time: 'May 16', active: false, tag: 'Leave Requests', labelColor: 'bg-amber-500' },
-                        { id: '4', sender: 'HR Department', subject: 'Performance Review Reminder', snippet: 'A reminder to complete your self-assessment...', time: 'May 15', active: false, tag: 'Admin Notes', labelColor: 'bg-rose-500' },
-                        { id: '5', sender: 'Jacob Yoon', subject: 'Attendance Clarification', snippet: 'I wanted to clarify my absence last Friday...', time: 'May 14', active: false, tag: 'HR Dept', labelColor: 'bg-teal-500' },
-                        { id: '6', sender: 'System Notification', subject: 'Password Expiry Alert', snippet: 'Your corporate password will expire in 5...', time: 'May 12', active: false, tag: 'Admin Notes', labelColor: 'bg-rose-500' },
-                        { id: '7', sender: 'Mia Torres', subject: 'Leave Policy Update', snippet: 'Please review the updated leave regulations...', time: 'May 10', active: false, tag: 'HR Dept', labelColor: 'bg-teal-500' }
-                      ].map(email => (
-                        <div key={email.id} className={`p-4 rounded-2xl border transition-all cursor-pointer ${email.active ? 'bg-teal-500/10 border-teal-500/30' : 'bg-white/5 border-white/5 hover:bg-white/10'}`}>
-                          <div className="flex justify-between items-start mb-1">
-                            <span className="font-bold text-xs text-white">{email.sender}</span>
-                            <span className="text-[10px] text-slate-500 font-medium">{email.time}</span>
-                          </div>
-                          <h4 className="text-xs font-bold text-slate-200 truncate">{email.subject}</h4>
-                          <p className="text-[11px] text-slate-400 truncate mt-0.5">{email.snippet}</p>
                           <div className="flex items-center gap-1.5 mt-2">
                             <span className={`w-2 h-2 rounded-full ${email.labelColor}`} />
                             <span className="text-[9px] text-slate-400 font-extrabold uppercase tracking-wide">{email.tag}</span>
@@ -1443,15 +1132,29 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
             )}
 
             {/* ==================================================== */}
-            {/* FALLBACK VIEW FOR ALL OTHER 14 MENU ITEMS */}
+            {/* VIEW 7: BUDGET (Budget Enterprise Module) */}
             {/* ==================================================== */}
-            {!['Documentation', 'Recruitment', 'Dashboard', 'Internal Mail', 'Attendance', 'Payroll'].includes(activeMenu) && (
+            {activeMenu === 'Budget' && <HrBudgetModule isDark={isDark} />}
+
+            {/* ==================================================== */}
+            {/* VIEW 8: RESOURCE ALLOCATION (Resource Allocation Module) */}
+            {/* ==================================================== */}
+            {activeMenu === 'Resource Allocation' && <HrResourceAllocationModule isDark={isDark} />}
+
+            {/* ==================================================== */}
+            {/* VIEW 9: LEAVE APPROVALS (Leave Approvals Module) */}
+            {/* ==================================================== */}
+            {activeMenu === 'Leave Approvals' && <HrLeaveApprovalsModule isDark={isDark} />}
+
+            {/* ==================================================== */}
+            {/* FALLBACK VIEW FOR ALL OTHER 11 MENU ITEMS */}
+            {/* ==================================================== */}
+            {!['Documentation', 'Recruitment', 'Dashboard', 'Internal Mail', 'Attendance', 'Payroll', 'Budget', 'Resource Allocation', 'Leave Approvals'].includes(activeMenu) && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                className={`rounded-[32px] border p-12 text-center transition-all duration-500 relative overflow-hidden ${isDark ? 'bg-[#0b1329]/60 border-white/10 backdrop-blur-xl shadow-2xl' : 'bg-white border-slate-200 shadow-xl'
-                  }`}
+                className={`p-12 text-center transition-all duration-500 relative overflow-hidden skeuo-panel`}
               >
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 

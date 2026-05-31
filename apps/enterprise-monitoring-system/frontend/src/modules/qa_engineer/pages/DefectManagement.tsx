@@ -81,10 +81,10 @@ export const DefectManagement: React.FC = () => {
         {[
           { label: 'Open Defects', value: openBugs, icon: ListChecks, color: 'text-amber-600 dark:text-amber-400', bg: 'bg-amber-50 dark:bg-amber-900/20', trend: '-12% from last week', up: true },
           { label: 'Critical Priority', value: criticalBugs, icon: AlertTriangle, color: 'text-red-600 dark:text-red-400', bg: 'bg-red-50 dark:bg-red-900/20', trend: '+3 new today', up: false },
-          { label: 'Avg Time to Resolve', value: `${avgTime}d`, icon: Timer, color: 'text-violet-600 dark:text-violet-400', bg: 'bg-violet-50 dark:bg-violet-900/20', trend: 'Improved by 0.5d', up: true },
+          { label: 'Avg Time to Resolve', value: `₹${avgTime}d`, icon: Timer, color: 'text-violet-600 dark:text-violet-400', bg: 'bg-violet-50 dark:bg-violet-900/20', trend: 'Improved by 0.5d', up: true },
           { label: 'Verification Pending', value: pendingVerify, icon: ListChecks, color: 'text-slate-600 dark:text-slate-400', bg: 'bg-slate-50 dark:bg-slate-800/50', trend: 'Awaiting QA sign-off', up: undefined },
         ].map((kpi, i) => (
-          <div key={i} className={`${kpi.bg} border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm`}>
+          <div key={i} className={`₹${kpi.bg} border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm`}>
             <div className="flex items-start justify-between mb-3">
               <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 dark:text-slate-400">{kpi.label}</h3>
               <kpi.icon className={`w-5 h-5 ${kpi.color}`} />
@@ -175,7 +175,7 @@ export const DefectManagement: React.FC = () => {
                       {bug.status === 'In Progress' && <RefreshCw className="w-3.5 h-3.5 text-violet-500 animate-spin" style={{ animationDuration: '3s' }} />}
                       {bug.status === 'Resolved' && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />}
                       {bug.status === 'Closed' && <Lock className="w-3.5 h-3.5 text-slate-400" />}
-                      <select value={bug.status} onChange={e => { updateBugStatus(bug.id, e.target.value as BugType['status']); addToast(`${bug.id} status updated to ${e.target.value}`, 'info'); }}
+                      <select value={bug.status} onChange={e => { updateBugStatus(bug.id, e.target.value as BugType['status']); addToast(`₹${bug.id} status updated to ${e.target.value}`, 'info'); }}
                         className={`text-xs font-bold bg-transparent border-none focus:outline-none cursor-pointer ${
                           bug.status === 'Open' ? 'text-amber-600 dark:text-amber-400' :
                           bug.status === 'In Progress' ? 'text-violet-600 dark:text-violet-400' :

@@ -48,7 +48,7 @@ export function AttendancePage() {
         const h = Math.floor(actualWorkedMins / 60);
         const m = actualWorkedMins % 60;
         
-        setTimerText(`${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m`);
+        setTimerText(`₹${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m`);
         updateSessionWorkedMinutes(actualWorkedMins);
       };
 

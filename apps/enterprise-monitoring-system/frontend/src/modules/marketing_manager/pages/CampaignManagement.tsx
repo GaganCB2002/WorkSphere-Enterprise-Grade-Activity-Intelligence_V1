@@ -49,7 +49,7 @@ export const CampaignManagement: React.FC<{ setView: (v: string) => void }> = ({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
             <div className="border border-[#e2e8f0] dark:border-slate-800 rounded-xl p-4 bg-white/80 backdrop-blur">
               <p className="text-[11px] font-bold text-[#475569] dark:text-slate-300 mb-3 leading-tight">Budget Spent</p>
-              <p className="text-2xl font-bold text-[#0f172a] dark:text-slate-100 mb-3">$500k</p>
+              <p className="text-2xl font-bold text-[#0f172a] dark:text-slate-100 mb-3">₹500k</p>
               <div className="h-1.5 w-full bg-[#f1f5f9] dark:bg-slate-800 rounded-full overflow-hidden">
                 <div className="h-full bg-[#f59e0b]" style={{ width: '85%' }}></div>
               </div>

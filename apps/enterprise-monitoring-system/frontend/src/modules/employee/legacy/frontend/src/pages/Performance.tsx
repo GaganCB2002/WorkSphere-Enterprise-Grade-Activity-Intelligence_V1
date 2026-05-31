@@ -80,10 +80,10 @@ export default function PerformancePage() {
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
-          { label: 'Completed Tasks', value: metrics.completed_tasks, helper: `${metrics.completion_rate ?? 0}% completion rate`, icon: CheckCircle, tone: 'bg-emerald-50 text-emerald-700', badge: 'Strong' },
-          { label: 'Total Hours', value: `${metrics.total_hours}h`, helper: 'Tracked this month', icon: Clock, tone: 'bg-sky-50 text-sky-700', badge: 'Healthy' },
-          { label: 'Productivity Score', value: `${metrics.productivity_score}%`, helper: 'Average task progress', icon: TrendingUp, tone: 'bg-teal-50 text-teal-700', badge: 'Rising' },
-          { label: 'On-time Delivery', value: `${metrics.on_time_delivery}%`, helper: `${metrics.overdue_tasks ?? 0} overdue tasks`, icon: Target, tone: 'bg-amber-50 text-amber-700', badge: 'Reliable' },
+          { label: 'Completed Tasks', value: metrics.completed_tasks, helper: `₹${metrics.completion_rate ?? 0}% completion rate`, icon: CheckCircle, tone: 'bg-emerald-50 text-emerald-700', badge: 'Strong' },
+          { label: 'Total Hours', value: `₹${metrics.total_hours}h`, helper: 'Tracked this month', icon: Clock, tone: 'bg-sky-50 text-sky-700', badge: 'Healthy' },
+          { label: 'Productivity Score', value: `₹${metrics.productivity_score}%`, helper: 'Average task progress', icon: TrendingUp, tone: 'bg-teal-50 text-teal-700', badge: 'Rising' },
+          { label: 'On-time Delivery', value: `₹${metrics.on_time_delivery}%`, helper: `₹${metrics.overdue_tasks ?? 0} overdue tasks`, icon: Target, tone: 'bg-amber-50 text-amber-700', badge: 'Reliable' },
         ].map((item) => (
           <Card key={item.label}>
             <CardContent className="p-5">
@@ -190,9 +190,9 @@ export default function PerformancePage() {
           <CardContent className="space-y-4">
             {[
               { label: 'Completed Tasks', value: metrics.completed_tasks, helper: 'Closed this month', icon: CheckCircle, progress: metrics.completion_rate ?? 0, tone: 'bg-emerald-50 text-emerald-700' },
-              { label: 'Total Hours', value: `${metrics.total_hours}h`, helper: 'Tracked this month', icon: Clock, progress: Math.min(100, (metrics.total_hours / 200) * 100), tone: 'bg-sky-50 text-sky-700' },
-              { label: 'On-time Delivery', value: `${metrics.on_time_delivery}%`, helper: 'Task delivery reliability', icon: Target, progress: metrics.on_time_delivery, tone: 'bg-teal-50 text-teal-700' },
-              { label: 'Attendance', value: `${metrics.attendance_percentage}%`, helper: 'Monthly attendance consistency', icon: Calendar, progress: metrics.attendance_percentage, tone: 'bg-amber-50 text-amber-700' },
+              { label: 'Total Hours', value: `₹${metrics.total_hours}h`, helper: 'Tracked this month', icon: Clock, progress: Math.min(100, (metrics.total_hours / 200) * 100), tone: 'bg-sky-50 text-sky-700' },
+              { label: 'On-time Delivery', value: `₹${metrics.on_time_delivery}%`, helper: 'Task delivery reliability', icon: Target, progress: metrics.on_time_delivery, tone: 'bg-teal-50 text-teal-700' },
+              { label: 'Attendance', value: `₹${metrics.attendance_percentage}%`, helper: 'Monthly attendance consistency', icon: Calendar, progress: metrics.attendance_percentage, tone: 'bg-amber-50 text-amber-700' },
             ].map((item) => (
               <div key={item.label} className="rounded-2xl border border-slate-100 p-4">
                 <div className="flex items-center justify-between gap-4">

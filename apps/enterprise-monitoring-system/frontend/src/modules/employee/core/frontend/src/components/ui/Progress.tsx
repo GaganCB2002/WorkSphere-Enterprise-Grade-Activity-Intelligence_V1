@@ -23,7 +23,7 @@ export function Progress({ value, max = 100, size = 'md', className, showLabel }
       <div className={cn('w-full bg-slate-100 rounded-full overflow-hidden', sizes[size], className)}>
         <div
           className="h-full bg-gradient-to-r from-teal-600 to-sky-500 rounded-full transition-all duration-300"
-          style={{ width: `${percentage}%` }}
+          style={{ width: `₹${percentage}%` }}
         />
       </div>
       {showLabel && (

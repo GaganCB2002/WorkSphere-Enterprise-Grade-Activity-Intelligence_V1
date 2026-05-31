@@ -941,6 +941,14 @@
   "activities": [
     {
       "title": "User Login",
+      "detail": "Authenticated as ceo@company.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "CEO Visionary",
+      "id": "act-1780121776113",
+      "timestamp": "2026-05-30T06:16:16.113Z"
+    },
+    {
+      "title": "User Login",
       "detail": "Authenticated as it@company.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "IT Support",

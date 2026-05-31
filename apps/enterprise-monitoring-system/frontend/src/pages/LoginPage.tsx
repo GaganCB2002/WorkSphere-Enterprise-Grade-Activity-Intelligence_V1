@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import React, { useState } from 'react'
-import { Zap, Mail, Lock, ArrowRight, Loader2 } from 'lucide-react'
+import { Zap, Mail, Lock, ArrowRight, Loader2, ShieldCheck } from 'lucide-react'
 
 export function LoginPage({ 
   onLogin, 
@@ -23,7 +23,6 @@ export function LoginPage({
     setLocalError(null)
     
     try {
-      // App.tsx login() handles all navigation after this resolves
       await onLogin(email, password, selectedRole)
     } catch (err: any) {
       setLocalError(err.message || 'Invalid credentials. Please verify your identity.')
@@ -33,61 +32,67 @@ export function LoginPage({
   }
 
   return (
-    <div className="min-h-screen bg-[#f8f6ff] dark:bg-[#12111f] flex items-center justify-center p-6 selection:bg-[#4B49AC]/30 overflow-hidden font-sans transition-colors duration-500">
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#4B49AC]/5 rounded-full blur-[150px] animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#7978E9]/5 rounded-full blur-[150px] animate-pulse delay-1000" />
-      
+    <div className="min-h-screen bg-background dark:bg-slate-950 flex items-center justify-center p-6 selection:bg-brand/30 overflow-hidden font-sans transition-colors duration-500 relative">
+      {/* Decorative Ambient Pastel Gradient Blurs */}
+      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-lavender/10 dark:bg-lavender/5 rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-pastel-blue/15 dark:bg-pastel-blue/5 rounded-full blur-[120px] animate-pulse delay-1000" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-mint/10 dark:bg-mint/5 rounded-full blur-[100px] animate-pulse delay-2000" />
+
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-[480px] z-10"
+        className="w-full max-w-[500px] z-10"
       >
-        <div className="text-center mb-10">
+        <div className="text-center mb-8">
           <motion.div 
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
-            className="h-16 w-16 bg-[#4B49AC] rounded-[24px] flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-[#4B49AC]/20"
+            className="h-14 w-14 bg-gradient-to-tr from-brand to-pastel-blue rounded-[20px] flex items-center justify-center mx-auto mb-4 shadow-xl shadow-brand/20"
           >
-            <Zap className="h-8 w-8 text-white" />
+            <Zap className="h-7 w-7 text-white" />
           </motion.div>
-          <h1 className="text-4xl font-display font-black tracking-tighter uppercase italic text-[#1a1a2e] dark:text-[#f0eef8] mb-2">System <span className="text-[#4B49AC]">Auth.</span></h1>
-          <p className="text-slate-500 font-medium tracking-wide">Enter the WorkPulse Secure Perimeter</p>
+          <h1 className="text-3xl font-display font-black tracking-tight uppercase italic text-slate-900 dark:text-white mb-1.5">
+            WorkSphere <span className="text-brand">Enterprise</span>
+          </h1>
+          <p className="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest flex items-center justify-center gap-1.5">
+            <ShieldCheck size={14} className="text-mint" /> Secure Access Perimeter
+          </p>
         </div>
 
-        <div className="rounded-[48px] border border-[#e5e0f5] dark:border-white/5 bg-white dark:bg-[#1a1930]/80 shadow-premium p-10 backdrop-blur-2xl">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 px-1">Infrastructure Identity</label>
+        <div className="rounded-[32px] border border-outline/60 dark:border-outline/10 bg-white/80 dark:bg-slate-900/80 shadow-premium p-8 md:p-10 backdrop-blur-xl">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 px-1">Infrastructure Identity</label>
               <div className="relative group">
-                <Mail className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500 group-focus-within:text-[#4B49AC] transition-colors" />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-brand transition-colors" />
                 <input 
                   type="email" 
                   required
                   placeholder="name@company.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-[#f8f6ff] dark:bg-white/5 border border-[#e5e0f5] dark:border-white/5 rounded-2xl py-4 pl-14 pr-6 text-sm font-bold text-[#1a1a2e] dark:text-[#f0eef8] outline-none transition-all focus:border-[#4B49AC]/50 focus:bg-white dark:focus:bg-white/10"
+                  className="w-full bg-slate-50/50 dark:bg-white/5 border border-outline rounded-xl py-3.5 pl-11 pr-5 text-sm font-medium text-slate-950 dark:text-white outline-none transition-all focus:border-brand/50 focus:bg-white dark:focus:bg-[#121a2e]"
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 px-1">Access Protocol</label>
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 px-1">Access Protocol</label>
               <div className="relative group">
-                <Lock className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500 group-focus-within:text-[#4B49AC] transition-colors" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-brand transition-colors" />
                 <input 
                   type="password" 
                   required
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-[#f8f6ff] dark:bg-white/5 border border-[#e5e0f5] dark:border-white/5 rounded-2xl py-4 pl-14 pr-6 text-sm font-bold text-[#1a1a2e] dark:text-[#f0eef8] outline-none transition-all focus:border-[#4B49AC]/50 focus:bg-white dark:focus:bg-white/10"
+                  className="w-full bg-slate-50/50 dark:bg-white/5 border border-outline rounded-xl py-3.5 pl-11 pr-5 text-sm font-medium text-slate-950 dark:text-white outline-none transition-all focus:border-brand/50 focus:bg-white dark:focus:bg-[#121a2e]"
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 px-1">Security Perimeter Role</label>
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 px-1">Security Perimeter Role</label>
               <select
                 value={selectedRole}
                 onChange={(e) => {
@@ -102,9 +107,9 @@ export function LoginPage({
                     setPassword('123456')
                   }
                 }}
-                className="w-full bg-[#f8f6ff] dark:bg-white/5 border border-[#e5e0f5] dark:border-white/5 rounded-2xl py-4 px-6 text-sm font-bold text-[#1a1a2e] dark:text-[#f0eef8] outline-none transition-all focus:border-[#4B49AC]/50 focus:bg-white dark:focus:bg-white/10 appearance-none cursor-pointer"
+                className="w-full bg-slate-50/50 dark:bg-white/5 border border-outline rounded-xl py-3.5 px-4 text-sm font-semibold text-slate-900 dark:text-white outline-none transition-all focus:border-brand/50 focus:bg-white dark:focus:bg-[#121a2e] appearance-none cursor-pointer"
               >
-                {roles.map(r => <option key={r} value={r} className="bg-white dark:bg-[#12111f] text-[#1a1a2e] dark:text-[#f0eef8]">{r}</option>)}
+                {roles.map(r => <option key={r} value={r} className="bg-white dark:bg-slate-950 text-slate-900 dark:text-white">{r}</option>)}
               </select>
             </div>
 
@@ -112,7 +117,7 @@ export function LoginPage({
               <motion.div 
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-500 text-xs font-bold"
+                className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold"
               >
                 {localError || serverError}
               </motion.div>
@@ -121,28 +126,28 @@ export function LoginPage({
             <button 
               type="submit"
               disabled={loading}
-              className="w-full py-5 bg-[#1a1a2e] dark:bg-[#f0eef8] text-[#f0eef8] dark:text-[#1a1a2e] rounded-full font-black text-xs uppercase tracking-[0.3em] shadow-xl shadow-[#e5e0f5] dark:shadow-white/5 hover:bg-[#4B49AC] hover:text-white transition-all duration-500 flex items-center justify-center gap-3 disabled:opacity-50"
+              className="w-full py-4 bg-brand text-white rounded-xl font-bold text-xs uppercase tracking-[0.2em] shadow-lg shadow-brand/20 hover:bg-brand/90 hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5 disabled:opacity-50 cursor-pointer"
             >
-              {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : (
+              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : (
                 <>
                   Establish Connection
-                  <ArrowRight size={16} />
+                  <ArrowRight size={14} />
                 </>
               )}
             </button>
           </form>
 
-          <div className="mt-8 pt-8 border-t border-white/5">
-             <p className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-4 text-center">Demo Credentials — One-Click Login</p>
-             <div className="grid grid-cols-2 gap-3">
+          <div className="mt-6 pt-6 border-t border-outline/50">
+             <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-3.5 text-center">Demo Credentials — One-Click Operator Link</p>
+             <div className="grid grid-cols-2 gap-2 max-h-[220px] overflow-y-auto custom-scrollbar pr-0.5">
             { [
-              { label: 'CEO Command',  email: 'ceo@company.com',      role: 'CEO',        color: 'bg-[#1a1a2e] dark:bg-[#f0eef8] text-[#f0eef8] dark:text-[#1a1a2e]' },
-              { label: 'Manager Hub', email: 'manager@company.com',   role: 'Manager',    color: 'bg-[#4B49AC]/10 text-[#4B49AC] border border-[#4B49AC]/20' },
-              { label: 'Team Lead',   email: 'teamlead@company.com',  role: 'Lead',       color: '' },
-              { label: 'HR Executive (AuraHR)', email: 'hr@company.com', role: 'HR', color: 'bg-gradient-to-r from-[#4B49AC] to-[#7DA0FA] text-white shadow-lg shadow-[#4B49AC]/25 border-none' },
-              { label: 'Employee',    email: 'employee@company.com',  role: 'Employee',   color: '' },
-              { label: 'Marketing',  email: 'marketing@company.com', role: 'Marketing',  color: '' },
-              { label: 'Super Admin', email: 'admin@company.com',     role: 'ADMIN',      color: 'bg-[#4B49AC] text-white shadow-lg shadow-[#4B49AC]/20' },
+              { label: 'CEO Command',  email: 'ceo@company.com',      role: 'CEO',        color: 'border-peach/40 text-peach bg-peach/5' },
+              { label: 'Manager Hub', email: 'manager@company.com',   role: 'Manager',    color: 'border-pastel-blue/40 text-pastel-blue bg-pastel-blue/5' },
+              { label: 'Team Lead',   email: 'teamlead@company.com',  role: 'Lead',       color: 'border-mint/40 text-mint bg-mint/5' },
+              { label: 'HR Executive', email: 'hr@company.com',       role: 'HR',         color: 'border-lavender/50 text-lavender bg-lavender/5 font-black' },
+              { label: 'Employee Hub', email: 'employee@company.com', role: 'Employee',   color: 'border-pink/40 text-pink bg-pink/5' },
+              { label: 'Marketing',  email: 'marketing@company.com', role: 'Marketing',  color: 'border-yellow/40 text-yellow bg-yellow/5' },
+              { label: 'Super Admin', email: 'admin@company.com',     role: 'ADMIN',      color: 'border-brand/40 text-brand bg-brand/5' },
             ].map(p => (
               <button 
                 key={p.label}
@@ -151,7 +156,6 @@ export function LoginPage({
                 onClick={async () => {
                   setLoading(true)
                   setLocalError(null)
-                  // Proactively fill UI state as requested
                   setEmail(p.email)
                   setPassword('123456')
                   setSelectedRole(p.role)
@@ -163,18 +167,18 @@ export function LoginPage({
                     setLoading(false)
                   }
                 }}
-                className={`p-3 rounded-xl text-[9px] font-bold uppercase tracking-widest transition-all text-left shadow-sm hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed ${p.color || 'bg-[#f0edff] dark:bg-white/5 border border-[#e5e0f5] dark:border-white/5 text-[#6e6c8a] dark:text-[#9d9bb5] hover:text-[#1a1a2e] dark:hover:text-[#f0eef8] hover:border-[#4B49AC]/30'}`}
+                className={`p-3 rounded-xl text-[9px] font-bold uppercase tracking-widest text-left shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed border outline-none ${p.color}`}
               >
-                <div className={`${p.color ? '' : 'text-slate-900 dark:text-white'} mb-0.5`}>{p.label}</div>
-                <div className="opacity-60">{p.email}</div>
+                <div className="font-bold tracking-tight mb-0.5 filter brightness-90 dark:brightness-105">{p.label}</div>
+                <div className="opacity-70 text-[8px] truncate">{p.email}</div>
               </button>
             ))}
              </div>
           </div>
         </div>
 
-        <p className="mt-10 text-center text-[10px] font-black uppercase tracking-[0.4em] text-slate-700">
-          Encrypted Connection • Secure Perimeter Active
+        <p className="mt-8 text-center text-[9px] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+          Encrypted Connection • Secure Tunneling Active
         </p>
       </motion.div>
     </div>

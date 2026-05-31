@@ -37,7 +37,7 @@ export function DashboardPage({ user, onNavigate }: DashboardPageProps) {
   const formatHours = (totalMinutes: number) => {
     const hrs = Math.floor(totalMinutes / 60);
     const mins = totalMinutes % 60;
-    return `${hrs}h ${mins.toString().padStart(2, '0')}m`;
+    return `₹${hrs}h ${mins.toString().padStart(2, '0')}m`;
   };
 
   const handleClockToggle = () => {

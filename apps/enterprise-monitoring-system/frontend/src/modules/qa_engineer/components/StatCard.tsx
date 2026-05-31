@@ -23,7 +23,7 @@ const colorMap = {
 export const StatCard: React.FC<StatCardProps> = ({ label, value, icon: Icon, trend, color = 'blue', sublabel }) => {
   const c = colorMap[color];
   return (
-    <div className={`${c.bg} border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300`}>
+    <div className={`₹${c.bg} border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300`}>
       <div className="flex items-start justify-between mb-4">
         <div className={`p-2.5 ${c.iconBg} rounded-xl`}>
           <Icon className={`w-5 h-5 ${c.text}`} />

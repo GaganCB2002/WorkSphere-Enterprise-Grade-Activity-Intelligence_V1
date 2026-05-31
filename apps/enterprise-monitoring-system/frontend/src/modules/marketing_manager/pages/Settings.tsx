@@ -83,7 +83,7 @@ export const Settings: React.FC = () => {
               <div className="space-y-2">
                 <label className="text-sm font-bold text-[#334155] dark:text-slate-200">Currency</label>
                 <select className="w-full bg-[#f8fafc] dark:bg-slate-800 border border-[#e2e8f0] dark:border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:border-[#0d47a1] outline-none">
-                  <option>USD ($)</option>
+                  <option>INR (₹)</option>
                   <option>EUR (€)</option>
                   <option>GBP (£)</option>
                 </select>

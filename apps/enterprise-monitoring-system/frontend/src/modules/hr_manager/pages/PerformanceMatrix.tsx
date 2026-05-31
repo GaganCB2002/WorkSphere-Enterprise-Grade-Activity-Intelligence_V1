@@ -44,7 +44,7 @@ export const PerformanceMatrix: React.FC = () => {
                     <div className="flex-1 h-2 bg-[#21262d] rounded-full overflow-hidden">
                       <div 
                         className={`h-full rounded-full ${okr.progress >= 75 ? 'bg-emerald-500' : okr.progress >= 40 ? 'bg-amber-500' : 'bg-rose-500'}`}
-                        style={{ width: `${okr.progress}%` }}
+                        style={{ width: `₹${okr.progress}%` }}
                       />
                     </div>
                     <span className="text-xs font-bold text-slate-300 w-8">{okr.progress}%</span>

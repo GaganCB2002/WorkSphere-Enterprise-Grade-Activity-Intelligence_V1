@@ -95,7 +95,7 @@ export default function Dashboard() {
       items.push({
         id: 'review',
         title: 'Tasks waiting for review',
-        message: `${taskSummary.pendingReview} task${taskSummary.pendingReview > 1 ? 's are' : ' is'} currently in review.`,
+        message: `₹${taskSummary.pendingReview} task${taskSummary.pendingReview > 1 ? 's are' : ' is'} currently in review.`,
         created_at: new Date().toISOString(),
       });
     }
@@ -104,7 +104,7 @@ export default function Dashboard() {
       items.push({
         id: 'overtime',
         title: 'Overtime logged this week',
-        message: `${formatDuration(weeklySummary.overtime_minutes)} of overtime has been tracked this week.`,
+        message: `₹${formatDuration(weeklySummary.overtime_minutes)} of overtime has been tracked this week.`,
         created_at: new Date().toISOString(),
       });
     }
@@ -113,7 +113,7 @@ export default function Dashboard() {
       items.push({
         id: tasks[0].id,
         title: 'Nearest deadline',
-        message: `${tasks[0].title} is due on ${formatDate(tasks[0].deadline)}.`,
+        message: `₹${tasks[0].title} is due on ${formatDate(tasks[0].deadline)}.`,
         created_at: tasks[0].updated_at,
       });
     }
@@ -153,14 +153,14 @@ export default function Dashboard() {
     {
       label: 'Today worked',
       value: formatDuration(dailySummary?.total_worked_minutes ?? 0),
-      helper: `${formatDuration(dailySummary?.total_break_minutes ?? 0)} of break time`,
+      helper: `₹${formatDuration(dailySummary?.total_break_minutes ?? 0)} of break time`,
       icon: Timer,
       tone: 'bg-teal-50 text-teal-700',
     },
     {
       label: 'Tasks completed',
       value: metrics?.completed_tasks ?? taskSummary.completed,
-      helper: `${taskSummary.inProgress} in progress right now`,
+      helper: `₹${taskSummary.inProgress} in progress right now`,
       icon: CheckCircle2,
       tone: 'bg-emerald-50 text-emerald-700',
     },
@@ -173,7 +173,7 @@ export default function Dashboard() {
     },
     {
       label: 'Attendance rate',
-      value: `${metrics?.attendance_percentage ?? 0}%`,
+      value: `₹${metrics?.attendance_percentage ?? 0}%`,
       helper: 'Current monthly consistency',
       icon: CalendarCheck,
       tone: 'bg-sky-50 text-sky-700',
@@ -416,7 +416,7 @@ export default function Dashboard() {
                   <p className="font-semibold text-slate-950">Productivity insight</p>
                   <p className="text-sm text-slate-500">
                     {metrics?.on_time_delivery
-                      ? `${metrics.on_time_delivery}% on-time delivery with ${metrics.productivity_score}% productivity score.`
+                      ? `₹${metrics.on_time_delivery}% on-time delivery with ${metrics.productivity_score}% productivity score.`
                       : 'Keep an eye on your active tasks and break balance for a smooth day.'}
                   </p>
                 </div>

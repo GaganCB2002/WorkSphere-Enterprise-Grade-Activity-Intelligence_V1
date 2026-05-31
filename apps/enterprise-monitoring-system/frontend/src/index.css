@@ -1,83 +1,102 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+:root {
+  /* Pastel Color Palette Variables */
+  --pastel-lavender: #8B7CF6;
+  --pastel-blue: #7CC6FE;
+  --pastel-mint: #8EE3B5;
+  --pastel-peach: #FFBFA3;
+  --pastel-pink: #F8B4D9;
+  --pastel-yellow: #FFEAA7;
+
+  /* Neutrals - Light Theme */
+  --bg-main: #e2e8f0; /* Skeuo Light Base */
+  --bg-surface: #FFFFFF;
+  --bg-surface-lowest: #FFFFFF;
+  --bg-surface-low: #FAFBFC;
+  --bg-surface-high: #F1F5F9;
+  --bg-surface-highest: #E2E8F0;
+  
+  /* Skeuomorphism Light */
+  --skeuo-base: #e2e8f0;
+  --skeuo-light: #ffffff;
+  --skeuo-dark: #94a3b8;
+  
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-main: #cbd5e1;
+  --outline-alpha: rgba(203, 213, 225, 0.4);
+}
+
 .dark {
-  --color-background: #1B1613;
-  --color-surface-container-lowest: #211B17;
-  --color-surface-container-low: #2B221E;
-  --color-surface-container: #211B17;
-  --color-surface-container-high: #2B221E;
-  --color-surface-container-highest: #352923;
-  --color-surface-dim: #2B221E;
-  --color-on-background: #FAF6F0;
-  --color-on-surface: #FAF6F0;
-  --color-on-surface-variant: #A89890;
-  --color-inverse-surface: #2B221E;
-  --color-on-secondary-fixed: #1B1613;
-  --color-surface-bright: #FAF6F0;
-  --color-outline-variant: rgba(216, 208, 200, 0.15);
-  --color-outline: #6E5C54;
-  --color-secondary-fixed-dim: #A89890;
+  /* Neutrals - Dark Theme (Optimized with high contrast and depth) */
+  --bg-main: #0f172a; /* Skeuo Dark Base */
+  --bg-surface: #1e293b;
+  --bg-surface-lowest: #020617;
+  --bg-surface-low: #0b1120;
+  --bg-surface-high: #334155;
+  --bg-surface-highest: #475569;
+  
+  /* Skeuomorphism Dark */
+  --skeuo-base: #0f172a;
+  --skeuo-light: #1e293b;
+  --skeuo-dark: #020617;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-main: #334155;
+  --outline-alpha: rgba(51, 65, 85, 0.4);
 }
 
 @theme {
-  --color-on-primary-fixed-variant: #8a4518;
-  --color-primary-fixed: #fbe8d8;
-  --color-tertiary-fixed-dim: #e8a0a0;
-  --color-tertiary-fixed: #fce0e0;
-  --color-secondary-fixed-dim: #cec6be;
-  --color-on-secondary: #ffffff;
-  --color-primary-container: #e08850;
-  --color-on-secondary-fixed: #2a2420;
-  --color-surface-container-high: #ece6dc;
-  --color-on-surface-variant: #605850;
-  --color-background: #faf5ee;
-  --color-surface-container-highest: #e6e0d6;
-  --color-on-secondary-fixed-variant: #504840;
-  --color-error-container: #fce4e0;
-  --color-outline-variant: #d8d0c8;
-  --color-inverse-primary: #f0a878;
-  --color-on-error-container: #7a1a10;
-  --color-surface-tint: #c2652a;
-  --color-on-error: #ffffff;
-  --color-secondary: #78706a;
-  --color-on-primary: #ffffff;
-  --color-surface-container-low: #f6f0e8;
-  --color-secondary-fixed: #eae2da;
-  --color-surface-dim: #dcd6cc;
-  --color-surface-container: #f2ece4;
-  --color-on-tertiary-container: #3a2020;
-  --color-on-primary-container: #fbe8d8;
-  --color-inverse-surface: #3a302a;
-  --color-tertiary: #8c3c3c;
-  --color-surface-bright: #faf5ee;
-  --color-tertiary-container: #d47070;
-  --color-on-secondary-container: #605850;
-  --color-surface: #faf5ee;
-  --color-on-tertiary-fixed: #2e1515;
-  --color-secondary-container: #eae2da;
-  --color-primary: #c2652a;
-  --color-outline: #9a9088;
-  --color-on-tertiary-fixed-variant: #6e3030;
-  --color-on-primary-fixed: #401a08;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-variant: #ece6dc;
-  --color-on-tertiary: #ffffff;
-  --color-on-surface: #3a302a;
-  --color-error: #c0392b;
-  --color-on-background: #3a302a;
-  --color-primary-fixed-dim: #f0a878;
-  --color-inverse-on-surface: #faf5ee;
+  /* Core Brand Colors linked to Pastel System */
+  --color-primary: var(--pastel-lavender);
+  --color-brand: var(--pastel-lavender);
+  --color-luxury-blue: var(--pastel-blue);
+  
+  --color-lavender: var(--pastel-lavender);
+  --color-pastel-blue: var(--pastel-blue);
+  --color-mint: var(--pastel-mint);
+  --color-peach: var(--pastel-peach);
+  --color-pink: var(--pastel-pink);
+  --color-yellow: var(--pastel-yellow);
 
-  --font-headline: "EB Garamond", serif;
-  --font-body: "Manrope", sans-serif;
-  --font-label: "Manrope", sans-serif;
+  /* Semantic Theme Overrides */
+  --color-background: var(--bg-main);
+  --color-surface: var(--bg-surface);
+  
+  --color-surface-container-lowest: var(--bg-surface-lowest);
+  --color-surface-container-low: var(--bg-surface-low);
+  --color-surface-container: var(--bg-surface);
+  --color-surface-container-high: var(--bg-surface-high);
+  --color-surface-container-highest: var(--bg-surface-highest);
+  --color-surface-bright: var(--bg-surface);
+  --color-surface-dim: var(--bg-surface-high);
+  
+  --color-on-background: var(--text-primary);
+  --color-on-surface: var(--text-primary);
+  --color-on-surface-variant: var(--text-secondary);
+  --color-outline: var(--border-main);
+  --color-outline-variant: var(--border-main);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border: var(--border-main);
 
-  --shadow-soft: 0 2px 16px rgba(58, 48, 42, 0.04);
-  --shadow-warm: 0 4px 20px rgba(194, 101, 42, 0.12);
+  /* Fonts */
+  --font-headline: "Outfit", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px rgba(139, 124, 246, 0.04);
+  --shadow-warm: 0 8px 30px rgba(139, 124, 246, 0.08);
+  --shadow-premium: 0 20px 60px rgba(15, 23, 42, 0.05);
 }
 
 h1, h2, h3, h4, h5, h6, .font-headline {
@@ -90,8 +109,12 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Material Icons Outlined Integration */
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 24;
   display: inline-block;
@@ -103,31 +126,95 @@ body {
   font-variation-settings: 'FILL' 1, 'wght' 350, 'GRAD' 0, 'opsz' 24;
 }
 
+/* High Fidelity Glassmorphism Classes */
 .glass-panel {
-  background: rgba(246, 240, 232, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(216, 208, 200, 0.4);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 231, 235, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
 }
 
 .dark .glass-panel {
-  background: rgba(42, 36, 32, 0.6);
-  border: 1px solid rgba(96, 88, 80, 0.4);
+  background: rgba(22, 29, 48, 0.65);
+  border: 1px solid rgba(34, 43, 69, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
 .glass-card {
-  background: var(--color-surface-container-low);
-  border: 1px solid color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-main);
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.dark .glass-card {
-  background: var(--color-inverse-surface);
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-warm);
 }
 
 .sahara-shadow {
-  box-shadow: 0 2px 16px rgba(58, 48, 42, 0.04);
+  box-shadow: var(--shadow-soft);
 }
 
+/* ==================================================== */
+/* SKEUOMORPHISM / NEUMORPHISM ENTERPRISE DESIGN SYSTEM */
+/* ==================================================== */
+
+.skeuo-panel {
+  background: var(--skeuo-base);
+  box-shadow: 10px 10px 20px var(--skeuo-dark), -10px -10px 20px var(--skeuo-light);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.dark .skeuo-panel {
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.skeuo-inset {
+  background: var(--skeuo-base);
+  box-shadow: inset 6px 6px 12px var(--skeuo-dark), inset -6px -6px 12px var(--skeuo-light);
+  border-radius: 16px;
+}
+
+.skeuo-btn {
+  background: var(--skeuo-base);
+  box-shadow: 6px 6px 12px var(--skeuo-dark), -6px -6px 12px var(--skeuo-light);
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+.skeuo-btn:hover {
+  box-shadow: 8px 8px 16px var(--skeuo-dark), -8px -8px 16px var(--skeuo-light);
+  transform: translateY(-1px);
+}
+
+.skeuo-btn:active, .skeuo-btn.active {
+  box-shadow: inset 4px 4px 8px var(--skeuo-dark), inset -4px -4px 8px var(--skeuo-light);
+  transform: translateY(1px);
+}
+
+.skeuo-btn-primary {
+  background: var(--color-primary);
+  box-shadow: 6px 6px 12px var(--skeuo-dark), -6px -6px 12px var(--skeuo-light);
+  border-radius: 12px;
+  color: white;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  font-weight: bold;
+}
+
+.skeuo-btn-primary:active {
+  box-shadow: inset 4px 4px 8px rgba(0,0,0,0.3), inset -4px -4px 8px rgba(255,255,255,0.2);
+  transform: translateY(1px);
+}
+
+/* Custom Premium Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -136,14 +223,14 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d8d0c8;
+  background: var(--bg-surface-highest);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #9a9088;
+  background: var(--pastel-lavender);
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: #605850;
+  background: var(--bg-surface-high);
 }
 
 .hide-scrollbar::-webkit-scrollbar {
@@ -154,12 +241,32 @@ body {
   scrollbar-width: none;
 }
 
-.dark .recharts-default-tooltip {
-  background-color: #0f172a !important;
-  border-color: #1e293b !important;
-  color: #f1f5f9 !important;
+/* Recharts Tooltip Styling Redesign */
+.recharts-default-tooltip {
+  background-color: var(--bg-surface) !important;
+  border: 1px solid var(--border-main) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--shadow-warm) !important;
+  color: var(--text-primary) !important;
 }
 
-.dark .recharts-tooltip-item {
-  color: #f8fafc !important;
+.recharts-tooltip-item {
+  color: var(--text-primary) !important;
+}
+
+/* Micro-interaction & Hover Lift Animations */
+.hover-lift {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-warm);
+}
+
+.btn-interactive {
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.btn-interactive:active {
+  transform: scale(0.96);
 }
