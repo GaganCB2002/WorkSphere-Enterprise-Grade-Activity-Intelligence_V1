@@ -1,4 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import type {
   Bug, TeamMember, Project, Sprint, SprintTask, LeaveRequest,
   Meeting, ChatMessage, ChatChannel, Approval, Notification,
@@ -40,15 +42,15 @@ const initialBugs: Bug[] = [
 ];
 
 const initialProjects: Project[] = [
-  { id: 'P1', name: 'Payment Core Migration', status: 'In Testing', coverage: 85, bugs: 12, description: 'Migrating legacy payment processing to new microservices architecture with improved throughput.', releaseDate: '2026-06-15', lead: 'James Wilson', priority: 'Critical' },
-  { id: 'P2', name: 'Analytics Dashboard UI', status: 'Blocked', coverage: 60, bugs: 28, description: 'Next-gen analytics dashboard with real-time data streaming and interactive visualizations.', releaseDate: '2026-07-01', lead: 'Sarah Chen', priority: 'High' },
-  { id: 'P3', name: 'Auth V2 Rollout', status: 'QA Sign-off', coverage: 98, bugs: 2, description: 'OAuth 2.0 + SSO upgrade with biometric support and hardware key integration.', releaseDate: '2026-05-30', lead: 'Michael Chang', priority: 'Critical' },
-  { id: 'P4', name: 'Mobile App Redesign', status: 'In Testing', coverage: 72, bugs: 15, description: 'Complete React Native rewrite with offline-first architecture and real-time sync.', releaseDate: '2026-06-30', lead: 'Elena Rodriguez', priority: 'High' },
+  { id: 'P1', name: 'Payment Core Migration', status: 'In Testing', coverage: 85, bugs: 12, description: 'Migrating legacy payment processing to new microservices architecture with improved throughput.', releaseDate: getLiveDate(-23), lead: 'James Wilson', priority: 'Critical' },
+  { id: 'P2', name: 'Analytics Dashboard UI', status: 'Blocked', coverage: 60, bugs: 28, description: 'Next-gen analytics dashboard with real-time data streaming and interactive visualizations.', releaseDate: getLiveDate(-16), lead: 'Sarah Chen', priority: 'High' },
+  { id: 'P3', name: 'Auth V2 Rollout', status: 'QA Sign-off', coverage: 98, bugs: 2, description: 'OAuth 2.0 + SSO upgrade with biometric support and hardware key integration.', releaseDate: getLiveDate(-9), lead: 'Michael Chang', priority: 'Critical' },
+  { id: 'P4', name: 'Mobile App Redesign', status: 'In Testing', coverage: 72, bugs: 15, description: 'Complete React Native rewrite with offline-first architecture and real-time sync.', releaseDate: getLiveDate(-2), lead: 'Elena Rodriguez', priority: 'High' },
 ];
 
 const initialSprints: Sprint[] = [
   {
-    id: 'S42', name: 'Sprint 42', startDate: '2026-05-19', endDate: '2026-06-01', isActive: true,
+    id: 'S42', name: 'Sprint 42', startDate: getLiveDate(5), endDate: getLiveDate(12), isActive: true,
     tasks: [
       { id: 'T1', title: 'Test Plan Creation: Analytics V2', description: 'Create comprehensive test plan for new analytics dashboard features', status: 'Done', assignee: 'Sarah Chen', priority: 'P1', sprintId: 'S42' },
       { id: 'T2', title: 'Automate E2E Payment Flow', description: 'Write Cypress E2E tests for complete payment checkout flow', status: 'In Progress', assignee: 'Unassigned', priority: 'P0', sprintId: 'S42' },
@@ -58,7 +60,7 @@ const initialSprints: Sprint[] = [
     ]
   },
   {
-    id: 'S41', name: 'Sprint 41', startDate: '2026-05-05', endDate: '2026-05-18', isActive: false,
+    id: 'S41', name: 'Sprint 41', startDate: getLiveDate(19), endDate: getLiveDate(26), isActive: false,
     tasks: [
       { id: 'T6', title: 'API Contract Testing Setup', description: 'Set up Pact contract tests for payment microservices', status: 'Done', assignee: 'David Kim', priority: 'P1', sprintId: 'S41' },
       { id: 'T7', title: 'Cross-browser Testing Matrix', description: 'Create automated cross-browser test matrix for 12 browsers', status: 'Done', assignee: 'Elena Rodriguez', priority: 'P2', sprintId: 'S41' },
@@ -67,14 +69,14 @@ const initialSprints: Sprint[] = [
 ];
 
 const initialLeaves: LeaveRequest[] = [
-  { id: 'L1', employeeName: 'Sarah Chen', startDate: '2026-06-12', endDate: '2026-06-14', type: 'PTO', status: 'Approved' },
-  { id: 'L2', employeeName: 'Michael Chang', startDate: '2026-06-05', endDate: '2026-06-05', type: 'Personal', status: 'Pending' },
+  { id: 'L1', employeeName: 'Sarah Chen', startDate: getLiveDate(-28), endDate: getLiveDate(-21), type: 'PTO', status: 'Approved' },
+  { id: 'L2', employeeName: 'Michael Chang', startDate: getLiveDate(-14), endDate: getLiveDate(-7), type: 'Personal', status: 'Pending' },
 ];
 
 const initialMeetings: Meeting[] = [
-  { id: 'M1', title: 'Daily Bug Triage', description: 'Review and prioritize new bugs from the last 24 hours', time: '10:00 AM', duration: '30 min', date: '2026-05-26', participants: 8, organizer: 'Alex Mercer', type: 'Daily' },
-  { id: 'M2', title: 'Sprint Review', description: 'Demo completed work for Sprint 42 to stakeholders', time: '2:00 PM', duration: '60 min', date: '2026-06-01', participants: 15, organizer: 'Alex Mercer', type: 'Weekly' },
-  { id: 'M3', title: 'Test Automation Workshop', description: 'Hands-on workshop on Playwright best practices', time: '11:00 AM', duration: '45 min', date: '2026-05-28', participants: 6, organizer: 'James Wilson', type: 'Ad-hoc' },
+  { id: 'M1', title: 'Daily Bug Triage', description: 'Review and prioritize new bugs from the last 24 hours', time: '10:00 AM', duration: '30 min', date: getLiveDate(0), participants: 8, organizer: 'Alex Mercer', type: 'Daily' },
+  { id: 'M2', title: 'Sprint Review', description: 'Demo completed work for Sprint 42 to stakeholders', time: '2:00 PM', duration: '60 min', date: getLiveDate(7), participants: 15, organizer: 'Alex Mercer', type: 'Weekly' },
+  { id: 'M3', title: 'Test Automation Workshop', description: 'Hands-on workshop on Playwright best practices', time: '11:00 AM', duration: '45 min', date: getLiveDate(14), participants: 6, organizer: 'James Wilson', type: 'Ad-hoc' },
 ];
 
 const initialChannels: ChatChannel[] = [
@@ -85,9 +87,9 @@ const initialChannels: ChatChannel[] = [
 ];
 
 const initialApprovals: Approval[] = [
-  { id: 'A1', title: 'Release Candidate v2.4.0', description: 'All tests passed. Awaiting QA Director signature for production deployment.', status: 'Pending', requestedBy: 'DevOps Team', date: '2026-05-25', priority: 'High' },
-  { id: 'A2', title: 'Auth V2 Hotfix Rollout', description: 'Urgent hotfix for SSO token refresh issue. Pre-approved by security team.', status: 'Approved', requestedBy: 'Security Team', date: '2026-05-24', priority: 'High' },
-  { id: 'A3', title: 'Staging Environment Cleanup', description: 'Request to reset staging DB and redeploy all microservices for fresh test run.', status: 'Rejected', requestedBy: 'Infrastructure', date: '2026-05-23', priority: 'Low' },
+  { id: 'A1', title: 'Release Candidate v2.4.0', description: 'All tests passed. Awaiting QA Director signature for production deployment.', status: 'Pending', requestedBy: 'DevOps Team', date: getLiveDate(21), priority: 'High' },
+  { id: 'A2', title: 'Auth V2 Hotfix Rollout', description: 'Urgent hotfix for SSO token refresh issue. Pre-approved by security team.', status: 'Approved', requestedBy: 'Security Team', date: getLiveDate(28), priority: 'High' },
+  { id: 'A3', title: 'Staging Environment Cleanup', description: 'Request to reset staging DB and redeploy all microservices for fresh test run.', status: 'Rejected', requestedBy: 'Infrastructure', date: getLiveDate(-26), priority: 'Low' },
 ];
 
 const initialNotifications: Notification[] = [

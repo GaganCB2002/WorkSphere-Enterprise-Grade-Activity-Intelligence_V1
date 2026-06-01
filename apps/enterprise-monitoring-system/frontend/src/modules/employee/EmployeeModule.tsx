@@ -2,12 +2,10 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  LayoutDashboard, User, Users, Calendar, Clock, ListTodo, MessageSquare,
+import { LayoutDashboard, User, Users, Calendar, Clock, ListTodo, MessageSquare,
   BarChart3, Bell, ChevronLeft, ChevronRight, Search, Sun, Moon, Command,
   CalendarPlus, LogOut, PlusCircle, Timer, Video, Settings, Sparkles,
-  Mail, Zap, X
-} from 'lucide-react';
+  Mail, Zap, X, BookOpen } from 'lucide-react';
 import '../../modules/employee/styles/employee.css';
 
 import { DashboardPage } from './pages/DashboardPage';
@@ -25,6 +23,8 @@ import { CommandPalette } from './components/ui/CommandPalette';
 import { FloatingChatWidget } from './components/chat/FloatingChatWidget';
 import { useNotificationStore } from './store/employeeStore';
 import type { PlatformData, User as UserType } from '../../types';
+import { LMSView } from '../hr/components/LMSView';
+
 
 interface EmployeeModuleProps {
   user: UserType;
@@ -44,6 +44,7 @@ const navItems = [
   { id: 'meetings', label: 'Meetings', icon: Video },
   { id: 'analytics', label: 'Analytics', icon: BarChart3 },
   { id: 'notifications', label: 'Notifications', icon: Bell },
+  { id: 'training', label: 'Training Center', icon: BookOpen },
 ];
 
 export function EmployeeModule({ user, platform, token }: EmployeeModuleProps) {
@@ -86,6 +87,7 @@ export function EmployeeModule({ user, platform, token }: EmployeeModuleProps) {
       case 'meetings': return <MeetingsPage />;
       case 'analytics': return <AnalyticsPage />;
       case 'notifications': return <NotificationsPage />;
+      case 'training': return <LMSView />;
       default: return <DashboardPage user={user} onNavigate={setActiveTab} />;
     }
   };

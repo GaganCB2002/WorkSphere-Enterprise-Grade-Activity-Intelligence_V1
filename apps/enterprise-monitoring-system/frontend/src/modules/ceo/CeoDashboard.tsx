@@ -14,6 +14,8 @@ import { CeoAiAssistant } from './components/CeoAiAssistant';
 import { CeoAlertsCenter } from './components/CeoAlertsCenter';
 import { CeoReports } from './components/CeoReports';
 import { CeoSettings } from './components/CeoSettings';
+import { LMSView } from '../hr/components/LMSView';
+
 
 export const CEODashboardPage: React.FC<{ user?: any; platform?: any; onLogout?: () => void }> = ({ user, platform, onLogout }) => {
   return <CeoDashboard onLogout={onLogout} />;
@@ -115,6 +117,7 @@ export const CeoDashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) 
             <CeoReports />
           </motion.div>
         );
+      case 'training': return <LMSView />;
       case 'settings':
         return (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="space-y-8">

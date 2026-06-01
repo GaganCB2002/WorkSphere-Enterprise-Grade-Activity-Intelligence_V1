@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react';
+import { getLiveDate, getLiveTime } from '../../../../../../utils/liveDataHelpers';
+
 import { Card, CardContent, CardHeader } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
@@ -11,9 +13,9 @@ import { Calendar, CalendarCheck, CalendarOff, Clock, Plus } from 'lucide-react'
 import { LeaveRequest } from '@/types';
 
 const mockLeaveRequests: LeaveRequest[] = [
-  { id: '1', user: '1', leave_type: 'SICK', start_date: '2026-04-15', end_date: '2026-04-16', reason: 'Medical appointment', status: 'APPROVED', reviewed_by: null, created_at: '2026-04-10T10:00:00Z' },
-  { id: '2', user: '1', leave_type: 'CASUAL', start_date: '2026-04-28', end_date: '2026-04-29', reason: 'Personal work', status: 'PENDING', reviewed_by: null, created_at: '2026-04-20T14:30:00Z' },
-  { id: '3', user: '1', leave_type: 'ANNUAL', start_date: '2026-05-06', end_date: '2026-05-10', reason: 'Family vacation', status: 'APPROVED', reviewed_by: null, created_at: '2026-04-18T09:00:00Z' },
+  { id: '1', user: '1', leave_type: 'SICK', start_date: getLiveDate(-23), end_date: getLiveDate(-16), reason: 'Medical appointment', status: 'APPROVED', reviewed_by: null, created_at: '2026-04-10T10:00:00Z' },
+  { id: '2', user: '1', leave_type: 'CASUAL', start_date: getLiveDate(-9), end_date: getLiveDate(-2), reason: 'Personal work', status: 'PENDING', reviewed_by: null, created_at: '2026-04-20T14:30:00Z' },
+  { id: '3', user: '1', leave_type: 'ANNUAL', start_date: getLiveDate(5), end_date: getLiveDate(12), reason: 'Family vacation', status: 'APPROVED', reviewed_by: null, created_at: '2026-04-18T09:00:00Z' },
 ];
 
 const leaveBalance = [

@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  IndianRupee, TrendingUp, Zap, Target, Activity, CheckCircle2, AlertTriangle 
-} from 'lucide-react';
+import { IndianRupee, TrendingUp, Zap, Target, Activity, CheckCircle2, AlertTriangle, BookOpen } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
+import { LMSView } from '../../hr/components/LMSView';
+
 
 interface HrBudgetModuleProps {
   isDark: boolean;

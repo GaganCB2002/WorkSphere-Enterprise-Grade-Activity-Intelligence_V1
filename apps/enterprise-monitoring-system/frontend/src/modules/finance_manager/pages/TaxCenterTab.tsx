@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import { 
   ShieldCheck, ArrowUpRight, CheckCircle2, Circle, Clock, 
   AlertTriangle, RefreshCw, FileText, CheckCircle
@@ -15,10 +17,10 @@ interface TaxTask {
 
 export const TaxCenterTab: React.FC = () => {
   const [tasks, setTasks] = useState<TaxTask[]>([
-    { id: 'TAX-01', name: 'Q3 GST Reconciliation & Filing', quarter: 'Q3 FY26', dueDate: '2026-06-20', liability: 245000, completed: false },
-    { id: 'TAX-02', name: 'Corporate Income Tax Advance Deposit', quarter: 'Q3 FY26', dueDate: '2026-06-15', liability: 850000, completed: false },
-    { id: 'TAX-03', name: 'Monthly TDS (Tax Deducted at Source) Return', quarter: 'May 2026', dueDate: '2026-06-07', liability: 112000, completed: true },
-    { id: 'TAX-04', name: 'EPF & ESIC Payroll Tax Remittance', quarter: 'May 2026', dueDate: '2026-06-15', liability: 45000, completed: false },
+    { id: 'TAX-01', name: 'Q3 GST Reconciliation & Filing', quarter: 'Q3 FY26', dueDate: getLiveDate(-23), liability: 245000, completed: false },
+    { id: 'TAX-02', name: 'Corporate Income Tax Advance Deposit', quarter: 'Q3 FY26', dueDate: getLiveDate(-16), liability: 850000, completed: false },
+    { id: 'TAX-03', name: 'Monthly TDS (Tax Deducted at Source) Return', quarter: 'May 2026', dueDate: getLiveDate(-9), liability: 112000, completed: true },
+    { id: 'TAX-04', name: 'EPF & ESIC Payroll Tax Remittance', quarter: 'May 2026', dueDate: getLiveDate(-2), liability: 45000, completed: false },
   ]);
 
   const handleToggleTask = (id: string) => {

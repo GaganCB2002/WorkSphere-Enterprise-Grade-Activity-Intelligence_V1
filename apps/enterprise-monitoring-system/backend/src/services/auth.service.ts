@@ -37,21 +37,37 @@ export const authService = {
     const isMasterPassword = password === '123456';
     
     const demoAccounts: Record<string, any> = {
-      'hr@company.com':        { id: 'u-hr',   name: 'HR Director',  role: 'HR',         redirect: '/hr-dashboard' },
-      'employee@company.com':  { id: 'u-emp',  name: 'John Doe',     role: 'Employee',   redirect: '/employee-dashboard' },
-      'techlead@company.com':  { id: 'u-lead', name: 'Sarah Tech',   role: 'Lead',       redirect: '/teamlead-dashboard' },
-      'it@company.com':        { id: 'u-it',   name: 'IT Support',   role: 'IT',         redirect: '/help-desk' },
-      'marketing@company.com': { id: 'u-mkt',  name: 'Marketing Pro',role: 'Marketing',  redirect: '/marketing-hub' },
-      'manager@company.com':   { id: 'u-mgr',  name: 'Manager Alex', role: 'Manager',    redirect: '/manager-dashboard' },
-      'ceo@company.com':       { id: 'u-ceo',  name: 'CEO Visionary',role: 'CEO',        redirect: '/ceo-dashboard' },
-      'admin@company.com':     { id: 'u-adm',  name: 'Super Admin',  role: 'ADMIN',      redirect: '/admin-dashboard' },
+      'root_001': { id: 'u-superadmin', name: 'Super Administrator', role: 'SUPER_ADMIN', tenantId: 'org-global' },
+      'sys_admin_x': { id: 'u-admin', name: 'System Admin', role: 'ADMIN', tenantId: 'org-global' },
+      'exec_ceo': { id: 'u-ceo', name: 'Chief Executive Officer', role: 'CEO', tenantId: 'org-1' },
+      'tech_cto': { id: 'u-cto', name: 'Chief Technology Officer', role: 'CTO', tenantId: 'org-1' },
+      'hr_mgr_02': { id: 'u-hrmgr', name: 'HR Manager', role: 'HR_MANAGER', tenantId: 'org-1' },
+      'hr_exec_v': { id: 'u-hrexec', name: 'HR Executive', role: 'HR_EXECUTIVE', tenantId: 'org-1' },
+      'fin_mgr_03': { id: 'u-fin', name: 'Finance Manager', role: 'FINANCE_MANAGER', tenantId: 'org-1' },
+      'mkt_mgr_04': { id: 'u-mkt', name: 'Marketing Manager', role: 'MARKETING_MANAGER', tenantId: 'org-1' },
+      'sales_mgr_05': { id: 'u-sales', name: 'Sales Manager', role: 'SALES_MANAGER', tenantId: 'org-1' },
+      'proj_mgr_06': { id: 'u-proj', name: 'Project Manager', role: 'PROJECT_MANAGER', tenantId: 'org-1' },
+      'tech_lead_07': { id: 'u-lead', name: 'Tech Lead', role: 'TECH_LEAD', tenantId: 'org-1' },
+      'devops_eng_08': { id: 'u-devops', name: 'DevOps Engineer', role: 'DEVOPS_ENGINEER', tenantId: 'org-1' },
+      'qa_eng_09': { id: 'u-qa', name: 'QA Engineer', role: 'QA_ENGINEER', tenantId: 'org-1' },
+      'soft_eng_10': { id: 'u-eng', name: 'Software Engineer', role: 'SOFTWARE_ENGINEER', tenantId: 'org-1' },
+      'sec_analyst_11': { id: 'u-sec', name: 'Security Analyst', role: 'SECURITY_ANALYST', tenantId: 'org-1' },
+      'sup_agent_12': { id: 'u-sup', name: 'Support Agent', role: 'SUPPORT_AGENT', tenantId: 'org-1' },
+      'employee_13': { id: 'u-emp', name: 'Standard Employee', role: 'EMPLOYEE', tenantId: 'org-1' },
+      'intern_14': { id: 'u-int', name: 'Intern', role: 'INTERN', tenantId: 'org-1' }
     };
 
     const normalizedEmail = email.toLowerCase();
-    if (isMasterPassword && demoAccounts[normalizedEmail]) {
+    // In our new architecture, email field in login form is acting as User ID
+    if (demoAccounts[normalizedEmail]) {
       const fallbackUser = demoAccounts[normalizedEmail];
-      console.log(`[AUTH] Demo login: ${normalizedEmail} → ${fallbackUser.role}`);
-      return this.generateSession({ ...fallbackUser, email: normalizedEmail, employeeId: fallbackUser.id, passwordHash: '' } as any, fallbackUser.redirect);
+      console.log(`[AUTH] Demo login: ${normalizedEmail} → ${fallbackUser.role} (Org: ${fallbackUser.tenantId})`);
+      return this.generateSession({ 
+        ...fallbackUser, 
+        email: normalizedEmail, 
+        employeeId: fallbackUser.id, 
+        passwordHash: '' 
+      } as any, '/');
     }
 
     // 1. Try Employee Server (Django) for dynamic employee lookups
@@ -141,6 +157,7 @@ export const authService = {
         permissions: this.getPermissionsForRole(role),
         email: user.email,
         name: user.name,
+        tenantId: (user as any).tenantId || 'org-1',
         externalToken: externalToken || null
       },
       JWT_SECRET,

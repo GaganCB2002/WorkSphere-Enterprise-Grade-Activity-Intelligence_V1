@@ -1,3 +1,4 @@
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
 // ═══════════════════════════════════════════════════════════
 // WorkSphere Manager Dashboard — Centralized Mock Data
 // Enterprise-grade realistic workforce data
@@ -192,7 +193,7 @@ export const teamMembers: TeamMember[] = [
     id: 'EMP008', name: 'Meera Joshi', email: 'meera.joshi@worksphere.io', avatar: 'MJ',
     designation: 'Product Analyst', department: 'Product', status: 'away',
     workload: 45, productivityScore: 93, currentTask: 'Q2 Market Analysis Report',
-    joinDate: '2024-01-15', phone: '+91-9876543217', skills: ['SQL', 'Tableau', 'Python'],
+    joinDate: getLiveDate(-23), phone: '+91-9876543217', skills: ['SQL', 'Tableau', 'Python'],
     performanceRating: 4.7, tasksCompleted: 42, tasksAssigned: 5, attendanceRate: 99, reportingTo: 'You'
   },
   {
@@ -213,7 +214,7 @@ export const teamMembers: TeamMember[] = [
     id: 'EMP011', name: 'Aditya Rao', email: 'aditya.rao@worksphere.io', avatar: 'AR2',
     designation: 'Technical Writer', department: 'Documentation', status: 'offline',
     workload: 35, productivityScore: 86, currentTask: 'API Documentation Update',
-    joinDate: '2024-02-12', phone: '+91-9876543220', skills: ['Markdown', 'API Docs', 'Confluence'],
+    joinDate: getLiveDate(-16), phone: '+91-9876543220', skills: ['Markdown', 'API Docs', 'Confluence'],
     performanceRating: 3.9, tasksCompleted: 34, tasksAssigned: 4, attendanceRate: 90, reportingTo: 'You'
   },
   {
@@ -229,154 +230,154 @@ export const teamMembers: TeamMember[] = [
 export const projects: Project[] = [
   {
     id: 'PRJ001', name: 'WorkSphere Platform v3.0', status: 'active', progress: 68,
-    deadline: '2026-08-15', startDate: '2026-01-10', team: ['EMP001', 'EMP002', 'EMP006', 'EMP009'],
+    deadline: getLiveDate(-9), startDate: getLiveDate(-2), team: ['EMP001', 'EMP002', 'EMP006', 'EMP009'],
     budget: 450000, spent: 285000, priority: 'critical',
     description: 'Major platform overhaul with new architecture, enhanced security, and AI-powered features.',
     health: 'green',
     milestones: [
-      { name: 'Architecture Design', date: '2026-02-28', completed: true },
-      { name: 'Core API Development', date: '2026-04-30', completed: true },
-      { name: 'Frontend Rebuild', date: '2026-06-30', completed: false },
-      { name: 'Beta Release', date: '2026-07-31', completed: false },
-      { name: 'Production Launch', date: '2026-08-15', completed: false },
+      { name: 'Architecture Design', date: getLiveDate(5), completed: true },
+      { name: 'Core API Development', date: getLiveDate(12), completed: true },
+      { name: 'Frontend Rebuild', date: getLiveDate(19), completed: false },
+      { name: 'Beta Release', date: getLiveDate(26), completed: false },
+      { name: 'Production Launch', date: getLiveDate(-28), completed: false },
     ]
   },
   {
     id: 'PRJ002', name: 'Mobile App Redesign', status: 'active', progress: 45,
-    deadline: '2026-07-20', startDate: '2026-03-01', team: ['EMP004', 'EMP009'],
+    deadline: getLiveDate(-21), startDate: getLiveDate(-14), team: ['EMP004', 'EMP009'],
     budget: 180000, spent: 92000, priority: 'high',
     description: 'Complete redesign of mobile applications for iOS and Android with new design system.',
     health: 'yellow',
     milestones: [
-      { name: 'UI/UX Research', date: '2026-03-31', completed: true },
-      { name: 'Design Mockups', date: '2026-04-30', completed: true },
-      { name: 'Development Phase 1', date: '2026-06-15', completed: false },
-      { name: 'QA & Testing', date: '2026-07-10', completed: false },
+      { name: 'UI/UX Research', date: getLiveDate(-7), completed: true },
+      { name: 'Design Mockups', date: getLiveDate(0), completed: true },
+      { name: 'Development Phase 1', date: getLiveDate(7), completed: false },
+      { name: 'QA & Testing', date: getLiveDate(14), completed: false },
     ]
   },
   {
     id: 'PRJ003', name: 'Cloud Migration - Phase 2', status: 'active', progress: 32,
-    deadline: '2026-09-30', startDate: '2026-04-01', team: ['EMP003', 'EMP010'],
+    deadline: getLiveDate(21), startDate: getLiveDate(28), team: ['EMP003', 'EMP010'],
     budget: 320000, spent: 98000, priority: 'critical',
     description: 'Migration of remaining on-premise services to AWS with zero-downtime deployment.',
     health: 'green',
     milestones: [
-      { name: 'Infrastructure Audit', date: '2026-04-30', completed: true },
-      { name: 'Migration Plan', date: '2026-05-31', completed: false },
-      { name: 'Staging Migration', date: '2026-07-31', completed: false },
-      { name: 'Production Cutover', date: '2026-09-30', completed: false },
+      { name: 'Infrastructure Audit', date: getLiveDate(-26), completed: true },
+      { name: 'Migration Plan', date: getLiveDate(-19), completed: false },
+      { name: 'Staging Migration', date: getLiveDate(-12), completed: false },
+      { name: 'Production Cutover', date: getLiveDate(-5), completed: false },
     ]
   },
   {
     id: 'PRJ004', name: 'Data Analytics Pipeline', status: 'active', progress: 78,
-    deadline: '2026-06-15', startDate: '2025-12-01', team: ['EMP007', 'EMP008'],
+    deadline: getLiveDate(2), startDate: getLiveDate(9), team: ['EMP007', 'EMP008'],
     budget: 150000, spent: 118000, priority: 'high',
     description: 'Real-time data analytics pipeline with ML-powered insights and automated reporting.',
     health: 'green',
     milestones: [
-      { name: 'Data Model Design', date: '2026-01-31', completed: true },
-      { name: 'ETL Development', date: '2026-03-31', completed: true },
-      { name: 'Dashboard Integration', date: '2026-05-31', completed: true },
-      { name: 'ML Model Training', date: '2026-06-15', completed: false },
+      { name: 'Data Model Design', date: getLiveDate(16), completed: true },
+      { name: 'ETL Development', date: getLiveDate(23), completed: true },
+      { name: 'Dashboard Integration', date: getLiveDate(30), completed: true },
+      { name: 'ML Model Training', date: getLiveDate(-24), completed: false },
     ]
   },
   {
     id: 'PRJ005', name: 'Security Compliance Audit', status: 'at-risk', progress: 55,
-    deadline: '2026-06-30', startDate: '2026-02-15', team: ['EMP010', 'EMP005'],
+    deadline: getLiveDate(-17), startDate: getLiveDate(-10), team: ['EMP010', 'EMP005'],
     budget: 90000, spent: 62000, priority: 'critical',
     description: 'SOC 2 Type II compliance audit and implementation of required security controls.',
     health: 'red',
     milestones: [
-      { name: 'Gap Analysis', date: '2026-03-15', completed: true },
-      { name: 'Control Implementation', date: '2026-05-15', completed: true },
-      { name: 'Internal Audit', date: '2026-06-15', completed: false },
-      { name: 'External Audit', date: '2026-06-30', completed: false },
+      { name: 'Gap Analysis', date: getLiveDate(-3), completed: true },
+      { name: 'Control Implementation', date: getLiveDate(4), completed: true },
+      { name: 'Internal Audit', date: getLiveDate(11), completed: false },
+      { name: 'External Audit', date: getLiveDate(18), completed: false },
     ]
   },
   {
     id: 'PRJ006', name: 'API Documentation Overhaul', status: 'active', progress: 85,
-    deadline: '2026-06-01', startDate: '2026-03-15', team: ['EMP011', 'EMP002'],
+    deadline: getLiveDate(25), startDate: getLiveDate(-29), team: ['EMP011', 'EMP002'],
     budget: 45000, spent: 38000, priority: 'medium',
     description: 'Complete rewrite of public and internal API documentation with interactive examples.',
     health: 'green',
     milestones: [
-      { name: 'Content Audit', date: '2026-04-01', completed: true },
-      { name: 'Writing Phase', date: '2026-05-15', completed: true },
-      { name: 'Review & Publish', date: '2026-06-01', completed: false },
+      { name: 'Content Audit', date: getLiveDate(-22), completed: true },
+      { name: 'Writing Phase', date: getLiveDate(-15), completed: true },
+      { name: 'Review & Publish', date: getLiveDate(-8), completed: false },
     ]
   },
   {
     id: 'PRJ007', name: 'Employee Self-Service Portal', status: 'on-hold', progress: 20,
-    deadline: '2026-10-31', startDate: '2026-05-01', team: ['EMP001', 'EMP004'],
+    deadline: getLiveDate(-1), startDate: getLiveDate(6), team: ['EMP001', 'EMP004'],
     budget: 200000, spent: 35000, priority: 'medium',
     description: 'Self-service portal for employees to manage HR tasks, leave, expenses, and documents.',
     health: 'yellow',
     milestones: [
-      { name: 'Requirements Gathering', date: '2026-05-31', completed: true },
-      { name: 'Wireframes', date: '2026-06-30', completed: false },
-      { name: 'Development', date: '2026-09-30', completed: false },
-      { name: 'Launch', date: '2026-10-31', completed: false },
+      { name: 'Requirements Gathering', date: getLiveDate(13), completed: true },
+      { name: 'Wireframes', date: getLiveDate(20), completed: false },
+      { name: 'Development', date: getLiveDate(27), completed: false },
+      { name: 'Launch', date: getLiveDate(-27), completed: false },
     ]
   },
   {
     id: 'PRJ008', name: 'Performance Review System', status: 'completed', progress: 100,
-    deadline: '2026-04-30', startDate: '2026-01-15', team: ['EMP006', 'EMP012'],
+    deadline: getLiveDate(-20), startDate: getLiveDate(-13), team: ['EMP006', 'EMP012'],
     budget: 120000, spent: 108000, priority: 'high',
     description: '360-degree performance review system with AI-powered insights and goal tracking.',
     health: 'green',
     milestones: [
-      { name: 'System Design', date: '2026-02-15', completed: true },
-      { name: 'Core Development', date: '2026-03-31', completed: true },
-      { name: 'Testing & QA', date: '2026-04-15', completed: true },
-      { name: 'Deployment', date: '2026-04-30', completed: true },
+      { name: 'System Design', date: getLiveDate(-6), completed: true },
+      { name: 'Core Development', date: getLiveDate(1), completed: true },
+      { name: 'Testing & QA', date: getLiveDate(8), completed: true },
+      { name: 'Deployment', date: getLiveDate(15), completed: true },
     ]
   },
 ];
 
 // ── Tasks ────────────────────────────────────────────────────
 export const tasks: Task[] = [
-  { id: 'TSK001', title: 'Implement dashboard analytics widgets', description: 'Build interactive chart components for the manager dashboard overview', assignee: 'Arjun Mehta', assigneeAvatar: 'AM', status: 'in-progress', priority: 'high', dueDate: '2026-05-28', project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Line chart component', completed: true }, { title: 'Pie chart component', completed: true }, { title: 'Heatmap component', completed: false }], tags: ['frontend', 'ui'], createdAt: '2026-05-15', estimatedHours: 24, loggedHours: 16, comments: 5 },
-  { id: 'TSK002', title: 'API rate limiting middleware', description: 'Implement rate limiting for all public API endpoints', assignee: 'Priya Sharma', assigneeAvatar: 'PS', status: 'review', priority: 'critical', dueDate: '2026-05-25', project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Token bucket implementation', completed: true }, { title: 'Redis integration', completed: true }, { title: 'Load testing', completed: false }], tags: ['backend', 'security'], createdAt: '2026-05-10', estimatedHours: 16, loggedHours: 14, comments: 8 },
-  { id: 'TSK003', title: 'Kubernetes cluster auto-scaling', description: 'Configure HPA and VPA for production cluster', assignee: 'Ravi Kumar', assigneeAvatar: 'RK', status: 'in-progress', priority: 'high', dueDate: '2026-05-30', project: 'Cloud Migration - Phase 2', subtasks: [{ title: 'HPA configuration', completed: true }, { title: 'VPA setup', completed: false }, { title: 'Load testing', completed: false }], tags: ['devops', 'infrastructure'], createdAt: '2026-05-12', estimatedHours: 20, loggedHours: 12, comments: 3 },
-  { id: 'TSK004', title: 'Design system component library v3', description: 'Create reusable component library with new design tokens', assignee: 'Sneha Patel', assigneeAvatar: 'SP', status: 'in-progress', priority: 'medium', dueDate: '2026-06-05', project: 'Mobile App Redesign', subtasks: [{ title: 'Color tokens', completed: true }, { title: 'Typography scale', completed: true }, { title: 'Button components', completed: true }, { title: 'Form components', completed: false }], tags: ['design', 'ui'], createdAt: '2026-05-08', estimatedHours: 32, loggedHours: 22, comments: 12 },
-  { id: 'TSK005', title: 'Regression test suite for payment module', description: 'Comprehensive E2E test suite for all payment flows', assignee: 'Vikram Singh', assigneeAvatar: 'VS', status: 'blocked', priority: 'high', dueDate: '2026-05-26', project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Test plan document', completed: true }, { title: 'Test scripts', completed: false }], tags: ['qa', 'testing'], createdAt: '2026-05-14', estimatedHours: 28, loggedHours: 8, comments: 4 },
-  { id: 'TSK006', title: 'Payment gateway integration', description: 'Integrate Razorpay and Stripe payment gateways', assignee: 'Ananya Reddy', assigneeAvatar: 'AR', status: 'in-progress', priority: 'critical', dueDate: '2026-05-27', project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Razorpay SDK setup', completed: true }, { title: 'Stripe SDK setup', completed: true }, { title: 'Webhook handlers', completed: false }, { title: 'Error handling', completed: false }], tags: ['backend', 'payments'], createdAt: '2026-05-11', estimatedHours: 40, loggedHours: 28, comments: 9 },
-  { id: 'TSK007', title: 'ETL pipeline performance optimization', description: 'Optimize Spark jobs for 3x throughput improvement', assignee: 'Karthik Nair', assigneeAvatar: 'KN', status: 'review', priority: 'medium', dueDate: '2026-05-29', project: 'Data Analytics Pipeline', subtasks: [{ title: 'Query optimization', completed: true }, { title: 'Partition strategy', completed: true }, { title: 'Benchmark tests', completed: true }], tags: ['data', 'performance'], createdAt: '2026-05-09', estimatedHours: 18, loggedHours: 17, comments: 6 },
-  { id: 'TSK008', title: 'Q2 competitive analysis report', description: 'Detailed market analysis with competitor benchmarking', assignee: 'Meera Joshi', assigneeAvatar: 'MJ', status: 'pending', priority: 'medium', dueDate: '2026-06-01', project: 'Data Analytics Pipeline', subtasks: [{ title: 'Data collection', completed: false }, { title: 'Analysis', completed: false }, { title: 'Report writing', completed: false }], tags: ['analytics', 'report'], createdAt: '2026-05-18', estimatedHours: 14, loggedHours: 0, comments: 1 },
-  { id: 'TSK009', title: 'React Native performance profiling', description: 'Profile and optimize app startup time and memory usage', assignee: 'Rohan Desai', assigneeAvatar: 'RD', status: 'in-progress', priority: 'high', dueDate: '2026-05-26', project: 'Mobile App Redesign', subtasks: [{ title: 'Startup profiling', completed: true }, { title: 'Memory leak detection', completed: false }, { title: 'Bundle optimization', completed: false }], tags: ['mobile', 'performance'], createdAt: '2026-05-13', estimatedHours: 22, loggedHours: 14, comments: 7 },
-  { id: 'TSK010', title: 'SIEM rule tuning and alerting', description: 'Fine-tune SIEM detection rules to reduce false positives', assignee: 'Divya Iyer', assigneeAvatar: 'DI', status: 'completed', priority: 'high', dueDate: '2026-05-20', project: 'Security Compliance Audit', subtasks: [{ title: 'Rule audit', completed: true }, { title: 'Alert thresholds', completed: true }, { title: 'Documentation', completed: true }], tags: ['security', 'monitoring'], createdAt: '2026-05-05', estimatedHours: 16, loggedHours: 15, comments: 4 },
-  { id: 'TSK011', title: 'OpenAPI 3.1 spec migration', description: 'Migrate all API specs from OpenAPI 3.0 to 3.1', assignee: 'Aditya Rao', assigneeAvatar: 'AR2', status: 'pending', priority: 'low', dueDate: '2026-06-10', project: 'API Documentation Overhaul', subtasks: [{ title: 'Schema audit', completed: false }, { title: 'Migration', completed: false }], tags: ['docs', 'api'], createdAt: '2026-05-17', estimatedHours: 10, loggedHours: 0, comments: 2 },
-  { id: 'TSK012', title: 'Sprint 24 retrospective & planning', description: 'Facilitate retro and plan next sprint with team', assignee: 'Nisha Gupta', assigneeAvatar: 'NG', status: 'completed', priority: 'medium', dueDate: '2026-05-21', project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Retro facilitation', completed: true }, { title: 'Sprint planning', completed: true }, { title: 'Board setup', completed: true }], tags: ['agile', 'planning'], createdAt: '2026-05-19', estimatedHours: 6, loggedHours: 5, comments: 3 },
-  { id: 'TSK013', title: 'Database index optimization', description: 'Analyze slow queries and add composite indexes', assignee: 'Priya Sharma', assigneeAvatar: 'PS', status: 'pending', priority: 'high', dueDate: '2026-06-03', project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Query analysis', completed: false }, { title: 'Index creation', completed: false }, { title: 'Performance testing', completed: false }], tags: ['backend', 'database'], createdAt: '2026-05-20', estimatedHours: 12, loggedHours: 0, comments: 0 },
-  { id: 'TSK014', title: 'Accessibility audit - WCAG 2.1', description: 'Full accessibility audit of all customer-facing pages', assignee: 'Sneha Patel', assigneeAvatar: 'SP', status: 'pending', priority: 'medium', dueDate: '2026-06-08', project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Automated scan', completed: false }, { title: 'Manual testing', completed: false }, { title: 'Remediation plan', completed: false }], tags: ['design', 'a11y'], createdAt: '2026-05-19', estimatedHours: 20, loggedHours: 0, comments: 1 },
+  { id: 'TSK001', title: 'Implement dashboard analytics widgets', description: 'Build interactive chart components for the manager dashboard overview', assignee: 'Arjun Mehta', assigneeAvatar: 'AM', status: 'in-progress', priority: 'high', dueDate: getLiveDate(22), project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Line chart component', completed: true }, { title: 'Pie chart component', completed: true }, { title: 'Heatmap component', completed: false }], tags: ['frontend', 'ui'], createdAt: getLiveDate(29), estimatedHours: 24, loggedHours: 16, comments: 5 },
+  { id: 'TSK002', title: 'API rate limiting middleware', description: 'Implement rate limiting for all public API endpoints', assignee: 'Priya Sharma', assigneeAvatar: 'PS', status: 'review', priority: 'critical', dueDate: getLiveDate(-25), project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Token bucket implementation', completed: true }, { title: 'Redis integration', completed: true }, { title: 'Load testing', completed: false }], tags: ['backend', 'security'], createdAt: getLiveDate(-18), estimatedHours: 16, loggedHours: 14, comments: 8 },
+  { id: 'TSK003', title: 'Kubernetes cluster auto-scaling', description: 'Configure HPA and VPA for production cluster', assignee: 'Ravi Kumar', assigneeAvatar: 'RK', status: 'in-progress', priority: 'high', dueDate: getLiveDate(-11), project: 'Cloud Migration - Phase 2', subtasks: [{ title: 'HPA configuration', completed: true }, { title: 'VPA setup', completed: false }, { title: 'Load testing', completed: false }], tags: ['devops', 'infrastructure'], createdAt: getLiveDate(-4), estimatedHours: 20, loggedHours: 12, comments: 3 },
+  { id: 'TSK004', title: 'Design system component library v3', description: 'Create reusable component library with new design tokens', assignee: 'Sneha Patel', assigneeAvatar: 'SP', status: 'in-progress', priority: 'medium', dueDate: getLiveDate(3), project: 'Mobile App Redesign', subtasks: [{ title: 'Color tokens', completed: true }, { title: 'Typography scale', completed: true }, { title: 'Button components', completed: true }, { title: 'Form components', completed: false }], tags: ['design', 'ui'], createdAt: getLiveDate(10), estimatedHours: 32, loggedHours: 22, comments: 12 },
+  { id: 'TSK005', title: 'Regression test suite for payment module', description: 'Comprehensive E2E test suite for all payment flows', assignee: 'Vikram Singh', assigneeAvatar: 'VS', status: 'blocked', priority: 'high', dueDate: getLiveDate(17), project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Test plan document', completed: true }, { title: 'Test scripts', completed: false }], tags: ['qa', 'testing'], createdAt: getLiveDate(24), estimatedHours: 28, loggedHours: 8, comments: 4 },
+  { id: 'TSK006', title: 'Payment gateway integration', description: 'Integrate Razorpay and Stripe payment gateways', assignee: 'Ananya Reddy', assigneeAvatar: 'AR', status: 'in-progress', priority: 'critical', dueDate: getLiveDate(-30), project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Razorpay SDK setup', completed: true }, { title: 'Stripe SDK setup', completed: true }, { title: 'Webhook handlers', completed: false }, { title: 'Error handling', completed: false }], tags: ['backend', 'payments'], createdAt: getLiveDate(-23), estimatedHours: 40, loggedHours: 28, comments: 9 },
+  { id: 'TSK007', title: 'ETL pipeline performance optimization', description: 'Optimize Spark jobs for 3x throughput improvement', assignee: 'Karthik Nair', assigneeAvatar: 'KN', status: 'review', priority: 'medium', dueDate: getLiveDate(-16), project: 'Data Analytics Pipeline', subtasks: [{ title: 'Query optimization', completed: true }, { title: 'Partition strategy', completed: true }, { title: 'Benchmark tests', completed: true }], tags: ['data', 'performance'], createdAt: getLiveDate(-9), estimatedHours: 18, loggedHours: 17, comments: 6 },
+  { id: 'TSK008', title: 'Q2 competitive analysis report', description: 'Detailed market analysis with competitor benchmarking', assignee: 'Meera Joshi', assigneeAvatar: 'MJ', status: 'pending', priority: 'medium', dueDate: getLiveDate(-2), project: 'Data Analytics Pipeline', subtasks: [{ title: 'Data collection', completed: false }, { title: 'Analysis', completed: false }, { title: 'Report writing', completed: false }], tags: ['analytics', 'report'], createdAt: getLiveDate(5), estimatedHours: 14, loggedHours: 0, comments: 1 },
+  { id: 'TSK009', title: 'React Native performance profiling', description: 'Profile and optimize app startup time and memory usage', assignee: 'Rohan Desai', assigneeAvatar: 'RD', status: 'in-progress', priority: 'high', dueDate: getLiveDate(12), project: 'Mobile App Redesign', subtasks: [{ title: 'Startup profiling', completed: true }, { title: 'Memory leak detection', completed: false }, { title: 'Bundle optimization', completed: false }], tags: ['mobile', 'performance'], createdAt: getLiveDate(19), estimatedHours: 22, loggedHours: 14, comments: 7 },
+  { id: 'TSK010', title: 'SIEM rule tuning and alerting', description: 'Fine-tune SIEM detection rules to reduce false positives', assignee: 'Divya Iyer', assigneeAvatar: 'DI', status: 'completed', priority: 'high', dueDate: getLiveDate(26), project: 'Security Compliance Audit', subtasks: [{ title: 'Rule audit', completed: true }, { title: 'Alert thresholds', completed: true }, { title: 'Documentation', completed: true }], tags: ['security', 'monitoring'], createdAt: getLiveDate(-28), estimatedHours: 16, loggedHours: 15, comments: 4 },
+  { id: 'TSK011', title: 'OpenAPI 3.1 spec migration', description: 'Migrate all API specs from OpenAPI 3.0 to 3.1', assignee: 'Aditya Rao', assigneeAvatar: 'AR2', status: 'pending', priority: 'low', dueDate: getLiveDate(-21), project: 'API Documentation Overhaul', subtasks: [{ title: 'Schema audit', completed: false }, { title: 'Migration', completed: false }], tags: ['docs', 'api'], createdAt: getLiveDate(-14), estimatedHours: 10, loggedHours: 0, comments: 2 },
+  { id: 'TSK012', title: 'Sprint 24 retrospective & planning', description: 'Facilitate retro and plan next sprint with team', assignee: 'Nisha Gupta', assigneeAvatar: 'NG', status: 'completed', priority: 'medium', dueDate: getLiveDate(-7), project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Retro facilitation', completed: true }, { title: 'Sprint planning', completed: true }, { title: 'Board setup', completed: true }], tags: ['agile', 'planning'], createdAt: getLiveDate(0), estimatedHours: 6, loggedHours: 5, comments: 3 },
+  { id: 'TSK013', title: 'Database index optimization', description: 'Analyze slow queries and add composite indexes', assignee: 'Priya Sharma', assigneeAvatar: 'PS', status: 'pending', priority: 'high', dueDate: getLiveDate(7), project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Query analysis', completed: false }, { title: 'Index creation', completed: false }, { title: 'Performance testing', completed: false }], tags: ['backend', 'database'], createdAt: getLiveDate(14), estimatedHours: 12, loggedHours: 0, comments: 0 },
+  { id: 'TSK014', title: 'Accessibility audit - WCAG 2.1', description: 'Full accessibility audit of all customer-facing pages', assignee: 'Sneha Patel', assigneeAvatar: 'SP', status: 'pending', priority: 'medium', dueDate: getLiveDate(21), project: 'WorkSphere Platform v3.0', subtasks: [{ title: 'Automated scan', completed: false }, { title: 'Manual testing', completed: false }, { title: 'Remediation plan', completed: false }], tags: ['design', 'a11y'], createdAt: getLiveDate(28), estimatedHours: 20, loggedHours: 0, comments: 1 },
 ];
 
 // ── Leave Requests ──────────────────────────────────────────
 export const leaveRequests: LeaveRequest[] = [
-  { id: 'LV001', employeeId: 'EMP005', employeeName: 'Vikram Singh', employeeAvatar: 'VS', type: 'annual', from: '2026-05-19', to: '2026-05-23', days: 5, status: 'approved', reason: 'Family vacation planned to Goa.', appliedOn: '2026-05-10', backup: 'Divya Iyer', conflicts: [], leaveBalance: 12 },
-  { id: 'LV002', employeeId: 'EMP003', employeeName: 'Ravi Kumar', employeeAvatar: 'RK', type: 'sick', from: '2026-05-26', to: '2026-05-27', days: 2, status: 'pending', reason: 'Medical appointment and recovery.', appliedOn: '2026-05-21', backup: '', conflicts: ['Cloud Migration sprint deadline'], leaveBalance: 8 },
-  { id: 'LV003', employeeId: 'EMP008', employeeName: 'Meera Joshi', employeeAvatar: 'MJ', type: 'personal', from: '2026-05-28', to: '2026-05-28', days: 1, status: 'pending', reason: 'Personal errand - bank work.', appliedOn: '2026-05-20', backup: 'Karthik Nair', conflicts: [], leaveBalance: 15 },
-  { id: 'LV004', employeeId: 'EMP001', employeeName: 'Arjun Mehta', employeeAvatar: 'AM', type: 'annual', from: '2026-06-02', to: '2026-06-06', days: 5, status: 'pending', reason: 'Annual family trip to Rajasthan.', appliedOn: '2026-05-18', backup: 'Ananya Reddy', conflicts: ['Dashboard sprint overlap'], leaveBalance: 10 },
-  { id: 'LV005', employeeId: 'EMP012', employeeName: 'Nisha Gupta', employeeAvatar: 'NG', type: 'compensatory', from: '2026-05-30', to: '2026-05-30', days: 1, status: 'pending', reason: 'Comp-off for weekend production support.', appliedOn: '2026-05-21', backup: '', conflicts: [], leaveBalance: 3 },
-  { id: 'LV006', employeeId: 'EMP006', employeeName: 'Ananya Reddy', employeeAvatar: 'AR', type: 'sick', from: '2026-06-09', to: '2026-06-10', days: 2, status: 'pending', reason: 'Dental surgery and recovery.', appliedOn: '2026-05-19', backup: 'Arjun Mehta', conflicts: ['Payment module deadline near'], leaveBalance: 7 },
-  { id: 'LV007', employeeId: 'EMP009', employeeName: 'Rohan Desai', employeeAvatar: 'RD', type: 'annual', from: '2026-06-16', to: '2026-06-20', days: 5, status: 'pending', reason: 'Wedding in family.', appliedOn: '2026-05-15', backup: 'Arjun Mehta', conflicts: ['Mobile app release timeline'], leaveBalance: 14 },
-  { id: 'LV008', employeeId: 'EMP007', employeeName: 'Karthik Nair', employeeAvatar: 'KN', type: 'personal', from: '2026-05-29', to: '2026-05-29', days: 1, status: 'approved', reason: 'House registration work.', appliedOn: '2026-05-16', backup: 'Meera Joshi', conflicts: [], leaveBalance: 11 },
+  { id: 'LV001', employeeId: 'EMP005', employeeName: 'Vikram Singh', employeeAvatar: 'VS', type: 'annual', from: getLiveDate(-26), to: getLiveDate(-19), days: 5, status: 'approved', reason: 'Family vacation planned to Goa.', appliedOn: getLiveDate(-12), backup: 'Divya Iyer', conflicts: [], leaveBalance: 12 },
+  { id: 'LV002', employeeId: 'EMP003', employeeName: 'Ravi Kumar', employeeAvatar: 'RK', type: 'sick', from: getLiveDate(-5), to: getLiveDate(2), days: 2, status: 'pending', reason: 'Medical appointment and recovery.', appliedOn: getLiveDate(9), backup: '', conflicts: ['Cloud Migration sprint deadline'], leaveBalance: 8 },
+  { id: 'LV003', employeeId: 'EMP008', employeeName: 'Meera Joshi', employeeAvatar: 'MJ', type: 'personal', from: getLiveDate(16), to: getLiveDate(23), days: 1, status: 'pending', reason: 'Personal errand - bank work.', appliedOn: getLiveDate(30), backup: 'Karthik Nair', conflicts: [], leaveBalance: 15 },
+  { id: 'LV004', employeeId: 'EMP001', employeeName: 'Arjun Mehta', employeeAvatar: 'AM', type: 'annual', from: getLiveDate(-24), to: getLiveDate(-17), days: 5, status: 'pending', reason: 'Annual family trip to Rajasthan.', appliedOn: getLiveDate(-10), backup: 'Ananya Reddy', conflicts: ['Dashboard sprint overlap'], leaveBalance: 10 },
+  { id: 'LV005', employeeId: 'EMP012', employeeName: 'Nisha Gupta', employeeAvatar: 'NG', type: 'compensatory', from: getLiveDate(-3), to: getLiveDate(4), days: 1, status: 'pending', reason: 'Comp-off for weekend production support.', appliedOn: getLiveDate(11), backup: '', conflicts: [], leaveBalance: 3 },
+  { id: 'LV006', employeeId: 'EMP006', employeeName: 'Ananya Reddy', employeeAvatar: 'AR', type: 'sick', from: getLiveDate(18), to: getLiveDate(25), days: 2, status: 'pending', reason: 'Dental surgery and recovery.', appliedOn: getLiveDate(-29), backup: 'Arjun Mehta', conflicts: ['Payment module deadline near'], leaveBalance: 7 },
+  { id: 'LV007', employeeId: 'EMP009', employeeName: 'Rohan Desai', employeeAvatar: 'RD', type: 'annual', from: getLiveDate(-22), to: getLiveDate(-15), days: 5, status: 'pending', reason: 'Wedding in family.', appliedOn: getLiveDate(-8), backup: 'Arjun Mehta', conflicts: ['Mobile app release timeline'], leaveBalance: 14 },
+  { id: 'LV008', employeeId: 'EMP007', employeeName: 'Karthik Nair', employeeAvatar: 'KN', type: 'personal', from: getLiveDate(-1), to: getLiveDate(6), days: 1, status: 'approved', reason: 'House registration work.', appliedOn: getLiveDate(13), backup: 'Meera Joshi', conflicts: [], leaveBalance: 11 },
 ];
 
 // ── Attendance Data ──────────────────────────────────────────
 export const todayAttendance: AttendanceRecord[] = [
-  { id: 'ATT001', employeeName: 'Arjun Mehta', employeeId: 'EMP001', date: '2026-05-21', checkIn: '09:02', checkOut: '18:15', workHours: 9.2, status: 'present', overtime: 0.2 },
-  { id: 'ATT002', employeeName: 'Priya Sharma', employeeId: 'EMP002', date: '2026-05-21', checkIn: '09:15', checkOut: '18:30', workHours: 9.25, status: 'present', overtime: 0.25 },
-  { id: 'ATT003', employeeName: 'Ravi Kumar', employeeId: 'EMP003', date: '2026-05-21', checkIn: '09:45', checkOut: '—', workHours: 6.5, status: 'late', overtime: 0 },
-  { id: 'ATT004', employeeName: 'Sneha Patel', employeeId: 'EMP004', date: '2026-05-21', checkIn: '08:55', checkOut: '17:55', workHours: 9.0, status: 'present', overtime: 0 },
-  { id: 'ATT005', employeeName: 'Vikram Singh', employeeId: 'EMP005', date: '2026-05-21', checkIn: '—', checkOut: '—', workHours: 0, status: 'on-leave', overtime: 0 },
-  { id: 'ATT006', employeeName: 'Ananya Reddy', employeeId: 'EMP006', date: '2026-05-21', checkIn: '09:00', checkOut: '19:00', workHours: 10.0, status: 'present', overtime: 1.0 },
-  { id: 'ATT007', employeeName: 'Karthik Nair', employeeId: 'EMP007', date: '2026-05-21', checkIn: '08:50', checkOut: '18:00', workHours: 9.15, status: 'remote', overtime: 0.15 },
-  { id: 'ATT008', employeeName: 'Meera Joshi', employeeId: 'EMP008', date: '2026-05-21', checkIn: '10:30', checkOut: '—', workHours: 5.75, status: 'late', overtime: 0 },
-  { id: 'ATT009', employeeName: 'Rohan Desai', employeeId: 'EMP009', date: '2026-05-21', checkIn: '09:05', checkOut: '20:00', workHours: 10.9, status: 'present', overtime: 1.9 },
-  { id: 'ATT010', employeeName: 'Divya Iyer', employeeId: 'EMP010', date: '2026-05-21', checkIn: '09:10', checkOut: '18:20', workHours: 9.15, status: 'present', overtime: 0.15 },
-  { id: 'ATT011', employeeName: 'Aditya Rao', employeeId: 'EMP011', date: '2026-05-21', checkIn: '—', checkOut: '—', workHours: 0, status: 'absent', overtime: 0 },
-  { id: 'ATT012', employeeName: 'Nisha Gupta', employeeId: 'EMP012', date: '2026-05-21', checkIn: '08:45', checkOut: '18:45', workHours: 10.0, status: 'present', overtime: 1.0 },
+  { id: 'ATT001', employeeName: 'Arjun Mehta', employeeId: 'EMP001', date: getLiveDate(20), checkIn: '09:02', checkOut: '18:15', workHours: 9.2, status: 'present', overtime: 0.2 },
+  { id: 'ATT002', employeeName: 'Priya Sharma', employeeId: 'EMP002', date: getLiveDate(27), checkIn: '09:15', checkOut: '18:30', workHours: 9.25, status: 'present', overtime: 0.25 },
+  { id: 'ATT003', employeeName: 'Ravi Kumar', employeeId: 'EMP003', date: getLiveDate(-27), checkIn: '09:45', checkOut: '—', workHours: 6.5, status: 'late', overtime: 0 },
+  { id: 'ATT004', employeeName: 'Sneha Patel', employeeId: 'EMP004', date: getLiveDate(-20), checkIn: '08:55', checkOut: '17:55', workHours: 9.0, status: 'present', overtime: 0 },
+  { id: 'ATT005', employeeName: 'Vikram Singh', employeeId: 'EMP005', date: getLiveDate(-13), checkIn: '—', checkOut: '—', workHours: 0, status: 'on-leave', overtime: 0 },
+  { id: 'ATT006', employeeName: 'Ananya Reddy', employeeId: 'EMP006', date: getLiveDate(-6), checkIn: '09:00', checkOut: '19:00', workHours: 10.0, status: 'present', overtime: 1.0 },
+  { id: 'ATT007', employeeName: 'Karthik Nair', employeeId: 'EMP007', date: getLiveDate(1), checkIn: '08:50', checkOut: '18:00', workHours: 9.15, status: 'remote', overtime: 0.15 },
+  { id: 'ATT008', employeeName: 'Meera Joshi', employeeId: 'EMP008', date: getLiveDate(8), checkIn: '10:30', checkOut: '—', workHours: 5.75, status: 'late', overtime: 0 },
+  { id: 'ATT009', employeeName: 'Rohan Desai', employeeId: 'EMP009', date: getLiveDate(15), checkIn: '09:05', checkOut: '20:00', workHours: 10.9, status: 'present', overtime: 1.9 },
+  { id: 'ATT010', employeeName: 'Divya Iyer', employeeId: 'EMP010', date: getLiveDate(22), checkIn: '09:10', checkOut: '18:20', workHours: 9.15, status: 'present', overtime: 0.15 },
+  { id: 'ATT011', employeeName: 'Aditya Rao', employeeId: 'EMP011', date: getLiveDate(29), checkIn: '—', checkOut: '—', workHours: 0, status: 'absent', overtime: 0 },
+  { id: 'ATT012', employeeName: 'Nisha Gupta', employeeId: 'EMP012', date: getLiveDate(-25), checkIn: '08:45', checkOut: '18:45', workHours: 10.0, status: 'present', overtime: 1.0 },
 ];
 
 // ── Notifications ────────────────────────────────────────────
@@ -406,32 +407,32 @@ export const chatChannels: ChatChannel[] = [
 
 // ── Documents ────────────────────────────────────────────────
 export const documents: Document[] = [
-  { id: 'DOC001', name: 'Q2 Engineering Roadmap.pdf', type: 'pdf', size: '2.4 MB', modified: '2026-05-18', owner: 'You', shared: true, folder: 'Engineering' },
-  { id: 'DOC002', name: 'Team Performance Report - April.xls', type: 'xls', size: '1.1 MB', modified: '2026-05-05', owner: 'You', shared: false, folder: 'Reports' },
-  { id: 'DOC003', name: 'Architecture Decision Record.doc', type: 'doc', size: '890 KB', modified: '2026-05-15', owner: 'Arjun Mehta', shared: true, folder: 'Engineering' },
-  { id: 'DOC004', name: 'Security Compliance Checklist.pdf', type: 'pdf', size: '340 KB', modified: '2026-05-20', owner: 'Divya Iyer', shared: true, folder: 'Security' },
-  { id: 'DOC005', name: 'Sprint Retrospective Notes.doc', type: 'doc', size: '220 KB', modified: '2026-05-21', owner: 'Nisha Gupta', shared: true, folder: 'Agile' },
-  { id: 'DOC006', name: 'Budget Allocation FY26.xls', type: 'xls', size: '3.2 MB', modified: '2026-04-28', owner: 'You', shared: false, folder: 'Finance' },
-  { id: 'DOC007', name: 'Mobile App Wireframes.pdf', type: 'pdf', size: '8.7 MB', modified: '2026-05-12', owner: 'Sneha Patel', shared: true, folder: 'Design' },
-  { id: 'DOC008', name: 'API Migration Guide v2.doc', type: 'doc', size: '450 KB', modified: '2026-05-19', owner: 'Aditya Rao', shared: true, folder: 'Engineering' },
-  { id: 'DOC009', name: 'Leave Policy 2026.pdf', type: 'pdf', size: '180 KB', modified: '2026-01-15', owner: 'HR', shared: true, folder: 'Policies' },
-  { id: 'DOC010', name: 'Onboarding Handbook.pdf', type: 'pdf', size: '5.3 MB', modified: '2026-03-01', owner: 'HR', shared: true, folder: 'Policies' },
+  { id: 'DOC001', name: 'Q2 Engineering Roadmap.pdf', type: 'pdf', size: '2.4 MB', modified: getLiveDate(-18), owner: 'You', shared: true, folder: 'Engineering' },
+  { id: 'DOC002', name: 'Team Performance Report - April.xls', type: 'xls', size: '1.1 MB', modified: getLiveDate(-11), owner: 'You', shared: false, folder: 'Reports' },
+  { id: 'DOC003', name: 'Architecture Decision Record.doc', type: 'doc', size: '890 KB', modified: getLiveDate(-4), owner: 'Arjun Mehta', shared: true, folder: 'Engineering' },
+  { id: 'DOC004', name: 'Security Compliance Checklist.pdf', type: 'pdf', size: '340 KB', modified: getLiveDate(3), owner: 'Divya Iyer', shared: true, folder: 'Security' },
+  { id: 'DOC005', name: 'Sprint Retrospective Notes.doc', type: 'doc', size: '220 KB', modified: getLiveDate(10), owner: 'Nisha Gupta', shared: true, folder: 'Agile' },
+  { id: 'DOC006', name: 'Budget Allocation FY26.xls', type: 'xls', size: '3.2 MB', modified: getLiveDate(17), owner: 'You', shared: false, folder: 'Finance' },
+  { id: 'DOC007', name: 'Mobile App Wireframes.pdf', type: 'pdf', size: '8.7 MB', modified: getLiveDate(24), owner: 'Sneha Patel', shared: true, folder: 'Design' },
+  { id: 'DOC008', name: 'API Migration Guide v2.doc', type: 'doc', size: '450 KB', modified: getLiveDate(-30), owner: 'Aditya Rao', shared: true, folder: 'Engineering' },
+  { id: 'DOC009', name: 'Leave Policy 2026.pdf', type: 'pdf', size: '180 KB', modified: getLiveDate(-23), owner: 'HR', shared: true, folder: 'Policies' },
+  { id: 'DOC010', name: 'Onboarding Handbook.pdf', type: 'pdf', size: '5.3 MB', modified: getLiveDate(-16), owner: 'HR', shared: true, folder: 'Policies' },
 ];
 
 // ── Performance Records ──────────────────────────────────────
 export const performanceRecords: PerformanceRecord[] = [
-  { employeeId: 'EMP001', employeeName: 'Arjun Mehta', taskCompletionRate: 94, attendanceScore: 97, productivityScore: 94, collaborationScore: 88, qualityScore: 92, overallRating: 4.6, trend: 'up', goals: [{ name: 'Complete Platform v3 frontend', progress: 68, deadline: '2026-08-15' }, { name: 'Mentor 2 junior developers', progress: 50, deadline: '2026-06-30' }], lastReview: '2026-03-15', nextReview: '2026-06-15' },
-  { employeeId: 'EMP002', employeeName: 'Priya Sharma', taskCompletionRate: 91, attendanceScore: 95, productivityScore: 91, collaborationScore: 90, qualityScore: 93, overallRating: 4.4, trend: 'stable', goals: [{ name: 'Optimize API response times by 40%', progress: 75, deadline: '2026-07-31' }, { name: 'Complete AWS certification', progress: 30, deadline: '2026-09-30' }], lastReview: '2026-03-15', nextReview: '2026-06-15' },
-  { employeeId: 'EMP003', employeeName: 'Ravi Kumar', taskCompletionRate: 88, attendanceScore: 93, productivityScore: 88, collaborationScore: 82, qualityScore: 86, overallRating: 4.2, trend: 'up', goals: [{ name: 'Zero-downtime deployment pipeline', progress: 55, deadline: '2026-08-31' }, { name: 'Reduce infrastructure costs 20%', progress: 40, deadline: '2026-09-30' }], lastReview: '2026-03-15', nextReview: '2026-06-15' },
-  { employeeId: 'EMP004', employeeName: 'Sneha Patel', taskCompletionRate: 96, attendanceScore: 98, productivityScore: 96, collaborationScore: 95, qualityScore: 97, overallRating: 4.8, trend: 'up', goals: [{ name: 'Launch Design System v3', progress: 80, deadline: '2026-06-30' }, { name: 'Conduct 4 design workshops', progress: 75, deadline: '2026-06-30' }], lastReview: '2026-03-15', nextReview: '2026-06-15' },
-  { employeeId: 'EMP005', employeeName: 'Vikram Singh', taskCompletionRate: 87, attendanceScore: 91, productivityScore: 87, collaborationScore: 80, qualityScore: 89, overallRating: 4.1, trend: 'down', goals: [{ name: 'Achieve 95% test coverage', progress: 60, deadline: '2026-07-31' }, { name: 'Automate regression suite', progress: 45, deadline: '2026-08-31' }], lastReview: '2026-03-15', nextReview: '2026-06-15' },
-  { employeeId: 'EMP006', employeeName: 'Ananya Reddy', taskCompletionRate: 92, attendanceScore: 96, productivityScore: 92, collaborationScore: 91, qualityScore: 90, overallRating: 4.5, trend: 'up', goals: [{ name: 'Ship payment module v2', progress: 65, deadline: '2026-06-30' }, { name: 'Learn GraphQL', progress: 20, deadline: '2026-09-30' }], lastReview: '2026-03-15', nextReview: '2026-06-15' },
-  { employeeId: 'EMP007', employeeName: 'Karthik Nair', taskCompletionRate: 89, attendanceScore: 94, productivityScore: 89, collaborationScore: 85, qualityScore: 88, overallRating: 4.3, trend: 'stable', goals: [{ name: 'Real-time analytics pipeline', progress: 78, deadline: '2026-06-15' }, { name: 'Data quality framework', progress: 35, deadline: '2026-08-31' }], lastReview: '2026-03-15', nextReview: '2026-06-15' },
-  { employeeId: 'EMP008', employeeName: 'Meera Joshi', taskCompletionRate: 93, attendanceScore: 99, productivityScore: 93, collaborationScore: 92, qualityScore: 95, overallRating: 4.7, trend: 'up', goals: [{ name: 'Deliver 3 market reports', progress: 66, deadline: '2026-06-30' }, { name: 'Implement OKR tracking', progress: 40, deadline: '2026-07-31' }], lastReview: '2026-03-15', nextReview: '2026-06-15' },
-  { employeeId: 'EMP009', employeeName: 'Rohan Desai', taskCompletionRate: 85, attendanceScore: 92, productivityScore: 85, collaborationScore: 78, qualityScore: 82, overallRating: 4.0, trend: 'down', goals: [{ name: 'Ship mobile app v2.1', progress: 50, deadline: '2026-07-20' }, { name: 'Reduce app crash rate to <0.1%', progress: 60, deadline: '2026-06-30' }], lastReview: '2026-03-15', nextReview: '2026-06-15' },
-  { employeeId: 'EMP010', employeeName: 'Divya Iyer', taskCompletionRate: 90, attendanceScore: 95, productivityScore: 90, collaborationScore: 88, qualityScore: 91, overallRating: 4.4, trend: 'stable', goals: [{ name: 'SOC 2 compliance', progress: 55, deadline: '2026-06-30' }, { name: 'Implement SAST pipeline', progress: 70, deadline: '2026-07-31' }], lastReview: '2026-03-15', nextReview: '2026-06-15' },
-  { employeeId: 'EMP011', employeeName: 'Aditya Rao', taskCompletionRate: 86, attendanceScore: 90, productivityScore: 86, collaborationScore: 83, qualityScore: 88, overallRating: 3.9, trend: 'stable', goals: [{ name: 'Complete API docs migration', progress: 85, deadline: '2026-06-01' }, { name: 'Launch developer portal', progress: 25, deadline: '2026-09-30' }], lastReview: '2026-03-15', nextReview: '2026-06-15' },
-  { employeeId: 'EMP012', employeeName: 'Nisha Gupta', taskCompletionRate: 95, attendanceScore: 97, productivityScore: 95, collaborationScore: 96, qualityScore: 94, overallRating: 4.6, trend: 'up', goals: [{ name: 'Improve team velocity by 15%', progress: 70, deadline: '2026-06-30' }, { name: 'Implement SAFe framework', progress: 45, deadline: '2026-09-30' }], lastReview: '2026-03-15', nextReview: '2026-06-15' },
+  { employeeId: 'EMP001', employeeName: 'Arjun Mehta', taskCompletionRate: 94, attendanceScore: 97, productivityScore: 94, collaborationScore: 88, qualityScore: 92, overallRating: 4.6, trend: 'up', goals: [{ name: 'Complete Platform v3 frontend', progress: 68, deadline: getLiveDate(-9) }, { name: 'Mentor 2 junior developers', progress: 50, deadline: getLiveDate(-2) }], lastReview: getLiveDate(5), nextReview: getLiveDate(12) },
+  { employeeId: 'EMP002', employeeName: 'Priya Sharma', taskCompletionRate: 91, attendanceScore: 95, productivityScore: 91, collaborationScore: 90, qualityScore: 93, overallRating: 4.4, trend: 'stable', goals: [{ name: 'Optimize API response times by 40%', progress: 75, deadline: getLiveDate(19) }, { name: 'Complete AWS certification', progress: 30, deadline: getLiveDate(26) }], lastReview: getLiveDate(-28), nextReview: getLiveDate(-21) },
+  { employeeId: 'EMP003', employeeName: 'Ravi Kumar', taskCompletionRate: 88, attendanceScore: 93, productivityScore: 88, collaborationScore: 82, qualityScore: 86, overallRating: 4.2, trend: 'up', goals: [{ name: 'Zero-downtime deployment pipeline', progress: 55, deadline: getLiveDate(-14) }, { name: 'Reduce infrastructure costs 20%', progress: 40, deadline: getLiveDate(-7) }], lastReview: getLiveDate(0), nextReview: getLiveDate(7) },
+  { employeeId: 'EMP004', employeeName: 'Sneha Patel', taskCompletionRate: 96, attendanceScore: 98, productivityScore: 96, collaborationScore: 95, qualityScore: 97, overallRating: 4.8, trend: 'up', goals: [{ name: 'Launch Design System v3', progress: 80, deadline: getLiveDate(14) }, { name: 'Conduct 4 design workshops', progress: 75, deadline: getLiveDate(21) }], lastReview: getLiveDate(28), nextReview: getLiveDate(-26) },
+  { employeeId: 'EMP005', employeeName: 'Vikram Singh', taskCompletionRate: 87, attendanceScore: 91, productivityScore: 87, collaborationScore: 80, qualityScore: 89, overallRating: 4.1, trend: 'down', goals: [{ name: 'Achieve 95% test coverage', progress: 60, deadline: getLiveDate(-19) }, { name: 'Automate regression suite', progress: 45, deadline: getLiveDate(-12) }], lastReview: getLiveDate(-5), nextReview: getLiveDate(2) },
+  { employeeId: 'EMP006', employeeName: 'Ananya Reddy', taskCompletionRate: 92, attendanceScore: 96, productivityScore: 92, collaborationScore: 91, qualityScore: 90, overallRating: 4.5, trend: 'up', goals: [{ name: 'Ship payment module v2', progress: 65, deadline: getLiveDate(9) }, { name: 'Learn GraphQL', progress: 20, deadline: getLiveDate(16) }], lastReview: getLiveDate(23), nextReview: getLiveDate(30) },
+  { employeeId: 'EMP007', employeeName: 'Karthik Nair', taskCompletionRate: 89, attendanceScore: 94, productivityScore: 89, collaborationScore: 85, qualityScore: 88, overallRating: 4.3, trend: 'stable', goals: [{ name: 'Real-time analytics pipeline', progress: 78, deadline: getLiveDate(-24) }, { name: 'Data quality framework', progress: 35, deadline: getLiveDate(-17) }], lastReview: getLiveDate(-10), nextReview: getLiveDate(-3) },
+  { employeeId: 'EMP008', employeeName: 'Meera Joshi', taskCompletionRate: 93, attendanceScore: 99, productivityScore: 93, collaborationScore: 92, qualityScore: 95, overallRating: 4.7, trend: 'up', goals: [{ name: 'Deliver 3 market reports', progress: 66, deadline: getLiveDate(4) }, { name: 'Implement OKR tracking', progress: 40, deadline: getLiveDate(11) }], lastReview: getLiveDate(18), nextReview: getLiveDate(25) },
+  { employeeId: 'EMP009', employeeName: 'Rohan Desai', taskCompletionRate: 85, attendanceScore: 92, productivityScore: 85, collaborationScore: 78, qualityScore: 82, overallRating: 4.0, trend: 'down', goals: [{ name: 'Ship mobile app v2.1', progress: 50, deadline: getLiveDate(-29) }, { name: 'Reduce app crash rate to <0.1%', progress: 60, deadline: getLiveDate(-22) }], lastReview: getLiveDate(-15), nextReview: getLiveDate(-8) },
+  { employeeId: 'EMP010', employeeName: 'Divya Iyer', taskCompletionRate: 90, attendanceScore: 95, productivityScore: 90, collaborationScore: 88, qualityScore: 91, overallRating: 4.4, trend: 'stable', goals: [{ name: 'SOC 2 compliance', progress: 55, deadline: getLiveDate(-1) }, { name: 'Implement SAST pipeline', progress: 70, deadline: getLiveDate(6) }], lastReview: getLiveDate(13), nextReview: getLiveDate(20) },
+  { employeeId: 'EMP011', employeeName: 'Aditya Rao', taskCompletionRate: 86, attendanceScore: 90, productivityScore: 86, collaborationScore: 83, qualityScore: 88, overallRating: 3.9, trend: 'stable', goals: [{ name: 'Complete API docs migration', progress: 85, deadline: getLiveDate(27) }, { name: 'Launch developer portal', progress: 25, deadline: getLiveDate(-27) }], lastReview: getLiveDate(-20), nextReview: getLiveDate(-13) },
+  { employeeId: 'EMP012', employeeName: 'Nisha Gupta', taskCompletionRate: 95, attendanceScore: 97, productivityScore: 95, collaborationScore: 96, qualityScore: 94, overallRating: 4.6, trend: 'up', goals: [{ name: 'Improve team velocity by 15%', progress: 70, deadline: getLiveDate(-6) }, { name: 'Implement SAFe framework', progress: 45, deadline: getLiveDate(1) }], lastReview: getLiveDate(8), nextReview: getLiveDate(15) },
 ];
 
 // ── Chart / Analytics Data ───────────────────────────────────

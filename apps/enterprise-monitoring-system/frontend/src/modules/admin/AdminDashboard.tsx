@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { getLiveDate, getLiveTime } from '../../utils/liveDataHelpers';
+
 import { DepartmentView } from '../../../dashboards/DepartmentView';
 import { StatCardData, UserProfile, AuditLog, EnterpriseRole } from '../../../models/types';
-import { Users, Shield, Settings, FileText, CheckCircle, XCircle, Search, Edit2, Lock } from 'lucide-react';
+import { Users, Shield, Settings, FileText, CheckCircle, XCircle, Search, Edit2, Lock, BookOpen } from 'lucide-react';
+import { LMSView } from '../hr/components/LMSView';
+
 
 const initialStats: StatCardData[] = [
   { title: 'Total User Accounts', value: '1,248', trend: '+15 this week', trendType: 'up', icon: '👥', color: 'blue' },
@@ -13,8 +17,8 @@ const initialStats: StatCardData[] = [
 const mockUsers: UserProfile[] = [
   { id: 'usr-1', email: 'sarah.j@worksphere.com', name: 'Sarah Jenkins', role: 'SOFTWARE_ENGINEER', department: 'Engineering', avatar: 'SJ', mfaEnabled: true, status: 'ONLINE', lastActive: 'Just now' },
   { id: 'usr-2', email: 'michael.c@worksphere.com', name: 'Michael Chang', role: 'TECH_LEAD', department: 'Engineering', avatar: 'MC', mfaEnabled: true, status: 'ONLINE', lastActive: 'Just now' },
-  { id: 'usr-3', email: 'elena.r@worksphere.com', name: 'Elena Rostova', role: 'QA_ENGINEER', department: 'QA', avatar: 'ER', mfaEnabled: true, status: 'IDLE', lastActive: '10m ago' },
-  { id: 'usr-4', email: 'david.r@worksphere.com', name: 'David Ross', role: 'DEVOPS_ENGINEER', department: 'DevOps', avatar: 'DR', mfaEnabled: false, status: 'OFFLINE', lastActive: '2h ago' },
+  { id: 'usr-3', email: 'elena.r@worksphere.com', name: 'Elena Rostova', role: 'QA_ENGINEER', department: 'QA', avatar: 'ER', mfaEnabled: true, status: 'IDLE', lastActive: getLiveTime(10) },
+  { id: 'usr-4', email: 'david.r@worksphere.com', name: 'David Ross', role: 'DEVOPS_ENGINEER', department: 'DevOps', avatar: 'DR', mfaEnabled: false, status: 'OFFLINE', lastActive: getLiveTime(120) },
   { id: 'usr-5', email: 'alex.p@worksphere.com', name: 'Alex Patel', role: 'SALES_MANAGER', department: 'Sales', avatar: 'AP', mfaEnabled: true, status: 'ONLINE', lastActive: 'Just now' },
 ];
 

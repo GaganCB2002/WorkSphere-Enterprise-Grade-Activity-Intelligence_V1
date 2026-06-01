@@ -4,6 +4,8 @@
 // ─────────────────────────────────────────────────────────────
 
 import type * as T from '../types';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 
 // ── Current Employee Profile ────────────────────────────────
 
@@ -27,8 +29,8 @@ export const currentEmployee: T.EmployeeProfile = {
   hrAssigned: { id: 'emp-050', name: 'Priya Menon', designation: 'HR Business Partner', email: 'priya.m@worksphere.io' },
   status: 'online',
   workHistory: [
-    { id: 'wh-1', role: 'Senior Software Engineer', department: 'Engineering', project: 'AuraHR Enterprise Platform', from: '2024-06-01', to: null, description: 'Leading frontend architecture for the next-gen HRMS dashboard. Implemented real-time analytics, RBAC, and work delegation systems.' },
-    { id: 'wh-2', role: 'Software Engineer II', department: 'Engineering', project: 'Cloud Infrastructure', from: '2023-03-15', to: '2024-05-31', description: 'Built microservice APIs for attendance tracking and leave management. Reduced API latency by 40%.' },
+    { id: 'wh-1', role: 'Senior Software Engineer', department: 'Engineering', project: 'AuraHR Enterprise Platform', from: getLiveDate(-23), to: null, description: 'Leading frontend architecture for the next-gen HRMS dashboard. Implemented real-time analytics, RBAC, and work delegation systems.' },
+    { id: 'wh-2', role: 'Software Engineer II', department: 'Engineering', project: 'Cloud Infrastructure', from: '2023-03-15', to: getLiveDate(-16), description: 'Built microservice APIs for attendance tracking and leave management. Reduced API latency by 40%.' },
   ],
   skills: [
     { name: 'React / Next.js', level: 95, benchmark: 80, category: 'Frontend' },
@@ -39,13 +41,13 @@ export const currentEmployee: T.EmployeeProfile = {
     { name: 'Docker / K8s', level: 78, benchmark: 68, category: 'DevOps' },
   ],
   certifications: [
-    { id: 'cert-1', name: 'AWS Solutions Architect – Professional', issuer: 'Amazon Web Services', date: '2024-08-20', expiryDate: '2027-08-20', credentialUrl: '#' },
-    { id: 'cert-2', name: 'Google Cloud Professional Data Engineer', issuer: 'Google Cloud', date: '2024-02-10', credentialUrl: '#' },
+    { id: 'cert-1', name: 'AWS Solutions Architect – Professional', issuer: 'Amazon Web Services', date: getLiveDate(-9), expiryDate: getLiveDate(-2), credentialUrl: '#' },
+    { id: 'cert-2', name: 'Google Cloud Professional Data Engineer', issuer: 'Google Cloud', date: getLiveDate(5), credentialUrl: '#' },
   ],
   achievements: [
-    { id: 'ach-1', title: 'Q1 2026 Star Performer', description: 'Recognized for delivering critical HRMS features ahead of schedule.', date: '2026-04-15', type: 'award', icon: '🏆' },
-    { id: 'ach-2', title: '100-Day Streak', description: 'Maintained 100 consecutive days of on-time attendance.', date: '2026-01-10', type: 'milestone', icon: '🔥' },
-    { id: 'ach-3', title: 'Innovation Award', description: 'Developed AI-powered attendance anomaly detection module.', date: '2025-11-22', type: 'recognition', icon: '💡' },
+    { id: 'ach-1', title: 'Q1 2026 Star Performer', description: 'Recognized for delivering critical HRMS features ahead of schedule.', date: getLiveDate(12), type: 'award', icon: '🏆' },
+    { id: 'ach-2', title: '100-Day Streak', description: 'Maintained 100 consecutive days of on-time attendance.', date: getLiveDate(19), type: 'milestone', icon: '🔥' },
+    { id: 'ach-3', title: 'Innovation Award', description: 'Developed AI-powered attendance anomaly detection module.', date: getLiveDate(26), type: 'recognition', icon: '💡' },
   ],
 };
 
@@ -87,13 +89,13 @@ export const leaveBalances: T.LeaveBalance[] = [
 ];
 
 export const leaveHistory: T.LeaveRequest[] = [
-  { id: 'lv-1', employeeId: 'emp-100', employeeName: 'Gagan Chaudhary', type: 'annual', dayType: 'full', from: '2026-06-10', to: '2026-06-15', totalDays: 4, reason: 'Family vacation — summer break', status: 'approved', appliedDate: '2026-05-01', backupEmployeeId: 'emp-101', backupEmployeeName: 'Arjun Patel', attachments: [], managerComments: 'Approved. Enjoy your vacation!', isEmergency: false, delegations: [
+  { id: 'lv-1', employeeId: 'emp-100', employeeName: 'Gagan Chaudhary', type: 'annual', dayType: 'full', from: getLiveDate(-28), to: getLiveDate(-21), totalDays: 4, reason: 'Family vacation — summer break', status: 'approved', appliedDate: getLiveDate(-14), backupEmployeeId: 'emp-101', backupEmployeeName: 'Arjun Patel', attachments: [], managerComments: 'Approved. Enjoy your vacation!', isEmergency: false, delegations: [
     { id: 'del-1', taskId: 'task-102', taskTitle: 'Frontend Component Refactoring', project: 'AuraHR Core', delegatedTo: 'emp-101', delegatedToName: 'Arjun Patel', status: 'accepted', skillMatch: 85, workloadImpact: 12 },
     { id: 'del-2', taskId: 'task-105', taskTitle: 'Code Review Backlog', project: 'AuraHR Core', delegatedTo: 'emp-105', delegatedToName: 'Rohit Desai', status: 'accepted', skillMatch: 78, workloadImpact: 8 },
   ]},
-  { id: 'lv-2', employeeId: 'emp-100', employeeName: 'Gagan Chaudhary', type: 'sick', dayType: 'full', from: '2026-04-12', to: '2026-04-13', totalDays: 2, reason: 'Dental appointment & recovery', status: 'approved', appliedDate: '2026-04-11', attachments: ['medical_certificate.pdf'], isEmergency: false, delegations: [] },
-  { id: 'lv-3', employeeId: 'emp-100', employeeName: 'Gagan Chaudhary', type: 'wfh', dayType: 'full', from: '2026-05-25', to: '2026-05-25', totalDays: 1, reason: 'Internet service technician visit', status: 'pending', appliedDate: '2026-05-20', isEmergency: false, delegations: [], attachments: [] },
-  { id: 'lv-4', employeeId: 'emp-100', employeeName: 'Gagan Chaudhary', type: 'casual', dayType: 'first_half', from: '2026-03-14', to: '2026-03-14', totalDays: 0.5, reason: 'Personal errands', status: 'approved', appliedDate: '2026-03-12', isEmergency: false, delegations: [], attachments: [] },
+  { id: 'lv-2', employeeId: 'emp-100', employeeName: 'Gagan Chaudhary', type: 'sick', dayType: 'full', from: getLiveDate(-7), to: getLiveDate(0), totalDays: 2, reason: 'Dental appointment & recovery', status: 'approved', appliedDate: getLiveDate(7), attachments: ['medical_certificate.pdf'], isEmergency: false, delegations: [] },
+  { id: 'lv-3', employeeId: 'emp-100', employeeName: 'Gagan Chaudhary', type: 'wfh', dayType: 'full', from: getLiveDate(14), to: getLiveDate(21), totalDays: 1, reason: 'Internet service technician visit', status: 'pending', appliedDate: getLiveDate(28), isEmergency: false, delegations: [], attachments: [] },
+  { id: 'lv-4', employeeId: 'emp-100', employeeName: 'Gagan Chaudhary', type: 'casual', dayType: 'first_half', from: getLiveDate(-26), to: getLiveDate(-19), totalDays: 0.5, reason: 'Personal errands', status: 'approved', appliedDate: getLiveDate(-12), isEmergency: false, delegations: [], attachments: [] },
 ];
 
 // ── Attendance ──────────────────────────────────────────────
@@ -162,7 +164,7 @@ export const heatmapData: T.AttendanceHeatmapDay[] = (() => {
 // ── Tasks ───────────────────────────────────────────────────
 
 export const tasks: T.Task[] = [
-  { id: 'task-101', title: 'Implement Employee Dashboard Redesign', description: 'Complete overhaul of the employee self-service portal with modern enterprise UX patterns.', project: 'AuraHR Core', projectColor: '#3b82f6', status: 'in_progress', priority: 'critical', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-011', reporterName: 'Ananya Sharma', labels: ['frontend', 'ui/ux', 'epic'], deadline: '2026-05-30', createdAt: '2026-05-10', updatedAt: '2026-05-21', progress: 65, storyPoints: 13, subtasks: [
+  { id: 'task-101', title: 'Implement Employee Dashboard Redesign', description: 'Complete overhaul of the employee self-service portal with modern enterprise UX patterns.', project: 'AuraHR Core', projectColor: '#3b82f6', status: 'in_progress', priority: 'critical', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-011', reporterName: 'Ananya Sharma', labels: ['frontend', 'ui/ux', 'epic'], deadline: getLiveDate(-5), createdAt: getLiveDate(2), updatedAt: getLiveDate(9), progress: 65, storyPoints: 13, subtasks: [
     { id: 'st-1', title: 'Design System Tokens', completed: true },
     { id: 'st-2', title: 'Dashboard Page', completed: true },
     { id: 'st-3', title: 'Leave Management', completed: false },
@@ -171,19 +173,19 @@ export const tasks: T.Task[] = [
   ], comments: [
     { id: 'c-1', author: 'emp-011', authorName: 'Ananya Sharma', content: 'Great progress on the dashboard layout. Let\'s add the AI insights panel next.', timestamp: '2026-05-20T14:30:00Z', mentions: [] },
   ], attachments: ['dashboard_wireframe_v3.fig'], sprintId: 'sprint-8' },
-  { id: 'task-102', title: 'Frontend Component Refactoring', description: 'Migrate legacy class components to functional components with hooks and TypeScript.', project: 'AuraHR Core', projectColor: '#3b82f6', status: 'in_progress', priority: 'high', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-010', reporterName: 'Rajesh Kumar', labels: ['refactor', 'tech-debt'], deadline: '2026-06-05', createdAt: '2026-05-08', updatedAt: '2026-05-19', progress: 40, storyPoints: 8, subtasks: [], comments: [], attachments: [], sprintId: 'sprint-8' },
-  { id: 'task-103', title: 'Unit Test Coverage — Leave Module', description: 'Increase test coverage for leave management module to 85%.', project: 'AuraHR Core', projectColor: '#3b82f6', status: 'todo', priority: 'medium', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-011', reporterName: 'Ananya Sharma', labels: ['testing', 'quality'], deadline: '2026-06-10', createdAt: '2026-05-15', updatedAt: '2026-05-15', progress: 0, storyPoints: 5, subtasks: [], comments: [], attachments: [], sprintId: 'sprint-8' },
-  { id: 'task-104', title: 'WebSocket Real-time Notifications', description: 'Integrate Socket.IO for live notification delivery and presence indicators.', project: 'Cloud Infrastructure', projectColor: '#8b5cf6', status: 'review', priority: 'high', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-010', reporterName: 'Rajesh Kumar', labels: ['backend', 'real-time'], deadline: '2026-05-22', createdAt: '2026-05-05', updatedAt: '2026-05-20', progress: 90, storyPoints: 8, subtasks: [], comments: [], attachments: [], sprintId: 'sprint-8' },
-  { id: 'task-105', title: 'Code Review Backlog', description: 'Review and approve pending PRs from junior engineers.', project: 'AuraHR Core', projectColor: '#3b82f6', status: 'todo', priority: 'low', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-011', reporterName: 'Ananya Sharma', labels: ['review'], deadline: '2026-05-28', createdAt: '2026-05-18', updatedAt: '2026-05-18', progress: 0, storyPoints: 3, subtasks: [], comments: [], attachments: [], sprintId: 'sprint-8' },
-  { id: 'task-106', title: 'Performance Optimization — Bundle Size', description: 'Reduce main bundle size by 30% through code splitting and lazy loading.', project: 'Cloud Infrastructure', projectColor: '#8b5cf6', status: 'backlog', priority: 'medium', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-010', reporterName: 'Rajesh Kumar', labels: ['performance', 'optimization'], deadline: '2026-06-20', createdAt: '2026-05-12', updatedAt: '2026-05-12', progress: 0, storyPoints: 5, subtasks: [], comments: [], attachments: [] },
-  { id: 'task-107', title: 'API Documentation Update', description: 'Update Swagger docs for all employee module endpoints.', project: 'AuraHR Core', projectColor: '#3b82f6', status: 'done', priority: 'low', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-011', reporterName: 'Ananya Sharma', labels: ['documentation'], deadline: '2026-05-18', createdAt: '2026-05-10', updatedAt: '2026-05-17', progress: 100, storyPoints: 2, subtasks: [], comments: [], attachments: [], sprintId: 'sprint-8' },
+  { id: 'task-102', title: 'Frontend Component Refactoring', description: 'Migrate legacy class components to functional components with hooks and TypeScript.', project: 'AuraHR Core', projectColor: '#3b82f6', status: 'in_progress', priority: 'high', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-010', reporterName: 'Rajesh Kumar', labels: ['refactor', 'tech-debt'], deadline: getLiveDate(16), createdAt: getLiveDate(23), updatedAt: getLiveDate(30), progress: 40, storyPoints: 8, subtasks: [], comments: [], attachments: [], sprintId: 'sprint-8' },
+  { id: 'task-103', title: 'Unit Test Coverage — Leave Module', description: 'Increase test coverage for leave management module to 85%.', project: 'AuraHR Core', projectColor: '#3b82f6', status: 'todo', priority: 'medium', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-011', reporterName: 'Ananya Sharma', labels: ['testing', 'quality'], deadline: getLiveDate(-24), createdAt: getLiveDate(-17), updatedAt: getLiveDate(-10), progress: 0, storyPoints: 5, subtasks: [], comments: [], attachments: [], sprintId: 'sprint-8' },
+  { id: 'task-104', title: 'WebSocket Real-time Notifications', description: 'Integrate Socket.IO for live notification delivery and presence indicators.', project: 'Cloud Infrastructure', projectColor: '#8b5cf6', status: 'review', priority: 'high', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-010', reporterName: 'Rajesh Kumar', labels: ['backend', 'real-time'], deadline: getLiveDate(-3), createdAt: getLiveDate(4), updatedAt: getLiveDate(11), progress: 90, storyPoints: 8, subtasks: [], comments: [], attachments: [], sprintId: 'sprint-8' },
+  { id: 'task-105', title: 'Code Review Backlog', description: 'Review and approve pending PRs from junior engineers.', project: 'AuraHR Core', projectColor: '#3b82f6', status: 'todo', priority: 'low', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-011', reporterName: 'Ananya Sharma', labels: ['review'], deadline: getLiveDate(18), createdAt: getLiveDate(25), updatedAt: getLiveDate(-29), progress: 0, storyPoints: 3, subtasks: [], comments: [], attachments: [], sprintId: 'sprint-8' },
+  { id: 'task-106', title: 'Performance Optimization — Bundle Size', description: 'Reduce main bundle size by 30% through code splitting and lazy loading.', project: 'Cloud Infrastructure', projectColor: '#8b5cf6', status: 'backlog', priority: 'medium', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-010', reporterName: 'Rajesh Kumar', labels: ['performance', 'optimization'], deadline: getLiveDate(-22), createdAt: getLiveDate(-15), updatedAt: getLiveDate(-8), progress: 0, storyPoints: 5, subtasks: [], comments: [], attachments: [] },
+  { id: 'task-107', title: 'API Documentation Update', description: 'Update Swagger docs for all employee module endpoints.', project: 'AuraHR Core', projectColor: '#3b82f6', status: 'done', priority: 'low', assignee: 'emp-100', assigneeName: 'Gagan Chaudhary', reporter: 'emp-011', reporterName: 'Ananya Sharma', labels: ['documentation'], deadline: getLiveDate(-1), createdAt: getLiveDate(6), updatedAt: getLiveDate(13), progress: 100, storyPoints: 2, subtasks: [], comments: [], attachments: [], sprintId: 'sprint-8' },
 ];
 
 export const currentSprint: T.Sprint = {
   id: 'sprint-8',
   name: 'Sprint 8 — Dashboard Overhaul',
-  startDate: '2026-05-12',
-  endDate: '2026-05-30',
+  startDate: getLiveDate(20),
+  endDate: getLiveDate(27),
   totalPoints: 44,
   completedPoints: 28,
   status: 'active',
@@ -301,7 +303,7 @@ export const quickActions: T.QuickAction[] = [
 // ── Team Leave Calendar ─────────────────────────────────────
 
 export const teamLeaveCalendar = [
-  { employeeId: 'emp-102', name: 'Kavitha Reddy', dates: ['2026-05-26', '2026-05-27'], type: 'annual' as T.LeaveType },
-  { employeeId: 'emp-106', name: 'Sneha Gupta', dates: ['2026-05-28', '2026-05-29', '2026-05-30'], type: 'wfh' as T.LeaveType },
-  { employeeId: 'emp-100', name: 'Gagan Chaudhary', dates: ['2026-06-10', '2026-06-11', '2026-06-12', '2026-06-13', '2026-06-14', '2026-06-15'], type: 'annual' as T.LeaveType },
+  { employeeId: 'emp-102', name: 'Kavitha Reddy', dates: [getLiveDate(-27), getLiveDate(-20)], type: 'annual' as T.LeaveType },
+  { employeeId: 'emp-106', name: 'Sneha Gupta', dates: [getLiveDate(-13), getLiveDate(-6), getLiveDate(1)], type: 'wfh' as T.LeaveType },
+  { employeeId: 'emp-100', name: 'Gagan Chaudhary', dates: [getLiveDate(8), getLiveDate(15), getLiveDate(22), getLiveDate(29), getLiveDate(-25), getLiveDate(-18)], type: 'annual' as T.LeaveType },
 ];

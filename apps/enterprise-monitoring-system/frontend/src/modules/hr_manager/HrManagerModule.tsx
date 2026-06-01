@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { HrManagerShell } from './layout/HrManagerShell';
+import { LMSView } from '../hr/components/LMSView';
+
 
 // Phase 2, 3, 4 Pages (Lazy Loaded)
 const HrOverview = React.lazy(() => import('./pages/HrOverview').then(m => ({ default: m.HrOverview })));

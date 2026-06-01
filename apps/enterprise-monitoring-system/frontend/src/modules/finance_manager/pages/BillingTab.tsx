@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import { 
   FileSpreadsheet, ArrowUpRight, Search, CheckCircle2, Clock, 
   AlertTriangle, RefreshCw, Send, DollarSign, Calendar
@@ -15,11 +17,11 @@ interface Invoice {
 
 export const BillingTab: React.FC = () => {
   const [invoices, setInvoices] = useState<Invoice[]>([
-    { id: 'INV-AWS-8930', vendor: 'Amazon Web Services', category: 'Infrastructure', amount: 84200, dueDate: '2026-06-01', status: 'PENDING' },
-    { id: 'INV-GCP-1029', vendor: 'Google Cloud Platform', category: 'Database Storage', amount: 18200, dueDate: '2026-05-15', status: 'OVERDUE' },
-    { id: 'INV-SF-3021', vendor: 'Salesforce Enterprise', category: 'CRM SaaS License', amount: 142000, dueDate: '2026-06-15', status: 'PENDING' },
-    { id: 'INV-SLK-4930', vendor: 'Slack Technologies', category: 'Communications', amount: 8500, dueDate: '2026-05-10', status: 'PAID' },
-    { id: 'INV-MS-5021', vendor: 'Microsoft Azure', category: 'AI Infrastructure', amount: 62000, dueDate: '2026-06-05', status: 'PENDING' },
+    { id: 'INV-AWS-8930', vendor: 'Amazon Web Services', category: 'Infrastructure', amount: 84200, dueDate: getLiveDate(-23), status: 'PENDING' },
+    { id: 'INV-GCP-1029', vendor: 'Google Cloud Platform', category: 'Database Storage', amount: 18200, dueDate: getLiveDate(-16), status: 'OVERDUE' },
+    { id: 'INV-SF-3021', vendor: 'Salesforce Enterprise', category: 'CRM SaaS License', amount: 142000, dueDate: getLiveDate(-9), status: 'PENDING' },
+    { id: 'INV-SLK-4930', vendor: 'Slack Technologies', category: 'Communications', amount: 8500, dueDate: getLiveDate(-2), status: 'PAID' },
+    { id: 'INV-MS-5021', vendor: 'Microsoft Azure', category: 'AI Infrastructure', amount: 62000, dueDate: getLiveDate(5), status: 'PENDING' },
   ]);
 
   const [searchTerm, setSearchTerm] = useState('');

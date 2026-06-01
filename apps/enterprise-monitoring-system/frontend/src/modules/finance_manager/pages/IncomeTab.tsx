@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import { 
   ArrowUpRight, IndianRupee, Search, Filter, ArrowDownRight, CheckCircle2, 
   AlertTriangle, Clock, RefreshCw 
@@ -16,11 +18,11 @@ const mockRevenueData = [
 ];
 
 const mockInvoices = [
-  { id: 'INV-2026-001', client: 'Acme Corp', amount: 125000, dueDate: '2026-05-20', status: 'PAID' },
-  { id: 'INV-2026-002', client: 'Global Dynamics', amount: 85000, dueDate: '2026-05-18', status: 'PENDING' },
-  { id: 'INV-2026-003', client: 'Cyberdyne Systems', amount: 210000, dueDate: '2026-05-15', status: 'OVERDUE' },
-  { id: 'INV-2026-004', client: 'Stark Industries', amount: 350000, dueDate: '2026-05-28', status: 'PENDING' },
-  { id: 'INV-2026-005', client: 'Weyland-Yutani', amount: 175000, dueDate: '2026-05-10', status: 'PAID' },
+  { id: 'INV-2026-001', client: 'Acme Corp', amount: 125000, dueDate: getLiveDate(-23), status: 'PAID' },
+  { id: 'INV-2026-002', client: 'Global Dynamics', amount: 85000, dueDate: getLiveDate(-16), status: 'PENDING' },
+  { id: 'INV-2026-003', client: 'Cyberdyne Systems', amount: 210000, dueDate: getLiveDate(-9), status: 'OVERDUE' },
+  { id: 'INV-2026-004', client: 'Stark Industries', amount: 350000, dueDate: getLiveDate(-2), status: 'PENDING' },
+  { id: 'INV-2026-005', client: 'Weyland-Yutani', amount: 175000, dueDate: getLiveDate(5), status: 'PAID' },
 ];
 
 export const IncomeTab: React.FC = () => {

@@ -36,6 +36,7 @@ const navItems = [
 export const DevOpsLayout: React.FC<DevOpsLayoutProps> = ({ children, activeTab, onTabChange }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [activeEnv, setActiveEnv] = useState('Production');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -135,8 +136,9 @@ export const DevOpsLayout: React.FC<DevOpsLayoutProps> = ({ children, activeTab,
               {['Production', 'Staging', 'Testing', 'Dev'].map(env => (
                 <button 
                   key={env} 
+                  onClick={() => setActiveEnv(env)}
                   className={`px-3 py-1 text-xs font-bold rounded-md transition-colors ${
-                    env === 'Production' ? 'bg-slate-800 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'
+                    env === activeEnv ? 'bg-slate-800 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'
                   }`}
                 >
                   {env}

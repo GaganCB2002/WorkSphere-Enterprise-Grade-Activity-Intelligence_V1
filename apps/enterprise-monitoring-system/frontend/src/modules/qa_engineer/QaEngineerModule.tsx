@@ -15,6 +15,8 @@ import { TeamChat } from './pages/TeamChat';
 import { Notifications } from './pages/Notifications';
 import { AIAssistant } from './pages/AIAssistant';
 import { Settings } from './pages/Settings';
+import { LMSView } from '../hr/components/LMSView';
+
 
 interface QaEngineerModuleProps {
   user?: any;
@@ -39,6 +41,7 @@ export const QaEngineerModule: React.FC<QaEngineerModuleProps> = ({ user }) => {
       case 'chat': return <TeamChat />;
       case 'notifications': return <Notifications />;
       case 'ai-assistant': return <AIAssistant />;
+      case 'training': return <LMSView />;
       case 'settings': return <Settings />;
       default: return <DashboardOverview />;
     }

@@ -1,6 +1,8 @@
 import React from 'react';
-import { Activity, Radio, Cpu, Network, Database, ShieldAlert, Zap } from 'lucide-react';
+import { Activity, Radio, Cpu, Network, Database, ShieldAlert, Zap, BookOpen } from 'lucide-react';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid, LineChart, Line } from 'recharts';
+import { LMSView } from '../../hr/components/LMSView';
+
 
 const liveData = Array.from({ length: 20 }, (_, i) => ({
   time: `${10 + Math.floor(i / 6)}:${(i * 10) % 60 < 10 ? '0' : ''}${(i * 10) % 60}`,

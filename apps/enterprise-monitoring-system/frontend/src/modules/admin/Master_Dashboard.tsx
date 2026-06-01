@@ -1,5 +1,4 @@
-import { 
-  ShieldCheck, 
+import { ShieldCheck, 
   Users, 
   Terminal, 
   LifeBuoy, 
@@ -19,8 +18,7 @@ import {
   Monitor,
   MoreVertical,
   Plus,
-  Settings
-} from 'lucide-react'
+  Settings, BookOpen } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { 

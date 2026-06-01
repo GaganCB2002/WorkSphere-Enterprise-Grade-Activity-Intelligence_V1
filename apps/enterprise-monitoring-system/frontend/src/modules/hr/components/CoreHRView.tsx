@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import { Users, FileText, LifeBuoy, UserCheck, Search, Plus, ExternalLink, ShieldCheck } from 'lucide-react';
 import { smartHRApi } from '../api';
 import type { Employee } from '../types';
@@ -8,8 +10,8 @@ export function CoreHRView() {
   const [activeTab, setActiveTab] = useState<'database' | 'documents' | 'helpdesk'>('database');
   const [search, setSearch] = useState('');
   const [tickets, setTickets] = useState([
-    { id: 'TKT-201', emp: 'Rohan Desai', issue: 'PF Account Transfer Query', status: 'Open', priority: 'High', date: '2026-05-17' },
-    { id: 'TKT-202', emp: 'Arjun Mehta', issue: 'Medical Insurance Addition', status: 'Resolved', priority: 'Medium', date: '2026-05-15' }
+    { id: 'TKT-201', emp: 'Rohan Desai', issue: 'PF Account Transfer Query', status: 'Open', priority: 'High', date: getLiveDate(-23) },
+    { id: 'TKT-202', emp: 'Arjun Mehta', issue: 'Medical Insurance Addition', status: 'Resolved', priority: 'Medium', date: getLiveDate(-16) }
   ]);
   const [newTicket, setNewTicket] = useState({ issue: '', priority: 'Medium' });
 

@@ -17,6 +17,8 @@ import { Notifications } from './pages/Notifications';
 import { AIMarketing } from './pages/AIMarketing';
 import { Settings } from './pages/Settings';
 import { ComingSoon } from './pages/ComingSoon';
+import { LMSView } from '../hr/components/LMSView';
+
 
 export const MarketingManagerModule: React.FC<{ user: any }> = ({ user }) => {
   const [activeView, setActiveView] = useState('dashboard');
@@ -53,6 +55,7 @@ export const MarketingManagerModule: React.FC<{ user: any }> = ({ user }) => {
         return <Notifications />;
       case 'ai':
         return <AIMarketing />;
+      case 'training': return <LMSView />;
       case 'settings':
         return <Settings />;
       default:

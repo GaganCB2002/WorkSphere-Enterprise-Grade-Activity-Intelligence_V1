@@ -1,6 +1,8 @@
 import React from 'react';
-import { Cloud, Server, Database, Globe, ArrowUpRight, ArrowDownRight, ShieldCheck, Zap } from 'lucide-react';
+import { Cloud, Server, Database, Globe, ArrowUpRight, ArrowDownRight, ShieldCheck, Zap, BookOpen } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import { LMSView } from '../../hr/components/LMSView';
+
 
 const cloudCostData = [
   { name: 'AWS', cost: 4200, resources: 145 },

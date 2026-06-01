@@ -1,4 +1,6 @@
 import React from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import { Share2, TrendingUp, Users, MessageCircle, ArrowUpRight, ArrowDownRight } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
@@ -13,10 +15,10 @@ const growthData = [
 ];
 
 const mockMentions = [
-  { id: 1, user: '@TechInsider', platform: 'Twitter', text: 'Just tried the new @EnterpriseApp features. Game changer for DevOps teams. #SaaS', sentiment: 'Positive', date: '2h ago' },
-  { id: 2, user: 'Sarah Jenkins', platform: 'LinkedIn', text: 'Our team successfully migrated to the new cloud infrastructure using EnterpriseApp. Smooth transition!', sentiment: 'Positive', date: '5h ago' },
-  { id: 3, user: '@CloudDev', platform: 'Twitter', text: 'Having some latency issues with the API today. Anyone else?', sentiment: 'Negative', date: '1d ago' },
-  { id: 4, user: 'Mike Ross', platform: 'LinkedIn', text: 'Looking forward to the upcoming webinar on AI integration.', sentiment: 'Neutral', date: '1d ago' },
+  { id: 1, user: '@TechInsider', platform: 'Twitter', text: 'Just tried the new @EnterpriseApp features. Game changer for DevOps teams. #SaaS', sentiment: 'Positive', date: getLiveTime(120) },
+  { id: 2, user: 'Sarah Jenkins', platform: 'LinkedIn', text: 'Our team successfully migrated to the new cloud infrastructure using EnterpriseApp. Smooth transition!', sentiment: 'Positive', date: getLiveTime(300) },
+  { id: 3, user: '@CloudDev', platform: 'Twitter', text: 'Having some latency issues with the API today. Anyone else?', sentiment: 'Negative', date: getLiveTime(1440) },
+  { id: 4, user: 'Mike Ross', platform: 'LinkedIn', text: 'Looking forward to the upcoming webinar on AI integration.', sentiment: 'Neutral', date: getLiveTime(1440) },
 ];
 
 export const SocialMedia: React.FC = () => {

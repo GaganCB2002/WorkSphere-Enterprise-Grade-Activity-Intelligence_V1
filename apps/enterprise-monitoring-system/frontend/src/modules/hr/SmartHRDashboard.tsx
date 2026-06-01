@@ -54,7 +54,8 @@ export function SmartHRDashboard({ data, feed, onRefresh }: SmartHRDashboardProp
     { id: 'tracking', label: 'Live GPS Tracking', icon: Navigation },
     { id: 'pow', label: 'Proof of Work (POW)', icon: Camera },
     { id: 'inventory', label: 'Inventory & IT Assets', icon: Package },
-    { id: 'security', label: 'Security & RBAC', icon: ShieldCheck }
+    { id: 'security', label: 'Security & RBAC', icon: ShieldCheck },
+    { id: 'training', label: 'Training Center', icon: BookOpen },
   ];
 
   const renderActiveView = () => {
@@ -73,6 +74,7 @@ export function SmartHRDashboard({ data, feed, onRefresh }: SmartHRDashboardProp
       case 'pow': return <ProofOfWorkView />;
       case 'inventory': return <InventoryView />;
       case 'security': return <SecurityView />;
+      case 'training': return <LMSView />;
       default: return <RecruitmentView />;
     }
   };

@@ -1,152 +1,157 @@
 import React, { useState } from 'react';
-import { DepartmentView } from '../../../dashboards/DepartmentView';
-import { StatCardData } from '../../../models/types';
-import { 
-  ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid
-} from 'recharts';
-import { Shield, AlertTriangle, Lock, Eye, CheckCircle, XCircle } from 'lucide-react';
+import { useDispatch } from 'react-redux';
+import { Shield, Activity, Map, Video, LogOut, Bell, Settings, User, 
+  Terminal, ShieldCheck, Zap, BookOpen } from 'lucide-react';
 
-const initialStats: StatCardData[] = [
-  { title: 'Threat Alerts Today', value: '3', trend: 'Requires investigation', trendType: 'down', icon: '⚠️', color: 'amber' },
-  { title: 'Blocked IP Addresses', value: '142', trend: 'Automated firewall', trendType: 'up', icon: '🔒', color: 'blue' },
-  { title: 'Sensitive Data Access', value: '1,840', trend: 'Fully audited', trendType: 'neutral', icon: '👁️', color: 'purple' },
-  { title: 'Security Posture Score', value: '98.4%', trend: 'SOC2 Compliant', trendType: 'up', icon: '🛡️', color: 'emerald' },
-];
+// Sub-components
+import { ThreatOverview } from './components/ThreatOverview';
+import { LiveThreatMap } from './components/LiveThreatMap';
+import { DesktopForensics } from './components/DesktopForensics';
+import { NetworkPacketSniffer } from './components/NetworkPacketSniffer';
+import { VulnerabilityScanner } from './components/VulnerabilityScanner';
+import { ZeroTrustPolicyEngine } from './components/ZeroTrustPolicyEngine';
+import { IncidentResponsePlaybooks } from './components/IncidentResponsePlaybooks';
+import { LMSView } from '../hr/components/LMSView';
 
-const mockThreatData = [
-  { category: 'Brute Force Login', count: 45 },
-  { category: 'Suspicious IP Geolocation', count: 28 },
-  { category: 'Off-Hours Data Access', count: 15 },
-  { category: 'Unauthorized USB Mount', count: 4 },
-  { category: 'Privilege Escalation Attempt', count: 2 },
-];
-
-const mockThreats = [
-  { id: 'THREAT-201', user: 'David Ross', ip: '185.190.140.5', location: 'Moscow, RU', type: 'Multiple Failed MFA Challenges', severity: 'CRITICAL', status: 'INVESTIGATING' },
-  { id: 'THREAT-202', user: 'Elena Rostova', ip: '45.33.22.11', location: 'Beijing, CN', type: 'Off-Hours Sensitive Table Export', severity: 'HIGH', status: 'INVESTIGATING' },
-  { id: 'THREAT-203', user: 'Alex Patel', ip: '192.168.1.105', location: 'New York, US', type: 'Simultaneous Multi-Device Login', severity: 'MEDIUM', status: 'RESOLVED' },
-];
 
 export const SecurityAnalystDashboard: React.FC = () => {
-  const [threats, setThreats] = useState(mockThreats);
+  const dispatch = useDispatch();
+  const [activeTab, setActiveTab] = useState<
+    'overview' | 'threat-map' | 'forensics' | 'sniffer' | 'vulnerabilities' | 'zero-trust' | 'playbooks' | 'training'
+  >('overview');
 
-  const blockIp = (ip: string) => {
-    alert(`IP Address ${ip} has been permanently added to the enterprise edge firewall blacklist.`);
+  const handleLogout = () => {
+    dispatch({ type: 'LOGOUT' });
+    window.location.href = '/login';
   };
 
-  const resolveThreat = (id: string) => {
-    setThreats(prev => prev.map(t => t.id === id ? { ...t, status: 'RESOLVED' } : t));
-    alert('Threat marked as RESOLVED and archived to SIEM audit storage.');
+  const navItems = [
+    { id: 'overview', icon: Activity, label: 'Threat Overview', section: 'SIEM Command Center' },
+    { id: 'threat-map', icon: Map, label: 'Live Threat Map', section: 'SIEM Command Center' },
+    { id: 'forensics', icon: Video, label: 'Desktop Forensics', section: 'SIEM Command Center' },
+    
+    { id: 'sniffer', icon: Terminal, label: 'Network Packet Sniffer', section: 'Advanced Capabilities' },
+    { id: 'vulnerabilities', icon: ShieldCheck, label: 'Vulnerability Scanner', section: 'Advanced Capabilities' },
+    { id: 'zero-trust', icon: Shield, label: 'Zero Trust Policies', section: 'Advanced Capabilities' },
+    { id: 'playbooks', icon: Zap, label: 'Incident Response', section: 'Advanced Capabilities' },
+    { id: 'training', label: 'Training Center', icon: BookOpen, section: 'Tools & Applications' },
+];
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'overview': return <ThreatOverview />;
+      case 'threat-map': return <LiveThreatMap />;
+      case 'forensics': return <DesktopForensics />;
+      case 'sniffer': return <NetworkPacketSniffer />;
+      case 'vulnerabilities': return <VulnerabilityScanner />;
+      case 'zero-trust': return <ZeroTrustPolicyEngine />;
+      case 'playbooks': return <IncidentResponsePlaybooks />;
+      case 'training': return <LMSView />;
+      default: return <ThreatOverview />;
+    }
+  };
+
+  const getPageTitle = () => {
+    return navItems.find(n => n.id === activeTab)?.label || 'Cyber Security';
   };
 
   return (
-    <DepartmentView
-      title="Cybersecurity Threat Center"
-      subtitle="Failed Login Geolocation, Suspicious IP Blocking & Sensitive Data Access Audit"
-      stats={initialStats}
-      onRefresh={() => alert('Refreshing SIEM & AWS WAF firewall logs...')}
-      quickActions={[
-        { label: 'Trigger Security Scan', icon: <Shield className="w-4 h-4" />, action: 'scan', variant: 'primary' },
-        { label: 'Lockdown Compromised Accounts', icon: <Lock className="w-4 h-4" />, action: 'lockdown', variant: 'danger' }
-      ]}
-      onQuickAction={(action) => {
-        if (action === 'scan') alert('Initiating Deep Forensic Malware & Vulnerability Scan across all endpoints...');
-        if (action === 'lockdown') alert('SYSTEM WARNING: Initiating global session revocation for flagged accounts...');
-      }}
-    >
-      {/* Threat Category Bar Chart */}
-      <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-3xl p-6 lg:p-8 shadow-2xl space-y-6">
-        <div className="border-b border-slate-800 pb-4">
-          <h3 className="text-xl font-bold text-white">Security Threat Classification</h3>
-          <p className="text-slate-400 text-xs mt-1">Volume of automated security anomalies detected by edge firewalls and SIEM</p>
+    <div className="flex h-screen w-full bg-slate-950 text-slate-300 font-sans overflow-hidden selection:bg-red-500/30">
+      
+      {/* Sidebar */}
+      <aside className="w-72 bg-slate-900/50 border-r border-slate-800/80 backdrop-blur-xl flex flex-col transition-all duration-300">
+        <div className="h-16 flex items-center px-6 border-b border-slate-800/80 gap-3">
+          <div className="p-2 bg-red-500/10 border border-red-500/30 rounded-lg text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+            <Shield className="w-5 h-5" />
+          </div>
+          <span className="font-bold text-white tracking-tight">Cyber Security</span>
         </div>
-
-        <div className="h-[380px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={mockThreatData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.5} />
-              <XAxis dataKey="category" stroke="#94a3b8" />
-              <YAxis stroke="#94a3b8" />
-              <Tooltip 
-                contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '1rem', color: '#fff' }}
-              />
-              <Legend />
-              <Bar dataKey="count" name="Incidents" fill="#ef4444" radius={[8, 8, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
-
-      {/* Threat Alert Queue Table */}
-      <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-3xl p-6 lg:p-8 shadow-2xl space-y-6">
-        <div className="border-b border-slate-800 pb-4">
-          <h3 className="text-xl font-bold text-white">Active Threat Alert Queue</h3>
-          <p className="text-slate-400 text-xs mt-1">Investigate suspicious IP logins, geolocation anomalies, and data exfiltration attempts</p>
-        </div>
-
-        <div className="overflow-x-auto border border-slate-800 rounded-2xl">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="bg-slate-950 border-b border-slate-800 text-xs font-extrabold text-slate-300 uppercase tracking-wider">
-                <th className="p-4">Threat ID</th>
-                <th className="p-4">Target User</th>
-                <th className="p-4">IP & Geolocation</th>
-                <th className="p-4">Anomaly Type</th>
-                <th className="p-4 text-center">Severity</th>
-                <th className="p-4 text-center">Status</th>
-                <th className="p-4 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-800/50 bg-slate-900/20">
-              {threats.map(threat => (
-                <tr key={threat.id} className="hover:bg-slate-800/30 transition-colors">
-                  <td className="p-4 font-mono font-bold text-white text-xs">{threat.id}</td>
-                  <td className="p-4 font-bold text-white text-sm">{threat.user}</td>
-                  <td className="p-4">
-                    <span className="font-mono text-xs font-bold text-blue-400 block">{threat.ip}</span>
-                    <span className="text-xs text-slate-500 font-medium">{threat.location}</span>
-                  </td>
-                  <td className="p-4 text-slate-300 text-xs font-medium max-w-xs truncate">{threat.type}</td>
-                  <td className="p-4 text-center">
-                    <span className={`px-2 py-0.5 rounded-md text-[10px] font-extrabold tracking-wider ${
-                      threat.severity === 'CRITICAL' ? 'bg-red-500/10 text-red-400 border border-red-500/20' :
-                      threat.severity === 'HIGH' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' :
-                      'bg-blue-500/10 text-blue-400 border border-blue-500/20'
-                    }`}>
-                      {threat.severity}
-                    </span>
-                  </td>
-                  <td className="p-4 text-center">
-                    <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold ${
-                      threat.status === 'RESOLVED' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
-                    }`}>
-                      {threat.status}
-                    </span>
-                  </td>
-                  <td className="p-4 text-right space-x-2">
-                    {threat.status !== 'RESOLVED' && (
-                      <>
-                        <button 
-                          onClick={() => blockIp(threat.ip)}
-                          className="px-3 py-1.5 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/30 text-xs font-semibold transition-colors"
-                        >
-                          Block IP
-                        </button>
-                        <button 
-                          onClick={() => resolveThreat(threat.id)}
-                          className="px-3 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 text-xs font-semibold transition-colors"
-                        >
-                          Resolve
-                        </button>
-                      </>
-                    )}
-                  </td>
-                </tr>
+        
+        <div className="flex-1 overflow-y-auto py-4">
+          
+          {/* Section 1 */}
+          <div className="mb-6">
+            <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3 px-6">SIEM Command Center</div>
+            <div className="space-y-1 px-3">
+              {navItems.filter(i => i.section === 'SIEM Command Center').map(item => (
+                <button 
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id as any)}
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                    activeTab === item.id 
+                      ? 'bg-red-500/10 text-red-400 border border-red-500/20 shadow-lg shadow-red-500/5' 
+                      : 'text-slate-400 hover:text-white hover:bg-slate-800/50 border border-transparent'
+                  }`}
+                >
+                  <item.icon className="w-4 h-4" /> {item.label}
+                </button>
               ))}
-            </tbody>
-          </table>
+            </div>
+          </div>
+
+          {/* Section 2 */}
+          <div>
+            <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3 px-6 flex items-center justify-between">
+              Advanced Capabilities
+              <div className="px-1.5 py-0.5 bg-indigo-500/20 text-indigo-400 rounded text-[8px] animate-pulse">NEW</div>
+            </div>
+            <div className="space-y-1 px-3">
+              {navItems.filter(i => i.section === 'Advanced Capabilities').map(item => (
+                <button 
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id as any)}
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                    activeTab === item.id 
+                      ? 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 shadow-lg shadow-indigo-500/5' 
+                      : 'text-slate-400 hover:text-white hover:bg-slate-800/50 border border-transparent'
+                  }`}
+                >
+                  <item.icon className="w-4 h-4" /> {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
         </div>
-      </div>
-    </DepartmentView>
+
+        <div className="p-4 border-t border-slate-800/80">
+          <button 
+            onClick={handleLogout}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all border border-transparent hover:border-red-500/20"
+          >
+            <LogOut className="w-4 h-4" /> Terminate Session
+          </button>
+        </div>
+      </aside>
+
+      {/* Main Content Area */}
+      <main className="flex-1 flex flex-col h-full bg-gradient-to-br from-slate-950 to-slate-900 relative">
+        {/* Topbar */}
+        <header className="h-16 flex items-center justify-between px-8 border-b border-slate-800/80 bg-slate-900/30 backdrop-blur-md">
+          <h1 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
+            {getPageTitle()}
+            <span className="px-2 py-0.5 rounded bg-red-500/10 border border-red-500/20 text-red-500 text-[10px] uppercase tracking-widest ml-2 animate-pulse">Defcon 3</span>
+          </h1>
+          <div className="flex items-center gap-4 text-slate-400">
+            <button 
+              onClick={() => window.location.href = '/command-center'}
+              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white text-sm font-bold rounded-lg shadow-lg shadow-red-500/25 transition-all border border-red-400/30"
+            >
+              <Zap className="w-4 h-4" /> Launch Command Center
+            </button>
+            <button className="hover:text-white"><Bell className="w-5 h-5" /></button>
+            <button className="hover:text-white"><Settings className="w-5 h-5" /></button>
+            <div className="h-8 w-8 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700">
+              <User className="w-4 h-4" />
+            </div>
+          </div>
+        </header>
+
+        {/* Dynamic Content */}
+        <div className="flex-1 overflow-y-auto p-8 relative z-10">
+          {renderContent()}
+        </div>
+      </main>
+    </div>
   );
 };

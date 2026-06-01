@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Shield, Key, CheckCircle, UserCheck, Lock, Bell, Terminal, Fingerprint, HelpCircle } from 'lucide-react';
+import { Shield, Key, CheckCircle, UserCheck, Lock, Bell, Terminal, Fingerprint, HelpCircle, Loader2 } from 'lucide-react';
+import axios from 'axios';
 
 const rolesList = [
   { role: 'SUPER_ADMIN', name: 'Super Administrator', dept: 'Global Security', icon: Shield, desc: 'Full system override, kernel-level access, and global security management.', creds: { id: 'ROOT_001', pass: 'SECURE_ALPHA_9' } },
@@ -31,6 +32,8 @@ const Login = () => {
   const [selectedRoleIndex, setSelectedRoleIndex] = useState(0);
   const [loginUserId, setLoginUserId] = useState(rolesList[0].creds.id);
   const [loginPassword, setLoginPassword] = useState(rolesList[0].creds.pass);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const handleRoleSelect = (index) => {
     setSelectedRoleIndex(index);
@@ -38,19 +41,41 @@ const Login = () => {
     setLoginPassword(rolesList[index].creds.pass);
   };
 
-  const handleVerifyAndEnter = (e) => {
+  const handleVerifyAndEnter = async (e) => {
     e.preventDefault();
-    const activeRole = rolesList[selectedRoleIndex];
-    dispatch({ 
-      type: 'LOGIN_SUCCESS', 
-      payload: { 
-        id: loginUserId, 
-        name: activeRole.name, 
-        role: activeRole.role, 
-        department: activeRole.dept 
-      } 
-    });
-    navigate('/');
+    setIsLoading(true);
+    setErrorMsg(null);
+
+    try {
+      // Connect with Organization and generate real JWT via backend
+      const response = await axios.post('http://localhost:5001/api/auth/login', {
+        email: loginUserId, // using ID as email for the demo bypass
+        password: loginPassword
+      });
+
+      const { token, user, role } = response.data;
+      
+      // Save JWT Token
+      localStorage.setItem('token', token);
+
+      // Dispatch full payload to Redux
+      dispatch({ 
+        type: 'LOGIN_SUCCESS', 
+        payload: { 
+          id: user.id, 
+          name: user.name, 
+          role: role, 
+          department: rolesList[selectedRoleIndex].dept,
+          tenantId: user.tenantId || 'org-1' // Organization connectivity
+        } 
+      });
+      navigate('/');
+    } catch (error) {
+      console.error("Login failed:", error);
+      setErrorMsg(error.response?.data?.message || 'Authentication Failed. Invalid Protocol.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -150,7 +175,7 @@ const Login = () => {
 
         {/* Right Column: Secure Authentication Form */}
         <section className="lg:col-span-4 bg-[#0F1326]/40 border border-[#1D2644] rounded-3xl p-6 shadow-2xl flex flex-col sticky top-8">
-          <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[#1D2644]">
+          <div className="flex items-center gap-3 mb-4 pb-4 border-b border-[#1D2644]">
             <div className="p-2.5 bg-[#00e5ff]/10 rounded-xl text-[#00e5ff] border border-[#00e5ff]/20">
               <UserCheck className="w-5 h-5" />
             </div>
@@ -159,6 +184,12 @@ const Login = () => {
               <p className="text-xs text-[#8693BA]">Provide authorized credentials to bridge connection.</p>
             </div>
           </div>
+          
+          {errorMsg && (
+            <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold flex items-center justify-center">
+              {errorMsg}
+            </div>
+          )}
 
           <form onSubmit={handleVerifyAndEnter} className="space-y-5">
             {/* Active Profile Info Box */}
@@ -218,9 +249,11 @@ const Login = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-4 px-6 rounded-2xl bg-[#00e5ff] hover:bg-[#00ccf0] text-[#070912] font-extrabold tracking-widest shadow-xl shadow-[#00e5ff]/10 hover:shadow-[#00e5ff]/30 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 flex items-center justify-center gap-2.5 uppercase text-xs"
+              disabled={isLoading}
+              className="w-full py-4 px-6 rounded-2xl bg-[#00e5ff] hover:bg-[#00ccf0] text-[#070912] font-extrabold tracking-widest shadow-xl shadow-[#00e5ff]/10 hover:shadow-[#00e5ff]/30 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 flex items-center justify-center gap-2.5 uppercase text-xs disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Shield className="w-4 h-4" /> VERIFY & ENTER WORKSPACE
+              {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Shield className="w-4 h-4" />} 
+              {isLoading ? "ESTABLISHING HANDSHAKE..." : "VERIFY & ENTER WORKSPACE"}
             </button>
           </form>
 

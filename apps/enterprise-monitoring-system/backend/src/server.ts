@@ -12,13 +12,19 @@ import locationRoutes from './routes/location.routes'
 import contactRoutes from './routes/contact.routes'
 import helpdeskRoutes from './routes/helpdesk.routes'
 import ceoRoutes from './routes/ceo.routes'
+import liveguardRoutes from './routes/liveguard.routes'
 import connectDB from './config/db'
 import { seedDatabase } from './scripts/seed'
 
 // Connect to Database
+import mongoose from 'mongoose';
 connectDB().then(() => {
-  seedDatabase()
-})
+  if (mongoose.connection.readyState === 1) {
+    seedDatabase().catch(err => console.error("Seed error:", err));
+  } else {
+    console.log("[SERVER] Skipping seed database because MongoDB is not connected.");
+  }
+}).catch(err => console.error("DB connection error:", err));
 
 const app = express()
 const httpServer = createServer(app)
@@ -63,6 +69,7 @@ app.use('/api/helpdesk', helpdeskRoutes)
 app.use('/api', hrRoutes)
 app.use('/api/contact', contactRoutes)
 app.use('/api/ceo', ceoRoutes)
+app.use('/api', liveguardRoutes)
 
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id)

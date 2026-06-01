@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { DepartmentView } from '../../../dashboards/DepartmentView';
 import { StatCardData } from '../../../models/types';
-import { IndianRupee, Users, Award, TrendingUp, ArrowRight, CheckCircle, Clock } from 'lucide-react';
+import { IndianRupee, Users, Award, TrendingUp, ArrowRight, CheckCircle, Clock, BookOpen } from 'lucide-react';
+import { LMSView } from '../hr/components/LMSView';
+
 
 const initialStats: StatCardData[] = [
   { title: 'Q2 Revenue Quota', value: '₹35.0M', trend: '88% achieved', trendType: 'up', icon: '💰', color: 'emerald' },

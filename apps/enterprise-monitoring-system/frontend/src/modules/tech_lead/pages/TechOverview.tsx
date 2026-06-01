@@ -1,4 +1,6 @@
 import React from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import { 
   GitBranch, GitCommit, AlertOctagon, CheckCircle2, TrendingUp, 
   Clock, Zap, Activity, Bug, ArrowUpRight, ArrowDownRight, Bot
@@ -146,8 +148,8 @@ export const TechOverview: React.FC = () => {
           </div>
           <div className="space-y-3">
             {[
-              { id: 'INC-94', title: 'Payment Webhook Timeout', env: 'Production', time: '45m ago' },
-              { id: 'BUG-402', title: 'Memory leak in Redis cache', env: 'Staging', time: '2h ago' },
+              { id: 'INC-94', title: 'Payment Webhook Timeout', env: 'Production', time: getLiveTime(45) },
+              { id: 'BUG-402', title: 'Memory leak in Redis cache', env: 'Staging', time: getLiveTime(120) },
             ].map(inc => (
               <div key={inc.id} className="flex items-center justify-between p-3 rounded-lg border border-[#21262d] hover:border-[#30363d] bg-[#161b22] transition-colors cursor-pointer">
                 <div className="flex items-center gap-3">

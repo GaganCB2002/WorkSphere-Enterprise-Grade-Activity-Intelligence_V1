@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import { Briefcase, UserPlus, Upload, Calendar, FileText, CheckCircle, AlertCircle, Award } from 'lucide-react';
 
 export function RecruitmentView() {
   const [candidates, setCandidates] = useState([
-    { id: 'CAN-101', name: 'Siddharth Rao', role: 'Senior React Architect', stage: 'Interview', match: 96, resume: 'siddharth_cv.pdf', date: '2026-05-18' },
-    { id: 'CAN-102', name: 'Ananya Iyer', role: 'DevOps Lead', stage: 'Screening', match: 92, resume: 'ananya_devops.pdf', date: '2026-05-19' },
-    { id: 'CAN-103', name: 'Vikram Malhotra', role: 'AI/ML Engineer', stage: 'Offer', match: 98, resume: 'vikram_ai.pdf', date: '2026-05-20' }
+    { id: 'CAN-101', name: 'Siddharth Rao', role: 'Senior React Architect', stage: 'Interview', match: 96, resume: 'siddharth_cv.pdf', date: getLiveDate(-23) },
+    { id: 'CAN-102', name: 'Ananya Iyer', role: 'DevOps Lead', stage: 'Screening', match: 92, resume: 'ananya_devops.pdf', date: getLiveDate(-16) },
+    { id: 'CAN-103', name: 'Vikram Malhotra', role: 'AI/ML Engineer', stage: 'Offer', match: 98, resume: 'vikram_ai.pdf', date: getLiveDate(-9) }
   ]);
 
   const [activeTab, setActiveTab] = useState<'candidates' | 'post' | 'onboarding'>('candidates');

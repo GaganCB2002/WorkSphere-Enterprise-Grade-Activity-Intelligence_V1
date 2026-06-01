@@ -1,4 +1,6 @@
 import React from 'react';
+import { LMSView } from '../hr/components/LMSView';
+
 
 export const EmployeeDashboard: React.FC = () => {
   return (

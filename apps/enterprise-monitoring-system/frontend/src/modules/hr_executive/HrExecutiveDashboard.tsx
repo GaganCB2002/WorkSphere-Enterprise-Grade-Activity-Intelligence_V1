@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  LayoutDashboard, UserCheck, UserPlus, Users, Calendar, IndianRupee,
+import { LayoutDashboard, UserCheck, UserPlus, Users, Calendar, IndianRupee,
   TrendingUp, FolderKanban, HeartHandshake, FileCheck, Headphones, LogOut,
   PieChart, Cpu, BarChart3, Navigation, FolderOpen, Zap, Search, Bell,
   Moon, Sun, ArrowLeft, Upload, FileText, Download, Eye, Plus, CheckCircle2,
   AlertCircle, Clock, ShieldCheck, Building2, Briefcase, ChevronRight, Filter,
   Check, X, RefreshCw, Send, Lock, Award, FileSpreadsheet, HardDrive, HelpCircle,
-  FileCode, Activity, FileSpreadsheet as FileSpreadsheetIcon, UserRoundCog, MessageSquare, Mail, Terminal, TimerReset, BriefcaseBusiness, Layers, FileWarning, UsersRound, ClipboardCheck, Folder, BadgeIndianRupee, Gauge, SmilePlus, LifeBuoy, DoorOpen, ChartColumn, Network, Map, Star, Trash
-} from 'lucide-react';
+  FileCode, Activity, FileSpreadsheet as FileSpreadsheetIcon, UserRoundCog, MessageSquare, Mail, Terminal, TimerReset, BriefcaseBusiness, Layers, FileWarning, UsersRound, ClipboardCheck, Folder, BadgeIndianRupee, Gauge, SmilePlus, LifeBuoy, DoorOpen, ChartColumn, Network, Map, Star, Trash, BookOpen } from 'lucide-react';
 import {
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   AreaChart, Area
@@ -16,6 +14,8 @@ import {
 import { HrBudgetModule } from './components/HrBudgetModule';
 import { HrResourceAllocationModule } from './components/HrResourceAllocationModule';
 import { HrLeaveApprovalsModule } from './components/HrLeaveApprovalsModule';
+import { LMSView } from '../hr/components/LMSView';
+
 
 interface HrExecutiveDashboardProps {
   user?: unknown;

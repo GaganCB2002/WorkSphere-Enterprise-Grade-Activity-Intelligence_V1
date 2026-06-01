@@ -1,4 +1,6 @@
 import React, { useState, useMemo } from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import { Plus, Search, Filter, Kanban, ListTodo, Calendar, TrendingUp } from 'lucide-react';
 import { useTaskStore } from '../store/employeeStore';
 import { KanbanBoard } from '../components/tasks/KanbanBoard';
@@ -25,7 +27,7 @@ export function TasksPage() {
   const [newProject, setNewProject] = useState('AuraHR Core');
   const [newPriority, setNewPriority] = useState<TaskPriority>('medium');
   const [newPoints, setNewPoints] = useState(3);
-  const [newDeadline, setNewDeadline] = useState('2026-05-30');
+  const [newDeadline, setNewDeadline] = useState(getLiveDate(-23));
 
   // Projects list for filtering
   const projects = useMemo(() => {
@@ -127,7 +129,7 @@ export function TasksPage() {
     setNewProject('AuraHR Core');
     setNewPriority('medium');
     setNewPoints(3);
-    setNewDeadline('2026-05-30');
+    setNewDeadline(getLiveDate(-16));
   };
 
   // Sprint metadata calculations

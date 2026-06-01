@@ -1,3 +1,4 @@
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
 import React from 'react'
 import { motion } from 'framer-motion'
 import {
@@ -123,10 +124,10 @@ export function MarketingDashboard() {
         <SectionCard title="Live Intelligence" subtitle="Real-time marketing signals.">
           <div className="space-y-6 overflow-y-auto max-h-80 pr-2">
             {[
-              { type: 'Lead', user: 'Emma', action: 'added a new lead', target: 'Acme Corp', time: '2m ago' },
-              { type: 'Deal', user: 'John', action: 'moved deal to', target: 'Proposal', time: '15m ago' },
-              { type: 'Campaign', user: 'AI', action: 'generated content for', target: 'Email Blast', time: '1h ago' },
-              { type: 'System', user: 'System', action: 'synced', target: '248 leads', time: '2h ago' },
+              { type: 'Lead', user: 'Emma', action: 'added a new lead', target: 'Acme Corp', time: getLiveTime(2) },
+              { type: 'Deal', user: 'John', action: 'moved deal to', target: 'Proposal', time: getLiveTime(15) },
+              { type: 'Campaign', user: 'AI', action: 'generated content for', target: 'Email Blast', time: getLiveTime(60) },
+              { type: 'System', user: 'System', action: 'synced', target: '248 leads', time: getLiveTime(120) },
             ].map((activity, i) => (
               <div key={i} className="flex items-start space-x-3">
                 <div className={`mt-1 w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold ${

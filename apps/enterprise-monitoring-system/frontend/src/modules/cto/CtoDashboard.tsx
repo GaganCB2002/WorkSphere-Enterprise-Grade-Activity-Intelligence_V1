@@ -14,6 +14,8 @@ import { CtoAiAssistant } from './components/CtoAiAssistant';
 import { CtoTechnologyRoadmap } from './components/CtoTechnologyRoadmap';
 import { CtoReports } from './components/CtoReports';
 import { CtoSettings } from './components/CtoSettings';
+import { LMSView } from '../hr/components/LMSView';
+
 
 export const CtoDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -108,6 +110,7 @@ export const CtoDashboard: React.FC = () => {
             <CtoReports />
           </motion.div>
         );
+      case 'training': return <LMSView />;
       case 'settings':
         return (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="space-y-8">

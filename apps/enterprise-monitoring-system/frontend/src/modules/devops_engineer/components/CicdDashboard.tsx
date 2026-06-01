@@ -1,6 +1,8 @@
 import React from 'react';
-import { GitBranch, Play, RotateCcw, CheckCircle, XCircle, Clock, FastForward } from 'lucide-react';
+import { GitBranch, Play, RotateCcw, CheckCircle, XCircle, Clock, FastForward, BookOpen } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { LMSView } from '../../hr/components/LMSView';
+
 
 const mockBuildData = [
   { day: 'Mon', success: 42, failed: 2, duration: 4.2 },

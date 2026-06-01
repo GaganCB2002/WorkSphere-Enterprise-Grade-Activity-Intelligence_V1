@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import { Bug, Search, Filter, AlertTriangle, AlertCircle, ArrowUpCircle, XCircle } from 'lucide-react';
 
 const mockBugs = [
-  { id: 'BUG-4011', title: 'Memory leak in real-time telemetry websocket', severity: 'CRITICAL', status: 'OPEN', assignee: 'alex-dev', created: '2h ago' },
-  { id: 'BUG-4008', title: 'Null pointer exception in task allocation engine', severity: 'HIGH', status: 'IN_PROGRESS', assignee: 'sarah-eng', created: '5h ago' },
-  { id: 'BUG-3992', title: 'Dark mode toggle flickers on Safari 16', severity: 'MEDIUM', status: 'OPEN', assignee: 'unassigned', created: '1d ago' },
-  { id: 'BUG-3985', title: 'Pagination jumps to page 1 on filter update', severity: 'LOW', status: 'CLOSED', assignee: 'david-ops', created: '3d ago' },
-  { id: 'BUG-3980', title: 'API rate limit exceeded during burst uploads', severity: 'HIGH', status: 'OPEN', assignee: 'alex-dev', created: '3d ago' },
+  { id: 'BUG-4011', title: 'Memory leak in real-time telemetry websocket', severity: 'CRITICAL', status: 'OPEN', assignee: 'alex-dev', created: getLiveTime(120) },
+  { id: 'BUG-4008', title: 'Null pointer exception in task allocation engine', severity: 'HIGH', status: 'IN_PROGRESS', assignee: 'sarah-eng', created: getLiveTime(300) },
+  { id: 'BUG-3992', title: 'Dark mode toggle flickers on Safari 16', severity: 'MEDIUM', status: 'OPEN', assignee: 'unassigned', created: getLiveTime(1440) },
+  { id: 'BUG-3985', title: 'Pagination jumps to page 1 on filter update', severity: 'LOW', status: 'CLOSED', assignee: 'david-ops', created: getLiveTime(4320) },
+  { id: 'BUG-3980', title: 'API rate limit exceeded during burst uploads', severity: 'HIGH', status: 'OPEN', assignee: 'alex-dev', created: getLiveTime(4320) },
 ];
 
 export const BugTracker: React.FC = () => {

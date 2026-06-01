@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import { 
   ArrowUpRight, Search, Calendar, CheckCircle2, Clock, 
   AlertTriangle, Filter, RotateCcw, ArrowDownRight, RefreshCw 
@@ -15,13 +17,13 @@ interface LedgerItem {
 }
 
 const mockLedgerItems: LedgerItem[] = [
-  { id: 'TXN-9021', reference: 'Acme Corp Wire Transfer', date: '2026-05-24', entity: 'NA', amount: 125000, type: 'INFLOW', status: 'COMPLETED' },
-  { id: 'TXN-9022', reference: 'Sarah Jenkins Expense', date: '2026-05-23', entity: 'APAC', amount: 4250, type: 'OUTFLOW', status: 'PROCESSING' },
-  { id: 'TXN-9023', reference: 'AWS Cloud Hosting', date: '2026-05-22', entity: 'NA', amount: 32000, type: 'OUTFLOW', status: 'COMPLETED' },
-  { id: 'TXN-9024', reference: 'Marcus Chen Expense (AI)', date: '2026-05-22', entity: 'NA', amount: 12800, type: 'OUTFLOW', status: 'FLAGGED' },
-  { id: 'TXN-9025', reference: 'Global Dynamics Invoice', date: '2026-05-21', entity: 'EMEA', amount: 85000, type: 'INFLOW', status: 'COMPLETED' },
-  { id: 'TXN-9026', reference: 'Office Supplies Bulk', date: '2026-05-20', entity: 'NA', amount: 845.5, type: 'OUTFLOW', status: 'COMPLETED' },
-  { id: 'TXN-9027', reference: 'Client Dinner London', date: '2026-05-19', entity: 'EMEA', amount: 1200, type: 'OUTFLOW', status: 'PROCESSING' },
+  { id: 'TXN-9021', reference: 'Acme Corp Wire Transfer', date: getLiveDate(-23), entity: 'NA', amount: 125000, type: 'INFLOW', status: 'COMPLETED' },
+  { id: 'TXN-9022', reference: 'Sarah Jenkins Expense', date: getLiveDate(-16), entity: 'APAC', amount: 4250, type: 'OUTFLOW', status: 'PROCESSING' },
+  { id: 'TXN-9023', reference: 'AWS Cloud Hosting', date: getLiveDate(-9), entity: 'NA', amount: 32000, type: 'OUTFLOW', status: 'COMPLETED' },
+  { id: 'TXN-9024', reference: 'Marcus Chen Expense (AI)', date: getLiveDate(-2), entity: 'NA', amount: 12800, type: 'OUTFLOW', status: 'FLAGGED' },
+  { id: 'TXN-9025', reference: 'Global Dynamics Invoice', date: getLiveDate(5), entity: 'EMEA', amount: 85000, type: 'INFLOW', status: 'COMPLETED' },
+  { id: 'TXN-9026', reference: 'Office Supplies Bulk', date: getLiveDate(12), entity: 'NA', amount: 845.5, type: 'OUTFLOW', status: 'COMPLETED' },
+  { id: 'TXN-9027', reference: 'Client Dinner London', date: getLiveDate(19), entity: 'EMEA', amount: 1200, type: 'OUTFLOW', status: 'PROCESSING' },
 ];
 
 export const TransactionsTab: React.FC = () => {

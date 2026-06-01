@@ -11,6 +11,8 @@ import MFA from '../auth/MFA';
 import SessionTimeout from '../auth/SessionTimeout';
 import ProtectedRoute from './ProtectedRoute';
 
+const SystemCommandCenter = React.lazy(() => import('../modules/command_center/SystemCommandCenter'));
+
 // 18 Role Dashboard Lazy Imports
 const SuperAdminDashboard = React.lazy(() => import('../modules/super_admin/SuperAdminDashboard').then(m => ({ default: m.SuperAdminDashboard })));
 const AdminDashboard = React.lazy(() => import('../modules/admin/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
@@ -33,6 +35,7 @@ const InternModule = React.lazy(() => import('../modules/intern/InternModule').t
 
 const MainLayout = () => {
   const user = useSelector(state => state.auth.user) || { id: 'usr-1', name: 'Gagan CB', role: 'SUPER_ADMIN', department: 'Global Security' };
+  const token = useSelector(state => state.auth.token) || 'mock-token';
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -59,14 +62,13 @@ const MainLayout = () => {
       case 'SOFTWARE_ENGINEER': return <SoftwareEngineerDashboard />;
       case 'SECURITY_ANALYST': return <SecurityAnalystDashboard />;
       case 'SUPPORT_AGENT': return <SupportAgentDashboard />;
-      case 'EMPLOYEE': return <EmployeeDashboard user={user} platform={{ id: 'platform-1', name: 'Core Platform' }} token="mock-token" />;
+      case 'EMPLOYEE': return <EmployeeDashboard user={user} platform={{ id: 'platform-1', name: 'Core Platform' }} token={token} />;
       case 'INTERN': return <InternModule user={user} />;
       default: return <SuperAdminDashboard />;
     }
   };
 
-  // Roles that have their own full-screen layout (Sidebar + Topbar) built-in
-  const isFullScreenRole = ['EMPLOYEE', 'SOFTWARE_ENGINEER', 'TECH_LEAD', 'HR_MANAGER', 'INTERN', 'FINANCE_MANAGER', 'MARKETING_MANAGER', 'QA_ENGINEER', 'DEVOPS_ENGINEER'].includes(user.role);
+  const isFullScreenRole = ['EMPLOYEE', 'SOFTWARE_ENGINEER', 'TECH_LEAD', 'HR_MANAGER', 'INTERN', 'FINANCE_MANAGER', 'MARKETING_MANAGER', 'QA_ENGINEER', 'DEVOPS_ENGINEER', 'SECURITY_ANALYST', 'ADMIN', 'SUPER_ADMIN'].includes(user.role);
 
   if (isFullScreenRole) {
     return (
@@ -76,6 +78,18 @@ const MainLayout = () => {
         </div>
       }>
         {renderRoleDashboard()}
+        
+        {/* Floating Logout Button to prevent trapped state in Full Screen roles */}
+        <button 
+          onClick={handleLogout}
+          className="fixed bottom-6 left-6 z-[9999] p-3 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-full border border-red-500/20 backdrop-blur-md transition-all shadow-lg flex items-center justify-center group"
+          title="Logout / Switch Role"
+        >
+          <LogOut className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+          <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 ease-in-out whitespace-nowrap opacity-0 group-hover:opacity-100 group-hover:ml-2 font-semibold">
+            Logout
+          </span>
+        </button>
       </React.Suspense>
     );
   }
@@ -141,23 +155,37 @@ const MainLayout = () => {
   );
 };
 
+import { GlobalEnterpriseCopilot } from '../components/ai/GlobalEnterpriseCopilot';
+
 const AppRoutes = () => {
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/mfa" element={<MFA />} />
-      <Route path="/session-timeout" element={<SessionTimeout />} />
-      
-      {/* Protected Main Layout Route */}
-      <Route path="/*" element={
-        <ProtectedRoute>
-          <MainLayout />
-        </ProtectedRoute>
-      } />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/mfa" element={<MFA />} />
+        <Route path="/session-timeout" element={<SessionTimeout />} />
+        
+        {/* Full Screen Command Center */}
+        <Route path="/command-center" element={
+          <ProtectedRoute>
+            <React.Suspense fallback={<div className="flex items-center justify-center h-screen bg-slate-950"><div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+              <SystemCommandCenter />
+            </React.Suspense>
+          </ProtectedRoute>
+        } />
+        
+        {/* Protected Main Layout Route */}
+        <Route path="/*" element={
+          <ProtectedRoute>
+            <MainLayout />
+          </ProtectedRoute>
+        } />
+      </Routes>
+      <GlobalEnterpriseCopilot />
+    </>
   );
 };
 

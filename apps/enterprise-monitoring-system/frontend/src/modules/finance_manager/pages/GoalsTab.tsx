@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import { 
   Target, Sparkles, Plus, CheckCircle2, Circle, ArrowUpRight, 
   TrendingUp, Award, Clock 
@@ -21,10 +23,10 @@ interface Goal {
 
 export const GoalsTab: React.FC = () => {
   const [goals, setGoals] = useState<Goal[]>([
-    { id: 'G-01', title: 'Increase Liquid Reserve Ratio', target: '₹1.50B', current: '₹1.42B', progress: 94, category: 'LIQUIDITY', deadline: '2026-06-30', owner: 'R. Sharma', completed: false },
-    { id: 'G-02', title: 'Reduce Tech Infrastructure OPEX', target: '₹12.0M', current: '₹9.8M', progress: 81, category: 'SAVINGS', deadline: '2026-09-30', owner: 'A. Chen', completed: false },
-    { id: 'G-03', title: 'Q3 Enterprise Expansion Revenue', target: '₹35.0M', current: '₹31.2M', progress: 89, category: 'REVENUE', deadline: '2026-06-30', owner: 'S. Jenkins', completed: false },
-    { id: 'G-04', title: 'SOC2 Type II Audit Compliance', target: '100% Ok', current: '98% Ok', progress: 98, category: 'COMPLIANCE', deadline: '2026-05-31', owner: 'D. Ross', completed: false },
+    { id: 'G-01', title: 'Increase Liquid Reserve Ratio', target: '₹1.50B', current: '₹1.42B', progress: 94, category: 'LIQUIDITY', deadline: getLiveDate(-23), owner: 'R. Sharma', completed: false },
+    { id: 'G-02', title: 'Reduce Tech Infrastructure OPEX', target: '₹12.0M', current: '₹9.8M', progress: 81, category: 'SAVINGS', deadline: getLiveDate(-16), owner: 'A. Chen', completed: false },
+    { id: 'G-03', title: 'Q3 Enterprise Expansion Revenue', target: '₹35.0M', current: '₹31.2M', progress: 89, category: 'REVENUE', deadline: getLiveDate(-9), owner: 'S. Jenkins', completed: false },
+    { id: 'G-04', title: 'SOC2 Type II Audit Compliance', target: '100% Ok', current: '98% Ok', progress: 98, category: 'COMPLIANCE', deadline: getLiveDate(-2), owner: 'D. Ross', completed: false },
   ]);
 
   const [newTitle, setNewTitle] = useState('');
@@ -45,7 +47,7 @@ export const GoalsTab: React.FC = () => {
       current: '₹0.0M',
       progress: 0,
       category: newCategory,
-      deadline: '2026-12-31',
+      deadline: getLiveDate(5),
       owner: 'Treasury Officer',
       completed: false
     };

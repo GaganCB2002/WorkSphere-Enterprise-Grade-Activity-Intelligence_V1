@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { SystemGuardian } from './SystemGuardian';
+import { SystemMonitor } from './SystemMonitor';
 import { ShieldCheck, Key, Lock, FileText, CheckCircle, AlertTriangle } from 'lucide-react';
 
 export function SecurityView() {
-  const [activeTab, setActiveTab] = useState<'rbac' | 'mfa' | 'audit'>('rbac');
+  const [activeTab, setActiveTab] = useState<'rbac' | 'mfa' | 'audit' | 'guardian' | 'monitor'>('rbac');
   const [roles, setRoles] = useState([
     { role: 'CEO / Principal', access: 'Full Enterprise Read/Write, AI Override, Payroll Disburse', users: 2 },
     { role: 'HR Manager', access: 'Employee DB, Leave Approval, Performance Dockets, LMS Admin', users: 5 },
@@ -26,10 +28,14 @@ export function SecurityView() {
           <button onClick={() => setActiveTab('rbac')} className={`px-4 py-2 rounded-2xl text-xs font-bold uppercase tracking-wider transition ${activeTab === 'rbac' ? 'bg-luxury-blue text-white shadow-lg shadow-luxury-blue/30' : 'bg-white/5 text-slate-400 hover:bg-white/10'}`}>RBAC Matrix</button>
           <button onClick={() => setActiveTab('mfa')} className={`px-4 py-2 rounded-2xl text-xs font-bold uppercase tracking-wider transition ${activeTab === 'mfa' ? 'bg-luxury-blue text-white shadow-lg shadow-luxury-blue/30' : 'bg-white/5 text-slate-400 hover:bg-white/10'}`}>MFA Config</button>
           <button onClick={() => setActiveTab('audit')} className={`px-4 py-2 rounded-2xl text-xs font-bold uppercase tracking-wider transition ${activeTab === 'audit' ? 'bg-luxury-blue text-white shadow-lg shadow-luxury-blue/30' : 'bg-white/5 text-slate-400 hover:bg-white/10'}`}>Audit Logs</button>
+          <button onClick={() => setActiveTab('guardian')} className={`px-4 py-2 rounded-2xl text-xs font-bold uppercase tracking-wider transition ${activeTab === 'guardian' ? 'bg-luxury-blue text-white shadow-lg shadow-luxury-blue/30' : 'bg-white/5 text-slate-400 hover:bg-white/10'}`}>System Guardian</button>
+          <button onClick={() => setActiveTab('monitor')} className={`px-4 py-2 rounded-2xl text-xs font-bold uppercase tracking-wider transition ${activeTab === 'monitor' ? 'bg-luxury-blue text-white shadow-lg shadow-luxury-blue/30' : 'bg-white/5 text-slate-400 hover:bg-white/10'}`}>Hardware Monitor</button>
         </div>
       </div>
 
       {/* Main Content */}
+      {activeTab === 'guardian' && <div className="h-[800px]"><SystemGuardian /></div>}
+      {activeTab === 'monitor' && <div className="h-[800px]"><SystemMonitor /></div>}
       {activeTab === 'rbac' && (
         <div className="glass-panel p-6 rounded-3xl border-white/10 space-y-6 bg-white/5 backdrop-blur-md">
           <h3 className="text-sm font-black uppercase tracking-widest text-slate-900 dark:text-white border-b border-white/5 pb-4 flex items-center gap-2">

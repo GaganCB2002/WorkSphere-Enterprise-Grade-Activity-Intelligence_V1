@@ -1,11 +1,13 @@
 import React from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import { GitPullRequest, GitCommit, MessageSquare, Check, X, Clock, GitMerge, ChevronRight } from 'lucide-react';
 
 const mockPRs = [
-  { id: 402, title: 'feat(core): implement gRPC bi-directional streaming', repo: 'worksphere/backend', author: 'alex-dev', status: 'REVIEW_REQUIRED', comments: 4, updated: '2h ago', build: 'passing' },
-  { id: 401, title: 'fix(auth): resolve JWT token expiration race condition', repo: 'worksphere/backend', author: 'sarah-eng', status: 'APPROVED', comments: 12, updated: '5h ago', build: 'passing' },
-  { id: 398, title: 'chore: update kubernetes helm charts for v2 cluster', repo: 'worksphere/infra', author: 'david-ops', status: 'CHANGES_REQUESTED', comments: 8, updated: '1d ago', build: 'failed' },
-  { id: 395, title: 'feat(ui): redesign generic data table with virtual scrolling', repo: 'worksphere/frontend', author: 'alex-dev', status: 'DRAFT', comments: 0, updated: '2d ago', build: 'pending' },
+  { id: 402, title: 'feat(core): implement gRPC bi-directional streaming', repo: 'worksphere/backend', author: 'alex-dev', status: 'REVIEW_REQUIRED', comments: 4, updated: getLiveTime(120), build: 'passing' },
+  { id: 401, title: 'fix(auth): resolve JWT token expiration race condition', repo: 'worksphere/backend', author: 'sarah-eng', status: 'APPROVED', comments: 12, updated: getLiveTime(300), build: 'passing' },
+  { id: 398, title: 'chore: update kubernetes helm charts for v2 cluster', repo: 'worksphere/infra', author: 'david-ops', status: 'CHANGES_REQUESTED', comments: 8, updated: getLiveTime(1440), build: 'failed' },
+  { id: 395, title: 'feat(ui): redesign generic data table with virtual scrolling', repo: 'worksphere/frontend', author: 'alex-dev', status: 'DRAFT', comments: 0, updated: getLiveTime(2880), build: 'pending' },
 ];
 
 export const CodeWorkspace: React.FC = () => {

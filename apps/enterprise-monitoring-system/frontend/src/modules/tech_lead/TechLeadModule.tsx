@@ -1,6 +1,8 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { TechLeadShell } from './layout/TechLeadShell';
+import { LMSView } from '../hr/components/LMSView';
+
 
 // Lazy load pages for performance
 const TechOverview = React.lazy(() => import('./pages/TechOverview').then(m => ({ default: m.TechOverview })));

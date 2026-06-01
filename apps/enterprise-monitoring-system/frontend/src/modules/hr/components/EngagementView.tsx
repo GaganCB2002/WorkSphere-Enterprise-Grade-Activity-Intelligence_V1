@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
+
 import { SmilePlus, Award, Megaphone, CheckCircle, Plus, Search, Heart, ThumbsUp } from 'lucide-react';
 import { smartHRApi } from '../api';
 import type { EngagementSurvey } from '../types';
@@ -7,8 +9,8 @@ export function EngagementView() {
   const [surveys, setSurveys] = useState<EngagementSurvey[]>([]);
   const [activeTab, setActiveTab] = useState<'surveys' | 'recognition' | 'announcements'>('surveys');
   const [kudos, setKudos] = useState([
-    { id: '1', from: 'Arjun Mehta', to: 'Rohan Desai', badge: 'Super Debugger', msg: 'Fixed the Davangere GPS proxy triangulation bug in record time!', date: '2026-05-17', likes: 14 },
-    { id: '2', from: 'Priya Sharma', to: 'Arjun Mehta', badge: 'Inspiring Leader', msg: 'Flawless execution of the enterprise monitoring microservices architecture.', date: '2026-05-15', likes: 28 }
+    { id: '1', from: 'Arjun Mehta', to: 'Rohan Desai', badge: 'Super Debugger', msg: 'Fixed the Davangere GPS proxy triangulation bug in record time!', date: getLiveDate(-23), likes: 14 },
+    { id: '2', from: 'Priya Sharma', to: 'Arjun Mehta', badge: 'Inspiring Leader', msg: 'Flawless execution of the enterprise monitoring microservices architecture.', date: getLiveDate(-16), likes: 28 }
   ]);
   const [newKudo, setNewKudo] = useState({ to: '', badge: 'Star Performer', msg: '' });
 

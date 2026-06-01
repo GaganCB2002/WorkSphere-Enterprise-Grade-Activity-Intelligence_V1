@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Users, UserCheck, UserX, AlertTriangle, Cpu, TrendingUp, Layers, 
-  BarChart3, RefreshCw, Zap, Briefcase, Activity
-} from 'lucide-react';
+import { Users, UserCheck, UserX, AlertTriangle, Cpu, TrendingUp, Layers, 
+  BarChart3, RefreshCw, Zap, Briefcase, Activity, BookOpen } from 'lucide-react';
 import { 
   ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar 
 } from 'recharts';
+import { LMSView } from '../../hr/components/LMSView';
+
 
 interface HrResourceAllocationModuleProps {
   isDark: boolean;
@@ -35,7 +35,8 @@ const getStatusColor = (status: string) => {
     case 'Overloaded': return 'bg-amber-500/10 text-amber-500 border-amber-500/20';
     case 'Critical': return 'bg-rose-500/10 text-rose-500 border-rose-500/20';
     case 'Underutilized': return 'bg-blue-500/10 text-blue-500 border-blue-500/20';
-    default: return 'bg-slate-500/10 text-slate-500 border-slate-500/20';
+    case 'training': return <LMSView />;
+      default: return 'bg-slate-500/10 text-slate-500 border-slate-500/20';
   }
 };
 

@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
-import { 
-  Bot, 
+import { getLiveDate, getLiveTime } from '../../utils/liveDataHelpers';
+
+import { Bot, 
   Code2, 
   GitBranch, 
   LayoutDashboard, 
@@ -9,8 +10,9 @@ import {
   ShieldCheck, 
   Sparkles, 
   Terminal, 
-  TrendingUp 
-} from 'lucide-react';
+  TrendingUp, BookOpen } from 'lucide-react';
+import { LMSView } from '../hr/components/LMSView';
+
 
 export interface User {
   id?: string;
@@ -195,9 +197,9 @@ export default function TechLeadDashboard({ user }: TechLeadDashboardProps) {
             </div>
             <div className="space-y-6 relative border-l-2 border-slate-100 dark:border-slate-800 ml-4 pl-6 pt-2 pb-2">
               {[
-                { actor: 'System', text: 'Deployment to staging successful', time: '12m ago' },
-                { actor: 'Sarah', text: 'Merged PR #138', time: '45m ago' },
-                { actor: 'Security', text: 'Critical patch applied', time: '2h ago' },
+                { actor: 'System', text: 'Deployment to staging successful', time: getLiveTime(12) },
+                { actor: 'Sarah', text: 'Merged PR #138', time: getLiveTime(45) },
+                { actor: 'Security', text: 'Critical patch applied', time: getLiveTime(120) },
               ].map((activity, i) => (
                 <div key={i} className="relative group">
                   <div className="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-600 border-4 border-slate-950 group-hover:bg-emerald-400 transition-colors" />

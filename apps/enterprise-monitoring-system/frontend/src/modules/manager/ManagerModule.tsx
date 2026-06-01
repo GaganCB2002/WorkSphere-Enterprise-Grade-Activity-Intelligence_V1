@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ManagerShell } from './layout/ManagerShell';
+import { LMSView } from '../hr/components/LMSView';
+
 
 // Lazy-loaded page components (We will implement these in Phase 4 & 5)
 // Phase 4: Core Pages

@@ -1,3 +1,4 @@
+import { getLiveDate, getLiveTime } from '../../utils/liveDataHelpers';
 import type {
   Employee,
   AttendanceRecord,
@@ -79,7 +80,7 @@ const mockPayrolls: PayrollRecord[] = [
 const mockPerformance: PerformanceReview[] = [
   {
     id: '1', employeeId: 'EMP-001', employeeName: 'Arjun Mehta', reviewerId: 'EMP-002',
-    reviewerName: 'Priya Sharma', reviewDate: '2026-05-01', kpiScore: 4.8, goalCompletionRate: 4.9,
+    reviewerName: 'Priya Sharma', reviewDate: getLiveDate(-23), kpiScore: 4.8, goalCompletionRate: 4.9,
     overallRating: 4.85, appraisalStatus: 'Approved for Promotion',
     strengths: ['Exceptional architectural vision', 'Strong mentorship', 'Flawless delivery'],
     improvements: ['Delegate more routine tasks'], feedbackNotes: 'Arjun continues to be a cornerstone of our core engineering division.'
@@ -97,7 +98,7 @@ const mockCourses: TrainingCourse[] = [
 const mockSurveys: EngagementSurvey[] = [
   {
     id: '1', title: 'Q2 Hybrid Work & Workplace Experience Survey', category: 'Work Environment',
-    publishedDate: '2026-05-02', participationRate: 92.4, averageSentimentScore: 88.5,
+    publishedDate: getLiveDate(-16), participationRate: 92.4, averageSentimentScore: 88.5,
     questions: ['How satisfied are you with our hybrid flexibility?', 'Do you feel supported by your direct lead?']
   }
 ];
@@ -139,12 +140,12 @@ const mockViolations: AIViolationLog[] = [
 const mockAssets: InventoryAsset[] = [
   {
     id: '1', assetTag: 'AST-LPT-101', name: 'MacBook Pro 16 M3 Max', category: 'Laptop',
-    assignedToEmployeeId: 'EMP-001', assignedToEmployeeName: 'Arjun Mehta', assignmentDate: '2024-01-10',
+    assignedToEmployeeId: 'EMP-001', assignedToEmployeeName: 'Arjun Mehta', assignmentDate: getLiveDate(-9),
     status: 'Assigned', value: 285000
   },
   {
     id: '2', assetTag: 'AST-MNT-202', name: 'Dell UltraSharp 32 4K USB-C Monitor', category: 'Monitor',
-    assignedToEmployeeId: 'EMP-003', assignedToEmployeeName: 'Rohan Desai', assignmentDate: '2024-02-15',
+    assignedToEmployeeId: 'EMP-003', assignedToEmployeeName: 'Rohan Desai', assignmentDate: getLiveDate(-2),
     status: 'Assigned', value: 75000
   }
 ];

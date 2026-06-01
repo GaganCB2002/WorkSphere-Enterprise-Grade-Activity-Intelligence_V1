@@ -1,8 +1,12 @@
 import React from 'react';
+import { getLiveDate, getLiveTime } from '../../utils/liveDataHelpers';
+
 import { DepartmentView } from '../../../dashboards/DepartmentView';
 import { ProjectManager } from '../../projects/ProjectManager';
 import { StatCardData, Project, Task } from '../../../models/types';
-import { Calendar, Users, CheckCircle, TrendingUp } from 'lucide-react';
+import { Calendar, Users, CheckCircle, TrendingUp, BookOpen } from 'lucide-react';
+import { LMSView } from '../hr/components/LMSView';
+
 
 const initialStats: StatCardData[] = [
   { title: 'Active Enterprise Projects', value: '12', trend: '4 Squads', trendType: 'up', icon: '📁', color: 'blue' },
@@ -12,15 +16,15 @@ const initialStats: StatCardData[] = [
 ];
 
 const mockProjects: Project[] = [
-  { id: 'proj-1', name: 'Core Auth & RBAC Refactor', description: 'Upgrading spring security filter chains and MFA TOTP flows', managerId: 'mgr-1', managerName: 'Michael Chang', startDate: '2026-05-01', endDate: '2026-06-15', status: 'ACTIVE', budget: 150000, spent: 45000 },
-  { id: 'proj-2', name: 'AI Productivity Inference Engine', description: 'Deploying PyTorch LSTM models on AWS Inferentia endpoints', managerId: 'mgr-1', managerName: 'Michael Chang', startDate: '2026-05-10', endDate: '2026-07-30', status: 'ACTIVE', budget: 280000, spent: 110000 },
+  { id: 'proj-1', name: 'Core Auth & RBAC Refactor', description: 'Upgrading spring security filter chains and MFA TOTP flows', managerId: 'mgr-1', managerName: 'Michael Chang', startDate: getLiveDate(-23), endDate: getLiveDate(-16), status: 'ACTIVE', budget: 150000, spent: 45000 },
+  { id: 'proj-2', name: 'AI Productivity Inference Engine', description: 'Deploying PyTorch LSTM models on AWS Inferentia endpoints', managerId: 'mgr-1', managerName: 'Michael Chang', startDate: getLiveDate(-9), endDate: getLiveDate(-2), status: 'ACTIVE', budget: 280000, spent: 110000 },
 ];
 
 const mockTasks: Task[] = [
-  { id: 'task-1', projectId: 'proj-1', title: 'Implement JWT refresh token rotation in Redis', description: 'Ensure tokens are blacklisted upon logout and rotated automatically', assigneeId: 'emp-1', assigneeName: 'Sarah Jenkins (Frontend)', priority: 'HIGH', status: 'DONE', dueDate: '2026-05-14', estimatedHours: 12 },
-  { id: 'task-2', projectId: 'proj-1', title: 'Visual RBAC Permission Matrix UI', description: 'Create dynamic table allowing Super Admins to toggle 13 permission types', assigneeId: 'emp-2', assigneeName: 'Sarah Jenkins (Frontend)', priority: 'CRITICAL', status: 'IN_PROGRESS', dueDate: '2026-05-18', estimatedHours: 16 },
-  { id: 'task-3', projectId: 'proj-1', title: 'Spring Security PreAuthorize annotations', description: 'Add method-level security checks across all 17 department controllers', assigneeId: 'emp-3', assigneeName: 'Michael Chang (Backend)', priority: 'HIGH', status: 'REVIEW', dueDate: '2026-05-16', estimatedHours: 8 },
-  { id: 'task-4', projectId: 'proj-2', title: 'FastAPI PyTorch model loading optimization', description: 'Preload joblib/PyTorch artifacts during container startup', assigneeId: 'emp-4', assigneeName: 'David Ross (DevOps)', priority: 'MEDIUM', status: 'TODO', dueDate: '2026-05-22', estimatedHours: 20 },
+  { id: 'task-1', projectId: 'proj-1', title: 'Implement JWT refresh token rotation in Redis', description: 'Ensure tokens are blacklisted upon logout and rotated automatically', assigneeId: 'emp-1', assigneeName: 'Sarah Jenkins (Frontend)', priority: 'HIGH', status: 'DONE', dueDate: getLiveDate(5), estimatedHours: 12 },
+  { id: 'task-2', projectId: 'proj-1', title: 'Visual RBAC Permission Matrix UI', description: 'Create dynamic table allowing Super Admins to toggle 13 permission types', assigneeId: 'emp-2', assigneeName: 'Sarah Jenkins (Frontend)', priority: 'CRITICAL', status: 'IN_PROGRESS', dueDate: getLiveDate(12), estimatedHours: 16 },
+  { id: 'task-3', projectId: 'proj-1', title: 'Spring Security PreAuthorize annotations', description: 'Add method-level security checks across all 17 department controllers', assigneeId: 'emp-3', assigneeName: 'Michael Chang (Backend)', priority: 'HIGH', status: 'REVIEW', dueDate: getLiveDate(19), estimatedHours: 8 },
+  { id: 'task-4', projectId: 'proj-2', title: 'FastAPI PyTorch model loading optimization', description: 'Preload joblib/PyTorch artifacts during container startup', assigneeId: 'emp-4', assigneeName: 'David Ross (DevOps)', priority: 'MEDIUM', status: 'TODO', dueDate: getLiveDate(26), estimatedHours: 20 },
 ];
 
 export const ProjectManagerDashboard: React.FC = () => {

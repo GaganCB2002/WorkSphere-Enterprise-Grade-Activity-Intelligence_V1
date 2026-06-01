@@ -5,6 +5,8 @@ import {
   Overview, TaskBoard, CodeWorkspace, DevOps, 
   FocusSpace, Team, LeaveManagement, BugTracker, Documentation 
 } from './pages';
+import { LMSView } from '../hr/components/LMSView';
+
 
 export const SoftwareEngineerDashboard: React.FC = () => {
   return (

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { getLiveDate, getLiveTime } from '../../utils/liveDataHelpers';
+
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { 
-  LayoutDashboard, IndianRupee, CreditCard, PieChart, Target, FileSpreadsheet,
+import { LayoutDashboard, IndianRupee, CreditCard, PieChart, Target, FileSpreadsheet,
   Coins, ListCollapse, BarChart3, Receipt, ShieldAlert, Users, History, Bell,
-  Bot, Settings, Sparkles, Search, HelpCircle, Moon, Sun, LogOut, MessageSquare
-} from 'lucide-react';
+  Bot, Settings, Sparkles, Search, HelpCircle, Moon, Sun, LogOut, MessageSquare, BookOpen } from 'lucide-react';
 
 // Tab imports
 import { DashboardTab } from './pages/DashboardTab';
@@ -24,6 +24,8 @@ import { AuditLogsTab } from './pages/AuditLogsTab';
 import { NotificationsTab } from './pages/NotificationsTab';
 import { AiAssistantTab } from './pages/AiAssistantTab';
 import { SettingsTab } from './pages/SettingsTab';
+import { LMSView } from '../hr/components/LMSView';
+
 
 interface NavItem {
   id: string;
@@ -47,6 +49,7 @@ const navItems: NavItem[] = [
   { id: 'audit-logs', label: 'Audit Logs', icon: History },
   { id: 'notifications', label: 'Notifications', icon: Bell },
   { id: 'ai-assistant', label: 'AI Assistant', icon: Bot },
+  { id: 'training', label: 'Training Center', icon: BookOpen },
   { id: 'settings', label: 'Settings', icon: Settings },
 ];
 
@@ -71,10 +74,10 @@ export const FinanceManagerDashboard: React.FC<FinanceManagerDashboardProps> = (
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const [notifications, setNotifications] = useState([
-    { id: '1', title: 'Invoice #1042 Paid', detail: 'Received payment of ₹1,24,500 from Acme Corp.', time: '2m ago', type: 'success', tab: 'billing' },
-    { id: '2', title: 'Budget Limit Alert', detail: 'Marketing budget has exceeded 90% of the allocated limit.', time: '15m ago', type: 'warning', tab: 'budgets' },
-    { id: '3', title: 'Payroll Run Pending', detail: 'May payroll draft is ready for approval.', time: '1h ago', type: 'info', tab: 'payroll' },
-    { id: '4', title: 'Security Log: Export', detail: 'Tax reports exported by FM-Audit analyst.', time: '3h ago', type: 'warning', tab: 'audit-logs' },
+    { id: '1', title: 'Invoice #1042 Paid', detail: 'Received payment of ₹1,24,500 from Acme Corp.', time: getLiveTime(2), type: 'success', tab: 'billing' },
+    { id: '2', title: 'Budget Limit Alert', detail: 'Marketing budget has exceeded 90% of the allocated limit.', time: getLiveTime(15), type: 'warning', tab: 'budgets' },
+    { id: '3', title: 'Payroll Run Pending', detail: 'May payroll draft is ready for approval.', time: getLiveTime(60), type: 'info', tab: 'payroll' },
+    { id: '4', title: 'Security Log: Export', detail: 'Tax reports exported by FM-Audit analyst.', time: getLiveTime(180), type: 'warning', tab: 'audit-logs' },
   ]);
 
   useEffect(() => {
@@ -123,6 +126,7 @@ export const FinanceManagerDashboard: React.FC<FinanceManagerDashboardProps> = (
       case 'audit-logs': return <AuditLogsTab />;
       case 'notifications': return <NotificationsTab />;
       case 'ai-assistant': return <AiAssistantTab />;
+      case 'training': return <LMSView />;
       case 'settings': return <SettingsTab />;
       default:
         return (

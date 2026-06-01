@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  CalendarClock, Clock, CheckCircle2, AlertOctagon, BrainCircuit, 
-  TrendingDown, TrendingUp, Users, UserMinus, ShieldAlert
-} from 'lucide-react';
+import { CalendarClock, Clock, CheckCircle2, AlertOctagon, BrainCircuit, 
+  TrendingDown, TrendingUp, Users, UserMinus, ShieldAlert, BookOpen } from 'lucide-react';
 import { 
   ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend 
 } from 'recharts';
+import { LMSView } from '../../hr/components/LMSView';
+
 
 interface HrLeaveApprovalsModuleProps {
   isDark: boolean;
@@ -36,7 +36,8 @@ const getStatusColor = (status: string) => {
     case 'Pending': return 'bg-amber-500/10 text-amber-500 border-amber-500/20';
     case 'High Risk': return 'bg-rose-500/10 text-rose-500 border-rose-500/20';
     case 'Rejected': return 'bg-slate-500/10 text-slate-500 border-slate-500/20';
-    default: return 'bg-slate-500/10 text-slate-500 border-slate-500/20';
+    case 'training': return <LMSView />;
+      default: return 'bg-slate-500/10 text-slate-500 border-slate-500/20';
   }
 };
 
@@ -45,7 +46,8 @@ const getRiskColor = (risk: string) => {
     case 'Low': return 'text-emerald-500';
     case 'Medium': return 'text-amber-500';
     case 'Critical': return 'text-rose-500';
-    default: return 'text-slate-500';
+    case 'training': return <LMSView />;
+      default: return 'text-slate-500';
   }
 };
 

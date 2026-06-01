@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { getLiveDate, getLiveTime } from '../../utils/liveDataHelpers';
+
 import { DepartmentView } from '../../../dashboards/DepartmentView';
 import { StatCardData } from '../../../models/types';
 import { 
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid
 } from 'recharts';
-import { MessageSquare, Phone, Clock, Smile, CheckCircle, Clock3 } from 'lucide-react';
+import { MessageSquare, Phone, Clock, Smile, CheckCircle, Clock3, BookOpen } from 'lucide-react';
+import { LMSView } from '../hr/components/LMSView';
+
 
 const initialStats: StatCardData[] = [
   { title: 'Avg Resolution Time', value: '14.2m', trend: '-2.4m vs target', trendType: 'up', icon: '⚡', color: 'emerald' },
@@ -22,9 +26,9 @@ const mockTicketData = [
 ];
 
 const mockTickets = [
-  { id: 'TCK-501', client: 'Acme Corp', subject: 'Unable to verify TOTP Google Authenticator code', priority: 'HIGH', sentiment: 'FRUSTRATED (84%)', status: 'IN_PROGRESS', time: '12m ago' },
-  { id: 'TCK-502', client: 'Global Dynamics', subject: 'Requesting invoice breakdown for AWS EKS multi-cloud cluster', priority: 'MEDIUM', sentiment: 'NEUTRAL (90%)', status: 'OPEN', time: '28m ago' },
-  { id: 'TCK-503', client: 'Vortex Cloud', subject: 'Desktop agent failing to capture screen on macOS Sonoma', priority: 'CRITICAL', sentiment: 'ANGRY (95%)', status: 'IN_PROGRESS', time: '5m ago' },
+  { id: 'TCK-501', client: 'Acme Corp', subject: 'Unable to verify TOTP Google Authenticator code', priority: 'HIGH', sentiment: 'FRUSTRATED (84%)', status: 'IN_PROGRESS', time: getLiveTime(12) },
+  { id: 'TCK-502', client: 'Global Dynamics', subject: 'Requesting invoice breakdown for AWS EKS multi-cloud cluster', priority: 'MEDIUM', sentiment: 'NEUTRAL (90%)', status: 'OPEN', time: getLiveTime(28) },
+  { id: 'TCK-503', client: 'Vortex Cloud', subject: 'Desktop agent failing to capture screen on macOS Sonoma', priority: 'CRITICAL', sentiment: 'ANGRY (95%)', status: 'IN_PROGRESS', time: getLiveTime(5) },
 ];
 
 export const SupportAgentDashboard: React.FC = () => {

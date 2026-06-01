@@ -1,6 +1,8 @@
 import React from 'react';
-import { IndianRupee, Cloud, TrendingDown, TrendingUp } from 'lucide-react';
+import { IndianRupee, Cloud, TrendingDown, TrendingUp, BookOpen } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { LMSView } from '../../hr/components/LMSView';
+
 
 const mockCostData = [
   { provider: 'AWS', compute: 45000, storage: 12000, network: 8000, db: 25000 },
