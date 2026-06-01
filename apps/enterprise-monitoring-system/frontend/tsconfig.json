@@ -21,5 +21,16 @@
     "**/*.ts",
     "**/*.tsx"
   ],
-  "exclude": ["node_modules", "src/modules/employee/legacy", "src/modules/employee/core", "src/modules/admin/database", "src/modules/admin/Master_Overview_Dashboard.tsx"]
+  "exclude": [
+    "**/node_modules",
+    "src/modules/employee/legacy",
+    "src/modules/employee/core",
+    "src/modules/support/core",
+    "src/modules/support/legacy",
+    "src/modules/marketing/core",
+    "src/modules/marketing/location_service",
+    "src/modules/intern",
+    "src/modules/admin/database",
+    "src/modules/admin/Master_Overview_Dashboard.tsx"
+  ]
 }

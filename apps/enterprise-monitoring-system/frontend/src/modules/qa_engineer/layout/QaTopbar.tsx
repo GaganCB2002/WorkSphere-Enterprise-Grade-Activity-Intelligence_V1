@@ -31,9 +31,12 @@ export const QaTopbar: React.FC<QaTopbarProps> = ({ user, addToast, setActiveVie
   }, []);
 
   useEffect(() => {
-    const currentTheme = getInitialDarkMode();
-    applyTheme(currentTheme);
-  }, [applyTheme]);
+    if (getInitialDarkMode()) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
 
   useEffect(() => {
     const handleStorage = (e: StorageEvent) => {
@@ -63,9 +66,9 @@ export const QaTopbar: React.FC<QaTopbarProps> = ({ user, addToast, setActiveVie
 
   const toggleDarkMode = () => {
     const newState = !isDarkMode;
-    try { localStorage.setItem('theme', newState ? 'dark' : 'light'); } catch (e) {}
+    try { localStorage.setItem('theme', newState ? 'dark' : 'light'); } catch (e) { console.error(e); }
     applyTheme(newState);
-    try { window.dispatchEvent(new CustomEvent('themechange')); } catch (e) {}
+    try { window.dispatchEvent(new CustomEvent('themechange')); } catch (e) { console.error(e); }
   };
 
   const handleSearch = (e: React.FormEvent) => {

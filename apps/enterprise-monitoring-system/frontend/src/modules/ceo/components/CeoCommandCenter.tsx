@@ -28,6 +28,7 @@ export const CeoCommandCenter: React.FC = () => {
       <div className="h-[300px] w-full flex justify-center items-center">
         <ResponsiveContainer width="100%" height="100%">
           <RadialBarChart cx="50%" cy="50%" innerRadius="20%" outerRadius="100%" barSize={15} data={mockHealthData}>
+            {/* @ts-expect-error Recharts types are missing minAngle */}
             <RadialBar minAngle={15} background={{ fill: '#1e293b' }} clockWise dataKey="health" />
             <Tooltip contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '1rem', color: '#fff' }} />
             <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={{ right: 0, fontSize: '12px', color: '#94a3b8' }} />

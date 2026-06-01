@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Bell, Calendar, Bot, Plus, Moon, Sun } from 'lucide-react';
 
+const getInitialTheme = () => {
+  try {
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      return true;
+    }
+  } catch (e) {
+    console.error(e);
+  }
+  return false;
+};
+
 export const MarketingTopbar: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(getInitialTheme);
 
   useEffect(() => {
-    try {
-      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        setIsDarkMode(true);
-        document.documentElement.classList.add('dark');
-      } else {
-        setIsDarkMode(false);
-        document.documentElement.classList.remove('dark');
-      }
-    } catch (e) {
-      // Fallback
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
-  }, []);
+  }, [isDarkMode]);
 
   const toggleDarkMode = () => {
     const newState = !isDarkMode;
@@ -24,10 +29,10 @@ export const MarketingTopbar: React.FC = () => {
     
     if (newState) {
       document.documentElement.classList.add('dark');
-      try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+      try { localStorage.setItem('theme', 'dark'); } catch (e) { console.error(e); }
     } else {
       document.documentElement.classList.remove('dark');
-      try { localStorage.setItem('theme', 'light'); } catch (e) {}
+      try { localStorage.setItem('theme', 'light'); } catch (e) { console.error(e); }
     }
   };
 

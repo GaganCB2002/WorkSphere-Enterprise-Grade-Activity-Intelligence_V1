@@ -87,7 +87,7 @@ export const LeadManagement: React.FC = () => {
                 <div className="flex justify-between items-start mb-2">
                   <span className="text-[10px] font-bold text-[#64748b] dark:text-slate-400 bg-[#f1f5f9] dark:bg-slate-800 px-2 py-0.5 rounded uppercase tracking-wider">Enterprise</span>
                   <div className="flex items-center gap-1 text-[10px] font-bold text-amber-600">
-                    <Zap className="w-3 h-3" fill="currentColor" /> {70 + Math.floor(Math.random() * 25)}
+                    <Zap className="w-3 h-3" fill="currentColor" /> {70 + (stage.count % 25)}
                   </div>
                 </div>
                 <h4 className="text-sm font-bold text-[#0f172a] dark:text-slate-100 mb-1">Acme Corp Interest</h4>

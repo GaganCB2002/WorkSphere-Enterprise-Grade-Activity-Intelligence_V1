@@ -18,10 +18,10 @@ import { HrResourceAllocationModule } from './components/HrResourceAllocationMod
 import { HrLeaveApprovalsModule } from './components/HrLeaveApprovalsModule';
 
 interface HrExecutiveDashboardProps {
-  user?: any;
+  user?: unknown;
   token?: string;
-  platform?: any;
-  feed?: any[];
+  platform?: unknown;
+  feed?: unknown[];
   onRefresh?: () => Promise<void>;
 }
 
@@ -784,13 +784,8 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                          <div className="flex items-center gap-1.5 mt-2">
-                            <span className={`w-2 h-2 rounded-full ${email.labelColor}`} />
-                            <span className="text-[9px] text-slate-400 font-extrabold uppercase tracking-wide">{email.tag}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="lg:col-span-6 rounded-[32px] border p-6 flex flex-col justify-center items-center text-slate-500">
+                    Mail List Placeholder
                   </div>
 
                   {/* Right Column: Email Detail View */}

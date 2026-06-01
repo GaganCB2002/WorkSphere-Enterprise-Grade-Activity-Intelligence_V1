@@ -1,112 +1,117 @@
-import React from 'react';
-import { DepartmentView } from '../../../dashboards/DepartmentView';
-import { StatCardData } from '../../../models/types';
-import { 
-  ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid
-} from 'recharts';
-import { Server, Cpu, HardDrive, IndianRupee, CheckCircle, AlertTriangle } from 'lucide-react';
-
-const initialStats: StatCardData[] = [
-  { title: 'Kubernetes Pods', value: '482', trend: '99.99% healthy', trendType: 'up', icon: '🐳', color: 'blue' },
-  { title: 'Avg CPU Utilization', value: '42.8%', trend: 'Optimal load', trendType: 'neutral', icon: '⚡', color: 'emerald' },
-  { title: 'Monthly AWS/GCP Cost', value: '₹84.2K', trend: 'Within budget', trendType: 'neutral', icon: '💰', color: 'purple' },
-  { title: 'Pending CI/CD Builds', value: '3', trend: 'Building', trendType: 'up', icon: '🔄', color: 'amber' },
-];
-
-const mockCloudCostData = [
-  { service: 'AWS EKS (K8s)', cost: 38.5 },
-  { service: 'RDS PostgreSQL', cost: 18.2 },
-  { service: 'ElastiCache Redis', cost: 12.4 },
-  { service: 'MSK Apache Kafka', cost: 9.8 },
-  { service: 'CloudFront CDN', cost: 5.3 },
-];
-
-const mockPods = [
-  { name: 'auth-service-deployment-78f9c', namespace: 'production', cpu: '34%', memory: '512Mi', status: 'RUNNING', restarts: 0 },
-  { name: 'monitoring-service-deployment-42b1', namespace: 'production', cpu: '78%', memory: '1.4Gi', status: 'RUNNING', restarts: 2 },
-  { name: 'ai-inference-lstm-deployment-99x', namespace: 'production', cpu: '92%', memory: '4.2Gi', status: 'WARNING', restarts: 5 },
-];
+import React, { useState } from 'react';
+import { Bot, X, Sparkles } from 'lucide-react';
+import { DevOpsLayout } from './layout/DevOpsLayout';
+import { SystemHealthOverview } from './components/SystemHealthOverview';
+import { InfrastructureOverview } from './components/InfrastructureOverview';
+import { KubernetesCommandCenter } from './components/KubernetesCommandCenter';
+import { CicdDashboard } from './components/CicdDashboard';
+import { MonitoringCenter } from './components/MonitoringCenter';
+import { SecurityOperationsCenter } from './components/SecurityOperationsCenter';
+import { IncidentManagement } from './components/IncidentManagement';
+import { CloudCostDashboard } from './components/CloudCostDashboard';
+import { DatabaseManagement } from './components/DatabaseManagement';
+import { AiDevOpsAssistant } from './components/AiDevOpsAssistant';
+import { CloudManagementDashboard } from './components/CloudManagementDashboard';
+import { ContainerManagement } from './components/ContainerManagement';
+import { DevOpsReports } from './components/DevOpsReports';
+import { DevOpsSettings } from './components/DevOpsSettings';
+import { LiveTelemetryDashboard } from './components/LiveTelemetryDashboard';
+import { ChatPage } from '../../pages/ChatPage';
+import { WebmailPage } from '../employee/pages/WebmailPage';
+import { WorkerProfileDetails } from './components/WorkerProfileDetails';
 
 export const DevOpsEngineerDashboard: React.FC = () => {
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false);
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'dashboard':
+        return <SystemHealthOverview />;
+      case 'infrastructure':
+        return <InfrastructureOverview />;
+      case 'cloud':
+        return <CloudManagementDashboard />;
+      case 'kubernetes':
+        return <KubernetesCommandCenter />;
+      case 'containers':
+        return <ContainerManagement />;
+      case 'cicd':
+        return <CicdDashboard />;
+      case 'monitoring':
+        return <MonitoringCenter />;
+      case 'security':
+        return <SecurityOperationsCenter />;
+      case 'incidents':
+        return <IncidentManagement />;
+      case 'database':
+        return <DatabaseManagement />;
+      case 'cost':
+        return <CloudCostDashboard />;
+      case 'employee':
+        return <WorkerProfileDetails />;
+      case 'reports':
+        return <DevOpsReports />;
+      case 'telemetry':
+        return <LiveTelemetryDashboard />;
+      case 'chat':
+        return (
+          <div className="h-[calc(100vh-12rem)]">
+            <ChatPage user={{ id: 'devops-1', name: 'System Admin', email: 'admin@worksphere.ent', role: 'DEVOPS_ENGINEER', department: 'Platform Engineering' }} token="mock-token" />
+          </div>
+        );
+      case 'email':
+        return (
+          <div className="h-[calc(100vh-12rem)]">
+            <WebmailPage />
+          </div>
+        );
+      case 'settings':
+        return <DevOpsSettings />;
+      default:
+        return <SystemHealthOverview />;
+    }
+  };
+
   return (
-    <DepartmentView
-      title="DevOps & Cloud Infrastructure"
-      subtitle="Server Health Telemetry, Kubernetes Pods & AWS Multi-Cloud Cost Audit"
-      stats={initialStats}
-      onRefresh={() => alert('Refreshing AWS EKS & Prometheus metrics...')}
-      quickActions={[
-        { label: 'Scale K8s Cluster', icon: <Server className="w-4 h-4" />, action: 'scale', variant: 'primary' },
-        { label: 'Cloud Cost Audit', icon: <IndianRupee className="w-4 h-4" />, action: 'cost', variant: 'secondary' }
-      ]}
-      onQuickAction={(action) => {
-        if (action === 'scale') alert('Initiating Kubernetes Horizontal Pod Autoscaler (HPA) override...');
-        if (action === 'cost') alert('Generating AWS Cost Explorer & FinOps breakdown report...');
-      }}
-    >
-      {/* Cloud Cost Bar Chart */}
-      <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-3xl p-6 lg:p-8 shadow-2xl space-y-6">
-        <div className="border-b border-slate-800 pb-4">
-          <h3 className="text-xl font-bold text-white">Monthly Cloud Infrastructure Cost (₹ Thousands)</h3>
-          <p className="text-slate-400 text-xs mt-1">Resource expenditure breakdown across AWS production managed services</p>
-        </div>
-
-        <div className="h-[380px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={mockCloudCostData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.5} />
-              <XAxis dataKey="service" stroke="#94a3b8" />
-              <YAxis stroke="#94a3b8" />
-              <Tooltip 
-                contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '1rem', color: '#fff' }}
-              />
-              <Legend />
-              <Bar dataKey="cost" name="Monthly Cost (₹K)" fill="#3b82f6" radius={[8, 8, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
-
-      {/* Kubernetes Pods Table */}
-      <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-3xl p-6 lg:p-8 shadow-2xl space-y-6">
-        <div className="border-b border-slate-800 pb-4">
-          <h3 className="text-xl font-bold text-white">Kubernetes Pod Status (EKS Production)</h3>
-          <p className="text-slate-400 text-xs mt-1">Real-time CPU, memory allocation, and restart count tracking per microservice pod</p>
-        </div>
-
-        <div className="overflow-x-auto border border-slate-800 rounded-2xl">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="bg-slate-950 border-b border-slate-800 text-xs font-extrabold text-slate-300 uppercase tracking-wider">
-                <th className="p-4">Pod Name</th>
-                <th className="p-4">Namespace</th>
-                <th className="p-4 text-center">CPU Load</th>
-                <th className="p-4 text-center">Memory</th>
-                <th className="p-4 text-center">Restarts</th>
-                <th className="p-4 text-center">Status</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-800/50 bg-slate-900/20">
-              {mockPods.map((pod, idx) => (
-                <tr key={idx} className="hover:bg-slate-800/30 transition-colors">
-                  <td className="p-4 font-mono font-bold text-white text-xs">{pod.name}</td>
-                  <td className="p-4 text-slate-300 text-xs font-medium">{pod.namespace}</td>
-                  <td className="p-4 text-center font-bold text-blue-400 text-xs">{pod.cpu}</td>
-                  <td className="p-4 text-center font-bold text-purple-400 text-xs">{pod.memory}</td>
-                  <td className="p-4 text-center text-xs font-bold text-slate-400">{pod.restarts}</td>
-                  <td className="p-4 text-center">
-                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold ${
-                      pod.status === 'RUNNING' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
-                    }`}>
-                      {pod.status === 'RUNNING' ? <CheckCircle className="w-3.5 h-3.5" /> : <AlertTriangle className="w-3.5 h-3.5" />}
-                      <span>{pod.status}</span>
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <DevOpsLayout activeTab={activeTab} onTabChange={setActiveTab}>
+      <div className="space-y-12 pb-24 relative">
+        {renderContent()}
+        
+        {/* Floating AI Assistant Button */}
+        <div className="fixed bottom-6 right-6 z-50">
+          <div className="relative flex flex-col items-end">
+            {isAIAssistantOpen && (
+              <div className="mb-4 w-[90vw] max-w-[800px] bg-slate-900 border border-slate-700 shadow-2xl rounded-2xl overflow-hidden animate-in slide-in-from-bottom-2 fade-in duration-200">
+                <div className="flex justify-between items-center p-3 border-b border-slate-800 bg-slate-900/50 backdrop-blur-sm">
+                  <div className="flex items-center gap-2 text-brand font-bold text-sm px-2">
+                    <Sparkles className="w-4 h-4" /> AI DevOps Copilot
+                  </div>
+                  <button onClick={() => setIsAIAssistantOpen(false)} className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-white transition-colors">
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+                <div className="max-h-[75vh] overflow-y-auto custom-scrollbar p-2">
+                  <AiDevOpsAssistant />
+                </div>
+              </div>
+            )}
+            
+            <button 
+              onClick={() => setIsAIAssistantOpen(!isAIAssistantOpen)}
+              className={`w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 z-50 ${isAIAssistantOpen ? 'bg-slate-800 text-white border border-slate-700 scale-90' : 'bg-brand hover:bg-brand-600 text-white hover:scale-110 hover:shadow-brand/50'}`}
+            >
+              {isAIAssistantOpen ? <X className="w-6 h-6" /> : <Bot className="w-6 h-6" />}
+              {!isAIAssistantOpen && (
+                <span className="absolute top-0 right-0 flex h-3.5 w-3.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-slate-900"></span>
+                </span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
-    </DepartmentView>
+    </DevOpsLayout>
   );
 };

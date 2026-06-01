@@ -128,7 +128,7 @@ export const DashboardOverview: React.FC<{ user: any, platform: any }> = ({ user
               <div className="grid grid-cols-12 gap-1 h-32">
                  {/* Generate some dummy heatmap blocks */}
                  {Array.from({ length: 96 }).map((_, i) => {
-                   const val = Math.random();
+                   const val = ((i * 13) % 100) / 100;
                    let bg = 'bg-[#eae2da]';
                    if (val > 0.8) bg = 'bg-[#9b593e]';
                    else if (val > 0.5) bg = 'bg-[#c27650]';
