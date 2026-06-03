@@ -5,7 +5,7 @@ import User from '../models/User'
 import { db } from './db.service'
 import type { AppUser, AuthPayload } from '../data/types'
 
-const JWT_SECRET = process.env.JWT_SECRET ?? 'aurahr-demo-secret'
+const JWT_SECRET = process.env.JWT_SECRET ?? 'nexushr-demo-secret'
 const TOKEN_TTL = '24h'
 
 const sanitizeUser = (user: AppUser) => ({

@@ -1,1 +1,1 @@
-﻿# GCP GKE & Deployment Manager Specs
+# GCP GKE & Deployment Manager Specs

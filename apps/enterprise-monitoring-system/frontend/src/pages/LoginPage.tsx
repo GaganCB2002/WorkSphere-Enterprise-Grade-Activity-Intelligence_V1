@@ -47,12 +47,23 @@ export function LoginPage({
           <motion.div 
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
-            className="h-14 w-14 bg-gradient-to-tr from-brand to-pastel-blue rounded-[20px] flex items-center justify-center mx-auto mb-4 shadow-xl shadow-brand/20"
+            className="relative h-16 w-16 mx-auto mb-6 flex items-center justify-center group cursor-pointer"
           >
-            <Zap className="h-7 w-7 text-white" />
+            {/* Outer Glowing Aura */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#0052CC] to-[#008DA6] rounded-xl rotate-45 group-hover:rotate-90 transition-all duration-700 opacity-50 blur-md"></div>
+            
+            {/* Base Diamond */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0052CC] via-[#0065FF] to-[#0052CC] rounded-xl rotate-45 group-hover:rotate-180 transition-all duration-700 shadow-lg border border-white/20"></div>
+            
+            {/* Inner Floating Square */}
+            <div className="absolute inset-2 bg-gradient-to-tr from-white to-[#F4F5F7] rounded-lg -rotate-12 group-hover:rotate-0 transition-all duration-500 flex items-center justify-center shadow-inner overflow-hidden">
+               {/* Shine effect */}
+               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/80 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+               <span className="font-display font-black text-transparent bg-clip-text bg-gradient-to-br from-[#0052CC] to-[#008DA6] text-2xl leading-none italic z-10 drop-shadow-sm">N</span>
+            </div>
           </motion.div>
           <h1 className="text-3xl font-display font-black tracking-tight uppercase italic text-slate-900 dark:text-white mb-1.5">
-            WorkSphere <span className="text-brand">Enterprise</span>
+            Nexus<span className="text-[#0052CC]">HR</span>
           </h1>
           <p className="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-widest flex items-center justify-center gap-1.5">
             <ShieldCheck size={14} className="text-mint" /> Secure Access Perimeter

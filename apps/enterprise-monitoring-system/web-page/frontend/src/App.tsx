@@ -52,7 +52,7 @@ import { CEODashboardPage } from './modules/ceo/CeoDashboard'
 import { AdminDashboardPage } from './modules/admin/pages/AdminDashboardPage'
 import { ContactProvider } from './components/layout/ContactContext'
 
-const TOKEN_KEY = 'aurahr-token'
+const TOKEN_KEY = 'nexushr-token'
 
 function App() {
   const navigate = useNavigate()
@@ -164,7 +164,7 @@ function App() {
       <div className="flex h-screen items-center justify-center bg-slate-950">
         <div className="text-center">
           <div className="h-12 w-12 animate-spin rounded-full border-4 border-luxury-blue border-t-transparent mx-auto mb-4"></div>
-          <p className="text-sm font-black uppercase tracking-widest text-slate-500 italic">Initializing AuraHR Platform...</p>
+          <p className="text-sm font-black uppercase tracking-widest text-slate-500 italic">Initializing NexusHR Platform...</p>
         </div>
       </div>
     )

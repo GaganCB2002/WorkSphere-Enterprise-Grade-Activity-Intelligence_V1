@@ -19,15 +19,15 @@ function runService(name, dir, command, args = '') {
 }
 
 // Launch Backend (relative to web-page directory, go up one level)
-runService('AuraHR Backend', '../backend', 'npm', 'run dev');
+runService('NexusHR Backend', '../backend', 'npm', 'run dev');
 
 // Launch Frontend (relative to web-page directory, go up one level)
-runService('AuraHR Frontend', '../frontend', 'npm', 'run dev');
+runService('NexusHR Frontend', '../frontend', 'npm', 'run dev');
 
-console.log('Centralized AuraHR Platform launched.');
+console.log('Centralized NexusHR Platform launched.');
 console.log('Platform: http://localhost:3005');
 
 setTimeout(() => {
-    console.log('Opening AuraHR Hub...');
+    console.log('Opening NexusHR Hub...');
     spawn('powershell', ['-Command', `Start-Process "http://localhost:3005"`], { shell: true });
 }, 5000);

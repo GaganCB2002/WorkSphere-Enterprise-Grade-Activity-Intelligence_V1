@@ -79,13 +79,7 @@ export function LandingPage() {
 
   return (
     <div 
-      className="min-h-screen bg-background dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-brand/30 overflow-x-hidden font-sans scroll-smooth transition-colors duration-500 relative"
-      style={{
-        '--pastel-lavender': '#4f46e5', // Electric Indigo
-        '--pastel-blue': '#0ea5e9',     // Sky Blue
-        '--pastel-mint': '#8b5cf6',     // Vibrant Violet
-        '--pastel-peach': '#d946ef'     // Neon Fuchsia
-      } as React.CSSProperties}
+      className="min-h-screen bg-white dark:bg-[#0A0B10] text-[#172B4D] dark:text-white dark:text-slate-100 selection:bg-[#E6F0FF] dark:selection:bg-[#0052CC]/30 overflow-x-hidden font-sans scroll-smooth transition-colors duration-500 relative"
     >
       {/* Sticky Scroll Progress Bar */}
       <motion.div 
@@ -103,55 +97,42 @@ export function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, type: "spring", bounce: 0.3 }}
           >
-            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-brand/10 border border-brand/20 text-[10px] font-black uppercase tracking-[0.4em] text-brand mb-10 shadow-md shadow-brand/10 animate-pulse">
-              <Star className="h-3 w-3 fill-brand" />
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#E6F0FF] border border-[#0065FF]/20 text-[11px] font-semibold tracking-widest text-[#0052CC] mb-10 shadow-sm">
+              <Star className="h-3 w-3 fill-[#0052CC]" />
               The Pinnacle of Workforce Engineering
             </div>
-            <h1 className="text-6xl lg:text-8xl font-display font-black tracking-tight leading-[0.9] uppercase mb-10 italic">
+            <h1 className="text-6xl lg:text-8xl font-display font-bold tracking-tight leading-[1.1] mb-10 text-[#172B4D] dark:text-white dark:text-white">
               Performance <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand to-pastel-blue border-t border-b border-outline dark:border-white/10 px-4 py-2 my-4 inline-block italic">Redefined.</span>
+              <span className="text-[#0052CC]">Redefined.</span>
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-16 font-medium leading-relaxed">
               Precision-engineered tools for the modern enterprise. Monitor, analyze, and optimize your global talent with surgical accuracy.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               <motion.button 
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
+                whileHover={{ scale: 1.01, boxShadow: "0 4px 12px rgba(0, 82, 204, 0.2)" }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => navigate('/login')}
-                className="px-12 py-5 bg-brand text-white rounded-full font-black text-xs uppercase tracking-[0.2em] shadow-lg shadow-brand/20 hover:bg-brand/90 transition-all group btn-interactive cursor-pointer"
+                className="px-12 py-5 bg-[#0052CC] text-white rounded-md font-semibold text-sm shadow-md hover:bg-[#0065FF] transition-all group flex items-center justify-center cursor-pointer"
               >
                 Start Your Journey
                 <ArrowRight className="inline-block ml-3 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </motion.button>
               <motion.button 
-                whileHover={{ scale: 1.03, backgroundColor: 'rgba(255,255,255,0.1)' }}
+                whileHover={{ scale: 1.01, backgroundColor: '#F4F5F7' }}
                 onClick={() => navigate('/login')}
-                className="px-12 py-5 bg-transparent border border-outline dark:border-white/20 rounded-full font-black text-xs uppercase tracking-[0.2em] hover:bg-slate-100 dark:hover:bg-white/5 transition flex items-center gap-3 text-slate-900 dark:text-white btn-interactive cursor-pointer"
+                className="px-12 py-5 bg-white dark:bg-slate-900 border border-[#DFE1E6] dark:border-white/5 rounded-md font-semibold text-sm transition-all flex items-center gap-3 text-[#172B4D] dark:text-white shadow-sm hover:shadow-md cursor-pointer group"
               >
-                <Play className="h-4 w-4 fill-slate-900 dark:fill-white" />
+                <Play className="h-4 w-4 fill-[#172B4D]" />
                 Experience Demo
               </motion.button>
             </div>
           </motion.div>
         </motion.div>
 
-        {/* Cinematic Background */}
+        {/* Modern Enterprise Background */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/60 to-white dark:from-slate-950/60 dark:via-slate-950/80 dark:to-slate-950 z-10 transition-colors duration-500" />
-          
-          {/* Light Mode Crystal Background */}
-          <div className="absolute inset-0 bg-[url('/crystal-hero-bg.png')] bg-cover bg-center opacity-100 dark:opacity-0 transition-opacity duration-500 z-0" />
-
-          {/* Dark Mode Background */}
-          <motion.div 
-            animate={{ scale: [1, 1.05, 1] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center grayscale opacity-0 dark:opacity-30 transition-opacity duration-500 z-0" 
-          />
-          {/* Animated Glows */}
-          <motion.div style={{ rotate: rotateOrb }} className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand/15 dark:bg-brand/5 rounded-full blur-[150px] animate-pulse" />
-          <motion.div style={{ rotate: rotateOrb }} className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-pastel-blue/20 dark:bg-mint/5 rounded-full blur-[150px] animate-pulse delay-1000" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#E6F0FF] via-white to-white dark:from-[#0A0B10] dark:via-[#0A0B10] dark:to-[#0A0B10] z-10" />
         </div>
 
         {/* Scroll Indicator */}
@@ -161,8 +142,7 @@ export function LandingPage() {
       </section>
 
       {/* Product Showcase */}
-      <section id="product" className="py-32 bg-white dark:bg-slate-900/40 relative overflow-hidden border-t border-outline dark:border-white/5">
-        <motion.div style={{ y: bgY1 }} className="absolute inset-0 bg-gradient-to-b from-transparent via-brand/5 to-transparent pointer-events-none" />
+      <section id="product" className="py-32 bg-[#F4F5F7] dark:bg-[#05060A] relative overflow-hidden border-t border-[#DFE1E6] dark:border-white/5">
         <div className="max-w-7xl mx-auto px-8 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 80, scale: 0.95 }}
@@ -172,8 +152,8 @@ export function LandingPage() {
             className="relative"
           >
             <div className="text-center mb-20">
-              <h2 className="text-4xl lg:text-5xl font-display font-black tracking-tight uppercase mb-6 italic text-slate-900 dark:text-white">The Interface of Tomorrow</h2>
-              <p className="text-slate-500 dark:text-slate-400 max-w-xl mx-auto text-base">A visual masterpiece designed for maximum cognitive efficiency and aesthetic pleasure.</p>
+              <h2 className="text-4xl lg:text-5xl font-display font-bold text-[#172B4D] dark:text-white mb-6">The Interface of Tomorrow</h2>
+              <p className="text-[#5E6C84] dark:text-slate-400 max-w-xl mx-auto text-base">A visual masterpiece designed for maximum cognitive efficiency and aesthetic pleasure.</p>
             </div>
             
             <motion.div 
@@ -181,7 +161,7 @@ export function LandingPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ amount: 0.2 }}
               transition={{ duration: 1, type: "spring", bounce: 0.2 }}
-              className="relative glass-panel border-outline/40 dark:border-white/5 bg-white/5 p-4 rounded-[40px] shadow-premium overflow-hidden group"
+              className="relative bg-white dark:bg-slate-900 border border-[#DFE1E6] dark:border-white/5 p-4 rounded-2xl shadow-premium overflow-hidden group"
             >
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-60 z-10" />
               <motion.img 
@@ -201,10 +181,10 @@ export function LandingPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ amount: 0.2 }}
                     transition={{ delay: 0.3 + i * 0.15, type: "spring", stiffness: 100 }}
-                    className="px-6 py-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-outline dark:border-white/10 rounded-2xl flex items-center gap-3 shadow-xl"
+                    className="px-6 py-3 bg-white dark:bg-slate-900 border border-[#DFE1E6] dark:border-white/5 rounded-md flex items-center gap-3 shadow-md"
                   >
-                    <div className="h-2 w-2 rounded-full bg-brand animate-pulse" />
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white">{tag}</span>
+                    <div className="h-2 w-2 rounded-full bg-[#36B37E] animate-pulse" />
+                    <span className="text-[11px] font-semibold text-[#172B4D] dark:text-white">{tag}</span>
                   </motion.div>
                 ))}
               </div>
@@ -222,24 +202,23 @@ export function LandingPage() {
             { value: "50M+", label: "Events Analyzed", sub: "Daily behavioral data points" },
             { value: "100%", label: "Hardware Verified", sub: "Zero spoofing guaranteed" }
           ].map((stat, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 50, scale: 0.8 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ amount: 0.3 }}
-              transition={{ delay: i * 0.15, type: "spring", stiffness: 100 }}
-              className="p-8 rounded-3xl bg-white dark:bg-slate-900/50 border border-outline dark:border-white/5 hover:border-brand/45 transition-all group shadow-xl"
-            >
-              <motion.div 
-                initial={{ scale: 1 }}
-                whileHover={{ scale: 1.05 }}
-                className="text-4xl lg:text-5xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-brand to-pastel-blue mb-2 italic"
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ amount: 0.3 }}
+                transition={{ delay: i * 0.15, type: "spring", stiffness: 100 }}
+                whileHover={{ scale: 1.02, y: -2, boxShadow: "0 8px 16px rgba(9, 30, 66, 0.08), 0 0 1px rgba(9, 30, 66, 0.31)" }}
+                className="p-8 rounded-lg bg-white dark:bg-slate-900 border border-[#DFE1E6] dark:border-white/5 transition-all duration-300 group shadow-sm cursor-pointer"
               >
-                {stat.value}
+                <motion.div 
+                  className="text-4xl lg:text-5xl font-display font-bold text-[#0052CC] mb-2"
+                >
+                  {stat.value}
+                </motion.div>
+                <div className="text-xs font-semibold uppercase tracking-widest text-[#172B4D] dark:text-white mb-1 group-hover:text-[#0052CC] transition-colors">{stat.label}</div>
+                <div className="text-[11px] text-[#5E6C84] dark:text-slate-400">{stat.sub}</div>
               </motion.div>
-              <div className="text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-white mb-1">{stat.label}</div>
-              <div className="text-[10px] text-slate-500 font-medium">{stat.sub}</div>
-            </motion.div>
           ))}
         </div>
         <motion.div 
@@ -258,42 +237,39 @@ export function LandingPage() {
               viewport={{ amount: 0.2 }}
               transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
             >
-              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-brand mb-6">Engineering Specs</p>
-              <h2 className="text-5xl font-display font-black tracking-tight uppercase italic text-slate-900 dark:text-white">Built for <br />Precision.</h2>
+              <p className="text-[11px] font-bold tracking-widest text-[#0052CC] mb-6 uppercase">Engineering Specs</p>
+              <h2 className="text-5xl font-display font-bold text-[#172B4D] dark:text-white">Built for Precision.</h2>
             </motion.div>
             <motion.p 
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ amount: 0.2 }}
               transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
-              className="text-lg text-slate-500 dark:text-slate-400 leading-relaxed font-medium"
+              className="text-lg text-[#5E6C84] dark:text-slate-400 leading-relaxed"
             >
               Every pixel, every data point, and every interaction has been meticulously engineered to provide the ultimate management experience.
             </motion.p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {luxuryFeatures.map((f, i) => (
               <motion.div 
                 key={f.title}
-                initial={{ opacity: 0, y: 60, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ amount: 0.2 }}
-                transition={{ delay: i * 0.15, duration: 0.8, type: "spring", bounce: 0.3 }}
-                whileHover={{ y: -12, scale: 1.03 }}
+                transition={{ delay: i * 0.1, duration: 0.6 }}
+                whileHover={{ y: -5, scale: 1.01, boxShadow: "0 8px 16px rgba(9, 30, 66, 0.08), 0 0 1px rgba(9, 30, 66, 0.31)" }}
                 onClick={() => navigate(f.path)}
-                className="group relative p-8 bg-white dark:bg-slate-900/40 border border-outline dark:border-white/5 rounded-[32px] hover:bg-brand dark:hover:bg-brand transition-all duration-500 overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:shadow-brand/30 hover:border-brand"
+                className="group relative p-8 bg-white dark:bg-slate-900 border border-[#DFE1E6] dark:border-white/5 rounded-lg hover:border-[#0052CC] transition-all duration-300 overflow-hidden cursor-pointer shadow-sm"
               >
-                <div className="absolute -top-10 -right-10 p-8 opacity-5 group-hover:opacity-10 group-hover:scale-150 group-hover:rotate-12 transition-all duration-700 pointer-events-none">
-                  <f.icon size={150} className="text-brand group-hover:text-white" />
+                <div className={`h-12 w-12 rounded-md bg-[#E6F0FF] flex items-center justify-center mb-6 transition-all duration-300 relative z-10`}>
+                  <f.icon className="h-6 w-6 text-[#0052CC]" />
                 </div>
-                <div className={`h-12 w-12 rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-6 ${f.color} group-hover:scale-110 group-hover:bg-white/20 transition-all duration-500 relative z-10`}>
-                  <f.icon className="h-6 w-6 group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="text-lg font-bold mb-4 uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-white transition-colors relative z-10">{f.title}</h3>
-                <p className="text-slate-500 dark:text-[#A0AEC0] text-sm leading-relaxed font-medium group-hover:text-white/90 transition-colors relative z-10">{f.description}</p>
+                <h3 className="text-lg font-semibold mb-3 text-[#172B4D] dark:text-white relative z-10">{f.title}</h3>
+                <p className="text-[#5E6C84] dark:text-slate-400 text-sm leading-relaxed relative z-10">{f.description}</p>
                 <motion.div 
-                  className="mt-8 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand group-hover:text-white opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 relative z-10"
+                  className="mt-6 flex items-center gap-2 text-[12px] font-semibold text-[#0052CC] group-hover:underline relative z-10"
                 >
                   Learn More <ArrowRight className="h-3 w-3" />
                 </motion.div>
@@ -329,15 +305,15 @@ export function LandingPage() {
                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                  viewport={{ amount: 0.2 }}
                  transition={{ delay: i * 0.15, duration: 0.8, type: "spring", bounce: 0.3 }}
-                 whileHover={{ y: -8, scale: 1.01 }}
+                 whileHover={{ y: -12, scale: 1.04 }}
                  onClick={() => navigate(item.path)}
-                 className="glass-panel border-outline dark:border-white/5 bg-white dark:bg-slate-900/40 p-8 rounded-[40px] transition-all duration-500 group cursor-pointer shadow-lg"
+                 className="glass-panel border-outline dark:border-white/5 bg-white dark:bg-slate-900/40 p-8 rounded-[40px] transition-all duration-500 group cursor-pointer shadow-lg hover:shadow-glow hover:border-mint"
                >
-                  <div className={`h-14 w-14 rounded-2xl ${item.color.split(' ')[0]} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                    <item.icon className={`h-6 w-6 ${item.color.split(' ')[1]}`} />
+                  <div className={`h-14 w-14 rounded-2xl ${item.color.split(' ')[0]} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-mint/20 transition-all duration-300`}>
+                    <item.icon className={`h-6 w-6 ${item.color.split(' ')[1]} group-hover:text-mint transition-colors`} />
                   </div>
-                  <h4 className="text-xl font-bold mb-4 uppercase italic text-slate-900 dark:text-white">{item.title}</h4>
-                  <p className="text-slate-600 dark:text-[#A0AEC0] text-sm leading-relaxed">{item.text}</p>
+                  <h4 className="text-xl font-bold mb-4 uppercase italic text-slate-900 dark:text-white group-hover:text-mint transition-colors">{item.title}</h4>
+                  <p className="text-slate-600 dark:text-[#A0AEC0] text-sm leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">{item.text}</p>
                </motion.div>
              ))}
           </div>
@@ -417,12 +393,12 @@ export function LandingPage() {
               Experience the pinnacle of workforce intelligence. Engineered for leaders who demand perfection.
             </p>
             <motion.button 
-              whileHover={{ scale: 1.03, backgroundColor: '#7a6aeb' }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => navigate('/login')}
-              className="px-16 py-6 bg-brand text-white rounded-full font-black text-xs uppercase tracking-[0.4em] shadow-xl shadow-brand/20 transition-all duration-500 active:scale-95 cursor-pointer"
+              className="px-16 py-6 bg-[#0052CC] text-white rounded-md font-bold text-sm tracking-wide shadow-md hover:bg-[#0065FF] transition-all duration-300 cursor-pointer"
             >
-              Start Free Trial
+              START FREE TRIAL
             </motion.button>
           </motion.div>
         </div>

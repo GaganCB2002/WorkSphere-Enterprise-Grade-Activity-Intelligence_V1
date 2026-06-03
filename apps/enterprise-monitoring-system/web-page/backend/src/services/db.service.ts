@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import { store } from '../data/store'
 
-const MONGO_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/aurahr'
+const MONGO_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/nexushr'
 const DB_PATH = path.join(__dirname, '../../data/db.json')
 
 // Models are now defined in src/models

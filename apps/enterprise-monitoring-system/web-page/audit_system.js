@@ -50,7 +50,7 @@ async function checkHealth(service) {
 }
 
 async function runAudit() {
-  console.log('--- AuraHR Enterprise Ecosystem Audit ---');
+  console.log('--- NexusHR Enterprise Ecosystem Audit ---');
   console.log('Checking service availability and configuration...\n');
 
   const results = [];

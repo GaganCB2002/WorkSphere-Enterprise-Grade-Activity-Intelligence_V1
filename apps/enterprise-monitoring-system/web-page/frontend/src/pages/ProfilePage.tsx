@@ -129,7 +129,7 @@ export function ProfilePage({ user, token, onUpdate }: ProfilePageProps) {
              <div className="relative z-10">
                 <h3 className="text-xl font-bold">Security Tip</h3>
                 <p className="mt-2 text-sm text-white/60 leading-relaxed">
-                  Always use a unique password for your AuraHR account. Your activity is logged for enterprise security auditing.
+                  Always use a unique password for your NexusHR account. Your activity is logged for enterprise security auditing.
                 </p>
              </div>
           </div>

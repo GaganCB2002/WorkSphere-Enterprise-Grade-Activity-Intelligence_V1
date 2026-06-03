@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Zap, MessageSquare, Sun, Moon } from 'lucide-react'
+import { Hexagon, MessageSquare, Sun, Moon } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useContact } from './ContactContext'
@@ -40,10 +40,21 @@ export function MarketingNavbar() {
           className="flex items-center gap-3 cursor-pointer group"
           onClick={() => navigate('/')}
         >
-          <div className="h-10 w-10 bg-brand rounded-full flex items-center justify-center shadow-lg shadow-brand/20 group-hover:scale-110 transition-transform">
-            <Zap className="h-5 w-5 text-white" />
+          <div className="relative h-12 w-12 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 cursor-pointer">
+            {/* Outer Glowing Aura */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#0052CC] to-[#008DA6] rounded-xl rotate-45 group-hover:rotate-90 transition-all duration-700 opacity-50 blur-md"></div>
+            
+            {/* Base Diamond */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0052CC] via-[#0065FF] to-[#0052CC] rounded-xl rotate-45 group-hover:rotate-180 transition-all duration-700 shadow-lg border border-white/20"></div>
+            
+            {/* Inner Floating Square */}
+            <div className="absolute inset-2 bg-gradient-to-tr from-white to-[#F4F5F7] rounded-lg -rotate-12 group-hover:rotate-0 transition-all duration-500 flex items-center justify-center shadow-inner overflow-hidden">
+               {/* Shine effect */}
+               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/80 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+               <span className="font-display font-black text-transparent bg-clip-text bg-gradient-to-br from-[#0052CC] to-[#008DA6] text-xl leading-none italic z-10 drop-shadow-sm">N</span>
+            </div>
           </div>
-          <span className="text-2xl font-display font-black tracking-tighter uppercase italic text-slate-900 dark:text-white transition-colors">Aura<span className="text-brand">HR</span></span>
+          <span className="text-2xl font-display font-black tracking-tighter uppercase text-[#172B4D] dark:text-white transition-colors ml-2">Nexus<span className="text-[#0052CC]">HR</span></span>
         </motion.div>
 
         <div className="hidden lg:flex items-center gap-10 text-[11px] font-black uppercase tracking-[0.3em]">

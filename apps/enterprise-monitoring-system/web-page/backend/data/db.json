@@ -3,7 +3,7 @@
     {
       "id": "u-1",
       "name": "Aarav Mehta",
-      "email": "ceo@aurahr.com",
+      "email": "ceo@nexushr.com",
       "role": "CEO",
       "employeeId": "emp-100",
       "passwordHash": "$2b$10$apULGqezFyzmBFnUXzPzHu.LCEwBcIHI7MPU9w.FmJ1V8jI5mZ7ui"
@@ -11,7 +11,7 @@
     {
       "id": "u-2",
       "name": "Nisha Kapoor",
-      "email": "hr@aurahr.com",
+      "email": "hr@nexushr.com",
       "role": "HR",
       "employeeId": "emp-101",
       "passwordHash": "$2b$10$munano1wugPzJNoYs/kxLuFADdTZMnvDMBw4om0CWjzv9u9KicwBe"
@@ -19,7 +19,7 @@
     {
       "id": "u-3",
       "name": "Rohit Sen",
-      "email": "manager@aurahr.com",
+      "email": "manager@nexushr.com",
       "role": "Manager",
       "employeeId": "emp-102",
       "passwordHash": "$2b$10$B9YNgB4dHqzg3a4kXB/fguvQeN2gWh36k6e0ZpVJB3yWmTHbazQF."
@@ -27,7 +27,7 @@
     {
       "id": "u-4",
       "name": "Kabir Rao",
-      "email": "employee@aurahr.com",
+      "email": "employee@nexushr.com",
       "role": "Employee",
       "employeeId": "emp-108",
       "passwordHash": "$2b$10$MzRsGIRIAQpvPWSrMiorLuSsL7WpQapYUMeoMgKaYpVboFIVnb08W"
@@ -43,7 +43,7 @@
     {
       "id": "u-mkt",
       "name": "Marketing Lead",
-      "email": "marketing@aurahr.com",
+      "email": "marketing@nexushr.com",
       "role": "Marketing",
       "employeeId": "emp-103",
       "passwordHash": "$2b$10$2WmlEFu1qDIDpYQRZfVF2u4xjqjvzU94yX29le8RGIiRuBO8qaH7C"
@@ -287,7 +287,7 @@
     {
       "id": "emp-100",
       "name": "Aarav Mehta",
-      "email": "ceo@aurahr.com",
+      "email": "ceo@nexushr.com",
       "title": "Chief Executive Officer",
       "department": "Executive",
       "level": "CEO",
@@ -312,7 +312,7 @@
     {
       "id": "emp-101",
       "name": "Nisha Kapoor",
-      "email": "hr@aurahr.com",
+      "email": "hr@nexushr.com",
       "title": "Head of People Operations",
       "department": "People Ops",
       "level": "HR",
@@ -339,7 +339,7 @@
     {
       "id": "emp-102",
       "name": "Rohit Sen",
-      "email": "manager@aurahr.com",
+      "email": "manager@nexushr.com",
       "title": "Engineering Manager",
       "department": "Engineering",
       "level": "Manager",
@@ -365,7 +365,7 @@
     {
       "id": "emp-103",
       "name": "Simran Gill",
-      "email": "sales@aurahr.com",
+      "email": "sales@nexushr.com",
       "title": "Sales Director",
       "department": "Sales",
       "level": "Manager",
@@ -391,7 +391,7 @@
     {
       "id": "emp-104",
       "name": "Riya Sharma",
-      "email": "riya@aurahr.com",
+      "email": "riya@nexushr.com",
       "title": "Talent Acquisition Lead",
       "department": "People Ops",
       "level": "Lead",
@@ -417,7 +417,7 @@
     {
       "id": "emp-105",
       "name": "Meera Joshi",
-      "email": "meera@aurahr.com",
+      "email": "meera@nexushr.com",
       "title": "People Operations Lead",
       "department": "People Ops",
       "level": "Lead",
@@ -443,7 +443,7 @@
     {
       "id": "emp-106",
       "name": "Ananya Das",
-      "email": "ananya@aurahr.com",
+      "email": "ananya@nexushr.com",
       "title": "Platform Lead",
       "department": "Engineering",
       "level": "Lead",
@@ -469,7 +469,7 @@
     {
       "id": "emp-107",
       "name": "Vikram Bhat",
-      "email": "vikram@aurahr.com",
+      "email": "vikram@nexushr.com",
       "title": "Product Lead",
       "department": "Product",
       "level": "Lead",
@@ -495,7 +495,7 @@
     {
       "id": "emp-108",
       "name": "Kabir Rao",
-      "email": "employee@aurahr.com",
+      "email": "employee@nexushr.com",
       "title": "Senior Backend Engineer",
       "department": "Engineering",
       "level": "Employee",
@@ -521,7 +521,7 @@
     {
       "id": "emp-109",
       "name": "Pooja Menon",
-      "email": "pooja@aurahr.com",
+      "email": "pooja@nexushr.com",
       "title": "Frontend Engineer",
       "department": "Engineering",
       "level": "Employee",
@@ -547,7 +547,7 @@
     {
       "id": "emp-110",
       "name": "Farhan Ali",
-      "email": "farhan@aurahr.com",
+      "email": "farhan@nexushr.com",
       "title": "Product Designer",
       "department": "Product",
       "level": "Employee",
@@ -573,7 +573,7 @@
     {
       "id": "emp-111",
       "name": "Neha Arora",
-      "email": "neha@aurahr.com",
+      "email": "neha@nexushr.com",
       "title": "Account Executive",
       "department": "Sales",
       "level": "Employee",
@@ -1157,7 +1157,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as ceo@aurahr.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as ceo@nexushr.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Aarav Mehta",
       "id": "act-1777525050824",
@@ -1165,7 +1165,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as hr@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as hr@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Nisha Kapoor",
       "id": "act-1777520577015",
@@ -1173,7 +1173,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as ceo@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as ceo@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Aarav Mehta",
       "id": "act-1777520560014",
@@ -1181,7 +1181,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as ceo@aurahr.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as ceo@nexushr.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Aarav Mehta",
       "id": "act-1777520472907",
@@ -1197,7 +1197,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as ceo@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as ceo@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Aarav Mehta",
       "id": "act-1777485956198",
@@ -1205,7 +1205,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as ceo@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as ceo@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Aarav Mehta",
       "id": "act-1777484120642",
@@ -1213,7 +1213,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as ceo@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as ceo@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Aarav Mehta",
       "id": "act-1777481473215",
@@ -1229,7 +1229,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as marketing@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as marketing@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Marketing Lead",
       "id": "act-1777480840028",
@@ -1237,7 +1237,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as hr@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as hr@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Nisha Kapoor",
       "id": "act-1777480837506",
@@ -1245,7 +1245,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as hr@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as hr@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Nisha Kapoor",
       "id": "act-1777480826032",
@@ -1253,7 +1253,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as marketing@aurahr.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as marketing@nexushr.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Marketing Lead",
       "id": "act-1777480632692",
@@ -1261,7 +1261,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as marketing@aurahr.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as marketing@nexushr.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Marketing Lead",
       "id": "act-1777480624247",
@@ -1269,7 +1269,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as hr@aurahr.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as hr@nexushr.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Nisha Kapoor",
       "id": "act-1777480621482",
@@ -1277,7 +1277,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as ceo@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as ceo@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Aarav Mehta",
       "id": "act-1777480504292",
@@ -1285,7 +1285,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as hr@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as hr@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Nisha Kapoor",
       "id": "act-1777480274284",
@@ -1293,7 +1293,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as hr@aurahr.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as hr@nexushr.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Nisha Kapoor",
       "id": "act-1777479784760",
@@ -1301,7 +1301,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as hr@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as hr@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Nisha Kapoor",
       "id": "act-1777479774297",
@@ -1309,7 +1309,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as ceo@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as ceo@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Aarav Mehta",
       "id": "act-1777479763041",
@@ -1333,7 +1333,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as marketing@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as marketing@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Marketing Lead",
       "id": "act-1777446080217",
@@ -1341,7 +1341,7 @@
     },
     {
       "title": "User Login",
-      "detail": "Authenticated as hr@aurahr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "detail": "Authenticated as hr@nexushr.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Nisha Kapoor",
       "id": "act-1777446065449",

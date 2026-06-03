@@ -139,7 +139,7 @@ export function LoginPage({
               { label: 'CEO Command',  email: 'ceo@company.com',      role: 'CEO',        color: 'bg-slate-900 dark:bg-white text-white dark:text-slate-900' },
               { label: 'Manager Hub', email: 'manager@company.com',   role: 'Manager',    color: 'bg-luxury-blue/10 text-luxury-blue border border-luxury-blue/20' },
               { label: 'Team Lead',   email: 'teamlead@company.com',  role: 'Lead',       color: '' },
-              { label: 'HR Executive (AuraHR)', email: 'hr@company.com', role: 'HR', color: 'bg-gradient-to-r from-blue-600 to-teal-500 text-white shadow-lg shadow-blue-500/25 border-none' },
+              { label: 'HR Executive (NexusHR)', email: 'hr@company.com', role: 'HR', color: 'bg-gradient-to-r from-blue-600 to-teal-500 text-white shadow-lg shadow-blue-500/25 border-none' },
               { label: 'Employee',    email: 'employee@company.com',  role: 'Employee',   color: '' },
               { label: 'Marketing',  email: 'marketing@company.com', role: 'Marketing',  color: '' },
               { label: 'Super Admin', email: 'admin@company.com',     role: 'ADMIN',      color: 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' },

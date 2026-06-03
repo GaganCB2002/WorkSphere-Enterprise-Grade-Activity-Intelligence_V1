@@ -190,7 +190,7 @@ export function AppShell({ user, onLogout, children }: AppShellProps) {
 
                 if (isExternal) {
                   const urlWithToken = item.to.includes('127.0.0.1') || item.to.includes('localhost') 
-                    ? `${item.to}${item.to.includes('?') ? '&' : '?'}token=${localStorage.getItem('aurahr-token')}`
+                    ? `${item.to}${item.to.includes('?') ? '&' : '?'}token=${localStorage.getItem('nexushr-token')}`
                     : item.to
 
                   return (

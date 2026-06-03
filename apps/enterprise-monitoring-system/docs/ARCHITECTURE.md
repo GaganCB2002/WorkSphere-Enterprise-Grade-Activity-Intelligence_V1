@@ -1,4 +1,4 @@
-﻿# 🏛️ WorkSphere Enterprise-Grade Activity Intelligence: 7-Tier Architecture Specification
+# 🏛️ WorkSphere Enterprise-Grade Activity Intelligence: 7-Tier Architecture Specification
 
 ```mermaid
 graph TD

@@ -1,1 +1,1 @@
-﻿# Azure AKS & ARM Template Deployment Specs
+# Azure AKS & ARM Template Deployment Specs

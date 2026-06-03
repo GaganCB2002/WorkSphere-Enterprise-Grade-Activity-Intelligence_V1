@@ -1,7 +1,7 @@
 {
-  "name": "aurahr-platform-unified",
+  "name": "nexushr-platform-unified",
   "version": "1.0.0",
-  "description": "Unified AuraHR Enterprise Platform",
+  "description": "Unified NexusHR Enterprise Platform",
   "main": "startup_web.js",
   "scripts": {
     "dev": "node system_controller.js",

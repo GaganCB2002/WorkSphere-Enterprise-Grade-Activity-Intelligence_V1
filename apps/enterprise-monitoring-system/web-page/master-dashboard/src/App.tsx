@@ -4,7 +4,7 @@ import { ProtectedRoute } from '../../frontend/src/components/auth/ProtectedRout
 import { DashboardPage } from '../../frontend/src/pages/DashboardPage'
 import type { User, PlatformData } from '../../frontend/src/types'
 
-const TOKEN_KEY = 'aurahr-token'
+const TOKEN_KEY = 'nexushr-token'
 
 function App() {
   const [token, setToken] = useState<string | null>(() => {

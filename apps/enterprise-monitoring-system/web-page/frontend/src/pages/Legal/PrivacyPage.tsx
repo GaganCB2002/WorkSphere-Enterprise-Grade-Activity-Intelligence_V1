@@ -16,7 +16,7 @@ export function PrivacyPage() {
     {
       title: "Data Usage",
       icon: FileText,
-      content: "Your data is used solely to provide and improve AuraHR services. This includes authentication, personalized dashboard telemetry, and critical system notifications. We never sell your personal information to third parties."
+      content: "Your data is used solely to provide and improve NexusHR services. This includes authentication, personalized dashboard telemetry, and critical system notifications. We never sell your personal information to third parties."
     },
     {
       title: "Data Protection",

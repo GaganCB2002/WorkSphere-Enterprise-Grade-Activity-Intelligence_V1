@@ -6,51 +6,53 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        display: ['Outfit', 'sans-serif'],
-        headline: ['Outfit', 'sans-serif'],
+        display: ['Inter', 'sans-serif'],
+        headline: ['Inter', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
         label: ['Inter', 'sans-serif'],
       },
       colors: {
-        // Redefined pastel theme colors
+        // Modern Enterprise Theme
         pastry: {
-          primary: '#8B7CF6', // Soft Lavender
-          'primary-light': '#7CC6FE', // Pastel Blue
-          'blue-light': '#7CC6FE',
-          'purple-light': '#8B7CF6',
-          coral: '#FFBFA3', // Soft Peach
+          primary: '#0052CC', // Trusted Blue
+          'primary-light': '#0065FF', // Bright Blue
+          'blue-light': '#E6F0FF',    // Light Blue bg
+          'purple-light': '#6554C0',  // Muted Purple
+          coral: '#008DA6', // Deep Cyan
         },
-        brand: '#8B7CF6',
-        primary: '#8B7CF6',
-        secondary: '#6B7280',
-        tertiary: '#8EE3B5',
-        'luxury-blue': '#7CC6FE',
+        brand: '#0052CC', // Primary Brand Blue
+        primary: '#0052CC',
+        secondary: '#42526E', // Slate Gray text
+        tertiary: '#008DA6', 
+        'luxury-blue': '#F4F5F7', // Very Light Gray background
         
-        // Pastel named colors
-        lavender: '#8B7CF6',
-        'pastel-blue': '#7CC6FE',
-        mint: '#8EE3B5',
-        peach: '#FFBFA3',
-        pink: '#F8B4D9',
-        yellow: '#FFEAA7',
+        // Semantic minimalist colors
+        lavender: '#6554C0',
+        'pastel-blue': '#0065FF',
+        mint: '#36B37E', // Success Green
+        peach: '#FFAB00', // Warning Yellow
+        pink: '#FF5630', // Danger Red
+        yellow: '#FFC400',
         
         // System / UI mappings using CSS variables for dark-mode toggleability
-        background: 'var(--bg-main)',
-        surface: 'var(--bg-surface)',
-        outline: 'var(--border-main)',
-        'outline-variant': 'var(--border-main)',
-        'text-primary': 'var(--text-primary)',
-        'text-secondary': 'var(--text-secondary)',
+        background: '#FFFFFF',
+        surface: '#FFFFFF',
+        outline: '#DFE1E6',
+        'outline-variant': '#EBECF0',
+        'text-primary': '#172B4D', // Dark Blue/Black
+        'text-secondary': '#5E6C84', // Gray
       },
       boxShadow: {
-        premium: '0 20px 60px rgba(15, 23, 42, 0.05)',
-        pastry: '0 8px 32px rgba(139, 124, 246, 0.12)',
-        soft: '0 4px 20px rgba(139, 124, 246, 0.04)',
-        warm: '0 8px 30px rgba(139, 124, 246, 0.08)',
+        premium: '0 8px 16px rgba(9, 30, 66, 0.08), 0 0 1px rgba(9, 30, 66, 0.31)',
+        pastry: '0 3px 8px rgba(9, 30, 66, 0.08), 0 0 1px rgba(9, 30, 66, 0.31)',
+        soft: '0 1px 1px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31)',
+        warm: '0 4px 8px rgba(9, 30, 66, 0.08), 0 0 1px rgba(9, 30, 66, 0.31)',
+        'glow': '0 0 0 2px rgba(0, 82, 204, 0.2)',
+        'glow-accent': '0 0 0 2px rgba(0, 101, 255, 0.3)',
       },
       backgroundImage: {
-        'pastry-gradient': 'linear-gradient(135deg, #8B7CF6 0%, #7CC6FE 50%, #8EE3B5 100%)',
-        'pastry-soft': 'linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 100%)',
+        'pastry-gradient': 'linear-gradient(135deg, #0052CC 0%, #0065FF 100%)',
+        'pastry-soft': 'linear-gradient(180deg, #FFFFFF 0%, #F4F5F7 100%)',
       },
     },
   },

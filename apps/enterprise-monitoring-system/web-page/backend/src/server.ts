@@ -49,7 +49,7 @@ app.use(morgan('dev'))
 app.get('/health', (_req, res) => {
   res.json({
     status: 'ok',
-    service: 'AuraHR API',
+    service: 'NexusHR API',
     timestamp: new Date().toISOString(),
   })
 })
@@ -88,5 +88,5 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
 });
 
 httpServer.listen(port, '0.0.0.0', () => {
-  console.log(`AuraHR API (Real-time) listening on http://0.0.0.0:${port}`)
+  console.log(`NexusHR API (Real-time) listening on http://0.0.0.0:${port}`)
 })

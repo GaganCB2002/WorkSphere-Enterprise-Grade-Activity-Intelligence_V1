@@ -1,1 +1,1 @@
-﻿# AWS ECS, EKS & CloudFormation Deployment Specs
+# AWS ECS, EKS & CloudFormation Deployment Specs

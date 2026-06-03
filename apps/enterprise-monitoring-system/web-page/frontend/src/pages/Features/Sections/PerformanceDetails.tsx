@@ -67,7 +67,7 @@ export function PerformanceDetails() {
                 <span className="text-luxury-blue">Analytics.</span>
               </h1>
               <p className="text-xl text-slate-400 leading-relaxed font-medium mb-10">
-                Data is the heartbeat of the modern enterprise. AuraHR provides the surgical tools needed to monitor, analyze, and optimize every pulse.
+                Data is the heartbeat of the modern enterprise. NexusHR provides the surgical tools needed to monitor, analyze, and optimize every pulse.
               </p>
             </motion.div>
             <motion.div

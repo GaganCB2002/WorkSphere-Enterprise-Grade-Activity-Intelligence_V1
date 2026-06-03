@@ -3,7 +3,7 @@
 This document provides a comprehensive overview of the **WorkPulse Enterprise Ecosystem**, detailing the multi-service architecture, model layers, and connectivity configurations.
 
 ## 1. Executive Summary
-The platform is a modular, distributed system consisting of distinct functional hubs. It uses a **Unified Authentication Gateway** (AuraHR) to provide single sign-on capabilities across HR, Employee, Tech Lead, and support portals.
+The platform is a modular, distributed system consisting of distinct functional hubs. It uses a **Unified Authentication Gateway** (NexusHR) to provide single sign-on capabilities across HR, Employee, Tech Lead, and support portals.
 
 ---
 
@@ -105,7 +105,7 @@ The platform uses a **JWT-based Cross-Port Strategy** for seamless transitions.
 
 - **Core Authority**: HR Gateway (Port 8081).
 - **Session Transport**: Tokens are passed via URL parameters during cross-departmental handshakes (e.g., from 3005 to 3001).
-- **Security**: Backends verify tokens using the shared secret `aurahr-super-secret-2026`.
+- **Security**: Backends verify tokens using the shared secret `nexushr-super-secret-2026`.
 
 ---
 

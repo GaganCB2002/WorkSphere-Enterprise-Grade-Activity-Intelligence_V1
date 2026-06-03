@@ -1,4 +1,4 @@
-﻿# 💾 Enterprise PostgreSQL Backup & Disaster Recovery Architecture
+# 💾 Enterprise PostgreSQL Backup & Disaster Recovery Architecture
 
 This directory defines the automated backup strategies, cron schedules, and Point-in-Time Recovery (PITR) configurations for the WorkSphere enterprise database.
 

@@ -1,6 +1,6 @@
 export const services = [
-  { name: "AuraHR Frontend", url: "http://127.0.0.1:3005", port: 3005 },
-  { name: "AuraHR Command API", url: "http://127.0.0.1:8081/health", port: 8081 },
+  { name: "NexusHR Frontend", url: "http://127.0.0.1:3005", port: 3005 },
+  { name: "NexusHR Command API", url: "http://127.0.0.1:8081/health", port: 8081 },
 ];
 
 export interface ServiceStatus {

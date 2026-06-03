@@ -88,7 +88,7 @@ export const hrService = {
       const d = db.get()
       return {
         hero: {
-          title: 'AuraHR Command Center (Offline Mode)',
+          title: 'NexusHR Command Center (Offline Mode)',
           subtitle: 'Enterprise-grade workforce operations. Running on local cache.',
           modules: accessibleModules(role),
         },
@@ -114,7 +114,7 @@ export const hrService = {
 
     return {
       hero: {
-        title: 'AuraHR Command Center',
+        title: 'NexusHR Command Center',
         subtitle: 'Enterprise-grade workforce operations with real-time sync and AI modules.',
         modules: accessibleModules(role),
       },

@@ -16,7 +16,7 @@ const apps = [
   { name: 'Location API', dir: 'location/server' }
 ];
 
-console.log('--- AURAHR INFRASTRUCTURE AUDIT ---\n');
+console.log('--- NEXUSHR INFRASTRUCTURE AUDIT ---\n');
 
 apps.forEach(app => {
   const fullPath = path.resolve(__dirname, app.dir);

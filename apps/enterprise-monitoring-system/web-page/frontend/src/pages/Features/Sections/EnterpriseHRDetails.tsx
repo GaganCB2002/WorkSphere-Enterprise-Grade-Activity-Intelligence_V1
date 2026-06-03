@@ -120,7 +120,7 @@ export function EnterpriseHRDetails() {
             Security Sovereignty
           </div>
           <h2 className="text-5xl font-display font-black uppercase italic mb-8">Military-Grade Governance</h2>
-          <p className="text-xl text-slate-400 mb-16 leading-relaxed font-medium">Your data is your most valuable intellectual property. AuraHR ensures it remains entirely within your control through advanced encryption and distributed architecture.</p>
+          <p className="text-xl text-slate-400 mb-16 leading-relaxed font-medium">Your data is your most valuable intellectual property. NexusHR ensures it remains entirely within your control through advanced encryption and distributed architecture.</p>
           <button onClick={() => navigate('/login')} className="px-12 py-5 bg-white text-luxury-black rounded-full font-black text-xs uppercase tracking-[0.4em] shadow-2xl hover:bg-luxury-blue hover:text-white transition-all duration-500">
             Initialize Setup
           </button>
