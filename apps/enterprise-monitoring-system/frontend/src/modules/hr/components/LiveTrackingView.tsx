@@ -51,7 +51,7 @@ export function LiveTrackingView() {
         // Initial Fetch of all live nodes
         const fetchInitialNodes = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/tracking/live');
+                const res = await fetch(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}/api/tracking/live` : 'http://localhost:5000/api/tracking/live');
                 if (res.ok) {
                     const data = await res.json();
                     setLocations(data);
@@ -62,7 +62,7 @@ export function LiveTrackingView() {
         };
         fetchInitialNodes();
 
-        const socket = io('http://localhost:5000', {
+        const socket = io(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}` : 'http://localhost:5000', {
             transports: ['websocket', 'polling'],
             reconnection: true
         });

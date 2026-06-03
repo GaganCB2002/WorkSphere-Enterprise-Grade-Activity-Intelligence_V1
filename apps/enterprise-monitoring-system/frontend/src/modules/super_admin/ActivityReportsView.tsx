@@ -15,7 +15,7 @@ export const ActivityReportsView = () => {
     useEffect(() => {
         const fetchActivities = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/telemetry/activity/report');
+                const res = await fetch(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}/api/telemetry/activity/report` : 'http://localhost:5000/api/telemetry/activity/report');
                 if (res.ok) {
                     const data = await res.json();
                     setActivities(data.reverse()); // latest first

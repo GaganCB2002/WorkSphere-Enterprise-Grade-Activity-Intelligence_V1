@@ -18,7 +18,7 @@ export function MessageCenter() {
 
   const fetchMessages = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/contact/all')
+      const response = await fetch(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}/api/contact/all` : 'http://localhost:5000/api/contact/all')
       const data = await response.json()
       setMessages(data)
     } catch (error) {
@@ -37,7 +37,7 @@ export function MessageCenter() {
 
   const updateStatus = async (id: string, status: string) => {
     try {
-      await fetch(`http://localhost:5000/api/contact/${id}/status`, {
+      await fetch(`${import.meta.env.VITE_TELEMETRY_API_URL || 'http://localhost:5000'}/api/contact/${id}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status })

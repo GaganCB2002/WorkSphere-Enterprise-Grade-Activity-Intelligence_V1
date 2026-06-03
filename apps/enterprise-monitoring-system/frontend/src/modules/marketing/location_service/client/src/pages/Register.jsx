@@ -27,7 +27,7 @@ const Register = () => {
         setLoading(true);
         setError('');
         try {
-            const res = await axios.post('http://localhost:5000/api/auth/register', formData);
+            const res = await axios.post(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}/api/auth/register` : 'http://localhost:5000/api/auth/register', formData);
             login(res.data.user, res.data.token);
             navigate('/dashboard');
         } catch (err) {

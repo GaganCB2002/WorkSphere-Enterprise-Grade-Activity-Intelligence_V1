@@ -31,7 +31,7 @@ const Dashboard = () => {
         // Fetch initial live locations
         const fetchLiveLocations = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/location/live');
+                const res = await axios.get(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}/api/location/live` : 'http://localhost:5000/api/location/live');
                 setUsers(res.data);
             } catch (err) {
                 console.error('Error fetching live locations', err);
@@ -41,7 +41,7 @@ const Dashboard = () => {
         fetchLiveLocations();
 
         // Socket.io integration
-        const socket = io('http://localhost:5000');
+        const socket = io(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}` : 'http://localhost:5000');
         
         socket.on('locationUpdate', (data) => {
             setUsers(prev => {

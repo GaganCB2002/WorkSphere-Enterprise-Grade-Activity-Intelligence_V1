@@ -1097,7 +1097,7 @@ export default function Dashboard() {
                         const stats = liveData.sessionStats || {};
                         const totalDuration = Object.values(stats).reduce((a: any, b: any) => a + Number(b), 0) as number;
 
-                        const sysRes = await fetch('http://localhost:4000/api/system/metrics');
+                        const sysRes = await fetch(import.meta.env.VITE_COMMAND_API_URL ? `${import.meta.env.VITE_COMMAND_API_URL}/api/system/metrics` : 'http://localhost:4000/api/system/metrics');
                         let systemMetrics = null;
                         if (sysRes.ok) {
                           systemMetrics = await sysRes.json();

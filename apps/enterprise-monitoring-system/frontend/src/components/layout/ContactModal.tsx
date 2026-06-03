@@ -22,7 +22,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     setIsSending(true)
     
     try {
-      const response = await fetch('http://localhost:8081/api/contact/send', {
+      const response = await fetch(import.meta.env.VITE_AUTH_API_URL ? `${import.meta.env.VITE_AUTH_API_URL}/api/contact/send` : 'http://localhost:8081/api/contact/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

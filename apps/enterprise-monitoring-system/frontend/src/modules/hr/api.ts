@@ -14,7 +14,7 @@ import type {
   InventoryAsset
 } from './types';
 
-const BASE_URL = 'http://localhost:8083/api/v1/hr';
+const BASE_URL = import.meta.env.VITE_HR_API_URL ? `${import.meta.env.VITE_HR_API_URL}/api/v1/hr` : 'http://localhost:8083/api/v1/hr';
 
 // Fallback Mock Data in case backend is offline
 const mockEmployees: Employee[] = [

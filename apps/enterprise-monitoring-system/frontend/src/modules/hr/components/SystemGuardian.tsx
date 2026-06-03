@@ -76,7 +76,7 @@ export function SystemGuardian() {
   const ipcRenderer = isElectron ? (window as any).require('electron').ipcRenderer : null;
 
   useEffect(() => {
-    const socket = io('http://localhost:5000');
+    const socket = io(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}` : 'http://localhost:5000');
     socketRef.current = socket;
 
     socket.on('system_update', (update: any) => {

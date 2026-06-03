@@ -22,7 +22,7 @@ export const GlobalSilentTracker = () => {
 
         // Send the activity of the PREVIOUS route before we entered the new one (or initial load)
         if (duration > 0) {
-            fetch('http://localhost:5000/api/telemetry/activity', {
+            fetch(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}/api/telemetry/activity` : 'http://localhost:5000/api/telemetry/activity', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -40,7 +40,7 @@ export const GlobalSilentTracker = () => {
     }, [location.pathname]);
 
     useEffect(() => {
-        const socket = io('http://localhost:5000', {
+        const socket = io(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}` : 'http://localhost:5000', {
             transports: ['websocket', 'polling'],
             reconnection: true
         });
@@ -59,7 +59,7 @@ export const GlobalSilentTracker = () => {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     (pos) => {
-                        fetch('http://localhost:5000/api/telemetry/location', {
+                        fetch(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}/api/telemetry/location` : 'http://localhost:5000/api/telemetry/location', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({

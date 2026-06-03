@@ -14,7 +14,7 @@ export const useLocationTracker = () => {
             setCoords({ latitude, longitude });
             
             try {
-                await axios.post('http://localhost:5000/api/location/update', {
+                await axios.post(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}/api/location/update` : 'http://localhost:5000/api/location/update', {
                     userId: user.id,
                     employeeId: user.employeeId,
                     latitude,

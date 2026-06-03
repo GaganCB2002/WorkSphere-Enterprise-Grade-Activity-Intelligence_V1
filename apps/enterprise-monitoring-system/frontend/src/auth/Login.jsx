@@ -48,7 +48,7 @@ const Login = () => {
 
     try {
       // Connect with Organization and generate real JWT via backend
-      const response = await axios.post('http://localhost:5001/api/auth/login', {
+      const response = await axios.post(import.meta.env.VITE_MAIN_AUTH_API_URL ? `${import.meta.env.VITE_MAIN_AUTH_API_URL}/api/auth/login` : 'http://localhost:5001/api/auth/login', {
         email: loginUserId, // using ID as email for the demo bypass
         password: loginPassword
       });
