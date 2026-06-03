@@ -14,17 +14,17 @@
   --pastel-yellow: #FFEAA7;
 
   /* Neutrals - Light Theme (Premium Clean Aesthetic) */
-  --bg-main: #FAFAFA; /* Sleek Off-White */
+  --bg-main: #FFFFFF; /* Clean Pearl White */
   --bg-surface: #FFFFFF;
   --bg-surface-lowest: #FFFFFF;
-  --bg-surface-low: #F8F9FA;
-  --bg-surface-high: #F1F5F9;
-  --bg-surface-highest: #E2E8F0;
+  --bg-surface-low: #FAFAFA;
+  --bg-surface-high: #F8FAFC;
+  --bg-surface-highest: #F1F5F9;
   
   /* Skeuomorphism Light */
-  --skeuo-base: #FAFAFA;
+  --skeuo-base: #FFFFFF;
   --skeuo-light: #ffffff;
-  --skeuo-dark: #cbd5e1;
+  --skeuo-dark: #e2e8f0;
   
   --text-primary: #0F172A; /* Slate 900 for high contrast */
   --text-secondary: #64748b;
