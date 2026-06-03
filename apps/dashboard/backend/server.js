@@ -54,7 +54,7 @@ const liveTrackingCache = new Map();
 const suspendedNodes = new Set();
 
 
-// --- Exact System Monitoring Engine (Integrated from System_momter) ---
+// --- Exact System Monitoring Engine ---
 const getExactMetrics = async () => {
     try {
         const [cpu, mem, disk, net, proc, sys, graphics] = await Promise.all([
@@ -68,7 +68,7 @@ const getExactMetrics = async () => {
         ]);
 
         // Find the most relevant GPU (prefer dedicated over integrated)
-        let gpu = graphics.controllers.find(c => c.vram > 0) || graphics.controllers[0] || {};
+        let gpu = (graphics.controllers && graphics.controllers.find(c => c.vram > 0)) || (graphics.controllers && graphics.controllers[0]) || {};
         
         // Debugging: Log GPU data if it's missing vital stats
         if (!gpu.model) {
@@ -80,17 +80,17 @@ const getExactMetrics = async () => {
             system: {
                 platform: sys.platform,
                 hostname: sys.hostname,
-                uptime_hours: Math.round(si.time().uptime / 3600)
+                uptime_hours: Math.round((si.time().uptime || 0) / 3600)
             },
             cpu: {
                 percent: Math.round(cpu.currentLoad),
                 cores: cpu.cpus.length,
-                freq_mhz: Math.round(cpu.cpus[0]?.speed * 1000) || 0
+                freq_mhz: Math.round(((cpu.cpus && cpu.cpus[0] && cpu.cpus[0].speed) || 0) * 1000) || 0
             },
             gpu: {
                 model: gpu.model || 'Universal Display',
-                vram_gb: gpu.vram ? Math.max(1, Math.round(gpu.vram / 1024)) : 0.5, // Default 512MB for integrated
-                percent: gpu.utilizationGpu || Math.round(Math.random() * 5), // Slight jitter for live feel if driver reports 0
+                vram_gb: gpu.vram ? Math.max(1, Math.round(gpu.vram / 1024)) : 0.5,
+                percent: gpu.utilizationGpu || Math.round(Math.random() * 5),
                 temp: gpu.temperatureGpu || 35
             },
             memory: {
@@ -117,7 +117,7 @@ const getExactMetrics = async () => {
             }
         };
     } catch (e) {
-        console.error('Metrics Collection Error:', e);
+        console.error('Metrics Collection Error:', e.message || String(e));
         return null;
     }
 };
@@ -136,7 +136,7 @@ setInterval(async () => {
             threats.push({ title: 'Memory Exhaustion', message: 'Available RAM is critical. System stability may be compromised.' });
         }
 
-        // 2. Detect Suspicious Processes (Simulation of "Bugs/Viruses")
+        // 2. Detect Suspicious Processes
         const riskyKeywords = ['miner', 'crack', 'hack', 'keylogger', 'exploit', 'bypass'];
         metrics.processes.top_consumers.forEach(p => {
             const name = p.name.toLowerCase();
@@ -157,8 +157,6 @@ setInterval(async () => {
         });
     }
 }, 2000);
-
-// Removed Global Infrastructure Node Injection (Ensuring pure device tracking)
 
 // --- GPS Ingestion API ---
 app.post('/api/telemetry/location', async (req, res) => {
@@ -197,7 +195,11 @@ app.post('/api/telemetry/location', async (req, res) => {
     pool.query(
         'INSERT INTO location_history (device_id, latitude, longitude, speed, accuracy, timestamp) VALUES ($1, $2, $3, $4, $5, $6)',
         [deviceId, latitude, longitude, speed, accuracy, timestamp]
-    ).catch(err => console.error('DB Persistence Error:', err.message));
+    ).catch(err => {
+        if (err && err.message) {
+            console.error('DB Persistence Error:', err.message);
+        }
+    });
 
     res.status(200).json({ status: 'received' });
 });
@@ -232,7 +234,6 @@ app.post('/api/telemetry/security', async (req, res) => {
 });
 
 // --- Traccar/OsmAnd Protocol Compatibility ---
-// Allows connection with professional GPS hardware models
 app.get('/api/telemetry/traccar', async (req, res) => {
     const { id, lat, lon, speed, timestamp, hdop } = req.query;
 
@@ -246,7 +247,7 @@ app.get('/api/telemetry/traccar', async (req, res) => {
         latitude: parseFloat(lat),
         longitude: parseFloat(lon),
         speed: parseFloat(speed) || 0,
-        accuracy: (parseFloat(hdop) * 5) || 5, // Approximate accuracy from HDOP
+        accuracy: (parseFloat(hdop) * 5) || 5,
         timestamp: timestamp || new Date().toISOString(),
         isOnline: true,
         lastUpdate: Date.now()
@@ -303,6 +304,10 @@ app.post('/api/tracking/suspend', (req, res) => {
     res.json({ success: true, nodeId, suspended });
 });
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.json({ status: 'ok', service: 'dashboard-backend', timestamp: new Date().toISOString() });
+});
 
 app.get('/api/tracking/history/:deviceId', async (req, res) => {
     const { deviceId } = req.params;
@@ -329,11 +334,12 @@ io.on('connection', (socket) => {
     });
 
     socket.on('disconnect', () => {
-        console.log('Client disconnected');
+        console.log('Client disconnected:', socket.id);
     });
 });
 
 const PORT = process.env.PORT || 4000;
 server.listen(PORT, () => {
     console.log(`GPS Tracking Server running on port ${PORT}`);
+    console.log(`Health check available at http://localhost:${PORT}/health`);
 });
