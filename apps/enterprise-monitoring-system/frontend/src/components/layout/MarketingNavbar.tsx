@@ -19,11 +19,28 @@ export function MarketingNavbar() {
   }, [])
 
   const navItems = [
-    { name: 'Product', path: '/product' },
-    { name: 'Features', path: '/features' },
-    { name: 'Solutions', path: '/solutions' },
-    { name: 'Resources', path: '/resources' },
+    { name: 'Product', path: '#product' },
+    { name: 'Know About', path: '#about' },
+    { name: 'Services', path: '#services' },
+    { name: 'Infrastructure', path: '#infrastructure' },
+    { name: 'Specs', path: '#features' },
   ]
+
+  const handleNavClick = (path: string) => {
+    if (path.startsWith('#')) {
+      if (location.pathname !== '/') {
+        navigate('/' + path);
+      } else {
+        const id = path.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    } else {
+      navigate(path);
+    }
+  };
 
   return (
     <nav 
@@ -61,14 +78,14 @@ export function MarketingNavbar() {
           {navItems.map((item, i) => (
             <motion.button 
               key={item.name} 
-              onClick={() => navigate(item.path)}
+              onClick={() => handleNavClick(item.path)}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className={`transition-colors relative group cursor-pointer ${location.pathname === item.path ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-[#A0AEC0] hover:text-slate-900 dark:hover:text-white'}`}
+              className={`transition-colors relative group cursor-pointer ${location.hash === item.path ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-[#A0AEC0] hover:text-slate-900 dark:hover:text-white'}`}
             >
               {item.name}
-              <span className={`absolute -bottom-2 left-0 h-0.5 bg-brand transition-all duration-300 ${location.pathname === item.path ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+              <span className={`absolute -bottom-2 left-0 h-0.5 bg-brand transition-all duration-300 ${location.hash === item.path ? 'w-full' : 'w-0 group-hover:w-full'}`} />
             </motion.button>
           ))}
           

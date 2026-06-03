@@ -941,6 +941,14 @@
   "activities": [
     {
       "title": "User Login",
+      "detail": "Authenticated as intern_14 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Intern",
+      "id": "act-1780477739245",
+      "timestamp": "2026-06-03T09:08:59.245Z"
+    },
+    {
+      "title": "User Login",
       "detail": "Authenticated as hr_exec_v | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "HR Executive",
