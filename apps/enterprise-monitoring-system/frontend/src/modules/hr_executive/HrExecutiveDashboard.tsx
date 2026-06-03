@@ -1142,9 +1142,111 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
             {activeMenu === 'Leave Approvals' && <HrLeaveApprovalsModule isDark={isDark} />}
 
             {/* ==================================================== */}
+            {/* VIEW 10: IT HELP DESK (IT Help Desk Module) */}
+            {/* ==================================================== */}
+            {activeMenu === 'IT Help Desk' && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="space-y-6"
+              >
+                {/* Page Title */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-blue-900/20 via-transparent to-transparent p-6 rounded-[32px] border border-white/5">
+                  <div>
+                    <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-3">
+                      IT Help Desk Command
+                      <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                        Live Ticketing
+                      </span>
+                    </h1>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm mt-1 font-medium">
+                      Manage hardware requests, software provisioning, and security incidents.
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      alert('Synchronizing Live Telemetry from Jira / ServiceNow nodes...');
+                    }}
+                    className="flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-500 hover:from-blue-500 hover:to-indigo-400 text-white rounded-2xl font-bold text-xs uppercase tracking-wider shadow-xl shadow-blue-500/25 hover:scale-105 transition-all duration-300 w-fit"
+                  >
+                    <RefreshCw className="w-4 h-4" />
+                    <span>Synchronize Live Telemetry</span>
+                  </button>
+                </div>
+
+                {/* KPI Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {[
+                    { label: 'Total Tickets', value: '1,248', trend: '+12%', color: 'text-blue-400 border-blue-500/20' },
+                    { label: 'Open Incidents', value: '34', trend: '-5%', color: 'text-amber-400 border-amber-500/20' },
+                    { label: 'Resolved (7d)', value: '156', trend: '+23%', color: 'text-emerald-400 border-emerald-500/20 bg-emerald-500/5' },
+                    { label: 'Avg Resolution', value: '1.2h', trend: '-15%', color: 'text-purple-400 border-purple-500/20' }
+                  ].map(card => (
+                    <div key={card.label} className={`p-6 rounded-[28px] border transition-all duration-300 hover:scale-102 ${isDark ? `bg-white/5 ${card.color.split(' ')[1]}` : `bg-white border-slate-200 shadow-md`} ${card.color.includes('bg-') ? card.color.split(' ').find(c => c.startsWith('bg-')) : ''}`}>
+                      <div className="flex justify-between items-start mb-2">
+                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-500">{card.label}</span>
+                        <span className={`text-[10px] font-bold ${card.trend.startsWith('+') ? 'text-emerald-400' : 'text-emerald-400'}`}>{card.trend}</span>
+                      </div>
+                      <div className={`text-3xl font-extrabold tracking-tight ${isDark ? card.color.split(' ')[0] : 'text-slate-900'}`}>{card.value}</div>
+                      <div className="text-[10px] text-slate-400 font-bold mt-2">SLA compliance verified</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Tickets Table */}
+                <div className={`rounded-[32px] border p-6 ${isDark ? 'bg-[#0b1329]/60 border-white/10 backdrop-blur-xl shadow-2xl' : 'bg-white border-slate-200 shadow-xl'}`}>
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="text-xl font-bold text-white">Active Support Queue</h3>
+                    <button className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white text-xs font-bold rounded-xl transition-colors">
+                      New Ticket
+                    </button>
+                  </div>
+                  <div className="overflow-x-auto border border-white/10 rounded-2xl">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="bg-black/40 border-b border-white/10 text-[10px] font-black text-slate-400 uppercase tracking-wider">
+                          <th className="p-4">Ticket ID</th>
+                          <th className="p-4">Subject</th>
+                          <th className="p-4">Priority</th>
+                          <th className="p-4">Created</th>
+                          <th className="p-4">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-white/5 bg-white/[0.02] text-xs font-medium">
+                        {[
+                          { id: 'TKT-1042', subject: 'Laptop battery draining rapidly', priority: 'High', date: '2h ago', status: 'In Progress', statusColor: 'bg-amber-500/10 text-amber-400 border-amber-500/20' },
+                          { id: 'TKT-1043', subject: 'VPN access for offshore team', priority: 'Medium', date: '3h ago', status: 'Open', statusColor: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
+                          { id: 'TKT-1044', subject: 'Production Database Read/Write Latency', priority: 'Critical', date: '4h ago', status: 'Escalated', statusColor: 'bg-rose-500/10 text-rose-400 border-rose-500/20' },
+                          { id: 'TKT-1045', subject: 'Adobe Creative Cloud license renewal', priority: 'Low', date: '1d ago', status: 'Resolved', statusColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' }
+                        ].map(row => (
+                          <tr key={row.id} className="hover:bg-white/5 transition-colors cursor-pointer">
+                            <td className="p-4 font-mono font-bold text-slate-300">{row.id}</td>
+                            <td className="p-4 text-white font-semibold">{row.subject}</td>
+                            <td className="p-4">
+                              <span className={`flex items-center gap-1.5 font-bold ${row.priority === 'Critical' ? 'text-rose-400' : row.priority === 'High' ? 'text-amber-400' : row.priority === 'Medium' ? 'text-blue-400' : 'text-slate-400'}`}>
+                                <span className={`w-1.5 h-1.5 rounded-full ${row.priority === 'Critical' ? 'bg-rose-400' : row.priority === 'High' ? 'bg-amber-400' : row.priority === 'Medium' ? 'bg-blue-400' : 'bg-slate-400'}`} />
+                                {row.priority}
+                              </span>
+                            </td>
+                            <td className="p-4 text-slate-400">{row.date}</td>
+                            <td className="p-4">
+                              <span className={`px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wide border ${row.statusColor}`}>{row.status}</span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* ==================================================== */}
             {/* FALLBACK VIEW FOR ALL OTHER 11 MENU ITEMS */}
             {/* ==================================================== */}
-            {!['Documentation', 'Recruitment', 'Dashboard', 'Internal Mail', 'Attendance', 'Payroll', 'Budget', 'Resource Allocation', 'Leave Approvals'].includes(activeMenu) && (
+            {!['Documentation', 'Recruitment', 'Dashboard', 'Internal Mail', 'Attendance', 'Payroll', 'Budget', 'Resource Allocation', 'Leave Approvals', 'IT Help Desk'].includes(activeMenu) && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

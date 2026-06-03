@@ -941,6 +941,22 @@
   "activities": [
     {
       "title": "User Login",
+      "detail": "Authenticated as hr_exec_v | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Executive",
+      "id": "act-1780473283635",
+      "timestamp": "2026-06-03T07:54:43.635Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as root_001 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Administrator",
+      "id": "act-1780473262829",
+      "timestamp": "2026-06-03T07:54:22.829Z"
+    },
+    {
+      "title": "User Login",
       "detail": "Authenticated as intern_14 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Intern",
