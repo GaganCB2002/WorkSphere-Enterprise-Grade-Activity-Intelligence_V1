@@ -69,7 +69,7 @@ export function SolutionsPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-luxury-black text-white selection:bg-luxury-blue/30 font-sans overflow-x-hidden scroll-smooth">
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white selection:bg-brand/30 transition-colors duration-500 font-sans overflow-x-hidden scroll-smooth">
       <MarketingNavbar />
       
       {/* Hero Header */}
@@ -86,7 +86,7 @@ export function SolutionsPage() {
                Precision <br />
                <span className="text-luxury-blue">Solutions.</span>
              </h1>
-             <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-medium">
+             <p className="text-xl text-slate-500 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed font-medium">
                Tailored ecosystems engineered to solve the most complex organizational challenges for the world's most demanding enterprises.
              </p>
            </motion.div>
@@ -95,7 +95,7 @@ export function SolutionsPage() {
       </section>
 
       {/* Main Solutions Grid */}
-      <section className="py-40 px-8 bg-white/5 border-y border-white/5">
+      <section className="py-40 px-8 bg-slate-100 dark:bg-white/5 border-y border-white/5">
         <div className="max-w-7xl mx-auto space-y-40">
            {detailedSolutions.map((s, i) => (
              <motion.div
@@ -114,7 +114,7 @@ export function SolutionsPage() {
                       <s.icon size={32} />
                    </motion.div>
                    <h3 className="text-5xl font-display font-black uppercase italic mb-8 tracking-tight">{s.title}</h3>
-                   <p className="text-xl text-slate-400 mb-12 leading-relaxed font-medium">{s.desc}</p>
+                   <p className="text-xl text-slate-500 dark:text-slate-400 mb-12 leading-relaxed font-medium">{s.desc}</p>
                    <div className="grid grid-cols-2 gap-8 mb-12">
                       {s.features.map((f, fi) => (
                         <motion.div 
@@ -145,7 +145,7 @@ export function SolutionsPage() {
                   className="lg:w-1/2 relative group"
                 >
                    <div className="absolute -inset-4 bg-luxury-blue/10 rounded-[64px] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                   <div className="relative glass-panel border-white/5 bg-white/5 p-4 rounded-[64px] overflow-hidden">
+                   <div className="relative glass-panel border-white/5 bg-slate-100 dark:bg-white/5 p-4 rounded-[64px] overflow-hidden">
                       <motion.img 
                         whileHover={{ scale: 1.05 }}
                         transition={{ duration: 1.5 }}
@@ -173,7 +173,7 @@ export function SolutionsPage() {
             className="text-center mb-24"
           >
             <h2 className="text-5xl font-display font-black uppercase italic mb-8 italic">Sector Focus</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto text-lg font-medium">Industry-specific configurations designed for specialized operational requirements.</p>
+            <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg font-medium">Industry-specific configurations designed for specialized operational requirements.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -185,13 +185,13 @@ export function SolutionsPage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="p-12 bg-white/5 border border-white/5 rounded-[56px] hover:bg-white/10 transition-all group relative overflow-hidden"
+                className="p-12 bg-slate-100 dark:bg-white/5 border border-white/5 rounded-[56px] hover:bg-white/10 transition-all group relative overflow-hidden"
               >
                 <div className="h-16 w-16 rounded-[24px] bg-luxury-blue/10 flex items-center justify-center text-luxury-blue mb-10 group-hover:scale-110 transition-transform">
                   <u.icon size={32} />
                 </div>
                 <h4 className="text-2xl font-bold mb-6 uppercase italic">{u.sector}</h4>
-                <p className="text-slate-400 font-medium leading-relaxed mb-10">{u.text}</p>
+                <p className="text-slate-500 dark:text-slate-400 font-medium leading-relaxed mb-10">{u.text}</p>
                 <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-luxury-blue opacity-0 group-hover:opacity-100 transition-opacity">
                    Explore Solution <ArrowRight size={14} />
                 </div>

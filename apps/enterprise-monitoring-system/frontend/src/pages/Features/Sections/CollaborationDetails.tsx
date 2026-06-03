@@ -40,7 +40,7 @@ export function CollaborationDetails() {
   ]
 
   return (
-    <div className="min-h-screen bg-luxury-black text-white selection:bg-luxury-blue/30 font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white selection:bg-brand/30 transition-colors duration-500 font-sans overflow-x-hidden">
       <MarketingNavbar />
       
       {/* Hero Header */}
@@ -66,7 +66,7 @@ export function CollaborationDetails() {
                 Team <br />
                 <span className="text-luxury-blue">Collaboration.</span>
               </h1>
-              <p className="text-xl text-slate-400 leading-relaxed font-medium mb-10">
+              <p className="text-xl text-slate-500 dark:text-slate-400 leading-relaxed font-medium mb-10">
                 AuraHR's collaboration engine is engineered for the high-velocity enterprise. We've eliminated the friction between communication and execution.
               </p>
             </motion.div>
@@ -76,7 +76,7 @@ export function CollaborationDetails() {
               transition={{ duration: 1 }}
               className="relative"
             >
-               <div className="glass-panel p-4 rounded-[56px] bg-white/5 border-white/10 overflow-hidden shadow-premium">
+               <div className="glass-panel p-4 rounded-[56px] bg-slate-100 dark:bg-white/5 border-slate-200 dark:border-white/10 overflow-hidden shadow-premium">
                  <img 
                    src="https://images.unsplash.com/photo-1522071823991-b99c223a7097?q=80&w=2070&auto=format&fit=crop" 
                    alt="Collaboration" 
@@ -89,7 +89,7 @@ export function CollaborationDetails() {
       </section>
 
       {/* Feature Grid */}
-      <section className="py-32 px-8 bg-white/5 border-y border-white/5">
+      <section className="py-32 px-8 bg-slate-100 dark:bg-white/5 border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {features.map((f, i) => (
@@ -128,7 +128,7 @@ export function CollaborationDetails() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-6 p-8 bg-white/5 rounded-[32px] border border-white/5"
+                className="flex items-start gap-6 p-8 bg-slate-100 dark:bg-white/5 rounded-[32px] border border-white/5"
               >
                 <CheckCircle2 className="text-luxury-blue h-6 w-6 mt-1 flex-shrink-0" />
                 <p className="text-lg text-slate-300 font-medium">{useCase}</p>

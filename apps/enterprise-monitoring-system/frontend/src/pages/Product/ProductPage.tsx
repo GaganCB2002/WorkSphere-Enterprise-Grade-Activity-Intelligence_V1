@@ -40,7 +40,7 @@ export function ProductPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-luxury-black text-white selection:bg-luxury-blue/30 overflow-x-hidden font-sans scroll-smooth">
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white selection:bg-brand/30 transition-colors duration-500 overflow-x-hidden font-sans scroll-smooth">
       <MarketingNavbar />
       
       {/* Hero Section */}
@@ -63,7 +63,7 @@ export function ProductPage() {
               Industrial <br />
               <span className="text-luxury-blue">Integrity.</span>
             </h1>
-            <p className="text-xl text-slate-400 leading-relaxed mb-12 font-medium">
+            <p className="text-xl text-slate-500 dark:text-slate-400 leading-relaxed mb-12 font-medium">
               AuraHR is a high-performance operating system designed for the complexities of the modern global enterprise. We've replaced legacy friction with precision-engineered automation.
             </p>
             <div className="flex flex-wrap gap-8">
@@ -77,9 +77,9 @@ export function ProductPage() {
               </motion.button>
               <motion.button 
                 whileHover={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
-                className="px-12 py-5 bg-white/5 border border-white/10 rounded-full font-black text-xs uppercase tracking-[0.2em] transition flex items-center gap-3"
+                className="px-12 py-5 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-full font-black text-xs uppercase tracking-[0.2em] transition flex items-center gap-3"
               >
-                <Play size={14} fill="white" /> Technical Specs
+                <Play size={14} className="fill-slate-900 dark:fill-white" /> Technical Specs
               </motion.button>
             </div>
           </motion.div>
@@ -90,7 +90,7 @@ export function ProductPage() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="relative"
           >
-            <div className="glass-panel p-4 rounded-[60px] border-white/10 bg-white/5 shadow-premium group relative overflow-hidden">
+            <div className="glass-panel p-4 rounded-[60px] border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/5 shadow-premium group relative overflow-hidden">
               <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 1.5 }}
@@ -106,7 +106,7 @@ export function ProductPage() {
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="absolute -bottom-10 -left-10 glass-panel p-8 rounded-[40px] bg-luxury-black/80 backdrop-blur-2xl border-white/10 shadow-2xl"
+              className="absolute -bottom-10 -left-10 glass-panel p-8 rounded-[40px] bg-luxury-black/80 backdrop-blur-2xl border-slate-200 dark:border-white/10 shadow-2xl"
             >
                <div className="flex items-center gap-6">
                   <div className="h-12 w-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center">
@@ -143,7 +143,7 @@ export function ProductPage() {
                    >
                      {b.title}
                    </motion.h3>
-                   <p className="text-xl text-slate-400 mb-12 leading-relaxed font-medium">{b.text}</p>
+                   <p className="text-xl text-slate-500 dark:text-slate-400 mb-12 leading-relaxed font-medium">{b.text}</p>
                    <ul className="space-y-6">
                       {['Automated Decision Support', 'Predictive Modeling', 'Unified Governance'].map((item, idx) => (
                         <motion.li 
@@ -156,7 +156,7 @@ export function ProductPage() {
                            <div className="h-8 w-8 rounded-full bg-luxury-blue/10 flex items-center justify-center group-hover:bg-luxury-blue/20 transition-colors">
                              <CheckCircle2 className="text-luxury-blue h-4 w-4" />
                            </div>
-                           <span className="text-sm font-bold uppercase tracking-widest text-slate-400 group-hover:text-white transition-colors">{item}</span>
+                           <span className="text-sm font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 group-hover:text-slate-900 dark:text-white transition-colors">{item}</span>
                         </motion.li>
                       ))}
                    </ul>
@@ -170,7 +170,7 @@ export function ProductPage() {
                    <div className="aspect-square bg-luxury-blue/5 rounded-full blur-3xl absolute inset-0 -z-10 animate-pulse" />
                    <motion.div 
                      whileHover={{ y: -10, rotate: 1 }}
-                     className="glass-panel p-20 rounded-[80px] bg-white/5 border-white/5 text-center group hover:bg-white/10 transition-all duration-700 shadow-premium"
+                     className="glass-panel p-20 rounded-[80px] bg-slate-100 dark:bg-white/5 border-white/5 text-center group hover:bg-white/10 transition-all duration-700 shadow-premium"
                    >
                       <motion.p 
                         initial={{ opacity: 0, scale: 0.5 }}
@@ -198,7 +198,7 @@ export function ProductPage() {
           className="max-w-4xl mx-auto text-center relative z-10"
         >
            <h2 className="text-6xl lg:text-8xl font-display font-black uppercase italic mb-12">Upgrade Your Infrastructure.</h2>
-           <p className="text-xl text-white/80 mb-16 font-medium">Deploy the world's most advanced workforce operating system today.</p>
+           <p className="text-xl text-slate-600 dark:text-white/80 mb-16 font-medium">Deploy the world's most advanced workforce operating system today.</p>
            <motion.button 
              whileHover={{ scale: 1.05, backgroundColor: "#000000", color: "#ffffff" }}
              whileTap={{ scale: 0.95 }}

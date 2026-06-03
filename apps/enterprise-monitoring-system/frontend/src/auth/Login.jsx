@@ -69,7 +69,7 @@ const Login = () => {
           tenantId: user.tenantId || 'org-1' // Organization connectivity
         } 
       });
-      navigate('/');
+      navigate('/dashboard');
     } catch (error) {
       console.error("Login failed:", error);
       setErrorMsg(error.response?.data?.message || 'Authentication Failed. Invalid Protocol.');

@@ -40,7 +40,7 @@ export function EnterpriseHRDetails() {
   ]
 
   return (
-    <div className="min-h-screen bg-luxury-black text-white selection:bg-luxury-blue/30 font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white selection:bg-brand/30 transition-colors duration-500 font-sans overflow-x-hidden">
       <MarketingNavbar />
       
       {/* Hero Header */}
@@ -66,7 +66,7 @@ export function EnterpriseHRDetails() {
                 Enterprise <br />
                 <span className="text-luxury-blue">HR Lifecycle.</span>
               </h1>
-              <p className="text-xl text-slate-400 leading-relaxed font-medium mb-10">
+              <p className="text-xl text-slate-500 dark:text-slate-400 leading-relaxed font-medium mb-10">
                 Architected for the world's most complex organizations. We provide the infrastructure needed to manage the entire talent journey with total sovereignty.
               </p>
             </motion.div>
@@ -76,7 +76,7 @@ export function EnterpriseHRDetails() {
               transition={{ duration: 1 }}
               className="relative"
             >
-               <div className="glass-panel p-4 rounded-[56px] bg-white/5 border-white/10 overflow-hidden shadow-premium">
+               <div className="glass-panel p-4 rounded-[56px] bg-slate-100 dark:bg-white/5 border-slate-200 dark:border-white/10 overflow-hidden shadow-premium">
                  <img 
                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
                    alt="Enterprise HR" 
@@ -89,7 +89,7 @@ export function EnterpriseHRDetails() {
       </section>
 
       {/* Pillar Grid */}
-      <section className="py-32 px-8 bg-white/5 border-y border-white/5">
+      <section className="py-32 px-8 bg-slate-100 dark:bg-white/5 border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {pillars.map((p, i) => (
@@ -120,7 +120,7 @@ export function EnterpriseHRDetails() {
             Security Sovereignty
           </div>
           <h2 className="text-5xl font-display font-black uppercase italic mb-8">Military-Grade Governance</h2>
-          <p className="text-xl text-slate-400 mb-16 leading-relaxed font-medium">Your data is your most valuable intellectual property. AuraHR ensures it remains entirely within your control through advanced encryption and distributed architecture.</p>
+          <p className="text-xl text-slate-500 dark:text-slate-400 mb-16 leading-relaxed font-medium">Your data is your most valuable intellectual property. AuraHR ensures it remains entirely within your control through advanced encryption and distributed architecture.</p>
           <button onClick={() => navigate('/login')} className="px-12 py-5 bg-white text-luxury-black rounded-full font-black text-xs uppercase tracking-[0.4em] shadow-2xl hover:bg-luxury-blue hover:text-white transition-all duration-500">
             Initialize Setup
           </button>

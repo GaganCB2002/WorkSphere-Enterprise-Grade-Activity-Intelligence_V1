@@ -13,23 +13,23 @@
   --pastel-pink: #F8B4D9;
   --pastel-yellow: #FFEAA7;
 
-  /* Neutrals - Light Theme */
-  --bg-main: #e2e8f0; /* Skeuo Light Base */
+  /* Neutrals - Light Theme (Premium Clean Aesthetic) */
+  --bg-main: #FAFAFA; /* Sleek Off-White */
   --bg-surface: #FFFFFF;
   --bg-surface-lowest: #FFFFFF;
-  --bg-surface-low: #FAFBFC;
+  --bg-surface-low: #F8F9FA;
   --bg-surface-high: #F1F5F9;
   --bg-surface-highest: #E2E8F0;
   
   /* Skeuomorphism Light */
-  --skeuo-base: #e2e8f0;
+  --skeuo-base: #FAFAFA;
   --skeuo-light: #ffffff;
-  --skeuo-dark: #94a3b8;
+  --skeuo-dark: #cbd5e1;
   
-  --text-primary: #1e293b;
+  --text-primary: #0F172A; /* Slate 900 for high contrast */
   --text-secondary: #64748b;
-  --border-main: #cbd5e1;
-  --outline-alpha: rgba(203, 213, 225, 0.4);
+  --border-main: #E2E8F0;
+  --outline-alpha: rgba(15, 23, 42, 0.08); /* Subtle dark outline */
 }
 
 .dark {
@@ -57,6 +57,7 @@
   --color-primary: var(--pastel-lavender);
   --color-brand: var(--pastel-lavender);
   --color-luxury-blue: var(--pastel-blue);
+  --color-luxury-cyan: var(--pastel-mint);
   
   --color-lavender: var(--pastel-lavender);
   --color-pastel-blue: var(--pastel-blue);

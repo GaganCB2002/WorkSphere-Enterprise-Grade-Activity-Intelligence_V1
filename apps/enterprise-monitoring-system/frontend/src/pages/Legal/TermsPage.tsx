@@ -31,7 +31,7 @@ export function TermsPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-luxury-black text-white selection:bg-luxury-blue/30 font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white selection:bg-brand/30 transition-colors duration-500 font-sans overflow-x-hidden">
       <MarketingNavbar />
       
       <section className="pt-48 pb-20 px-8 relative">
@@ -55,7 +55,7 @@ export function TermsPage() {
               Terms & <br />
               <span className="text-luxury-blue">Conditions.</span>
             </h1>
-            <p className="text-xl text-slate-400 leading-relaxed font-medium">
+            <p className="text-xl text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
               Last Updated: April 2026. Defining the framework for enterprise-grade excellence.
             </p>
           </motion.div>
@@ -68,7 +68,7 @@ export function TermsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-12 bg-white/5 border border-white/5 rounded-[48px] hover:border-luxury-blue/40 transition-all group"
+                className="p-12 bg-slate-100 dark:bg-white/5 border border-white/5 rounded-[48px] hover:border-luxury-blue/40 transition-all group"
               >
                 <div className="flex items-center gap-6 mb-8">
                   <div className="h-14 w-14 rounded-2xl bg-luxury-blue/10 flex items-center justify-center text-luxury-blue">

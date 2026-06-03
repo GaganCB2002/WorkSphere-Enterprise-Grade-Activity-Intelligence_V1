@@ -3,11 +3,13 @@ import { Zap, MessageSquare, Sun, Moon } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useContact } from './ContactContext'
+import { useTheme } from './ThemeContext'
 
 export function MarketingNavbar() {
   const navigate = useNavigate()
   const location = useLocation()
   const { openContact } = useContact()
+  const { isDark, toggleTheme } = useTheme()
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
@@ -74,21 +76,10 @@ export function MarketingNavbar() {
         <div className="flex items-center gap-6">
           {/* Theme Toggle */}
           <button
-            onClick={() => {
-              const isDark = document.documentElement.classList.contains('dark')
-              if (isDark) {
-                document.documentElement.classList.remove('dark')
-                localStorage.setItem('theme', 'light')
-              } else {
-                document.documentElement.classList.add('dark')
-                localStorage.setItem('theme', 'dark')
-              }
-              window.dispatchEvent(new Event('storage'))
-            }}
+            onClick={toggleTheme}
             className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all shadow-sm dark:shadow-none cursor-pointer"
           >
-            <Sun className="h-4 w-4 block dark:hidden" />
-            <Moon className="h-4 w-4 hidden dark:block" />
+            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
 
           <button 

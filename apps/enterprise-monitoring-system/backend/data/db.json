@@ -941,6 +941,70 @@
   "activities": [
     {
       "title": "User Login",
+      "detail": "Authenticated as intern_14 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Intern",
+      "id": "act-1780470413159",
+      "timestamp": "2026-06-03T07:06:53.159Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as root_001 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Administrator",
+      "id": "act-1780470401278",
+      "timestamp": "2026-06-03T07:06:41.278Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as intern_14 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Intern",
+      "id": "act-1780468860190",
+      "timestamp": "2026-06-03T06:41:00.190Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as root_001 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Administrator",
+      "id": "act-1780468851319",
+      "timestamp": "2026-06-03T06:40:51.319Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as qa_eng_09 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "QA Engineer",
+      "id": "act-1780312508449",
+      "timestamp": "2026-06-01T11:15:08.449Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as devops_eng_08 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "DevOps Engineer",
+      "id": "act-1780312477831",
+      "timestamp": "2026-06-01T11:14:37.831Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1780312434583",
+      "timestamp": "2026-06-01T11:13:54.583Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as root_001 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Administrator",
+      "id": "act-1780312361616",
+      "timestamp": "2026-06-01T11:12:41.616Z"
+    },
+    {
+      "title": "User Login",
       "detail": "Authenticated as root_001 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Super Administrator",

@@ -73,7 +73,7 @@ export function FeaturesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-luxury-black text-white selection:bg-luxury-blue/30 font-sans overflow-x-hidden scroll-smooth">
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white selection:bg-brand/30 transition-colors duration-500 font-sans overflow-x-hidden scroll-smooth">
       <MarketingNavbar />
       
       {/* Hero Header */}
@@ -89,7 +89,7 @@ export function FeaturesPage() {
               The Feature <br />
               <span className="text-luxury-blue">Manifesto.</span>
             </h1>
-            <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-medium">
+            <p className="text-xl text-slate-500 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed font-medium">
               We didn't just build features. We engineered a seamless interface between human potential and enterprise efficiency.
             </p>
           </motion.div>
@@ -119,7 +119,7 @@ export function FeaturesPage() {
                   </div>
                   <h3 className="text-3xl font-black uppercase italic tracking-tight">{f.title}</h3>
                 </motion.div>
-                <p className="text-xl text-slate-400 mb-10 leading-relaxed font-medium">{f.desc}</p>
+                <p className="text-xl text-slate-500 dark:text-slate-400 mb-10 leading-relaxed font-medium">{f.desc}</p>
                 <div className="grid grid-cols-2 gap-6 mb-12">
                   {f.details.map((detail, di) => (
                     <motion.div 
@@ -137,7 +137,7 @@ export function FeaturesPage() {
                 <motion.button 
                   whileHover={{ x: 10, color: '#ffffff' }}
                   onClick={() => navigate(f.path)}
-                  className="group flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-luxury-blue hover:text-white transition-colors"
+                  className="group flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-luxury-blue hover:text-slate-900 dark:text-white transition-colors"
                 >
                   Learn More <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
                 </motion.button>
@@ -150,7 +150,7 @@ export function FeaturesPage() {
                 className="lg:w-1/2 relative group"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${f.color} rounded-[56px] blur-2xl group-hover:blur-3xl transition-all duration-700`} />
-                <div className="relative glass-panel border-white/5 bg-white/5 p-4 rounded-[60px] overflow-hidden shadow-premium">
+                <div className="relative glass-panel border-white/5 bg-slate-100 dark:bg-white/5 p-4 rounded-[60px] overflow-hidden shadow-premium">
                   <motion.img 
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 1.5 }}
@@ -169,7 +169,7 @@ export function FeaturesPage() {
       </section>
 
       {/* Enterprise Specs Section */}
-      <section className="py-40 bg-white/5 border-y border-white/5 px-8 relative overflow-hidden">
+      <section className="py-40 bg-slate-100 dark:bg-white/5 border-y border-white/5 px-8 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -178,7 +178,7 @@ export function FeaturesPage() {
             className="text-center mb-24"
           >
             <h2 className="text-5xl font-display font-black uppercase italic mb-8">Enterprise Specifications</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto text-lg font-medium">Underneath the aesthetic surface lies a foundation of industrial-grade engineering.</p>
+            <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg font-medium">Underneath the aesthetic surface lies a foundation of industrial-grade engineering.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -213,7 +213,7 @@ export function FeaturesPage() {
           className="max-w-4xl mx-auto"
         >
            <h2 className="text-6xl font-display font-black uppercase italic mb-12">Engineered for <span className="text-luxury-blue">Scale.</span></h2>
-           <p className="text-xl text-slate-400 mb-16 font-medium">Ready to transition your organization to the high-performance tier?</p>
+           <p className="text-xl text-slate-500 dark:text-slate-400 mb-16 font-medium">Ready to transition your organization to the high-performance tier?</p>
            <motion.button 
              whileHover={{ scale: 1.05, backgroundColor: '#3b82f6', color: '#ffffff' }}
              whileTap={{ scale: 0.95 }}

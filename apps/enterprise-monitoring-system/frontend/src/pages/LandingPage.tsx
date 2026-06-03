@@ -267,21 +267,20 @@ export function LandingPage() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ amount: 0.2 }}
                 transition={{ delay: i * 0.15, duration: 0.8, type: "spring", bounce: 0.3 }}
-                whileHover={{ y: -8, scale: 1.01 }}
+                whileHover={{ y: -12, scale: 1.03 }}
                 onClick={() => navigate(f.path)}
-                className="group relative p-8 bg-white dark:bg-slate-900/40 border border-outline dark:border-white/5 rounded-[32px] hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-all duration-500 overflow-hidden cursor-pointer shadow-lg hover:shadow-xl hover:border-brand/40"
+                className="group relative p-8 bg-white dark:bg-slate-900/40 border border-outline dark:border-white/5 rounded-[32px] hover:bg-brand dark:hover:bg-brand transition-all duration-500 overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:shadow-brand/30 hover:border-brand"
               >
-                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                  <f.icon size={100} className="text-brand" />
+                <div className="absolute -top-10 -right-10 p-8 opacity-5 group-hover:opacity-10 group-hover:scale-150 group-hover:rotate-12 transition-all duration-700 pointer-events-none">
+                  <f.icon size={150} className="text-brand group-hover:text-white" />
                 </div>
-                <div className={`h-12 w-12 rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-6 ${f.color} group-hover:scale-110 transition-transform duration-500`}>
-                  <f.icon className="h-6 w-6" />
+                <div className={`h-12 w-12 rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center mb-6 ${f.color} group-hover:scale-110 group-hover:bg-white/20 transition-all duration-500 relative z-10`}>
+                  <f.icon className="h-6 w-6 group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="text-lg font-bold mb-4 uppercase tracking-tight text-slate-900 dark:text-white">{f.title}</h3>
-                <p className="text-slate-500 dark:text-[#A0AEC0] text-sm leading-relaxed font-medium">{f.description}</p>
+                <h3 className="text-lg font-bold mb-4 uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-white transition-colors relative z-10">{f.title}</h3>
+                <p className="text-slate-500 dark:text-[#A0AEC0] text-sm leading-relaxed font-medium group-hover:text-white/90 transition-colors relative z-10">{f.description}</p>
                 <motion.div 
-                  whileHover={{ x: 5 }}
-                  className="mt-8 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="mt-8 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand group-hover:text-white opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 relative z-10"
                 >
                   Learn More <ArrowRight className="h-3 w-3" />
                 </motion.div>

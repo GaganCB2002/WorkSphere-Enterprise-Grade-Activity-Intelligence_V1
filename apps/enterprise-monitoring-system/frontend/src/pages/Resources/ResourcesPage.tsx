@@ -42,7 +42,7 @@ export function ResourcesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-luxury-black text-white selection:bg-luxury-blue/30 font-sans overflow-x-hidden scroll-smooth">
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white selection:bg-brand/30 transition-colors duration-500 font-sans overflow-x-hidden scroll-smooth">
       <MarketingNavbar />
       
       {/* Hero Search */}
@@ -54,7 +54,7 @@ export function ResourcesPage() {
             transition={{ duration: 0.8 }}
           >
             <p className="text-[10px] font-black uppercase tracking-[0.6em] text-luxury-blue mb-10">Developer Knowledge Hub</p>
-            <h1 className="text-6xl lg:text-8xl font-display font-black tracking-tighter uppercase italic mb-12 text-white">
+            <h1 className="text-6xl lg:text-8xl font-display font-black tracking-tighter uppercase italic mb-12 text-slate-900 dark:text-white">
               The Insight <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-luxury-blue to-luxury-cyan">Repository.</span>
             </h1>
@@ -66,7 +66,7 @@ export function ResourcesPage() {
                 <input 
                   type="text" 
                   placeholder="Search technical specifications..."
-                  className="w-full pl-16 pr-8 py-6 bg-white/5 border border-white/10 rounded-full focus:outline-none focus:border-luxury-blue/40 text-white text-lg font-medium transition-all placeholder:text-slate-600"
+                  className="w-full pl-16 pr-8 py-6 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-full focus:outline-none focus:border-luxury-blue/40 text-slate-900 dark:text-white text-lg font-medium transition-all placeholder:text-slate-600"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -77,7 +77,7 @@ export function ResourcesPage() {
       </section>
 
       {/* Categories Grid */}
-      <section className="py-24 px-8 border-y border-white/5 bg-white/5">
+      <section className="py-24 px-8 border-y border-white/5 bg-slate-100 dark:bg-white/5">
         <div className="max-w-7xl mx-auto">
            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
              {knowledgeCategories.map((c, i) => (
@@ -90,7 +90,7 @@ export function ResourcesPage() {
                  className="p-10 bg-luxury-black/60 border border-white/5 rounded-[40px] hover:border-luxury-blue/30 transition-all group cursor-pointer"
                >
                  <c.icon size={24} className="text-luxury-blue mb-6 group-hover:scale-110 transition-transform" />
-                 <h4 className="text-sm font-bold uppercase tracking-widest mb-2 text-white">{c.title}</h4>
+                 <h4 className="text-sm font-bold uppercase tracking-widest mb-2 text-slate-900 dark:text-white">{c.title}</h4>
                  <p className="text-[10px] font-black text-[#A0AEC0] uppercase tracking-widest">{c.count}</p>
                </motion.div>
              ))}
@@ -101,7 +101,7 @@ export function ResourcesPage() {
       {/* FAQ / Technical Deep Dive */}
       <section className="py-40 px-8">
         <div className="max-w-4xl mx-auto">
-           <h2 className="text-4xl md:text-5xl font-display font-black uppercase italic mb-16 text-center text-white">Operational FAQ</h2>
+           <h2 className="text-4xl md:text-5xl font-display font-black uppercase italic mb-16 text-center text-slate-900 dark:text-white">Operational FAQ</h2>
            <div className="space-y-6">
               {faqs.map((faq, i) => (
                 <motion.div 
@@ -113,7 +113,7 @@ export function ResourcesPage() {
                   className="group border-b border-white/5 pb-8"
                 >
                   <button className="w-full flex items-center justify-between text-left">
-                    <span className="text-2xl font-bold uppercase italic tracking-tight group-hover:text-luxury-blue transition-colors text-white">{faq.q}</span>
+                    <span className="text-2xl font-bold uppercase italic tracking-tight group-hover:text-luxury-blue transition-colors text-slate-900 dark:text-white">{faq.q}</span>
                     <ChevronDown className="text-slate-500 group-hover:rotate-180 transition-transform" />
                   </button>
                   <p className="mt-6 text-[#A0AEC0] font-medium text-lg leading-relaxed max-h-0 overflow-hidden group-hover:max-h-40 transition-all duration-700">
@@ -126,10 +126,10 @@ export function ResourcesPage() {
       </section>
 
       {/* Community / Support CTA */}
-      <section className="py-40 px-8 text-center bg-white/5">
+      <section className="py-40 px-8 text-center bg-slate-100 dark:bg-white/5">
         <div className="max-w-3xl mx-auto">
           <Zap className="h-12 w-12 text-luxury-blue mx-auto mb-10" />
-          <h2 className="text-5xl md:text-6xl font-display font-black uppercase italic mb-8 text-white">Need Industrial Support?</h2>
+          <h2 className="text-5xl md:text-6xl font-display font-black uppercase italic mb-8 text-slate-900 dark:text-white">Need Industrial Support?</h2>
           <p className="text-2xl text-[#A0AEC0] mb-12 font-medium leading-relaxed">Our global engineering team is available 24/7 for mission-critical deployment assistance.</p>
           <motion.button 
             whileHover={{ scale: 1.05 }}

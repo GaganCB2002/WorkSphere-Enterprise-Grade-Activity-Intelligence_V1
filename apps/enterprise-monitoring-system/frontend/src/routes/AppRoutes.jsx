@@ -156,11 +156,29 @@ const MainLayout = () => {
 };
 
 import { GlobalEnterpriseCopilot } from '../components/ai/GlobalEnterpriseCopilot';
+import { LandingPage } from '../pages/LandingPage';
+import { ProductPage } from '../pages/Product/ProductPage';
+import { FeaturesPage } from '../pages/Features/FeaturesPage';
+import { SolutionsPage } from '../pages/Solutions/SolutionsPage';
+import { ResourcesPage } from '../pages/Resources/ResourcesPage';
+import { PrivacyPage } from '../pages/Legal/PrivacyPage';
+import { TermsPage } from '../pages/Legal/TermsPage';
+import { SecurityPage } from '../pages/Legal/SecurityPage';
 
 const AppRoutes = () => {
   return (
     <>
       <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/product" element={<ProductPage />} />
+        <Route path="/features" element={<FeaturesPage />} />
+        <Route path="/features/*" element={<FeaturesPage />} />
+        <Route path="/solutions" element={<SolutionsPage />} />
+        <Route path="/solutions/*" element={<SolutionsPage />} />
+        <Route path="/resources" element={<ResourcesPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/security" element={<SecurityPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />

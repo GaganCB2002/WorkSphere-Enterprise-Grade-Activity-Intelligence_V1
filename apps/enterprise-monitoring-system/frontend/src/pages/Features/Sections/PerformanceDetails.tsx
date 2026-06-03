@@ -40,7 +40,7 @@ export function PerformanceDetails() {
   ]
 
   return (
-    <div className="min-h-screen bg-luxury-black text-white selection:bg-luxury-blue/30 font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white selection:bg-brand/30 transition-colors duration-500 font-sans overflow-x-hidden">
       <MarketingNavbar />
       
       {/* Hero Header */}
@@ -66,7 +66,7 @@ export function PerformanceDetails() {
                 Performance <br />
                 <span className="text-luxury-blue">Analytics.</span>
               </h1>
-              <p className="text-xl text-slate-400 leading-relaxed font-medium mb-10">
+              <p className="text-xl text-slate-500 dark:text-slate-400 leading-relaxed font-medium mb-10">
                 Data is the heartbeat of the modern enterprise. AuraHR provides the surgical tools needed to monitor, analyze, and optimize every pulse.
               </p>
             </motion.div>
@@ -76,7 +76,7 @@ export function PerformanceDetails() {
               transition={{ duration: 1 }}
               className="relative"
             >
-               <div className="glass-panel p-4 rounded-[56px] bg-white/5 border-white/10 overflow-hidden shadow-premium">
+               <div className="glass-panel p-4 rounded-[56px] bg-slate-100 dark:bg-white/5 border-slate-200 dark:border-white/10 overflow-hidden shadow-premium">
                  <img 
                    src="https://images.unsplash.com/photo-1551288049-bbbda5366a71?q=80&w=2070&auto=format&fit=crop" 
                    alt="Performance" 
@@ -89,7 +89,7 @@ export function PerformanceDetails() {
       </section>
 
       {/* Metric Grid */}
-      <section className="py-32 px-8 bg-white/5 border-y border-white/5">
+      <section className="py-32 px-8 bg-slate-100 dark:bg-white/5 border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {metrics.map((m, i) => (
@@ -122,7 +122,7 @@ export function PerformanceDetails() {
                { val: "2.5x", sub: "Faster Deployment" },
                { val: "40%", sub: "Better Utilization" }
              ].map((stat, i) => (
-               <div key={i} className="p-10 bg-white/5 rounded-[40px] border border-white/5">
+               <div key={i} className="p-10 bg-slate-100 dark:bg-white/5 rounded-[40px] border border-white/5">
                  <p className="text-5xl font-black italic text-luxury-blue mb-2">{stat.val}</p>
                  <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">{stat.sub}</p>
                </div>
