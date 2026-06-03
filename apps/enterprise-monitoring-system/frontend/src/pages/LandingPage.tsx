@@ -130,15 +130,20 @@ export function LandingPage() {
 
         {/* Cinematic Background */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background to-background dark:from-slate-950/60 dark:via-slate-950/80 dark:to-slate-950 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/60 to-white dark:from-slate-950/60 dark:via-slate-950/80 dark:to-slate-950 z-10 transition-colors duration-500" />
+          
+          {/* Light Mode Crystal Background */}
+          <div className="absolute inset-0 bg-[url('/crystal-hero-bg.png')] bg-cover bg-center opacity-100 dark:opacity-0 transition-opacity duration-500 z-0" />
+
+          {/* Dark Mode Background */}
           <motion.div 
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center grayscale opacity-15 dark:opacity-30" 
+            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center grayscale opacity-0 dark:opacity-30 transition-opacity duration-500 z-0" 
           />
           {/* Animated Glows */}
-          <motion.div style={{ rotate: rotateOrb }} className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand/5 rounded-full blur-[150px] animate-pulse" />
-          <motion.div style={{ rotate: rotateOrb }} className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-mint/5 rounded-full blur-[150px] animate-pulse delay-1000" />
+          <motion.div style={{ rotate: rotateOrb }} className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand/15 dark:bg-brand/5 rounded-full blur-[150px] animate-pulse" />
+          <motion.div style={{ rotate: rotateOrb }} className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-pastel-blue/20 dark:bg-mint/5 rounded-full blur-[150px] animate-pulse delay-1000" />
         </div>
 
         {/* Scroll Indicator */}
