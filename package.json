@@ -1,9 +1,0 @@
-{
-  "name": "worksphere-enterprise-root",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "build": "cd apps/enterprise-monitoring-system/frontend && npm install && npm run build",
-    "install": "echo 'Dependencies are installed in the build step'"
-  }
-}

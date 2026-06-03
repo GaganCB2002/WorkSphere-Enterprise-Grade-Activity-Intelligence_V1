@@ -1,9 +1,0 @@
-{
-  "outputDirectory": "apps/enterprise-monitoring-system/frontend/dist",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
-}
