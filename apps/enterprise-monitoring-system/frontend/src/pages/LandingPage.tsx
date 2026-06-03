@@ -106,7 +106,7 @@ export function LandingPage() {
             <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-16 font-medium leading-relaxed">
               Precision-engineered tools for the modern enterprise. Monitor, analyze, and optimize your global talent with surgical accuracy.
             </p>
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-wrap justify-center gap-6 mb-20">
               <motion.button 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
@@ -125,6 +125,22 @@ export function LandingPage() {
                 Experience Demo
               </motion.button>
             </div>
+
+            {/* Premium Hero Dashboard Mockup */}
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.2, type: "spring", bounce: 0.3 }}
+              className="relative mx-auto max-w-5xl rounded-[2rem] overflow-hidden border border-white/10 dark:border-white/5 shadow-2xl shadow-brand/20 backdrop-blur-xl group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 opacity-60"></div>
+              <img 
+                src="/hero_mockup.png" 
+                alt="WorkSphere Enterprise Dashboard Preview" 
+                className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 border-[1px] border-white/20 dark:border-white/10 rounded-[2rem] pointer-events-none z-20"></div>
+            </motion.div>
           </motion.div>
         </motion.div>
 
