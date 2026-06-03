@@ -941,6 +941,86 @@
   "activities": [
     {
       "title": "User Login",
+      "detail": "Authenticated as root_001 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Administrator",
+      "id": "act-1780484069704",
+      "timestamp": "2026-06-03T10:54:29.704Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as employee_13 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Standard Employee",
+      "id": "act-1780484033104",
+      "timestamp": "2026-06-03T10:53:53.104Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1780483951560",
+      "timestamp": "2026-06-03T10:52:31.560Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as employee_13 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Standard Employee",
+      "id": "act-1780483889197",
+      "timestamp": "2026-06-03T10:51:29.197Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as root_001 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Administrator",
+      "id": "act-1780483798862",
+      "timestamp": "2026-06-03T10:49:58.862Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as sup_agent_12 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Support Agent",
+      "id": "act-1780483785875",
+      "timestamp": "2026-06-03T10:49:45.875Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as root_001 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Administrator",
+      "id": "act-1780483724770",
+      "timestamp": "2026-06-03T10:48:44.770Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as sup_agent_12 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Support Agent",
+      "id": "act-1780483523101",
+      "timestamp": "2026-06-03T10:45:23.101Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as employee_13 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Standard Employee",
+      "id": "act-1780483476450",
+      "timestamp": "2026-06-03T10:44:36.450Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as intern_14 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Intern",
+      "id": "act-1780483453924",
+      "timestamp": "2026-06-03T10:44:13.924Z"
+    },
+    {
+      "title": "User Login",
       "detail": "Authenticated as intern_14 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Intern",
