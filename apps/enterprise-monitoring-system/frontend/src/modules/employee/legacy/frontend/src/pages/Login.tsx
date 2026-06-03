@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { Lock, Mail, ShieldCheck } from 'lucide-react';
+import { FaceCaptureModal } from '@/components/ui/FaceCaptureModal';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -14,11 +15,23 @@ export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  const [showCapture, setShowCapture] = useState(false);
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setError('');
+    
+    // Instead of logging in directly, show the biometric capture modal
+    setShowCapture(true);
+  };
+
+  const handleBiometricSuccess = async (data: any) => {
+    setShowCapture(false);
     setIsLoading(true);
     try {
+      // Send biometric data to attendance service (simulated here)
+      localStorage.setItem('last_login_biometrics', JSON.stringify(data));
+      
       await login(email, password);
       navigate('/dashboard');
     } catch (err: any) {
@@ -127,6 +140,14 @@ export default function Login() {
           </Card>
         </div>
       </div>
+
+      {showCapture && (
+        <FaceCaptureModal 
+          type="login" 
+          onCapture={handleBiometricSuccess} 
+          onClose={() => setShowCapture(false)} 
+        />
+      )}
     </div>
   );
 }

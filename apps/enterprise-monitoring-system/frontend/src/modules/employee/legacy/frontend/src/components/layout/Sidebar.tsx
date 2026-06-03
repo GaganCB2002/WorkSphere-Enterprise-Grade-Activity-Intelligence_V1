@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Avatar } from '@/components/ui/Avatar';
 import { useAuth } from '@/contexts/AuthContext';
+import { FaceCaptureModal } from '@/components/ui/FaceCaptureModal';
 import {
   LayoutDashboard,
   CheckSquare,
@@ -36,9 +37,17 @@ const navItems = [
 
 export function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [showCapture, setShowCapture] = useState(false);
   const location = useLocation();
   const { user, logout } = useAuth();
   const availableNavItems = navItems.filter((item) => item.path !== '/people' || user?.role === 'ADMIN' || user?.role === 'HR');
+
+  const handleLogoutSequence = async (data: any) => {
+    // Simulated: Record biometric logout data with attendance service
+    localStorage.setItem('last_logout_biometrics', JSON.stringify(data));
+    setShowCapture(false);
+    logout();
+  };
 
   return (
     <aside
@@ -112,7 +121,7 @@ export function Sidebar() {
             )}
             {!isCollapsed && (
               <button
-                onClick={logout}
+                onClick={() => setShowCapture(true)}
                 className="p-2 rounded-lg hover:bg-rose-50 text-slate-400 hover:text-rose-500 transition-colors"
               >
                 <LogOut className="w-4 h-4" />
@@ -131,6 +140,14 @@ export function Sidebar() {
           <ChevronLeft className="w-4 h-4" />
         )}
       </button>
+
+      {showCapture && (
+        <FaceCaptureModal
+          type="logout"
+          onCapture={handleLogoutSequence}
+          onClose={() => setShowCapture(false)}
+        />
+      )}
     </aside>
   );
 }
