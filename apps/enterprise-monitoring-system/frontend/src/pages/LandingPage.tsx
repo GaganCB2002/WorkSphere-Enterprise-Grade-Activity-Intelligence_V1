@@ -78,7 +78,15 @@ export function LandingPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-brand/30 overflow-x-hidden font-sans scroll-smooth transition-colors duration-500 relative">
+    <div 
+      className="min-h-screen bg-background dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-brand/30 overflow-x-hidden font-sans scroll-smooth transition-colors duration-500 relative"
+      style={{
+        '--pastel-lavender': '#4f46e5', // Electric Indigo
+        '--pastel-blue': '#0ea5e9',     // Sky Blue
+        '--pastel-mint': '#8b5cf6',     // Vibrant Violet
+        '--pastel-peach': '#d946ef'     // Neon Fuchsia
+      } as React.CSSProperties}
+    >
       {/* Sticky Scroll Progress Bar */}
       <motion.div 
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand via-pastel-blue to-mint z-[200] origin-left"
