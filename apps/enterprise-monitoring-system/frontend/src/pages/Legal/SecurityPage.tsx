@@ -76,7 +76,7 @@ export function SecurityPage() {
                   </div>
                   <h3 className="text-3xl font-bold uppercase italic tracking-tight">{s.title}</h3>
                 </div>
-                <p className="text-xl text-slate-500 leading-relaxed font-medium group-hover:text-slate-300 transition-colors">
+                <p className="text-xl text-slate-500 leading-relaxed font-medium group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">
                   {s.content}
                 </p>
               </motion.div>

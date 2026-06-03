@@ -125,7 +125,7 @@ export function SolutionsPage() {
                           className="flex items-center gap-3"
                         >
                            <div className="h-2 w-2 rounded-full bg-luxury-blue" />
-                           <span className="text-sm font-bold uppercase tracking-widest text-slate-300">{f}</span>
+                           <span className="text-sm font-bold uppercase tracking-widest text-slate-700 dark:text-slate-300">{f}</span>
                         </motion.div>
                       ))}
                    </div>

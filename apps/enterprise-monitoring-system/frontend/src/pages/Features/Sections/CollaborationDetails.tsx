@@ -131,7 +131,7 @@ export function CollaborationDetails() {
                 className="flex items-start gap-6 p-8 bg-slate-100 dark:bg-white/5 rounded-[32px] border border-white/5"
               >
                 <CheckCircle2 className="text-luxury-blue h-6 w-6 mt-1 flex-shrink-0" />
-                <p className="text-lg text-slate-300 font-medium">{useCase}</p>
+                <p className="text-lg text-slate-700 dark:text-slate-300 font-medium">{useCase}</p>
               </motion.div>
             ))}
           </div>

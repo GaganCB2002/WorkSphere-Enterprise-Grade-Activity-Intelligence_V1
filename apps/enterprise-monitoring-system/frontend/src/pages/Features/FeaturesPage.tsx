@@ -130,7 +130,7 @@ export function FeaturesPage() {
                       className="flex items-center gap-3"
                     >
                       <CheckCircle2 size={16} className="text-luxury-blue" />
-                      <span className="text-sm font-bold text-slate-300">{detail}</span>
+                      <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{detail}</span>
                     </motion.div>
                   ))}
                 </div>
