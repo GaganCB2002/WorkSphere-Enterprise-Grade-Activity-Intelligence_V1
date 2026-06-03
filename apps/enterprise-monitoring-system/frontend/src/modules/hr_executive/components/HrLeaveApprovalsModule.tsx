@@ -190,7 +190,7 @@ export const HrLeaveApprovalsModule: React.FC<HrLeaveApprovalsModuleProps> = ({ 
               <BrainCircuit className="w-5 h-5" />
             </div>
             <div>
-              <h3 className={`text-lg font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>AuraHR Predictor</h3>
+              <h3 className={`text-lg font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>WorkSphere Predictor</h3>
               <p className={`text-xs font-semibold ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>Coverage Risk Assessment</p>
             </div>
           </div>

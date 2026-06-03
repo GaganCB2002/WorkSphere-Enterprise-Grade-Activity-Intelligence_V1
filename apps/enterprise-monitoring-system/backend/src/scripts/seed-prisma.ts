@@ -32,7 +32,7 @@ async function main() {
       {
         id: 'u-1',
         name: 'Executive Director',
-        email: 'ceo@aurahr.com',
+        email: 'ceo@worksphere.com',
         role: 'CEO',
         employeeId: 'emp-100',
         passwordHash,
@@ -42,7 +42,7 @@ async function main() {
       {
         id: 'u-2',
         name: 'Nisha Kapoor',
-        email: 'hr@aurahr.com',
+        email: 'hr@worksphere.com',
         role: 'HR',
         employeeId: 'emp-101',
         passwordHash,
@@ -60,7 +60,7 @@ async function main() {
       {
         id: 'emp-100',
         name: 'E. Director',
-        email: 'ceo@aurahr.com',
+        email: 'ceo@worksphere.com',
         title: 'Managing Director',
         department: 'Executive',
         level: 'CEO',

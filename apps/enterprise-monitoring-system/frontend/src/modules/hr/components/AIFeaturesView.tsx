@@ -4,7 +4,7 @@ import { Cpu, MessageSquare, TrendingUp, AlertTriangle, CheckCircle, Send, Spark
 export function AIFeaturesView() {
   const [activeTab, setActiveTab] = useState<'chatbot' | 'prediction' | 'anomaly' | 'tasks'>('chatbot');
   const [messages, setMessages] = useState([
-    { sender: 'AI', text: 'Hello! I am AuraHR AI, your enterprise assistant. Ask me anything about leave policies, payroll deductions, or team performance predictions.', time: 'Just now' }
+    { sender: 'AI', text: 'Hello! I am WorkSphere AI, your enterprise assistant. Ask me anything about leave policies, payroll deductions, or team performance predictions.', time: 'Just now' }
   ]);
   const [input, setInput] = useState('');
 
@@ -52,7 +52,7 @@ export function AIFeaturesView() {
               <Bot size={24} />
             </div>
             <div>
-              <h3 className="text-sm font-black uppercase tracking-widest text-slate-900 dark:text-white">AuraHR Enterprise AI Copilot</h3>
+              <h3 className="text-sm font-black uppercase tracking-widest text-slate-900 dark:text-white">WorkSphere Enterprise AI Copilot</h3>
               <p className="text-[10px] text-emerald-400 font-bold flex items-center gap-1"><Sparkles size={12} /> Powered by WorkSphere LLM • Instant Policy Resolution</p>
             </div>
           </div>
@@ -72,7 +72,7 @@ export function AIFeaturesView() {
           </div>
 
           <form onSubmit={handleSendAI} className="flex items-center gap-3 border-t border-white/5 pt-4 shrink-0">
-            <input type="text" value={input} onChange={e => setInput(e.target.value)} placeholder="Ask AuraHR AI (e.g. What is my leave balance?)..." className="flex-1 h-12 bg-white/5 border border-white/10 rounded-2xl px-4 text-xs text-white outline-none focus:border-luxury-blue" />
+            <input type="text" value={input} onChange={e => setInput(e.target.value)} placeholder="Ask WorkSphere AI (e.g. What is my leave balance?)..." className="flex-1 h-12 bg-white/5 border border-white/10 rounded-2xl px-4 text-xs text-white outline-none focus:border-luxury-blue" />
             <button type="submit" className="h-12 px-6 rounded-2xl bg-luxury-blue text-white font-black uppercase tracking-widest hover:bg-luxury-blue/80 transition shadow-xl shadow-luxury-blue/30 flex items-center gap-2 shrink-0 text-xs">
               <Send size={16} /> Ask AI
             </button>

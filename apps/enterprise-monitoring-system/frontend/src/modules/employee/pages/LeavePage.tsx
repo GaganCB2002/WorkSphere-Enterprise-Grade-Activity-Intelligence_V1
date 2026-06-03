@@ -21,7 +21,7 @@ export function LeavePage() {
         id: `del-${Date.now()}`,
         taskId: 'task-103',
         taskTitle: 'Unit Test Coverage — Leave Module',
-        project: 'AuraHR Core',
+        project: 'WorkSphere Core',
         delegatedTo: requestData.backupEmployeeId,
         delegatedToName: requestData.backupEmployeeName || 'Teammate',
         status: 'pending' as const,

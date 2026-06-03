@@ -271,3 +271,6 @@ body {
 .btn-interactive:active {
   transform: scale(0.96);
 }
+
+::selection { background-color: #6366f1; color: white; }
+::-moz-selection { background-color: #6366f1; color: white; }

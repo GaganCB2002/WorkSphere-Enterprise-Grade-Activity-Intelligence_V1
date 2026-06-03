@@ -28,7 +28,7 @@ export function ResourcesPage() {
 
   const faqs = [
     { 
-      q: "How does AuraHR handle global data residency?", 
+      q: "How does WorkSphere handle global data residency?", 
       a: "Our distributed architecture allows for localized data storage in SOC 2 Type II compliant centers across 12 regions, ensuring 100% compliance with local labor and privacy laws." 
     },
     { 

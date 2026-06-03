@@ -129,7 +129,7 @@ export function AllocationPage({ platform, token, onRefresh }: AllocationPagePro
     const encodedUri = encodeURI(csvContent)
     const link = document.createElement("a")
     link.setAttribute("href", encodedUri)
-    link.setAttribute("download", `AuraHR_Asset_Report_${new Date().toLocaleDateString()}.csv`)
+    link.setAttribute("download", `WorkSphere_Asset_Report_${new Date().toLocaleDateString()}.csv`)
     document.body.appendChild(link)
     link.click()
   }

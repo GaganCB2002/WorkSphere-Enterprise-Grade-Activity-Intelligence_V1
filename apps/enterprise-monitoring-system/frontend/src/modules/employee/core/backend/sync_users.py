@@ -27,7 +27,7 @@ employees = [
         'designation': 'Tech Lead'
     },
     {
-        'email': 'marketing@aurahr.com',
+        'email': 'marketing@worksphere.com',
         'password': 'marketing123',
         'first_name': 'Marketing',
         'last_name': 'Lead',

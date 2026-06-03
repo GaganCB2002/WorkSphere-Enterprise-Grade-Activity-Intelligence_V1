@@ -4,7 +4,7 @@ export const seedData: any = {
     {
       id: 'u-1',
       name: 'Aarav Mehta',
-      email: 'ceo@aurahr.com',
+      email: 'ceo@worksphere.com',
       role: 'CEO',
       employeeId: 'emp-100',
       passwordSeed: 'Password@123',
@@ -12,7 +12,7 @@ export const seedData: any = {
     {
       id: 'u-2',
       name: 'Nisha Kapoor',
-      email: 'hr@aurahr.com',
+      email: 'hr@worksphere.com',
       role: 'HR',
       employeeId: 'emp-101',
       passwordSeed: 'Password@123',
@@ -20,7 +20,7 @@ export const seedData: any = {
     {
       id: 'u-3',
       name: 'Rohit Sen',
-      email: 'manager@aurahr.com',
+      email: 'manager@worksphere.com',
       role: 'Manager',
       employeeId: 'emp-102',
       passwordSeed: 'Password@123',
@@ -28,7 +28,7 @@ export const seedData: any = {
     {
       id: 'u-4',
       name: 'Kabir Rao',
-      email: 'employee@aurahr.com',
+      email: 'employee@worksphere.com',
       role: 'Employee',
       employeeId: 'emp-108',
       passwordSeed: 'Password@123',
@@ -44,7 +44,7 @@ export const seedData: any = {
     {
       id: 'u-mkt',
       name: 'Marketing Lead',
-      email: 'marketing@aurahr.com',
+      email: 'marketing@worksphere.com',
       role: 'Marketing',
       employeeId: 'emp-103',
       passwordSeed: 'Password@123',
@@ -176,7 +176,7 @@ export const seedData: any = {
     {
       id: 'emp-100',
       name: 'Aarav Mehta',
-      email: 'ceo@aurahr.com',
+      email: 'ceo@worksphere.com',
       title: 'Chief Executive Officer',
       department: 'Executive',
       level: 'CEO',
@@ -194,7 +194,7 @@ export const seedData: any = {
     {
       id: 'emp-101',
       name: 'Nisha Kapoor',
-      email: 'hr@aurahr.com',
+      email: 'hr@worksphere.com',
       title: 'Head of People Operations',
       department: 'People Ops',
       level: 'HR',
@@ -213,7 +213,7 @@ export const seedData: any = {
     {
       id: 'emp-102',
       name: 'Rohit Sen',
-      email: 'manager@aurahr.com',
+      email: 'manager@worksphere.com',
       title: 'Engineering Manager',
       department: 'Engineering',
       level: 'Manager',
@@ -232,7 +232,7 @@ export const seedData: any = {
     {
       id: 'emp-103',
       name: 'Simran Gill',
-      email: 'sales@aurahr.com',
+      email: 'sales@worksphere.com',
       title: 'Sales Director',
       department: 'Sales',
       level: 'Manager',
@@ -251,7 +251,7 @@ export const seedData: any = {
     {
       id: 'emp-104',
       name: 'Riya Sharma',
-      email: 'riya@aurahr.com',
+      email: 'riya@worksphere.com',
       title: 'Talent Acquisition Lead',
       department: 'People Ops',
       level: 'Lead',
@@ -270,7 +270,7 @@ export const seedData: any = {
     {
       id: 'emp-105',
       name: 'Meera Joshi',
-      email: 'meera@aurahr.com',
+      email: 'meera@worksphere.com',
       title: 'People Operations Lead',
       department: 'People Ops',
       level: 'Lead',
@@ -289,7 +289,7 @@ export const seedData: any = {
     {
       id: 'emp-106',
       name: 'Ananya Das',
-      email: 'ananya@aurahr.com',
+      email: 'ananya@worksphere.com',
       title: 'Platform Lead',
       department: 'Engineering',
       level: 'Lead',
@@ -308,7 +308,7 @@ export const seedData: any = {
     {
       id: 'emp-107',
       name: 'Vikram Bhat',
-      email: 'vikram@aurahr.com',
+      email: 'vikram@worksphere.com',
       title: 'Product Lead',
       department: 'Product',
       level: 'Lead',
@@ -327,7 +327,7 @@ export const seedData: any = {
     {
       id: 'emp-108',
       name: 'Kabir Rao',
-      email: 'employee@aurahr.com',
+      email: 'employee@worksphere.com',
       title: 'Senior Backend Engineer',
       department: 'Engineering',
       level: 'Employee',
@@ -346,7 +346,7 @@ export const seedData: any = {
     {
       id: 'emp-109',
       name: 'Pooja Menon',
-      email: 'pooja@aurahr.com',
+      email: 'pooja@worksphere.com',
       title: 'Frontend Engineer',
       department: 'Engineering',
       level: 'Employee',
@@ -365,7 +365,7 @@ export const seedData: any = {
     {
       id: 'emp-110',
       name: 'Farhan Ali',
-      email: 'farhan@aurahr.com',
+      email: 'farhan@worksphere.com',
       title: 'Product Designer',
       department: 'Product',
       level: 'Employee',
@@ -384,7 +384,7 @@ export const seedData: any = {
     {
       id: 'emp-111',
       name: 'Neha Arora',
-      email: 'neha@aurahr.com',
+      email: 'neha@worksphere.com',
       title: 'Account Executive',
       department: 'Sales',
       level: 'Employee',

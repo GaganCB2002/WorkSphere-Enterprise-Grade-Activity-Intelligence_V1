@@ -132,7 +132,7 @@ export default function IssuesPage() {
             onClick={() => {
               const key = prompt('Enter IT Admin Security Key:');
               if (key === 'ADMIN-HR-2026') {
-                const token = localStorage.getItem('aurahr-token');
+                const token = localStorage.getItem('worksphere-token');
                 window.location.href = `http://127.0.0.1:3005/login?token=${token}`;
               } else if (key !== null) {
                 alert('Access Denied: Invalid IT Admin Credentials.');

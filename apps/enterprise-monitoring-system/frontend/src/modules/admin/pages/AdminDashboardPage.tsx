@@ -164,10 +164,10 @@ export function AdminDashboardPage({ user, platform }: { user: any, platform: an
                       </thead>
                       <tbody className="divide-y divide-white/5">
                           {[
-                              { name: 'Alex Thompson', email: 'alex@aurahr.io', role: 'Super Admin', status: 'Online', load: 85, color: 'blue' },
-                              { name: 'Sarah Chen', email: 'sarah@aurahr.io', role: 'Security lead', status: 'Active', load: 62, color: 'purple' },
-                              { name: 'Michael Ross', email: 'mike@aurahr.io', role: 'DevOps', status: 'Busy', load: 94, color: 'orange' },
-                              { name: 'Emily Blunt', email: 'emily@aurahr.io', role: 'HR Director', status: 'Online', load: 45, color: 'emerald' },
+                              { name: 'Alex Thompson', email: 'alex@worksphere.io', role: 'Super Admin', status: 'Online', load: 85, color: 'blue' },
+                              { name: 'Sarah Chen', email: 'sarah@worksphere.io', role: 'Security lead', status: 'Active', load: 62, color: 'purple' },
+                              { name: 'Michael Ross', email: 'mike@worksphere.io', role: 'DevOps', status: 'Busy', load: 94, color: 'orange' },
+                              { name: 'Emily Blunt', email: 'emily@worksphere.io', role: 'HR Director', status: 'Online', load: 45, color: 'emerald' },
                           ].map((node, i) => (
                               <tr key={i} className="group hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors">
                                   <td className="py-5">

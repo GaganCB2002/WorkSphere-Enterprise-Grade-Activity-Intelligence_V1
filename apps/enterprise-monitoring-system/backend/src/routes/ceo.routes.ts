@@ -20,10 +20,10 @@ let reportsStore = [
 
 let orgStore = {
   subsidiaries: [
-    { name: 'AuraHR Corp (Parent)', location: 'Global Operations', headcount: 12450, focus: 'Holding & Strategy' },
-    { name: 'AuraHR Labs LLC', location: 'Shenzhen', headcount: 4820, focus: 'APAC Supply Chain & Hardware' },
-    { name: 'AuraHR EMEA Ltd', location: 'London', headcount: 3120, focus: 'Europe Operations & Logistics' },
-    { name: 'AuraHR India Pvt Ltd', location: 'Bengaluru', headcount: 4510, focus: 'Core Engineering & Support' }
+    { name: 'WorkSphere Corp (Parent)', location: 'Global Operations', headcount: 12450, focus: 'Holding & Strategy' },
+    { name: 'WorkSphere Labs LLC', location: 'Shenzhen', headcount: 4820, focus: 'APAC Supply Chain & Hardware' },
+    { name: 'WorkSphere EMEA Ltd', location: 'London', headcount: 3120, focus: 'Europe Operations & Logistics' },
+    { name: 'WorkSphere India Pvt Ltd', location: 'Bengaluru', headcount: 4510, focus: 'Core Engineering & Support' }
   ],
   businessUnits: [
     { name: 'Core SaaS Products', lead: 'Michael Chang', teams: ['UI Platform', 'Data Engineering', 'Infrastructure'], status: 'Optimal' },
@@ -147,9 +147,9 @@ router.get('/company-overview', async (req, res) => {
     res.json({
       healthScore: 92,
       subsidiaries: [
-        { name: 'AuraHR Labs', location: 'Shenzhen', activeUnits: 4, initiatives: 'APAC supply chain components' },
+        { name: 'WorkSphere Labs', location: 'Shenzhen', activeUnits: 4, initiatives: 'APAC supply chain components' },
         { name: 'Executive Suite', location: 'Global Operations', activeUnits: 5, initiatives: 'Multinational Command Control' },
-        { name: 'AuraHR EMEA Ltd', location: 'London', activeUnits: 3, initiatives: 'EU manufacturing & freight routing' }
+        { name: 'WorkSphere EMEA Ltd', location: 'London', activeUnits: 3, initiatives: 'EU manufacturing & freight routing' }
       ],
       marketExpansion: {
         APAC: 'At Risk (-2.1% growth, regulatory checks pending)',

@@ -64,7 +64,7 @@ export function ProductPage() {
               <span className="text-luxury-blue">Integrity.</span>
             </h1>
             <p className="text-xl text-slate-500 dark:text-slate-400 leading-relaxed mb-12 font-medium">
-              AuraHR is a high-performance operating system designed for the complexities of the modern global enterprise. We've replaced legacy friction with precision-engineered automation.
+              WorkSphere is a high-performance operating system designed for the complexities of the modern global enterprise. We've replaced legacy friction with precision-engineered automation.
             </p>
             <div className="flex flex-wrap gap-8">
               <motion.button 

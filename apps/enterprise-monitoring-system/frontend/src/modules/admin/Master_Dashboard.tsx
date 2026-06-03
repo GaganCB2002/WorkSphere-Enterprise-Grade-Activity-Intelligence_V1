@@ -95,7 +95,7 @@ export function MasterDashboardPage({ user, onLogout }: MasterDashboardPageProps
       description: 'Profile and collaboration.',
       icon: UserIcon,
       color: 'bg-emerald-500',
-      action: () => window.location.assign(getModuleUrl('employee', localStorage.getItem('aurahr-token'))),
+      action: () => window.location.assign(getModuleUrl('employee', localStorage.getItem('worksphere-token'))),
       roles: ['EMPLOYEE', 'HR', 'CEO', 'ADMIN', 'MANAGER', 'TECH_LEAD', 'LEAD']
     },
     {
@@ -104,7 +104,7 @@ export function MasterDashboardPage({ user, onLogout }: MasterDashboardPageProps
       description: 'Code metrics and velocity.',
       icon: Terminal,
       color: 'bg-orange-500',
-      action: () => window.location.assign(getModuleUrl('tech', localStorage.getItem('aurahr-token'))),
+      action: () => window.location.assign(getModuleUrl('tech', localStorage.getItem('worksphere-token'))),
       roles: ['TECH_LEAD', 'LEAD', 'CEO', 'ADMIN']
     },
     {
@@ -113,7 +113,7 @@ export function MasterDashboardPage({ user, onLogout }: MasterDashboardPageProps
       description: 'Support and tickets.',
       icon: LifeBuoy,
       color: 'bg-teal-500',
-      action: () => window.location.assign(getModuleUrl('helpdesk', localStorage.getItem('aurahr-token'))),
+      action: () => window.location.assign(getModuleUrl('helpdesk', localStorage.getItem('worksphere-token'))),
       roles: ['CEO', 'ADMIN', 'HR', 'MANAGER', 'TECH_LEAD', 'LEAD', 'EMPLOYEE']
     }
   ]

@@ -155,7 +155,7 @@ export const HrResourceAllocationModule: React.FC<HrResourceAllocationModuleProp
               <Cpu className="w-5 h-5" />
             </div>
             <div>
-              <h3 className={`text-lg font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>AuraHR Engine</h3>
+              <h3 className={`text-lg font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>WorkSphere Engine</h3>
               <p className={`text-xs font-semibold ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>AI Load Balancer</p>
             </div>
           </div>

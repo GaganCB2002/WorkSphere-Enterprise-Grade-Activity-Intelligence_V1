@@ -6,15 +6,15 @@ $XyzBackendDir = "$XyzDir\backend"
 $XyzFrontendDir = "$XyzDir\frontend"
 
 Write-Host "=================================================="
-Write-Host "   Master Startup - AuraHR & Employee Dashboard   "
+Write-Host "   Master Startup - WorkSphere & Employee Dashboard   "
 Write-Host "=================================================="
 
-# 1. Start AuraHR Backend (Node.js)
-Write-Host "[1/4] Starting AuraHR Backend..."
+# 1. Start WorkSphere Backend (Node.js)
+Write-Host "[1/4] Starting WorkSphere Backend..."
 Start-Process -FilePath "node.exe" -ArgumentList "`"$AuraBackendDir\node_modules\tsx\dist\cli.mjs`" watch src/server.ts" -WorkingDirectory "$AuraBackendDir" -NoNewWindow
 
-# 2. Start AuraHR Frontend (Vite)
-Write-Host "[2/4] Starting AuraHR Frontend..."
+# 2. Start WorkSphere Frontend (Vite)
+Write-Host "[2/4] Starting WorkSphere Frontend..."
 Start-Process -FilePath "node.exe" -ArgumentList "`"$AuraFrontendDir\node_modules\vite\bin\vite.js`"" -WorkingDirectory "$AuraFrontendDir" -NoNewWindow
 
 # 3. Start xyz_Model Backend (Django)
@@ -28,7 +28,7 @@ Start-Process -FilePath "node.exe" -ArgumentList "`"$XyzFrontendDir\node_modules
 
 Write-Host "=================================================="
 Write-Host "All services started!"
-Write-Host "AuraHR: http://localhost:5173"
+Write-Host "WorkSphere: http://localhost:5173"
 Write-Host "Dashboard: http://localhost:3000"
 Write-Host "=================================================="
 

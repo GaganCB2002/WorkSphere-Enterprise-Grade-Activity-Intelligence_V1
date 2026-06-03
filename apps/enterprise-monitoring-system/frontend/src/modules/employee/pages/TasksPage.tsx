@@ -24,7 +24,7 @@ export function TasksPage() {
   // New task form state
   const [newTitle, setNewTitle] = useState('');
   const [newDesc, setNewDesc] = useState('');
-  const [newProject, setNewProject] = useState('AuraHR Core');
+  const [newProject, setNewProject] = useState('WorkSphere Core');
   const [newPriority, setNewPriority] = useState<TaskPriority>('medium');
   const [newPoints, setNewPoints] = useState(3);
   const [newDeadline, setNewDeadline] = useState(getLiveDate(-23));
@@ -91,7 +91,7 @@ export function TasksPage() {
     if (!newTitle.trim()) return;
 
     const projectColors: Record<string, string> = {
-      'AuraHR Core': '#3b82f6',
+      'WorkSphere Core': '#3b82f6',
       'Workforce Intelligence': '#10b981',
       'Finance & Payroll': '#f59e0b',
       'Talent Management': '#8b5cf6'
@@ -126,7 +126,7 @@ export function TasksPage() {
     // Reset form
     setNewTitle('');
     setNewDesc('');
-    setNewProject('AuraHR Core');
+    setNewProject('WorkSphere Core');
     setNewPriority('medium');
     setNewPoints(3);
     setNewDeadline(getLiveDate(-16));
@@ -134,7 +134,7 @@ export function TasksPage() {
 
   // Sprint metadata calculations
   const sprintStats = useMemo(() => {
-    const activeSprintTasks = taskList.filter(t => t.project === 'AuraHR Core');
+    const activeSprintTasks = taskList.filter(t => t.project === 'WorkSphere Core');
     const totalPoints = activeSprintTasks.reduce((sum, t) => sum + t.storyPoints, 0);
     const completedPoints = activeSprintTasks.filter(t => t.status === 'done').reduce((sum, t) => sum + t.storyPoints, 0);
     const inProgressCount = activeSprintTasks.filter(t => t.status === 'in_progress').length;
@@ -287,7 +287,7 @@ export function TasksPage() {
                 onChange={e => setNewProject(e.target.value)}
                 className="w-full text-xs font-semibold px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-white/[0.06] text-slate-700 dark:text-slate-200 outline-none"
               >
-                <option value="AuraHR Core">AuraHR Core</option>
+                <option value="WorkSphere Core">WorkSphere Core</option>
                 <option value="Workforce Intelligence">Workforce Intelligence</option>
                 <option value="Finance & Payroll">Finance & Payroll</option>
                 <option value="Talent Management">Talent Management</option>

@@ -11,7 +11,7 @@ export function TermsPage() {
     {
       title: "Acceptance of Terms",
       icon: Scale,
-      content: "By accessing or using AuraHR, you agree to be bound by these Terms of Service. If you are using our services on behalf of an organization, you agree to these terms for that organization and represent that you have the authority to bind that entity."
+      content: "By accessing or using WorkSphere, you agree to be bound by these Terms of Service. If you are using our services on behalf of an organization, you agree to these terms for that organization and represent that you have the authority to bind that entity."
     },
     {
       title: "User Responsibilities",
@@ -21,12 +21,12 @@ export function TermsPage() {
     {
       title: "Service Usage Rules",
       icon: Zap,
-      content: "AuraHR is designed for professional enterprise management. You agree not to misuse our services, interfere with our networks, or attempt to circumvent our security protocols. High-velocity telemetry must not be used for illegal monitoring."
+      content: "WorkSphere is designed for professional enterprise management. You agree not to misuse our services, interfere with our networks, or attempt to circumvent our security protocols. High-velocity telemetry must not be used for illegal monitoring."
     },
     {
       title: "Intellectual Property",
       icon: ShieldCheck,
-      content: "All content, features, and functionality of AuraHR are the exclusive property of AuraHR Global. Our trademarks and brand identity may not be used in connection with any product or service without prior written consent."
+      content: "All content, features, and functionality of WorkSphere are the exclusive property of WorkSphere Global. Our trademarks and brand identity may not be used in connection with any product or service without prior written consent."
     }
   ]
 

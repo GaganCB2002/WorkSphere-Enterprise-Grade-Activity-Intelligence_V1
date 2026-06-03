@@ -14,7 +14,7 @@ export const ManagerTopbar: React.FC<TopbarProps> = ({ user, onOpenCommand }) =>
 
   const handleLogout = () => {
     try {
-      localStorage.removeItem('aurahr-token');
+      localStorage.removeItem('worksphere-token');
       localStorage.removeItem('token');
     } catch (e) { console.error(e); }
     window.location.href = '/login';

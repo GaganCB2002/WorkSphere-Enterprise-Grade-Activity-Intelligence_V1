@@ -256,7 +256,7 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
               <div className="overflow-hidden">
                 <div className="flex items-center gap-1.5">
                   <span className="font-display text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-300">
-                    AuraHR
+                    WorkSphere
                   </span>
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-black tracking-widest bg-blue-500/20 text-blue-400 border border-blue-500/30">
                     AI
@@ -321,7 +321,7 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
           </div>
 
           <div className="p-4 border-t border-white/5 mx-4 mb-4 flex items-center justify-between text-[10px] font-bold text-slate-500">
-            {sidebarOpen && <span>AuraHR OS v2.4</span>}
+            {sidebarOpen && <span>WorkSphere OS v2.4</span>}
             <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
           </div>
         </motion.aside>
@@ -1265,7 +1265,7 @@ export const HrExecutiveDashboard: React.FC<HrExecutiveDashboardProps> = ({
                   {activeMenu} Enterprise Module
                 </h2>
                 <p className="text-slate-500 dark:text-slate-400 max-w-lg mx-auto text-sm font-medium leading-relaxed mb-8">
-                  The <span className="text-blue-400 font-bold">{activeMenu}</span> microservice is fully integrated into the AuraHR Command Center telemetry grid. Real-time telemetry, AI predictive modeling, and role-based access control are actively engaged.
+                  The <span className="text-blue-400 font-bold">{activeMenu}</span> microservice is fully integrated into the WorkSphere Command Center telemetry grid. Real-time telemetry, AI predictive modeling, and role-based access control are actively engaged.
                 </p>
 
                 <div className="flex flex-wrap justify-center gap-4">

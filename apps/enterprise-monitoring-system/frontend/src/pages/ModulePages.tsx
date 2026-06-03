@@ -660,7 +660,7 @@ export function PayrollPage({ platform, token, onRefresh }: { platform: Platform
                           onClick={() => {
                             const doc = new jsPDF()
                             doc.setFontSize(22)
-                            doc.text("AURAHR PAYSLIP", 10, 20)
+                            doc.text("WORKSPHERE PAYSLIP", 10, 20)
                             doc.setFontSize(12)
                             doc.text(`Period: ${record.month}`, 10, 35)
                             doc.text(`Employee: ${record.employeeName}`, 10, 45)
@@ -672,7 +672,7 @@ export function PayrollPage({ platform, token, onRefresh }: { platform: Platform
                             doc.text(`PF Contribution: ${currency(record.breakdown.pf)}`, 10, 105)
                             doc.setFontSize(16)
                             doc.text(`NET PAYABLE: ${currency(record.breakdown.net)}`, 10, 130)
-                            doc.save(`AuraHR_Slip_${record.employeeId}_${record.month.replace(' ', '_')}.pdf`)
+                            doc.save(`WorkSphere_Slip_${record.employeeId}_${record.month.replace(' ', '_')}.pdf`)
                           }}
                           className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 transition dark:bg-slate-800 dark:hover:bg-slate-700"
                         >

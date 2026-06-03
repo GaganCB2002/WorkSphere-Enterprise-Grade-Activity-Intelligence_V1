@@ -24,7 +24,7 @@ export default function App() {
   const handleLogout = () => {
     setLoggingOut(true);
     setTimeout(() => {
-      localStorage.removeItem('aurahr-token');
+      localStorage.removeItem('worksphere-token');
       window.location.reload();
     }, 2000);
   };

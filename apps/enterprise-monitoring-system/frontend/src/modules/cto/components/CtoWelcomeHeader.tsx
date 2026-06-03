@@ -21,7 +21,7 @@ export const CtoWelcomeHeader: React.FC = () => {
           Good Morning, CTO
         </h2>
         <p className="text-slate-400 mt-2 font-medium">
-          {currentDate} • {currentTime} • AuraHR Enterprise
+          {currentDate} • {currentTime} • WorkSphere Enterprise
         </p>
       </div>
       

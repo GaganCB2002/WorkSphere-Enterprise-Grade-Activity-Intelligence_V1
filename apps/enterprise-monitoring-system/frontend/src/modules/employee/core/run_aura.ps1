@@ -2,7 +2,7 @@ $ProjectDir = "D:\full_Stack_project\Recruitment & Hiring"
 $BackendDir = "$ProjectDir\backend"
 $FrontendDir = "$ProjectDir\frontend"
 
-Write-Host "Starting AuraHR Services (Direct Mode to bypass & issue)..."
+Write-Host "Starting WorkSphere Services (Direct Mode to bypass & issue)..."
 
 # Start Backend
 # node node_modules\tsx\dist\cli.mjs watch src/server.ts

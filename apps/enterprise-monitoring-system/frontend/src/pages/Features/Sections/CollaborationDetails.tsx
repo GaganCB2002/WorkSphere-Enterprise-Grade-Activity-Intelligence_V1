@@ -67,7 +67,7 @@ export function CollaborationDetails() {
                 <span className="text-luxury-blue">Collaboration.</span>
               </h1>
               <p className="text-xl text-slate-500 dark:text-slate-400 leading-relaxed font-medium mb-10">
-                AuraHR's collaboration engine is engineered for the high-velocity enterprise. We've eliminated the friction between communication and execution.
+                WorkSphere's collaboration engine is engineered for the high-velocity enterprise. We've eliminated the friction between communication and execution.
               </p>
             </motion.div>
             <motion.div

@@ -50,7 +50,7 @@ export const TechLeadTopbar: React.FC<{ user: any }> = ({ user }) => {
         
         <button 
           onClick={() => {
-            localStorage.removeItem('aurahr-token');
+            localStorage.removeItem('worksphere-token');
             localStorage.removeItem('token');
             dispatch({ type: 'LOGOUT' });
             window.location.href = '/login';

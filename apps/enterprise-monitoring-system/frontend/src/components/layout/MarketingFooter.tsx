@@ -40,7 +40,7 @@ export function MarketingFooter() {
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-[#A0AEC0] hover:text-brand transition-colors cursor-pointer group">
                 <Mail size={16} className="group-hover:text-brand" />
-                <span className="text-[11px] font-black uppercase tracking-widest">nexus@aurahr.io</span>
+                <span className="text-[11px] font-black uppercase tracking-widest">nexus@worksphere.io</span>
               </div>
               <div className="flex items-center gap-3 text-[#A0AEC0] hover:text-brand transition-colors cursor-pointer group">
                 <Phone size={16} className="group-hover:text-brand" />
@@ -114,7 +114,7 @@ export function MarketingFooter() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-outline dark:border-white/5 gap-8">
           <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-slate-500">
-            © 2026 AuraHR Global Infrastructure • All Rights Reserved
+            © 2026 WorkSphere Global Infrastructure • All Rights Reserved
           </p>
           <div className="flex gap-8">
             <motion.div whileHover={{ y: -2 }} className="h-2 w-2 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/20" />

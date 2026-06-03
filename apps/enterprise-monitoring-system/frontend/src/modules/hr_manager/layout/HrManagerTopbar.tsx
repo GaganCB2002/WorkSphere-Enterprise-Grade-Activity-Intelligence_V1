@@ -15,7 +15,7 @@ export const HrManagerTopbar: React.FC<TopbarProps> = ({ user }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('aurahr-token');
+    localStorage.removeItem('worksphere-token');
     localStorage.removeItem('token');
     dispatch({ type: 'LOGOUT' });
     window.location.href = '/login';

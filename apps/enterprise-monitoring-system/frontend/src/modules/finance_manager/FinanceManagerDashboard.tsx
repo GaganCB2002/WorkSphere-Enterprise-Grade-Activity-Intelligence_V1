@@ -103,7 +103,7 @@ export const FinanceManagerDashboard: React.FC<FinanceManagerDashboardProps> = (
   }, [darkMode]);
 
   const handleLogout = () => {
-    localStorage.removeItem('aurahr-token');
+    localStorage.removeItem('worksphere-token');
     localStorage.removeItem('token');
     dispatch({ type: 'LOGOUT' });
     navigate('/login');
