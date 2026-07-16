@@ -1,0 +1,35 @@
+
+> enterprise-frontend@0.1.0 dev
+> vite
+
+
+  [32m[1mVITE[22m v6.4.2[39m  [2mready in [0m[1m408[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m3005[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://10.64.236.235:[1m3005[22m/[39m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\WorkSphere Enterprise-Grade Activity Intelligence\apps\enterprise-monitoring-system\frontend\src\modules\intern\components\AIAssistant.tsx, /src/styles/index.css[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\WorkSphere Enterprise-Grade Activity Intelligence\apps\enterprise-monitoring-system\frontend\src\modules\intern\components\NotificationPanel.tsx, /src/styles/index.css[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\WorkSphere Enterprise-Grade Activity Intelligence\apps\enterprise-monitoring-system\frontend\src\modules\intern\context\InternContext.tsx, /src/styles/index.css[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/intern/InternModule.tsx, /src/styles/index.css[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/data/mockData.ts[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/data/types.ts[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\WorkSphere Enterprise-Grade Activity Intelligence\apps\enterprise-monitoring-system\frontend\src\modules\intern\layout\InternShell.tsx, /src/styles/index.css[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\WorkSphere Enterprise-Grade Activity Intelligence\apps\enterprise-monitoring-system\frontend\src\modules\intern\layout\InternSidebar.tsx, /src/styles/index.css[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\WorkSphere Enterprise-Grade Activity Intelligence\apps\enterprise-monitoring-system\frontend\src\modules\intern\layout\InternTopbar.tsx, /src/styles/index.css[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/Page/AdminView.jsx[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/Page/AIView.jsx[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/Page/AttendanceView.jsx[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/Page/ChatView.jsx[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\WorkSphere Enterprise-Grade Activity Intelligence\apps\enterprise-monitoring-system\frontend\src\modules\intern\Page\DashboardView.jsx, /src/styles/index.css[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/Page/EvaluationsView.jsx[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/Page/LearningView.jsx[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/Page/ProfileView.jsx[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/Page/ProjectsView.jsx[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/Page/SettingsView.jsx[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/Page/TasksMobileView.jsx[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/Page/TasksView.jsx[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/Page/TeamView.jsx[22m
+[2m5:54:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mvite_stdout.txt[22m
+[2m5:54:27 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/index.html[22m
+[2m5:54:27 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/modules/intern/dist/index.html[22m
+[2m6:04:32 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mvite_stdout.txt[22m

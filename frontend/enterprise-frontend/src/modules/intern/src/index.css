@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+.dark {
+  --color-background: #1B1613;
+  --color-surface-container-lowest: #211B17;
+  --color-surface-container-low: #2B221E;
+  --color-surface-container: #211B17;
+  --color-surface-container-high: #2B221E;
+  --color-surface-container-highest: #352923;
+  --color-surface-dim: #2B221E;
+  --color-on-background: #FAF6F0;
+  --color-on-surface: #FAF6F0;
+  --color-on-surface-variant: #A89890;
+  --color-inverse-surface: #2B221E;
+  --color-on-secondary-fixed: #1B1613;
+  --color-surface-bright: #FAF6F0;
+  --color-outline-variant: rgba(216, 208, 200, 0.15);
+  --color-outline: #6E5C54;
+  --color-secondary-fixed-dim: #A89890;
+}
+
+@theme {
+  --color-on-primary-fixed-variant: #8a4518;
+  --color-primary-fixed: #fbe8d8;
+  --color-tertiary-fixed-dim: #e8a0a0;
+  --color-tertiary-fixed: #fce0e0;
+  --color-secondary-fixed-dim: #cec6be;
+  --color-on-secondary: #ffffff;
+  --color-primary-container: #e08850;
+  --color-on-secondary-fixed: #2a2420;
+  --color-surface-container-high: #ece6dc;
+  --color-on-surface-variant: #605850;
+  --color-background: #faf5ee;
+  --color-surface-container-highest: #e6e0d6;
+  --color-on-secondary-fixed-variant: #504840;
+  --color-error-container: #fce4e0;
+  --color-outline-variant: #d8d0c8;
+  --color-inverse-primary: #f0a878;
+  --color-on-error-container: #7a1a10;
+  --color-surface-tint: #c2652a;
+  --color-on-error: #ffffff;
+  --color-secondary: #78706a;
+  --color-on-primary: #ffffff;
+  --color-surface-container-low: #f6f0e8;
+  --color-secondary-fixed: #eae2da;
+  --color-surface-dim: #dcd6cc;
+  --color-surface-container: #f2ece4;
+  --color-on-tertiary-container: #3a2020;
+  --color-on-primary-container: #fbe8d8;
+  --color-inverse-surface: #3a302a;
+  --color-tertiary: #8c3c3c;
+  --color-surface-bright: #faf5ee;
+  --color-tertiary-container: #d47070;
+  --color-on-secondary-container: #605850;
+  --color-surface: #faf5ee;
+  --color-on-tertiary-fixed: #2e1515;
+  --color-secondary-container: #eae2da;
+  --color-primary: #c2652a;
+  --color-outline: #9a9088;
+  --color-on-tertiary-fixed-variant: #6e3030;
+  --color-on-primary-fixed: #401a08;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-variant: #ece6dc;
+  --color-on-tertiary: #ffffff;
+  --color-on-surface: #3a302a;
+  --color-error: #c0392b;
+  --color-on-background: #3a302a;
+  --color-primary-fixed-dim: #f0a878;
+  --color-inverse-on-surface: #faf5ee;
+
+  --font-headline: "EB Garamond", serif;
+  --font-body: "Manrope", sans-serif;
+  --font-label: "Manrope", sans-serif;
+
+  --shadow-soft: 0 2px 16px rgba(58, 48, 42, 0.04);
+  --shadow-warm: 0 4px 20px rgba(194, 101, 42, 0.12);
+}
+
+h1, h2, h3, h4, h5, h6, .font-headline {
+  font-family: var(--font-headline);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.icon-fill {
+  font-variation-settings: 'FILL' 1, 'wght' 350, 'GRAD' 0, 'opsz' 24;
+}
+
+.glass-panel {
+  background: rgba(246, 240, 232, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(216, 208, 200, 0.4);
+}
+
+.dark .glass-panel {
+  background: rgba(42, 36, 32, 0.6);
+  border: 1px solid rgba(96, 88, 80, 0.4);
+}
+
+.glass-card {
+  background: var(--color-surface-container-low);
+  border: 1px solid color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+}
+
+.dark .glass-card {
+  background: var(--color-inverse-surface);
+}
+
+.sahara-shadow {
+  box-shadow: 0 2px 16px rgba(58, 48, 42, 0.04);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8d0c8;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9a9088;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #605850;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

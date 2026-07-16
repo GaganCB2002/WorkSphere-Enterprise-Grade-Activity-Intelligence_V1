@@ -1,0 +1,192 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         String
+  employeeId   String?
+  avatar       String?
+  department   String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Employee {
+  id                String   @id
+  name              String
+  email             String   @unique
+  title             String
+  department        String
+  level             String
+  location          String
+  employmentType    String
+  joinDate          String
+  managerId         String?
+  compensation      Float
+  engagementScore   Float
+  performanceRating Float
+  attritionRisk     Float
+  status            String
+  skills            String
+  createdAt         DateTime @default(now())
+}
+
+model RevenueStream {
+  id              String   @id @default(uuid())
+  month           String
+  revenue         Float
+  target          Float
+  forecast        Float
+  EBITDA          Float
+  operatingMargin Float
+  cashFlow        Float
+  netProfit       Float
+  expenses        Float
+  investments     Float
+  liabilities     Float
+  quarter         String
+  createdAt       DateTime @default(now())
+}
+
+model SalesPipeline {
+  id                    String   @id @default(uuid())
+  stage                 String   // Lead, Qualified, Proposal, Won, Lost
+  clientName            String
+  dealValue             Float
+  conversionProbability Float
+  region                String
+  salesRep              String
+  expectedCloseDate     String
+  createdAt             DateTime @default(now())
+}
+
+model OperationalMetric {
+  id                  String   @id @default(uuid())
+  date                String
+  uptime              Float
+  deliveryDelayRate   Float
+  resourceUtilization Float
+  operationalCost     Float
+  efficiencyScore     Float
+  incidentCount       Int
+  bugTrend            Int
+  createdAt           DateTime @default(now())
+}
+
+model Project {
+  id             String   @id @default(uuid())
+  name           String
+  manager        String
+  budget         Float
+  spent          Float
+  status         String   // Active, Delayed, Completed
+  startDate      String
+  endDate        String
+  risks          String
+  milestones     String
+  teamAllocation Int
+  satisfaction   Float
+  createdAt      DateTime @default(now())
+}
+
+model CustomerSuccess {
+  id                    String   @id @default(uuid())
+  clientName            String
+  NPS                   Int
+  retentionRate         Float
+  churnRisk             Float
+  supportTicketsOpen    Int
+  supportTicketsResolved Int
+  renewalPipelineValue  Float
+  escalationsCount      Int
+  createdAt             DateTime @default(now())
+}
+
+model MarketingCampaign {
+  id             String   @id @default(uuid())
+  name           String
+  budget         Float
+  spent          Float
+  leadsGenerated Int
+  CAC            Float
+  ROI            Float
+  channel        String
+  clickRate      Float
+  conversionRate Float
+  createdAt      DateTime @default(now())
+}
+
+model ProductUsage {
+  id                 String   @id @default(uuid())
+  featureName        String
+  adoptionRate       Float
+  activeUsers        Int
+  userFeedbackRating Float
+  releaseVersion     String
+  roadmapStatus      String
+  createdAt          DateTime @default(now())
+}
+
+model RiskAssess {
+  id              String   @id @default(uuid())
+  riskCategory    String   // Compliance, Security, Financial, Operational
+  riskDescription String
+  severity        String   // High, Medium, Low
+  mitigationPlan  String
+  status          String   // Monitor, Mitigated, Triggered
+  department      String
+  createdAt       DateTime @default(now())
+}
+
+model StrategicOKR {
+  id           String   @id @default(uuid())
+  objective    String
+  keyResult    String
+  targetValue  Float
+  currentValue Float
+  progress     Float
+  owner        String
+  quarter      String
+  year         Int
+  risks        String
+  createdAt    DateTime @default(now())
+}
+
+model InvestorReport {
+  id               String   @id @default(uuid())
+  title            String
+  boardUpdate      String
+  fundingHistory   String
+  valuation        Float
+  shareholderCount Int
+  createdAt        DateTime @default(now())
+}
+
+model SystemNotification {
+  id        String   @id @default(uuid())
+  title     String
+  detail    String
+  time      String
+  type      String   // info, warning, success
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model AIWidgetData {
+  id                 String   @id @default(uuid())
+  todaySummary       String
+  weeklyReport       String
+  revenueForecast    String
+  growthOpportunities String
+  strategicRisks     String
+  lastUpdated        DateTime @default(now())
+}

@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023", "DOM"],
+    "module": "esnext",
+    "types": ["vite/client"],
+    "skipLibCheck": true,
+    "allowJs": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": false,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    "src", 
+    "../../../Recruitment & Hiring_1/ADMIN_SYSTEM", 
+    "../../../Recruitment & Hiring_1/CEO_SYSTEM", 
+    "../../../Recruitment & Hiring_1/EMPLOYEE_SYSTEM", 
+    "../../../Recruitment & Hiring_1/HR_SYSTEM", 
+    "../../../Recruitment & Hiring_1/MANAGER_SYSTEM", 
+    "../../../Recruitment & Hiring_1/TECHLEAD_SYSTEM", 
+    "../../../Recruitment & Hiring_1/MARKETING_SYSTEM", 
+    "../../../Recruitment & Hiring_1/SUPPORT_SYSTEM"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "src/modules/employee/legacy",
+    "src/modules/employee/core",
+    "src/modules/support/core",
+    "src/modules/support/legacy",
+    "src/modules/marketing/core",
+    "src/modules/marketing/location_service",
+    "src/modules/intern",
+    "src/modules/admin/database",
+    "src/modules/admin/Master_Overview_Dashboard.tsx"
+  ]
+}
