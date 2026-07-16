@@ -13,6 +13,29 @@ export default defineConfig({
   },
   build: {
     chunkSizeWarningLimit: 1200,
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+              return 'vendor-react';
+            }
+            if (id.includes('lucide-react')) {
+              return 'vendor-lucide';
+            }
+            if (id.includes('recharts') || id.includes('d3')) {
+              return 'vendor-charts';
+            }
+            return 'vendor';
+          }
+          if (id.includes('/src/modules/')) {
+            const moduleName = id.split('/src/modules/')[1].split('/')[0];
+            return `module-${moduleName}`;
+          }
+        }
+      }
+    }
   },
   server: {
     fs: {

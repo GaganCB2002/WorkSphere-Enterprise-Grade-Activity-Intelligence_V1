@@ -43,8 +43,8 @@ export const EngineeringTopbar: React.FC = () => {
         
         <button 
           onClick={() => {
-            localStorage.removeItem('worksphere-token');
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
             dispatch({ type: 'LOGOUT' });
             window.location.href = '/login';
           }}

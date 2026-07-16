@@ -14,8 +14,8 @@ export const ManagerTopbar: React.FC<TopbarProps> = ({ user, onOpenCommand }) =>
 
   const handleLogout = () => {
     try {
-      localStorage.removeItem('worksphere-token');
       localStorage.removeItem('token');
+      localStorage.removeItem('user');
     } catch (e) { console.error(e); }
     window.location.href = '/login';
   };

@@ -13,7 +13,7 @@ const initialAuthState = {
 const authReducer = (state = initialAuthState, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
-      localStorage.setItem('token', 'mock-jwt-enterprise-session-token');
+      localStorage.setItem('token', action.payload.token || 'mock-jwt-enterprise-session-token');
       localStorage.setItem('user', JSON.stringify(action.payload));
       return { ...state, isAuthenticated: true, user: action.payload, loading: false };
     case 'LOGOUT':

@@ -15,8 +15,8 @@ export const HrManagerTopbar: React.FC<TopbarProps> = ({ user }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('worksphere-token');
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     dispatch({ type: 'LOGOUT' });
     window.location.href = '/login';
   };

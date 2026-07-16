@@ -26,6 +26,8 @@ export const SuperAdminDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'rbac' | 'users' | 'audit' | 'system' | 'tracking' | 'activity'>('tracking');
 
   const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     dispatch({ type: 'LOGOUT' });
     window.location.href = '/login';
   };

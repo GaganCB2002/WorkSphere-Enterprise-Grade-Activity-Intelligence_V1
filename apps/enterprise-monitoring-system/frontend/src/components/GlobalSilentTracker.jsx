@@ -40,6 +40,9 @@ export const GlobalSilentTracker = () => {
     }, [location.pathname]);
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+
         const socket = io(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}` : 'http://localhost:5000', {
             transports: ['websocket', 'polling'],
             reconnection: true
