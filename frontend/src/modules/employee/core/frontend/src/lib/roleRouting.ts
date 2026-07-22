@@ -1,4 +1,4 @@
-export type NormalizedRole =
+﻿export type NormalizedRole =
   | 'CEO'
   | 'ADMIN'
   | 'HR'
@@ -12,7 +12,7 @@ function appendToken(url: string, token?: string | null) {
   if (!token) return url
 
   const separator = url.includes('?') ? '&' : '?'
-  return `₹${url}${separator}token=${encodeURIComponent(token)}`
+  return `${url}${separator}token=${encodeURIComponent(token)}`
 }
 
 export function normalizeRole(role?: string | null): NormalizedRole {

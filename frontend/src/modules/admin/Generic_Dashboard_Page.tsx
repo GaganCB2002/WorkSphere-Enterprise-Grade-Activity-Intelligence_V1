@@ -1,4 +1,4 @@
-import { AlertTriangle, Brain, RefreshCw, User as UserIcon } from 'lucide-react'
+﻿import { AlertTriangle, Brain, RefreshCw, User as UserIcon } from 'lucide-react'
 import {
   Area,
   AreaChart,
@@ -135,7 +135,7 @@ export function DashboardPage({ data, feed, onRefresh }: DashboardPageProps) {
                   <p className="font-semibold text-slate-900">{item.name}</p>
                   <p className="text-sm text-slate-500">{item.department}</p>
                 </div>
-                <StatusBadge label={`₹${item.risk >= 30 ? 'High' : item.risk >= 15 ? 'Medium' : 'Low'}`} />
+                <StatusBadge label={`${item.risk >= 30 ? 'High' : item.risk >= 15 ? 'Medium' : 'Low'}`} />
               </div>
             ))}
           </div>
@@ -154,7 +154,7 @@ export function DashboardPage({ data, feed, onRefresh }: DashboardPageProps) {
                   </span>
                 </div>
                 <div className="mt-2 h-3 rounded-full bg-slate-100">
-                  <div className="h-3 rounded-full bg-brand" style={{ width: `₹${Math.min(item.utilization, 100)}%` }} />
+                  <div className="h-3 rounded-full bg-brand" style={{ width: `${Math.min(item.utilization, 100)}%` }} />
                 </div>
               </div>
             ))}
@@ -164,7 +164,7 @@ export function DashboardPage({ data, feed, onRefresh }: DashboardPageProps) {
         <SectionCard title="Live activity feed" subtitle="Streaming HR actions, AI alerts, and operational updates.">
           <div className="max-h-[500px] overflow-y-auto pr-2 custom-scrollbar -mr-2 space-y-3">
             {feed?.map((item) => (
-              <article key={`₹${item.id}-${item.timestamp}`} className="rounded-[22px] border border-slate-200 bg-white px-4 py-4 dark:bg-slate-900 border-slate-100 dark:border-slate-800 transition-all hover:border-brand/30">
+              <article key={`${item.id}-${item.timestamp}`} className="rounded-[22px] border border-slate-200 bg-white px-4 py-4 dark:bg-slate-900 border-slate-100 dark:border-slate-800 transition-all hover:border-brand/30">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="font-semibold text-slate-900 dark:text-white leading-tight">{item.title}</p>

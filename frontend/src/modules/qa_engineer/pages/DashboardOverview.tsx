@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Download, ChevronDown, CheckCircle, Bug, Bot, Timer, ClipboardList, TrendingUp, AlertTriangle, Activity, Shield } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, Legend } from 'recharts';
 import { useDashboardMetrics } from '../data/hooks';
@@ -93,7 +93,7 @@ export const DashboardOverview: React.FC = () => {
                 <span className="text-slate-900 dark:text-slate-100">{metrics.criticalPathCoverage}%</span>
               </div>
               <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full transition-all duration-500" style={{ width: `₹${metrics.criticalPathCoverage}%` }} />
+                <div className="h-full bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full transition-all duration-500" style={{ width: `${metrics.criticalPathCoverage}%` }} />
               </div>
             </div>
             <div>
@@ -102,7 +102,7 @@ export const DashboardOverview: React.FC = () => {
                 <span className="text-slate-900 dark:text-slate-100">{metrics.regressionPassRate}%</span>
               </div>
               <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-violet-400 to-violet-600 rounded-full transition-all duration-500" style={{ width: `₹${metrics.regressionPassRate}%` }} />
+                <div className="h-full bg-gradient-to-r from-violet-400 to-violet-600 rounded-full transition-all duration-500" style={{ width: `${metrics.regressionPassRate}%` }} />
               </div>
             </div>
           </div>
@@ -129,11 +129,11 @@ export const DashboardOverview: React.FC = () => {
             icon={Bug}
             color="red"
             trend={{ value: '12% decrease', up: true }}
-            sublabel={`₹${metrics.criticalBugs} critical · ${metrics.highBugs} high`}
+            sublabel={`${metrics.criticalBugs} critical · ${metrics.highBugs} high`}
           />
           <StatCard
             label="Automation Coverage"
-            value={`₹${metrics.automationCoverage}%`}
+            value={`${metrics.automationCoverage}%`}
             icon={Bot}
             color="cyan"
             trend={{ value: `+${metrics.automationTrend}% this month`, up: true }}
@@ -141,7 +141,7 @@ export const DashboardOverview: React.FC = () => {
           />
           <StatCard
             label="Avg. Fix Time"
-            value={`₹${metrics.avgFixTime}d`}
+            value={`${metrics.avgFixTime}d`}
             icon={Timer}
             color="emerald"
             trend={{ value: 'Improved by 0.3d', up: true }}
@@ -166,7 +166,7 @@ export const DashboardOverview: React.FC = () => {
                 </Pie>
                 <Tooltip
                   contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', padding: '8px 12px' }}
-                  formatter={(value: number, name: string) => [`₹${value}%`, name]}
+                  formatter={(value: number, name: string) => [`${value}%`, name]}
                 />
               </PieChart>
             </ResponsiveContainer>

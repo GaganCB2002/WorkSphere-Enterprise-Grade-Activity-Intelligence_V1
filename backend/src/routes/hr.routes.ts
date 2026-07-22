@@ -52,12 +52,16 @@ router.get('/events', (req, res) => {
 
 // Health & Public Stats
 router.get('/stats', (req, res) => {
-  const store = db.get()
-  res.json({
-    totalEmployees: store.employees.length,
-    activeRecruitments: store.candidates.filter(c => c.stage !== 'Selected' && c.stage !== 'Rejected').length,
-    onboardingCount: store.onboarding.filter(o => o.status !== 'Completed').length
-  })
+  try {
+    const store = db.get()
+    res.json({
+      totalEmployees: store.employees.length,
+      activeRecruitments: store.candidates.filter(c => c.stage !== 'Selected' && c.stage !== 'Rejected').length,
+      onboardingCount: store.onboarding.filter(o => o.status !== 'Completed').length
+    })
+  } catch {
+    res.status(500).json({ message: 'Failed to fetch stats.' })
+  }
 })
 
 router.use(authenticate)
@@ -69,7 +73,7 @@ router.get('/platform', async (req, res) => {
     res.json(data)
   } catch (err: any) {
     console.error('[PLATFORM ERROR]:', err)
-    res.status(500).json({ message: err.message, stack: err.stack })
+    res.status(500).json({ message: err.message })
   }
 })
 router.get('/dashboard', async (req, res) => {
@@ -78,7 +82,7 @@ router.get('/dashboard', async (req, res) => {
     res.json(data)
   } catch (err: any) {
     console.error('[DASHBOARD ERROR]:', err)
-    res.status(500).json({ message: err.message, stack: err.stack })
+    res.status(500).json({ message: err.message })
   }
 })
 router.get('/activity', async (req, res) => {
@@ -87,7 +91,7 @@ router.get('/activity', async (req, res) => {
     res.json(data)
   } catch (err: any) {
     console.error('[ACTIVITY ERROR]:', err)
-    res.status(500).json({ message: err.message, stack: err.stack })
+    res.status(500).json({ message: err.message })
   }
 })
 
@@ -99,7 +103,8 @@ router.patch('/me', async (req, res) => {
   if (!parsed.success) { res.status(400).json({ message: 'Invalid profile data' }); return }
   try {
     const result = await authService.updateUser(req.auth!.sub, parsed.data)
-    result ? res.json(result) : res.status(404).json({ message: 'User not found' })
+    if (result) { res.json(result); return }
+    res.status(404).json({ message: 'User not found' })
   } catch (err: any) {
     res.status(500).json({ message: err.message })
   }
@@ -119,7 +124,8 @@ router.patch('/recruitment/candidates/:candidateId', authorize('CEO', 'HR', 'Man
   if (!parsed.success) { res.status(400).json({ message: 'Invalid stage.' }); return }
   try {
     const result = await hrService.updateCandidateStage(String(req.params.candidateId), parsed.data.stage as CandidateStage)
-    result ? res.json(result) : res.status(404).json({ message: 'Not found' })
+    if (result) { res.json(result); return }
+    res.status(404).json({ message: 'Not found' })
   } catch (err: any) {
     res.status(500).json({ message: err.message })
   }
@@ -178,87 +184,143 @@ router.post('/attendance/leave-requests', async (req, res) => {
   }
 })
 router.get('/ai/leave-suggestion', (req, res) => {
-  const { employeeId, from, to } = req.query as any
-  res.json({ suggestion: aiService.suggestLeaveApproval({ employeeId, from, to } as any) })
+  try {
+    const { employeeId, from, to } = req.query as any
+    res.json({ suggestion: aiService.suggestLeaveApproval({ employeeId, from, to } as any) })
+  } catch (err: any) {
+    res.status(500).json({ message: err.message })
+  }
 })
 
 // Resource Allocation
-router.get('/allocation', authorize('CEO', 'HR', 'Manager', 'Lead'), (req, res) => res.json(allocationService.getAll()))
+router.get('/allocation', authorize('CEO', 'HR', 'Manager', 'Lead'), (req, res) => {
+  try {
+    res.json(allocationService.getAll())
+  } catch (err: any) {
+    res.status(500).json({ message: err.message })
+  }
+})
 router.post('/allocation', authorize('CEO', 'HR', 'Manager'), (req, res) => {
-  const parsed = z.object({
-    employeeId: z.string(),
-    employeeName: z.string(),
-    projectId: z.string(),
-    projectName: z.string(),
-    hoursPerWeek: z.number(),
-    role: z.string(),
-    startDate: z.string(),
-    endDate: z.string()
-  }).safeParse(req.body)
-  if (!parsed.success) { res.status(400).json({ message: 'Invalid allocation data' }); return }
-  res.status(201).json(allocationService.create(parsed.data))
+  try {
+    const parsed = z.object({
+      employeeId: z.string(),
+      employeeName: z.string(),
+      projectId: z.string(),
+      projectName: z.string(),
+      hoursPerWeek: z.number(),
+      role: z.string(),
+      startDate: z.string(),
+      endDate: z.string()
+    }).safeParse(req.body)
+    if (!parsed.success) { res.status(400).json({ message: 'Invalid allocation data' }); return }
+    res.status(201).json(allocationService.create(parsed.data))
+  } catch (err: any) {
+    res.status(500).json({ message: err.message })
+  }
 })
 
 // Asset Management
-router.get('/assets', authorize('CEO', 'HR', 'Manager', 'Lead'), (req, res) => res.json(allocationService.getAssets()))
-router.get('/assets/allocations', authorize('CEO', 'HR', 'Manager', 'Lead'), (req, res) => res.json(allocationService.getAssetAllocations()))
+router.get('/assets', authorize('CEO', 'HR', 'Manager', 'Lead'), (req, res) => {
+  try {
+    res.json(allocationService.getAssets())
+  } catch (err: any) {
+    res.status(500).json({ message: err.message })
+  }
+})
+router.get('/assets/allocations', authorize('CEO', 'HR', 'Manager', 'Lead'), (req, res) => {
+  try {
+    res.json(allocationService.getAssetAllocations())
+  } catch (err: any) {
+    res.status(500).json({ message: err.message })
+  }
+})
 router.post('/assets', authorize('CEO', 'HR'), (req, res) => {
-  const parsed = z.object({
-    name: z.string(),
-    type: z.enum(['Hardware', 'Identification', 'Peripheral', 'Other']),
-    status: z.enum(['Available', 'Allocated', 'Maintenance']),
-    condition: z.enum(['New', 'Good', 'Fair', 'Poor'])
-  }).safeParse(req.body)
-  if (!parsed.success) { res.status(400).json({ message: 'Invalid asset data' }); return }
-  res.status(201).json(allocationService.addAsset(parsed.data))
+  try {
+    const parsed = z.object({
+      name: z.string(),
+      type: z.enum(['Hardware', 'Identification', 'Peripheral', 'Other']),
+      status: z.enum(['Available', 'Allocated', 'Maintenance']),
+      condition: z.enum(['New', 'Good', 'Fair', 'Poor'])
+    }).safeParse(req.body)
+    if (!parsed.success) { res.status(400).json({ message: 'Invalid asset data' }); return }
+    res.status(201).json(allocationService.addAsset(parsed.data))
+  } catch (err: any) {
+    res.status(500).json({ message: err.message })
+  }
 })
 router.post('/assets/allocate', authorize('CEO', 'HR'), (req, res) => {
-  const parsed = z.object({
-    assetId: z.string(),
-    assetName: z.string(),
-    employeeId: z.string(),
-    employeeName: z.string(),
-    expectedDuration: z.string().optional()
-  }).safeParse(req.body)
-  if (!parsed.success) { res.status(400).json({ message: 'Invalid allocation payload' }); return }
-  res.status(201).json(allocationService.allocateAsset(parsed.data))
+  try {
+    const parsed = z.object({
+      assetId: z.string(),
+      assetName: z.string(),
+      employeeId: z.string(),
+      employeeName: z.string(),
+      expectedDuration: z.string().optional()
+    }).safeParse(req.body)
+    if (!parsed.success) { res.status(400).json({ message: 'Invalid allocation payload' }); return }
+    res.status(201).json(allocationService.allocateAsset(parsed.data))
+  } catch (err: any) {
+    res.status(500).json({ message: err.message })
+  }
 })
 router.post('/assets/revoke/:id', authorize('CEO', 'HR'), (req, res) => {
-  allocationService.revokeAsset(String(req.params.id))
-  res.status(204).end()
+  try {
+    allocationService.revokeAsset(String(req.params.id))
+    res.status(204).end()
+  } catch (err: any) {
+    res.status(500).json({ message: err.message })
+  }
 })
 
 // Chat
 router.get('/chat/messages', (req, res) => {
-  const { otherId, groupId } = req.query as any
-  res.json(chatService.getMessages(req.auth!.sub, otherId, groupId))
+  try {
+    const { otherId, groupId } = req.query as any
+    res.json(chatService.getMessages(req.auth!.sub, otherId, groupId))
+  } catch (err: any) {
+    res.status(500).json({ message: err.message })
+  }
 })
 router.post('/chat/messages', (req, res) => {
-  const parsed = z.object({
-    receiverId: z.string().optional(),
-    groupId: z.string().optional(),
-    content: z.string(),
-    type: z.enum(['text', 'image', 'file']),
-    fileUrl: z.string().optional()
-  }).safeParse(req.body)
-  if (!parsed.success) { res.status(400).json({ message: 'Invalid message' }); return }
-  res.status(201).json(chatService.sendMessage({ ...parsed.data, senderId: req.auth!.sub, senderName: req.auth!.email }))
+  try {
+    const parsed = z.object({
+      receiverId: z.string().optional(),
+      groupId: z.string().optional(),
+      content: z.string(),
+      type: z.enum(['text', 'image', 'file']),
+      fileUrl: z.string().optional()
+    }).safeParse(req.body)
+    if (!parsed.success) { res.status(400).json({ message: 'Invalid message' }); return }
+    res.status(201).json(chatService.sendMessage({ ...parsed.data, senderId: req.auth!.sub, senderName: req.auth!.email }))
+  } catch (err: any) {
+    res.status(500).json({ message: err.message })
+  }
 })
 
 // Email
-router.get('/mail/inbox', (req, res) => res.json(mailService.getInbox(req.auth!.sub)))
+router.get('/mail/inbox', (req, res) => {
+  try {
+    res.json(mailService.getInbox(req.auth!.sub))
+  } catch (err: any) {
+    res.status(500).json({ message: err.message })
+  }
+})
 router.post('/mail/send', (req, res) => {
-  const parsed = z.object({
-    receiverId: z.string(),
-    subject: z.string(),
-    body: z.string()
-  }).safeParse(req.body)
-  if (!parsed.success) { res.status(400).json({ message: 'Invalid email payload' }); return }
-  res.status(201).json(mailService.sendMail({
-    ...parsed.data,
-    senderId: req.auth!.sub,
-    senderName: req.auth!.email
-  }))
+  try {
+    const parsed = z.object({
+      receiverId: z.string(),
+      subject: z.string(),
+      body: z.string()
+    }).safeParse(req.body)
+    if (!parsed.success) { res.status(400).json({ message: 'Invalid email payload' }); return }
+    res.status(201).json(mailService.sendMail({
+      ...parsed.data,
+      senderId: req.auth!.sub,
+      senderName: req.auth!.email
+    }))
+  } catch (err: any) {
+    res.status(500).json({ message: err.message })
+  }
 })
 
 // Payroll

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Target, ArrowUpRight, Wallet } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -63,7 +63,7 @@ export const AdsManagement: React.FC = () => {
                 <AreaChart data={adData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
                   <XAxis dataKey="month" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} />
-                  <YAxis yAxisId="left" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v)=>`₹${v/1000}k`} />
+                  <YAxis yAxisId="left" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v)=>`${v/1000}k`} />
                   <YAxis yAxisId="right" orientation="right" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} />
                   <Tooltip contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }} />
                   <Area yAxisId="right" type="monotone" dataKey="conversions" stroke="#10b981" strokeWidth={3} fill="#d1fae5" fillOpacity={0.4} name="Conversions" />

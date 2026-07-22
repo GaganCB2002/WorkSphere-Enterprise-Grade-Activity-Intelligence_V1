@@ -1,4 +1,4 @@
-/* eslint-disable react-refresh/only-export-components */
+﻿/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { authService } from '@/services/auth.service';
 import { useAuthStore } from '@/stores/auth';
@@ -63,7 +63,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           const redirectUrl = role === 'HR' || role === 'CEO' || role === 'MANAGER' 
             ? 'http://127.0.0.1:3000' 
             : 'http://127.0.0.1:3001';
-          window.location.href = `₹${redirectUrl}?token=${currentToken}`;
+          window.location.href = `${redirectUrl}?token=${currentToken}`;
           return;
         }
 

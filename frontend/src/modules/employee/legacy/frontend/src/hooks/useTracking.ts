@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import axios from 'axios';
 
 const API_BASE = '/api/location';
@@ -16,7 +16,7 @@ export const useTracking = (user: any, token: string | null) => {
                 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
                 const deviceType = isMobile ? 'Mobile' : 'Laptop/Desktop';
 
-                await axios.post(`₹${API_BASE}/update`, {
+                await axios.post(`${API_BASE}/update`, {
                     userId: user.id,
                     employeeId: user.employeeId || 'N/A',
                     name: user.name,

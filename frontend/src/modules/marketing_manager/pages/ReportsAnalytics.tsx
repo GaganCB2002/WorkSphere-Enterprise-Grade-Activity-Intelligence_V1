@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Download, Calendar, FileText, BarChart2, PieChart, TrendingUp, ArrowUpRight } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
@@ -98,10 +98,10 @@ export const ReportsAnalytics: React.FC = () => {
                 <AreaChart data={spendRevenueData} margin={{ top: 10, right: 0, left: -10, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
                   <XAxis dataKey="month" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} />
-                  <YAxis yAxisId="left" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(val) => `₹${val/1000}k`} />
+                  <YAxis yAxisId="left" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(val) => `${val/1000}k`} />
                   <Tooltip 
                     contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}
-                    formatter={(value: number) => `₹${value.toLocaleString()}`}
+                    formatter={(value: number) => `${value.toLocaleString()}`}
                   />
                   <Area yAxisId="left" type="monotone" dataKey="revenue" stroke="#10b981" strokeWidth={3} fill="#d1fae5" fillOpacity={0.4} name="Revenue" />
                   <Area yAxisId="left" type="monotone" dataKey="spend" stroke="#0d47a1" strokeWidth={3} fill="none" name="Spend" />
@@ -121,12 +121,12 @@ export const ReportsAnalytics: React.FC = () => {
                <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={channelData} layout="vertical" margin={{ top: 0, right: 20, left: 40, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#e2e8f0" />
-                  <XAxis type="number" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(val) => `₹${val}%`} />
+                  <XAxis type="number" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(val) => `${val}%`} />
                   <YAxis dataKey="name" type="category" stroke="#475569" fontSize={11} tickLine={false} axisLine={false} width={100} />
                   <Tooltip 
                     cursor={{fill: '#f8fafc'}}
                     contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }}
-                    formatter={(value: number) => `₹${value}%`}
+                    formatter={(value: number) => `${value}%`}
                   />
                   <Bar dataKey="conversion" fill="#0d47a1" radius={[0, 4, 4, 0]} barSize={24} name="Conv. Rate" />
                 </BarChart>

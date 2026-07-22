@@ -43,25 +43,36 @@ let tickets = [
 ];
 
 router.get('/tickets', authenticate, (req, res) => {
-  res.json({ tickets });
+  try {
+    res.json({ tickets });
+  } catch {
+    res.status(500).json({ error: 'Failed to fetch tickets.' });
+  }
 });
 
 router.post('/tickets', authenticate, (req, res) => {
-  const { title, category, priority } = req.body;
-  const newTicket = {
-    id: `tkt-${Date.now()}`,
-    _id: `tkt-${Date.now()}`,
-    title: title || 'New Helpdesk Ticket',
-    category: category || 'General',
-    priority: priority || 'Medium',
-    severity: priority || 'Medium',
-    status: 'Open',
-    createdBy: { name: req.auth?.email?.split('@')[0] || 'Employee', email: req.auth?.email || 'employee@worksphere.com' },
-    createdAt: new Date().toISOString(),
-    created_at: new Date().toISOString()
-  };
-  tickets.unshift(newTicket);
-  res.status(201).json({ success: true, ticket: newTicket });
+  try {
+    const { title, category, priority } = req.body;
+    if (!req.auth) {
+      res.status(401).json({ error: 'Authentication required.' }); return;
+    }
+    const newTicket = {
+      id: `tkt-${Date.now()}`,
+      _id: `tkt-${Date.now()}`,
+      title: title || 'New Helpdesk Ticket',
+      category: category || 'General',
+      priority: priority || 'Medium',
+      severity: priority || 'Medium',
+      status: 'Open',
+      createdBy: { name: req.auth.email?.split('@')[0] || 'Employee', email: req.auth.email || 'employee@worksphere.com' },
+      createdAt: new Date().toISOString(),
+      created_at: new Date().toISOString()
+    };
+    tickets.unshift(newTicket);
+    res.status(201).json({ success: true, ticket: newTicket });
+  } catch {
+    res.status(500).json({ error: 'Failed to create ticket.' });
+  }
 });
 
 export default router;

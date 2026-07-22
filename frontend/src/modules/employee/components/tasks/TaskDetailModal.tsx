@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Clock, Send, Paperclip, CheckSquare, Plus, ChevronRight, CornerDownRight } from 'lucide-react';
 import { Modal } from '../ui/Modal';
 import { StatusBadge } from '../ui/StatusBadge';
@@ -59,7 +59,7 @@ export function TaskDetailModal({
       isOpen={isOpen}
       onClose={onClose}
       title={task.title}
-      subtitle={`₹${task.project} • Task #${task.id}`}
+      subtitle={`${task.project} • Task #${task.id}`}
       size="lg"
     >
       <div className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">

@@ -34,19 +34,19 @@ export const HrWebmailPage: React.FC = () => {
             <div className="flex items-center gap-2"><Inbox className="w-4 h-4" /> Inbox</div>
             <span className="bg-indigo-600 text-white text-[10px] px-1.5 py-0.5 rounded-full">2</span>
           </div>
-          <div className="flex items-center gap-2 px-3 py-2 text-[#8b949e] hover:text-slate-200 hover:bg-[#21262d] rounded-md cursor-pointer text-sm font-medium transition-colors">
+          <div className="flex items-center gap-2 px-3 py-2 text-[#8b949e] hover:text-slate-900 dark:text-slate-200 hover:bg-[#21262d] rounded-md cursor-pointer text-sm font-medium transition-colors">
             <Star className="w-4 h-4" /> Starred
           </div>
-          <div className="flex items-center gap-2 px-3 py-2 text-[#8b949e] hover:text-slate-200 hover:bg-[#21262d] rounded-md cursor-pointer text-sm font-medium transition-colors">
+          <div className="flex items-center gap-2 px-3 py-2 text-[#8b949e] hover:text-slate-900 dark:text-slate-200 hover:bg-[#21262d] rounded-md cursor-pointer text-sm font-medium transition-colors">
             <Clock className="w-4 h-4" /> Snoozed
           </div>
-          <div className="flex items-center gap-2 px-3 py-2 text-[#8b949e] hover:text-slate-200 hover:bg-[#21262d] rounded-md cursor-pointer text-sm font-medium transition-colors">
+          <div className="flex items-center gap-2 px-3 py-2 text-[#8b949e] hover:text-slate-900 dark:text-slate-200 hover:bg-[#21262d] rounded-md cursor-pointer text-sm font-medium transition-colors">
             <Send className="w-4 h-4" /> Sent
           </div>
-          <div className="flex items-center gap-2 px-3 py-2 text-[#8b949e] hover:text-slate-200 hover:bg-[#21262d] rounded-md cursor-pointer text-sm font-medium transition-colors">
+          <div className="flex items-center gap-2 px-3 py-2 text-[#8b949e] hover:text-slate-900 dark:text-slate-200 hover:bg-[#21262d] rounded-md cursor-pointer text-sm font-medium transition-colors">
             <Archive className="w-4 h-4" /> Archive
           </div>
-          <div className="flex items-center gap-2 px-3 py-2 text-[#8b949e] hover:text-slate-200 hover:bg-[#21262d] rounded-md cursor-pointer text-sm font-medium transition-colors">
+          <div className="flex items-center gap-2 px-3 py-2 text-[#8b949e] hover:text-slate-900 dark:text-slate-200 hover:bg-[#21262d] rounded-md cursor-pointer text-sm font-medium transition-colors">
             <Trash2 className="w-4 h-4" /> Trash
           </div>
         </div>
@@ -59,7 +59,7 @@ export const HrWebmailPage: React.FC = () => {
            <input 
              type="text" 
              placeholder="Search emails..." 
-             className="w-full bg-[#161b22] border border-[#30363d] rounded-md py-1.5 pl-8 pr-3 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+             className="w-full bg-[#161b22] border border-[#30363d] rounded-md py-1.5 pl-8 pr-3 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-indigo-500"
            />
         </div>
         <div className="flex-1 overflow-y-auto custom-scrollbar divide-y divide-[#21262d]">
@@ -69,7 +69,7 @@ export const HrWebmailPage: React.FC = () => {
                 <h4 className={`text-sm ${email.unread ? 'font-bold text-slate-100' : 'font-medium text-slate-300'}`}>{email.sender}</h4>
                 <span className={`text-[10px] ${email.unread ? 'font-bold text-indigo-400' : 'text-[#8b949e]'}`}>{email.date}</span>
               </div>
-              <p className={`text-xs mb-1 ${email.unread ? 'font-bold text-slate-200' : 'text-[#8b949e]'}`}>{email.subject}</p>
+              <p className={`text-xs mb-1 ${email.unread ? 'font-bold text-slate-900 dark:text-slate-200' : 'text-[#8b949e]'}`}>{email.subject}</p>
               <p className="text-[11px] text-[#8b949e] line-clamp-2 leading-snug">{email.preview}</p>
             </div>
           ))}
@@ -80,12 +80,12 @@ export const HrWebmailPage: React.FC = () => {
       <div className="flex-1 flex flex-col bg-[#0E1117]">
         <div className="h-14 border-b border-[#21262d] flex items-center justify-between px-4">
           <div className="flex items-center gap-3 text-[#8b949e]">
-            <button className="p-1.5 hover:text-slate-200 hover:bg-[#21262d] rounded transition-colors"><Archive className="w-4 h-4" /></button>
-            <button className="p-1.5 hover:text-slate-200 hover:bg-[#21262d] rounded transition-colors"><Trash2 className="w-4 h-4" /></button>
+            <button className="p-1.5 hover:text-slate-900 dark:text-slate-200 hover:bg-[#21262d] rounded transition-colors"><Archive className="w-4 h-4" /></button>
+            <button className="p-1.5 hover:text-slate-900 dark:text-slate-200 hover:bg-[#21262d] rounded transition-colors"><Trash2 className="w-4 h-4" /></button>
             <div className="w-[1px] h-4 bg-[#30363d] mx-1"></div>
-            <button className="p-1.5 hover:text-slate-200 hover:bg-[#21262d] rounded transition-colors"><Clock className="w-4 h-4" /></button>
+            <button className="p-1.5 hover:text-slate-900 dark:text-slate-200 hover:bg-[#21262d] rounded transition-colors"><Clock className="w-4 h-4" /></button>
           </div>
-          <button className="p-1.5 text-[#8b949e] hover:text-slate-200 hover:bg-[#21262d] rounded transition-colors">
+          <button className="p-1.5 text-[#8b949e] hover:text-slate-900 dark:text-slate-200 hover:bg-[#21262d] rounded transition-colors">
             <MoreVertical className="w-4 h-4" />
           </button>
         </div>
@@ -99,7 +99,7 @@ export const HrWebmailPage: React.FC = () => {
                   GR
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-slate-200">Greenhouse Recruiting <span className="text-xs font-normal text-[#8b949e] ml-1">&lt;no-reply@greenhouse.io&gt;</span></p>
+                  <p className="text-sm font-bold text-slate-900 dark:text-slate-200">Greenhouse Recruiting <span className="text-xs font-normal text-[#8b949e] ml-1">&lt;no-reply@greenhouse.io&gt;</span></p>
                   <p className="text-xs text-[#8b949e]">to HR Team</p>
                 </div>
               </div>
@@ -113,15 +113,15 @@ export const HrWebmailPage: React.FC = () => {
             <div className="bg-[#161b22] border border-[#30363d] p-4 rounded-xl space-y-2">
                <div className="flex justify-between">
                  <span className="text-[#8b949e]">Candidate Name:</span>
-                 <span className="font-bold text-slate-200">Michael Chang</span>
+                 <span className="font-bold text-slate-900 dark:text-slate-200">Michael Chang</span>
                </div>
                <div className="flex justify-between">
                  <span className="text-[#8b949e]">Experience:</span>
-                 <span className="font-bold text-slate-200">12+ Years</span>
+                 <span className="font-bold text-slate-900 dark:text-slate-200">12+ Years</span>
                </div>
                <div className="flex justify-between">
                  <span className="text-[#8b949e]">Current Location:</span>
-                 <span className="font-bold text-slate-200">San Francisco, CA</span>
+                 <span className="font-bold text-slate-900 dark:text-slate-200">San Francisco, CA</span>
                </div>
             </div>
             <p>Please review their resume and update their status in the Recruitment Pipeline board.</p>
@@ -130,10 +130,10 @@ export const HrWebmailPage: React.FC = () => {
           </div>
           
           <div className="mt-8 border-t border-[#21262d] pt-6 flex gap-3">
-            <button className="px-4 py-2 border border-[#30363d] bg-[#161b22] hover:bg-[#21262d] text-slate-200 text-sm font-bold rounded-md transition-colors flex items-center gap-2">
+            <button className="px-4 py-2 border border-[#30363d] bg-[#161b22] hover:bg-[#21262d] text-slate-900 dark:text-slate-200 text-sm font-bold rounded-md transition-colors flex items-center gap-2">
               Reply
             </button>
-            <button className="px-4 py-2 border border-[#30363d] bg-[#161b22] hover:bg-[#21262d] text-slate-200 text-sm font-bold rounded-md transition-colors flex items-center gap-2">
+            <button className="px-4 py-2 border border-[#30363d] bg-[#161b22] hover:bg-[#21262d] text-slate-900 dark:text-slate-200 text-sm font-bold rounded-md transition-colors flex items-center gap-2">
               Forward
             </button>
           </div>

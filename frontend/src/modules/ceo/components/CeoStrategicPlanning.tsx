@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Target, ArrowRight, TrendingUp } from 'lucide-react';
 
 export const CeoStrategicPlanning: React.FC = () => {
@@ -32,7 +32,7 @@ export const CeoStrategicPlanning: React.FC = () => {
             </div>
             
             <div className="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden">
-              <div className={`h-full ${okr.color}`} style={{ width: `₹${okr.progress}%` }} />
+              <div className={`h-full ${okr.color}`} style={{ width: `${okr.progress}%` }} />
             </div>
           </div>
         ))}

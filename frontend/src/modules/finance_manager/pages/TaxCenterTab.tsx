@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
 
 import { 
@@ -27,7 +27,7 @@ export const TaxCenterTab: React.FC = () => {
     setTasks(prev => prev.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
     const task = tasks.find(t => t.id === id);
     if (task && !task.completed) {
-      alert(`Cleared tax liability payout of ₹${task.liability.toLocaleString()} for ${id}. Filing receipts generated.`);
+      alert(`Cleared tax liability payout of ${task.liability.toLocaleString()} for ${id}. Filing receipts generated.`);
     }
   };
 

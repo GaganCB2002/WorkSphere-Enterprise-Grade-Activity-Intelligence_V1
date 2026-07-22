@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Target, Flag, Clock } from 'lucide-react';
 
 export const CeoProjectPortfolio: React.FC = () => {
@@ -36,7 +36,7 @@ export const CeoProjectPortfolio: React.FC = () => {
                 </div>
               </div>
               <div className="w-full h-2 bg-slate-950 rounded-full overflow-hidden">
-                <div className={`h-full ${p.color}`} style={{ width: `₹${p.progress}%` }} />
+                <div className={`h-full ${p.color}`} style={{ width: `${p.progress}%` }} />
               </div>
             </div>
           </div>

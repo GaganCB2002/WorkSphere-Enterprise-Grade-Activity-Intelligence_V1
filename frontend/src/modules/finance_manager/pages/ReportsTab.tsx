@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   FileText, Download, Play, Calendar, CheckCircle2, 
   Clock, AlertTriangle, RefreshCw, RefreshCwIcon, Filter 
@@ -46,7 +46,7 @@ export const ReportsTab: React.FC = () => {
             const fileExt = reportType === 'BALANCE_SHEET' ? 'xlsx' : reportType === 'AUDIT_TRAIL' ? 'csv' : 'pdf';
             const newReport: ReportArchiveItem = {
               id: `REP-00${archive.length + 1}`,
-              name: `₹${reportPeriod} Generated ${typeLabel}.${fileExt}`,
+              name: `${reportPeriod} Generated ${typeLabel}.${fileExt}`,
               type: reportType,
               period: reportPeriod,
               generatedAt: new Date().toISOString().replace('T', ' ').slice(0, 16),
@@ -130,7 +130,7 @@ export const ReportsTab: React.FC = () => {
                   <div className="w-full h-2 bg-[#1C2542] rounded-full overflow-hidden border border-[#1D2644]">
                     <div 
                       className="h-full bg-gradient-to-r from-[#7a78e9] to-[#00e5ff] rounded-full transition-all duration-300"
-                      style={{ width: `₹${genProgress}%` }}
+                      style={{ width: `${genProgress}%` }}
                     />
                   </div>
                 </div>

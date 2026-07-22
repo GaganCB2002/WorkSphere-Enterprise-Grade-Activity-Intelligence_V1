@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 import { 
   Users, 
   BarChart3, 
@@ -175,7 +175,7 @@ export function ManagerDashboardPage({ user, platform }: { user: User, platform:
                               <td className="py-4 w-48">
                                   <div className="flex items-center gap-3">
                                       <div className="flex-1 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                                          <div className={`h-full bg-luxury-blue`} style={{ width: `₹${project.progress}%` }} />
+                                          <div className={`h-full bg-luxury-blue`} style={{ width: `${project.progress}%` }} />
                                       </div>
                                       <span className="text-[10px] font-black">{project.progress}%</span>
                                   </div>

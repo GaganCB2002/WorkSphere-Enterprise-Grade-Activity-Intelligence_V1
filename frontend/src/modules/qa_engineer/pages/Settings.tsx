@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+﻿import React, { useContext } from 'react';
 import { Settings as SettingsIcon, Bell, Shield, Smartphone, Mail, UserCheck, Target, Save } from 'lucide-react';
 import { useSettings } from '../data/hooks';
 import { QaShellContext } from '../layout/QaShell';
@@ -9,7 +9,7 @@ export const Settings: React.FC = () => {
 
   const handleToggle = (key: string) => {
     updateSetting(key, !settings[key]);
-    addToast(`₹${key.replace(/([A-Z])/g, ' ₹1').replace(/^./, s => s.toUpperCase())} ${settings[key] ? 'disabled' : 'enabled'}`, 'success');
+    addToast(`${key.replace(/([A-Z])/g, ' ₹1').replace(/^./, s => s.toUpperCase())} ${settings[key] ? 'disabled' : 'enabled'}`, 'success');
   };
 
   return (

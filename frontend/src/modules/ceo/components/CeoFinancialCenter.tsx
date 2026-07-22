@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
 import { TrendingUp, TrendingDown, DollarSign } from 'lucide-react';
 
@@ -53,9 +53,9 @@ export const CeoFinancialCenter: React.FC = () => {
             <BarChart data={mockFinanceData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.5} />
               <XAxis dataKey="month" stroke="#94a3b8" />
-              <YAxis stroke="#94a3b8" tickFormatter={(value) => `₹${value/1000}k`} />
+              <YAxis stroke="#94a3b8" tickFormatter={(value) => `${value/1000}k`} />
               <Tooltip 
-                formatter={(value: number) => `₹${(value/1000).toFixed(0)}k`}
+                formatter={(value: number) => `${(value/1000).toFixed(0)}k`}
                 contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '1rem', color: '#fff' }}
               />
               <Legend />

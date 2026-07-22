@@ -4,6 +4,9 @@ import { authenticate } from '../middleware/auth'
 import { authService } from '../services/auth.service'
 import { activityService } from '../services/activity.service'
 
+import fs from 'fs';
+import path from 'path';
+
 const router = Router()
 
 const loginSchema = z.object({
@@ -38,9 +41,28 @@ router.post('/login', async (req, res) => {
       location: 'Bangalore, IN'
     })
 
+    // Track and save the login time explicitly
+    const loginRecord = {
+      userId: session.user.id,
+      email: session.user.email,
+      name: session.user.name,
+      loginTime: new Date().toISOString(),
+      ip: req.ip
+    };
+    
+    const logsDir = path.join(__dirname, '../../data');
+    const logsPath = path.join(logsDir, 'login_history.json');
+    if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
+    let logs = [];
+    try {
+      if (fs.existsSync(logsPath)) logs = JSON.parse(fs.readFileSync(logsPath, 'utf8'));
+    } catch(e) {}
+    logs.push(loginRecord);
+    fs.writeFileSync(logsPath, JSON.stringify(logs, null, 2));
+
     res.json(session)
   } catch (error) {
-    res.status(401).json({ message: error instanceof Error ? error.message : 'Login failed.' })
+    res.status(500).json({ message: 'Login processing failed.' })
   }
 })
 

@@ -22,20 +22,20 @@ export const HrManagerTopbar: React.FC<TopbarProps> = ({ user }) => {
   };
 
   return (
-    <header className="h-16 shrink-0 bg-[#0E1117] border-b border-[#21262d] flex items-center justify-between px-6 z-10">
+    <header className="h-16 shrink-0 bg-white dark:bg-[#0E1117] border-b border-slate-200 dark:border-[#21262d] flex items-center justify-between px-6 z-10 transition-colors duration-300">
       
       {/* Global Search */}
       <div className="flex items-center flex-1 max-w-xl">
         <div className="relative w-full group">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8b949e] group-focus-within:text-indigo-400 transition-colors" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 dark:text-[#8b949e] group-focus-within:text-indigo-500 dark:group-focus-within:text-indigo-400 transition-colors" />
           <input 
             type="text" 
             placeholder="Search employees, policies, payroll records... (Press ⌘K)" 
-            className="w-full bg-[#161b22] border border-[#30363d] focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 rounded-lg py-2 pl-10 pr-12 text-sm text-slate-200 placeholder:text-[#8b949e] outline-none transition-all shadow-sm"
+            className="w-full bg-slate-50 dark:bg-[#161b22] border border-slate-200 dark:border-[#30363d] focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 rounded-lg py-2 pl-10 pr-12 text-sm text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-[#8b949e] outline-none transition-all shadow-sm"
           />
           <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
-            <kbd className="px-1.5 py-0.5 rounded border border-[#30363d] bg-[#090b10] text-[10px] font-mono text-[#8b949e] font-bold">⌘</kbd>
-            <kbd className="px-1.5 py-0.5 rounded border border-[#30363d] bg-[#090b10] text-[10px] font-mono text-[#8b949e] font-bold">K</kbd>
+            <kbd className="px-1.5 py-0.5 rounded border border-slate-300 dark:border-[#30363d] bg-white dark:bg-[#090b10] text-[10px] font-mono text-slate-500 dark:text-[#8b949e] font-bold">⌘</kbd>
+            <kbd className="px-1.5 py-0.5 rounded border border-slate-300 dark:border-[#30363d] bg-white dark:bg-[#090b10] text-[10px] font-mono text-slate-500 dark:text-[#8b949e] font-bold">K</kbd>
           </div>
         </div>
       </div>
@@ -53,14 +53,14 @@ export const HrManagerTopbar: React.FC<TopbarProps> = ({ user }) => {
 
         {/* Action Icons */}
         <div className="flex items-center gap-1">
-          <button className="relative p-2 text-[#8b949e] hover:text-slate-200 hover:bg-[#161b22] rounded-lg transition-colors">
+          <button className="relative p-2 text-slate-500 dark:text-[#8b949e] hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-[#161b22] rounded-lg transition-colors">
             <MessageSquare className="w-5 h-5" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-indigo-500 rounded-full border-2 border-[#0E1117]"></span>
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-indigo-500 rounded-full border-2 border-white dark:border-[#0E1117]"></span>
           </button>
           
-          <button className="relative p-2 text-[#8b949e] hover:text-slate-200 hover:bg-[#161b22] rounded-lg transition-colors group">
+          <button className="relative p-2 text-slate-500 dark:text-[#8b949e] hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-[#161b22] rounded-lg transition-colors group">
             <Bell className="w-5 h-5 group-hover:animate-[wiggle_1s_ease-in-out_infinite]" />
-            <span className="absolute top-1 right-1 bg-rose-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full border border-[#0E1117]">
+            <span className="absolute top-1 right-1 bg-rose-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full border border-white dark:border-[#0E1117]">
               12
             </span>
           </button>
@@ -69,7 +69,7 @@ export const HrManagerTopbar: React.FC<TopbarProps> = ({ user }) => {
         {/* User Profile */}
         <div className="flex items-center gap-3 pl-2 cursor-pointer group">
           <div className="text-right hidden md:block">
-            <div className="text-sm font-bold text-slate-200 leading-tight group-hover:text-indigo-400 transition-colors">{user?.name || 'HR Manager'}</div>
+            <div className="text-sm font-bold text-slate-900 dark:text-slate-200 leading-tight group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">{user?.name || 'HR Manager'}</div>
             <div className="text-[10px] font-bold text-indigo-500 uppercase tracking-wider flex items-center gap-1 justify-end mt-0.5">
                <ShieldCheck className="w-3 h-3" /> Global HR
             </div>
@@ -78,7 +78,7 @@ export const HrManagerTopbar: React.FC<TopbarProps> = ({ user }) => {
             <div className="w-9 h-9 rounded-lg bg-indigo-900/50 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-bold shadow-sm">
               {user?.name ? user.name.charAt(0) : 'H'}
             </div>
-            <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-[#0E1117] rounded-full"></div>
+            <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-white dark:border-[#0E1117] rounded-full"></div>
           </div>
         </div>
 

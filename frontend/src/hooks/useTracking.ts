@@ -18,7 +18,7 @@ export const useTracking = (user: User | null, token: string | null) => {
                 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
                 const deviceType = isMobile ? 'Mobile' : 'Laptop/Desktop';
 
-                await axios.post(`₹${API_BASE}/update`, {
+                await axios.post(`${API_BASE}/update`, {
                     userId: user.id,
                     employeeId: user.employeeId || 'N/A',
                     name: user.name,

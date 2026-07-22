@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { IndianRupee, TrendingUp, Zap, Target, Activity, CheckCircle2, AlertTriangle, BookOpen } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
@@ -19,9 +19,9 @@ export const HrBudgetModule: React.FC<HrBudgetModuleProps> = ({ isDark }) => {
   ];
 
   const formatINR = (value: number) => {
-    if (value >= 10000000) return `₹${(value / 10000000).toFixed(1)} Cr`;
-    if (value >= 100000) return `₹${(value / 100000).toFixed(1)} L`;
-    return `₹${(value / 1000).toFixed(0)}k`;
+    if (value >= 10000000) return `${(value / 10000000).toFixed(1)} Cr`;
+    if (value >= 100000) return `${(value / 100000).toFixed(1)} L`;
+    return `${(value / 1000).toFixed(0)}k`;
   };
 
   return (
@@ -97,7 +97,7 @@ export const HrBudgetModule: React.FC<HrBudgetModuleProps> = ({ isDark }) => {
               <BarChart data={budgetData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke={isDark ? "#334155" : "#e2e8f0"} opacity={0.5} />
                 <XAxis dataKey="department" stroke={isDark ? "#94a3b8" : "#64748b"} />
-                <YAxis stroke={isDark ? "#94a3b8" : "#64748b"} tickFormatter={(value) => `₹${value/10000000}Cr`} />
+                <YAxis stroke={isDark ? "#94a3b8" : "#64748b"} tickFormatter={(value) => `${value/10000000}Cr`} />
                 <Tooltip 
                   formatter={(value: number) => formatINR(value)}
                   contentStyle={{ backgroundColor: isDark ? '#0f172a' : '#fff', borderColor: isDark ? '#334155' : '#e2e8f0', borderRadius: '1rem', color: isDark ? '#fff' : '#0f172a' }}
@@ -148,7 +148,7 @@ export const HrBudgetModule: React.FC<HrBudgetModuleProps> = ({ isDark }) => {
         <div className="overflow-x-auto rounded-2xl skeuo-inset">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className={`₹${isDark ? 'bg-black/40' : 'bg-slate-50'} border-b ${isDark ? 'border-white/10' : 'border-slate-200'} text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider`}>
+              <tr className={`${isDark ? 'bg-black/40' : 'bg-slate-50'} border-b ${isDark ? 'border-white/10' : 'border-slate-200'} text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider`}>
                 <th className="p-4">Department</th>
                 <th className="p-4">Allocated</th>
                 <th className="p-4">Spent</th>

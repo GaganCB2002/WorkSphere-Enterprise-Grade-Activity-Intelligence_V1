@@ -76,10 +76,10 @@ export const HrManagerSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle
       initial={false}
       animate={{ width: isCollapsed ? 80 : 280 }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-      className="h-screen bg-[#0E1117] border-r border-[#21262d] flex flex-col relative z-20 shrink-0"
+      className="h-screen bg-white dark:bg-[#0E1117] border-r border-slate-200 dark:border-[#21262d] flex flex-col relative z-20 shrink-0 transition-colors duration-300"
     >
       {/* Brand Header */}
-      <div className="h-16 flex items-center justify-between px-4 border-b border-[#21262d]">
+      <div className="h-16 flex items-center justify-between px-4 border-b border-slate-200 dark:border-[#21262d] transition-colors duration-300">
         <div className="flex items-center gap-3 overflow-hidden whitespace-nowrap">
           <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center shrink-0 shadow-lg shadow-indigo-500/20">
             <Users className="w-5 h-5 text-white" />
@@ -90,7 +90,7 @@ export const HrManagerSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
-                className="font-bold text-slate-200 tracking-wide text-sm"
+                className="font-bold text-slate-900 dark:text-slate-200 tracking-wide text-sm"
               >
                 WorkSphere <span className="text-indigo-400">HR</span>
               </motion.span>
@@ -101,7 +101,7 @@ export const HrManagerSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle
         {/* Toggle Button */}
         <button 
           onClick={onToggle}
-          className="p-1.5 rounded-lg text-[#8b949e] hover:text-slate-200 hover:bg-[#161b22] transition-colors"
+          className="p-1.5 rounded-lg text-slate-500 dark:text-[#8b949e] hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-[#161b22] transition-colors"
         >
           {isCollapsed ? <Menu className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
         </button>
@@ -112,7 +112,7 @@ export const HrManagerSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle
         {NAV_GROUPS.map((group, idx) => (
           <div key={idx} className="mb-6">
             {!isCollapsed && (
-              <h4 className="px-6 mb-2 text-[10px] font-bold text-[#8b949e] uppercase tracking-wider">
+              <h4 className="px-6 mb-2 text-[10px] font-bold text-slate-500 dark:text-[#8b949e] uppercase tracking-wider">
                 {group.title}
               </h4>
             )}
@@ -125,7 +125,7 @@ export const HrManagerSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle
                       relative flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all group overflow-hidden
                       ${isActive 
                         ? 'bg-indigo-500/10 text-indigo-400 font-semibold' 
-                        : 'text-[#8b949e] hover:text-slate-200 hover:bg-[#161b22]'}
+                        : 'text-slate-500 dark:text-[#8b949e] hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-[#161b22]'}
                     `}
                     title={isCollapsed ? item.label : undefined}
                   >
@@ -170,31 +170,8 @@ export const HrManagerSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle
         ))}
       </div>
       
-      {/* Footer Profile Mini */}
-      <AnimatePresence>
-        {!isCollapsed && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="p-4 border-t border-[#21262d] bg-[#0E1117]"
-          >
-            <div 
-              onClick={() => { window.location.href = '/' }}
-              className="bg-[#161b22] border border-[#30363d] rounded-xl p-3 flex items-center gap-3 relative group cursor-pointer hover:border-rose-500/50 hover:bg-rose-500/5 transition-colors"
-            >
-               <div className="w-8 h-8 rounded-lg bg-indigo-900/50 flex items-center justify-center text-indigo-400 font-bold border border-indigo-500/30 group-hover:bg-rose-500/20 group-hover:text-rose-400 group-hover:border-rose-500/30 transition-colors relative">
-                 <LogOut className="w-4 h-4 opacity-0 group-hover:opacity-100 absolute transition-opacity" />
-                 <span className="group-hover:opacity-0 transition-opacity">H</span>
-               </div>
-               <div className="min-w-0 flex-1">
-                 <div className="text-sm font-bold text-slate-200 truncate group-hover:text-rose-400 transition-colors">HR Operations</div>
-                 <div className="text-[10px] text-[#8b949e] truncate group-hover:text-rose-400/70 transition-colors">Click to Logout</div>
-               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Footer Profile Mini Removed */}
+
 
     </motion.aside>
   );

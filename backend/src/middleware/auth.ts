@@ -16,15 +16,21 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
     next()
   } catch {
     res.status(401).json({ message: 'Invalid or expired token.' })
+    return
   }
 }
 
 export const authorize = (...roles: Role[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
-    const userRole = req.auth?.role?.toLowerCase()
-    const isAllowed = roles.some(r => r.toLowerCase() === userRole)
+    if (!req.auth) {
+      res.status(403).json({ message: 'You do not have permission to access this resource.' })
+      return
+    }
 
-    if (!req.auth || !isAllowed) {
+    const userRole = req.auth.role.toLowerCase()
+    const isAllowed = roles.some(r => userRole === r.toLowerCase() || userRole.startsWith(r.toLowerCase() + '_') || userRole.endsWith('_' + r.toLowerCase()))
+
+    if (!isAllowed) {
       res.status(403).json({ message: 'You do not have permission to access this resource.' })
       return
     }

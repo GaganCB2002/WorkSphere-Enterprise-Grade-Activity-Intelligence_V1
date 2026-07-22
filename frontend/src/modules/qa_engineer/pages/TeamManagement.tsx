@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+﻿import React, { useState, useContext } from 'react';
 import { Users, UserPlus, MoreVertical, Search, Mail, Trash2, X, Star, Shield } from 'lucide-react';
 import { useTeam } from '../data/hooks';
 import { Modal } from '../components/Modal';
@@ -16,9 +16,9 @@ export const TeamManagement: React.FC = () => {
     if (!formData.name.trim()) { addToast('Please enter a team member name', 'error'); return; }
     addMember({
       name: formData.name, role: formData.role, module: formData.module,
-      velocity: '0 pts', status: 'Online', scriptsWritten: 0, bugsFound: 0, reviewScore: 0, email: formData.email || `₹${formData.name.toLowerCase().replace(/\s+/g, '.')}@sahara.com`,
+      velocity: '0 pts', status: 'Online', scriptsWritten: 0, bugsFound: 0, reviewScore: 0, email: formData.email || `${formData.name.toLowerCase().replace(/\s+/g, '.')}@sahara.com`,
     });
-    addToast(`₹${formData.name} added to the team`, 'success');
+    addToast(`${formData.name} added to the team`, 'success');
     setShowAddModal(false);
     setFormData({ name: '', role: 'QA Engineer', module: 'General', email: '' });
   };
@@ -26,7 +26,7 @@ export const TeamManagement: React.FC = () => {
   const handleRemove = (id: string) => {
     const member = allTeam.find(m => m.id === id);
     removeMember(id);
-    addToast(`₹${member?.name} removed from team`, 'info');
+    addToast(`${member?.name} removed from team`, 'info');
     setShowConfirmRemove(null);
   };
 
@@ -52,10 +52,10 @@ export const TeamManagement: React.FC = () => {
         {[
           { label: 'Total Members', value: allTeam.length, icon: Users, color: 'text-violet-600', bg: 'bg-violet-50 dark:bg-violet-900/20' },
           { label: 'Online Now', value: allTeam.filter(m => m.status === 'Online').length, icon: Users, color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-900/20' },
-          { label: 'Avg Velocity', value: `₹${Math.round(allTeam.reduce((a, m) => a + parseInt(m.velocity), 0) / allTeam.length)} pts`, icon: Star, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-900/20' },
+          { label: 'Avg Velocity', value: `${Math.round(allTeam.reduce((a, m) => a + parseInt(m.velocity), 0) / allTeam.length)} pts`, icon: Star, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-900/20' },
           { label: 'In Meeting', value: allTeam.filter(m => m.status === 'In Meeting').length, icon: Users, color: 'text-purple-600', bg: 'bg-purple-50 dark:bg-purple-900/20' },
         ].map((s, i) => (
-          <div key={i} className={`₹${s.bg} border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm`}>
+          <div key={i} className={`${s.bg} border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm`}>
             <div className="flex items-start justify-between mb-3">
               <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">{s.label}</h3>
               <s.icon className={`w-5 h-5 ${s.color}`} />

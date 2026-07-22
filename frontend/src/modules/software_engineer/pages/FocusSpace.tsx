@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw, Target, Calendar, CheckSquare, Clock } from 'lucide-react';
 
 export const FocusSpace: React.FC = () => {
@@ -35,7 +35,7 @@ export const FocusSpace: React.FC = () => {
   const formatTime = (seconds: number) => {
     const m = Math.floor(seconds / 60);
     const s = seconds % 60;
-    return `₹${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
   return (

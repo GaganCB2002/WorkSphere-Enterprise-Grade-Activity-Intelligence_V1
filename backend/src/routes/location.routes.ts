@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import { authenticate, authorize } from '../middleware/auth';
 
 const router = Router();
@@ -7,7 +7,7 @@ const router = Router();
 // We'll also log them to console or a simple file for now.
 const liveLocations: Record<string, any> = {};
 
-router.post('/update', (req, res) => {
+router.post('/update', authenticate, (req, res) => {
     try {
         const { userId, employeeId, name, latitude, longitude, deviceType } = req.body;
         
@@ -23,21 +23,21 @@ router.post('/update', (req, res) => {
 
         liveLocations[userId] = locationData;
 
-        // Broadcast to all connected clients (Admin/Manager dashboards)
         const io = req.app.get('io');
         if (io) io.emit('location_update', locationData);
 
-        // Optional: Log to activity feed if needed
-        // io.emit('new_activity', { id: Date.now(), type: 'LOCATION', content: `${name} updated location`, timestamp: new Date().toISOString() });
-
         res.status(200).json({ status: 'ok' });
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to update location' });
+    } catch {
+        res.status(500).json({ error: 'Failed to update location' }); return;
     }
 });
 
-router.get('/live', authenticate, authorize('SUPERADMIN' as any, 'SUPER_ADMIN' as any), (_req, res) => {
-    res.json(Object.values(liveLocations));
+router.get('/live', authenticate, authorize('SUPERADMIN' as any, 'SUPER_ADMIN' as any), (_req: Request, res: Response) => {
+    try {
+        res.json(Object.values(liveLocations));
+    } catch {
+        res.status(500).json({ error: 'Failed to fetch locations.' });
+    }
 });
 
 export default router;

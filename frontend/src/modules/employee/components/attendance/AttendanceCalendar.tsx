@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, HelpCircle } from 'lucide-react';
 import type { AttendanceRecord, AttendanceStatus } from '../../types';
 
@@ -25,13 +25,13 @@ export function AttendanceCalendar({ records }: AttendanceCalendarProps) {
     const dayNum = prevMonthDays - i;
     const prevMonth = month === 0 ? 11 : month - 1;
     const prevYear = month === 0 ? year - 1 : year;
-    const dateStr = `₹${prevYear}-${String(prevMonth + 1).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`;
+    const dateStr = `${prevYear}-${String(prevMonth + 1).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`;
     gridDays.push({ dateStr, dayNum, isCurrentMonth: false });
   }
 
   // Current month
   for (let i = 1; i <= daysInMonth; i++) {
-    const dateStr = `₹${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
     gridDays.push({ dateStr, dayNum: i, isCurrentMonth: true });
   }
 
@@ -40,7 +40,7 @@ export function AttendanceCalendar({ records }: AttendanceCalendarProps) {
   for (let i = 1; i <= remainingCells; i++) {
     const nextMonth = month === 11 ? 0 : month + 1;
     const nextYear = month === 11 ? year + 1 : year;
-    const dateStr = `₹${nextYear}-${String(nextMonth + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+    const dateStr = `${nextYear}-${String(nextMonth + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
     gridDays.push({ dateStr, dayNum: i, isCurrentMonth: false });
   }
 
@@ -163,7 +163,7 @@ export function AttendanceCalendar({ records }: AttendanceCalendarProps) {
                     {record.clockIn ? record.clockIn.replace(' AM', '').replace(' PM', '') : ''}
                   </span>
                   <span className="text-[8px] opacity-75 font-semibold leading-none block truncate">
-                    {record.workedHours > 0 ? `₹${record.workedHours}h` : ''}
+                    {record.workedHours > 0 ? `${record.workedHours}h` : ''}
                   </span>
                 </div>
               )}

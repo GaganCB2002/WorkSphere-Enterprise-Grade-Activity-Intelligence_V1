@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+﻿import { useEffect, useMemo, useState } from 'react';
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -93,7 +93,7 @@ export default function TimeTracking() {
     const hrs = Math.floor(seconds / 3600);
     const mins = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
-    return `₹${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
   const handleAddEntry = async () => {
@@ -168,10 +168,10 @@ export default function TimeTracking() {
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {[
-          { label: 'Worked time', value: formatDuration(summary?.total_worked_minutes ?? 0), helper: `₹${period} total`, icon: Clock, tone: 'bg-teal-50 text-teal-700' },
+          { label: 'Worked time', value: formatDuration(summary?.total_worked_minutes ?? 0), helper: `${period} total`, icon: Clock, tone: 'bg-teal-50 text-teal-700' },
           { label: 'Break time', value: formatDuration(summary?.total_break_minutes ?? 0), helper: 'Tracked break duration', icon: Coffee, tone: 'bg-amber-50 text-amber-700' },
           { label: 'Overtime', value: formatDuration(summary?.overtime_minutes ?? 0), helper: 'Beyond standard 8h/day', icon: TrendingUp, tone: 'bg-sky-50 text-sky-700' },
-          { label: 'Attendance', value: `₹${summary?.attendance_summary.present ?? 0} present`, helper: `₹${summary?.attendance_summary.leave ?? 0} leave / ${summary?.attendance_summary.absent ?? 0} absent`, icon: Timer, tone: 'bg-emerald-50 text-emerald-700' },
+          { label: 'Attendance', value: `${summary?.attendance_summary.present ?? 0} present`, helper: `${summary?.attendance_summary.leave ?? 0} leave / ${summary?.attendance_summary.absent ?? 0} absent`, icon: Timer, tone: 'bg-emerald-50 text-emerald-700' },
         ].map((item) => (
           <Card key={item.label}>
             <CardContent className="p-5">

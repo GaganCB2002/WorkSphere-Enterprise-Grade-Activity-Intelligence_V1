@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+﻿import { useMemo, useRef, useState } from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
@@ -16,9 +16,9 @@ const mockFiles: UploadedFile[] = [
 ];
 
 const formatFileSize = (bytes: number): string => {
-  if (bytes < 1024) return `₹${bytes} B`;
-  if (bytes < 1024 * 1024) return `₹${(bytes / 1024).toFixed(1)} KB`;
-  return `₹${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 };
 
 const getFileIcon = (fileType: string) => {
@@ -39,7 +39,7 @@ export default function FilesPage() {
 
   const handleFiles = (newFiles: globalThis.File[]) => {
     const fileObjects: UploadedFile[] = newFiles.map((file, index) => ({
-      id: `₹${Date.now()}-${index}`,
+      id: `${Date.now()}-${index}`,
       file: URL.createObjectURL(file),
       filename: file.name,
       file_type: file.type || 'application/octet-stream',

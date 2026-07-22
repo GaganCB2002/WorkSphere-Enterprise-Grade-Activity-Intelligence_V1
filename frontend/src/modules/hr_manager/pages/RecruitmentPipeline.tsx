@@ -26,7 +26,7 @@ export const RecruitmentPipeline: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between shrink-0">
         <div>
-          <h1 className="text-2xl font-bold text-slate-200">Recruitment Pipeline</h1>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-200">Recruitment Pipeline</h1>
           <p className="text-sm text-[#8b949e] mt-1">Manage active requisitions and candidate hiring stages.</p>
         </div>
         <button className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors shadow-sm">
@@ -47,12 +47,12 @@ export const RecruitmentPipeline: React.FC = () => {
                 {/* Stage Header */}
                 <div className="p-3 border-b border-[#30363d] bg-[#0E1117] flex items-center justify-between sticky top-0">
                   <div className="flex items-center gap-2">
-                    <h3 className="font-bold text-sm text-slate-200">{stage.title}</h3>
+                    <h3 className="font-bold text-sm text-slate-900 dark:text-slate-200">{stage.title}</h3>
                     <span className="bg-[#21262d] text-[#8b949e] text-[10px] font-bold px-2 py-0.5 rounded-full border border-[#30363d]">
                       {stage.count}
                     </span>
                   </div>
-                  <button className="text-[#8b949e] hover:text-slate-200 p-1 rounded hover:bg-[#21262d] transition-colors">
+                  <button className="text-[#8b949e] hover:text-slate-900 dark:text-slate-200 p-1 rounded hover:bg-[#21262d] transition-colors">
                     <MoreHorizontal className="w-4 h-4" />
                   </button>
                 </div>
@@ -67,7 +67,7 @@ export const RecruitmentPipeline: React.FC = () => {
                       <div className="flex justify-between items-start mb-2">
                         <div className="flex items-center gap-2">
                           <UserCircle2 className="w-5 h-5 text-indigo-400" />
-                          <span className="text-sm font-bold text-slate-200 group-hover:text-indigo-400 transition-colors">{candidate.name}</span>
+                          <span className="text-sm font-bold text-slate-900 dark:text-slate-200 group-hover:text-indigo-400 transition-colors">{candidate.name}</span>
                         </div>
                         <div className="flex text-amber-400">
                           {Array.from({ length: 5 }).map((_, i) => (
@@ -88,7 +88,7 @@ export const RecruitmentPipeline: React.FC = () => {
                       </div>
 
                       <div className="flex items-center gap-2 pt-2 border-t border-[#21262d]">
-                        <button className="flex-1 flex items-center justify-center gap-1.5 bg-[#161b22] hover:bg-[#21262d] text-[#8b949e] hover:text-slate-200 py-1.5 rounded-lg border border-[#30363d] text-xs font-semibold transition-colors">
+                        <button className="flex-1 flex items-center justify-center gap-1.5 bg-[#161b22] hover:bg-[#21262d] text-[#8b949e] hover:text-slate-900 dark:text-slate-200 py-1.5 rounded-lg border border-[#30363d] text-xs font-semibold transition-colors">
                           <FileText className="w-3 h-3" />
                           Resume
                         </button>

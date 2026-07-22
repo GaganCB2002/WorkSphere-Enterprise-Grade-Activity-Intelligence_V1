@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { TrendingUp, Star, Code, Bug, Award, Search, ChevronDown } from 'lucide-react';
 import { usePerformance } from '../data/hooks';
 
@@ -27,9 +27,9 @@ export const PerformanceReviews: React.FC = () => {
           { label: 'Top Score', value: Math.max(...performances.map(p => p.reviewScore)).toFixed(1), icon: Award, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-900/20' },
           { label: 'Total Scripts', value: performances.reduce((a, p) => a + p.scriptsWritten, 0), icon: Code, color: 'text-violet-600', bg: 'bg-violet-50 dark:bg-violet-900/20' },
           { label: 'Total Bugs Found', value: performances.reduce((a, p) => a + p.bugsFound, 0), icon: Bug, color: 'text-red-600', bg: 'bg-red-50 dark:bg-red-900/20' },
-          { label: 'Avg Coverage', value: `₹${Math.round(performances.reduce((a, p) => a + p.automationCoverage, 0) / performances.length)}%`, icon: TrendingUp, color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-900/20' },
+          { label: 'Avg Coverage', value: `${Math.round(performances.reduce((a, p) => a + p.automationCoverage, 0) / performances.length)}%`, icon: TrendingUp, color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-900/20' },
         ].map((s, i) => (
-          <div key={i} className={`₹${s.bg} border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm`}>
+          <div key={i} className={`${s.bg} border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm`}>
             <div className="flex items-start justify-between mb-3">
               <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">{s.label}</h3>
               <s.icon className={`w-5 h-5 ${s.color}`} />
@@ -101,7 +101,7 @@ export const PerformanceReviews: React.FC = () => {
                       </div>
                       <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
                         <div className={`h-full rounded-full ${p.automationCoverage >= 80 ? 'bg-gradient-to-r from-emerald-400 to-emerald-600' : p.automationCoverage >= 60 ? 'bg-gradient-to-r from-violet-400 to-violet-600' : 'bg-gradient-to-r from-amber-400 to-amber-600'}`}
-                          style={{ width: `₹${p.automationCoverage}%` }} />
+                          style={{ width: `${p.automationCoverage}%` }} />
                       </div>
                     </div>
                   </div>

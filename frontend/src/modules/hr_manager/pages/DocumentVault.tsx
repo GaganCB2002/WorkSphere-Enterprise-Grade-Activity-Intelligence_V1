@@ -12,7 +12,7 @@ export const DocumentVault: React.FC = () => {
     >
       <div className="flex items-center justify-between shrink-0">
         <div>
-          <h1 className="text-2xl font-bold text-slate-200">Document Vault</h1>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-200">Document Vault</h1>
           <p className="text-sm text-[#8b949e] mt-1">Secure repository for employee agreements, compliance policies, and HR forms.</p>
         </div>
         <div className="flex gap-3">
@@ -57,10 +57,10 @@ export const DocumentVault: React.FC = () => {
               <input 
                 type="text" 
                 placeholder="Search Corporate Policies..." 
-                className="w-full bg-[#0E1117] border border-[#30363d] focus:border-indigo-500 rounded-lg py-1.5 pl-9 pr-4 text-sm text-slate-200 outline-none"
+                className="w-full bg-[#0E1117] border border-[#30363d] focus:border-indigo-500 rounded-lg py-1.5 pl-9 pr-4 text-sm text-slate-900 dark:text-slate-200 outline-none"
               />
             </div>
-            <button className="p-2 text-[#8b949e] hover:text-slate-200 hover:bg-[#21262d] rounded-lg transition-colors">
+            <button className="p-2 text-[#8b949e] hover:text-slate-900 dark:text-slate-200 hover:bg-[#21262d] rounded-lg transition-colors">
               <Filter className="w-4 h-4" />
             </button>
           </div>
@@ -88,7 +88,7 @@ export const DocumentVault: React.FC = () => {
                       <td className="py-3 px-6">
                         <div className="flex items-center gap-3">
                           <FileText className="w-5 h-5 text-indigo-400" />
-                          <span className="text-sm font-semibold text-slate-200 group-hover:text-indigo-400 transition-colors cursor-pointer">{doc.name}</span>
+                          <span className="text-sm font-semibold text-slate-900 dark:text-slate-200 group-hover:text-indigo-400 transition-colors cursor-pointer">{doc.name}</span>
                         </div>
                       </td>
                       <td className="py-3 px-6 text-xs text-[#8b949e]">{doc.date}</td>

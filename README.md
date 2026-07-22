@@ -2,33 +2,64 @@
 
 Enterprise workforce monitoring, analytics, and management platform with role-based dashboards for 18 roles.
 
-## Quick Start
+## Architecture & Project Flow
+
+The following diagram illustrates the architecture and data flow of the WorkSphere platform when running locally:
+
+```mermaid
+graph TD
+    User([User / Browser])
+    
+    subgraph Frontend Services
+    UI[Frontend UI<br/>React/Vite - Port 3005]
+    end
+    
+    subgraph Backend Services
+    API[Enterprise Backend API<br/>Express/Socket.io - Port 5001]
+    Trackinh[Unified Services<br/>Trackinh - Port 5002]
+    Telemetry[Telemetry Server<br/>Port 4000]
+    end
+    
+    subgraph Databases
+    MongoDB[(MongoDB<br/>User/Employee Data)]
+    Postgres[(PostgreSQL<br/>CEO Dashboards/OKRs)]
+    end
+    
+    User -->|HTTPS/WSS| UI
+    UI -->|REST / WebSocket| API
+    UI -->|Tracking/Events| Trackinh
+    UI -->|Telemetry Data| Telemetry
+    
+    API -->|Read/Write| MongoDB
+    API -->|Read/Write| Postgres
+```
+
+## Quick Start (Localhost)
+
+The project has been configured to run entirely on your local machine using the `localhost` endpoints. 
 
 ### Prerequisites
 - Node.js 18+
-- MongoDB (for user auth & employee data)
-- PostgreSQL (for CEO/financial dashboards — optional, falls back to SQLite)
+- MongoDB (running on `localhost:27017`)
+- PostgreSQL (running on `localhost:5432` — optional, falls back to SQLite `dev.db`)
 
-### 1. Frontend (Vite + React)
+### Running the Entire Project
 
-```bash
-cd apps/enterprise-monitoring-system/frontend
-npm install
-npm run dev
-# Opens at http://localhost:3005
+The easiest way to start the full stack is to run the provided batch script at the root of the project:
+
+```cmd
+run_all.bat
 ```
 
-### 2. Backend (Express + Socket.io)
+This script will automatically:
+1. Install dependencies for all microservices
+2. Start the Telemetry Server (`http://localhost:4000`)
+3. Start the Unified Services (`http://localhost:5002`)
+4. Start the Enterprise Backend API (`http://localhost:5001`)
+5. Start the Frontend UI (`http://localhost:3005`)
+6. Open your default web browser to the dashboard
 
-```bash
-cd backend/enterprise-backend
-npm install
-cp .env.example .env    # Configure your DB connections
-npm run dev
-# Starts at http://localhost:5001
-```
-
-### 3. Login Credentials
+### Login Credentials
 - **Super Admin:** `admin@worksphere.com` / `Admin@123`
 - **CEO:** `ceo@worksphere.com` / `123456`
 - **HR Manager:** `hr@worksphere.com` / `123456`
@@ -37,51 +68,37 @@ npm run dev
 
 ---
 
-## Deploying to Production
+## File Structure & Services
 
-### Frontend → Vercel
+The platform consists of several loosely coupled services:
 
-1. Push to GitHub
-2. In Vercel, create a new project → import your repo
-3. Set **Root Directory** to `apps/enterprise-monitoring-system/frontend`
-4. Set **Framework Preset** to `Vite`
-5. Add these **Environment Variables**:
-   - `VITE_API_BASE_URL` → your backend URL (e.g., `https://your-api.railway.app/api`)
-   - `VITE_MAIN_AUTH_API_URL` → same backend URL
-   - `VITE_WEBSOCKET_URL` → `wss://your-api.railway.app`
-6. Deploy — Vite SPA rewrites are handled automatically by the provided `vercel.json`
-
-### Backend → Railway / Render
-
-1. Create a new Railway/Render project from `backend/enterprise-backend`
-2. Set **Build Command:** `npm install && npm run build`
-3. Set **Start Command:** `npm start`
-4. Add a **MongoDB** add-on (or set `MONGO_URI` env var)
-5. Add `JWT_SECRET` environment variable
-6. Deploy
-
-### Database Options
-
-| Database | Used For | Hosting |
-|----------|----------|---------|
-| MongoDB | Users, employees, attendance, leaves | MongoDB Atlas |
-| PostgreSQL (via Prisma) | CEO dashboards, finances, OKRs | Railway / Supabase |
-| SQLite (local fallback) | Development | Local file (`dev.db`) |
-
----
-
-## Project Structure
-
+```text
+/
+├── frontend/                ← React/Vite UI Application (Runs on 3005)
+│   ├── src/pages/           ← Marketing landing pages
+│   ├── src/auth/            ← Role selection & login
+│   ├── src/routes/          ← Application routing
+│   └── src/modules/         ← 18 separate role dashboard modules
+│
+├── backend/                 ← Enterprise Backend API (Runs on 5001)
+│   ├── src/server.ts        ← Express + Socket.io entry
+│   ├── src/routes/          ← Auth, HR, CEO, Location APIs
+│   ├── src/services/        ← Business logic layer
+│   └── prisma/schema.prisma ← Database schema
+│
+├── trackinh/                ← Unified Services Server (Runs on 5002)
+│
+├── apps/
+│   ├── dashboard/backend/   ← Telemetry Server (Runs on 4000)
+│   └── agent/               ← Agent services
+│
+├── run_all.bat              ← Master startup script
+└── README.md                ← Project documentation
 ```
-apps/enterprise-monitoring-system/frontend/    ← Deploy this to Vercel
-  ├── src/pages/LandingPage.tsx                ← Marketing landing page
-  ├── src/auth/Login.jsx                       ← Role selection + login
-  ├── src/routes/AppRoutes.jsx                 ← All routes + role-based dashboards
-  └── src/modules/                             ← 18 role dashboard modules
 
-backend/enterprise-backend/                    ← Deploy this to Railway/Render
-  ├── src/server.ts                            ← Express + Socket.io entry
-  ├── src/routes/                              ← Auth, HR, CEO, location APIs
-  ├── src/services/                            ← Business logic layer
-  └── prisma/schema.prisma                     ← Database schema
-```
+## Environment Configuration
+
+All frontend and backend `.env` files are pre-configured to use `localhost` routing for local development:
+- Frontend points its API requests to `http://localhost:5001/api` and `ws://localhost:5001`
+- Frontend telemetry endpoints point to `http://localhost:4000`
+- CORS on backend allows origins from `http://localhost:3005`

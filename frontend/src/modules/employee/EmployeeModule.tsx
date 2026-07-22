@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+﻿import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -142,7 +142,7 @@ export function EmployeeModule({ user, platform, token }: EmployeeModuleProps) {
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
                 data-tooltip={sidebarCollapsed ? item.label : undefined}
-                className={`₹${sidebarCollapsed ? 'emp-tooltip' : ''} w-full flex items-center gap-3 rounded-xl transition-all duration-200 ${
+                className={`${sidebarCollapsed ? 'emp-tooltip' : ''} w-full flex items-center gap-3 rounded-xl transition-all duration-200 ${
                   sidebarCollapsed ? 'justify-center p-2.5' : 'px-3 py-2.5'
                 } ${isActive
                   ? 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 font-semibold'

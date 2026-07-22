@@ -511,7 +511,7 @@ router.get('/strategic', async (req, res) => {
 router.post('/ai-assistant', async (req, res) => {
   try {
     const parsed = z.object({ query: z.string() }).safeParse(req.body)
-    if (!parsed.success) return res.status(400).json({ message: 'Missing query parameter.' })
+    if (!parsed.success) return res.status(400).json({ message: 'Missing query field in request body.' })
     
     const query = parsed.data.query.toLowerCase()
     const widgets = await prisma.aIWidgetData.findFirst()
@@ -545,7 +545,11 @@ router.post('/ai-assistant', async (req, res) => {
 
 // 17. Reports Center Metadata
 router.get('/reports', async (req, res) => {
-  res.json(reportsStore)
+  try {
+    res.json(reportsStore)
+  } catch {
+    res.status(500).json({ message: 'Failed to fetch reports.' })
+  }
 })
 
 router.post('/reports', async (req, res) => {
@@ -582,7 +586,11 @@ router.get('/notifications', async (req, res) => {
 
 // 19. Organization Structure switcher
 router.get('/org-structure', async (req, res) => {
-  res.json(orgStore)
+  try {
+    res.json(orgStore)
+  } catch {
+    res.status(500).json({ message: 'Failed to fetch org structure.' })
+  }
 })
 
 router.post('/org-structure', async (req, res) => {
@@ -618,7 +626,11 @@ router.post('/org-structure', async (req, res) => {
 
 // 20. Settings Configurations
 router.get('/settings', async (req, res) => {
-  res.json(settingsStore)
+  try {
+    res.json(settingsStore)
+  } catch {
+    res.status(500).json({ message: 'Failed to fetch settings.' })
+  }
 })
 
 router.post('/settings', async (req, res) => {

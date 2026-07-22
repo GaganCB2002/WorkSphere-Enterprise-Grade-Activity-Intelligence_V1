@@ -29,7 +29,7 @@ export const EmployeeDirectory: React.FC = () => {
       {/* Header & Controls */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#161b22] border border-[#30363d] p-4 rounded-2xl shrink-0">
         <div>
-          <h1 className="text-xl font-bold text-slate-200">Employee Directory</h1>
+          <h1 className="text-xl font-bold text-slate-900 dark:text-slate-200">Employee Directory</h1>
           <p className="text-xs text-[#8b949e] mt-0.5">Manage 1,248 active employees across 12 departments.</p>
         </div>
         
@@ -41,10 +41,10 @@ export const EmployeeDirectory: React.FC = () => {
               placeholder="Search by name, ID, or role..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-64 bg-[#0E1117] border border-[#30363d] focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-lg py-2 pl-9 pr-4 text-sm text-slate-200 placeholder:text-[#8b949e] outline-none transition-all"
+              className="w-64 bg-[#0E1117] border border-[#30363d] focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-lg py-2 pl-9 pr-4 text-sm text-slate-900 dark:text-slate-200 placeholder:text-[#8b949e] outline-none transition-all"
             />
           </div>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#0E1117] border border-[#30363d] hover:bg-[#21262d] text-slate-200 rounded-lg text-sm font-semibold transition-colors">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#0E1117] border border-[#30363d] hover:bg-[#21262d] text-slate-900 dark:text-slate-200 rounded-lg text-sm font-semibold transition-colors">
             <Filter className="w-4 h-4" />
             <span>Filters</span>
           </button>
@@ -74,7 +74,7 @@ export const EmployeeDirectory: React.FC = () => {
                         {emp.name.split(' ').map(n => n[0]).join('')}
                       </div>
                       <div>
-                        <div className="text-sm font-bold text-slate-200 group-hover:text-indigo-400 transition-colors cursor-pointer">{emp.name}</div>
+                        <div className="text-sm font-bold text-slate-900 dark:text-slate-200 group-hover:text-indigo-400 transition-colors cursor-pointer">{emp.name}</div>
                         <div className="text-xs font-mono text-[#8b949e]">{emp.id}</div>
                       </div>
                     </div>
@@ -110,7 +110,7 @@ export const EmployeeDirectory: React.FC = () => {
                       <button className="p-1.5 text-[#8b949e] hover:text-rose-400 hover:bg-rose-500/10 rounded transition-colors" title="Suspend/Terminate">
                         <UserX className="w-4 h-4" />
                       </button>
-                      <button className="p-1.5 text-[#8b949e] hover:text-slate-200 hover:bg-[#30363d] rounded transition-colors">
+                      <button className="p-1.5 text-[#8b949e] hover:text-slate-900 dark:text-slate-200 hover:bg-[#30363d] rounded transition-colors">
                         <MoreVertical className="w-4 h-4" />
                       </button>
                     </div>

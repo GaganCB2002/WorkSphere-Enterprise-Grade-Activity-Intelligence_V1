@@ -1,4 +1,4 @@
-import { clsx, type ClassValue } from 'clsx';
+﻿import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { format, formatDistanceToNow, parseISO, differenceInMinutes } from 'date-fns';
 
@@ -27,13 +27,13 @@ export function formatTime(dateString: string): string {
 export function formatDuration(minutes: number): string {
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;
-  if (hours === 0) return `₹${mins}m`;
-  if (mins === 0) return `₹${hours}h`;
-  return `₹${hours}h ${mins}m`;
+  if (hours === 0) return `${mins}m`;
+  if (mins === 0) return `${hours}h`;
+  return `${hours}h ${mins}m`;
 }
 
 export function getInitials(firstName: string, lastName: string): string {
-  return `₹${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
+  return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
 }
 
 export function getPriorityColor(priority: string): string {

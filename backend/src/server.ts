@@ -30,8 +30,14 @@ const app = express()
 const httpServer = createServer(app)
 export const io = new Server(httpServer, {
   cors: {
-    origin: '*',
+    origin: process.env.CORS_ORIGIN?.split(',') || [
+      'http://localhost:3005',
+      'http://127.0.0.1:3005',
+      'https://worksphere-enterprise-grade-activity.onrender.com',
+      'https://work-sphere-enterprise-grade-activi.vercel.app'
+    ],
     methods: ['GET', 'POST'],
+    credentials: true,
   },
 })
 app.set('io', io)
@@ -40,11 +46,11 @@ const port = Number(process.env.PORT ?? 5000)
 
 app.use(
   cors({
-    origin: [
-      process.env.HR_URL || 'https://work-sphere-enterprise-grade-activi.vercel.app',
-      'https://work-sphere-enterprise-grade-activi.vercel.app',
-      'http://127.0.0.1:3005',
+    origin: process.env.CORS_ORIGIN?.split(',') || [
       'http://localhost:3005',
+      'http://127.0.0.1:3005',
+      'http://localhost:5173',
+      'https://worksphere-enterprise-grade-activity.onrender.com',
     ],
     credentials: true,
     optionsSuccessStatus: 200
@@ -68,10 +74,10 @@ app.use('/api/auth', authRoutes)
 app.use('/api/techlead/analysis', analysisRoutes)
 app.use('/api/location', locationRoutes)
 app.use('/api/helpdesk', helpdeskRoutes)
-app.use('/api', hrRoutes)
 app.use('/api/contact', contactRoutes)
 app.use('/api/ceo', ceoRoutes)
 app.use('/api', liveguardRoutes)
+app.use('/api', hrRoutes)
 
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id)

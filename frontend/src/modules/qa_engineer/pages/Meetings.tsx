@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+﻿import React, { useState, useContext } from 'react';
 import { UsersRound, Video, Plus, Clock, Calendar, User } from 'lucide-react';
 import { useMeetings } from '../data/hooks';
 import { Modal } from '../components/Modal';
@@ -21,7 +21,7 @@ export const Meetings: React.FC = () => {
     e.preventDefault();
     if (!formData.title.trim() || !formData.date) { addToast('Please fill in required fields', 'error'); return; }
     addMeeting({
-      title: formData.title, type: formData.type, time: formData.time, duration: `₹${formData.duration} min`,
+      title: formData.title, type: formData.type, time: formData.time, duration: `${formData.duration} min`,
       date: formData.date, description: formData.description, participants: 0, organizer: 'Alex Mercer',
     });
     addToast('Meeting scheduled', 'success');

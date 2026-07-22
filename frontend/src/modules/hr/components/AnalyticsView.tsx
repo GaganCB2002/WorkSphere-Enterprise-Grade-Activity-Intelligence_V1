@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { BarChart2, PieChart, TrendingUp, Calendar, Download, CheckCircle, FileText, Users, DollarSign, Activity } from 'lucide-react';
 import { smartHRApi } from '../api';
 
@@ -41,9 +41,9 @@ export function AnalyticsView() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { label: 'Total Enterprise Workforce', value: analytics.totalEmployees, change: '+12% vs last quarter', icon: Users, color: 'text-luxury-blue' },
-              { label: 'Avg Engagement Score', value: `₹${analytics.avgEngagement}%`, change: '+3.5% vs benchmark', icon: Activity, color: 'text-emerald-400' },
+              { label: 'Avg Engagement Score', value: `${analytics.avgEngagement}%`, change: '+3.5% vs benchmark', icon: Activity, color: 'text-emerald-400' },
               { label: 'Avg Performance Rating', value: `★ ${analytics.avgPerformance}`, change: 'Top Tier 1 Output', icon: TrendingUp, color: 'text-amber-400' },
-              { label: 'Predicted Attrition Risk', value: `₹${analytics.attritionRate}%`, change: 'Low Risk Status', icon: PieChart, color: 'text-rose-400' }
+              { label: 'Predicted Attrition Risk', value: `${analytics.attritionRate}%`, change: 'Low Risk Status', icon: PieChart, color: 'text-rose-400' }
             ].map((kpi, idx) => {
               const Icon = kpi.icon;
               return (
@@ -77,7 +77,7 @@ export function AnalyticsView() {
                       <span className="text-emerald-400">{t.value}% Active</span>
                     </div>
                     <div className="h-3 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
-                      <div className="h-full bg-gradient-to-r from-luxury-blue to-emerald-400 rounded-full transition-all duration-1000" style={{ width: `₹${t.value}%` }}></div>
+                      <div className="h-full bg-gradient-to-r from-luxury-blue to-emerald-400 rounded-full transition-all duration-1000" style={{ width: `${t.value}%` }}></div>
                     </div>
                   </div>
                 ))}
@@ -96,7 +96,7 @@ export function AnalyticsView() {
                       <span className="text-luxury-blue">{p.value}% Velocity</span>
                     </div>
                     <div className="h-3 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
-                      <div className="h-full bg-gradient-to-r from-purple-500 to-luxury-blue rounded-full transition-all duration-1000" style={{ width: `₹${p.value}%` }}></div>
+                      <div className="h-full bg-gradient-to-r from-purple-500 to-luxury-blue rounded-full transition-all duration-1000" style={{ width: `${p.value}%` }}></div>
                     </div>
                   </div>
                 ))}

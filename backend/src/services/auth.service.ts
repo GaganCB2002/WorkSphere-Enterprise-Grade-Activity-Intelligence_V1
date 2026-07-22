@@ -7,6 +7,7 @@ import type { AppUser, AuthPayload } from '../data/types'
 
 const JWT_SECRET = process.env.JWT_SECRET ?? 'worksphere-demo-secret'
 const TOKEN_TTL = '24h'
+const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://localhost:3005'
 
 const isConnected = () => mongoose.connection.readyState === 1;
 
@@ -32,7 +33,7 @@ export const authService = {
         employeeId: 'emp-superadmin',
         passwordHash: ''
       };
-      return this.generateSession(superUser, 'http://127.0.0.1:3005/hr-dashboard');
+      return this.generateSession(superUser, `${CLIENT_ORIGIN}/hr-dashboard`);
     }
 
     // 0. Production-Grade Demo Bypass (As requested by USER)
@@ -91,7 +92,7 @@ export const authService = {
           employeeId: data.user.id,
           passwordHash: '',
         }
-        return this.generateSession(employeeUser, 'http://127.0.0.1:5173', data.tokens.access)
+        return this.generateSession(employeeUser, CLIENT_ORIGIN, data.tokens.access)
       }
     } catch (err) {
       console.error(`[AUTH] Secondary Auth Source (Django) Offline`);
@@ -105,18 +106,18 @@ export const authService = {
           const match = bcrypt.compareSync(password, localUser.passwordHash)
           if (match) {
             const roleRedirects: Record<string, string> = {
-              'HR': 'http://127.0.0.1:3005/hr-dashboard',
-              'SUPERADMIN': 'http://127.0.0.1:3005/hr-dashboard',
-              'SUPER_ADMIN': 'http://127.0.0.1:3005/hr-dashboard',
-              'ADMIN': 'http://127.0.0.1:3005/hr-dashboard',
-              'CEO': 'http://127.0.0.1:3005/hr-dashboard',
-              'EMPLOYEE': 'http://127.0.0.1:3005',
-              'LEAD': 'http://127.0.0.1:3005',
-              'TECH_LEAD': 'http://127.0.0.1:3005',
-              'IT': 'http://127.0.0.1:3005',
-              'MARKETING': 'http://127.0.0.1:3005'
+              'HR': `${CLIENT_ORIGIN}/hr-dashboard`,
+              'SUPERADMIN': `${CLIENT_ORIGIN}/hr-dashboard`,
+              'SUPER_ADMIN': `${CLIENT_ORIGIN}/hr-dashboard`,
+              'ADMIN': `${CLIENT_ORIGIN}/hr-dashboard`,
+              'CEO': `${CLIENT_ORIGIN}/hr-dashboard`,
+              'EMPLOYEE': CLIENT_ORIGIN,
+              'LEAD': CLIENT_ORIGIN,
+              'TECH_LEAD': CLIENT_ORIGIN,
+              'IT': CLIENT_ORIGIN,
+              'MARKETING': CLIENT_ORIGIN
             };
-            const redirectUrl = roleRedirects[localUser.role.toUpperCase()] || 'http://127.0.0.1:3005/dashboard';
+            const redirectUrl = roleRedirects[localUser.role.toUpperCase()] || `${CLIENT_ORIGIN}/dashboard`;
             return this.generateSession(localUser as unknown as AppUser, redirectUrl)
           }
         }
@@ -127,18 +128,18 @@ export const authService = {
           const match = bcrypt.compareSync(password, localUser.passwordHash);
           if (match) {
             const roleRedirects: Record<string, string> = {
-              'HR': 'http://127.0.0.1:3005/hr-dashboard',
-              'SUPERADMIN': 'http://127.0.0.1:3005/hr-dashboard',
-              'SUPER_ADMIN': 'http://127.0.0.1:3005/hr-dashboard',
-              'ADMIN': 'http://127.0.0.1:3005/hr-dashboard',
-              'CEO': 'http://127.0.0.1:3005/hr-dashboard',
-              'EMPLOYEE': 'http://127.0.0.1:3005',
-              'LEAD': 'http://127.0.0.1:3005',
-              'TECH_LEAD': 'http://127.0.0.1:3005',
-              'IT': 'http://127.0.0.1:3005',
-              'MARKETING': 'http://127.0.0.1:3005'
+              'HR': `${CLIENT_ORIGIN}/hr-dashboard`,
+              'SUPERADMIN': `${CLIENT_ORIGIN}/hr-dashboard`,
+              'SUPER_ADMIN': `${CLIENT_ORIGIN}/hr-dashboard`,
+              'ADMIN': `${CLIENT_ORIGIN}/hr-dashboard`,
+              'CEO': `${CLIENT_ORIGIN}/hr-dashboard`,
+              'EMPLOYEE': CLIENT_ORIGIN,
+              'LEAD': CLIENT_ORIGIN,
+              'TECH_LEAD': CLIENT_ORIGIN,
+              'IT': CLIENT_ORIGIN,
+              'MARKETING': CLIENT_ORIGIN
             };
-            const redirectUrl = roleRedirects[localUser.role.toUpperCase()] || 'http://127.0.0.1:3005/dashboard';
+            const redirectUrl = roleRedirects[localUser.role.toUpperCase()] || `${CLIENT_ORIGIN}/dashboard`;
             return this.generateSession(localUser, redirectUrl);
           }
         }
