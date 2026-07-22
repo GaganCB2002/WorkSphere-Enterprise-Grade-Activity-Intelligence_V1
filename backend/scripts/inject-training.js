@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const frontendDir = path.join(__dirname, '../apps/enterprise-monitoring-system/frontend/src');
+const frontendDir = path.join(__dirname, '../../frontend/src');
 const modulesDir = path.join(frontendDir, 'modules');
 
 function getDashboardFiles(dir) {

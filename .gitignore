@@ -7,4 +7,5 @@ target/
 .idea/
 .vscode/
 *.log
-*.tsbuildinfo*antigravity*
+*.tsbuildinfo
+antigravity

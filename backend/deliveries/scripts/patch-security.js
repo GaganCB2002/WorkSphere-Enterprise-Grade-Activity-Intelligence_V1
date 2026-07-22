@@ -1,5 +1,5 @@
 const fs = require('fs'); 
-let f = 'apps/enterprise-monitoring-system/frontend/src/modules/hr/components/SecurityView.tsx'; 
+let f = '../../../frontend/src/modules/hr/components/SecurityView.tsx'; 
 let c = fs.readFileSync(f, 'utf8'); 
 
 c = c.replace(/import React, { useState } from 'react';/, "import React, { useState } from 'react';\nimport { SystemGuardian } from './SystemGuardian';\nimport { SystemMonitor } from './SystemMonitor';"); 

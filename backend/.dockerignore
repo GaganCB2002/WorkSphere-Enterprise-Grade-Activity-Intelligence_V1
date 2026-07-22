@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.git
+.gitignore
+deliveries/
+temp_liveguard/
+apps/agent/node_modules/
+apps/liveguard-agent/node_modules/
+trackinh/node_modules/
+trackinh/.env
+*.tsbuildinfo

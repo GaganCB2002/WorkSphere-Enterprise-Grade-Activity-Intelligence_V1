@@ -1,5 +1,5 @@
 const fs = require('fs');
-const file = 'apps/enterprise-monitoring-system/frontend/src/modules/hr/SmartHRDashboard.tsx';
+const file = '../../../frontend/src/modules/hr/SmartHRDashboard.tsx';
 let c = fs.readFileSync(file, 'utf8');
 if (!c.includes("id: 'training'")) {
   c = c.replace("{ id: 'security', label: 'Security & RBAC', icon: ShieldCheck }", "{ id: 'security', label: 'Security & RBAC', icon: ShieldCheck },\n    { id: 'training', label: 'Training Center', icon: BookOpen },");
