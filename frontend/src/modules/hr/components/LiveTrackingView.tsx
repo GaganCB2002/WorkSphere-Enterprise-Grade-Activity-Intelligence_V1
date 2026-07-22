@@ -55,42 +55,70 @@ export function LiveTrackingView() {
                 if (res.ok) {
                     const data = await res.json();
                     setLocations(data);
+                    return;
                 }
             } catch (e) {
-                console.error("Failed to fetch initial nodes", e);
+                console.warn("Failed to fetch initial nodes, using mock data for demo", e);
             }
+            
+            // Fallback mock data for prototype demo
+            const mockData = [
+                { deviceId: 'NODE-101', employeeId: 'Alice Systems (NYC)', latitude: 40.7128, longitude: -74.0060, accuracy: 25, timestamp: new Date().toISOString(), status: 'Online' },
+                { deviceId: 'NODE-102', employeeId: 'Bob Finance (LDN)', latitude: 51.5074, longitude: -0.1278, accuracy: 40, timestamp: new Date().toISOString(), status: 'Online' },
+                { deviceId: 'NODE-103', employeeId: 'Kabir Rao (BLR)', latitude: 12.9716, longitude: 77.5946, accuracy: 15, timestamp: new Date().toISOString(), status: 'Online' },
+                { deviceId: 'NODE-104', employeeId: 'Sarah Marketing (SF)', latitude: 37.7749, longitude: -122.4194, accuracy: 50, timestamp: new Date().toISOString(), status: 'Online' },
+                { deviceId: 'NODE-105', employeeId: 'Raj Ops (DXB)', latitude: 25.2048, longitude: 55.2708, accuracy: 30, timestamp: new Date().toISOString(), status: 'Online' },
+            ];
+            setLocations(mockData);
+
+            // Simulate live movement
+            const interval = setInterval(() => {
+                setLocations(prev => prev.map(loc => {
+                    if (loc.isLocal) return loc;
+                    return {
+                        ...loc,
+                        latitude: loc.latitude + (Math.random() - 0.5) * 0.001,
+                        longitude: loc.longitude + (Math.random() - 0.5) * 0.001,
+                        timestamp: new Date().toISOString()
+                    };
+                }));
+            }, 3000);
+            
+            socketRef.current = { disconnect: () => clearInterval(interval) };
         };
         fetchInitialNodes();
 
-        const socket = io(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}` : 'http://localhost:5000', {
-            transports: ['websocket', 'polling'],
-            reconnection: true
-        });
-        socketRef.current = socket;
+        if (!socketRef.current) {
+            const socket = io(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}` : 'http://localhost:5000', {
+                transports: ['websocket', 'polling'],
+                reconnection: true
+            });
+            socketRef.current = socket;
 
-        socket.on('location_update', (data) => {
-            if (!data.latitude || !data.longitude) return;
-            
-            // CRITICAL: Block Santa Clara Mock data explicitly
-            if (data.latitude > 37.3 && data.latitude < 37.4 && data.longitude < -121.9 && data.longitude > -122.0) {
-                if (!data.deviceId.includes('DASHBOARD')) return; 
-            }
+            socket.on('location_update', (data) => {
+                if (!data.latitude || !data.longitude) return;
+                
+                // CRITICAL: Block Santa Clara Mock data explicitly
+                if (data.latitude > 37.3 && data.latitude < 37.4 && data.longitude < -121.9 && data.longitude > -122.0) {
+                    if (!data.deviceId.includes('DASHBOARD')) return; 
+                }
 
-            setLocations(prev => {
-                const index = prev.findIndex(l => l.deviceId === data.deviceId);
-                if (index > -1) {
-                    const updated = [...prev];
-                    updated[index] = data;
-                    return updated;
-                } else {
-                    return [...prev, data];
+                setLocations(prev => {
+                    const index = prev.findIndex(l => l.deviceId === data.deviceId);
+                    if (index > -1) {
+                        const updated = [...prev];
+                        updated[index] = data;
+                        return updated;
+                    } else {
+                        return [...prev, data];
+                    }
+                });
+                
+                if (autoFollow && (!selectedDeviceId || selectedDeviceId === data.deviceId)) {
+                    setSelectedDeviceId(data.deviceId);
                 }
             });
-            
-            if (autoFollow && (!selectedDeviceId || selectedDeviceId === data.deviceId)) {
-                setSelectedDeviceId(data.deviceId);
-            }
-        });
+        }
 
         // Get local system position for "Me"
         if (typeof window !== 'undefined' && navigator.geolocation) {
@@ -117,7 +145,11 @@ export function LiveTrackingView() {
             );
         }
 
-        return () => { socket.disconnect(); };
+        return () => { 
+            if (socketRef.current && socketRef.current.disconnect) {
+                socketRef.current.disconnect();
+            }
+        };
     }, []); // Only run once on mount
 
     const handleRecenter = () => {

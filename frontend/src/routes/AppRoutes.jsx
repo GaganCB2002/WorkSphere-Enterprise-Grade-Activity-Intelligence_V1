@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 import { PageTransition } from '../components/layout/PageTransition';
@@ -17,6 +17,16 @@ import DashboardOverview from '../pages/Dashboard/DashboardOverview';
 const SystemCommandCenter = React.lazy(() => import('../modules/command_center/SystemCommandCenter').then(m => ({ default: m.SystemCommandCenter })));
 
 const SuperAdminDashboard = React.lazy(() => import('../modules/super_admin/SuperAdminDashboard').then(m => ({ default: m.SuperAdminDashboard })));
+
+const EmployeeDirectoryPage = React.lazy(() => import('../pages/Employees/EmployeeDirectoryPage').then(m => ({ default: m.default })));
+const RbacPage = React.lazy(() => import('../pages/Employees/RbacPage').then(m => ({ default: m.default })));
+const UserManagementPage = React.lazy(() => import('../pages/Employees/UserManagementPage').then(m => ({ default: m.default })));
+const AiConfigPage = React.lazy(() => import('../pages/Employees/AiConfigPage').then(m => ({ default: m.default })));
+const AuditLogsPage = React.lazy(() => import('../pages/Employees/AuditLogsPage').then(m => ({ default: m.default })));
+const GlobalTrackingPage = React.lazy(() => import('../pages/Employees/GlobalTrackingPage').then(m => ({ default: m.default })));
+const ActivityReportsPage = React.lazy(() => import('../pages/Employees/ActivityReportsPage').then(m => ({ default: m.default })));
+const EmployeeProfilePage = React.lazy(() => import('../pages/Employees/EmployeeProfile').then(m => ({ default: m.default })));
+const ModuleStub = React.lazy(() => import('../pages/ModuleStub').then(m => ({ default: m.default })));
 const AdminDashboard = React.lazy(() => import('../modules/admin/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
 const CeoDashboard = React.lazy(() => import('../modules/ceo/CeoDashboard').then(m => ({ default: m.CeoDashboard })));
 const CtoModule = React.lazy(() => import('../modules/cto/CtoModule').then(m => ({ default: m.CtoModule })));
@@ -162,6 +172,69 @@ const AppRoutes = () => {
         <Route path="/mfa" element={<PageTransition><MFA /></PageTransition>} />
         <Route path="/session-timeout" element={<PageTransition><SessionTimeout /></PageTransition>} />
         
+        {/* Global Sidebar Routes */}
+        <Route path="/employees" element={<ProtectedRoute><EnterpriseShell><Suspense fallback={<PageLoading />}><PageTransition><Outlet /></PageTransition></Suspense></EnterpriseShell></ProtectedRoute>}>
+          <Route path="directory" element={<EmployeeDirectoryPage />} />
+          <Route path="profile" element={<EmployeeProfilePage />} />
+          <Route path="users" element={<UserManagementPage />} />
+          <Route path="rbac" element={<RbacPage />} />
+          <Route path="tracking" element={<GlobalTrackingPage />} />
+          <Route path="reports" element={<ActivityReportsPage />} />
+          <Route path="audit" element={<AuditLogsPage />} />
+          <Route path="ai-config" element={<AiConfigPage />} />
+        </Route>
+
+        <Route path="/attendance" element={<ProtectedRoute><EnterpriseShell><Suspense fallback={<PageLoading />}><PageTransition><Outlet /></PageTransition></Suspense></EnterpriseShell></ProtectedRoute>}>
+          <Route path="live" element={<ModuleStub title="Live Attendance" description="Real-time check-in and check-out tracking." />} />
+          <Route path="shifts" element={<ModuleStub title="Shifts" description="Shift scheduling and rotations." />} />
+          <Route path="leave" element={<ModuleStub title="Leave Management" description="Time-off requests and balances." />} />
+        </Route>
+
+        <Route path="/recruitment" element={<ProtectedRoute><EnterpriseShell><Suspense fallback={<PageLoading />}><PageTransition><Outlet /></PageTransition></Suspense></EnterpriseShell></ProtectedRoute>}>
+          <Route path="candidates" element={<ModuleStub title="Candidates" description="ATS applicant tracking." />} />
+          <Route path="interviews" element={<ModuleStub title="Interviews" description="Scheduling and feedback." />} />
+          <Route path="jobs" element={<ModuleStub title="Job Openings" description="Active job requisitions." />} />
+        </Route>
+
+        <Route path="/payroll" element={<ProtectedRoute><EnterpriseShell><Suspense fallback={<PageLoading />}><PageTransition><Outlet /></PageTransition></Suspense></EnterpriseShell></ProtectedRoute>}>
+          <Route path="salary" element={<ModuleStub title="Salary" description="Compensation structure and processing." />} />
+          <Route path="payslips" element={<ModuleStub title="Payslips" description="Historical payslips and tax forms." />} />
+          <Route path="tax" element={<ModuleStub title="Tax" description="Statutory compliance and tax deductions." />} />
+        </Route>
+
+        <Route path="/projects" element={<ProtectedRoute><EnterpriseShell><Suspense fallback={<PageLoading />}><PageTransition><Outlet /></PageTransition></Suspense></EnterpriseShell></ProtectedRoute>}>
+          <Route path="list" element={<ModuleStub title="Projects" description="Active initiatives and portfolios." />} />
+          <Route path="tasks" element={<ModuleStub title="Tasks" description="Individual assignment tracking." />} />
+          <Route path="sprint-board" element={<ModuleStub title="Sprint Board" description="Agile task visualization." />} />
+        </Route>
+
+        <Route path="/assets" element={<ProtectedRoute><EnterpriseShell><Suspense fallback={<PageLoading />}><PageTransition><Outlet /></PageTransition></Suspense></EnterpriseShell></ProtectedRoute>}>
+          <Route path="inventory" element={<ModuleStub title="Inventory" description="Physical asset tracking." />} />
+          <Route path="devices" element={<ModuleStub title="Devices" description="Laptop and mobile allocations." />} />
+          <Route path="licenses" element={<ModuleStub title="Licenses" description="Software and SaaS subscriptions." />} />
+        </Route>
+
+        <Route path="/compliance" element={<ProtectedRoute><EnterpriseShell><Suspense fallback={<PageLoading />}><PageTransition><Outlet /></PageTransition></Suspense></EnterpriseShell></ProtectedRoute>}>
+          <Route path="policies" element={<ModuleStub title="Policies" description="Corporate governance documents." />} />
+          <Route path="documents" element={<ModuleStub title="Documents" description="Secure vault for employee records." />} />
+          <Route path="audit" element={<ModuleStub title="Audit Center" description="Compliance checking and validation." />} />
+        </Route>
+
+        <Route path="/performance" element={<ProtectedRoute><EnterpriseShell><Suspense fallback={<PageLoading />}><PageTransition><Outlet /></PageTransition></Suspense></EnterpriseShell></ProtectedRoute>}>
+          <Route path="reviews" element={<ModuleStub title="Reviews" description="Performance evaluation cycles." />} />
+          <Route path="kpis" element={<ModuleStub title="KPIs" description="Key performance indicators." />} />
+          <Route path="analytics" element={<ModuleStub title="Analytics" description="Workforce productivity metrics." />} />
+        </Route>
+
+        <Route path="/admin" element={<ProtectedRoute><EnterpriseShell><Suspense fallback={<PageLoading />}><PageTransition><Outlet /></PageTransition></Suspense></EnterpriseShell></ProtectedRoute>}>
+          <Route path="settings" element={<ModuleStub title="Company Settings" description="Global organization preferences." />} />
+          <Route path="roles" element={<ModuleStub title="Roles" description="Role definitions." />} />
+          <Route path="permissions" element={<ModuleStub title="Permissions" description="Fine-grained access control." />} />
+          <Route path="security" element={<ModuleStub title="Security" description="Security policies and enforcement." />} />
+          <Route path="ai-config" element={<ModuleStub title="AI Configuration" description="AI copilot settings." />} />
+          <Route path="system-logs" element={<ModuleStub title="System Logs" description="Infrastructure and application logs." />} />
+        </Route>
+
         {/* Full Screen Command Center */}
         <Route path="/command-center" element={
           <ProtectedRoute>

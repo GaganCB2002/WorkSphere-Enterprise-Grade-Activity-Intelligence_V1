@@ -3,6 +3,7 @@ import Tabs from '../../components/common/Tabs/Tabs'
 import DataTable, { StatusBadge } from '../../components/common/DataTable/DataTable'
 import KpiCard from '../../components/common/Card/KpiCard'
 import Badge from '../../components/common/Badge/Badge'
+import PageHeader from '../../components/layout/PageHeader'
 
 const employee = {
   id: 'emp-108',
@@ -85,7 +86,22 @@ export default function EmployeeProfile() {
   ], [])
 
   return (
-    <div className="space-y-5 max-w-5xl">
+    <div className="flex-1 flex flex-col space-y-5 h-full bg-surface-secondary max-w-5xl">
+      <PageHeader
+        title="Employee Profile"
+        description="Detailed view of employee information, performance, and history."
+        status="Active"
+        quickActions={
+          <>
+            <button className="px-3 py-1.5 text-sm font-medium rounded bg-[var(--color-brand-500)] text-white hover:bg-[var(--color-brand-600)] transition-colors">
+              Edit Profile
+            </button>
+            <button className="px-3 py-1.5 text-sm font-medium rounded bg-surface-hover text-primary border border-subtle hover:bg-surface-active transition-colors">
+              Message
+            </button>
+          </>
+        }
+      />
       {/* Profile Header */}
       <div className="bg-surface-elevated border border-subtle rounded-lg p-5">
         <div className="flex items-start gap-5">
@@ -102,14 +118,6 @@ export default function EmployeeProfile() {
                   <Badge variant="brand">{employee.level}</Badge>
                   <Badge>{employee.employmentType}</Badge>
                 </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <button className="px-3 py-1.5 text-sm font-medium rounded bg-[var(--color-brand-500)] text-white hover:bg-[var(--color-brand-600)] transition-colors">
-                  Edit Profile
-                </button>
-                <button className="px-3 py-1.5 text-sm font-medium rounded bg-surface-hover text-primary border border-subtle hover:bg-surface-active transition-colors">
-                  Message
-                </button>
               </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 pt-4 border-t border-subtle">

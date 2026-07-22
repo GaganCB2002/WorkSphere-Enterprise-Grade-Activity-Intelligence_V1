@@ -10,7 +10,6 @@ const breadcrumbMap = {
   assets: { label: 'Assets' },
   compliance: { label: 'Compliance' },
   performance: { label: 'Performance' },
-  reports: { label: 'Reports' },
   administration: { label: 'Administration' },
   settings: { label: 'Settings' },
   leave: { label: 'Leave' },
@@ -42,7 +41,6 @@ const breadcrumbMap = {
   tickets: { label: 'Tickets' },
   'knowledge-base': { label: 'Knowledge Base' },
   sla: { label: 'SLA' },
-  profile: { label: 'Profile' },
   learning: { label: 'Learning' },
   timeline: { label: 'Timeline' },
   team: { label: 'Team' },
@@ -50,6 +48,14 @@ const breadcrumbMap = {
   security: { label: 'Security' },
   allocations: { label: 'Allocations' },
   'org-chart': { label: 'Org Chart' },
+  // employee sub-routes
+  profile: { label: 'Employee Profile' },
+  users: { label: 'User Management' },
+  rbac: { label: 'RBAC Matrix' },
+  'ai-config': { label: 'AI & System Config' },
+  audit: { label: 'Global Audit Logs' },
+  tracking: { label: 'Global Tracking' },
+  reports: { label: 'Activity Reports' },
 }
 
 export default function Breadcrumbs() {
