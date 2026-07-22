@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Mail, ArrowUpRight, ArrowDownRight, Send } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -64,8 +64,8 @@ export const EmailMarketing: React.FC = () => {
                 <LineChart data={emailData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
                   <XAxis dataKey="month" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} />
-                  <YAxis yAxisId="left" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v)=>`₹${v}%`} />
-                  <YAxis yAxisId="right" orientation="right" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v)=>`₹${v}%`} />
+                  <YAxis yAxisId="left" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v)=>`${v}%`} />
+                  <YAxis yAxisId="right" orientation="right" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v)=>`${v}%`} />
                   <Tooltip contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }} />
                   <Line yAxisId="left" type="monotone" dataKey="openRate" stroke="#0d47a1" strokeWidth={3} dot={false} name="Open Rate" />
                   <Line yAxisId="right" type="monotone" dataKey="clickRate" stroke="#10b981" strokeWidth={3} dot={false} name="Click Rate" />

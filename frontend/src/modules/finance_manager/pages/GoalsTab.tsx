@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { getLiveDate, getLiveTime } from '../../../utils/liveDataHelpers';
 
 import { 
@@ -141,7 +141,7 @@ export const GoalsTab: React.FC = () => {
                       className={`h-full rounded-full transition-all duration-500 ${
                         goal.completed ? 'bg-emerald-500' : 'bg-gradient-to-r from-[#7a78e9] to-[#00e5ff]'
                       }`}
-                      style={{ width: `₹${goal.progress}%` }}
+                      style={{ width: `${goal.progress}%` }}
                     />
                   </div>
                 </div>

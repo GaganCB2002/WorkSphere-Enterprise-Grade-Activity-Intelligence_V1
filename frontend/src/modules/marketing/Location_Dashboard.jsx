@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -31,7 +32,7 @@ const Dashboard = () => {
         // Fetch initial live locations
         const fetchLiveLocations = async () => {
             try {
-                const res = await axios.get(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}/api/location/live` : 'http://localhost:5000/api/location/live');
+                const res = await axios.get(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}/api/tracking/live` : 'http://localhost:4000/api/tracking/live');
                 setUsers(res.data);
             } catch (err) {
                 console.error('Error fetching live locations', err);
@@ -43,7 +44,7 @@ const Dashboard = () => {
         // Socket.io integration
         const socket = io(import.meta.env.VITE_TELEMETRY_API_URL ? `${import.meta.env.VITE_TELEMETRY_API_URL}` : 'http://localhost:5000');
         
-        socket.on('locationUpdate', (data) => {
+        socket.on('location_update', (data) => {
             setUsers(prev => {
                 const index = prev.findIndex(u => u.userId === data.userId);
                 if (index !== -1) {

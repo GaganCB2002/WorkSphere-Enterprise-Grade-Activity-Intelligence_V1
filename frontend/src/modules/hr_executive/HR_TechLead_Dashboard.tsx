@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+﻿import React, { useMemo } from 'react';
 import { getLiveDate, getLiveTime } from '../../utils/liveDataHelpers';
 
 import { Bot, 
@@ -102,7 +102,7 @@ export default function TechLeadDashboard({ user }: TechLeadDashboardProps) {
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="flex-1 h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-                      <div className="h-full bg-blue-600 rounded-full" style={{ width: `₹${project.progress}%` }} />
+                      <div className="h-full bg-blue-600 rounded-full" style={{ width: `${project.progress}%` }} />
                     </div>
                     <span className="text-xs font-bold text-slate-500">{project.progress}%</span>
                   </div>

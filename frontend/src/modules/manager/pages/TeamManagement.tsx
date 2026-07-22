@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import {
   Search, Filter, Plus, User, MessageCircle, Mail, MoreHorizontal,
   ChevronDown, ChevronLeft, ChevronRight, LayoutGrid, List, Briefcase, Activity
@@ -144,7 +144,7 @@ export const TeamManagement: React.FC = () => {
                           member.workloadStatus === 'High' ? 'bg-[#c27650]' : 
                           member.workloadStatus === 'Optimal' ? 'bg-[#5b8c63]' : 'bg-[#c88d40]'
                         }`} 
-                        style={{ width: `₹${member.workload}%` }} 
+                        style={{ width: `${member.workload}%` }} 
                       />
                     </div>
                   </td>

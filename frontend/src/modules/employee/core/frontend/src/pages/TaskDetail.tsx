@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+﻿import { ChangeEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Avatar } from '@/components/ui/Avatar';
 import { Badge } from '@/components/ui/Badge';
@@ -334,7 +334,7 @@ export default function TaskDetail() {
               <label className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-200 bg-slate-50 px-4 py-6 text-center transition hover:border-teal-200 hover:bg-teal-50/50">
                 <Paperclip className="h-6 w-6 text-teal-700" />
                 <span className="mt-2 text-sm font-semibold text-slate-700">Upload task files</span>
-                <span className="mt-1 text-xs text-slate-400">{selectedFiles.length ? `₹${selectedFiles.length} file(s) selected` : 'Attach work evidence or final files'}</span>
+                <span className="mt-1 text-xs text-slate-400">{selectedFiles.length ? `${selectedFiles.length} file(s) selected` : 'Attach work evidence or final files'}</span>
                 <input type="file" multiple className="hidden" onChange={(event) => void handleFileChange(event)} />
               </label>
               <div className="space-y-2">

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 
 interface GlassPanelProps {
@@ -22,7 +22,7 @@ export function GlassPanel({ children, className = '', variant = 'default', padd
   };
   const hoverStyles = hover ? 'hover:shadow-warm hover:border-primary/40 dark:hover:border-primary/30 hover:-translate-y-0.5 cursor-pointer' : '';
 
-  const combinedClassName = `₹${base} ${variantStyles[variant]} ${paddingMap[padding]} ${hoverStyles} ${className}`;
+  const combinedClassName = `${base} ${variantStyles[variant]} ${paddingMap[padding]} ${hoverStyles} ${className}`;
 
   if (animate) {
     return (

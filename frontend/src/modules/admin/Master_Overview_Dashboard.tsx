@@ -1,4 +1,4 @@
-import { ArrowRight, BrainCircuit, Sparkles } from 'lucide-react'
+﻿import { ArrowRight, BrainCircuit, Sparkles } from 'lucide-react'
 import { Panel } from '../ui/Panel'
 import { MetricCard } from '../ui/MetricCard'
 import { LineChart } from '../ui/LineChart'
@@ -60,7 +60,7 @@ function ProjectIntelligencePanel({ items }: { items: ProjectIntelligenceItem[] 
               <span>{item.completion}%</span>
             </div>
             <div className="h-3 rounded-full bg-slate-100 dark:bg-white/[0.06]">
-              <div className="h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500" style={{ width: `₹${item.completion}%` }} />
+              <div className="h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500" style={{ width: `${item.completion}%` }} />
             </div>
           </div>
         </div>
@@ -203,7 +203,7 @@ function ProjectGrid({ items }: { items: ProjectCardData[] }) {
             </div>
           </div>
           <div className="mt-4 h-3 rounded-full bg-slate-100 dark:bg-white/[0.06]">
-            <div className="h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500" style={{ width: `₹${item.progress}%` }} />
+            <div className="h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500" style={{ width: `${item.progress}%` }} />
           </div>
         </div>
       ))}
@@ -285,7 +285,7 @@ function RoiBreakdown({ items }: { items: RoiProject[] }) {
             </div>
           </div>
           <div className="mt-4 h-3 rounded-full bg-slate-100 dark:bg-white/[0.06]">
-            <div className="h-3 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500" style={{ width: `₹${item.roi}%` }} />
+            <div className="h-3 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500" style={{ width: `${item.roi}%` }} />
           </div>
         </div>
       ))}

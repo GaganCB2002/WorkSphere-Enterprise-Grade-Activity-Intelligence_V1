@@ -1,0 +1,443 @@
+[
+  {
+    "userId": "u-superadmin",
+    "email": "super_admin@worksphere.com",
+    "name": "Super Admin",
+    "loginTime": "2026-07-22T06:22:52.966Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T06:34:39.488Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-superadmin",
+    "email": "super_admin@worksphere.com",
+    "name": "Super Admin",
+    "loginTime": "2026-07-22T06:34:48.488Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T06:35:16.924Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T06:35:48.400Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-cto",
+    "email": "tech_cto",
+    "name": "Chief Technology Officer",
+    "loginTime": "2026-07-22T06:36:01.523Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-superadmin",
+    "email": "root_001",
+    "name": "Super Administrator",
+    "loginTime": "2026-07-22T06:36:09.723Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T07:16:53.113Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T07:17:15.736Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T07:17:26.186Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T07:17:40.594Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:17:53.087Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:18:05.935Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:18:15.924Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:18:28.221Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:18:38.309Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:18:48.841Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:18:58.827Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T07:21:23.916Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T07:21:33.756Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:21:33.770Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-superadmin",
+    "email": "root_001",
+    "name": "Super Administrator",
+    "loginTime": "2026-07-22T07:21:33.782Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrexec",
+    "email": "hr_exec_v",
+    "name": "HR Executive",
+    "loginTime": "2026-07-22T07:21:44.566Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-admin",
+    "email": "sys_admin_x",
+    "name": "System Admin",
+    "loginTime": "2026-07-22T07:22:16.886Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T07:22:51.764Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T07:24:04.082Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-int",
+    "email": "intern_14",
+    "name": "Intern",
+    "loginTime": "2026-07-22T07:24:14.000Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T07:32:29.304Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:32:29.657Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-superadmin",
+    "email": "root_001",
+    "name": "Super Administrator",
+    "loginTime": "2026-07-22T07:32:29.670Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T07:34:39.019Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:34:39.041Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-superadmin",
+    "email": "root_001",
+    "name": "Super Administrator",
+    "loginTime": "2026-07-22T07:34:39.055Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-int",
+    "email": "intern_14",
+    "name": "Intern",
+    "loginTime": "2026-07-22T07:39:29.962Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:41:33.833Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrexec",
+    "email": "hr_exec_v",
+    "name": "HR Executive",
+    "loginTime": "2026-07-22T07:41:51.655Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-int",
+    "email": "intern_14",
+    "name": "Intern",
+    "loginTime": "2026-07-22T07:41:51.696Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-cto",
+    "email": "tech_cto",
+    "name": "Chief Technology Officer",
+    "loginTime": "2026-07-22T07:41:51.701Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-fin",
+    "email": "fin_mgr_03",
+    "name": "Finance Manager",
+    "loginTime": "2026-07-22T07:41:51.706Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-proj",
+    "email": "proj_mgr_06",
+    "name": "Project Manager",
+    "loginTime": "2026-07-22T07:41:51.712Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-emp",
+    "email": "employee_13",
+    "name": "Standard Employee",
+    "loginTime": "2026-07-22T07:41:51.718Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-lead",
+    "email": "tech_lead_07",
+    "name": "Tech Lead",
+    "loginTime": "2026-07-22T07:41:51.723Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-sec",
+    "email": "sec_analyst_11",
+    "name": "Security Analyst",
+    "loginTime": "2026-07-22T07:41:51.728Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-sup",
+    "email": "sup_agent_12",
+    "name": "Support Agent",
+    "loginTime": "2026-07-22T07:41:51.733Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-superadmin",
+    "email": "super_admin@worksphere.com",
+    "name": "Super Admin",
+    "loginTime": "2026-07-22T07:41:51.737Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-devops",
+    "email": "devops_eng_08",
+    "name": "DevOps Engineer",
+    "loginTime": "2026-07-22T07:41:51.742Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-eng",
+    "email": "soft_eng_10",
+    "name": "Software Engineer",
+    "loginTime": "2026-07-22T07:41:51.747Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-admin",
+    "email": "sys_admin_x",
+    "name": "System Admin",
+    "loginTime": "2026-07-22T07:41:51.751Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-qa",
+    "email": "qa_eng_09",
+    "name": "QA Engineer",
+    "loginTime": "2026-07-22T07:41:51.756Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T07:41:51.761Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:41:51.766Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-sales",
+    "email": "sales_mgr_05",
+    "name": "Sales Manager",
+    "loginTime": "2026-07-22T07:41:51.770Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-mkt",
+    "email": "mkt_mgr_04",
+    "name": "Marketing Manager",
+    "loginTime": "2026-07-22T07:41:51.775Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T07:42:14.479Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:42:14.487Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-superadmin",
+    "email": "root_001",
+    "name": "Super Administrator",
+    "loginTime": "2026-07-22T07:42:14.503Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:43:58.539Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T07:57:46.262Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T08:04:21.246Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-cto",
+    "email": "tech_cto",
+    "name": "Chief Technology Officer",
+    "loginTime": "2026-07-22T08:04:43.518Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-22T08:09:21.723Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T08:16:48.135Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T08:22:34.680Z",
+    "ip": "127.0.0.1"
+  }
+]

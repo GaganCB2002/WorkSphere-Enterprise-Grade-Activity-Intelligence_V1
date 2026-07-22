@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   Users, Check, X, Calendar, AlertTriangle, Shield, 
   MoreVertical, Mail, GitCommit, Settings2, Sparkles, Filter
@@ -101,7 +101,7 @@ export const TeamManagement: React.FC = () => {
                     <div className="h-1.5 w-full bg-[#21262d] rounded-full overflow-hidden">
                       <div 
                         className={`h-full rounded-full ${member.overloaded ? 'bg-rose-500' : 'bg-indigo-500'}`} 
-                        style={{ width: `₹${Math.min(member.workload, 100)}%` }} 
+                        style={{ width: `${Math.min(member.workload, 100)}%` }} 
                       />
                     </div>
                   </div>

@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion'
+﻿import { motion, AnimatePresence } from 'framer-motion'
 import { 
   LayoutDashboard, 
   Plus, 
@@ -187,7 +187,7 @@ export function ProjectManagementPage() {
                        <div className="h-2 w-full bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
                           <motion.div 
                             initial={{ width: 0 }}
-                            animate={{ width: `₹${p.progress}%` }}
+                            animate={{ width: `${p.progress}%` }}
                             transition={{ duration: 1, delay: 0.5 }}
                             className={`h-full rounded-full ${
                               p.progress > 80 ? 'bg-emerald-500' : 'bg-luxury-blue'

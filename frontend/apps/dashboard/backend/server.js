@@ -204,6 +204,22 @@ app.post('/api/telemetry/location', async (req, res) => {
     res.status(200).json({ status: 'received' });
 });
 
+// --- Activity Ingestion API ---
+app.post('/api/telemetry/activity', async (req, res) => {
+    const { employeeId, moduleOpened, durationSeconds, timestamp } = req.body;
+    
+    // Broadcast via WebSockets
+    io.emit('activity_update', {
+        employeeId,
+        moduleOpened,
+        durationSeconds,
+        timestamp: timestamp || new Date().toISOString()
+    });
+
+    console.log(`[ACTIVITY] ${employeeId} used ${moduleOpened} for ${durationSeconds}s`);
+    res.status(200).json({ status: 'received' });
+});
+
 // --- Security Intelligence API ---
 app.post('/api/telemetry/security', async (req, res) => {
     const { employeeId, eventType, severity, threatName, filePath, status, notifiedIT } = req.body;

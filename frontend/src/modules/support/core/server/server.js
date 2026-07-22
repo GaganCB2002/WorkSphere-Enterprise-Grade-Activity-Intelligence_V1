@@ -19,8 +19,8 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 const allowedOrigins = [
-  process.env.CLIENT_URL || 'https://work-sphere-enterprise-grade-activi.vercel.app',
-  'https://work-sphere-enterprise-grade-activi.vercel.app',
+  process.env.CLIENT_URL || 'http://localhost:3005',
+  'http://localhost:3005',
   'http://127.0.0.1:3004',
   'http://localhost:3004',
   'http://127.0.0.1:3005',

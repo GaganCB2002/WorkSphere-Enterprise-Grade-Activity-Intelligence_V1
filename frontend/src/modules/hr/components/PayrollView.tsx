@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { IndianRupee, FileText, CheckCircle, AlertCircle, Plus, Search, DollarSign, Download } from 'lucide-react';
 import { smartHRApi } from '../api';
 import type { PayrollRecord } from '../types';
@@ -18,7 +18,7 @@ export function PayrollView() {
     if (!empId || !month) return;
     smartHRApi.processPayroll(empId, month, reimbursements).then(res => {
       setPayrolls([res, ...payrolls]);
-      alert(`Payroll Processed Successfully! Net Salary: ₹${res.netSalary.toLocaleString()} (TXN ID: ${res.bankTransactionId})`);
+      alert(`Payroll Processed Successfully! Net Salary: ${res.netSalary.toLocaleString()} (TXN ID: ${res.bankTransactionId})`);
     });
   };
 

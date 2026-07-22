@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express'
 import * as si from 'systeminformation'
 import { io } from '../server'
+import { authenticate } from '../middleware/auth'
 
 const router = Router()
 export const liveTrackingCache = new Map()
@@ -102,104 +103,125 @@ setInterval(async () => {
 }, 2000);
 
 router.post('/telemetry/location', (req: Request, res: Response) => {
-    const { deviceId, employeeId, latitude, longitude, speed, timestamp, accuracy } = req.body;
+    try {
+        const { deviceId, employeeId, latitude, longitude, speed, timestamp, accuracy } = req.body;
 
-    if (!deviceId || latitude === undefined || longitude === undefined) {
-        return res.status(400).json({ error: 'Invalid location packet' });
+        if (!deviceId || latitude === undefined || longitude === undefined) {
+            res.status(400).json({ error: 'Invalid location packet' }); return;
+        }
+
+        const locationData = {
+            deviceId,
+            employeeId,
+            latitude,
+            longitude,
+            speed: speed || 0,
+            accuracy: accuracy || 0,
+            timestamp: timestamp || new Date().toISOString(),
+            isOnline: true,
+            lastUpdate: Date.now()
+        };
+
+        liveTrackingCache.set(deviceId, locationData);
+        io.emit('location_update', locationData);
+        res.status(200).json({ status: 'received' });
+    } catch {
+        res.status(500).json({ error: 'Failed to process location.' });
     }
-
-    const locationData = {
-        deviceId,
-        employeeId,
-        latitude,
-        longitude,
-        speed: speed || 0,
-        accuracy: accuracy || 0,
-        timestamp: timestamp || new Date().toISOString(),
-        isOnline: true,
-        lastUpdate: Date.now()
-    };
-
-    liveTrackingCache.set(deviceId, locationData);
-    io.emit('location_update', locationData);
-    res.status(200).json({ status: 'received' });
 });
 
 router.post('/telemetry/security', (req: Request, res: Response) => {
-    const { employeeId, eventType, severity, threatName, filePath, status, notifiedIT } = req.body;
+    try {
+        const { employeeId, eventType, severity, threatName, filePath, status, notifiedIT } = req.body;
 
-    if (!threatName || !filePath) {
-        return res.status(400).json({ error: 'Invalid security packet' });
-    }
+        if (!threatName || !filePath) {
+            res.status(400).json({ error: 'Invalid security packet' }); return;
+        }
 
-    const threatData = {
-        timestamp: new Date().toISOString(),
-        employeeId,
-        eventType,
-        severity,
-        threatName,
-        filePath,
-        status,
-        notifiedIT
-    };
+        const threatData = {
+            timestamp: new Date().toISOString(),
+            employeeId,
+            eventType,
+            severity,
+            threatName,
+            filePath,
+            status,
+            notifiedIT
+        };
 
-    io.emit('system_update', {
-        type: 'threat_alert',
-        data: threatData
-    });
-
-    console.log(`[SECURITY] High-priority threat broadcasted: ${threatName} at ${filePath}`);
-    res.status(200).json({ status: 'broadcasted' });
-});
-
-router.get('/system/metrics', async (req: Request, res: Response) => {
-    const metrics = await getExactMetrics();
-    if (metrics) {
-        const healthScore = Math.max(0, 100 - (metrics.cpu.percent * 0.5) - (metrics.memory.percent * 0.5));
-        res.json({
-            ...metrics,
-            healthScore: Math.round(healthScore)
+        io.emit('system_update', {
+            type: 'threat_alert',
+            data: threatData
         });
-    } else {
-        res.status(500).json({ error: 'Failed to fetch metrics' });
+
+        console.log(`[SECURITY] High-priority threat broadcasted: ${threatName} at ${filePath}`);
+        res.status(200).json({ status: 'broadcasted' });
+    } catch {
+        res.status(500).json({ error: 'Failed to process security event.' });
     }
 });
 
-router.get('/tracking/live', (req: Request, res: Response) => {
-    res.json(Array.from(liveTrackingCache.values()));
+router.get('/system/metrics', authenticate, async (req: Request, res: Response) => {
+    try {
+        const metrics = await getExactMetrics();
+        if (metrics) {
+            const healthScore = Math.max(0, 100 - (metrics.cpu.percent * 0.5) - (metrics.memory.percent * 0.5));
+            res.json({
+                ...metrics,
+                healthScore: Math.round(healthScore)
+            });
+        } else {
+            res.status(500).json({ error: 'Failed to fetch metrics' });
+        }
+    } catch {
+        res.status(500).json({ error: 'Failed to fetch metrics.' });
+    }
+});
+
+router.get('/tracking/live', authenticate, (req: Request, res: Response) => {
+    try {
+        res.json(Array.from(liveTrackingCache.values()));
+    } catch {
+        res.status(500).json({ error: 'Failed to fetch tracking data.' });
+    }
 });
 
 export const activityCache: any[] = [];
 
 router.post('/telemetry/activity', (req: Request, res: Response) => {
-    const { employeeId, moduleOpened, durationSeconds, timestamp } = req.body;
+    try {
+        const { employeeId, moduleOpened, durationSeconds, timestamp } = req.body;
 
-    if (!employeeId || !moduleOpened) {
-        return res.status(400).json({ error: 'Invalid activity packet' });
+        if (!employeeId || !moduleOpened) {
+            res.status(400).json({ error: 'Invalid activity packet' }); return;
+        }
+
+        const activityData = {
+            id: Math.random().toString(36).substr(2, 9),
+            employeeId,
+            moduleOpened,
+            durationSeconds: durationSeconds || 0,
+            timestamp: timestamp || new Date().toISOString()
+        };
+
+        activityCache.push(activityData);
+
+        if (activityCache.length > 5000) {
+            activityCache.shift();
+        }
+
+        res.status(200).json({ status: 'logged' });
+    } catch {
+        res.status(500).json({ error: 'Failed to log activity.' });
     }
-
-    const activityData = {
-        id: Math.random().toString(36).substr(2, 9),
-        employeeId,
-        moduleOpened,
-        durationSeconds: durationSeconds || 0,
-        timestamp: timestamp || new Date().toISOString()
-    };
-
-    // Store in-memory
-    activityCache.push(activityData);
-
-    // Keep cache from growing indefinitely (keep last 5000 items)
-    if (activityCache.length > 5000) {
-        activityCache.shift();
-    }
-
-    res.status(200).json({ status: 'logged' });
 });
 
-router.get('/telemetry/activity/report', (req: Request, res: Response) => {
-    // Return all logged activities
-    res.json(activityCache);
+router.get('/telemetry/activity/report', authenticate, (req: Request, res: Response) => {
+    try {
+        res.json(activityCache);
+    } catch {
+        res.status(500).json({ error: 'Failed to fetch activity report.' });
+    }
 });
 
 export default router;

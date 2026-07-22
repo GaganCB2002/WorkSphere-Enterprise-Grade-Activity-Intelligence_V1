@@ -1,7 +1,6 @@
-import React from 'react';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { Shield, LogOut, User, Building, Award } from 'lucide-react';
+import React, { Suspense } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import Login from '../auth/Login';
 import Register from '../auth/Register';
@@ -10,14 +9,15 @@ import ResetPassword from '../auth/ResetPassword';
 import MFA from '../auth/MFA';
 import SessionTimeout from '../auth/SessionTimeout';
 import ProtectedRoute from './ProtectedRoute';
+import EnterpriseShell from '../components/layout/EnterpriseShell/EnterpriseShell';
+import DashboardOverview from '../pages/Dashboard/DashboardOverview';
 
 const SystemCommandCenter = React.lazy(() => import('../modules/command_center/SystemCommandCenter').then(m => ({ default: m.SystemCommandCenter })));
 
-// 18 Role Dashboard Lazy Imports
 const SuperAdminDashboard = React.lazy(() => import('../modules/super_admin/SuperAdminDashboard').then(m => ({ default: m.SuperAdminDashboard })));
 const AdminDashboard = React.lazy(() => import('../modules/admin/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
 const CeoDashboard = React.lazy(() => import('../modules/ceo/CeoDashboard').then(m => ({ default: m.CeoDashboard })));
-const CtoDashboard = React.lazy(() => import('../modules/cto/CtoDashboard').then(m => ({ default: m.CtoDashboard })));
+const CtoModule = React.lazy(() => import('../modules/cto/CtoModule').then(m => ({ default: m.CtoModule })));
 const HrManagerModule = React.lazy(() => import('../modules/hr_manager/HrManagerModule').then(m => ({ default: m.HrManagerModule })));
 const HrExecutiveDashboard = React.lazy(() => import('../modules/hr_executive/HrExecutiveDashboard').then(m => ({ default: m.HrExecutiveDashboard })));
 const FinanceManagerDashboard = React.lazy(() => import('../modules/finance_manager/FinanceManagerDashboard').then(m => ({ default: m.FinanceManagerDashboard })));
@@ -33,127 +33,37 @@ const SupportAgentDashboard = React.lazy(() => import('../modules/support_agent/
 const EmployeeDashboard = React.lazy(() => import('../modules/employee/EmployeeModule').then(m => ({ default: m.EmployeeModule })));
 const InternModule = React.lazy(() => import('../modules/intern/InternModule').then(m => ({ default: m.InternModule })));
 
-const MainLayout = () => {
-  const user = useSelector(state => state.auth.user) || { id: 'usr-1', name: 'Gagan CB', role: 'SUPER_ADMIN', department: 'Global Security' };
+const DashboardRouter = () => {
+  const location = useLocation();
+  const user = useSelector(state => state.auth.user) || { id: 'usr-1', name: 'User', role: 'SUPER_ADMIN', department: 'Global Security' };
   const token = useSelector(state => state.auth.token) || 'mock-token';
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const handleLogout = () => {
-    dispatch({ type: 'LOGOUT' });
-    navigate('/login');
-  };
-
-  const renderRoleDashboard = () => {
-    switch (user.role) {
-      case 'SUPERADMIN':
-      case 'SUPER_ADMIN': return <SuperAdminDashboard />;
-      case 'ADMIN': return <AdminDashboard />;
-      case 'CEO': return <CeoDashboard />;
-      case 'CTO': return <CtoDashboard />;
-      case 'HR_MANAGER': return <HrManagerModule user={user} />;
-      case 'HR_EXECUTIVE': return <HrExecutiveDashboard />;
-      case 'FINANCE_MANAGER': return <FinanceManagerDashboard />;
-      case 'MARKETING_MANAGER': return <MarketingManagerModule user={user} />;
-      case 'SALES_MANAGER': return <SalesManagerDashboard />;
-      case 'PROJECT_MANAGER': return <ProjectManagerDashboard />;
-      case 'TECH_LEAD': return <TechLeadModule user={user} />;
-      case 'DEVOPS_ENGINEER': return <DevOpsEngineerDashboard />;
-      case 'QA_ENGINEER': return <QaEngineerModule user={user} />;
-      case 'SOFTWARE_ENGINEER': return <SoftwareEngineerDashboard />;
-      case 'SECURITY_ANALYST': return <SecurityAnalystDashboard />;
-      case 'SUPPORT_AGENT': return <SupportAgentDashboard />;
-      case 'EMPLOYEE': return <EmployeeDashboard user={user} platform={{ id: 'platform-1', name: 'Core Platform' }} token={token} />;
-      case 'INTERN': return <InternModule user={user} />;
-      default: return <SuperAdminDashboard />;
-    }
-  };
-
-  const isFullScreenRole = ['EMPLOYEE', 'SOFTWARE_ENGINEER', 'TECH_LEAD', 'HR_MANAGER', 'INTERN', 'FINANCE_MANAGER', 'MARKETING_MANAGER', 'QA_ENGINEER', 'DEVOPS_ENGINEER', 'SECURITY_ANALYST', 'ADMIN', 'SUPER_ADMIN', 'SUPERADMIN'].includes(user.role);
-
-  if (isFullScreenRole) {
-    return (
-      <React.Suspense fallback={
-        <div className="flex items-center justify-center h-screen bg-slate-950">
-          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-        </div>
-      }>
-        {renderRoleDashboard()}
-        
-        {/* Floating Logout Button to prevent trapped state in Full Screen roles */}
-        <button 
-          onClick={handleLogout}
-          className="fixed bottom-6 left-6 z-[9999] p-3 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-full border border-red-500/20 backdrop-blur-md transition-all shadow-lg flex items-center justify-center group"
-          title="Logout / Switch Role"
-        >
-          <LogOut className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-          <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 ease-in-out whitespace-nowrap opacity-0 group-hover:opacity-100 group-hover:ml-2 font-semibold">
-            Logout
-          </span>
-        </button>
-      </React.Suspense>
-    );
+  if (location.pathname === '/' || location.pathname === '/dashboard') {
+    return <DashboardOverview />;
   }
 
-  return (
-    <div className="min-h-screen bg-slate-950 text-white flex flex-col selection:bg-blue-600 selection:text-white">
-      {/* Top Navigation Bar */}
-      <header className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-xl border-b border-slate-800/80 px-6 py-4 shadow-lg flex items-center justify-between transition-all">
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl shadow-lg shadow-blue-500/25 text-white flex items-center justify-center">
-            <Shield className="w-6 h-6" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
-                WorkSphere Enterprise
-              </span>
-              <span className="px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-bold uppercase tracking-wider">
-                Command Portal
-              </span>
-            </div>
-            <p className="text-xs text-slate-400 flex items-center gap-2 mt-0.5">
-              <Building className="w-3.5 h-3.5 text-slate-500" /> Dept: <span className="text-slate-300 font-semibold">{user.department || 'Enterprise Hub'}</span>
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-6">
-          {/* Active User Badge */}
-          <div className="hidden md:flex items-center gap-3 px-4 py-2 bg-slate-950/60 border border-slate-800/80 rounded-2xl shadow-inner">
-            <div className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-blue-400 shadow">
-              {user.name ? user.name.charAt(0) : 'U'}
-            </div>
-            <div className="text-left">
-              <div className="text-xs font-bold text-white flex items-center gap-1.5">
-                {user.name} <Award className="w-3.5 h-3.5 text-blue-400" />
-              </div>
-              <div className="text-[10px] font-extrabold text-blue-400 uppercase tracking-wider">{user.role.replace('_', ' ')}</div>
-            </div>
-          </div>
-
-          {/* Switch Role / Logout Button */}
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 hover:text-white font-bold text-xs tracking-wide shadow-lg hover:shadow-slate-900/50 transition-all duration-300 active:scale-95"
-          >
-            <LogOut className="w-4 h-4 text-rose-400" /> Switch Role / Logout
-          </button>
-        </div>
-      </header>
-
-      {/* Main Dashboard Content Area */}
-      <main className="flex-1 p-6 lg:p-8 max-w-[1600px] w-full mx-auto">
-        <React.Suspense fallback={
-          <div className="flex items-center justify-center h-96">
-            <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-          </div>
-        }>
-          {renderRoleDashboard()}
-        </React.Suspense>
-      </main>
-    </div>
-  );
+  switch (user.role) {
+    case 'SUPERADMIN':
+    case 'SUPER_ADMIN': return <SuperAdminDashboard />;
+    case 'ADMIN': return <AdminDashboard />;
+    case 'CEO': return <CeoDashboard />;
+    case 'CTO': return <CtoModule user={user} />;
+    case 'HR_MANAGER': return <HrManagerModule user={user} />;
+    case 'HR_EXECUTIVE': return <HrExecutiveDashboard />;
+    case 'FINANCE_MANAGER': return <FinanceManagerDashboard />;
+    case 'MARKETING_MANAGER': return <MarketingManagerModule user={user} />;
+    case 'SALES_MANAGER': return <SalesManagerDashboard />;
+    case 'PROJECT_MANAGER': return <ProjectManagerDashboard />;
+    case 'TECH_LEAD': return <TechLeadModule user={user} />;
+    case 'DEVOPS_ENGINEER': return <DevOpsEngineerDashboard />;
+    case 'QA_ENGINEER': return <QaEngineerModule user={user} />;
+    case 'SOFTWARE_ENGINEER': return <SoftwareEngineerDashboard />;
+    case 'SECURITY_ANALYST': return <SecurityAnalystDashboard />;
+    case 'SUPPORT_AGENT': return <SupportAgentDashboard />;
+    case 'EMPLOYEE': return <EmployeeDashboard user={user} platform={{ id: 'platform-1', name: 'Core Platform' }} token={token} />;
+    case 'INTERN': return <InternModule user={user} />;
+    default: return <SuperAdminDashboard />;
+  }
 };
 
 import { GlobalEnterpriseCopilot } from '../components/ai/GlobalEnterpriseCopilot';
@@ -165,6 +75,28 @@ import { ResourcesPage } from '../pages/Resources/ResourcesPage';
 import { PrivacyPage } from '../pages/Legal/PrivacyPage';
 import { TermsPage } from '../pages/Legal/TermsPage';
 import { SecurityPage } from '../pages/Legal/SecurityPage';
+
+function PageLoading() {
+  return (
+    <div className="space-y-4 animate-pulse">
+      <div className="grid grid-cols-4 gap-4">
+        {[...Array(4)].map((_, i) => <div key={i} className="h-24 skeleton rounded-lg" />)}
+      </div>
+      <div className="h-64 skeleton rounded-lg" />
+    </div>
+  )
+}
+
+function PageLoadingFull() {
+  return (
+    <div className="flex items-center justify-center h-screen bg-surface">
+      <div className="flex flex-col items-center gap-3">
+        <div className="w-8 h-8 border-2 border-[var(--color-brand-500)] border-t-transparent rounded-full animate-spin" />
+        <span className="text-sm text-secondary">Loading...</span>
+      </div>
+    </div>
+  )
+}
 
 const AppRoutes = () => {
   return (
@@ -190,16 +122,20 @@ const AppRoutes = () => {
         {/* Full Screen Command Center */}
         <Route path="/command-center" element={
           <ProtectedRoute>
-            <React.Suspense fallback={<div className="flex items-center justify-center h-screen bg-slate-950"><div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+            <Suspense fallback={<PageLoadingFull />}>
               <SystemCommandCenter />
-            </React.Suspense>
+            </Suspense>
           </ProtectedRoute>
         } />
         
         {/* Protected Main Layout Route */}
         <Route path="/*" element={
           <ProtectedRoute>
-            <MainLayout />
+            <EnterpriseShell>
+              <Suspense fallback={<PageLoading />}>
+                <DashboardRouter />
+              </Suspense>
+            </EnterpriseShell>
           </ProtectedRoute>
         } />
       </Routes>

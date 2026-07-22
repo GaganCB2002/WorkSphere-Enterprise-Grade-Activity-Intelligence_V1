@@ -941,6 +941,518 @@
   "activities": [
     {
       "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784708554679",
+      "timestamp": "2026-07-22T08:22:34.679Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784708208134",
+      "timestamp": "2026-07-22T08:16:48.134Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784707761721",
+      "timestamp": "2026-07-22T08:09:21.721Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as tech_cto | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Technology Officer",
+      "id": "act-1784707483517",
+      "timestamp": "2026-07-22T08:04:43.517Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784707461245",
+      "timestamp": "2026-07-22T08:04:21.245Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784707066262",
+      "timestamp": "2026-07-22T07:57:46.262Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784706238538",
+      "timestamp": "2026-07-22T07:43:58.538Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as root_001 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Administrator",
+      "id": "act-1784706134502",
+      "timestamp": "2026-07-22T07:42:14.502Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784706134486",
+      "timestamp": "2026-07-22T07:42:14.486Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784706134478",
+      "timestamp": "2026-07-22T07:42:14.478Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as mkt_mgr_04 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Marketing Manager",
+      "id": "act-1784706111774",
+      "timestamp": "2026-07-22T07:41:51.774Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as sales_mgr_05 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Sales Manager",
+      "id": "act-1784706111770",
+      "timestamp": "2026-07-22T07:41:51.770Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784706111765",
+      "timestamp": "2026-07-22T07:41:51.765Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784706111760",
+      "timestamp": "2026-07-22T07:41:51.760Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as qa_eng_09 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "QA Engineer",
+      "id": "act-1784706111755",
+      "timestamp": "2026-07-22T07:41:51.755Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as sys_admin_x | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "System Admin",
+      "id": "act-1784706111750",
+      "timestamp": "2026-07-22T07:41:51.750Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as soft_eng_10 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Software Engineer",
+      "id": "act-1784706111746",
+      "timestamp": "2026-07-22T07:41:51.746Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as devops_eng_08 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "DevOps Engineer",
+      "id": "act-1784706111741",
+      "timestamp": "2026-07-22T07:41:51.741Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as super_admin@worksphere.com | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Admin",
+      "id": "act-1784706111737",
+      "timestamp": "2026-07-22T07:41:51.737Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as sup_agent_12 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Support Agent",
+      "id": "act-1784706111732",
+      "timestamp": "2026-07-22T07:41:51.732Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as sec_analyst_11 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Security Analyst",
+      "id": "act-1784706111727",
+      "timestamp": "2026-07-22T07:41:51.727Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as tech_lead_07 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Tech Lead",
+      "id": "act-1784706111723",
+      "timestamp": "2026-07-22T07:41:51.723Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as employee_13 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Standard Employee",
+      "id": "act-1784706111717",
+      "timestamp": "2026-07-22T07:41:51.717Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as proj_mgr_06 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Project Manager",
+      "id": "act-1784706111711",
+      "timestamp": "2026-07-22T07:41:51.711Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as fin_mgr_03 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Finance Manager",
+      "id": "act-1784706111705",
+      "timestamp": "2026-07-22T07:41:51.705Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as tech_cto | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Technology Officer",
+      "id": "act-1784706111700",
+      "timestamp": "2026-07-22T07:41:51.700Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as intern_14 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Intern",
+      "id": "act-1784706111695",
+      "timestamp": "2026-07-22T07:41:51.695Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_exec_v | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Executive",
+      "id": "act-1784706111654",
+      "timestamp": "2026-07-22T07:41:51.654Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784706093832",
+      "timestamp": "2026-07-22T07:41:33.832Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as intern_14 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Intern",
+      "id": "act-1784705969961",
+      "timestamp": "2026-07-22T07:39:29.961Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as root_001 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Administrator",
+      "id": "act-1784705679053",
+      "timestamp": "2026-07-22T07:34:39.053Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784705679040",
+      "timestamp": "2026-07-22T07:34:39.040Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784705679018",
+      "timestamp": "2026-07-22T07:34:39.018Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as root_001 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Administrator",
+      "id": "act-1784705549669",
+      "timestamp": "2026-07-22T07:32:29.669Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784705549656",
+      "timestamp": "2026-07-22T07:32:29.656Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784705549303",
+      "timestamp": "2026-07-22T07:32:29.303Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as intern_14 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Intern",
+      "id": "act-1784705053998",
+      "timestamp": "2026-07-22T07:24:13.998Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784705044081",
+      "timestamp": "2026-07-22T07:24:04.081Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784704971763",
+      "timestamp": "2026-07-22T07:22:51.763Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as sys_admin_x | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "System Admin",
+      "id": "act-1784704936885",
+      "timestamp": "2026-07-22T07:22:16.885Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_exec_v | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Executive",
+      "id": "act-1784704904565",
+      "timestamp": "2026-07-22T07:21:44.565Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as root_001 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Administrator",
+      "id": "act-1784704893781",
+      "timestamp": "2026-07-22T07:21:33.781Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784704893769",
+      "timestamp": "2026-07-22T07:21:33.769Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784704893755",
+      "timestamp": "2026-07-22T07:21:33.755Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784704883914",
+      "timestamp": "2026-07-22T07:21:23.914Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784704738826",
+      "timestamp": "2026-07-22T07:18:58.826Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784704728840",
+      "timestamp": "2026-07-22T07:18:48.840Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784704718308",
+      "timestamp": "2026-07-22T07:18:38.308Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784704708220",
+      "timestamp": "2026-07-22T07:18:28.220Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784704695924",
+      "timestamp": "2026-07-22T07:18:15.924Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784704685935",
+      "timestamp": "2026-07-22T07:18:05.935Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784704673086",
+      "timestamp": "2026-07-22T07:17:53.086Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784704660591",
+      "timestamp": "2026-07-22T07:17:40.591Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784704646185",
+      "timestamp": "2026-07-22T07:17:26.185Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784704635735",
+      "timestamp": "2026-07-22T07:17:15.735Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784704613108",
+      "timestamp": "2026-07-22T07:16:53.108Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as root_001 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Administrator",
+      "id": "act-1784702169722",
+      "timestamp": "2026-07-22T06:36:09.722Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as tech_cto | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Technology Officer",
+      "id": "act-1784702161521",
+      "timestamp": "2026-07-22T06:36:01.521Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784702148398",
+      "timestamp": "2026-07-22T06:35:48.398Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784702116922",
+      "timestamp": "2026-07-22T06:35:16.922Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as super_admin@worksphere.com | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Admin",
+      "id": "act-1784702088484",
+      "timestamp": "2026-07-22T06:34:48.484Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784702079487",
+      "timestamp": "2026-07-22T06:34:39.487Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as super_admin@worksphere.com | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Admin",
+      "id": "act-1784701372962",
+      "timestamp": "2026-07-22T06:22:52.962Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as employee_13 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Standard Employee",
+      "id": "act-1784700115140",
+      "timestamp": "2026-07-22T06:01:55.140Z"
+    },
+    {
+      "title": "User Login",
       "detail": "Authenticated as intern_14 | Device: curl/8.21.0 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Intern",
@@ -2052,5 +2564,62 @@
   "emails": [],
   "meetings": [],
   "allocations": [],
-  "analysis": []
+  "analysis": [
+    {
+      "id": "anl-1784706139356",
+      "title": "Test",
+      "developer": "Dev A",
+      "status": "In Progress",
+      "timeSpent": "5h",
+      "quality": "Good",
+      "timestamp": "2026-07-22T07:42:19.356Z"
+    },
+    {
+      "id": "anl-1784705686366",
+      "title": "Test",
+      "developer": "Dev A",
+      "status": "In Progress",
+      "timeSpent": "5h",
+      "quality": "Good",
+      "timestamp": "2026-07-22T07:34:46.366Z"
+    },
+    {
+      "id": "anl-1784705552207",
+      "title": "Test",
+      "developer": "Dev A",
+      "status": "In Progress",
+      "timeSpent": "5h",
+      "quality": "Good",
+      "timestamp": "2026-07-22T07:32:32.207Z"
+    },
+    {
+      "id": "anl-1784704896873",
+      "title": "Test",
+      "developer": "Dev A",
+      "status": "In Progress",
+      "timeSpent": "5h",
+      "quality": "Good",
+      "timestamp": "2026-07-22T07:21:36.873Z"
+    }
+  ],
+  "contactMessages": [
+    {
+      "id": "msg-1784705685802",
+      "username": "Test",
+      "email": "test@test.com",
+      "subject": "Hello",
+      "message": "Test message",
+      "status": "new",
+      "createdAt": "2026-07-22T07:34:45.802Z"
+    },
+    {
+      "id": "msg-1784706139223",
+      "username": "Test",
+      "email": "test@test.com",
+      "subject": "Hello",
+      "message": "Test message",
+      "status": "new",
+      "createdAt": "2026-07-22T07:42:19.223Z"
+    }
+  ]
 }

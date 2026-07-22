@@ -2,6 +2,7 @@ import { Router } from 'express';
 import mongoose from 'mongoose';
 import Message from '../models/Message';
 import { db } from '../services/db.service';
+import { authenticate, authorize } from '../middleware/auth';
 
 const router = Router();
 const isConnected = () => mongoose.connection.readyState === 1;
@@ -32,28 +33,28 @@ router.post('/send', async (req, res) => {
       message
     });
     await newMessage.save();
-    res.status(201).json({ success: true, message: 'Message sent successfully' });
+    res.status(201).json({ success: true, message: 'Message sent successfully' }); return;
   } catch (error) {
-    res.status(500).json({ success: false, error: 'Failed to send message' });
+    res.status(500).json({ success: false, error: 'Failed to send message' }); return;
   }
 });
 
 // Get all messages (for admin)
-router.get('/all', async (req, res) => {
+router.get('/all', authenticate, async (req, res) => {
   try {
     if (!isConnected()) {
       const messages = (db.get().contactMessages || []).slice().sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
       return res.json(messages);
     }
     const messages = await Message.find().sort({ createdAt: -1 });
-    res.json(messages);
+    res.json(messages); return;
   } catch (error) {
-    res.status(500).json({ success: false, error: 'Failed to fetch messages' });
+    res.status(500).json({ success: false, error: 'Failed to fetch messages' }); return;
   }
 });
 
 // Update message status
-router.patch('/:id/status', async (req, res) => {
+router.patch('/:id/status', authenticate, async (req, res) => {
   try {
     const { status } = req.body;
     if (!isConnected()) {
@@ -67,9 +68,9 @@ router.patch('/:id/status', async (req, res) => {
       return res.json({ success: true, message: 'Status updated (Local Mode)' });
     }
     await Message.findByIdAndUpdate(req.params.id, { status });
-    res.json({ success: true, message: 'Status updated' });
+    res.json({ success: true, message: 'Status updated' }); return;
   } catch (error) {
-    res.status(500).json({ success: false, error: 'Failed to update status' });
+    res.status(500).json({ success: false, error: 'Failed to update status' }); return;
   }
 });
 

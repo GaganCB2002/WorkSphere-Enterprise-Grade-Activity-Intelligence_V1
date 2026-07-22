@@ -1,4 +1,4 @@
-import {
+﻿import {
   Activity,
   BadgeIndianRupee,
   BriefcaseBusiness,
@@ -167,7 +167,7 @@ export function AppShell({ user, onLogout, children }: AppShellProps) {
 
           if (isExternal) {
             const urlWithToken = item.to.includes('127.0.0.1') || item.to.includes('localhost') 
-              ? `₹${item.to}${item.to.includes('?') ? '&' : '?'}token=${localStorage.getItem('worksphere-token')}`
+              ? `${item.to}${item.to.includes('?') ? '&' : '?'}token=${localStorage.getItem('worksphere-token')}`
               : item.to
 
             return (

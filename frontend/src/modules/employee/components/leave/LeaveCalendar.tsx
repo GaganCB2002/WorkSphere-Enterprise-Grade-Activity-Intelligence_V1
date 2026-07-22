@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Calendar, User, HeartHandshake } from 'lucide-react';
 import { GlassPanel } from '../ui/GlassPanel';
 import { Avatar } from '../ui/Avatar';
@@ -36,7 +36,7 @@ export function LeaveCalendar({ leaves }: LeaveCalendarProps) {
           const firstDate = new Date(item.dates[0]);
           const lastDate = new Date(item.dates[item.dates.length - 1]);
           const dateStr = item.dates.length > 1
-            ? `₹${firstDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} – ${lastDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`
+            ? `${firstDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} – ${lastDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`
             : firstDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
           return (

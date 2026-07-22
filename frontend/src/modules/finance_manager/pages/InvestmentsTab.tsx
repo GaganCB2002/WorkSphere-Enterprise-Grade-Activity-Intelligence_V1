@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   BarChart3, ArrowUpRight, TrendingUp, Sparkles, RefreshCw, 
   HelpCircle, MoreHorizontal, ArrowRight, ShieldCheck, Wallet
@@ -37,7 +37,7 @@ export const InvestmentsTab: React.FC = () => {
       }
       return item;
     }));
-    alert(`Simulated capital deployment: Allocated ₹${simulatedFD.toLocaleString()} to Fixed Deposits.`);
+    alert(`Simulated capital deployment: Allocated ${simulatedFD.toLocaleString()} to Fixed Deposits.`);
     setSimulatedFD(0);
   };
 
@@ -143,7 +143,7 @@ export const InvestmentsTab: React.FC = () => {
                   <Pie data={allocations} innerRadius={50} outerRadius={75} paddingAngle={4} dataKey="value">
                     {allocations.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.color} />)}
                   </Pie>
-                  <Tooltip formatter={(value: number) => `₹${value.toLocaleString()}`} />
+                  <Tooltip formatter={(value: number) => `${value.toLocaleString()}`} />
                 </PieChart>
               </ResponsiveContainer>
             </div>

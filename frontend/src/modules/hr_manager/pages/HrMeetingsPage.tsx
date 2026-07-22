@@ -39,7 +39,7 @@ export const HrMeetingsPage: React.FC = () => {
         {/* Calendar Sidebar */}
         <div className="lg:col-span-1 bg-[#0E1117] border border-[#30363d] rounded-xl flex flex-col overflow-hidden shadow-lg shadow-black/20">
           <div className="p-4 border-b border-[#30363d] flex justify-between items-center bg-[#161b22]">
-            <h2 className="font-bold text-slate-200">Today, May 21</h2>
+            <h2 className="font-bold text-slate-900 dark:text-slate-200">Today, May 21</h2>
             <div className="flex gap-1 text-[#8b949e]">
               <button className="p-1 hover:bg-[#21262d] rounded transition-colors"><ChevronLeft className="w-4 h-4" /></button>
               <button className="p-1 hover:bg-[#21262d] rounded transition-colors"><ChevronRight className="w-4 h-4" /></button>
@@ -49,7 +49,7 @@ export const HrMeetingsPage: React.FC = () => {
             {TODAY_MEETINGS.map(meet => (
               <div key={meet.id} className={`p-4 rounded-lg border transition-colors ${meet.active ? 'bg-indigo-900/20 border-indigo-500/50' : 'bg-[#161b22] border-[#30363d] hover:border-[#8b949e]'}`}>
                 <div className="flex justify-between items-start mb-2">
-                  <h4 className={`text-sm font-bold ${meet.active ? 'text-indigo-400' : 'text-slate-200'}`}>{meet.title}</h4>
+                  <h4 className={`text-sm font-bold ${meet.active ? 'text-indigo-400' : 'text-slate-900 dark:text-slate-200'}`}>{meet.title}</h4>
                   {meet.active && <span className="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse mt-1"></span>}
                 </div>
                 <div className="space-y-1.5 mb-4">
@@ -124,7 +124,7 @@ export const HrMeetingsPage: React.FC = () => {
           {/* Controls */}
           <div className="h-20 bg-[#161b22] border-t border-[#30363d] flex items-center justify-between px-6">
             <div className="flex items-center gap-3">
-              <h3 className="font-bold text-slate-200">HR Sync: Policy Rollout</h3>
+              <h3 className="font-bold text-slate-900 dark:text-slate-200">HR Sync: Policy Rollout</h3>
               <div className="px-2 py-0.5 rounded bg-[#090b10] border border-[#30363d] flex items-center gap-1.5 cursor-pointer hover:border-indigo-500 transition-colors">
                 <Link2 className="w-3 h-3 text-[#8b949e]" />
                 <span className="text-[10px] text-[#8b949e] font-mono">meet.enterprise.com/hr-sync</span>
@@ -132,13 +132,13 @@ export const HrMeetingsPage: React.FC = () => {
             </div>
             
             <div className="flex items-center gap-3">
-              <button className="w-12 h-12 rounded-full bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] flex items-center justify-center text-slate-200 transition-colors">
+              <button className="w-12 h-12 rounded-full bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] flex items-center justify-center text-slate-900 dark:text-slate-200 transition-colors">
                 <Mic className="w-5 h-5" />
               </button>
-              <button className="w-12 h-12 rounded-full bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] flex items-center justify-center text-slate-200 transition-colors">
+              <button className="w-12 h-12 rounded-full bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] flex items-center justify-center text-slate-900 dark:text-slate-200 transition-colors">
                 <Camera className="w-5 h-5" />
               </button>
-              <button className="w-12 h-12 rounded-full bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] flex items-center justify-center text-slate-200 transition-colors">
+              <button className="w-12 h-12 rounded-full bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] flex items-center justify-center text-slate-900 dark:text-slate-200 transition-colors">
                 <Monitor className="w-5 h-5" />
               </button>
               <button className="px-6 h-12 rounded-full bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm transition-colors shadow-sm ml-2">

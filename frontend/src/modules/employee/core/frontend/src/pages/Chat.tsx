@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -159,7 +159,7 @@ export default function ChatPage() {
                 )}
                 <div>
                   <h2 className="font-semibold text-slate-950">{selectedRoom?.name}</h2>
-                  <p className="text-sm text-slate-500">{selectedRoom?.type === 'DIRECT' ? 'Direct message' : `₹${selectedRoom?.participants.length} members`}</p>
+                  <p className="text-sm text-slate-500">{selectedRoom?.type === 'DIRECT' ? 'Direct message' : `${selectedRoom?.participants.length} members`}</p>
                 </div>
               </div>
               <Badge variant="success">Active</Badge>

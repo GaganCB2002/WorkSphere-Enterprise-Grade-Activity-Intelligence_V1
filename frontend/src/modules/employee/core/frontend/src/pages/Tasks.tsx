@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useMemo, useState } from 'react';
+﻿import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar } from '@/components/ui/Avatar';
 import { Badge } from '@/components/ui/Badge';
@@ -228,7 +228,7 @@ export default function Tasks() {
           { label: 'Active', value: summary.active, helper: 'In progress now', tone: 'bg-teal-50 text-teal-700', icon: SlidersHorizontal },
           { label: 'In review', value: summary.review, helper: 'Awaiting feedback', tone: 'bg-indigo-50 text-indigo-700', icon: Send },
           { label: 'Completed', value: summary.completed, helper: 'Closed tasks', tone: 'bg-emerald-50 text-emerald-700', icon: CheckCircle2 },
-          { label: 'Avg progress', value: `₹${summary.avgProgress}%`, helper: 'Across assignments', tone: 'bg-amber-50 text-amber-700', icon: Clock },
+          { label: 'Avg progress', value: `${summary.avgProgress}%`, helper: 'Across assignments', tone: 'bg-amber-50 text-amber-700', icon: Clock },
         ].map((item) => (
           <Card key={item.label}>
             <CardContent className="p-5">
@@ -435,7 +435,7 @@ export default function Tasks() {
               <label className="flex cursor-pointer flex-col items-center justify-center gap-2 text-center">
                 <FileUp className="h-6 w-6 text-teal-700" />
                 <span className="text-sm font-semibold text-slate-700">Upload supporting files</span>
-                <span className="text-xs text-slate-400">{draft.files.length ? `₹${draft.files.length} file(s) selected` : 'Attach screenshots, documents, or final work files'}</span>
+                <span className="text-xs text-slate-400">{draft.files.length ? `${draft.files.length} file(s) selected` : 'Attach screenshots, documents, or final work files'}</span>
                 <input type="file" multiple className="hidden" onChange={handleFileChange} />
               </label>
             </div>
@@ -460,7 +460,7 @@ export default function Tasks() {
           <div className="grid gap-4 sm:grid-cols-2">
             <Select
               label="Project"
-              options={[{ value: '', label: 'No project' }, ...projects.map((project) => ({ value: project.id, label: `₹${project.code} - ${project.name}` }))]}
+              options={[{ value: '', label: 'No project' }, ...projects.map((project) => ({ value: project.id, label: `${project.code} - ${project.name}` }))]}
               value={newTask.project}
               onChange={(event) => setNewTask({ ...newTask, project: event.target.value })}
             />

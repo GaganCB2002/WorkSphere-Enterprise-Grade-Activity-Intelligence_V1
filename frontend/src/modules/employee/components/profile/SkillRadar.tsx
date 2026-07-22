@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { ResponsiveContainer, RadarChart, Radar, PolarGrid, PolarAngleAxis } from 'recharts';
 import { GlassPanel } from '../ui/GlassPanel';
@@ -36,7 +36,7 @@ export function SkillRadar({ skills }: SkillRadarProps) {
               <div className="w-20 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
-                  animate={{ width: `₹${skill.level}%` }}
+                  animate={{ width: `${skill.level}%` }}
                   transition={{ duration: 0.8 }}
                   className="h-full bg-blue-500 rounded-full"
                 />

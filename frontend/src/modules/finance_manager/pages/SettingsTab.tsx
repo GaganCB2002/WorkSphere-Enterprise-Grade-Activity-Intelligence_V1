@@ -8,7 +8,7 @@ export const SettingsTab: React.FC = () => {
   const [ipWhitelist, setIpWhitelist] = useState(false);
   const [sessionTimeout, setSessionTimeout] = useState('30');
   
-  const [apiKey, setApiKey] = useState('tc_live_89f023a89d023b10c92e10ff5a8bc321');
+  const [apiKey, setApiKey] = useState(import.meta.env.VITE_STRIPE_API_KEY_MOCK || 'tc_live_89f023a89d023b10c92e10ff5a8bc321');
   const [copied, setCopied] = useState(false);
 
   const handleGenerateKey = () => {

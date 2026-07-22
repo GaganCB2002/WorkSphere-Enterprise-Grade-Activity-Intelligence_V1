@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { cn } from '@/lib/utils';
 import { getInitials } from '@/lib/utils';
 
@@ -31,7 +31,7 @@ export function Avatar({ src, firstName, lastName, size = 'md', className }: Ava
       {src ? (
         <img
           src={src}
-          alt={`₹${firstName} ${lastName}`}
+          alt={`${firstName} ${lastName}`}
           className="w-full h-full object-cover"
         />
       ) : (

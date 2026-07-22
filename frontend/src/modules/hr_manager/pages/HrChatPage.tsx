@@ -38,7 +38,7 @@ export const HrChatPage: React.FC = () => {
             <input 
               type="text" 
               placeholder="Jump to..." 
-              className="w-full bg-[#161b22] border border-[#30363d] rounded-md py-1.5 pl-8 pr-3 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+              className="w-full bg-[#161b22] border border-[#30363d] rounded-md py-1.5 pl-8 pr-3 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>
@@ -47,7 +47,7 @@ export const HrChatPage: React.FC = () => {
           <div>
             <div className="flex items-center justify-between text-xs font-bold text-[#8b949e] mb-2 px-2 uppercase tracking-wider">
               <span>Channels</span>
-              <Plus className="w-3.5 h-3.5 cursor-pointer hover:text-slate-200" />
+              <Plus className="w-3.5 h-3.5 cursor-pointer hover:text-slate-900 dark:text-slate-200" />
             </div>
             <div className="space-y-0.5">
               {CHANNELS.map(channel => (
@@ -69,7 +69,7 @@ export const HrChatPage: React.FC = () => {
           <div>
             <div className="flex items-center justify-between text-xs font-bold text-[#8b949e] mb-2 px-2 uppercase tracking-wider">
               <span>Direct Messages</span>
-              <Plus className="w-3.5 h-3.5 cursor-pointer hover:text-slate-200" />
+              <Plus className="w-3.5 h-3.5 cursor-pointer hover:text-slate-900 dark:text-slate-200" />
             </div>
             <div className="space-y-0.5">
               {DIRECT_MESSAGES.map(dm => (
@@ -99,11 +99,11 @@ export const HrChatPage: React.FC = () => {
             <h3 className="font-bold text-slate-100 text-sm">manager-escalations</h3>
           </div>
           <div className="flex items-center gap-3 text-[#8b949e]">
-            <Users className="w-4 h-4 hover:text-slate-200 cursor-pointer" />
-            <Phone className="w-4 h-4 hover:text-slate-200 cursor-pointer" />
-            <Video className="w-4 h-4 hover:text-slate-200 cursor-pointer" />
+            <Users className="w-4 h-4 hover:text-slate-900 dark:text-slate-200 cursor-pointer" />
+            <Phone className="w-4 h-4 hover:text-slate-900 dark:text-slate-200 cursor-pointer" />
+            <Video className="w-4 h-4 hover:text-slate-900 dark:text-slate-200 cursor-pointer" />
             <div className="w-[1px] h-4 bg-[#30363d] mx-1"></div>
-            <MoreVertical className="w-4 h-4 hover:text-slate-200 cursor-pointer" />
+            <MoreVertical className="w-4 h-4 hover:text-slate-900 dark:text-slate-200 cursor-pointer" />
           </div>
         </div>
 
@@ -130,7 +130,7 @@ export const HrChatPage: React.FC = () => {
                     <FileText className="w-4 h-4 text-rose-400" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-slate-200">Leave Conflict Report LCR-42</p>
+                    <p className="text-xs font-bold text-slate-900 dark:text-slate-200">Leave Conflict Report LCR-42</p>
                     <p className="text-[10px] text-[#8b949e]">Triggered by HR Anomaly System</p>
                   </div>
                </div>
@@ -154,15 +154,15 @@ export const HrChatPage: React.FC = () => {
         {/* Input Area */}
         <div className="p-4 bg-[#0E1117] border-t border-[#21262d]">
           <div className="flex items-end bg-[#161b22] border border-[#30363d] focus-within:border-indigo-500 rounded-lg overflow-hidden transition-colors">
-            <button className="p-3 text-[#8b949e] hover:text-slate-200"><Plus className="w-5 h-5" /></button>
+            <button className="p-3 text-[#8b949e] hover:text-slate-900 dark:text-slate-200"><Plus className="w-5 h-5" /></button>
             <textarea 
               placeholder="Message #manager-escalations..."
-              className="flex-1 bg-transparent text-sm text-slate-200 py-3 focus:outline-none resize-none min-h-[44px] max-h-32 custom-scrollbar"
+              className="flex-1 bg-transparent text-sm text-slate-900 dark:text-slate-200 py-3 focus:outline-none resize-none min-h-[44px] max-h-32 custom-scrollbar"
               rows={1}
             />
             <div className="p-2 flex items-center gap-1">
-              <button className="p-1.5 text-[#8b949e] hover:text-slate-200 rounded"><Smile className="w-4 h-4" /></button>
-              <button className="p-1.5 text-[#8b949e] hover:text-slate-200 rounded"><Paperclip className="w-4 h-4" /></button>
+              <button className="p-1.5 text-[#8b949e] hover:text-slate-900 dark:text-slate-200 rounded"><Smile className="w-4 h-4" /></button>
+              <button className="p-1.5 text-[#8b949e] hover:text-slate-900 dark:text-slate-200 rounded"><Paperclip className="w-4 h-4" /></button>
               <button className="p-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded"><Send className="w-4 h-4" /></button>
             </div>
           </div>

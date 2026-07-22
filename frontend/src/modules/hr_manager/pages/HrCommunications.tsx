@@ -12,7 +12,7 @@ export const HrCommunications: React.FC = () => {
     >
       <div className="flex items-center justify-between shrink-0">
         <div>
-          <h1 className="text-2xl font-bold text-slate-200">HR Communications</h1>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-200">HR Communications</h1>
           <p className="text-sm text-[#8b949e] mt-1">Manage company-wide broadcasts, internal support channels, and policy updates.</p>
         </div>
       </div>
@@ -22,7 +22,7 @@ export const HrCommunications: React.FC = () => {
         {/* Broadcast System */}
         <div className="lg:col-span-2 flex flex-col space-y-6">
           <div className="bg-[#161b22] border border-[#30363d] p-6 rounded-2xl shrink-0">
-            <h3 className="text-sm font-bold text-slate-200 mb-4 flex items-center gap-2">
+            <h3 className="text-sm font-bold text-slate-900 dark:text-slate-200 mb-4 flex items-center gap-2">
               <Radio className="w-4 h-4 text-rose-400" />
               Company Broadcast
             </h3>
@@ -30,12 +30,12 @@ export const HrCommunications: React.FC = () => {
               <input 
                 type="text" 
                 placeholder="Broadcast Subject..." 
-                className="w-full bg-[#0E1117] border border-[#30363d] focus:border-indigo-500 rounded-lg py-2 px-4 text-sm text-slate-200 placeholder:text-[#8b949e] outline-none"
+                className="w-full bg-[#0E1117] border border-[#30363d] focus:border-indigo-500 rounded-lg py-2 px-4 text-sm text-slate-900 dark:text-slate-200 placeholder:text-[#8b949e] outline-none"
               />
               <textarea 
                 rows={4}
                 placeholder="Write your company-wide announcement here..." 
-                className="w-full bg-[#0E1117] border border-[#30363d] focus:border-indigo-500 rounded-lg py-3 px-4 text-sm text-slate-200 placeholder:text-[#8b949e] outline-none resize-none"
+                className="w-full bg-[#0E1117] border border-[#30363d] focus:border-indigo-500 rounded-lg py-3 px-4 text-sm text-slate-900 dark:text-slate-200 placeholder:text-[#8b949e] outline-none resize-none"
               />
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs text-[#8b949e]">
@@ -51,7 +51,7 @@ export const HrCommunications: React.FC = () => {
           </div>
 
           <div className="flex-1 bg-[#161b22] border border-[#30363d] p-6 rounded-2xl flex flex-col">
-            <h3 className="text-sm font-bold text-slate-200 mb-4 flex items-center gap-2">
+            <h3 className="text-sm font-bold text-slate-900 dark:text-slate-200 mb-4 flex items-center gap-2">
               <History className="w-4 h-4 text-indigo-400" />
               Recent Broadcasts
             </h3>
@@ -63,7 +63,7 @@ export const HrCommunications: React.FC = () => {
               ].map((msg, i) => (
                 <div key={i} className="bg-[#0E1117] border border-[#30363d] p-4 rounded-xl flex items-center justify-between">
                   <div>
-                    <div className="text-sm font-bold text-slate-200">{msg.title}</div>
+                    <div className="text-sm font-bold text-slate-900 dark:text-slate-200">{msg.title}</div>
                     <div className="text-xs text-[#8b949e] mt-1">{msg.date}</div>
                   </div>
                   <span className="text-[10px] font-bold uppercase tracking-wider bg-[#21262d] text-slate-400 border border-[#30363d] px-2 py-1 rounded">
@@ -78,7 +78,7 @@ export const HrCommunications: React.FC = () => {
         {/* HR Support Queue */}
         <div className="lg:col-span-1 bg-[#161b22] border border-[#30363d] rounded-2xl p-6 flex flex-col">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+            <h3 className="text-sm font-bold text-slate-900 dark:text-slate-200 flex items-center gap-2">
               <MessageSquare className="w-4 h-4 text-emerald-400" />
               HR Support Queue
             </h3>
@@ -95,7 +95,7 @@ export const HrCommunications: React.FC = () => {
             ].map((ticket, i) => (
               <div key={i} className="bg-[#0E1117] border border-[#30363d] p-4 rounded-xl cursor-pointer hover:border-indigo-500/50 transition-colors">
                 <div className="flex justify-between items-start mb-2">
-                  <div className="text-sm font-bold text-slate-200">{ticket.user}</div>
+                  <div className="text-sm font-bold text-slate-900 dark:text-slate-200">{ticket.user}</div>
                   <AlertCircle className={`w-4 h-4 ${ticket.urgency === 'High' ? 'text-rose-400' : ticket.urgency === 'Medium' ? 'text-amber-400' : 'text-emerald-400'}`} />
                 </div>
                 <div className="text-xs text-[#8b949e] line-clamp-2">{ticket.issue}</div>

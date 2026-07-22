@@ -5,7 +5,7 @@ import { authenticate } from '../middleware/auth'
 import { db } from '../services/db.service'
 
 const router = Router()
-const README_PATH = path.join(__dirname, '../../web-page/techlead-analysis/README.md')
+const README_PATH = path.resolve(process.cwd(), 'data/analysis-readme.md')
 
 // Read README.md content
 router.get('/readme', authenticate, (req, res) => {
@@ -14,17 +14,21 @@ router.get('/readme', authenticate, (req, res) => {
       const content = fs.readFileSync(README_PATH, 'utf-8')
       res.json({ content })
     } else {
-      res.status(404).json({ message: 'README.md not found.' })
+      res.status(404).json({ message: 'README.md not found.' }); return
     }
   } catch (error) {
-    res.status(500).json({ message: 'Error reading file.' })
+    res.status(500).json({ message: 'Error reading file.' }); return
   }
 })
 
 // Get analysis records
 router.get('/records', authenticate, (req, res) => {
-  const data = db.get().analysis || []
-  res.json(data)
+  try {
+    const data = db.get().analysis || []
+    res.json(data)
+  } catch {
+    res.status(500).json({ message: 'Failed to fetch records.' })
+  }
 })
 
 // Create/Update analysis and sync README

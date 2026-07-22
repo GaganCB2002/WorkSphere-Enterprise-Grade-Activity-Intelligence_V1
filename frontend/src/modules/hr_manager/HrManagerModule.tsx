@@ -26,8 +26,8 @@ const FallbackLoader = () => (
 export const HrManagerModule: React.FC<{ user: any }> = ({ user }) => {
   return (
     <Routes>
-      <Route path="/" element={<HrManagerShell user={user} />}>
-        <Route index element={<Navigate to="overview" replace />} />
+      <Route path="/hr" element={<HrManagerShell user={user} />}>
+        <Route index element={<Navigate to="/hr/overview" replace />} />
         
         <Route path="overview" element={
           <Suspense fallback={<FallbackLoader />}><HrOverview /></Suspense>
@@ -73,7 +73,7 @@ export const HrManagerModule: React.FC<{ user: any }> = ({ user }) => {
           <Suspense fallback={<FallbackLoader />}><DocumentVault /></Suspense>
         } />
 
-        {/* Catch-all for undefined routes in the sidebar (like Training, Assets, Compliance) */}
+        {/* Catch-all for undefined routes in the sidebar */}
         <Route path="*" element={
           <div className="flex flex-col items-center justify-center h-full text-[#8b949e]">
             <div className="w-16 h-16 border-2 border-dashed border-[#30363d] rounded-2xl flex items-center justify-center mb-4 text-slate-200 font-mono text-xs">WIP</div>
@@ -82,6 +82,8 @@ export const HrManagerModule: React.FC<{ user: any }> = ({ user }) => {
           </div>
         } />
       </Route>
+      {/* Redirect / to /hr/overview */}
+      <Route path="*" element={<Navigate to="/hr/overview" replace />} />
     </Routes>
   );
 };

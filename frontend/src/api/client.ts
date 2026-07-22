@@ -4,7 +4,7 @@ type RequestOptions = RequestInit & {
   token?: string
 }
 
-export const API_URL = ''
+export const API_URL = import.meta.env.VITE_API_BASE_URL || ''
 
 async function request<T>(path: string, options: RequestOptions = {}) {
   const headers = new Headers(options.headers)

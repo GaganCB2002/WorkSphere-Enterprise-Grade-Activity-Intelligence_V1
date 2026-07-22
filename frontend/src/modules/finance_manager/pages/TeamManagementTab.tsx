@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   Users, UserPlus, ShieldAlert, Key, CheckCircle, 
   Settings, RefreshCw, Trash2, ShieldCheck
@@ -102,7 +102,7 @@ export const TeamManagementTab: React.FC = () => {
                       </span>
                     </td>
                     <td className="p-4 text-right font-mono text-[#00e5ff] font-black">
-                      {member.payoutLimit > 0 ? `₹${member.payoutLimit.toLocaleString()}` : 'None'}
+                      {member.payoutLimit > 0 ? `${member.payoutLimit.toLocaleString()}` : 'None'}
                     </td>
                     <td className="p-4 text-center">
                       <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[9px] font-bold ${
