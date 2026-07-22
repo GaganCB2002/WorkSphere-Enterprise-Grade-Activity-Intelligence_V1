@@ -27,17 +27,17 @@ if not exist node_modules (
     echo Installing agent dependencies...
     call npm install --ignore-scripts
 )
-cd ..\enterprise-monitoring-system\frontend
+cd ..\..\frontend
 if not exist node_modules (
     echo Installing frontend dependencies...
     call npm install --ignore-scripts
 )
-cd ..\..\..\apps\enterprise-monitoring-system\backend
+cd ..\backend
 if not exist node_modules (
     echo Installing backend dependencies...
     call npm install --ignore-scripts
 )
-cd ..\..\..\
+cd ..
 echo.
 
 echo [1/5] Cleaning up existing processes...
@@ -56,12 +56,12 @@ timeout /t 3 >nul
 echo Trackinh: OK (http://localhost:5002)
 
 echo [4/5] Starting Enterprise Backend API (port 5001)...
-start "Enterprise API" /min cmd /k "cd /d "%~dp0apps\enterprise-monitoring-system\backend" && npm run dev"
+start "Enterprise API" /min cmd /k "cd /d "%~dp0backend" && npm run dev"
 timeout /t 3 >nul
 echo Enterprise API: OK (http://localhost:5001)
 
 echo [5/5] Launching Modern UI (Vite)...
-start "Frontend UI" cmd /k "cd /d "%~dp0apps\enterprise-monitoring-system\frontend" && npm run dev"
+start "Frontend UI" cmd /k "cd /d "%~dp0frontend" && npm run dev"
 echo Dashboard: OK (http://localhost:3005)
 echo.
 echo Launching default web browser...
