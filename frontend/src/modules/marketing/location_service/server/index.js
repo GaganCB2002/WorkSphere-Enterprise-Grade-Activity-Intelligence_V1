@@ -11,7 +11,9 @@ const locationRoutes = require('./routes/location');
 const app = express();
 const server = http.createServer(app);
 const allowedOrigins = [
-    process.env.CLIENT_URL || 'http://127.0.0.1:3007',
+    process.env.CLIENT_URL || 'https://work-sphere-enterprise-grade-activi.vercel.app',
+    'https://work-sphere-enterprise-grade-activi.vercel.app',
+    'http://127.0.0.1:3007',
     'http://localhost:3007',
     'http://127.0.0.1:3005',
     'http://localhost:3005',

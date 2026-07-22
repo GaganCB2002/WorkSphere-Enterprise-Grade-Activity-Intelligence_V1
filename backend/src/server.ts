@@ -41,7 +41,9 @@ const port = Number(process.env.PORT ?? 5000)
 app.use(
   cors({
     origin: [
-      process.env.HR_URL || 'http://127.0.0.1:3005',
+      process.env.HR_URL || 'https://work-sphere-enterprise-grade-activi.vercel.app',
+      'https://work-sphere-enterprise-grade-activi.vercel.app',
+      'http://127.0.0.1:3005',
       'http://localhost:3005',
     ],
     credentials: true,
