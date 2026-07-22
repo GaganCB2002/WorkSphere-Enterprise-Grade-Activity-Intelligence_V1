@@ -269,6 +269,13 @@ const Login = () => {
         {/* Right Panel - Login */}
         <div className="flex-1 flex flex-col min-h-screen lg:min-h-0">
           <div className="flex-1 w-full max-w-[720px] mx-auto px-6 sm:px-8 lg:px-12 pt-8 lg:pt-10 pb-8">
+            <button
+              onClick={() => navigate('/')}
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors mb-8"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              Back to Home
+            </button>
             <AnimatePresence mode="wait">
               {selectedRole === null ? (
                 <motion.div
