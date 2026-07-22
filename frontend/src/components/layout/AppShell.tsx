@@ -46,6 +46,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import React, { useState, useEffect, type ReactNode } from 'react'
 import { socket } from '../../api/socket'
 import type { Role, User } from '../../types'
+import { getRoleDashboardPath } from '../../lib/dashboardUtils'
 
 type NavGroup = 'operations' | 'communication' | 'management' | 'account'
 
@@ -212,14 +213,7 @@ export function AppShell({ user, onLogout, children }: AppShellProps) {
           } hidden lg:flex rounded-[28px]`}
         >
           {/* Logo Brand Header */}
-          <NavLink to={
-            userRole === 'HR' ? '/hr-dashboard' :
-            userRole === 'EMPLOYEE' ? '/employee-dashboard' :
-            userRole === 'MANAGER' ? '/manager-dashboard' :
-            (userRole === 'TECH_LEAD' || userRole === 'LEAD') ? '/techlead-dashboard' :
-            userRole === 'MARKETING' ? '/marketing-hub' :
-            userRole === 'IT' ? '/help-desk' : '/hr-dashboard'
-          } className={`border-b border-outline/50 shrink-0 flex items-center transition-opacity hover:opacity-85 ${isSidebarOpen ? 'p-6' : 'p-4 justify-center'}`}>
+          <NavLink to={getRoleDashboardPath(userRole)} className={`border-b border-outline/50 shrink-0 flex items-center transition-opacity hover:opacity-85 ${isSidebarOpen ? 'p-6' : 'p-4 justify-center'}`}>
             <div className="flex items-center gap-3.5 min-w-0">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-brand to-pastel-blue text-white shadow-md shadow-brand/10 italic">
                 <Zap className="h-5 w-5 animate-pulse" />
@@ -295,15 +289,7 @@ export function AppShell({ user, onLogout, children }: AppShellProps) {
                window.location.pathname !== '/help-desk' && 
                window.location.pathname !== '/dashboard' && (
                 <button
-                  onClick={() => {
-                    const path = userRole === 'HR' ? '/hr-dashboard' :
-                                 userRole === 'EMPLOYEE' ? '/employee-dashboard' :
-                                 userRole === 'MANAGER' ? '/manager-dashboard' :
-                                 (userRole === 'TECH_LEAD' || userRole === 'LEAD') ? '/techlead-dashboard' :
-                                 userRole === 'MARKETING' ? '/marketing-hub' :
-                                 userRole === 'IT' ? '/help-desk' : '/hr-dashboard';
-                    navigate(path);
-                  }}
+                  onClick={() => navigate(getRoleDashboardPath(userRole))}
                   className="flex items-center gap-2 px-3.5 py-2 rounded-xl border border-outline bg-slate-50/50 text-slate-600 dark:text-slate-400 text-[9px] font-black uppercase tracking-wider transition hover:bg-brand/10 hover:text-brand hover:border-brand/20 btn-interactive"
                 >
                   <LayoutDashboard className="h-3 w-3" />

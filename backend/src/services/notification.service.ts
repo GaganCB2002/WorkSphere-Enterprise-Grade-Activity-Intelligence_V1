@@ -1,5 +1,5 @@
 import { db } from './db.service'
-import { io } from '../server'
+import { getIO } from './socket.service'
 
 export type NotificationType = 'message' | 'email' | 'meeting' | 'system' | 'task'
 export type NotificationPriority = 'low' | 'medium' | 'high' | 'critical'
@@ -38,7 +38,7 @@ export const notificationService = {
     })
 
     // 1. Real-time Socket Push
-    io.emit(`notification_${userId}`, notification)
+    getIO()?.emit(`notification_${userId}`, notification)
 
     // 2. Mock Email Push if High/Critical
     if (notification.priority === 'high' || notification.priority === 'critical') {

@@ -1,5 +1,5 @@
 import { db } from './db.service'
-import { io } from '../server'
+import { getIO } from './socket.service'
 import type { ActivityItem } from '../data/types'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -22,7 +22,7 @@ export const activityService = {
       }
     })
 
-    io.emit('new_activity', item)
+    getIO()?.emit('new_activity', item)
     return item
   }
 }

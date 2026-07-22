@@ -1,5 +1,5 @@
 import { db } from './db.service'
-import { io } from '../server'
+import { getIO } from './socket.service'
 import { notificationService } from './notification.service'
 import type { ChatMessage } from '../data/types'
 
@@ -29,10 +29,10 @@ export const chatService = {
 
     // Emit to specific receiver or group
     if (newMessage.groupId) {
-      io.to(newMessage.groupId).emit('new_message', newMessage)
+      getIO()?.to(newMessage.groupId).emit('new_message', newMessage)
     } else if (newMessage.receiverId) {
-      io.emit(`new_message_${newMessage.receiverId}`, newMessage)
-      io.emit(`new_message_${newMessage.senderId}`, newMessage)
+      getIO()?.emit(`new_message_${newMessage.receiverId}`, newMessage)
+      getIO()?.emit(`new_message_${newMessage.senderId}`, newMessage)
       
       // Trigger Notification
       notificationService.notify(newMessage.receiverId, {

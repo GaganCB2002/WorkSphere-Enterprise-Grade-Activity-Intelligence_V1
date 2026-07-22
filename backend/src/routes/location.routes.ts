@@ -32,7 +32,7 @@ router.post('/update', authenticate, (req, res) => {
     }
 });
 
-router.get('/live', authenticate, authorize('SUPERADMIN' as any, 'SUPER_ADMIN' as any), (_req: Request, res: Response) => {
+router.get('/live', authenticate, authorize('SUPERADMIN', 'SUPER_ADMIN'), (_req: Request, res: Response) => {
     try {
         res.json(Object.values(liveLocations));
     } catch {

@@ -2,7 +2,8 @@ import React from 'react';
 import { motion, HTMLMotionProps } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 
-export interface MotionButtonProps extends HTMLMotionProps<"button"> {
+export interface MotionButtonProps extends Omit<HTMLMotionProps<"button">, 'children'> {
+  children: React.ReactNode;
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;

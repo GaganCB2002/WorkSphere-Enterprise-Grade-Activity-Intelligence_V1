@@ -5,7 +5,7 @@ import { authenticate } from '../middleware/auth'
 import { db } from '../services/db.service'
 
 const router = Router()
-const README_PATH = path.resolve(process.cwd(), 'data/analysis-readme.md')
+const README_PATH = path.resolve(__dirname, '../../data/analysis-readme.md')
 
 // Read README.md content
 router.get('/readme', authenticate, (req, res) => {

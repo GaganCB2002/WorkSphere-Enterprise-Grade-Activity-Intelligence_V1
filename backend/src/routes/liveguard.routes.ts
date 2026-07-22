@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express'
 import * as si from 'systeminformation'
-import { io } from '../server'
+import { getIO } from '../services/socket.service'
 import { authenticate } from '../middleware/auth'
 
 const router = Router()
@@ -91,7 +91,7 @@ setInterval(async () => {
 
         const healthScore = Math.max(0, 100 - (metrics.cpu.percent * 0.4) - (metrics.memory.percent * 0.4) - (threats.length * 10));
         
-        io.emit('system_update', {
+        getIO()?.emit('system_update', {
             type: 'metrics',
             data: metrics,
             health_score: Math.round(healthScore),
@@ -123,7 +123,7 @@ router.post('/telemetry/location', (req: Request, res: Response) => {
         };
 
         liveTrackingCache.set(deviceId, locationData);
-        io.emit('location_update', locationData);
+        getIO()?.emit('location_update', locationData);
         res.status(200).json({ status: 'received' });
     } catch {
         res.status(500).json({ error: 'Failed to process location.' });
@@ -149,7 +149,7 @@ router.post('/telemetry/security', (req: Request, res: Response) => {
             notifiedIT
         };
 
-        io.emit('system_update', {
+        getIO()?.emit('system_update', {
             type: 'threat_alert',
             data: threatData
         });

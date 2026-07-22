@@ -26,4 +26,4 @@ const MessageSchema: Schema = new Schema({
 MessageSchema.index({ senderId: 1, recipientId: 1 });
 MessageSchema.index({ channelId: 1 });
 
-export default mongoose.model<IMessage>('Message', MessageSchema);
+export default mongoose.model<IMessage>('DBMessage', MessageSchema);

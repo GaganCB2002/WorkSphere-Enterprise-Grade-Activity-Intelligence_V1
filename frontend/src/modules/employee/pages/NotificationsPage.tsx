@@ -1,44 +1,41 @@
 import React from 'react';
-import { Bell, ShieldCheck } from 'lucide-react';
+import { Filter, Download, RefreshCw } from 'lucide-react';
+import { EmployeePageLayout } from '../components/EmployeePageLayout';
 import { NotificationCenter } from '../components/notifications/NotificationCenter';
-import { GlassPanel } from '../components/ui/GlassPanel';
 import { useNotificationStore } from '../store/employeeStore';
 
 export function NotificationsPage() {
-  const { unreadCount } = useNotificationStore();
+  const { unreadCount, markAllRead } = useNotificationStore();
 
   return (
-    <div className="space-y-6 pb-8">
-      {/* Page Header */}
-      <GlassPanel className="p-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center">
-              <Bell className="w-5 h-5" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-slate-900 dark:text-white">Workspace Notifications</h1>
-              <p className="text-xs text-slate-400 mt-0.5">Stay updated with leave approvals, task deadlines, and mentions</p>
-            </div>
-          </div>
-          
-          {unreadCount > 0 && (
-            <div className="flex items-center gap-2 text-[10px] text-rose-500 font-bold bg-rose-50 dark:bg-rose-950/20 border border-rose-250 dark:border-rose-900/30 px-3.5 py-2 rounded-xl">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500" />
-              </span>
-              <span>{unreadCount} Unread Alerts</span>
-            </div>
-          )}
+    <EmployeePageLayout
+      title="Notifications"
+      description={`${unreadCount} unread notifications`}
+      breadcrumbs={[{ label: 'Employee', href: '/employee/dashboard' }, { label: 'Notifications' }]}
+      actions={
+        <div className="flex items-center gap-2">
+          <button
+            onClick={markAllRead}
+            className="px-3 py-1.5 text-xs font-semibold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10 rounded-lg hover:bg-brand-100 dark:hover:bg-brand-500/20 transition-colors"
+          >
+            Mark All Read
+          </button>
+          <button className="p-2 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-900">
+            <Filter className="w-4 h-4" />
+          </button>
+          <button className="p-2 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-900">
+            <Download className="w-4 h-4" />
+          </button>
+          <button className="p-2 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-900">
+            <RefreshCw className="w-4 h-4" />
+          </button>
         </div>
-      </GlassPanel>
-
-      {/* Main Notification Center Container */}
+      }
+    >
       <div className="relative">
         <NotificationCenter />
       </div>
-    </div>
+    </EmployeePageLayout>
   );
 }
 

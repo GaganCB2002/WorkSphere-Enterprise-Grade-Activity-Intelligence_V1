@@ -11,6 +11,7 @@ import { aiService } from '../services/ai.service'
 import { mailService } from '../services/mail.service'
 import { db } from '../services/db.service'
 import type { CandidateStage } from '../data/types'
+import Performance from '../models/Performance'
 
 const router = Router()
 
@@ -356,7 +357,6 @@ router.get('/performance', authorize('CEO', 'HR', 'Manager', 'Lead'), async (_re
     if (!isConnected()) {
       return res.json(db.get().performance || []);
     }
-    const Performance = (await import('../models/Performance')).default
     const data = await Performance.find()
     res.json(data)
   } catch (err: any) {

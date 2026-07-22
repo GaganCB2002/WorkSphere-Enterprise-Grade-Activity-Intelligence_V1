@@ -1,6 +1,7 @@
-import React from 'react';
-import { Calendar, Check, Clock, ShieldAlert } from 'lucide-react';
+import React, { useState } from 'react';
+import { Filter, Download, RefreshCw } from 'lucide-react';
 import { useLeaveStore } from '../store/employeeStore';
+import { EmployeePageLayout } from '../components/EmployeePageLayout';
 import { LeaveBalanceCards } from '../components/leave/LeaveBalanceCards';
 import { LeaveApplicationForm } from '../components/leave/LeaveApplicationForm';
 import { DelegationPanel } from '../components/leave/DelegationPanel';
@@ -13,9 +14,14 @@ import type { LeaveRequest } from '../types';
 
 export function LeavePage() {
   const { leaveRequests, leaveBalances, addLeaveRequest, cancelLeaveRequest } = useLeaveStore();
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredRequests = leaveRequests.filter(r =>
+    r.reason.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    r.type.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const handleApplyLeave = (requestData: Omit<LeaveRequest, 'id' | 'employeeId' | 'employeeName' | 'status' | 'appliedDate' | 'delegations'>) => {
-    // Generate dummy delegations if teammate selected
     const delegations = requestData.backupEmployeeId ? [
       {
         id: `del-${Date.now()}`,
@@ -43,10 +49,8 @@ export function LeavePage() {
     addLeaveRequest(newRequest);
   };
 
-  // Compile all delegations across requests
   const allDelegations = leaveRequests.flatMap(r => r.delegations || []);
 
-  // Columns for DataTable
   const leaveColumns = [
     {
       key: 'type',
@@ -116,36 +120,50 @@ export function LeavePage() {
   ];
 
   return (
-    <div className="space-y-6 pb-8">
-      {/* Leave Balances */}
+    <EmployeePageLayout
+      title="Leave Management"
+      description="Manage your leave requests, balances, and approvals"
+      breadcrumbs={[{ label: 'Employee', href: '/employee/dashboard' }, { label: 'Leave Management' }]}
+      searchPlaceholder="Search leave requests..."
+      onSearch={setSearchQuery}
+      actions={
+        <div className="flex items-center gap-2">
+          <button className="p-2 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-900">
+            <Filter className="w-4 h-4" />
+          </button>
+          <button className="p-2 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-900">
+            <Download className="w-4 h-4" />
+          </button>
+          <button className="p-2 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-900">
+            <RefreshCw className="w-4 h-4" />
+          </button>
+        </div>
+      }
+    >
       <LeaveBalanceCards balances={leaveBalances} />
 
-      {/* Main Grid */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        {/* Form and Delegations (Left Columns) */}
         <div className="xl:col-span-2 space-y-6">
           <LeaveApplicationForm onSubmit={handleApplyLeave} />
           <DelegationPanel delegations={allDelegations} />
         </div>
 
-        {/* Calendar (Right Column) */}
         <div className="space-y-6">
           <LeaveCalendar leaves={mock.teamLeaveCalendar} />
         </div>
       </div>
 
-      {/* Leave Requests Log */}
       <GlassPanel className="p-5">
         <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4">Request History</h3>
         <DataTable
           columns={leaveColumns}
-          data={leaveRequests}
+          data={filteredRequests}
           searchPlaceholder="Search leave logs..."
           searchKey="reason"
           itemsPerPage={5}
         />
       </GlassPanel>
-    </div>
+    </EmployeePageLayout>
   );
 }
 

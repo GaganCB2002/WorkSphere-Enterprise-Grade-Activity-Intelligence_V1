@@ -941,6 +941,118 @@
   "activities": [
     {
       "title": "User Login",
+      "detail": "Authenticated as employee_13 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Standard Employee",
+      "id": "act-1784737273789",
+      "timestamp": "2026-07-22T16:21:13.789Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as tech_cto | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Technology Officer",
+      "id": "act-1784736326775",
+      "timestamp": "2026-07-22T16:05:26.775Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784736282703",
+      "timestamp": "2026-07-22T16:04:42.703Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as super_admin@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Admin",
+      "id": "act-1784736266915",
+      "timestamp": "2026-07-22T16:04:26.915Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as employee_13 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Standard Employee",
+      "id": "act-1784736195149",
+      "timestamp": "2026-07-22T16:03:15.149Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as fin_mgr_03 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Finance Manager",
+      "id": "act-1784726422906",
+      "timestamp": "2026-07-22T13:20:22.906Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as super_admin@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Admin",
+      "id": "act-1784726407118",
+      "timestamp": "2026-07-22T13:20:07.118Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as fin_mgr_03 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Finance Manager",
+      "id": "act-1784726380964",
+      "timestamp": "2026-07-22T13:19:40.964Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as employee_13 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Standard Employee",
+      "id": "act-1784725343499",
+      "timestamp": "2026-07-22T13:02:23.499Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as sup_agent_12 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Support Agent",
+      "id": "act-1784725324859",
+      "timestamp": "2026-07-22T13:02:04.859Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as intern_14 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Intern",
+      "id": "act-1784724587731",
+      "timestamp": "2026-07-22T12:49:47.731Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as hr_exec_v | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Executive",
+      "id": "act-1784724574981",
+      "timestamp": "2026-07-22T12:49:34.981Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as tech_lead_07 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Tech Lead",
+      "id": "act-1784724558891",
+      "timestamp": "2026-07-22T12:49:18.891Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784724426644",
+      "timestamp": "2026-07-22T12:47:06.644Z"
+    },
+    {
+      "title": "User Login",
       "detail": "Authenticated as super_admin@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Super Admin",
@@ -2426,118 +2538,6 @@
       "actor": "Marketing Lead",
       "id": "act-1777480840028",
       "timestamp": "2026-04-29T16:40:40.028Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as hr@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "Nisha Kapoor",
-      "id": "act-1777480837506",
-      "timestamp": "2026-04-29T16:40:37.506Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as hr@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "Nisha Kapoor",
-      "id": "act-1777480826032",
-      "timestamp": "2026-04-29T16:40:26.032Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as marketing@worksphere.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "Marketing Lead",
-      "id": "act-1777480632692",
-      "timestamp": "2026-04-29T16:37:12.692Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as marketing@worksphere.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "Marketing Lead",
-      "id": "act-1777480624247",
-      "timestamp": "2026-04-29T16:37:04.247Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as hr@worksphere.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "Nisha Kapoor",
-      "id": "act-1777480621482",
-      "timestamp": "2026-04-29T16:37:01.482Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as ceo@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "Aarav Mehta",
-      "id": "act-1777480504292",
-      "timestamp": "2026-04-29T16:35:04.292Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as hr@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "Nisha Kapoor",
-      "id": "act-1777480274284",
-      "timestamp": "2026-04-29T16:31:14.284Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as hr@worksphere.com | Device: LenovoVantage/3.0.0.191 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "Nisha Kapoor",
-      "id": "act-1777479784760",
-      "timestamp": "2026-04-29T16:23:04.760Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as hr@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "Nisha Kapoor",
-      "id": "act-1777479774297",
-      "timestamp": "2026-04-29T16:22:54.297Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as ceo@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "Aarav Mehta",
-      "id": "act-1777479763041",
-      "timestamp": "2026-04-29T16:22:43.041Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as emp@company.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "General Employee",
-      "id": "act-1777446117496",
-      "timestamp": "2026-04-29T07:01:57.496Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as emp@company.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "General Employee",
-      "id": "act-1777446092572",
-      "timestamp": "2026-04-29T07:01:32.572Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as marketing@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "Marketing Lead",
-      "id": "act-1777446080217",
-      "timestamp": "2026-04-29T07:01:20.217Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as hr@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "Nisha Kapoor",
-      "id": "act-1777446065449",
-      "timestamp": "2026-04-29T07:01:05.449Z"
     }
   ],
   "assets": [

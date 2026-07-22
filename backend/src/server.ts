@@ -15,6 +15,8 @@ import ceoRoutes from './routes/ceo.routes'
 import liveguardRoutes from './routes/liveguard.routes'
 import connectDB from './config/db'
 import { seedDatabase } from './scripts/seed'
+import financeRoutes from './routes/finance.routes'
+import { setIO } from './services/socket.service'
 
 // Connect to Database
 import mongoose from 'mongoose';
@@ -41,6 +43,7 @@ export const io = new Server(httpServer, {
   },
 })
 app.set('io', io)
+setIO(io)
 
 const port = Number(process.env.PORT ?? 5000)
 
@@ -76,6 +79,7 @@ app.use('/api/location', locationRoutes)
 app.use('/api/helpdesk', helpdeskRoutes)
 app.use('/api/contact', contactRoutes)
 app.use('/api/ceo', ceoRoutes)
+app.use('/api/finance', financeRoutes)
 app.use('/api', liveguardRoutes)
 app.use('/api', hrRoutes)
 

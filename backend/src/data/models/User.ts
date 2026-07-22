@@ -29,4 +29,4 @@ const UserSchema: Schema = new Schema({
   status: { type: String, enum: ['active', 'inactive'], default: 'active' }
 }, { timestamps: true });
 
-export default mongoose.model<IUser>('User', UserSchema);
+export default mongoose.model<IUser>('DBUser', UserSchema);

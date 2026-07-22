@@ -25,6 +25,10 @@ const toCurrency = (value: number) =>
 const average = (values: number[]) => values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : 0
 
 const uniqueDepartments = async () => {
+  if (!isConnected()) {
+    const d = db.get();
+    return [...new Set(d.employees.map((e: any) => e.department))];
+  }
   const employees = await Employee.find();
   return [...new Set(employees.map((employee) => employee.department))];
 }

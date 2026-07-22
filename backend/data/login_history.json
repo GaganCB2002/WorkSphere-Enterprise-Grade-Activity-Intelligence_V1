@@ -495,5 +495,103 @@
     "name": "Super Admin",
     "loginTime": "2026-07-22T09:56:22.382Z",
     "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T12:47:06.650Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-lead",
+    "email": "tech_lead_07",
+    "name": "Tech Lead",
+    "loginTime": "2026-07-22T12:49:18.899Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrexec",
+    "email": "hr_exec_v",
+    "name": "HR Executive",
+    "loginTime": "2026-07-22T12:49:34.988Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-int",
+    "email": "intern_14",
+    "name": "Intern",
+    "loginTime": "2026-07-22T12:49:47.733Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-sup",
+    "email": "sup_agent_12",
+    "name": "Support Agent",
+    "loginTime": "2026-07-22T13:02:04.864Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-emp",
+    "email": "employee_13",
+    "name": "Standard Employee",
+    "loginTime": "2026-07-22T13:02:23.501Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-fin",
+    "email": "fin_mgr_03",
+    "name": "Finance Manager",
+    "loginTime": "2026-07-22T13:19:40.967Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-superadmin",
+    "email": "super_admin@worksphere.com",
+    "name": "Super Admin",
+    "loginTime": "2026-07-22T13:20:07.119Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-fin",
+    "email": "fin_mgr_03",
+    "name": "Finance Manager",
+    "loginTime": "2026-07-22T13:20:22.907Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-emp",
+    "email": "employee_13",
+    "name": "Standard Employee",
+    "loginTime": "2026-07-22T16:03:15.151Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-superadmin",
+    "email": "super_admin@worksphere.com",
+    "name": "Super Admin",
+    "loginTime": "2026-07-22T16:04:26.922Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T16:04:42.704Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-cto",
+    "email": "tech_cto",
+    "name": "Chief Technology Officer",
+    "loginTime": "2026-07-22T16:05:26.776Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-emp",
+    "email": "employee_13",
+    "name": "Standard Employee",
+    "loginTime": "2026-07-22T16:21:13.792Z",
+    "ip": "127.0.0.1"
   }
 ]

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, Phone, Calendar, Shield, ExternalLink } from 'lucide-react';
+import { EmployeePageLayout } from '../components/EmployeePageLayout';
 import { GlassPanel } from '../components/ui/GlassPanel';
 import { Avatar } from '../components/ui/Avatar';
 import { ProfileHeader } from '../components/profile/ProfileHeader';
@@ -11,14 +12,15 @@ export function ProfilePage() {
   const emp = mock.currentEmployee;
 
   return (
-    <div className="space-y-6 pb-8">
-      {/* Header Card */}
+    <EmployeePageLayout
+      title="My Profile"
+      description="View your personal information, skills, and work history"
+      breadcrumbs={[{ label: 'Employee', href: '/employee/dashboard' }, { label: 'My Profile' }]}
+    >
       <ProfileHeader emp={emp} />
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        {/* Left Column */}
         <div className="xl:col-span-2 space-y-6">
-          {/* About */}
           <GlassPanel animate>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3">About</h3>
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{emp.bio}</p>
@@ -36,16 +38,11 @@ export function ProfilePage() {
             </div>
           </GlassPanel>
 
-          {/* Skill Radar */}
           <SkillRadar skills={emp.skills} />
-
-          {/* Work History */}
           <WorkHistory workHistory={emp.workHistory} />
         </div>
 
-        {/* Right Column */}
         <div className="space-y-6">
-          {/* Reporting Structure */}
           <GlassPanel animate>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3">Reporting Structure</h3>
             {[
@@ -63,7 +60,6 @@ export function ProfilePage() {
             ))}
           </GlassPanel>
 
-          {/* Certifications */}
           <GlassPanel animate>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3">Certifications</h3>
             <div className="space-y-2">
@@ -80,7 +76,6 @@ export function ProfilePage() {
             </div>
           </GlassPanel>
 
-          {/* Achievements */}
           <GlassPanel animate>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3">Achievements</h3>
             <div className="space-y-2">
@@ -98,6 +93,8 @@ export function ProfilePage() {
           </GlassPanel>
         </div>
       </div>
-    </div>
+    </EmployeePageLayout>
   );
 }
+
+export default ProfilePage;

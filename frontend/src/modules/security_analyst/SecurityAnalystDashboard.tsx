@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Shield, Activity, Map, Video, LogOut, Bell, Settings, User, 
-  Terminal, ShieldCheck, Zap, BookOpen } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+import { SecurityAnalystSidebar } from './components/SecurityAnalystSidebar';
+import { SecurityWelcomeHeader } from './components/SecurityWelcomeHeader';
 
 // Sub-components
 import { ThreatOverview } from './components/ThreatOverview';
@@ -13,146 +14,55 @@ import { ZeroTrustPolicyEngine } from './components/ZeroTrustPolicyEngine';
 import { IncidentResponsePlaybooks } from './components/IncidentResponsePlaybooks';
 import { LMSView } from '../hr/components/LMSView';
 
-
 export const SecurityAnalystDashboard: React.FC = () => {
-  const dispatch = useDispatch();
-  const [activeTab, setActiveTab] = useState<
-    'overview' | 'threat-map' | 'forensics' | 'sniffer' | 'vulnerabilities' | 'zero-trust' | 'playbooks' | 'training'
-  >('overview');
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    dispatch({ type: 'LOGOUT' });
-    window.location.href = '/login';
-  };
-
-  const navItems = [
-    { id: 'overview', icon: Activity, label: 'Threat Overview', section: 'SIEM Command Center' },
-    { id: 'threat-map', icon: Map, label: 'Live Threat Map', section: 'SIEM Command Center' },
-    { id: 'forensics', icon: Video, label: 'Desktop Forensics', section: 'SIEM Command Center' },
-    
-    { id: 'sniffer', icon: Terminal, label: 'Network Packet Sniffer', section: 'Advanced Capabilities' },
-    { id: 'vulnerabilities', icon: ShieldCheck, label: 'Vulnerability Scanner', section: 'Advanced Capabilities' },
-    { id: 'zero-trust', icon: Shield, label: 'Zero Trust Policies', section: 'Advanced Capabilities' },
-    { id: 'playbooks', icon: Zap, label: 'Incident Response', section: 'Advanced Capabilities' },
-    { id: 'training', label: 'Training Center', icon: BookOpen, section: 'Tools & Applications' },
-];
+  const [activeTab, setActiveTab] = useState('overview');
 
   const renderContent = () => {
+    const animationProps = {
+      initial: { opacity: 0, y: 20 },
+      animate: { opacity: 1, y: 0 },
+      exit: { opacity: 0, y: -20 },
+      className: "space-y-8 h-full"
+    };
+
     switch (activeTab) {
-      case 'overview': return <ThreatOverview />;
-      case 'threat-map': return <LiveThreatMap />;
-      case 'forensics': return <DesktopForensics />;
-      case 'sniffer': return <NetworkPacketSniffer />;
-      case 'vulnerabilities': return <VulnerabilityScanner />;
-      case 'zero-trust': return <ZeroTrustPolicyEngine />;
-      case 'playbooks': return <IncidentResponsePlaybooks />;
-      case 'training': return <LMSView />;
-      default: return <ThreatOverview />;
+      case 'overview':
+        return <motion.div key="overview" {...animationProps}><ThreatOverview /></motion.div>;
+      case 'threat-map':
+        return <motion.div key="threat-map" {...animationProps}><LiveThreatMap /></motion.div>;
+      case 'forensics':
+        return <motion.div key="forensics" {...animationProps}><DesktopForensics /></motion.div>;
+      case 'sniffer':
+        return <motion.div key="sniffer" {...animationProps}><NetworkPacketSniffer /></motion.div>;
+      case 'vulnerabilities':
+        return <motion.div key="vulnerabilities" {...animationProps}><VulnerabilityScanner /></motion.div>;
+      case 'zero-trust':
+        return <motion.div key="zero-trust" {...animationProps}><ZeroTrustPolicyEngine /></motion.div>;
+      case 'playbooks':
+        return <motion.div key="playbooks" {...animationProps}><IncidentResponsePlaybooks /></motion.div>;
+      case 'training':
+        return <motion.div key="training" {...animationProps}><LMSView /></motion.div>;
+      default:
+        return <motion.div key="default" {...animationProps}><ThreatOverview /></motion.div>;
     }
   };
 
-  const getPageTitle = () => {
-    return navItems.find(n => n.id === activeTab)?.label || 'Cyber Security';
-  };
-
   return (
-    <div className="flex h-screen w-full bg-slate-950 text-slate-300 font-sans overflow-hidden selection:bg-red-500/30">
+    <div className="fixed inset-0 z-50 bg-[#020617] flex font-sans selection:bg-red-500/30">
+      {/* Dynamic Multi-Tab Sidebar Navigation */}
+      <SecurityAnalystSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       
-      {/* Sidebar */}
-      <aside className="w-72 bg-slate-900/50 border-r border-slate-800/80 backdrop-blur-xl flex flex-col transition-all duration-300">
-        <div className="h-16 flex items-center px-6 border-b border-slate-800/80 gap-3">
-          <div className="p-2 bg-red-500/10 border border-red-500/30 rounded-lg text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
-            <Shield className="w-5 h-5" />
-          </div>
-          <span className="font-bold text-white tracking-tight">Cyber Security</span>
-        </div>
+      {/* Main Dashboard Area */}
+      <main className="flex-1 ml-64 p-8 lg:p-10 max-w-[1920px] mx-auto overflow-x-hidden relative h-screen overflow-y-auto">
+        {/* Background glow effects for security theme feel */}
+        <div className="absolute top-0 left-1/4 w-[800px] h-[400px] bg-red-600/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-orange-600/10 rounded-full blur-[150px] pointer-events-none" />
         
-        <div className="flex-1 overflow-y-auto py-4">
-          
-          {/* Section 1 */}
-          <div className="mb-6">
-            <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3 px-6">SIEM Command Center</div>
-            <div className="space-y-1 px-3">
-              {navItems.filter(i => i.section === 'SIEM Command Center').map(item => (
-                <button 
-                  key={item.id}
-                  onClick={() => setActiveTab(item.id as any)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                    activeTab === item.id 
-                      ? 'bg-red-500/10 text-red-400 border border-red-500/20 shadow-lg shadow-red-500/5' 
-                      : 'text-slate-400 hover:text-white hover:bg-slate-800/50 border border-transparent'
-                  }`}
-                >
-                  <item.icon className="w-4 h-4" /> {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Section 2 */}
-          <div>
-            <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3 px-6 flex items-center justify-between">
-              Advanced Capabilities
-              <div className="px-1.5 py-0.5 bg-indigo-500/20 text-indigo-400 rounded text-[8px] animate-pulse">NEW</div>
-            </div>
-            <div className="space-y-1 px-3">
-              {navItems.filter(i => i.section === 'Advanced Capabilities').map(item => (
-                <button 
-                  key={item.id}
-                  onClick={() => setActiveTab(item.id as any)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                    activeTab === item.id 
-                      ? 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 shadow-lg shadow-indigo-500/5' 
-                      : 'text-slate-400 hover:text-white hover:bg-slate-800/50 border border-transparent'
-                  }`}
-                >
-                  <item.icon className="w-4 h-4" /> {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-        </div>
-
-        <div className="p-4 border-t border-slate-800/80">
-          <button 
-            onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all border border-transparent hover:border-red-500/20"
-          >
-            <LogOut className="w-4 h-4" /> Terminate Session
-          </button>
-        </div>
-      </aside>
-
-      {/* Main Content Area */}
-      <main className="flex-1 flex flex-col h-full bg-gradient-to-br from-slate-950 to-slate-900 relative">
-        {/* Topbar */}
-        <header className="h-16 flex items-center justify-between px-8 border-b border-slate-800/80 bg-slate-900/30 backdrop-blur-md">
-          <h1 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
-            {getPageTitle()}
-            <span className="px-2 py-0.5 rounded bg-red-500/10 border border-red-500/20 text-red-500 text-[10px] uppercase tracking-widest ml-2 animate-pulse">Defcon 3</span>
-          </h1>
-          <div className="flex items-center gap-4 text-slate-400">
-            <button 
-              onClick={() => window.location.href = '/command-center'}
-              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white text-sm font-bold rounded-lg shadow-lg shadow-red-500/25 transition-all border border-red-400/30"
-            >
-              <Zap className="w-4 h-4" /> Launch Command Center
-            </button>
-            <button className="hover:text-white"><Bell className="w-5 h-5" /></button>
-            <button className="hover:text-white"><Settings className="w-5 h-5" /></button>
-            <div className="h-8 w-8 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700">
-              <User className="w-4 h-4" />
-            </div>
-          </div>
-        </header>
-
-        {/* Dynamic Content */}
-        <div className="flex-1 overflow-y-auto p-8 relative z-10">
+        <SecurityWelcomeHeader />
+        
+        <AnimatePresence mode="wait">
           {renderContent()}
-        </div>
+        </AnimatePresence>
       </main>
     </div>
   );

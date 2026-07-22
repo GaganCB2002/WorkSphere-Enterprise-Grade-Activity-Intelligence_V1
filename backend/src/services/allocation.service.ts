@@ -1,6 +1,6 @@
 import { db } from './db.service'
 import { activityService } from './activity.service'
-import { io } from '../server'
+import { getIO } from './socket.service'
 import type { ResourceAllocation, Asset, AssetAllocation } from '../data/types'
 
 export const allocationService = {
@@ -25,7 +25,7 @@ export const allocationService = {
       actor: 'System'
     })
 
-    io.emit('allocation_updated', newAllocation)
+    getIO()?.emit('allocation_updated', newAllocation)
     return newAllocation
   },
 
@@ -40,7 +40,7 @@ export const allocationService = {
     })
 
     if (updated) {
-      io.emit('allocation_updated', updated)
+      getIO()?.emit('allocation_updated', updated)
     }
     return updated
   },
@@ -49,7 +49,7 @@ export const allocationService = {
     db.update((data) => {
       data.allocations = data.allocations.filter(a => a.id !== id)
     })
-    io.emit('allocation_deleted', id)
+    getIO()?.emit('allocation_deleted', id)
   },
 
   // Asset Management
@@ -93,7 +93,7 @@ export const allocationService = {
       actor: 'Admin'
     })
 
-    io.emit('asset_allocation_updated', allocation)
+    getIO()?.emit('asset_allocation_updated', allocation)
     return allocation
   },
 
@@ -112,7 +112,7 @@ export const allocationService = {
     })
 
     if (affectedAssetId) {
-      io.emit('asset_allocation_revoked', id)
+      getIO()?.emit('asset_allocation_revoked', id)
     }
   }
 }

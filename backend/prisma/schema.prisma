@@ -190,3 +190,260 @@ model AIWidgetData {
   strategicRisks     String
   lastUpdated        DateTime @default(now())
 }
+
+// ==========================================
+// ENTERPRISE FINANCE MODULE SCHEMAS
+// ==========================================
+
+model FinanceAccount {
+  id            String   @id @default(uuid())
+  code          String   @unique
+  name          String
+  type          String   // Asset, Liability, Equity, Revenue, Expense
+  group         String   // Current Asset, Fixed Asset, etc.
+  balance       Float    @default(0.0)
+  currency      String   @default("INR")
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  journalLines  JournalLine[]
+}
+
+model JournalEntry {
+  id            String   @id @default(uuid())
+  entryNumber   String   @unique
+  date          DateTime
+  description   String
+  reference     String?
+  status        String   // Draft, Posted, Reversed
+  totalDebit    Float
+  totalCredit   Float
+  createdBy     String
+  approvedBy    String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  lines         JournalLine[]
+}
+
+model JournalLine {
+  id              String   @id @default(uuid())
+  journalEntryId  String
+  accountId       String
+  description     String?
+  debit           Float    @default(0.0)
+  credit          Float    @default(0.0)
+  journalEntry    JournalEntry @relation(fields: [journalEntryId], references: [id], onDelete: Cascade)
+  account         FinanceAccount @relation(fields: [accountId], references: [id])
+}
+
+model Customer {
+  id            String   @id @default(uuid())
+  name          String
+  email         String
+  phone         String?
+  company       String?
+  taxId         String?
+  address       String?
+  balance       Float    @default(0.0)
+  status        String   @default("Active")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  invoices      Invoice[]
+}
+
+model Vendor {
+  id            String   @id @default(uuid())
+  name          String
+  email         String
+  phone         String?
+  company       String?
+  taxId         String?
+  address       String?
+  balance       Float    @default(0.0)
+  status        String   @default("Active")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  expenses      Expense[]
+  purchaseOrders PurchaseOrder[]
+}
+
+model Invoice {
+  id            String   @id @default(uuid())
+  invoiceNumber String   @unique
+  customerId    String
+  date          DateTime
+  dueDate       DateTime
+  subTotal      Float
+  taxTotal      Float
+  discountTotal Float
+  total         Float
+  balanceDue    Float
+  status        String   // Draft, Sent, Paid, Overdue, Void
+  notes         String?
+  customer      Customer @relation(fields: [customerId], references: [id])
+  items         InvoiceItem[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model InvoiceItem {
+  id            String   @id @default(uuid())
+  invoiceId     String
+  description   String
+  quantity      Float
+  unitPrice     Float
+  taxRate       Float
+  total         Float
+  invoice       Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+}
+
+model Expense {
+  id            String   @id @default(uuid())
+  expenseNumber String   @unique
+  vendorId      String?
+  employeeId    String?
+  categoryId    String
+  date          DateTime
+  amount        Float
+  taxAmount     Float
+  totalAmount   Float
+  currency      String   @default("INR")
+  description   String
+  receiptUrl    String?
+  status        String   // Submitted, Approved, Rejected, Paid
+  vendor        Vendor?  @relation(fields: [vendorId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model PurchaseOrder {
+  id            String   @id @default(uuid())
+  poNumber      String   @unique
+  vendorId      String
+  date          DateTime
+  expectedDate  DateTime?
+  totalAmount   Float
+  status        String   // Draft, Pending Approval, Approved, Fulfilled, Cancelled
+  vendor        Vendor   @relation(fields: [vendorId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model BankAccount {
+  id            String   @id @default(uuid())
+  accountName   String
+  accountNumber String
+  bankName      String
+  currency      String   @default("INR")
+  currentBalance Float
+  lastReconciled DateTime?
+  status        String   @default("Active")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  transactions  BankTransaction[]
+}
+
+model BankTransaction {
+  id            String   @id @default(uuid())
+  bankAccountId String
+  date          DateTime
+  description   String
+  reference     String?
+  type          String   // Credit, Debit
+  amount        Float
+  status        String   // Pending, Cleared, Reconciled
+  bankAccount   BankAccount @relation(fields: [bankAccountId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Asset {
+  id            String   @id @default(uuid())
+  assetName     String
+  assetNumber   String   @unique
+  category      String
+  purchaseDate  DateTime
+  purchasePrice Float
+  currentValue  Float
+  salvageValue  Float
+  usefulLife    Int      // in months
+  status        String   // Active, Disposed, Maintenance
+  location      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  depreciations DepreciationSchedule[]
+}
+
+model DepreciationSchedule {
+  id            String   @id @default(uuid())
+  assetId       String
+  date          DateTime
+  depreciationAmount Float
+  accumulatedDepreciation Float
+  bookValue     Float
+  status        String   // Scheduled, Posted
+  asset         Asset    @relation(fields: [assetId], references: [id], onDelete: Cascade)
+}
+
+model TaxRecord {
+  id            String   @id @default(uuid())
+  taxType       String   // GST, VAT, TDS, Income Tax
+  period        String   // Q1 2026, Apr 2026
+  taxableAmount Float
+  taxAmount     Float
+  status        String   // Pending, Filed, Paid
+  filingDate    DateTime?
+  dueDate       DateTime
+  reference     String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Budget {
+  id            String   @id @default(uuid())
+  departmentId  String
+  fiscalYear    String
+  period        String   // Q1, Annual, Jan
+  totalBudget   Float
+  spent         Float    @default(0.0)
+  variance      Float    @default(0.0)
+  status        String   // Draft, Active, Closed
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model PayrollFinanceRecord {
+  id            String   @id @default(uuid())
+  payrollMonth  String
+  totalGross    Float
+  totalNet      Float
+  totalTaxes    Float
+  totalBenefits Float
+  status        String   // Processed, Paid, Disbursed
+  paymentDate   DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model FinanceApproval {
+  id            String   @id @default(uuid())
+  module        String   // Invoice, Expense, PO, Journal
+  referenceId   String
+  level         Int      // 1: Exec, 2: Mgr, 3: CFO
+  approverId    String
+  status        String   // Pending, Approved, Rejected
+  comments      String?
+  actionDate    DateTime?
+  createdAt     DateTime @default(now())
+}
+
+model FinanceAuditLog {
+  id            String   @id @default(uuid())
+  userId        String
+  action        String
+  module        String
+  details       String
+  ipAddress     String?
+  createdAt     DateTime @default(now())
+}
+

@@ -38,7 +38,7 @@ router.use(authenticate)
 // Helper: check if user is CEO or Admin
 const checkExecutiveAccess = (req: any, res: any, next: any) => {
   const role = req.auth?.role?.toUpperCase()
-  if (role === 'CEO' || role === 'ADMIN' || role === 'SUPERADMIN') {
+  if (role === 'CEO' || role === 'ADMIN' || role === 'SUPERADMIN' || role === 'SUPER_ADMIN') {
     next()
   } else {
     res.status(403).json({ message: 'Access Denied: Executive credentials required.' })

@@ -1,4 +1,4 @@
-import type { AuthPayload } from './types'
+import type { AuthPayload } from './data/types'
 
 declare global {
   namespace Express {

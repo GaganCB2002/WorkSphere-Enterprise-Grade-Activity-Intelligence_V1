@@ -1,4 +1,4 @@
-export type Role = 'CEO' | 'HR' | 'Manager' | 'Lead' | 'LEAD' | 'Employee' | 'Marketing' | 'Sales' | 'TECH_LEAD' | 'ADMIN' | 'SUPERADMIN'
+export type Role = 'CEO' | 'HR' | 'Manager' | 'Lead' | 'LEAD' | 'Employee' | 'Marketing' | 'Sales' | 'TECH_LEAD' | 'ADMIN' | 'SUPERADMIN' | 'SUPER_ADMIN' | 'HR_MANAGER' | 'HR_EXECUTIVE' | 'FINANCE_MANAGER' | 'MARKETING_MANAGER' | 'SALES_MANAGER' | 'PROJECT_MANAGER' | 'DEVOPS_ENGINEER' | 'QA_ENGINEER' | 'SOFTWARE_ENGINEER' | 'SECURITY_ANALYST' | 'SUPPORT_AGENT' | 'EMPLOYEE' | 'INTERN' | 'CTO' | 'IT' | 'SUPPORT' | 'STAFF' | 'Intern'
 
 export type CandidateStage =
   | 'Applied'

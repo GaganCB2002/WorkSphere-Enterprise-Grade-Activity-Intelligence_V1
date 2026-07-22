@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import { db } from './db.service'
 import { activityService } from './activity.service'
-import { io } from '../server'
+import { getIO } from './socket.service'
 import Payroll from '../models/Payroll'
 import type { PayrollBreakdown } from '../data/types'
 
@@ -58,7 +58,7 @@ export const payrollService = {
         actor: 'HR Admin'
       });
 
-      io.emit('payroll_updated', record);
+      getIO()?.emit('payroll_updated', record);
       return record;
     }
 
@@ -80,7 +80,7 @@ export const payrollService = {
       actor: 'HR Admin'
     });
 
-    io.emit('payroll_updated', record);
+    getIO()?.emit('payroll_updated', record);
     return record;
   },
 
@@ -101,7 +101,7 @@ export const payrollService = {
         actor: 'System'
       });
       
-      io.emit('payroll_batch_processed', month);
+      getIO()?.emit('payroll_batch_processed', month);
       return;
     }
 
@@ -114,6 +114,6 @@ export const payrollService = {
       actor: 'System'
     });
     
-    io.emit('payroll_batch_processed', month);
+    getIO()?.emit('payroll_batch_processed', month);
   }
 }
