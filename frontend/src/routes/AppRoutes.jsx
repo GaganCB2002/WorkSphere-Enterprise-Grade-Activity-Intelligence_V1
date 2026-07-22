@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { AnimatePresence } from 'framer-motion';
+import { PageTransition } from '../components/layout/PageTransition';
 
 import Login from '../auth/Login';
 import Register from '../auth/Register';
@@ -66,7 +68,6 @@ const DashboardRouter = () => {
   }
 };
 
-import { GlobalEnterpriseCopilot } from '../components/ai/GlobalEnterpriseCopilot';
 import { LandingPage } from '../pages/LandingPage';
 import { ProductPage } from '../pages/Product/ProductPage';
 import { FeaturesPage } from '../pages/Features/FeaturesPage';
@@ -76,54 +77,98 @@ import { PrivacyPage } from '../pages/Legal/PrivacyPage';
 import { TermsPage } from '../pages/Legal/TermsPage';
 import { SecurityPage } from '../pages/Legal/SecurityPage';
 
+import { motion } from 'framer-motion';
+
 function PageLoading() {
+  const containerVariants = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
+  const itemVariants = {
+    initial: { opacity: 0, y: 10 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } }
+  };
+
   return (
-    <div className="space-y-4 animate-pulse">
-      <div className="grid grid-cols-4 gap-4">
-        {[...Array(4)].map((_, i) => <div key={i} className="h-24 skeleton rounded-lg" />)}
+    <motion.div variants={containerVariants} initial="initial" animate="animate" className="space-y-4 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {[...Array(4)].map((_, i) => (
+          <motion.div key={i} variants={itemVariants} className="h-28 bg-slate-200/50 dark:bg-slate-800/50 rounded-xl overflow-hidden relative">
+             <motion.div 
+               animate={{ x: ['-100%', '200%'] }} 
+               transition={{ repeat: Infinity, duration: 1.5, ease: 'linear' }}
+               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-white/5 to-transparent w-1/2"
+             />
+          </motion.div>
+        ))}
       </div>
-      <div className="h-64 skeleton rounded-lg" />
-    </div>
+      <motion.div variants={itemVariants} className="h-80 bg-slate-200/50 dark:bg-slate-800/50 rounded-xl overflow-hidden relative">
+         <motion.div 
+           animate={{ x: ['-100%', '200%'] }} 
+           transition={{ repeat: Infinity, duration: 2, ease: 'linear' }}
+           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-white/5 to-transparent w-1/2"
+         />
+      </motion.div>
+    </motion.div>
   )
 }
 
 function PageLoadingFull() {
   return (
-    <div className="flex items-center justify-center h-screen bg-surface">
-      <div className="flex flex-col items-center gap-3">
-        <div className="w-8 h-8 border-2 border-[var(--color-brand-500)] border-t-transparent rounded-full animate-spin" />
-        <span className="text-sm text-secondary">Loading...</span>
+    <motion.div 
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
+      exit={{ opacity: 0 }}
+      className="flex items-center justify-center h-screen bg-slate-50 dark:bg-slate-950"
+    >
+      <div className="flex flex-col items-center gap-4">
+        <motion.div 
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+          className="w-8 h-8 border-2 border-brand-500 border-t-transparent rounded-full" 
+        />
+        <motion.span 
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          className="text-sm font-medium text-slate-500"
+        >
+          Loading workspace...
+        </motion.span>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
 const AppRoutes = () => {
+  const location = useLocation();
+  
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/product" element={<ProductPage />} />
-        <Route path="/features" element={<FeaturesPage />} />
-        <Route path="/features/*" element={<FeaturesPage />} />
-        <Route path="/solutions" element={<SolutionsPage />} />
-        <Route path="/solutions/*" element={<SolutionsPage />} />
-        <Route path="/resources" element={<ResourcesPage />} />
-        <Route path="/privacy" element={<PrivacyPage />} />
-        <Route path="/terms" element={<TermsPage />} />
-        <Route path="/security" element={<SecurityPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/mfa" element={<MFA />} />
-        <Route path="/session-timeout" element={<SessionTimeout />} />
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><LandingPage /></PageTransition>} />
+        <Route path="/product" element={<PageTransition><ProductPage /></PageTransition>} />
+        <Route path="/features" element={<PageTransition><FeaturesPage /></PageTransition>} />
+        <Route path="/features/*" element={<PageTransition><FeaturesPage /></PageTransition>} />
+        <Route path="/solutions" element={<PageTransition><SolutionsPage /></PageTransition>} />
+        <Route path="/solutions/*" element={<PageTransition><SolutionsPage /></PageTransition>} />
+        <Route path="/resources" element={<PageTransition><ResourcesPage /></PageTransition>} />
+        <Route path="/privacy" element={<PageTransition><PrivacyPage /></PageTransition>} />
+        <Route path="/terms" element={<PageTransition><TermsPage /></PageTransition>} />
+        <Route path="/security" element={<PageTransition><SecurityPage /></PageTransition>} />
+        <Route path="/login" element={<PageTransition><Login /></PageTransition>} />
+        <Route path="/register" element={<PageTransition><Register /></PageTransition>} />
+        <Route path="/forgot-password" element={<PageTransition><ForgotPassword /></PageTransition>} />
+        <Route path="/reset-password" element={<PageTransition><ResetPassword /></PageTransition>} />
+        <Route path="/mfa" element={<PageTransition><MFA /></PageTransition>} />
+        <Route path="/session-timeout" element={<PageTransition><SessionTimeout /></PageTransition>} />
         
         {/* Full Screen Command Center */}
         <Route path="/command-center" element={
           <ProtectedRoute>
             <Suspense fallback={<PageLoadingFull />}>
-              <SystemCommandCenter />
+              <PageTransition>
+                <SystemCommandCenter />
+              </PageTransition>
             </Suspense>
           </ProtectedRoute>
         } />
@@ -133,14 +178,15 @@ const AppRoutes = () => {
           <ProtectedRoute>
             <EnterpriseShell>
               <Suspense fallback={<PageLoading />}>
-                <DashboardRouter />
+                <PageTransition>
+                  <DashboardRouter />
+                </PageTransition>
               </Suspense>
             </EnterpriseShell>
           </ProtectedRoute>
         } />
       </Routes>
-      <GlobalEnterpriseCopilot />
-    </>
+    </AnimatePresence>
   );
 };
 
