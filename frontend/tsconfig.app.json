@@ -23,15 +23,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "src", 
-    "../../../Recruitment & Hiring_1/ADMIN_SYSTEM", 
-    "../../../Recruitment & Hiring_1/CEO_SYSTEM", 
-    "../../../Recruitment & Hiring_1/EMPLOYEE_SYSTEM", 
-    "../../../Recruitment & Hiring_1/HR_SYSTEM", 
-    "../../../Recruitment & Hiring_1/MANAGER_SYSTEM", 
-    "../../../Recruitment & Hiring_1/TECHLEAD_SYSTEM", 
-    "../../../Recruitment & Hiring_1/MARKETING_SYSTEM", 
-    "../../../Recruitment & Hiring_1/SUPPORT_SYSTEM"
+    "src"
   ],
   "exclude": [
     "**/node_modules",

@@ -46,8 +46,9 @@ export default defineConfig({
     host: true,
     proxy: {
       '/socket.io': {
-        target: 'http://127.0.0.1:5001',
+        target: 'https://worksphere-enterprise-grade-activity.onrender.com',
         changeOrigin: true,
+        secure: false, // For Render proxy if needed, though usually true is fine
         ws: true,
       },
       '/api/ceo/kpis': {
@@ -66,11 +67,16 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api\/cto/, '')
       },
       '/api': {
-        target: 'http://127.0.0.1:5001',
+        target: 'https://worksphere-enterprise-grade-activity.onrender.com',
         changeOrigin: true,
+        secure: false,
         ws: true,
       },
-      '/health': 'http://127.0.0.1:5001',
+      '/health': {
+        target: 'https://worksphere-enterprise-grade-activity.onrender.com/health',
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 })
