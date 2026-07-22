@@ -72,25 +72,108 @@ const navIcons = {
   Profile: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
   Learning: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253',
   'Org Chart': 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064',
+  'Employee Directory': 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z',
+  'Employee Profile': 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+  'User Management': 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z',
+  'RBAC Matrix': 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  'AI & System Configuration': 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z',
+  'Global Tracking': 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+  'Activity Reports': 'M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
 }
 
 const navGroups = [
-  { label: 'Main', items: ['Dashboard'] },
-  { label: 'People', items: ['Employees', 'Attendance', 'Leave', 'Recruitment'] },
-  { label: 'Finance', items: ['Payroll', 'Budget', 'Expenses', 'Tax', 'Revenue'] },
-  { label: 'Work', items: ['Projects', 'Tasks', 'Sprints', 'Timeline', 'Pipeline'] },
-  { label: 'Engineering', items: ['Engineering', 'DevOps', 'Code Reviews', 'Pull Requests', 'CI/CD', 'Infrastructure', 'Monitoring'] },
-  { label: 'Quality', items: ['Test Plans', 'Test Runs', 'Bugs', 'Automation'] },
-  { label: 'Assets & Ops', items: ['Assets', 'Compliance', 'Allocations'] },
-  { label: 'Performance', items: ['Performance', 'Analytics', 'Reports'] },
-  { label: 'Sales & Marketing', items: ['Campaigns', 'Content', 'Clients', 'Analytics'] },
-  { label: 'Support', items: ['Tickets', 'Knowledge Base', 'SLA'] },
-  { label: 'Security', items: ['Security', 'Threats', 'Audit Logs', 'Vulnerabilities'] },
-  { label: 'Growth', items: ['Learning', 'Org Chart'] },
-  { label: 'Admin', items: ['Administration', 'Settings'] },
+  {
+    label: 'Employees',
+    icon: navIcons.Employees,
+    items: [
+      { label: 'Employee Directory', path: '/employees/directory' },
+      { label: 'Employee Profile', path: '/employees/profile' },
+      { label: 'User Management', path: '/employees/users' },
+      { label: 'RBAC Matrix', path: '/employees/rbac' },
+      { label: 'Global Tracking', path: '/employees/tracking' },
+      { label: 'Activity Reports', path: '/employees/reports' },
+      { label: 'Audit Logs', path: '/employees/audit' },
+      { label: 'AI & System Configuration', path: '/employees/ai-config' },
+    ]
+  },
+  {
+    label: 'Attendance',
+    icon: navIcons.Attendance,
+    items: [
+      { label: 'Live Attendance', path: '/attendance/live' },
+      { label: 'Shifts', path: '/attendance/shifts' },
+      { label: 'Leave Management', path: '/attendance/leave' },
+    ]
+  },
+  {
+    label: 'Recruitment',
+    icon: navIcons.Recruitment,
+    items: [
+      { label: 'Candidates', path: '/recruitment/candidates' },
+      { label: 'Interviews', path: '/recruitment/interviews' },
+      { label: 'Job Openings', path: '/recruitment/jobs' },
+    ]
+  },
+  {
+    label: 'Payroll',
+    icon: navIcons.Payroll,
+    items: [
+      { label: 'Salary', path: '/payroll/salary' },
+      { label: 'Payslips', path: '/payroll/payslips' },
+      { label: 'Tax', path: '/payroll/tax' },
+    ]
+  },
+  {
+    label: 'Projects',
+    icon: navIcons.Projects,
+    items: [
+      { label: 'Projects', path: '/projects/list' },
+      { label: 'Tasks', path: '/projects/tasks' },
+      { label: 'Sprint Board', path: '/projects/sprint-board' },
+    ]
+  },
+  {
+    label: 'Assets',
+    icon: navIcons.Assets,
+    items: [
+      { label: 'Inventory', path: '/assets/inventory' },
+      { label: 'Devices', path: '/assets/devices' },
+      { label: 'Licenses', path: '/assets/licenses' },
+    ]
+  },
+  {
+    label: 'Compliance',
+    icon: navIcons.Compliance,
+    items: [
+      { label: 'Policies', path: '/compliance/policies' },
+      { label: 'Documents', path: '/compliance/documents' },
+      { label: 'Audit Center', path: '/compliance/audit' },
+    ]
+  },
+  {
+    label: 'Performance',
+    icon: navIcons.Performance,
+    items: [
+      { label: 'Reviews', path: '/performance/reviews' },
+      { label: 'KPIs', path: '/performance/kpis' },
+      { label: 'Analytics', path: '/performance/analytics' },
+    ]
+  },
+  {
+    label: 'Administration',
+    icon: navIcons.Administration,
+    items: [
+      { label: 'Company Settings', path: '/admin/settings' },
+      { label: 'Roles', path: '/admin/roles' },
+      { label: 'Permissions', path: '/admin/permissions' },
+      { label: 'Security', path: '/admin/security' },
+      { label: 'AI Configuration', path: '/admin/ai-config' },
+      { label: 'System Logs', path: '/admin/system-logs' },
+    ]
+  }
 ]
 
-const pinLabels = ['Dashboard', 'Employees', 'Payroll', 'Projects', 'Reports']
+const pinLabels = []
 
 export default function Sidebar({ collapsed, onToggle }) {
   const user = useSelector(state => state.auth.user)
@@ -102,6 +185,7 @@ export default function Sidebar({ collapsed, onToggle }) {
     navGroups.forEach(g => { initial[g.label] = true })
     return initial
   })
+  const [expandedEmployees, setExpandedEmployees] = useState(true)
   const [pinned, setPinned] = useState(() => {
     try { return JSON.parse(localStorage.getItem('sidebarPinned') || '[]') }
     catch { return [] }
@@ -119,18 +203,12 @@ export default function Sidebar({ collapsed, onToggle }) {
     })
   }, [])
 
-  const visibleItems = navGroups
-    .map(g => ({
-      ...g,
-      items: g.items.filter(i => allowedNav.includes(i))
-    }))
-    .filter(g => g.items.length > 0)
+  const visibleItems = navGroups.filter(g => role === 'SUPER_ADMIN' || role === 'ADMIN' || allowedNav.includes(g.label))
 
-  const pinnedItems = pinLabels.filter(l => allowedNav.includes(l) && pinned.includes(l))
+  const pinnedItems = pinLabels.filter(l => pinned.includes(l))
 
-  const isActive = (name) => {
-    const path = name.toLowerCase().replace(/\s+/g, '-')
-    return location.pathname.startsWith(`/${path}`) || (path === 'dashboard' && (location.pathname === '/' || location.pathname === '/dashboard'))
+  const isActive = (path) => {
+    return location.pathname === path || location.pathname.startsWith(path + '/')
   }
 
   return (
@@ -205,33 +283,71 @@ export default function Sidebar({ collapsed, onToggle }) {
 
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto px-2 pb-4 scrollbar-thin">
+        
+        {/* Top-level Dashboard */}
+        <div className="mb-2 mt-2">
+          <SidebarItem
+            label="Dashboard"
+            icon={navIcons.Dashboard}
+            active={location.pathname === '/' || location.pathname === '/dashboard'}
+            collapsed={collapsed}
+            to="/dashboard"
+          />
+        </div>
+
         {visibleItems.map(group => (
           <div key={group.label} className="mb-1">
-            {!collapsed && (
+            {!collapsed ? (
               <button
                 onClick={() => toggleGroup(group.label)}
-                className="flex items-center gap-1 w-full px-2 py-1.5 text-[11px] font-medium uppercase tracking-wider text-sidebar-text opacity-50 hover:opacity-80 transition-opacity"
+                className={`group/btn w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors ${expandedGroups[group.label] ? 'bg-sidebar-item-hover' : 'hover:bg-sidebar-item-hover'}`}
               >
+                <div className="flex items-center gap-3">
+                  <svg className={`w-4 h-4 text-[var(--color-brand-400)] opacity-80`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d={group.icon || navIcons.Employees} />
+                  </svg>
+                  <span className={`text-sm font-medium ${expandedGroups[group.label] ? 'text-white' : 'text-sidebar-text'}`}>
+                    {group.label}
+                  </span>
+                </div>
                 <svg
-                  className={`w-3 h-3 transition-transform duration-150 ${expandedGroups[group.label] ? 'rotate-90' : ''}`}
+                  className={`w-4 h-4 text-sidebar-text opacity-50 transition-transform duration-200 ${expandedGroups[group.label] ? 'rotate-180' : ''}`}
                   fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
-                <span>{group.label}</span>
               </button>
+            ) : (
+               <div className="flex justify-center py-2 relative group/tooltip cursor-pointer" onClick={() => toggleGroup(group.label)}>
+                  <svg className={`w-5 h-5 text-[var(--color-brand-400)] opacity-80`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d={group.icon || navIcons.Employees} />
+                  </svg>
+               </div>
             )}
-            {expandedGroups[group.label] && group.items.map(label => (
-              <SidebarItem
-                key={label}
-                label={label}
-                icon={navIcons[label]}
-                active={isActive(label)}
-                collapsed={collapsed}
-                onPin={() => togglePinned(label)}
-                isPinned={pinned.includes(label)}
-              />
-            ))}
+            
+            <AnimatePresence>
+              {expandedGroups[group.label] && !collapsed && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  className="overflow-hidden"
+                >
+                  <div className="pl-9 pr-2 py-1 space-y-0.5">
+                    {group.items.map(item => (
+                      <SidebarChildItem
+                        key={item.path}
+                        label={item.label}
+                        icon={navIcons[item.label] || navIcons.Dashboard}
+                        active={isActive(item.path)}
+                        collapsed={collapsed}
+                        to={item.path}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         ))}
       </nav>
@@ -254,13 +370,13 @@ export default function Sidebar({ collapsed, onToggle }) {
   )
 }
 
-function SidebarItem({ label, icon, active, collapsed, onPin, isPinned }) {
-  const path = label.toLowerCase().replace(/\s+/g, '-')
+function SidebarItem({ label, icon, active, collapsed, onPin, isPinned, to }) {
+  const path = to || `/${label.toLowerCase().replace(/\s+/g, '-')}`
 
   return (
     <NavLink
-      to={`/${path}`}
-      end={path === 'dashboard'}
+      to={path}
+      end={path === '/employees'}
       className={`group relative flex items-center gap-2.5 px-2 py-1.5 rounded text-sm transition-all duration-150 ${active
         ? 'text-white font-medium'
         : 'text-sidebar-text hover:bg-sidebar-item-hover hover:text-sidebar-text-hover'
@@ -293,16 +409,52 @@ function SidebarItem({ label, icon, active, collapsed, onPin, isPinned }) {
             className="flex flex-1 items-center overflow-hidden"
           >
             <span className="truncate flex-1">{label}</span>
-            <button
-              onClick={(e) => { e.preventDefault(); e.stopPropagation(); onPin?.() }}
-              className={`ml-auto opacity-0 group-hover:opacity-100 transition-opacity ${isPinned ? 'text-[var(--color-warning-400)]' : 'text-sidebar-text opacity-30'} hover:opacity-100`}
-              title={isPinned ? 'Unpin' : 'Pin to favorites'}
-            >
-              <svg className="w-3 h-3" fill={isPinned ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-              </svg>
-            </button>
+            {onPin && (
+              <button
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); onPin?.() }}
+                className={`ml-auto opacity-0 group-hover:opacity-100 transition-opacity ${isPinned ? 'text-[var(--color-warning-400)]' : 'text-sidebar-text opacity-30'} hover:opacity-100`}
+                title={isPinned ? 'Unpin' : 'Pin to favorites'}
+              >
+                <svg className="w-3 h-3" fill={isPinned ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                </svg>
+              </button>
+            )}
           </motion.div>
+        )}
+      </AnimatePresence>
+    </NavLink>
+  )
+}
+
+function SidebarChildItem({ label, icon, active, collapsed, to }) {
+  return (
+    <NavLink
+      to={to}
+      end
+      className={`group relative flex items-center gap-2.5 px-3 py-1.5 rounded-md text-[13px] transition-all duration-150 ${active
+        ? 'text-white font-medium bg-brand-500/10 text-brand-400'
+        : 'text-sidebar-text hover:bg-sidebar-item-hover hover:text-sidebar-text-hover'
+      }`}
+      title={label}
+    >
+      {active && (
+        <motion.div
+          layoutId="sidebarChildActiveIndicator"
+          className="absolute -left-3 top-1/2 -translate-y-1/2 w-1 h-1 bg-brand-500 rounded-full"
+        />
+      )}
+      
+      <AnimatePresence>
+        {!collapsed && (
+          <motion.span
+            initial={{ opacity: 0, width: 0 }}
+            animate={{ opacity: 1, width: "auto" }}
+            exit={{ opacity: 0, width: 0 }}
+            className="text-xs truncate"
+          >
+            {label}
+          </motion.span>
         )}
       </AnimatePresence>
     </NavLink>
