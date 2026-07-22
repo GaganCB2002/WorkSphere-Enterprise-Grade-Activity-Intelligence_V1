@@ -439,5 +439,19 @@
     "name": "Chief Executive Officer",
     "loginTime": "2026-07-22T08:22:34.680Z",
     "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T08:25:20.208Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-ceo",
+    "email": "exec_ceo",
+    "name": "Chief Executive Officer",
+    "loginTime": "2026-07-22T08:25:20.273Z",
+    "ip": "127.0.0.1"
   }
 ]
