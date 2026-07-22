@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink, useLocation } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const roleNavMap = {
   SUPER_ADMIN: ['Dashboard', 'Employees', 'Attendance', 'Payroll', 'Recruitment', 'Projects', 'Assets', 'Compliance', 'Performance', 'Reports', 'Administration', 'Settings'],
@@ -133,8 +134,15 @@ export default function Sidebar({ collapsed, onToggle }) {
   }
 
   return (
-    <aside
-      className={`flex-shrink-0 flex flex-col bg-sidebar-bg h-full transition-all duration-200 ease-out overflow-hidden border-r border-sidebar-border ${collapsed ? 'w-[var(--color-sidebar-width-collapsed)]' : 'w-[var(--color-sidebar-width)]'}`}
+    <motion.aside
+      initial={{ x: -12, opacity: 0 }}
+      animate={{ 
+        x: 0, 
+        opacity: 1, 
+        width: collapsed ? 'var(--color-sidebar-width-collapsed, 64px)' : 'var(--color-sidebar-width, 240px)' 
+      }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className="flex-shrink-0 flex flex-col bg-sidebar-bg h-full overflow-hidden border-r border-sidebar-border relative"
       style={{ backgroundColor: 'var(--color-sidebar-bg)' }}
     >
       {/* Logo */}
@@ -242,7 +250,7 @@ export default function Sidebar({ collapsed, onToggle }) {
           </div>
         </div>
       )}
-    </aside>
+    </motion.aside>
   )
 }
 
@@ -254,28 +262,49 @@ function SidebarItem({ label, icon, active, collapsed, onPin, isPinned }) {
       to={`/${path}`}
       end={path === 'dashboard'}
       className={`group relative flex items-center gap-2.5 px-2 py-1.5 rounded text-sm transition-all duration-150 ${active
-        ? 'bg-sidebar-item-active text-white font-medium before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-0.5 before:h-4 before:bg-sidebar-item-active-border before:rounded-r-full'
+        ? 'text-white font-medium'
         : 'text-sidebar-text hover:bg-sidebar-item-hover hover:text-sidebar-text-hover'
       } ${collapsed ? 'justify-center mx-0' : 'mx-0'}`}
       title={label}
     >
-      <svg className={`w-4 h-4 flex-shrink-0 ${active ? 'text-[var(--color-brand-400)]' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={active ? 2 : 1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d={icon} />
-      </svg>
-      {!collapsed && (
-        <>
-          <span className="truncate">{label}</span>
-          <button
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); onPin?.() }}
-            className={`ml-auto opacity-0 group-hover:opacity-100 transition-opacity ${isPinned ? 'text-[var(--color-warning-400)]' : 'text-sidebar-text opacity-30'} hover:opacity-100`}
-            title={isPinned ? 'Unpin' : 'Pin to favorites'}
-          >
-            <svg className="w-3 h-3" fill={isPinned ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-            </svg>
-          </button>
-        </>
+      {active && (
+        <motion.div
+          layoutId="sidebarActiveIndicator"
+          className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-4 bg-brand-500 rounded-r-full"
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        />
       )}
+      <motion.div
+        animate={active ? { scale: 1.05 } : { scale: 1 }}
+        transition={{ duration: 0.15 }}
+        className="flex-shrink-0 z-10"
+      >
+        <svg className={`w-4 h-4 ${active ? 'text-[var(--color-brand-400)]' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={active ? 2 : 1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d={icon} />
+        </svg>
+      </motion.div>
+      
+      <AnimatePresence>
+        {!collapsed && (
+          <motion.div
+            initial={{ opacity: 0, width: 0 }}
+            animate={{ opacity: 1, width: "auto" }}
+            exit={{ opacity: 0, width: 0 }}
+            className="flex flex-1 items-center overflow-hidden"
+          >
+            <span className="truncate flex-1">{label}</span>
+            <button
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); onPin?.() }}
+              className={`ml-auto opacity-0 group-hover:opacity-100 transition-opacity ${isPinned ? 'text-[var(--color-warning-400)]' : 'text-sidebar-text opacity-30'} hover:opacity-100`}
+              title={isPinned ? 'Unpin' : 'Pin to favorites'}
+            >
+              <svg className="w-3 h-3" fill={isPinned ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+              </svg>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </NavLink>
   )
 }

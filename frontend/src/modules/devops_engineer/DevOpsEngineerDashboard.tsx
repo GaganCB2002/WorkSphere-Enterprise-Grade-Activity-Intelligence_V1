@@ -10,7 +10,7 @@ import { SecurityOperationsCenter } from './components/SecurityOperationsCenter'
 import { IncidentManagement } from './components/IncidentManagement';
 import { CloudCostDashboard } from './components/CloudCostDashboard';
 import { DatabaseManagement } from './components/DatabaseManagement';
-import { EnterpriseAiCopilot } from '../../components/ai/EnterpriseAiCopilot';
+
 import { CloudManagementDashboard } from './components/CloudManagementDashboard';
 import { ContainerManagement } from './components/ContainerManagement';
 import { DevOpsReports } from './components/DevOpsReports';

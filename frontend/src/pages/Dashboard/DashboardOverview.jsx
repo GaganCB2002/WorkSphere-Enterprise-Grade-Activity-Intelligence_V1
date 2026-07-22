@@ -3,6 +3,24 @@ import { useSelector } from 'react-redux'
 import KpiCard from '../../components/common/Card/KpiCard'
 import DataTable, { StatusBadge } from '../../components/common/DataTable/DataTable'
 import { API_URL } from '../../api/client'
+import { motion } from 'framer-motion'
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.04, delayChildren: 0.1 }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { type: "spring", stiffness: 300, damping: 30 }
+  }
+}
 
 export default function DashboardOverview() {
   const user = useSelector(state => state.auth.user)
@@ -47,52 +65,70 @@ export default function DashboardOverview() {
       </div>
 
       {/* KPI Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <KpiCard
-          title="Total Employees"
-          value={stats?.totalEmployees ?? employees.length ?? '—'}
-          subtitle="Active full-time"
-          trend="+12 this month"
-          trendType="up"
-          icon="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-          loading={loading}
-        />
-        <KpiCard
-          title="Present Today"
-          value={stats?.presentToday ?? '—'}
-          subtitle={`${stats?.presentToday ? Math.round(stats.presentToday / (stats.totalEmployees || 1) * 100) : '—'}% attendance`}
-          trend={`${stats?.presentToday ?? 0} on-site`}
-          trendType="up"
-          icon="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          loading={loading}
-        />
-        <KpiCard
-          title="Open Positions"
-          value={stats?.openPositions ?? '—'}
-          subtitle="Active requisitions"
-          trend={stats?.newApplicants ? `${stats.newApplicants} new applicants` : undefined}
-          trendType="up"
-          icon="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-          loading={loading}
-        />
-        <KpiCard
-          title="Pending Approvals"
-          value={stats?.pendingApprovals ?? '—'}
-          subtitle="Requires your action"
-          trend="3 urgent"
-          trendType="down"
-          icon="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-          loading={loading}
-        />
-      </div>
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+      >
+        <motion.div variants={itemVariants}>
+          <KpiCard
+            title="Total Employees"
+            value={stats?.totalEmployees ?? employees.length ?? '—'}
+            subtitle="Active full-time"
+            trend="+12 this month"
+            trendType="up"
+            icon="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+            loading={loading}
+          />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <KpiCard
+            title="Present Today"
+            value={stats?.presentToday ?? '—'}
+            subtitle={`${stats?.presentToday ? Math.round(stats.presentToday / (stats.totalEmployees || 1) * 100) : '—'}% attendance`}
+            trend={`${stats?.presentToday ?? 0} on-site`}
+            trendType="up"
+            icon="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            loading={loading}
+          />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <KpiCard
+            title="Open Positions"
+            value={stats?.openPositions ?? '—'}
+            subtitle="Active requisitions"
+            trend={stats?.newApplicants ? `${stats.newApplicants} new applicants` : undefined}
+            trendType="up"
+            icon="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+            loading={loading}
+          />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <KpiCard
+            title="Pending Approvals"
+            value={stats?.pendingApprovals ?? '—'}
+            subtitle="Requires your action"
+            trend="3 urgent"
+            trendType="down"
+            icon="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+            loading={loading}
+          />
+        </motion.div>
+      </motion.div>
 
       {/* Secondary KPI Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <KpiCard.SMALL title="On Leave" value={stats?.onLeave ?? '—'} trend="2 more than avg" trendType="down" loading={loading} />
-        <KpiCard.SMALL title="Late Today" value={stats?.lateToday ?? '—'} trend="-1 from yesterday" trendType="up" loading={loading} />
-        <KpiCard.SMALL title="New Hires" value={stats?.newHires ?? '—'} trend="This quarter" trendType="up" loading={loading} />
-        <KpiCard.SMALL title="Attrition Rate" value={stats?.attritionRate ? `${stats.attritionRate}%` : '—'} trend={stats?.attritionRate && stats.attritionRate > 10 ? 'Above target' : 'Healthy'} trendType={stats?.attritionRate > 10 ? 'down' : 'up'} loading={loading} />
-      </div>
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+      >
+        <motion.div variants={itemVariants}><KpiCard.SMALL title="On Leave" value={stats?.onLeave ?? '—'} trend="2 more than avg" trendType="down" loading={loading} /></motion.div>
+        <motion.div variants={itemVariants}><KpiCard.SMALL title="Late Today" value={stats?.lateToday ?? '—'} trend="-1 from yesterday" trendType="up" loading={loading} /></motion.div>
+        <motion.div variants={itemVariants}><KpiCard.SMALL title="New Hires" value={stats?.newHires ?? '—'} trend="This quarter" trendType="up" loading={loading} /></motion.div>
+        <motion.div variants={itemVariants}><KpiCard.SMALL title="Attrition Rate" value={stats?.attritionRate ? `${stats.attritionRate}%` : '—'} trend={stats?.attritionRate && stats.attritionRate > 10 ? 'Above target' : 'Healthy'} trendType={stats?.attritionRate > 10 ? 'down' : 'up'} loading={loading} /></motion.div>
+      </motion.div>
 
       {/* Employee Table */}
       <div>
@@ -159,19 +195,28 @@ export default function DashboardOverview() {
 
 function QuickActionCard({ title, description, icon, onClick }) {
   return (
-    <button
+    <motion.button
+      whileHover={{ y: -2, scale: 1.01 }}
+      whileTap={{ scale: 0.98 }}
       onClick={onClick}
-      className="flex items-start gap-3 p-4 bg-surface-elevated border border-subtle rounded-lg hover:border-border-strong hover:shadow-sm transition-all duration-150 text-left"
+      className="group flex items-start gap-3 p-4 bg-surface-elevated border border-subtle rounded-xl hover:border-[var(--color-brand-400)] hover:shadow-md transition-all duration-200 text-left cursor-pointer"
     >
-      <div className="w-9 h-9 rounded bg-brand-50 dark:bg-brand-950/30 flex items-center justify-center flex-shrink-0">
-        <svg className="w-4 h-4 text-[var(--color-brand-600)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <div className="w-10 h-10 rounded-lg bg-brand-50 dark:bg-brand-950/30 group-hover:bg-brand-100 dark:group-hover:bg-brand-900/40 flex items-center justify-center flex-shrink-0 transition-colors">
+        <motion.svg 
+          whileHover={{ scale: 1.05 }}
+          className="w-5 h-5 text-[var(--color-brand-600)]" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor" 
+          strokeWidth={1.5}
+        >
           <path strokeLinecap="round" strokeLinejoin="round" d={icon} />
-        </svg>
+        </motion.svg>
       </div>
       <div>
-        <div className="text-sm font-medium text-primary">{title}</div>
-        <div className="text-xs text-secondary mt-0.5">{description}</div>
+        <div className="text-sm font-semibold text-primary mb-1">{title}</div>
+        <div className="text-xs text-secondary leading-relaxed">{description}</div>
       </div>
-    </button>
+    </motion.button>
   )
 }

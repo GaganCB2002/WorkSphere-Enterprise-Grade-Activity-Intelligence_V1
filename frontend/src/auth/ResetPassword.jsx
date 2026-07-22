@@ -1,1 +1,5 @@
-export default function ResetPassword() { return <div>ResetPassword</div>; }
+import { FeatureStub } from '../components/FeatureStub'
+
+export default function ResetPassword() {
+  return <FeatureStub featureName="Password Reset Confirmation" redirectTo="/login" />
+}

@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from 'react'
-
+import { motion, AnimatePresence } from 'framer-motion'
 export default function DataTable({
   columns,
   data,
@@ -167,8 +167,12 @@ export default function DataTable({
       {(searchable || actions) && (
         <div className="flex items-center gap-3 px-4 py-2.5 border-b border-subtle bg-surface-secondary">
           {searchable && (
-            <div className="flex items-center gap-2 flex-1 max-w-xs">
-              <svg className="w-4 h-4 text-tertiary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <motion.div 
+              initial={false}
+              animate={{ width: search ? 300 : 200 }}
+              className="flex items-center gap-2 border border-slate-200 dark:border-slate-700/60 rounded-lg px-3 py-1.5 bg-white dark:bg-slate-900 focus-within:ring-2 focus-within:ring-brand-500/20 focus-within:border-brand-500 transition-all duration-200"
+            >
+              <svg className="w-4 h-4 text-slate-400 dark:text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
               <input
@@ -176,16 +180,16 @@ export default function DataTable({
                 value={search}
                 onChange={e => { setSearch(e.target.value); setPage(0) }}
                 placeholder="Search..."
-                className="flex-1 bg-transparent border-0 outline-none text-sm text-primary placeholder:text-tertiary"
+                className="flex-1 bg-transparent border-0 outline-none text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500"
               />
               {search && (
-                <button onClick={() => setSearch('')} className="text-tertiary hover:text-primary">
+                <button onClick={() => setSearch('')} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               )}
-            </div>
+            </motion.div>
           )}
           <div className="flex items-center gap-1">
             {actions}
@@ -281,9 +285,15 @@ export default function DataTable({
           </thead>
 
           {/* Body */}
-          <tbody>
+          <tbody className="relative">
+            <AnimatePresence mode="popLayout">
             {pagedData.length === 0 ? (
-              <tr>
+              <motion.tr
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                key="empty"
+              >
                 <td colSpan={visibleColumns.length + (selectable ? 2 : 1)} className="px-4 py-12 text-center">
                   <div className="flex flex-col items-center gap-2">
                     <svg className="w-8 h-8 text-tertiary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
@@ -292,15 +302,20 @@ export default function DataTable({
                     <span className="text-sm text-secondary">{emptyMessage}</span>
                   </div>
                 </td>
-              </tr>
+              </motion.tr>
             ) : (
               pagedData.map((row, i) => {
                 const rowId = row.id ?? row._id ?? i
                 return (
-                  <tr
+                  <motion.tr
+                    layout="position"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.15, delay: i * 0.03, ease: "easeOut" }}
                     key={rowId}
                     onClick={() => onRowClick?.(row)}
-                    className={`border-b border-subtle last:border-0 transition-colors duration-100 ${selected.has(rowId) ? 'bg-brand-50 dark:bg-brand-950/20' : 'hover:bg-surface-hover'
+                    className={`group border-b border-subtle last:border-0 transition-colors duration-200 ${selected.has(rowId) ? 'bg-brand-50 dark:bg-brand-950/20' : 'hover:bg-slate-50 dark:hover:bg-slate-800/50'
                       } ${onRowClick ? 'cursor-pointer' : ''}`}
                   >
                     {selectable && (
@@ -330,10 +345,11 @@ export default function DataTable({
                         </svg>
                       </button>
                     </td>
-                  </tr>
+                  </motion.tr>
                 )
               })
             )}
+            </AnimatePresence>
           </tbody>
         </table>
       </div>
