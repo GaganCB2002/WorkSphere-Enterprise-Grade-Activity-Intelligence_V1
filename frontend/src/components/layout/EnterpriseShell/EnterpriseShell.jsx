@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback, Suspense } from 'react'
 import { useLocation } from 'react-router-dom'
 import Sidebar from './Sidebar'
 import Header from './Header'
-import Breadcrumbs from '../../common/Breadcrumb/Breadcrumbs'
 import GlobalSearch from '../../common/Search/GlobalSearch'
 
 const sidebarWidth = 'var(--color-sidebar-width)'
@@ -53,7 +52,6 @@ export default function EnterpriseShell({ children }) {
         {/* Content */}
         <main className="flex-1 overflow-y-auto bg-surface-secondary">
           <div className="px-6 py-5">
-            <Breadcrumbs />
             <Suspense fallback={<PageLoading />}>
               {children}
             </Suspense>

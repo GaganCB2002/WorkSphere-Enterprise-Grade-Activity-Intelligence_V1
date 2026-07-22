@@ -941,6 +941,54 @@
   "activities": [
     {
       "title": "User Login",
+      "detail": "Authenticated as super_admin@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Admin",
+      "id": "act-1784714182380",
+      "timestamp": "2026-07-22T09:56:22.380Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as sec_analyst_11 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Security Analyst",
+      "id": "act-1784713886937",
+      "timestamp": "2026-07-22T09:51:26.937Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as super_admin@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Admin",
+      "id": "act-1784713843057",
+      "timestamp": "2026-07-22T09:50:43.057Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as super_admin@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Admin",
+      "id": "act-1784713459368",
+      "timestamp": "2026-07-22T09:44:19.368Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as super_admin@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Admin",
+      "id": "act-1784713135638",
+      "timestamp": "2026-07-22T09:38:55.638Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as super_admin@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Super Admin",
+      "id": "act-1784712615706",
+      "timestamp": "2026-07-22T09:30:15.706Z"
+    },
+    {
+      "title": "User Login",
       "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Chief Executive Officer",
@@ -2490,38 +2538,6 @@
       "actor": "Nisha Kapoor",
       "id": "act-1777446065449",
       "timestamp": "2026-04-29T07:01:05.449Z"
-    },
-    {
-      "id": "act-1",
-      "title": "Offer letter generated",
-      "detail": "Offer released to Dev Patel with automated compensation template.",
-      "category": "Recruitment",
-      "actor": "Nisha Kapoor",
-      "timestamp": "2026-04-24T08:20:00.000Z"
-    },
-    {
-      "id": "act-2",
-      "title": "Payroll batch synced",
-      "detail": "April payroll exported to bank API queue for 112 employees.",
-      "category": "Payroll",
-      "actor": "Finance Bot",
-      "timestamp": "2026-04-24T07:45:00.000Z"
-    },
-    {
-      "id": "act-3",
-      "title": "Attrition alert raised",
-      "detail": "Engineering team members with workload spike crossed 30% attrition risk.",
-      "category": "System",
-      "actor": "Aura AI",
-      "timestamp": "2026-04-24T06:55:00.000Z"
-    },
-    {
-      "id": "act-4",
-      "title": "Exit clearance updated",
-      "detail": "Final settlement review started for Neha Arora.",
-      "category": "System",
-      "actor": "Meera Joshi",
-      "timestamp": "2026-04-23T16:20:00.000Z"
     }
   ],
   "assets": [
