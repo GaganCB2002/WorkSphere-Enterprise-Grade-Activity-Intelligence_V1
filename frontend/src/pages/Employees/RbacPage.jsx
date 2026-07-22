@@ -102,6 +102,7 @@ export default function RbacPage() {
           </tbody>
         </table>
       </div>
+      </div>
     </div>
   )
 }

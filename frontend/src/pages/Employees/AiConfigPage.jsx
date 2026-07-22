@@ -45,6 +45,7 @@ export default function AiConfigPage() {
           ))}
         </div>
       </div>
+      </div>
     </div>
   )
 }

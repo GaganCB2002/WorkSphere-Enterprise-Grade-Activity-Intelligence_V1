@@ -31,6 +31,7 @@ export default function AuditLogsPage() {
         ))}
         <div className="text-secondary mt-4">Waiting for new events...</div>
       </div>
+      </div>
     </div>
   )
 }
