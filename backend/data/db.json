@@ -941,6 +941,22 @@
   "activities": [
     {
       "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784708720263",
+      "timestamp": "2026-07-22T08:25:20.263Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8875 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Chief Executive Officer",
+      "id": "act-1784708720206",
+      "timestamp": "2026-07-22T08:25:20.206Z"
+    },
+    {
+      "title": "User Login",
       "detail": "Authenticated as exec_ceo | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Chief Executive Officer",
