@@ -7,7 +7,7 @@ const roleNavMap = {
   SUPER_ADMIN: ['Dashboard', 'Employees', 'Attendance', 'Payroll', 'Recruitment', 'Projects', 'Assets', 'Compliance', 'Performance', 'Reports', 'Administration', 'Settings'],
   ADMIN: ['Dashboard', 'Employees', 'Attendance', 'Payroll', 'Recruitment', 'Projects', 'Assets', 'Compliance', 'Performance', 'Reports', 'Administration', 'Settings'],
   CEO: ['Dashboard', 'Employees', 'Finance', 'Projects', 'Reports', 'Performance', 'Analytics'],
-  CTO: ['Dashboard', 'Engineering', 'Projects', 'DevOps', 'Analytics', 'Reports'],
+  CTO: ['CTO Dashboard', 'Engineering', 'Software Delivery', 'Projects', 'Architecture', 'Infrastructure', 'Cloud Operations', 'Monitoring', 'Cyber Security', 'DevOps', 'AI Platform', 'Data Platform', 'Technology Finance', 'Innovation', 'Vendor Management', 'Reports', 'Approvals', 'Meetings', 'Notifications', 'Settings'],
   HR_MANAGER: ['Dashboard', 'Employees', 'Attendance', 'Payroll', 'Recruitment', 'Leave', 'Performance', 'Reports'],
   HR_EXECUTIVE: ['Dashboard', 'Employees', 'Attendance', 'Leave', 'Payroll', 'Recruitment'],
   FINANCE_MANAGER: ['Dashboard', 'Payroll', 'Budget', 'Expenses', 'Tax', 'Reports'],
@@ -21,7 +21,7 @@ const roleNavMap = {
   SECURITY_ANALYST: ['Dashboard', 'Threats', 'Audit Logs', 'Vulnerabilities', 'Compliance'],
   SUPPORT_AGENT: ['Dashboard', 'Tickets', 'Knowledge Base', 'SLA'],
   EMPLOYEE: ['EMPLOYEE HUB', 'Help Desk', 'Settings'],
-  INTERN: ['Dashboard', 'Tasks', 'Learning', 'Attendance'],
+  INTERN: ['Intern Dashboard', 'My Profile', 'Attendance', 'Leave', 'Learning Center', 'Tasks', 'Projects', 'Mentorship', 'Knowledge Base', 'Documents', 'Performance', 'Team', 'Communication', 'Meetings', 'Help Desk', 'Notifications', 'Reports', 'Settings'],
 }
 
 const navIcons = {
@@ -93,6 +93,434 @@ const navIcons = {
 }
 
 const navGroups = [
+  {
+    label: 'CTO Dashboard',
+    icon: navIcons.Dashboard,
+    ctoOnly: true,
+    items: [
+      { label: 'Executive Overview', path: '/cto/executive-overview' },
+    ]
+  },
+  {
+    label: 'Engineering',
+    icon: navIcons.Engineering,
+    ctoOnly: true,
+    items: [
+      { label: 'Engineering Overview', path: '/cto/engineering' },
+      { label: 'Team Performance', path: '/cto/team-performance' },
+      { label: 'Engineering Analytics', path: '/cto/engineering-analytics' },
+      { label: 'Sprint Dashboard', path: '/cto/sprint-dashboard' },
+      { label: 'Code Quality', path: '/cto/code-quality' },
+      { label: 'Code Coverage', path: '/cto/code-coverage' },
+      { label: 'Technical Debt', path: '/cto/technical-debt' },
+    ]
+  },
+  {
+    label: 'Software Delivery',
+    icon: navIcons['CI/CD'],
+    ctoOnly: true,
+    items: [
+      { label: 'Releases', path: '/cto/releases' },
+      { label: 'CI/CD Pipelines', path: '/cto/cicd-pipelines' },
+      { label: 'Deployments', path: '/cto/deployments' },
+      { label: 'Build Status', path: '/cto/build-status' },
+      { label: 'Rollbacks', path: '/cto/rollbacks' },
+      { label: 'Release Calendar', path: '/cto/release-calendar' },
+    ]
+  },
+  {
+    label: 'Projects',
+    icon: navIcons.Projects,
+    ctoOnly: true,
+    items: [
+      { label: 'Active Projects', path: '/cto/active-projects' },
+      { label: 'Project Portfolio', path: '/cto/project-portfolio' },
+      { label: 'Sprint Board', path: '/cto/sprint-board' },
+      { label: 'Roadmap', path: '/cto/roadmap' },
+      { label: 'Milestones', path: '/cto/milestones' },
+      { label: 'Resource Allocation', path: '/cto/resource-allocation' },
+    ]
+  },
+  {
+    label: 'Architecture',
+    icon: navIcons.Infrastructure,
+    ctoOnly: true,
+    items: [
+      { label: 'System Architecture', path: '/cto/system-architecture' },
+      { label: 'Microservices', path: '/cto/microservices' },
+      { label: 'API Gateway', path: '/cto/api-gateway' },
+      { label: 'Service Dependencies', path: '/cto/service-dependencies' },
+      { label: 'Database Architecture', path: '/cto/database-architecture' },
+    ]
+  },
+  {
+    label: 'Infrastructure',
+    icon: navIcons.Infrastructure,
+    ctoOnly: true,
+    items: [
+      { label: 'Servers', path: '/cto/servers' },
+      { label: 'Kubernetes', path: '/cto/kubernetes' },
+      { label: 'Docker', path: '/cto/docker' },
+      { label: 'Virtual Machines', path: '/cto/virtual-machines' },
+      { label: 'Storage', path: '/cto/storage' },
+      { label: 'Network', path: '/cto/network' },
+    ]
+  },
+  {
+    label: 'Cloud Operations',
+    icon: navIcons.Monitoring,
+    ctoOnly: true,
+    items: [
+      { label: 'AWS', path: '/cto/cloud/aws' },
+      { label: 'Azure', path: '/cto/cloud/azure' },
+      { label: 'Google Cloud', path: '/cto/cloud/gcp' },
+      { label: 'Cloud Cost', path: '/cto/cloud-cost' },
+      { label: 'Auto Scaling', path: '/cto/auto-scaling' },
+      { label: 'Backup & Recovery', path: '/cto/backup-recovery' },
+    ]
+  },
+  {
+    label: 'Monitoring',
+    icon: navIcons.Monitoring,
+    ctoOnly: true,
+    items: [
+      { label: 'System Health', path: '/cto/system-health' },
+      { label: 'Application Health', path: '/cto/application-health' },
+      { label: 'Uptime', path: '/cto/uptime' },
+      { label: 'Performance', path: '/cto/performance' },
+      { label: 'Error Logs', path: '/cto/error-logs' },
+      { label: 'Alert Center', path: '/cto/alert-center' },
+    ]
+  },
+  {
+    label: 'Cyber Security',
+    icon: navIcons.Security,
+    ctoOnly: true,
+    items: [
+      { label: 'Security Dashboard', path: '/cto/security-dashboard' },
+      { label: 'Vulnerabilities', path: '/cto/vulnerabilities' },
+      { label: 'Threat Intelligence', path: '/cto/threat-intelligence' },
+      { label: 'SIEM', path: '/cto/siem' },
+      { label: 'Audit Logs', path: '/cto/audit-logs' },
+      { label: 'Zero Trust', path: '/cto/zero-trust' },
+    ]
+  },
+  {
+    label: 'DevOps',
+    icon: navIcons['DevOps'],
+    ctoOnly: true,
+    items: [
+      { label: 'CI/CD', path: '/cto/devops/cicd' },
+      { label: 'Infrastructure as Code', path: '/cto/infrastructure-as-code' },
+      { label: 'Automation', path: '/cto/automation' },
+      { label: 'Containers', path: '/cto/containers' },
+      { label: 'Secrets Management', path: '/cto/secrets-management' },
+    ]
+  },
+  {
+    label: 'AI Platform',
+    icon: navIcons['AI & System Configuration'],
+    ctoOnly: true,
+    items: [
+      { label: 'AI Models', path: '/cto/ai-models' },
+      { label: 'LLM Configuration', path: '/cto/llm-configuration' },
+      { label: 'AI Analytics', path: '/cto/ai-analytics' },
+      { label: 'Prompt Management', path: '/cto/prompt-management' },
+      { label: 'GPU Usage', path: '/cto/gpu-usage' },
+      { label: 'AI Cost', path: '/cto/ai-cost' },
+    ]
+  },
+  {
+    label: 'Data Platform',
+    icon: navIcons.Infrastructure,
+    ctoOnly: true,
+    items: [
+      { label: 'Databases', path: '/cto/databases' },
+      { label: 'Data Warehouse', path: '/cto/data-warehouse' },
+      { label: 'ETL Jobs', path: '/cto/etl-jobs' },
+      { label: 'Backup Status', path: '/cto/backup-status' },
+      { label: 'Data Quality', path: '/cto/data-quality' },
+    ]
+  },
+  {
+    label: 'Technology Finance',
+    icon: navIcons.Finance,
+    ctoOnly: true,
+    items: [
+      { label: 'Cloud Billing', path: '/cto/cloud-billing' },
+      { label: 'Software Licenses', path: '/cto/software-licenses' },
+      { label: 'Infrastructure Cost', path: '/cto/infrastructure-cost' },
+      { label: 'Vendor Contracts', path: '/cto/vendor-contracts' },
+    ]
+  },
+  {
+    label: 'Innovation',
+    icon: navIcons['R&D'] || navIcons.Dashboard,
+    ctoOnly: true,
+    items: [
+      { label: 'R&D', path: '/cto/rd' },
+      { label: 'Proof of Concepts', path: '/cto/proof-of-concepts' },
+      { label: 'Technology Roadmap', path: '/cto/technology-roadmap' },
+      { label: 'Emerging Technologies', path: '/cto/emerging-technologies' },
+    ]
+  },
+  {
+    label: 'Vendor Management',
+    icon: navIcons.Clients,
+    ctoOnly: true,
+    items: [
+      { label: 'Vendors', path: '/cto/vendors' },
+      { label: 'Contracts', path: '/cto/contracts' },
+      { label: 'Renewals', path: '/cto/renewals' },
+      { label: 'SLA', path: '/cto/sla' },
+    ]
+  },
+  {
+    label: 'Reports',
+    icon: navIcons.Reports,
+    ctoOnly: true,
+    items: [
+      { label: 'Executive Reports', path: '/cto/executive-reports' },
+      { label: 'Engineering Reports', path: '/cto/engineering-reports' },
+      { label: 'Infrastructure Reports', path: '/cto/infrastructure-reports' },
+      { label: 'Cost Reports', path: '/cto/cost-reports' },
+      { label: 'Security Reports', path: '/cto/security-reports' },
+    ]
+  },
+  {
+    label: 'Approvals',
+    icon: navIcons['Compliance'] || navIcons.Dashboard,
+    ctoOnly: true,
+    items: [
+      { label: 'Infrastructure Requests', path: '/cto/infrastructure-requests' },
+      { label: 'Production Deployments', path: '/cto/production-deployments' },
+      { label: 'Software Purchases', path: '/cto/software-purchases' },
+      { label: 'Cloud Budget Requests', path: '/cto/cloud-budget-requests' },
+    ]
+  },
+  {
+    label: 'Meetings',
+    icon: navIcons['Calendar'] || navIcons.Dashboard,
+    ctoOnly: true,
+    items: [
+      { label: 'Engineering Meetings', path: '/cto/engineering-meetings' },
+      { label: 'Architecture Reviews', path: '/cto/architecture-reviews' },
+      { label: 'Sprint Planning', path: '/cto/sprint-planning' },
+      { label: 'Executive Meetings', path: '/cto/executive-meetings' },
+    ]
+  },
+  {
+    label: 'Notifications',
+    icon: navIcons.Notifications,
+    ctoOnly: true,
+    items: [
+      { label: 'Notifications', path: '/cto/notifications' },
+    ]
+  },
+  {
+    label: 'Settings',
+    icon: navIcons.Settings,
+    ctoOnly: true,
+    items: [
+      { label: 'Settings', path: '/cto/settings' },
+    ]
+  },
+  {
+    label: 'Intern Dashboard',
+    icon: navIcons.Dashboard,
+    internOnly: true,
+    items: [
+      { label: 'Dashboard', path: '/intern/dashboard' },
+    ]
+  },
+  {
+    label: 'My Profile',
+    icon: navIcons['Employee Profile'] || navIcons.Dashboard,
+    internOnly: true,
+    items: [
+      { label: 'Personal Information', path: '/intern/profile/personal' },
+      { label: 'Internship Details', path: '/intern/profile/internship' },
+      { label: 'Contact Information', path: '/intern/profile/contact' },
+      { label: 'Emergency Contacts', path: '/intern/profile/emergency' },
+      { label: 'Documents', path: '/intern/profile/documents' },
+      { label: 'Bank Details', path: '/intern/profile/bank' },
+    ]
+  },
+  {
+    label: 'Attendance',
+    icon: navIcons.Attendance,
+    internOnly: true,
+    items: [
+      { label: 'Clock In', path: '/intern/attendance/clock-in' },
+      { label: 'Clock Out', path: '/intern/attendance/clock-out' },
+      { label: 'Attendance Calendar', path: '/intern/attendance/calendar' },
+      { label: 'Attendance History', path: '/intern/attendance/history' },
+      { label: 'Work Hours', path: '/intern/attendance/work-hours' },
+    ]
+  },
+  {
+    label: 'Leave',
+    icon: navIcons.Leave,
+    internOnly: true,
+    items: [
+      { label: 'Apply Leave', path: '/intern/leave/apply' },
+      { label: 'Leave Balance', path: '/intern/leave/balance' },
+      { label: 'Leave History', path: '/intern/leave/history' },
+      { label: 'Holiday Calendar', path: '/intern/leave/holidays' },
+    ]
+  },
+  {
+    label: 'Learning Center',
+    icon: navIcons.Learning,
+    internOnly: true,
+    items: [
+      { label: 'Assigned Courses', path: '/intern/learning/courses' },
+      { label: 'Learning Paths', path: '/intern/learning/paths' },
+      { label: 'Certifications', path: '/intern/learning/certifications' },
+      { label: 'Assessments', path: '/intern/learning/assessments' },
+      { label: 'Quizzes', path: '/intern/learning/quizzes' },
+      { label: 'Progress Tracking', path: '/intern/learning/progress' },
+    ]
+  },
+  {
+    label: 'Tasks',
+    icon: navIcons.Tasks,
+    internOnly: true,
+    items: [
+      { label: 'Assigned Tasks', path: '/intern/tasks/assigned' },
+      { label: 'My Tasks', path: '/intern/tasks/my' },
+      { label: 'Task Board', path: '/intern/tasks/board' },
+      { label: 'Completed Tasks', path: '/intern/tasks/completed' },
+      { label: 'Pending Tasks', path: '/intern/tasks/pending' },
+    ]
+  },
+  {
+    label: 'Projects',
+    icon: navIcons.Projects,
+    internOnly: true,
+    items: [
+      { label: 'Assigned Projects', path: '/intern/projects/assigned' },
+      { label: 'Project Timeline', path: '/intern/projects/timeline' },
+      { label: 'Sprint Board', path: '/intern/projects/sprint-board' },
+      { label: 'Project Files', path: '/intern/projects/files' },
+    ]
+  },
+  {
+    label: 'Mentorship',
+    icon: navIcons.Team,
+    internOnly: true,
+    items: [
+      { label: 'My Mentor', path: '/intern/mentor/profile' },
+      { label: 'Meetings', path: '/intern/mentor/meetings' },
+      { label: 'Feedback', path: '/intern/mentor/feedback' },
+      { label: '1-on-1 Sessions', path: '/intern/mentor/sessions' },
+    ]
+  },
+  {
+    label: 'Knowledge Base',
+    icon: navIcons['Knowledge Base'],
+    internOnly: true,
+    items: [
+      { label: 'Company Policies', path: '/intern/knowledge/policies' },
+      { label: 'Documentation', path: '/intern/knowledge/docs' },
+      { label: 'Coding Standards', path: '/intern/knowledge/standards' },
+      { label: 'SOPs', path: '/intern/knowledge/sops' },
+    ]
+  },
+  {
+    label: 'Documents',
+    icon: navIcons.Documents,
+    internOnly: true,
+    items: [
+      { label: 'Offer Letter', path: '/intern/documents/offer-letter' },
+      { label: 'Internship Letter', path: '/intern/documents/internship-letter' },
+      { label: 'Completion Certificate', path: '/intern/documents/completion' },
+      { label: 'HR Documents', path: '/intern/documents/hr' },
+      { label: 'Policies', path: '/intern/documents/policies' },
+    ]
+  },
+  {
+    label: 'Performance',
+    icon: navIcons.Performance,
+    internOnly: true,
+    items: [
+      { label: 'Goals', path: '/intern/performance/goals' },
+      { label: 'Weekly Reviews', path: '/intern/performance/weekly' },
+      { label: 'Monthly Reviews', path: '/intern/performance/monthly' },
+      { label: 'Final Evaluation', path: '/intern/performance/final' },
+    ]
+  },
+  {
+    label: 'Team',
+    icon: navIcons.Team,
+    internOnly: true,
+    items: [
+      { label: 'Team Members', path: '/intern/team/members' },
+      { label: 'Organization Chart', path: '/intern/team/org-chart' },
+      { label: 'Directory', path: '/intern/team/directory' },
+    ]
+  },
+  {
+    label: 'Communication',
+    icon: navIcons.Chat,
+    internOnly: true,
+    items: [
+      { label: 'Team Chat', path: '/intern/chat/team' },
+      { label: 'Direct Messages', path: '/intern/chat/direct' },
+      { label: 'Announcements', path: '/intern/chat/announcements' },
+      { label: 'Webmail', path: '/intern/chat/webmail' },
+    ]
+  },
+  {
+    label: 'Meetings',
+    icon: navIcons['Calendar'] || navIcons.Dashboard,
+    internOnly: true,
+    items: [
+      { label: 'Calendar', path: '/intern/meetings/calendar' },
+      { label: 'Schedule', path: '/intern/meetings/schedule' },
+      { label: 'Meeting Notes', path: '/intern/meetings/notes' },
+    ]
+  },
+  {
+    label: 'Help Desk',
+    icon: navIcons['Help Desk'],
+    internOnly: true,
+    items: [
+      { label: 'IT Support', path: '/intern/helpdesk/it' },
+      { label: 'HR Support', path: '/intern/helpdesk/hr' },
+      { label: 'Raise Ticket', path: '/intern/helpdesk/ticket' },
+    ]
+  },
+  {
+    label: 'Notifications',
+    icon: navIcons.Notifications,
+    internOnly: true,
+    items: [
+      { label: 'Notifications', path: '/intern/notifications' },
+    ]
+  },
+  {
+    label: 'Reports',
+    icon: navIcons.Reports,
+    internOnly: true,
+    items: [
+      { label: 'Attendance Report', path: '/intern/reports/attendance' },
+      { label: 'Learning Report', path: '/intern/reports/learning' },
+      { label: 'Task Report', path: '/intern/reports/tasks' },
+      { label: 'Performance Report', path: '/intern/reports/performance' },
+    ]
+  },
+  {
+    label: 'Settings',
+    icon: navIcons.Settings,
+    internOnly: true,
+    items: [
+      { label: 'Profile Settings', path: '/intern/settings/profile' },
+      { label: 'Security', path: '/intern/settings/security' },
+      { label: 'Password', path: '/intern/settings/password' },
+      { label: 'Notification Preferences', path: '/intern/settings/notifications' },
+    ]
+  },
   {
     label: 'EMPLOYEE HUB',
     icon: navIcons.Dashboard,
@@ -232,7 +660,11 @@ export default function Sidebar({ collapsed, onToggle }) {
     })
   }, [])
 
-  const visibleItems = navGroups.filter(g => role === 'SUPER_ADMIN' || role === 'ADMIN' || allowedNav.includes(g.label))
+  const visibleItems = navGroups.filter(g => {
+    if (g.ctoOnly) return role === 'CTO'
+    if (g.internOnly) return role === 'INTERN'
+    return role === 'SUPER_ADMIN' || role === 'ADMIN' || allowedNav.includes(g.label)
+  })
 
   const pinnedItems = pinLabels.filter(l => pinned.includes(l))
 

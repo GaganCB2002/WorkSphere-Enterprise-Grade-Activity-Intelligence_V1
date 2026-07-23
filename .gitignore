@@ -1,7 +1,11 @@
 node_modules/
 dist/
 .env
-.env.*
+.env.backend
+.env.frontend
+.env.development
+.env.local
+.env.production
 target/
 .next/
 .nx/
@@ -10,3 +14,4 @@ target/
 *.log
 *.tsbuildinfo
 antigravity
+backend/deliveries/
