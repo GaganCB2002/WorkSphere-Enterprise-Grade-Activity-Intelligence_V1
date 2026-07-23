@@ -36,6 +36,7 @@ const SuperAdminDashboard = React.lazy(() => import('../modules/super_admin/Supe
 const CtoRouter = React.lazy(() => import('../modules/cto/CtoRouter'));
 const InternRouter = React.lazy(() => import('../modules/intern/InternRouter'));
 const TechLeadRouter = React.lazy(() => import('../modules/tech_lead/TechLeadRouter'));
+const SoftwareEngineerRouter = React.lazy(() => import('../modules/software_engineer/SoftwareEngineerRouter'));
 
 const EmployeeDirectoryPage = React.lazy(() => import('../pages/Employees/EmployeeDirectoryPage').then(m => ({ default: m.default })));
 const RbacPage = React.lazy(() => import('../pages/Employees/RbacPage').then(m => ({ default: m.default })));
@@ -220,7 +221,7 @@ const DashboardRouter = () => {
     case 'TECH_LEAD': return <TechLeadDashboard />;
     case 'DEVOPS_ENGINEER': return <DevOpsDashboard />;
     case 'QA_ENGINEER': return <QaDashboard />;
-    case 'SOFTWARE_ENGINEER': return <SoftwareEngineerDashboard />;
+    case 'SOFTWARE_ENGINEER': return <Navigate to="/software-engineer/dashboard" replace />;
     case 'SECURITY_ANALYST': return <SecurityAnalystDashboard />;
     case 'SUPPORT_AGENT': return <SupportDashboard />;
     case 'EMPLOYEE': return <EmployeeDashboard />;
@@ -543,6 +544,19 @@ const AppRoutes = () => {
               <Suspense fallback={<PageLoading />}>
                 <PageTransition>
                   <TechLeadRouter />
+                </PageTransition>
+              </Suspense>
+            </EnterpriseShell>
+          </ProtectedRoute>
+        } />
+
+        {/* Software Engineer Module Routes */}
+        <Route path="/software-engineer/*" element={
+          <ProtectedRoute>
+            <EnterpriseShell>
+              <Suspense fallback={<PageLoading />}>
+                <PageTransition>
+                  <SoftwareEngineerRouter />
                 </PageTransition>
               </Suspense>
             </EnterpriseShell>

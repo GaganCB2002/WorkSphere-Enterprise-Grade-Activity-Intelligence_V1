@@ -68,7 +68,18 @@ export const ApiDocumentation = () => {
             </summary>
             <div className="px-4 pb-4 pt-0 border-t border-slate-800">
               <p className="text-xs text-slate-300 mb-3">{ep.description}</p>
-              {ep.params.length > 0 && (<div className="mb-3"><h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Parameters</h4>{ep.params.map(p => <div key={p.name} className="flex items-center gap-3 text-xs text-slate-300 py-1"><code className="text-indigo-400 font-mono">{p.name}</code><span className="text-slate-500">{p.type}</span>{p.required && <span className="text-rose-400">*required</span>}</div>))}</div>)}
+              {ep.params.length > 0 && (
+                <div className="mb-3">
+                  <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Parameters</h4>
+                  {ep.params.map(p => (
+                    <div key={p.name} className="flex items-center gap-3 text-xs text-slate-300 py-1">
+                      <code className="text-indigo-400 font-mono">{p.name}</code>
+                      <span className="text-slate-500">{p.paramType || p.type}</span>
+                      {p.required && <span className="text-rose-400">*required</span>}
+                    </div>
+                  ))}
+                </div>
+              )}
               <div className="mb-3"><h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Authentication</h4><span className="text-xs text-slate-300">{ep.auth}</span></div>
               <div><h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Responses</h4>{ep.responses.map(r => <div key={r.code} className="flex items-center gap-3 text-xs text-slate-300 py-1"><span className="text-emerald-400 font-bold">{r.code}</span>{r.description}</div>)}</div>
             </div>
