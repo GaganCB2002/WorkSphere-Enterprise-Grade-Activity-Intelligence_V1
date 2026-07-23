@@ -593,5 +593,19 @@
     "name": "Standard Employee",
     "loginTime": "2026-07-22T16:21:13.792Z",
     "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-eng",
+    "email": "soft_eng_10",
+    "name": "Software Engineer",
+    "loginTime": "2026-07-23T16:58:35.634Z",
+    "ip": "127.0.0.1"
+  },
+  {
+    "userId": "u-hrmgr",
+    "email": "hr_mgr_02",
+    "name": "HR Manager",
+    "loginTime": "2026-07-23T16:58:55.445Z",
+    "ip": "127.0.0.1"
   }
 ]

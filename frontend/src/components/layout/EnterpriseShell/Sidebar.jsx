@@ -17,7 +17,7 @@ const roleNavMap = {
   TECH_LEAD: ['Tech Lead Dashboard', 'Engineering Overview', 'Team Management', 'Sprint Management', 'Task Management', 'Projects', 'Code Management', 'CI/CD', 'Infrastructure', 'Engineering Analytics', 'AI Assistant', 'Documentation', 'Meetings', 'Team Chat', 'Live Monitoring', 'Reports', 'Notifications', 'Settings'],
   DEVOPS_ENGINEER: ['Dashboard', 'CI/CD', 'Infrastructure', 'Monitoring', 'Security'],
   QA_ENGINEER: ['Dashboard', 'Test Plans', 'Test Runs', 'Bugs', 'Automation'],
-  SOFTWARE_ENGINEER: ['Dashboard', 'Tasks', 'Pull Requests', 'Sprints'],
+  SOFTWARE_ENGINEER: ['Software Engineer Dashboard', 'My Work', 'My Tasks', 'Sprint Management', 'Bugs & Features', 'Code Reviews', 'Pull Requests', 'Repositories', 'Branches', 'Commits', 'CI/CD', 'Deployments', 'Build History', 'Testing', 'Code Quality', 'Performance', 'Documentation', 'AI Assistant', 'Team Chat', 'Meetings', 'Reports', 'Settings', 'Notifications', 'Live Engineering Data', 'Activity'],
   SECURITY_ANALYST: ['Dashboard', 'Threats', 'Audit Logs', 'Vulnerabilities', 'Compliance'],
   SUPPORT_AGENT: ['Dashboard', 'Tickets', 'Knowledge Base', 'SLA'],
   EMPLOYEE: ['EMPLOYEE HUB', 'Help Desk', 'Settings'],
@@ -493,6 +493,154 @@ const navGroups = [
     icon: navIcons.Settings,
     items: [
       { label: 'Settings', path: '/tech-lead/settings' },
+    ]
+  },
+  {
+    label: 'Software Engineer Dashboard',
+    icon: navIcons.Dashboard,
+    items: [
+      { label: 'Dashboard', path: '/software-engineer/dashboard' },
+      { label: 'Live Engineering Data', path: '/software-engineer/live' },
+      { label: 'Activity Feed', path: '/software-engineer/activity' },
+      { label: 'Charts', path: '/software-engineer/charts' },
+    ]
+  },
+  {
+    label: 'My Work',
+    icon: navIcons.Tasks,
+    items: [
+      { label: 'My Work', path: '/software-engineer/my-work' },
+      { label: 'My Tasks', path: '/software-engineer/my-tasks' },
+    ]
+  },
+  {
+    label: 'Sprint Management',
+    icon: navIcons['Sprints'],
+    items: [
+      { label: 'Sprint Board', path: '/software-engineer/sprint-board' },
+      { label: 'Kanban Board', path: '/software-engineer/kanban' },
+      { label: 'Backlog', path: '/software-engineer/backlog' },
+    ]
+  },
+  {
+    label: 'Bugs & Features',
+    icon: navIcons.Bugs,
+    items: [
+      { label: 'Assigned Bugs', path: '/software-engineer/bugs' },
+      { label: 'Feature Requests', path: '/software-engineer/features' },
+    ]
+  },
+  {
+    label: 'Code Reviews',
+    icon: navIcons['Code Reviews'],
+    items: [
+      { label: 'Code Reviews', path: '/software-engineer/code-reviews' },
+    ]
+  },
+  {
+    label: 'Pull Requests',
+    icon: navIcons['Pull Requests'],
+    items: [
+      { label: 'Pull Requests', path: '/software-engineer/pull-requests' },
+    ]
+  },
+  {
+    label: 'Repositories',
+    icon: navIcons['Code Reviews'],
+    items: [
+      { label: 'Repositories', path: '/software-engineer/repositories' },
+      { label: 'Branches', path: '/software-engineer/branches' },
+      { label: 'Commits', path: '/software-engineer/commits' },
+    ]
+  },
+  {
+    label: 'CI/CD',
+    icon: navIcons['CI/CD'],
+    items: [
+      { label: 'Pipelines', path: '/software-engineer/cicd' },
+      { label: 'Deployments', path: '/software-engineer/deployments' },
+      { label: 'Build History', path: '/software-engineer/build-history' },
+    ]
+  },
+  {
+    label: 'Testing',
+    icon: navIcons['Test Plans'],
+    items: [
+      { label: 'Unit Tests', path: '/software-engineer/tests/unit' },
+      { label: 'Integration Tests', path: '/software-engineer/tests/integration' },
+      { label: 'E2E Tests', path: '/software-engineer/tests/e2e' },
+      { label: 'API Testing', path: '/software-engineer/tests/api' },
+    ]
+  },
+  {
+    label: 'Code Quality',
+    icon: navIcons.Analytics,
+    items: [
+      { label: 'Code Quality', path: '/software-engineer/code-quality' },
+      { label: 'SonarQube', path: '/software-engineer/sonarqube' },
+      { label: 'Code Coverage', path: '/software-engineer/code-coverage' },
+      { label: 'Technical Debt', path: '/software-engineer/technical-debt' },
+    ]
+  },
+  {
+    label: 'Performance',
+    icon: navIcons.Performance,
+    items: [
+      { label: 'Performance', path: '/software-engineer/performance' },
+    ]
+  },
+  {
+    label: 'Documentation',
+    icon: navIcons.Documents,
+    items: [
+      { label: 'API Documentation', path: '/software-engineer/docs/api' },
+      { label: 'Architecture Docs', path: '/software-engineer/docs/architecture' },
+      { label: 'Knowledge Base', path: '/software-engineer/docs/knowledge-base' },
+    ]
+  },
+  {
+    label: 'AI Assistant',
+    icon: navIcons['AI & System Configuration'],
+    items: [
+      { label: 'AI Assistant', path: '/software-engineer/ai-assistant' },
+    ]
+  },
+  {
+    label: 'Team Chat',
+    icon: navIcons.Chat,
+    items: [
+      { label: 'Team Chat', path: '/software-engineer/chat/team' },
+      { label: 'Direct Messages', path: '/software-engineer/chat/direct' },
+      { label: 'Announcements', path: '/software-engineer/chat/announcements' },
+    ]
+  },
+  {
+    label: 'Meetings',
+    icon: navIcons.Calendar,
+    items: [
+      { label: 'Meetings', path: '/software-engineer/meetings' },
+      { label: 'Calendar', path: '/software-engineer/calendar' },
+    ]
+  },
+  {
+    label: 'Reports',
+    icon: navIcons.Reports,
+    items: [
+      { label: 'Reports', path: '/software-engineer/reports' },
+    ]
+  },
+  {
+    label: 'Notifications',
+    icon: navIcons.Notifications,
+    items: [
+      { label: 'Notifications', path: '/software-engineer/notifications' },
+    ]
+  },
+  {
+    label: 'Settings',
+    icon: navIcons.Settings,
+    items: [
+      { label: 'Settings', path: '/software-engineer/settings' },
     ]
   },
   {

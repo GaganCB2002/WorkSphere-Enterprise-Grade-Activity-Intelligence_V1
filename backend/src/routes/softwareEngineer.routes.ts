@@ -769,7 +769,8 @@ router.get('/chat/channels/:id/messages', (req: Request, res: Response) => {
       { id: 'M-201', userId: 'U-3', name: 'Alex Kim', message: 'I\'ll take a look after standup', time: '12m ago', reactions: [] },
     ],
   };
-  res.json(msgs[id] || msgs['C-1']);
+  const channelId = id as string;
+  res.json(msgs[channelId] || msgs['C-1']);
 });
 
 router.post('/chat/channels/:id/messages', (req: Request, res: Response) => {
@@ -1173,18 +1174,20 @@ router.get('/charts/burndown', (_req: Request, res: Response) => {
 
 router.get('/charts/developer-activity', (_req: Request, res: Response) => {
   const devs = ['Sarah Chen', 'Mike Johnson', 'Alex Kim', 'Emily Davis', 'Priya Patel', 'Tom Brown'];
+  const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
   res.json({
     developers: devs,
-    days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-    data: devs.map(() => days.map(() => randomInt(0, 10))),
+    days: weekDays,
+    data: devs.map(() => weekDays.map(() => randomInt(0, 10))),
   });
 });
 
 router.get('/charts/repo-commits', (_req: Request, res: Response) => {
+  const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
   res.json({
     repos: repos.map(r => r.name),
-    days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-    data: repos.map(() => days.map(() => randomInt(0, 15))),
+    days: weekDays,
+    data: repos.map(() => weekDays.map(() => randomInt(0, 15))),
   });
 });
 

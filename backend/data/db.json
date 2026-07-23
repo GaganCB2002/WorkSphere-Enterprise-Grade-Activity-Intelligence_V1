@@ -941,6 +941,22 @@
   "activities": [
     {
       "title": "User Login",
+      "detail": "Authenticated as hr_mgr_02 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "HR Manager",
+      "id": "act-1784825935443",
+      "timestamp": "2026-07-23T16:58:55.443Z"
+    },
+    {
+      "title": "User Login",
+      "detail": "Authenticated as soft_eng_10 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
+      "category": "Login",
+      "actor": "Software Engineer",
+      "id": "act-1784825915632",
+      "timestamp": "2026-07-23T16:58:35.632Z"
+    },
+    {
+      "title": "User Login",
       "detail": "Authenticated as employee_13 | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
       "category": "Login",
       "actor": "Standard Employee",
@@ -2522,22 +2538,6 @@
       "actor": "Aarav Mehta",
       "id": "act-1777481473215",
       "timestamp": "2026-04-29T16:51:13.215Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as emp@company.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "General Employee",
-      "id": "act-1777480846078",
-      "timestamp": "2026-04-29T16:40:46.078Z"
-    },
-    {
-      "title": "User Login",
-      "detail": "Authenticated as marketing@worksphere.com | Device: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 | IP: 127.0.0.1 | Location: Bangalore, IN",
-      "category": "Login",
-      "actor": "Marketing Lead",
-      "id": "act-1777480840028",
-      "timestamp": "2026-04-29T16:40:40.028Z"
     }
   ],
   "assets": [
