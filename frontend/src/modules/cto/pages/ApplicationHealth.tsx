@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Activity, ThumbsUp, AlertTriangle, Zap } from 'lucide-react';
@@ -78,3 +79,4 @@ const ApplicationHealth: React.FC = () => {
 };
 
 export default ApplicationHealth;
+

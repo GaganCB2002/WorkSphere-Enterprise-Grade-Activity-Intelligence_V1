@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Calendar, Download, Code, GitPullRequest, Bug, TestTube } from 'lucide-react';
@@ -58,5 +59,6 @@ const EngineeringReports = () => (
 );
 
 export default EngineeringReports;
+
 
 

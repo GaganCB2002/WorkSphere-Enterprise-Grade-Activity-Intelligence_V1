@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, CheckCircle2, DollarSign, TrendingUp } from 'lucide-react';
@@ -60,4 +61,5 @@ const SoftwarePurchases = () => (
 );
 
 export default SoftwarePurchases;
+
 

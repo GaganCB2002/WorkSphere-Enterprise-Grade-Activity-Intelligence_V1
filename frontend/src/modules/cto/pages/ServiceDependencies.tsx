@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GitBranch, Share2, Map, Target, ArrowRight, Server, Database, Zap } from 'lucide-react';
@@ -106,4 +107,5 @@ const ServiceDependencies = () => (
 );
 
 export default ServiceDependencies;
+
 

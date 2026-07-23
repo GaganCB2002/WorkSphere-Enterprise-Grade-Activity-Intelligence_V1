@@ -35,6 +35,7 @@ const SystemCommandCenter = React.lazy(() => import('../modules/command_center/S
 const SuperAdminDashboard = React.lazy(() => import('../modules/super_admin/SuperAdminDashboard').then(m => ({ default: m.SuperAdminDashboard })));
 const CtoRouter = React.lazy(() => import('../modules/cto/CtoRouter'));
 const InternRouter = React.lazy(() => import('../modules/intern/InternRouter'));
+const TechLeadRouter = React.lazy(() => import('../modules/tech_lead/TechLeadRouter'));
 
 const EmployeeDirectoryPage = React.lazy(() => import('../pages/Employees/EmployeeDirectoryPage').then(m => ({ default: m.default })));
 const RbacPage = React.lazy(() => import('../pages/Employees/RbacPage').then(m => ({ default: m.default })));
@@ -534,6 +535,19 @@ const AppRoutes = () => {
   <Route path="settings/two-factor-authentication" element={<EmpTwoFactorAuthentication />} />
   <Route path="settings/notification-preferences" element={<EmpNotificationPreferences />} />
 </Route>
+
+        {/* Tech Lead Module Routes */}
+        <Route path="/tech-lead/*" element={
+          <ProtectedRoute>
+            <EnterpriseShell>
+              <Suspense fallback={<PageLoading />}>
+                <PageTransition>
+                  <TechLeadRouter />
+                </PageTransition>
+              </Suspense>
+            </EnterpriseShell>
+          </ProtectedRoute>
+        } />
 
         {/* CTO Module Routes */}
         <Route path="/cto/*" element={

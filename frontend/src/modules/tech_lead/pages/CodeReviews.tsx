@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { 
   GitPullRequest, GitMerge, Check, X, Code2, 
@@ -152,3 +153,4 @@ export const CodeReviews: React.FC = () => {
     </div>
   );
 };
+

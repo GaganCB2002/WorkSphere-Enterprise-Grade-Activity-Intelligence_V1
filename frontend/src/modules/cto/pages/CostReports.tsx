@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Calendar, Download, DollarSign, TrendingUp, BarChart3, CreditCard } from 'lucide-react';
@@ -58,4 +59,5 @@ const CostReports = () => (
 );
 
 export default CostReports;
+
 

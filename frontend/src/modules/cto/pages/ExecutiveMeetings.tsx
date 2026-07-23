@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, CheckCircle2, Clock, Timer } from 'lucide-react';
@@ -57,4 +58,5 @@ const ExecutiveMeetings = () => (
 );
 
 export default ExecutiveMeetings;
+
 

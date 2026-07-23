@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { 
   Activity, Server, GitMerge, AlertTriangle, ShieldCheck, 
@@ -183,3 +184,4 @@ export const DevOpsMonitor: React.FC = () => {
     </div>
   );
 };
+

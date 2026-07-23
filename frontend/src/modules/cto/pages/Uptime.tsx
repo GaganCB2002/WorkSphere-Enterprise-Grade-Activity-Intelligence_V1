@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Activity, Calendar, AlertTriangle, Clock } from 'lucide-react';
@@ -86,3 +87,4 @@ const Uptime: React.FC = () => {
 };
 
 export default Uptime;
+

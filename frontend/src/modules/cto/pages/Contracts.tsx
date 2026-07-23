@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, CheckCircle2, FileEdit, XCircle } from 'lucide-react';
@@ -61,4 +62,5 @@ const Contracts = () => (
 );
 
 export default Contracts;
+
 

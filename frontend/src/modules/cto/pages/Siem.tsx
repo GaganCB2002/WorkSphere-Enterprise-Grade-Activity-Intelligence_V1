@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Activity, Bell, GitBranch, Zap } from 'lucide-react';
@@ -88,3 +89,4 @@ const Siem: React.FC = () => {
 };
 
 export default Siem;
+

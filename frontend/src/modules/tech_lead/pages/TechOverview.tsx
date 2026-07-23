@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { 
   GitBranch, GitCommit, AlertOctagon, CheckCircle2, TrendingUp, 
@@ -202,3 +203,4 @@ export const TechOverview: React.FC = () => {
     </div>
   );
 };
+

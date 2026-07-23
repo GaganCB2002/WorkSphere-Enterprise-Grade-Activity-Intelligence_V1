@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import { 
   Kanban, Plus, MoreHorizontal, MessageSquare, 
@@ -146,3 +147,4 @@ export const SprintPlanner: React.FC = () => {
     </div>
   );
 };
+

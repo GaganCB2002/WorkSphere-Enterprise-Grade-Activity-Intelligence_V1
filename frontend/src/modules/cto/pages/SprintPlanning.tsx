@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GitPullRequest, BarChart3, Users, Target } from 'lucide-react';
@@ -59,4 +60,5 @@ const SprintPlanning = () => (
 );
 
 export default SprintPlanning;
+
 

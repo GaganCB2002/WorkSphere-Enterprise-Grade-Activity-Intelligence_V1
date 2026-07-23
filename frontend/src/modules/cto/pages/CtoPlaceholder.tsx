@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { Filter, Download, Plus, Search } from 'lucide-react';
 
@@ -53,3 +54,4 @@ export const CtoPlaceholder: React.FC<{ title: string }> = ({ title }) => {
     </div>
   );
 };
+

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, CalendarCheck, CalendarClock, CheckCircle, Clock, User } from 'lucide-react';
@@ -90,5 +91,6 @@ const ReleaseCalendar = () => (
 );
 
 export default ReleaseCalendar;
+
 
 

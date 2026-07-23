@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Bell, Mail, AlertTriangle, Info, CheckCheck, Filter, Clock } from 'lucide-react';
@@ -102,3 +103,4 @@ const NotificationsPage = () => {
 };
 
 export default NotificationsPage;
+

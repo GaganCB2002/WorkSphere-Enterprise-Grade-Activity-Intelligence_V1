@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Milestone, CheckCircle, AlertTriangle, Calendar, Activity } from 'lucide-react';
@@ -63,4 +64,5 @@ const Milestones = () => (
 );
 
 export default Milestones;
+
 

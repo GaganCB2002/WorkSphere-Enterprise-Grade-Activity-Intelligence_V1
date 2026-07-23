@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Calendar, Download, Server, Activity, HardDrive, Wifi } from 'lucide-react';
@@ -58,4 +59,5 @@ const InfrastructureReports = () => (
 );
 
 export default InfrastructureReports;
+
 

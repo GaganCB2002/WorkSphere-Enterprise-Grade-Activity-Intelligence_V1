@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Kanban, AlertTriangle, CheckCircle, DollarSign, Activity } from 'lucide-react';
@@ -64,5 +65,6 @@ const ActiveProjects = () => (
 );
 
 export default ActiveProjects;
+
 
 

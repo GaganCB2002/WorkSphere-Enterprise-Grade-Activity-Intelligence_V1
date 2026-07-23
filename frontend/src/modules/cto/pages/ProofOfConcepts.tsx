@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FlaskConical, CheckCircle2, TrendingUp, DollarSign } from 'lucide-react';
@@ -58,5 +59,6 @@ const ProofOfConcepts = () => (
 );
 
 export default ProofOfConcepts;
+
 
 

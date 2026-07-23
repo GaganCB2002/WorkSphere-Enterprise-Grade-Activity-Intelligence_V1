@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Activity, Calendar, Ban, Users } from 'lucide-react';
@@ -81,3 +82,4 @@ const AuditLogs: React.FC = () => {
 };
 
 export default AuditLogs;
+

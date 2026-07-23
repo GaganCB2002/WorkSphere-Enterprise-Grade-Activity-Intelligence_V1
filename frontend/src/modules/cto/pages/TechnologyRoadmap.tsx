@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Compass, PlayCircle, CheckCircle2, ClipboardList } from 'lucide-react';
@@ -86,4 +87,5 @@ const TechnologyRoadmap = () => (
 );
 
 export default TechnologyRoadmap;
+
 

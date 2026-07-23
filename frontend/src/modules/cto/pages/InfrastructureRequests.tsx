@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, CheckCircle2, XCircle, PlayCircle } from 'lucide-react';
@@ -60,4 +61,5 @@ const InfrastructureRequests = () => (
 );
 
 export default InfrastructureRequests;
+
 

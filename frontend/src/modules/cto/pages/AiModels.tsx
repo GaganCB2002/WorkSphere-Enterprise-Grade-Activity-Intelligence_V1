@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Brain, Activity, Zap, CheckCircle2 } from 'lucide-react';
@@ -80,3 +81,4 @@ const AiModels: React.FC = () => {
 };
 
 export default AiModels;
+

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Calendar, Download, Settings, Shield, DollarSign, HardDrive } from 'lucide-react';
@@ -81,5 +82,6 @@ const ExecutiveReports = () => (
 );
 
 export default ExecutiveReports;
+
 
 

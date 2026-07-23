@@ -16,6 +16,7 @@ import liveguardRoutes from './routes/liveguard.routes'
 import connectDB from './config/db'
 import { seedDatabase } from './scripts/seed'
 import financeRoutes from './routes/finance.routes'
+import techleadRoutes from './routes/techlead.routes'
 import { setIO } from './services/socket.service'
 
 // Connect to Database
@@ -82,6 +83,7 @@ app.use('/api/ceo', ceoRoutes)
 app.use('/api/finance', financeRoutes)
 app.use('/api', liveguardRoutes)
 app.use('/api', hrRoutes)
+app.use('/api/tech-lead', techleadRoutes)
 
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id)

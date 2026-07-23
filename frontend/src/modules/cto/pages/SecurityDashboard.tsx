@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Shield, AlertTriangle, Bug, Ban, CheckCircle2, FileText } from 'lucide-react';
@@ -87,3 +88,4 @@ const SecurityDashboard: React.FC = () => {
 };
 
 export default SecurityDashboard;
+

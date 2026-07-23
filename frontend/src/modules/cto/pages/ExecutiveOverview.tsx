@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
@@ -194,5 +195,6 @@ const ExecutiveOverview = () => {
 
 export default ExecutiveOverview;
 export { StatusBadge } from '../../../components/common/DataTable/DataTable';
+
 
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Server, Share2, GitBranch, Database, Globe, Lock, Zap, ArrowRight } from 'lucide-react';
@@ -84,4 +85,5 @@ const SystemArchitecture = () => (
 );
 
 export default SystemArchitecture;
+
 

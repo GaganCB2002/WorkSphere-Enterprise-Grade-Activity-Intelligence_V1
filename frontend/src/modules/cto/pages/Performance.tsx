@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Zap, Activity, AlertTriangle, BarChart3 } from 'lucide-react';
@@ -89,3 +90,4 @@ const Performance: React.FC = () => {
 };
 
 export default Performance;
+

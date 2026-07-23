@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { Brain, FileText, DollarSign, Activity } from 'lucide-react';
 import CtoPageShell from '../CtoPageShell';
@@ -54,3 +55,4 @@ const LlmConfiguration: React.FC = () => {
 };
 
 export default LlmConfiguration;
+

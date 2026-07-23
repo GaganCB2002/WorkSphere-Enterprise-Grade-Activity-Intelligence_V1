@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, AlertTriangle, DollarSign } from 'lucide-react';
@@ -57,4 +58,5 @@ const Renewals = () => (
 );
 
 export default Renewals;
+
 

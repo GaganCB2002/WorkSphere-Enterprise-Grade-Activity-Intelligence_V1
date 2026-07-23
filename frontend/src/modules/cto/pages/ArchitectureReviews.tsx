@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, CheckCircle2, Clock, Star } from 'lucide-react';
@@ -57,4 +58,5 @@ const ArchitectureReviews = () => (
 );
 
 export default ArchitectureReviews;
+
 

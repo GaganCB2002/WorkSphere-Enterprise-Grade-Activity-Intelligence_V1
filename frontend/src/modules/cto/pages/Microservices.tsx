@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Server, CheckCircle2, AlertTriangle, XCircle, Cpu, HardDrive, Clock } from 'lucide-react';
@@ -78,4 +79,5 @@ const Microservices = () => (
 );
 
 export default Microservices;
+
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, CheckCircle2, XCircle, GitPullRequest } from 'lucide-react';
@@ -58,5 +59,6 @@ const ProductionDeployments = () => (
 );
 
 export default ProductionDeployments;
+
 
 

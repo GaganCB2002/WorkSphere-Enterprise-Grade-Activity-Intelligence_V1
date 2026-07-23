@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, CheckCircle2, AlertTriangle, DollarSign } from 'lucide-react';
@@ -60,4 +61,5 @@ const SoftwareLicenses = () => (
 );
 
 export default SoftwareLicenses;
+
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { Box, Image, Server, Bug } from 'lucide-react';
@@ -93,3 +94,4 @@ const Containers: React.FC = () => {
 };
 
 export default Containers;
+

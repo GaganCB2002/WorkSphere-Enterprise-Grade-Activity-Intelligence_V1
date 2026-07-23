@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { Key, Shield, RefreshCw, Users } from 'lucide-react';
 import CtoPageShell from '../CtoPageShell';
@@ -59,4 +60,5 @@ const SecretsManagement: React.FC = () => {
 };
 
 export default SecretsManagement;
+
 

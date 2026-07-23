@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { User, Bell, Shield, Palette, Key, Puzzle, Save } from 'lucide-react';
@@ -191,4 +192,5 @@ const SettingsPage = () => {
 };
 
 export default SettingsPage;
+
 

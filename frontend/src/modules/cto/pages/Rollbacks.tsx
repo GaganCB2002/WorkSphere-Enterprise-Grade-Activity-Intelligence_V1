@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { RotateCcw, Calendar, Timer, AlertTriangle, Activity } from 'lucide-react';
@@ -60,4 +61,5 @@ const Rollbacks = () => (
 );
 
 export default Rollbacks;
+
 

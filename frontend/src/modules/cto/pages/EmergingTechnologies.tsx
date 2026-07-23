@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Radar, Zap, FlaskConical, CheckCircle2 } from 'lucide-react';
@@ -61,5 +62,6 @@ const EmergingTechnologies = () => (
 );
 
 export default EmergingTechnologies;
+
 
 

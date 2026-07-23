@@ -14,7 +14,7 @@ const roleNavMap = {
   MARKETING_MANAGER: ['Dashboard', 'Campaigns', 'Analytics', 'Content', 'Reports'],
   SALES_MANAGER: ['Dashboard', 'Pipeline', 'Clients', 'Revenue', 'Reports'],
   PROJECT_MANAGER: ['Dashboard', 'Projects', 'Tasks', 'Team', 'Timeline'],
-  TECH_LEAD: ['Dashboard', 'Sprints', 'Code Reviews', 'Team', 'DevOps', 'Analytics'],
+  TECH_LEAD: ['Tech Lead Dashboard', 'Engineering Overview', 'Team Management', 'Sprint Management', 'Task Management', 'Projects', 'Code Management', 'CI/CD', 'Infrastructure', 'Engineering Analytics', 'AI Assistant', 'Documentation', 'Meetings', 'Team Chat', 'Live Monitoring', 'Reports', 'Notifications', 'Settings'],
   DEVOPS_ENGINEER: ['Dashboard', 'CI/CD', 'Infrastructure', 'Monitoring', 'Security'],
   QA_ENGINEER: ['Dashboard', 'Test Plans', 'Test Runs', 'Bugs', 'Automation'],
   SOFTWARE_ENGINEER: ['Dashboard', 'Tasks', 'Pull Requests', 'Sprints'],
@@ -323,6 +323,176 @@ const navGroups = [
     ctoOnly: true,
     items: [
       { label: 'Settings', path: '/cto/settings' },
+    ]
+  },
+  {
+    label: 'Tech Lead Dashboard',
+    icon: navIcons.Dashboard,
+    items: [
+      { label: 'Home Dashboard', path: '/tech-lead/dashboard' },
+      { label: 'Live Dashboard', path: '/tech-lead/live' },
+    ]
+  },
+  {
+    label: 'Engineering Overview',
+    icon: navIcons.Engineering,
+    items: [
+      { label: 'Engineering Overview', path: '/tech-lead/engineering' },
+    ]
+  },
+  {
+    label: 'Team Management',
+    icon: navIcons.Team,
+    items: [
+      { label: 'Team Members', path: '/tech-lead/team/members' },
+      { label: 'Team Availability', path: '/tech-lead/team/availability' },
+      { label: 'Workload', path: '/tech-lead/team/workload' },
+      { label: 'Team Performance', path: '/tech-lead/team/performance' },
+    ]
+  },
+  {
+    label: 'Sprint Management',
+    icon: navIcons['Sprints'],
+    items: [
+      { label: 'Sprint Board', path: '/tech-lead/sprints/board' },
+      { label: 'Backlog', path: '/tech-lead/sprints/backlog' },
+      { label: 'Active Sprint', path: '/tech-lead/sprints/active' },
+      { label: 'Sprint Reports', path: '/tech-lead/sprints/reports' },
+    ]
+  },
+  {
+    label: 'Task Management',
+    icon: navIcons.Tasks,
+    items: [
+      { label: 'Kanban Board', path: '/tech-lead/tasks/kanban' },
+      { label: 'Assigned Tasks', path: '/tech-lead/tasks/assigned' },
+      { label: 'Bug Tracking', path: '/tech-lead/tasks/bugs' },
+      { label: 'Feature Requests', path: '/tech-lead/tasks/features' },
+    ]
+  },
+  {
+    label: 'Projects',
+    icon: navIcons.Projects,
+    items: [
+      { label: 'Active Projects', path: '/tech-lead/projects' },
+      { label: 'Roadmap', path: '/tech-lead/projects/roadmap' },
+      { label: 'Milestones', path: '/tech-lead/projects/milestones' },
+      { label: 'Releases', path: '/tech-lead/projects/releases' },
+    ]
+  },
+  {
+    label: 'Code Management',
+    icon: navIcons['Code Reviews'],
+    items: [
+      { label: 'Git Repositories', path: '/tech-lead/code/repositories' },
+      { label: 'Pull Requests', path: '/tech-lead/code/pull-requests' },
+      { label: 'Merge Requests', path: '/tech-lead/code/merge-requests' },
+      { label: 'Code Reviews', path: '/tech-lead/code/reviews' },
+      { label: 'Branch Management', path: '/tech-lead/code/branches' },
+    ]
+  },
+  {
+    label: 'CI/CD',
+    icon: navIcons['CI/CD'],
+    items: [
+      { label: 'Build Pipeline', path: '/tech-lead/cicd/pipeline' },
+      { label: 'Deployments', path: '/tech-lead/cicd/deployments' },
+      { label: 'Release History', path: '/tech-lead/cicd/releases' },
+      { label: 'Build Logs', path: '/tech-lead/cicd/build-logs' },
+    ]
+  },
+  {
+    label: 'Infrastructure',
+    icon: navIcons.Infrastructure,
+    items: [
+      { label: 'Servers', path: '/tech-lead/infra/servers' },
+      { label: 'Kubernetes', path: '/tech-lead/infra/kubernetes' },
+      { label: 'Docker', path: '/tech-lead/infra/docker' },
+      { label: 'Cloud Resources', path: '/tech-lead/infra/cloud' },
+    ]
+  },
+  {
+    label: 'Engineering Analytics',
+    icon: navIcons.Analytics,
+    items: [
+      { label: 'Velocity', path: '/tech-lead/analytics/velocity' },
+      { label: 'Burndown', path: '/tech-lead/analytics/burndown' },
+      { label: 'Productivity', path: '/tech-lead/analytics/productivity' },
+      { label: 'Code Quality', path: '/tech-lead/analytics/code-quality' },
+    ]
+  },
+  {
+    label: 'AI Assistant',
+    icon: navIcons['AI & System Configuration'],
+    items: [
+      { label: 'Engineering AI', path: '/tech-lead/ai/engineering' },
+      { label: 'Code Generator', path: '/tech-lead/ai/code-generator' },
+      { label: 'SQL Generator', path: '/tech-lead/ai/sql-generator' },
+      { label: 'Documentation AI', path: '/tech-lead/ai/documentation' },
+    ]
+  },
+  {
+    label: 'Documentation',
+    icon: navIcons.Documents,
+    items: [
+      { label: 'API Docs', path: '/tech-lead/docs/api' },
+      { label: 'Technical Docs', path: '/tech-lead/docs/technical' },
+      { label: 'Architecture', path: '/tech-lead/docs/architecture' },
+    ]
+  },
+  {
+    label: 'Meetings',
+    icon: navIcons.Calendar,
+    items: [
+      { label: 'Daily Standup', path: '/tech-lead/meetings/standup' },
+      { label: 'Sprint Planning', path: '/tech-lead/meetings/planning' },
+      { label: 'Retrospective', path: '/tech-lead/meetings/retro' },
+      { label: 'Team Calendar', path: '/tech-lead/meetings/calendar' },
+    ]
+  },
+  {
+    label: 'Team Chat',
+    icon: navIcons.Chat,
+    items: [
+      { label: 'Direct Messages', path: '/tech-lead/chat/direct' },
+      { label: 'Team Channels', path: '/tech-lead/chat/team' },
+      { label: 'Project Channels', path: '/tech-lead/chat/projects' },
+      { label: 'Voice Calls', path: '/tech-lead/chat/voice' },
+      { label: 'Video Meetings', path: '/tech-lead/chat/video' },
+    ]
+  },
+  {
+    label: 'Live Monitoring',
+    icon: navIcons.Monitoring,
+    items: [
+      { label: 'Server Health', path: '/tech-lead/monitoring/servers' },
+      { label: 'API Health', path: '/tech-lead/monitoring/api' },
+      { label: 'Database', path: '/tech-lead/monitoring/database' },
+      { label: 'Logs', path: '/tech-lead/monitoring/logs' },
+      { label: 'Alerts', path: '/tech-lead/monitoring/alerts' },
+    ]
+  },
+  {
+    label: 'Reports',
+    icon: navIcons.Reports,
+    items: [
+      { label: 'Sprint Reports', path: '/tech-lead/reports/sprints' },
+      { label: 'Team Reports', path: '/tech-lead/reports/team' },
+      { label: 'Project Reports', path: '/tech-lead/reports/projects' },
+    ]
+  },
+  {
+    label: 'Notifications',
+    icon: navIcons.Notifications,
+    items: [
+      { label: 'Notifications', path: '/tech-lead/notifications' },
+    ]
+  },
+  {
+    label: 'Settings',
+    icon: navIcons.Settings,
+    items: [
+      { label: 'Settings', path: '/tech-lead/settings' },
     ]
   },
   {

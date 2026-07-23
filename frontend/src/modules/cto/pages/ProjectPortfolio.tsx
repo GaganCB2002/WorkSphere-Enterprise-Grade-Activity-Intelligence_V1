@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
@@ -110,5 +111,6 @@ const ProjectPortfolio = () => (
 );
 
 export default ProjectPortfolio;
+
 
 

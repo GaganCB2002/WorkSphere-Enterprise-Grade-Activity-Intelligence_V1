@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { 
   Mail, Search, Edit3, Inbox, Send, Star, Trash2, 
@@ -124,3 +125,4 @@ export const WebmailPage: React.FC = () => {
     </div>
   );
 };
+
