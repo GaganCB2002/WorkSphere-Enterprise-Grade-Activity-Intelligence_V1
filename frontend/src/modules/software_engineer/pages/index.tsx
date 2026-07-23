@@ -1,13 +1,4 @@
-import React from 'react';
-
-const Placeholder = ({ title }: { title: string }) => (
-  <div className="flex flex-col items-center justify-center h-full text-[#8b949e]">
-    <h1 className="text-2xl font-bold text-[#e6edf3] mb-2">{title}</h1>
-    <p>This module is currently under construction for Phase 2-5.</p>
-  </div>
-);
-
-export const Overview = () => <Placeholder title="Dashboard Overview" />;
+export { Overview } from './Overview';
 export { TaskBoard } from './TaskBoard';
 export { CodeWorkspace } from './CodeWorkspace';
 export { DevOps } from './DevOps';
@@ -15,4 +6,44 @@ export { FocusSpace } from './FocusSpace';
 export { Team } from './Team';
 export { LeaveManagement } from './LeaveManagement';
 export { BugTracker } from './BugTracker';
-export const Documentation = () => <Placeholder title="Engineering Documentation" />;
+export { Dashboard } from './Dashboard';
+export { MyWork } from './MyWork';
+export { MyTasks } from './MyTasks';
+export { SprintBoard } from './SprintBoard';
+export { KanbanBoard } from './KanbanBoard';
+export { Backlog } from './Backlog';
+export { AssignedBugs } from './AssignedBugs';
+export { FeatureRequests } from './FeatureRequests';
+export { CodeReviews } from './CodeReviews';
+export { PullRequests } from './PullRequests';
+export { Repositories } from './Repositories';
+export { Branches } from './Branches';
+export { Commits } from './Commits';
+export { CicdPipelines } from './CicdPipelines';
+export { Deployments } from './Deployments';
+export { BuildHistory } from './BuildHistory';
+export { UnitTests } from './UnitTests';
+export { IntegrationTests } from './IntegrationTests';
+export { E2ETests } from './E2ETests';
+export { ApiTesting } from './ApiTesting';
+export { CodeQuality } from './CodeQuality';
+export { SonarQube } from './SonarQube';
+export { CodeCoverage } from './CodeCoverage';
+export { TechnicalDebt } from './TechnicalDebt';
+export { Performance } from './Performance';
+export { ApiDocumentation } from './ApiDocumentation';
+export { ArchitectureDocs } from './ArchitectureDocs';
+export { KnowledgeBase } from './KnowledgeBase';
+export { AiAssistant } from './AiAssistant';
+export { TeamChat } from './TeamChat';
+export { DirectMessages } from './DirectMessages';
+export { Announcements } from './Announcements';
+export { Meetings } from './Meetings';
+export { Calendar } from './Calendar';
+export { Reports } from './Reports';
+export { Settings } from './Settings';
+export { LiveEngineeringData } from './LiveEngineeringData';
+export { ActivityFeed } from './ActivityFeed';
+export { Charts } from './Charts';
+export { Search } from './Search';
+export { Notifications } from './Notifications';
