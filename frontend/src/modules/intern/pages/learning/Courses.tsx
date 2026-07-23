@@ -76,7 +76,7 @@ export default function Courses() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { label: 'Total Courses', value: String(totalCourses), icon: BookOpen, color: 'text-blue-600 bg-blue-100 dark:bg-blue-500/10 dark:text-blue-400' },
-            { label: 'In Progress', value: String(inProgress), icon: BarChart, color: 'text-amber-600 bg-amber-100 dark:bg-amber-500/10 dark:text-amber-400' },
+            { label: 'In Progress', value: String(inProgress), icon: BarChart3, color: 'text-amber-600 bg-amber-100 dark:bg-amber-500/10 dark:text-amber-400' },
             { label: 'Completed', value: String(completed), icon: CheckCircle, color: 'text-emerald-600 bg-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400' },
             { label: 'Pending', value: String(pending), icon: Clock, color: 'text-slate-600 bg-slate-100 dark:bg-slate-500/10 dark:text-slate-400' },
           ].map((kpi, i) => <KpiCard key={kpi.label} {...kpi} />)}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, ReferenceLine } from 'recharts';
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, ReferenceLine, Cell } from 'recharts';
 import { Activity, Zap, CheckCircle2, Clock, Calendar, TrendingUp, Users, GitPullRequest } from 'lucide-react';
 import CtoPageShell from '../CtoPageShell';
 import DataTable, { StatusBadge } from '../../../components/common/DataTable/DataTable';

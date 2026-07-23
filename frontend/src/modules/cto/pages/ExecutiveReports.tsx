@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Calendar, Download, FileText, Settings, Shield, DollarSign, HardDrive } from 'lucide-react';
+import { FileText, Calendar, Download, Settings, Shield, DollarSign, HardDrive } from 'lucide-react';
 import CtoPageShell from '../CtoPageShell';
 import DataTable, { StatusBadge } from '../../../components/common/DataTable/DataTable';
 

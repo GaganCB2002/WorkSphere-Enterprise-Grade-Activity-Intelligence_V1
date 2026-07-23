@@ -108,7 +108,7 @@ export function SystemMonitor() {
       const cpuLoad = Math.max(0, Math.min(100, Math.round(100 * (1 - (ops / cpuBaseline.current)))));
 
       const perf = (performance as any).memory;
-      let memory = null;
+      let memory: any = null;
       let pressure = 'Normal';
       if (perf) {
         const percent = (perf.usedJSHeapSize / perf.jsHeapSizeLimit) * 100;

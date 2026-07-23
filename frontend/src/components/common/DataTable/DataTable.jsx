@@ -9,10 +9,11 @@ export default function DataTable({
   searchable = false,
   pageSize = 20,
   emptyMessage = 'No data found',
-  onSelectionChange,
-  onRowClick,
-  actions,
+  onSelectionChange = undefined,
+  onRowClick = undefined,
+  actions = undefined,
   stickyHeader = true,
+
 }) {
   const [sortKey, setSortKey] = useState(null)
   const [sortDir, setSortDir] = useState('asc')
@@ -415,7 +416,7 @@ function formatCell(value) {
   return value
 }
 
-export function StatusBadge({ status, variant }) {
+export function StatusBadge({ status, variant = undefined }) {
   const colors = variant || {
     Active: ['bg-[var(--color-success-50)]', 'text-[var(--color-success-700)]', 'bg-[var(--color-success-500)]'],
     Inactive: ['bg-[var(--color-error-50)]', 'text-[var(--color-error-700)]', 'bg-[var(--color-error-500)]'],

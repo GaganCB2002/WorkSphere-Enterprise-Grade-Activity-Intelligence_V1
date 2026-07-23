@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { HardDrive, Database, Server, TrendingUp, Folder, Hdd } from 'lucide-react';
+import { HardDrive, Database, Server, TrendingUp, Folder } from 'lucide-react';
 import CtoPageShell from '../CtoPageShell';
 import DataTable, { StatusBadge } from '../../../components/common/DataTable/DataTable';
 

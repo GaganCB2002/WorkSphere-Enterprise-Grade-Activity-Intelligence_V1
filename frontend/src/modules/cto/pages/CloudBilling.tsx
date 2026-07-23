@@ -85,7 +85,7 @@ const CloudBilling = () => (
                 <Pie data={pieData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={90} innerRadius={50} paddingAngle={4}>
                   {pieData.map((_, i) => <Cell key={i} fill={COLORS[i]} />)}
                 </Pie>
-                <Tooltip contentStyle={{ borderRadius: '8px', border: '1px solid #e2e8f0' }} formatter={(v) => `$${(v / 1000).toFixed(1)}K`} />
+                <Tooltip contentStyle={{ borderRadius: '8px', border: '1px solid #e2e8f0' }} formatter={(v: any) => `$${(Number(v) / 1000).toFixed(1)}K`} />
                 <Legend />
               </PieChart>
             </ResponsiveContainer>

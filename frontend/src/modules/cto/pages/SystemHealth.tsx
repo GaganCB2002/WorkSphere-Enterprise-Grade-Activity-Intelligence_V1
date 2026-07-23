@@ -1,6 +1,6 @@
 import React from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Activity, Server, Zap, AlertCircle, Cpu, HardDrive as Memory } from 'lucide-react';
+import { Activity, Server, Zap, AlertCircle, Cpu, HardDrive as Memory, AlertTriangle } from 'lucide-react';
 import CtoPageShell from '../CtoPageShell';
 import DataTable, { StatusBadge } from '../../../components/common/DataTable/DataTable';
 

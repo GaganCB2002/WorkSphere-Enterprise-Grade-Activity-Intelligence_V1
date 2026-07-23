@@ -1,6 +1,6 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Bug, AlertTriangle, Shield, ShieldAlert } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import { Bug, AlertTriangle, Shield, ShieldAlert, Info } from 'lucide-react';
 import CtoPageShell from '../CtoPageShell';
 import DataTable, { StatusBadge } from '../../../components/common/DataTable/DataTable';
 
