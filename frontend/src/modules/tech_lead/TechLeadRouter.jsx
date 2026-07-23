@@ -78,7 +78,7 @@ const ReportProjects = React.lazy(() => import('./pages/ReportProjects').then(m 
 const NotificationsPage = React.lazy(() => import('./pages/NotificationsPage').then(m => ({ default: m.NotificationsPage })));
 const SettingsPage = React.lazy(() => import('./pages/SettingsPage').then(m => ({ default: m.SettingsPage })));
 
-export const TechLeadRouter = () => {
+export default function TechLeadRouter() {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
       <Suspense fallback={<LoadingFallback />}>

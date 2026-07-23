@@ -57,7 +57,7 @@ const Charts = React.lazy(() => import('./pages/Charts').then(m => ({ default: m
 const Search = React.lazy(() => import('./pages/Search').then(m => ({ default: m.Search })));
 const Notifications = React.lazy(() => import('./pages/Notifications').then(m => ({ default: m.Notifications })));
 
-export const SoftwareEngineerRouter = () => {
+export default function SoftwareEngineerRouter() {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
       <Suspense fallback={<LoadingFallback />}>
