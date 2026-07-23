@@ -1,10 +1,11 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   LayoutDashboard, Users, GitPullRequest, Activity, 
   LineChart, ChevronLeft, ChevronRight, Kanban, 
-  TerminalSquare, MessageSquare, Mail, Video, LogOut
+  TerminalSquare, MessageSquare, Mail, Video, LogOut,
+  CheckSquare, Plus, FileText, Calendar, FolderPlus, Zap
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -21,6 +22,18 @@ const navItems = [
   { path: 'analytics', label: 'Analytics', icon: LineChart },
 ];
 
+const quickPages = [
+  { path: '/projects/tasks', label: 'Tasks', icon: CheckSquare },
+  { path: '/projects/sprint-board', label: 'Pull Requests', icon: GitPullRequest },
+];
+
+const quickActions = [
+  { label: 'Create employee', icon: Plus, path: '/employees/directory' },
+  { label: 'Generate report', icon: FileText, path: '/employees/reports' },
+  { label: 'Submit leave request', icon: Calendar, path: '/employee/leave' },
+  { label: 'Create project', icon: FolderPlus, path: '/projects/list' },
+];
+
 const commItems = [
   { path: 'chat', label: 'Team Chat', icon: MessageSquare },
   { path: 'webmail', label: 'Webmail', icon: Mail },
@@ -28,6 +41,9 @@ const commItems = [
 ];
 
 export const TechLeadSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
+  const navigate = useNavigate();
+  const [quickActionsExpanded, setQuickActionsExpanded] = useState(true);
+
   return (
     <motion.aside
       animate={{ width: isCollapsed ? 68 : 260 }}
@@ -56,7 +72,8 @@ export const TechLeadSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle 
       </div>
 
       {/* Navigation Links */}
-      <nav className="flex-1 py-6 px-3 space-y-1 overflow-y-auto overflow-x-hidden custom-scrollbar">
+      <nav className="flex-1 py-4 px-3 space-y-1 overflow-y-auto overflow-x-hidden custom-scrollbar">
+        {/* Main Dashboard Navigation */}
         {navItems.map((item) => (
           <NavLink
             key={item.path}
@@ -83,9 +100,14 @@ export const TechLeadSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle 
                       initial={{ opacity: 0, width: 0 }}
                       animate={{ opacity: 1, width: 'auto' }}
                       exit={{ opacity: 0, width: 0 }}
-                      className="ml-2 text-sm whitespace-nowrap overflow-hidden"
+                      className="ml-2 text-sm whitespace-nowrap overflow-hidden flex-1 flex items-center justify-between"
                     >
                       {item.label}
+                      {item.path === 'overview' && (
+                        <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                          Page
+                        </span>
+                      )}
                     </motion.span>
                   )}
                 </AnimatePresence>
@@ -93,6 +115,99 @@ export const TechLeadSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle 
             )}
           </NavLink>
         ))}
+
+        {/* Quick Pages: Tasks & Pull Requests */}
+        {quickPages.map((item) => (
+          <NavLink
+            key={item.path}
+            to={item.path}
+            className={({ isActive }) =>
+              `flex items-center h-10 rounded-md transition-all group relative ${
+                isActive 
+                  ? 'bg-indigo-500/10 text-indigo-400 font-semibold' 
+                  : 'text-[#8b949e] hover:bg-[#21262d] hover:text-slate-200'
+              }`
+            }
+          >
+            {({ isActive }) => (
+              <>
+                {isActive && (
+                  <motion.div layoutId="activeNav" className="absolute left-0 top-1 bottom-1 w-1 bg-indigo-500 rounded-r-md" />
+                )}
+                <div className={`flex items-center justify-center w-10 flex-shrink-0 ${isActive ? 'text-indigo-400' : 'text-[#8b949e] group-hover:text-slate-300'}`}>
+                  <item.icon className="w-5 h-5" />
+                </div>
+                <AnimatePresence mode="wait">
+                  {!isCollapsed && (
+                    <motion.span
+                      initial={{ opacity: 0, width: 0 }}
+                      animate={{ opacity: 1, width: 'auto' }}
+                      exit={{ opacity: 0, width: 0 }}
+                      className="ml-2 text-sm whitespace-nowrap overflow-hidden flex-1 flex items-center justify-between"
+                    >
+                      {item.label}
+                      <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-slate-800 text-slate-400 border border-slate-700">
+                        Page
+                      </span>
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </>
+            )}
+          </NavLink>
+        ))}
+
+        {/* Quick Actions Section */}
+        <div className="pt-3 pb-1 border-t border-[#21262d]/80 mt-2">
+          {!isCollapsed ? (
+            <button
+              onClick={() => setQuickActionsExpanded(!quickActionsExpanded)}
+              className="w-full flex items-center justify-between px-3 py-1 text-[10px] font-bold text-indigo-400 uppercase tracking-wider hover:text-indigo-300"
+            >
+              <div className="flex items-center gap-1.5">
+                <Zap className="w-3.5 h-3.5 text-indigo-400" />
+                Quick Actions
+              </div>
+              <ChevronRight className={`w-3.5 h-3.5 transition-transform duration-200 ${quickActionsExpanded ? 'rotate-90' : ''}`} />
+            </button>
+          ) : (
+            <div className="flex justify-center py-1">
+              <Zap className="w-4 h-4 text-indigo-400" />
+            </div>
+          )}
+
+          <AnimatePresence>
+            {(quickActionsExpanded || isCollapsed) && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="mt-1 space-y-0.5"
+              >
+                {quickActions.map((act, i) => (
+                  <button
+                    key={i}
+                    onClick={() => navigate(act.path)}
+                    className="w-full flex items-center h-9 px-2.5 rounded-md text-slate-300 hover:text-white hover:bg-indigo-600/20 transition-all text-left"
+                    title={act.label}
+                  >
+                    <div className="flex items-center justify-center w-6 flex-shrink-0 text-indigo-400">
+                      <act.icon className="w-4 h-4" />
+                    </div>
+                    {!isCollapsed && (
+                      <span className="ml-2 text-xs whitespace-nowrap overflow-hidden flex-1 flex items-center justify-between">
+                        {act.label}
+                        <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                          Action
+                        </span>
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
         {!isCollapsed && (
           <div className="pt-4 pb-2 px-3">

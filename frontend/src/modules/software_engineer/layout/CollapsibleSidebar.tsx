@@ -1,10 +1,11 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   LayoutDashboard, KanbanSquare, GitPullRequest, 
   Terminal, Timer, Users, CalendarOff, Bug, 
-  ChevronLeft, ChevronRight, BookOpen, LogOut
+  ChevronLeft, ChevronRight, BookOpen, LogOut,
+  Zap, Plus, FileText, Calendar, FolderPlus, CheckSquare
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -24,7 +25,17 @@ const navItems = [
   { path: 'docs', label: 'Documentation', icon: BookOpen },
 ];
 
+const quickActions = [
+  { label: 'Create employee', icon: Plus, path: '/employees/directory' },
+  { label: 'Generate report', icon: FileText, path: '/employees/reports' },
+  { label: 'Submit leave request', icon: Calendar, path: '/employee/leave' },
+  { label: 'Create project', icon: FolderPlus, path: '/projects/list' },
+];
+
 export const CollapsibleSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
+  const navigate = useNavigate();
+  const [quickActionsExpanded, setQuickActionsExpanded] = useState(true);
+
   return (
     <motion.aside 
       initial={false}
@@ -51,7 +62,7 @@ export const CollapsibleSidebar: React.FC<SidebarProps> = ({ isCollapsed, onTogg
       </div>
 
       {/* Navigation Links */}
-      <nav className="flex-1 overflow-y-auto py-4 px-3 flex flex-col gap-1">
+      <nav className="flex-1 overflow-y-auto py-4 px-3 flex flex-col gap-1 custom-scrollbar">
         {navItems.map((item) => (
           <NavLink
             key={item.path}
@@ -67,7 +78,14 @@ export const CollapsibleSidebar: React.FC<SidebarProps> = ({ isCollapsed, onTogg
               <>
                 <item.icon className={`w-5 h-5 flex-shrink-0 ${isActive ? 'text-[#4493f8]' : 'text-[#8b949e] group-hover:text-[#c9d1d9]'}`} />
                 {!isCollapsed && (
-                  <span className="font-medium text-sm truncate">{item.label}</span>
+                  <span className="font-medium text-sm truncate flex-1 flex items-center justify-between">
+                    {item.label}
+                    {item.path === 'overview' && (
+                      <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                        Page
+                      </span>
+                    )}
+                  </span>
                 )}
                 
                 {/* Tooltip for collapsed mode */}
@@ -80,6 +98,58 @@ export const CollapsibleSidebar: React.FC<SidebarProps> = ({ isCollapsed, onTogg
             )}
           </NavLink>
         ))}
+
+        {/* Quick Actions Section */}
+        <div className="pt-3 pb-1 border-t border-[#21262d] mt-2">
+          {!isCollapsed ? (
+            <button
+              onClick={() => setQuickActionsExpanded(!quickActionsExpanded)}
+              className="w-full flex items-center justify-between px-3 py-1 text-[10px] font-bold text-indigo-400 uppercase tracking-wider hover:text-indigo-300"
+            >
+              <div className="flex items-center gap-1.5">
+                <Zap className="w-3.5 h-3.5 text-indigo-400" />
+                Quick Actions
+              </div>
+              <ChevronRight className={`w-3.5 h-3.5 transition-transform duration-200 ${quickActionsExpanded ? 'rotate-90' : ''}`} />
+            </button>
+          ) : (
+            <div className="flex justify-center py-1">
+              <Zap className="w-4 h-4 text-indigo-400" />
+            </div>
+          )}
+
+          <AnimatePresence>
+            {(quickActionsExpanded || isCollapsed) && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="mt-1 space-y-0.5"
+              >
+                {quickActions.map((act, i) => (
+                  <button
+                    key={i}
+                    onClick={() => navigate(act.path)}
+                    className="w-full flex items-center h-9 px-2.5 rounded-md text-[#8b949e] hover:text-[#c9d1d9] hover:bg-[#1f6feb]/10 transition-all text-left"
+                    title={act.label}
+                  >
+                    <div className="flex items-center justify-center w-6 flex-shrink-0 text-indigo-400">
+                      <act.icon className="w-4 h-4" />
+                    </div>
+                    {!isCollapsed && (
+                      <span className="ml-2 text-xs whitespace-nowrap overflow-hidden flex-1 flex items-center justify-between">
+                        {act.label}
+                        <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                          Action
+                        </span>
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </nav>
 
       {/* Footer Controls */}
