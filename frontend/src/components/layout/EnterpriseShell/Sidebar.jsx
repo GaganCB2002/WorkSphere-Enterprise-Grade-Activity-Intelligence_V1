@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import { useSelector } from 'react-redux'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const roleNavMap = {
@@ -207,14 +207,15 @@ const pinLabels = []
 export default function Sidebar({ collapsed, onToggle }) {
   const user = useSelector(state => state.auth.user)
   const location = useLocation()
+  const navigate = useNavigate()
   const role = user?.role || 'EMPLOYEE'
   const allowedNav = roleNavMap[role] || roleNavMap.EMPLOYEE
+  const [quickActionsExpanded, setQuickActionsExpanded] = useState(true)
   const [expandedGroups, setExpandedGroups] = useState(() => {
     const initial = {}
     navGroups.forEach(g => { initial[g.label] = true })
     return initial
   })
-  const [expandedEmployees, setExpandedEmployees] = useState(true)
   const [pinned, setPinned] = useState(() => {
     try { return JSON.parse(localStorage.getItem('sidebarPinned') || '[]') }
     catch { return [] }
@@ -233,11 +234,18 @@ export default function Sidebar({ collapsed, onToggle }) {
   }, [])
 
   const visibleItems = navGroups.filter(g => role === 'SUPER_ADMIN' || role === 'ADMIN' || allowedNav.includes(g.label))
-
   const pinnedItems = pinLabels.filter(l => pinned.includes(l))
 
   const isActive = (path) => {
     return location.pathname === path || location.pathname.startsWith(path + '/')
+  }
+
+  const handleActionClick = (actionName, targetPath) => {
+    if (targetPath) {
+      navigate(targetPath)
+    } else {
+      alert(`Action Triggered: ${actionName}`)
+    }
   }
 
   return (
@@ -311,19 +319,109 @@ export default function Sidebar({ collapsed, onToggle }) {
       )}
 
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto px-2 pb-4 scrollbar-thin">
+      <nav className="flex-1 overflow-y-auto px-2 pb-4 scrollbar-thin space-y-1">
         
-        {/* Top-level Dashboard */}
-        <div className="mb-2 mt-2">
+        {/* Top-level Dashboard Item */}
+        <div className="mt-2">
           <SidebarItem
             label="Dashboard"
             icon={navIcons.Dashboard}
             active={location.pathname === '/' || location.pathname === '/dashboard'}
             collapsed={collapsed}
             to="/dashboard"
+            badge="Page"
           />
         </div>
 
+        {/* Quick Pages below Dashboard: Tasks & Pull Requests */}
+        <div className="space-y-0.5">
+          <SidebarItem
+            label="Tasks"
+            icon={navIcons.Tasks}
+            active={location.pathname.includes('/tasks')}
+            collapsed={collapsed}
+            to="/projects/tasks"
+            badge="Page"
+          />
+          <SidebarItem
+            label="Pull Requests"
+            icon={navIcons['Pull Requests']}
+            active={location.pathname.includes('/sprint-board') || location.pathname.includes('/reviews')}
+            collapsed={collapsed}
+            to="/projects/sprint-board"
+            badge="Page"
+          />
+        </div>
+
+        {/* Quick Actions Section (Below Dashboard & Quick Pages) */}
+        <div className="my-2 pt-2 border-t border-sidebar-border/60">
+          {!collapsed ? (
+            <button
+              onClick={() => setQuickActionsExpanded(!quickActionsExpanded)}
+              className="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider text-indigo-400 hover:bg-sidebar-item-hover transition-colors"
+            >
+              <div className="flex items-center gap-2">
+                <svg className="w-3.5 h-3.5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span>Quick Actions</span>
+              </div>
+              <svg
+                className={`w-3.5 h-3.5 text-sidebar-text opacity-60 transition-transform duration-200 ${quickActionsExpanded ? 'rotate-180' : ''}`}
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          ) : (
+            <div className="flex justify-center py-1">
+              <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+          )}
+
+          <AnimatePresence>
+            {(quickActionsExpanded || collapsed) && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="mt-1 space-y-0.5"
+              >
+                {[
+                  { label: 'Create employee', icon: 'M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z', target: '/employees/directory' },
+                  { label: 'Generate report', icon: 'M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z', target: '/employees/reports' },
+                  { label: 'Submit leave request', icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z', target: '/employee/leave' },
+                  { label: 'Create project', icon: 'M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z', target: '/projects/list' },
+                ].map((act, i) => (
+                  <button
+                    key={i}
+                    onClick={() => handleActionClick(act.label, act.target)}
+                    className={`w-full flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-indigo-600/20 transition-all text-left ${collapsed ? 'justify-center px-0' : ''}`}
+                    title={act.label}
+                  >
+                    <svg className="w-3.5 h-3.5 text-indigo-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d={act.icon} />
+                    </svg>
+                    {!collapsed && (
+                      <span className="truncate flex-1 flex items-center justify-between">
+                        {act.label}
+                        <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                          Action
+                        </span>
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        <div className="border-t border-sidebar-border/60 my-2" />
+
+        {/* Existing Navigation Groups */}
         {visibleItems.map(group => (
           <div key={group.label} className="mb-1">
             {!collapsed ? (
@@ -399,7 +497,7 @@ export default function Sidebar({ collapsed, onToggle }) {
   )
 }
 
-function SidebarItem({ label, icon, active, collapsed, onPin, isPinned, to }) {
+function SidebarItem({ label, icon, active, collapsed, onPin, isPinned, to, badge }) {
   const path = to || `/${label.toLowerCase().replace(/\s+/g, '-')}`
 
   return (
@@ -407,7 +505,7 @@ function SidebarItem({ label, icon, active, collapsed, onPin, isPinned, to }) {
       to={path}
       end={path === '/employees'}
       className={`group relative flex items-center gap-2.5 px-2 py-1.5 rounded text-sm transition-all duration-150 ${active
-        ? 'text-white font-medium'
+        ? 'text-white font-medium bg-indigo-600/20'
         : 'text-sidebar-text hover:bg-sidebar-item-hover hover:text-sidebar-text-hover'
       } ${collapsed ? 'justify-center mx-0' : 'mx-0'}`}
       title={label}
@@ -435,9 +533,14 @@ function SidebarItem({ label, icon, active, collapsed, onPin, isPinned, to }) {
             initial={{ opacity: 0, width: 0 }}
             animate={{ opacity: 1, width: "auto" }}
             exit={{ opacity: 0, width: 0 }}
-            className="flex flex-1 items-center overflow-hidden"
+            className="flex flex-1 items-center justify-between overflow-hidden"
           >
             <span className="truncate flex-1">{label}</span>
+            {badge && (
+              <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-slate-800 text-slate-400 border border-slate-700">
+                {badge}
+              </span>
+            )}
             {onPin && (
               <button
                 onClick={(e) => { e.preventDefault(); e.stopPropagation(); onPin?.() }}
