@@ -27,7 +27,7 @@ const io = new Server(server, {
 // Redis & Postgres Initialization (graceful fallback if unavailable)
 let redis;
 try {
-    redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379', {
+    redis = new Redis(process.env.REDIS_URL, {
         maxRetriesPerRequest: 1,
         retryStrategy: () => null,
         lazyConnect: true
@@ -41,7 +41,7 @@ try {
 }
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/worksphere',
+    connectionString: process.env.DATABASE_URL,
     connectionTimeoutMillis: 2000,
 });
 

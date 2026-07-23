@@ -8,12 +8,12 @@ import Asset from './models/Asset.js';
 dotenv.config();
 
 const users = [
-  { name: 'Admin User', email: 'admin@company.com', password: 'password123', role: 'admin', department: 'IT' },
-  { name: 'Sarah Mitchell', email: 'sarah@company.com', password: 'password123', role: 'it_staff', department: 'IT Support' },
-  { name: 'Mike Chen', email: 'mike@company.com', password: 'password123', role: 'it_staff', department: 'IT Support' },
-  { name: 'John Doe', email: 'john@company.com', password: 'password123', role: 'employee', department: 'Engineering' },
-  { name: 'Emily Davis', email: 'emily@company.com', password: 'password123', role: 'employee', department: 'Marketing' },
-  { name: 'James Wilson', email: 'james@company.com', password: 'password123', role: 'employee', department: 'Sales' },
+  { name: 'Admin User', email: 'admin@company.com', password: process.env.SEED_DEFAULT_PASSWORD || 'DevPass123!', role: 'admin', department: 'IT' },
+  { name: 'Sarah Mitchell', email: 'sarah@company.com', password: process.env.SEED_DEFAULT_PASSWORD || 'DevPass123!', role: 'it_staff', department: 'IT Support' },
+  { name: 'Mike Chen', email: 'mike@company.com', password: process.env.SEED_DEFAULT_PASSWORD || 'DevPass123!', role: 'it_staff', department: 'IT Support' },
+  { name: 'John Doe', email: 'john@company.com', password: process.env.SEED_DEFAULT_PASSWORD || 'DevPass123!', role: 'employee', department: 'Engineering' },
+  { name: 'Emily Davis', email: 'emily@company.com', password: process.env.SEED_DEFAULT_PASSWORD || 'DevPass123!', role: 'employee', department: 'Marketing' },
+  { name: 'James Wilson', email: 'james@company.com', password: process.env.SEED_DEFAULT_PASSWORD || 'DevPass123!', role: 'employee', department: 'Sales' },
 ];
 
 const tickets = [
@@ -35,7 +35,7 @@ const assets = [
 
 async function seed() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/it_helpdesk');
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log('Connected to MongoDB');
 
     await User.deleteMany({});
@@ -69,10 +69,7 @@ async function seed() {
     console.log('Created ' + createdAssets.length + ' assets');
 
     console.log('\nSeed completed successfully!');
-    console.log('\nDemo accounts:');
-    console.log('  Admin: admin@company.com / password123');
-    console.log('  IT Staff: sarah@company.com / password123');
-    console.log('  Employee: john@company.com / password123');
+    console.log('\nDemo accounts created. Check seed script or .env for credentials.');
 
     process.exit(0);
   } catch (error) {
