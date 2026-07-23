@@ -660,8 +660,6 @@ export default function Sidebar({ collapsed, onToggle }) {
       return next
     })
   }, [])
-
-  const visibleItems = navGroups.filter(g => role === 'SUPER_ADMIN' || role === 'ADMIN' || allowedNav.includes(g.label))
   const visibleItems = navGroups.filter(g => {
     if (g.ctoOnly) return role === 'CTO'
     if (g.internOnly) return role === 'INTERN'
