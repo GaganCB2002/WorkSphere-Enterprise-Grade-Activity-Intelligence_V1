@@ -5,7 +5,7 @@ import User from '../models/User'
 import { db } from './db.service'
 import type { AppUser, AuthPayload } from '../data/types'
 
-const JWT_SECRET = (() => { const s = process.env.JWT_SECRET; if (!s) throw new Error('JWT_SECRET environment variable is required'); return s; })()
+const JWT_SECRET = process.env.JWT_SECRET || (console.warn('[SECURITY] JWT_SECRET not set. Using dev fallback. Set JWT_SECRET in production.'), 'worksphere-demo-secret')
 const TOKEN_TTL = '24h'
 const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://localhost:3005'
 
