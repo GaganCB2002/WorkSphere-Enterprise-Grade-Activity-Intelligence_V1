@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Routes, Route, useLocation, Outlet } from 'react-router-dom';
+import { Routes, Route, useLocation, Outlet, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 import { PageTransition } from '../components/layout/PageTransition';
@@ -33,6 +33,8 @@ import {
 
 const SystemCommandCenter = React.lazy(() => import('../modules/command_center/SystemCommandCenter').then(m => ({ default: m.SystemCommandCenter })));
 const SuperAdminDashboard = React.lazy(() => import('../modules/super_admin/SuperAdminDashboard').then(m => ({ default: m.SuperAdminDashboard })));
+const CtoRouter = React.lazy(() => import('../modules/cto/CtoRouter'));
+const InternRouter = React.lazy(() => import('../modules/intern/InternRouter'));
 
 const EmployeeDirectoryPage = React.lazy(() => import('../pages/Employees/EmployeeDirectoryPage').then(m => ({ default: m.default })));
 const RbacPage = React.lazy(() => import('../pages/Employees/RbacPage').then(m => ({ default: m.default })));
@@ -207,7 +209,7 @@ const DashboardRouter = () => {
     case 'SUPER_ADMIN': return <SuperAdminDashboard />;
     case 'ADMIN': return <AdminDashboard />;
     case 'CEO': return <CeoDashboard />;
-    case 'CTO': return <CtoDashboard />;
+    case 'CTO': return <Navigate to="/cto/executive-overview" replace />;
     case 'HR_MANAGER': return <HrManagerDashboard />;
     case 'HR_EXECUTIVE': return <HrExecutiveDashboard />;
     case 'FINANCE_MANAGER': return <FinanceManagerDashboard />;
@@ -221,7 +223,7 @@ const DashboardRouter = () => {
     case 'SECURITY_ANALYST': return <SecurityAnalystDashboard />;
     case 'SUPPORT_AGENT': return <SupportDashboard />;
     case 'EMPLOYEE': return <EmployeeDashboard />;
-    case 'INTERN': return <InternDashboard />;
+    case 'INTERN': return <Navigate to="/intern/dashboard" replace />;
     case 'MANAGER':
     case 'Manager': return <ManagerDashboard />;
     default: return <SuperAdminDashboard />;
@@ -532,6 +534,28 @@ const AppRoutes = () => {
   <Route path="settings/two-factor-authentication" element={<EmpTwoFactorAuthentication />} />
   <Route path="settings/notification-preferences" element={<EmpNotificationPreferences />} />
 </Route>
+
+        {/* CTO Module Routes */}
+        <Route path="/cto/*" element={
+          <ProtectedRoute>
+            <Suspense fallback={<PageLoadingFull />}>
+              <PageTransition>
+                <CtoRouter />
+              </PageTransition>
+            </Suspense>
+          </ProtectedRoute>
+        } />
+
+        {/* Intern Module Routes */}
+        <Route path="/intern/*" element={
+          <ProtectedRoute>
+            <Suspense fallback={<PageLoadingFull />}>
+              <PageTransition>
+                <InternRouter />
+              </PageTransition>
+            </Suspense>
+          </ProtectedRoute>
+        } />
 
         {/* Full Screen Command Center */}
         <Route path="/command-center" element={

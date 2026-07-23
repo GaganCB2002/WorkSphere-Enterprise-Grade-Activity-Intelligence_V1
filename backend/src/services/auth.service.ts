@@ -5,7 +5,7 @@ import User from '../models/User'
 import { db } from './db.service'
 import type { AppUser, AuthPayload } from '../data/types'
 
-const JWT_SECRET = process.env.JWT_SECRET ?? 'worksphere-demo-secret'
+const JWT_SECRET = process.env.JWT_SECRET || (console.warn('[SECURITY] JWT_SECRET not set. Using dev fallback. Set JWT_SECRET in production.'), 'worksphere-demo-secret')
 const TOKEN_TTL = '24h'
 const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://localhost:3005'
 
@@ -75,7 +75,7 @@ export const authService = {
 
     // 1. Try Employee Server (Django) for dynamic employee lookups
     try {
-      const djangoUrl = process.env.DJANGO_API_URL || 'http://127.0.0.1:8000/api'
+      const djangoUrl = process.env.DJANGO_API_URL
       const response = await fetch(`${djangoUrl}/accounts/login/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
