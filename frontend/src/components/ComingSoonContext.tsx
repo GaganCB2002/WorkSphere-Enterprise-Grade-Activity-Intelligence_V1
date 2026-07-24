@@ -8,6 +8,7 @@ interface ComingSoonContextValue {
 
 const ComingSoonContext = createContext<ComingSoonContextValue | null>(null)
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useComingSoon() {
   const ctx = useContext(ComingSoonContext)
   if (!ctx) throw new Error('useComingSoon must be used within ComingSoonProvider')
