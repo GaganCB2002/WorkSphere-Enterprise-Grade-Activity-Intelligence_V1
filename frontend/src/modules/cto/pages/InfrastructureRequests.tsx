@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, CheckCircle2, XCircle, PlayCircle } from 'lucide-react';
@@ -17,8 +16,8 @@ const columns = [
   { key: 'requester', label: 'Requester', sortable: true },
   { key: 'type', label: 'Type', sortable: true },
   { key: 'resource', label: 'Resource', sortable: true },
-  { key: 'priority', label: 'Priority', render: (v) => <StatusBadge status={v} /> },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'priority', label: 'Priority', render: (v: any) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'date', label: 'Date' },
 ];
 

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
@@ -26,8 +25,8 @@ const COLORS = ['#3b82f6', '#8b5cf6', '#f59e0b'];
 const columns = [
   { key: 'category', label: 'Category', sortable: true },
   { key: 'service', label: 'Service', sortable: true },
-  { key: 'monthlyCost', label: 'Monthly Cost', sortable: true, render: (v) => <span className="text-blue-600 font-semibold">{v}</span> },
-  { key: 'trend', label: 'Trend', render: (v) => <StatusBadge status={v} /> },
+  { key: 'monthlyCost', label: 'Monthly Cost', sortable: true, render: (v: any) => <span className="text-blue-600 font-semibold">{v}</span> },
+  { key: 'trend', label: 'Trend', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'pctTotal', label: '% of Total' },
 ];
 

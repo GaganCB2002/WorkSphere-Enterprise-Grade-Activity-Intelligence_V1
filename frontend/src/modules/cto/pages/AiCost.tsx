@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
@@ -29,8 +28,8 @@ const columns = [
   { key: 'compute', label: 'Compute', sortable: true },
   { key: 'api', label: 'API', sortable: true },
   { key: 'storage', label: 'Storage', sortable: true },
-  { key: 'total', label: 'Total', sortable: true, render: (v) => <span className="text-blue-600 font-semibold">{v}</span> },
-  { key: 'trend', label: 'Trend', render: (v) => <StatusBadge status={v} /> },
+  { key: 'total', label: 'Total', sortable: true, render: (v: any) => <span className="text-blue-600 font-semibold">{v}</span> },
+  { key: 'trend', label: 'Trend', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const data = [

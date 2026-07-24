@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -27,7 +26,7 @@ const gcpColumns = [
   { key: 'name', label: 'Resource Name' },
   { key: 'type', label: 'Type' },
   { key: 'region', label: 'Region' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'cost', label: 'Cost/Month' },
 ];
 

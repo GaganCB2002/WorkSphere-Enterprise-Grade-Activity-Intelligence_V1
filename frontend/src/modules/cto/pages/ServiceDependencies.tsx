@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GitBranch, Share2, Map, Target, ArrowRight, Server, Database, Zap } from 'lucide-react';
@@ -35,7 +34,7 @@ const depColumns = [
   { key: 'target', label: 'Target' },
   { key: 'type', label: 'Type' },
   { key: 'protocol', label: 'Protocol' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'latency', label: 'Latency' },
 ];
 
@@ -50,7 +49,7 @@ const depData = [
   { source: 'Inventory', target: 'MongoDB', type: 'Database', protocol: 'TCP', status: 'Healthy', latency: '3ms' },
 ];
 
-const nodePositions = { 'API GW': 'left-[45%] top-[2%]', Auth: 'left-[15%] top-[22%]', Users: 'left-[45%] top-[22%]', Orders: 'left-[75%] top-[22%]', Payments: 'left-[45%] top-[42%]', Postgres: 'left-[15%] top-[62%]', Redis: 'left-[45%] top-[62%]', Kafka: 'left-[75%] top-[62%]' };
+const nodePositions: Record<string, string> = { 'API GW': 'left-[45%] top-[2%]', Auth: 'left-[15%] top-[22%]', Users: 'left-[45%] top-[22%]', Orders: 'left-[75%] top-[22%]', Payments: 'left-[45%] top-[42%]', Postgres: 'left-[15%] top-[62%]', Redis: 'left-[45%] top-[62%]', Kafka: 'left-[75%] top-[62%]' };
 
 const ServiceDependencies = () => (
   <CtoPageShell title="Service Dependencies" description="Service dependency graph and impact analysis" breadcrumbs={[{ label: 'CTO Dashboard', path: '/cto/executive-overview' }, { label: 'Service Dependencies' }]}>
@@ -107,5 +106,6 @@ const ServiceDependencies = () => (
 );
 
 export default ServiceDependencies;
+
 
 

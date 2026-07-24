@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, CheckCircle2, Clock, Timer } from 'lucide-react';
@@ -18,7 +17,7 @@ const columns = [
   { key: 'time', label: 'Time' },
   { key: 'attendees', label: 'Attendees', sortable: true },
   { key: 'location', label: 'Location' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const data = [

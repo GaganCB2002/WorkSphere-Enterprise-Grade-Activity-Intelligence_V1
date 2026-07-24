@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Bell, Mail, AlertTriangle, Info, CheckCheck, Filter, Clock } from 'lucide-react';
@@ -24,7 +23,7 @@ const notifications = [
   { id: 10, type: 'warning', message: 'License renewal: New Relic Pro expiring Jun 2025', time: '3 days ago', read: true },
 ];
 
-const typeStyles = {
+const typeStyles: Record<string, { bg: string; icon: any; color: string; dot: string }> = {
   alert: { bg: 'bg-red-50 dark:bg-red-500/10', icon: AlertTriangle, color: 'text-red-500', dot: 'bg-red-500' },
   warning: { bg: 'bg-amber-50 dark:bg-amber-500/10', icon: AlertTriangle, color: 'text-amber-500', dot: 'bg-amber-500' },
   info: { bg: 'bg-blue-50 dark:bg-blue-500/10', icon: Info, color: 'text-blue-500', dot: 'bg-blue-500' },
@@ -39,7 +38,7 @@ const NotificationsPage = () => {
 
   const markAllRead = () => setItems(prev => prev.map(n => ({ ...n, read: true })));
 
-  const toggleRead = (id) => setItems(prev => prev.map(n => n.id === id ? { ...n, read: !n.read } : n));
+  const toggleRead = (id: number) => setItems(prev => prev.map(n => n.id === id ? { ...n, read: !n.read } : n));
 
   return (
     <CtoPageShell title="Notifications" description="View and manage notification alerts and activity updates">

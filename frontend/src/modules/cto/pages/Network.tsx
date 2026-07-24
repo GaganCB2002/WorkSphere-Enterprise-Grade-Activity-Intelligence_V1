@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -27,7 +26,7 @@ const networkColumns = [
   { key: 'device', label: 'Device' },
   { key: 'speed', label: 'Speed' },
   { key: 'ip', label: 'IP Address' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'throughput', label: 'Throughput' },
 ];
 

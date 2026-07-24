@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -22,9 +21,9 @@ const columns = [
   { key: 'vendor', label: 'Vendor', sortable: true },
   { key: 'service', label: 'Service', sortable: true },
   { key: 'uptimeTarget', label: 'Uptime Target', sortable: true },
-  { key: 'actual', label: 'Actual', sortable: true, render: (v) => <span className="text-emerald-600 font-semibold">{v}%</span> },
+  { key: 'actual', label: 'Actual', sortable: true, render: (v: any) => <span className="text-emerald-600 font-semibold">{v}%</span> },
   { key: 'responseTime', label: 'Response Time' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const data = [

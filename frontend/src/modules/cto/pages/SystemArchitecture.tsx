@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Server, Share2, GitBranch, Database, Globe, Lock, Zap, ArrowRight } from 'lucide-react';
@@ -23,7 +22,7 @@ const layers = [
 const serviceRegistryColumns = [
   { key: 'name', label: 'Service Name' },
   { key: 'version', label: 'Version' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'dependencies', label: 'Dependencies' },
   { key: 'endpoints', label: 'Endpoints' },
   { key: 'owner', label: 'Owner' },

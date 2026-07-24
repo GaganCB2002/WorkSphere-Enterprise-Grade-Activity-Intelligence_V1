@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Kanban, AlertTriangle, CheckCircle, DollarSign, Activity } from 'lucide-react';
@@ -15,11 +14,11 @@ const kpiData = [
 const columns = [
   { key: 'name', label: 'Project Name' },
   { key: 'manager', label: 'Manager' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'progress', label: 'Progress' },
   { key: 'budget', label: 'Budget' },
   { key: 'timeline', label: 'Timeline' },
-  { key: 'health', label: 'Health', render: (v) => <StatusBadge status={v} /> },
+  { key: 'health', label: 'Health', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const data = [

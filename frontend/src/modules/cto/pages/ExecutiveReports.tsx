@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Calendar, Download, Settings, Shield, DollarSign, HardDrive } from 'lucide-react';
@@ -26,7 +25,7 @@ const columns = [
   { key: 'generated', label: 'Generated' },
   { key: 'scheduled', label: 'Schedule' },
   { key: 'lastRun', label: 'Last Run' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const data = [

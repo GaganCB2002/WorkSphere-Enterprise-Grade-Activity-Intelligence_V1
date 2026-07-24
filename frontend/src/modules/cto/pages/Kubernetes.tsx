@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -25,7 +24,7 @@ const clusterUsage = [
 const podColumns = [
   { key: 'name', label: 'Pod Name' },
   { key: 'namespace', label: 'Namespace' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'restarts', label: 'Restarts' },
   { key: 'cpu', label: 'CPU' },
   { key: 'memory', label: 'Memory' },

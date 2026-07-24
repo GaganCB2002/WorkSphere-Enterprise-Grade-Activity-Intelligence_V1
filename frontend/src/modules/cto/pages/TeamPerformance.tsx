@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Legend } from 'recharts';
@@ -48,7 +47,7 @@ const memberColumns = [
   { key: 'velocity', label: 'Velocity (pts)' },
   { key: 'reviews', label: 'Reviews' },
   { key: 'bugs', label: 'Bugs' },
-  { key: 'satisfaction', label: 'Satisfaction', render: (v) => `${v}/5` },
+  { key: 'satisfaction', label: 'Satisfaction', render: (v: any) => `${v}/5` },
   { key: 'status', label: 'Status', render: () => <StatusBadge status="Active" /> },
 ];
 

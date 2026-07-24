@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Compass, PlayCircle, CheckCircle2, ClipboardList } from 'lucide-react';
@@ -23,8 +22,8 @@ const columns = [
   { key: 'name', label: 'Initiative', sortable: true },
   { key: 'category', label: 'Category', sortable: true },
   { key: 'quarter', label: 'Quarter', sortable: true },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
-  { key: 'progress', label: 'Progress', render: (v) => <span className="text-blue-600 font-semibold">{v}%</span> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
+  { key: 'progress', label: 'Progress', render: (v: any) => <span className="text-blue-600 font-semibold">{v}%</span> },
   { key: 'owner', label: 'Owner', sortable: true },
 ];
 

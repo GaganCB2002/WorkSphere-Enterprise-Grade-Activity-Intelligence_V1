@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -17,7 +16,7 @@ const columns = [
   { key: 'id', label: 'Build ID' },
   { key: 'project', label: 'Project' },
   { key: 'branch', label: 'Branch' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'progress', label: 'Progress' },
   { key: 'duration', label: 'Duration' },
   { key: 'triggeredBy', label: 'Triggered By' },

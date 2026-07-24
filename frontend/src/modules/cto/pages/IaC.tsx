@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { Layers, Box, Server, AlertTriangle } from 'lucide-react';
 import CtoPageShell from '../CtoPageShell';

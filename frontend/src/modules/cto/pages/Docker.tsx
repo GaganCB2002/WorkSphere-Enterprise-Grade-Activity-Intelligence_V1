@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
@@ -23,7 +22,7 @@ const statusDistribution = [
 const containerColumns = [
   { key: 'name', label: 'Container Name' },
   { key: 'image', label: 'Image' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'ports', label: 'Ports' },
   { key: 'created', label: 'Created' },
   { key: 'command', label: 'Command' },

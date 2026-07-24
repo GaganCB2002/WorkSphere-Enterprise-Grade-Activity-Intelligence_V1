@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Milestone, CheckCircle, AlertTriangle, Calendar, Activity } from 'lucide-react';
@@ -16,7 +15,7 @@ const columns = [
   { key: 'name', label: 'Milestone' },
   { key: 'project', label: 'Project' },
   { key: 'dueDate', label: 'Due Date' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'progress', label: 'Progress' },
   { key: 'owner', label: 'Owner' },
 ];

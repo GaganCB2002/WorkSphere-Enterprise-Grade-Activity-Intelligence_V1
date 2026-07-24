@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { GitBranch, CheckCircle2, Clock, XCircle } from 'lucide-react';

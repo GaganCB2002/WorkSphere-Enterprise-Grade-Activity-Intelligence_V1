@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Server, CheckCircle2, AlertTriangle, XCircle, Cpu, HardDrive, Clock } from 'lucide-react';
@@ -25,7 +24,7 @@ const microserviceColumns = [
   { key: 'name', label: 'Service Name' },
   { key: 'version', label: 'Version' },
   { key: 'language', label: 'Language' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'pods', label: 'Pods' },
   { key: 'cpu', label: 'CPU' },
   { key: 'memory', label: 'Memory' },

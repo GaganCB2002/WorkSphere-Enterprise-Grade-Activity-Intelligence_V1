@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
@@ -26,10 +25,10 @@ const COLORS = ['#f59e0b', '#6366f1', '#10b981'];
 const columns = [
   { key: 'service', label: 'Service', sortable: true },
   { key: 'provider', label: 'Provider', sortable: true },
-  { key: 'cost', label: 'Cost', sortable: true, render: (v) => <span className="text-blue-600 font-semibold">{v}</span> },
+  { key: 'cost', label: 'Cost', sortable: true, render: (v: any) => <span className="text-blue-600 font-semibold">{v}</span> },
   { key: 'budget', label: 'Budget', sortable: true },
   { key: 'forecast', label: 'Forecast', sortable: true },
-  { key: 'variance', label: 'Variance', render: (v) => <StatusBadge status={v} /> },
+  { key: 'variance', label: 'Variance', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const data = [

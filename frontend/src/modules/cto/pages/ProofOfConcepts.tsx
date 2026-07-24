@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FlaskConical, CheckCircle2, TrendingUp, DollarSign } from 'lucide-react';
@@ -18,7 +17,7 @@ const columns = [
   { key: 'team', label: 'Team', sortable: true },
   { key: 'budget', label: 'Budget', sortable: true },
   { key: 'timeline', label: 'Timeline' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'outcome', label: 'Outcome', sortable: true },
 ];
 

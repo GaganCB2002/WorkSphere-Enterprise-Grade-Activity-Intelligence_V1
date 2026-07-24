@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
@@ -47,9 +46,9 @@ const debtColumns = [
   { key: 'id', label: 'ID' },
   { key: 'module', label: 'Module' },
   { key: 'type', label: 'Type' },
-  { key: 'severity', label: 'Severity', render: (v) => <StatusBadge status={v} /> },
+  { key: 'severity', label: 'Severity', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'hours', label: 'Est. Hours' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'assignedTo', label: 'Assigned To' },
 ];
 

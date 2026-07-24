@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, ReferenceLine, Cell } from 'recharts';
@@ -40,15 +39,15 @@ const backlog = [
   { id: 'SP-110', task: 'Create user onboarding tour', assignee: 'Bob Kumar', status: 'In Review', points: 5, priority: 'Medium' },
 ];
 
-const COLORS = { 'To Do': '#94a3b8', 'In Progress': '#3b82f6', 'In Review': '#f59e0b', Testing: '#8b5cf6', Done: '#10b981' };
+const COLORS: Record<string, string> = { 'To Do': '#94a3b8', 'In Progress': '#3b82f6', 'In Review': '#f59e0b', Testing: '#8b5cf6', Done: '#10b981' };
 
 const backlogColumns = [
   { key: 'id', label: 'ID' },
   { key: 'task', label: 'Task' },
   { key: 'assignee', label: 'Assignee' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'points', label: 'Points' },
-  { key: 'priority', label: 'Priority', render: (v) => <StatusBadge status={v} /> },
+  { key: 'priority', label: 'Priority', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const SprintDashboard = () => (
@@ -110,5 +109,6 @@ const SprintDashboard = () => (
 );
 
 export default SprintDashboard;
+
 
 

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare, Activity, FileText, TrendingUp } from 'lucide-react';
@@ -17,9 +16,9 @@ const columns = [
   { key: 'model', label: 'Model', sortable: true },
   { key: 'version', label: 'Version' },
   { key: 'tokens', label: 'Tokens', sortable: true },
-  { key: 'score', label: 'Score', sortable: true, render: (v) => <span className="text-amber-600 font-semibold">{v}</span> },
+  { key: 'score', label: 'Score', sortable: true, render: (v: any) => <span className="text-amber-600 font-semibold">{v}</span> },
   { key: 'lastUsed', label: 'Last Used' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const data = [
