@@ -12,7 +12,7 @@ export default defineConfig({
     },
   },
   build: {
-    chunkSizeWarningLimit: 1200,
+    chunkSizeWarningLimit: 3000,
     sourcemap: false
   },
   server: {
