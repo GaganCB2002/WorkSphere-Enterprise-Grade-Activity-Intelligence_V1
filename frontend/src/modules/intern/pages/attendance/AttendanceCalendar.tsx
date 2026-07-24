@@ -40,6 +40,13 @@ function getFirstDayOfMonth(year: number, month: number) {
   return new Date(year, month, 1).getDay();
 }
 
+export const LegendItem = ({ color, label, icon }: { color: string; label: string; icon: React.ReactNode }) => (
+  <div className="flex items-center gap-1.5 text-xs font-medium text-slate-600 dark:text-slate-300">
+    <span className={`w-3 h-3 rounded-sm ${color}`}>{icon}</span>
+    {label}
+  </div>
+);
+
 export default function AttendanceCalendarPage() {
   const now = new Date();
   const [year, setYear] = useState(now.getFullYear());
@@ -81,12 +88,6 @@ export default function AttendanceCalendarPage() {
     }
   };
 
-  const LegendItem = ({ color, label, icon }: { color: string; label: string; icon: React.ReactNode }) => (
-    <div className="flex items-center gap-1.5 text-xs font-medium text-slate-600 dark:text-slate-300">
-      <span className={`w-3 h-3 rounded-sm ${color}`}>{icon}</span>
-      {label}
-    </div>
-  );
 
   return (
     <InternPageShell title="Attendance Calendar" description="Monthly view of your attendance">

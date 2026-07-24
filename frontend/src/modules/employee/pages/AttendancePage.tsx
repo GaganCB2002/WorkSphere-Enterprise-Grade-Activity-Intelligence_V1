@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Clock, ShieldAlert, Award, Compass, HeartPulse, Filter, Download, RefreshCw } from 'lucide-react';
 import { useAttendanceStore } from '../store/employeeStore';
 import { EmployeePageLayout } from '../components/EmployeePageLayout';
@@ -46,7 +46,7 @@ export function AttendancePage() {
       updateTimer();
       interval = setInterval(updateTimer, 60000);
     } else {
-      setTimerText('00h 00m');
+      setTimeout(() => setTimerText('00h 00m'), 0);
     }
     return () => clearInterval(interval);
   }, [session.isActive, session.clockIn, session.breaks, updateSessionWorkedMinutes, session.workedMinutes]);
