@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, CheckCircle2, AlertTriangle, DollarSign } from 'lucide-react';
@@ -15,11 +14,11 @@ const kpis = [
 const columns = [
   { key: 'vendor', label: 'Vendor', sortable: true },
   { key: 'type', label: 'Contract Type', sortable: true },
-  { key: 'value', label: 'Value', sortable: true, render: (v) => <span className="text-blue-600 font-semibold">{v}</span> },
+  { key: 'value', label: 'Value', sortable: true, render: (v: any) => <span className="text-blue-600 font-semibold">{v}</span> },
   { key: 'start', label: 'Start Date' },
   { key: 'end', label: 'End Date' },
-  { key: 'autoRenew', label: 'Auto-Renew', render: (v) => v ? <span className="text-emerald-600 font-semibold">Yes</span> : <span className="text-slate-400">No</span> },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'autoRenew', label: 'Auto-Renew', render: (v: any) => v ? <span className="text-emerald-600 font-semibold">Yes</span> : <span className="text-slate-400">No</span> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const data = [

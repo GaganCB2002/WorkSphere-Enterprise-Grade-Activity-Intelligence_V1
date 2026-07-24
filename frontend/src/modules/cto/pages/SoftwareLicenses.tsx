@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, CheckCircle2, AlertTriangle, DollarSign } from 'lucide-react';
@@ -19,7 +18,7 @@ const columns = [
   { key: 'seats', label: 'Seats Used/Total', sortable: true },
   { key: 'expiry', label: 'Expiry' },
   { key: 'cost', label: 'Annual Cost', sortable: true },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const data = [

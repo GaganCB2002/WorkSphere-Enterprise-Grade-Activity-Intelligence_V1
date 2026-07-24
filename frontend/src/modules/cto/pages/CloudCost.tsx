@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
@@ -32,7 +31,7 @@ const costColumns = [
   { key: 'service', label: 'Service' },
   { key: 'provider', label: 'Provider' },
   { key: 'monthlyCost', label: 'Monthly Cost' },
-  { key: 'trend', label: 'Trend', render: (v) => {
+  { key: 'trend', label: 'Trend', render: (v: any) => {
     const isUp = v.startsWith('+');
     return <span className={`inline-flex items-center gap-1 text-xs font-bold ${isUp ? 'text-red-500' : 'text-emerald-500'}`}>{isUp ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}{v}</span>;
   } },

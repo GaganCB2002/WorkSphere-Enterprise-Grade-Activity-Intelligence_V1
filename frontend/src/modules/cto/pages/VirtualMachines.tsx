@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -28,7 +27,7 @@ const vmColumns = [
   { key: 'ram', label: 'RAM' },
   { key: 'disk', label: 'Disk' },
   { key: 'os', label: 'OS' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'host', label: 'Host' },
 ];
 

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, CheckCircle2, DollarSign, TrendingUp } from 'lucide-react';
@@ -16,10 +15,10 @@ const columns = [
   { key: 'id', label: 'Request ID', sortable: true },
   { key: 'software', label: 'Software', sortable: true },
   { key: 'vendor', label: 'Vendor', sortable: true },
-  { key: 'cost', label: 'Cost', sortable: true, render: (v) => <span className="text-blue-600 font-semibold">{v}</span> },
+  { key: 'cost', label: 'Cost', sortable: true, render: (v: any) => <span className="text-blue-600 font-semibold">{v}</span> },
   { key: 'department', label: 'Department', sortable: true },
-  { key: 'priority', label: 'Priority', render: (v) => <StatusBadge status={v} /> },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'priority', label: 'Priority', render: (v: any) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const data = [

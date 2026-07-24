@@ -40,7 +40,7 @@ const timelineData: Record<string, Array<{
   ],
 };
 
-const milestones = {
+const milestones: Record<string, { name: string; date: string; done: boolean }[]> = {
   'Portal Redesign': [
     { name: 'Design Approval', date: '2026-07-05', done: true },
     { name: 'MVP Launch', date: '2026-08-15', done: false },
@@ -202,3 +202,4 @@ export default function ProjectTimeline() {
     </InternPageShell>
   );
 }
+

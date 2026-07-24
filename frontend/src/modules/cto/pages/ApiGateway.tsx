@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -22,14 +21,14 @@ const requestVolume = [
 
 const apiColumns = [
   { key: 'path', label: 'Path' },
-  { key: 'method', label: 'Method', render: (v) => {
-    const colors = { GET: 'text-emerald-600 bg-emerald-50 dark:bg-emerald-950', POST: 'text-blue-600 bg-blue-50 dark:bg-blue-950', PUT: 'text-amber-600 bg-amber-50 dark:bg-amber-950', DELETE: 'text-red-600 bg-red-50 dark:bg-red-950' };
+  { key: 'method', label: 'Method', render: (v: any) => {
+    const colors: Record<string, string> = { GET: `text-emerald-600 bg-emerald-50 dark:bg-emerald-950`, POST: `text-blue-600 bg-blue-50 dark:bg-blue-950`, PUT: `text-amber-600 bg-amber-50 dark:bg-amber-950`, DELETE: `text-red-600 bg-red-50 dark:bg-red-950` };
     return <span className={`px-2 py-0.5 rounded text-xs font-bold font-mono ${colors[v] || 'text-slate-600 bg-slate-50'}`}>{v}</span>;
   } },
   { key: 'service', label: 'Service' },
   { key: 'latency', label: 'Latency' },
   { key: 'rateLimit', label: 'Rate Limit' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const apiData = [
@@ -87,5 +86,6 @@ const ApiGateway = () => (
 );
 
 export default ApiGateway;
+
 
 

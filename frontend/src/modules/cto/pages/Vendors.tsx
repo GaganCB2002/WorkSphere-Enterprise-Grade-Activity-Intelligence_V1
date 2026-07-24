@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Building, CheckCircle2, Star, ThumbsUp } from 'lucide-react';
@@ -16,8 +15,8 @@ const columns = [
   { key: 'name', label: 'Vendor Name', sortable: true },
   { key: 'category', label: 'Category', sortable: true },
   { key: 'contact', label: 'Contact' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
-  { key: 'satisfaction', label: 'Satisfaction', sortable: true, render: (v) => <span className="text-amber-600 font-semibold">{v}/5</span> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
+  { key: 'satisfaction', label: 'Satisfaction', sortable: true, render: (v: any) => <span className="text-amber-600 font-semibold">{v}/5</span> },
   { key: 'spend', label: 'Annual Spend', sortable: true },
   { key: 'contract', label: 'Contract End' },
 ];

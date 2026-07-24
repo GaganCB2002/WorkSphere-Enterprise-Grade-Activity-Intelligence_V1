@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -26,9 +25,9 @@ const columns = [
   { key: 'name', label: 'GPU Name', sortable: true },
   { key: 'model', label: 'Model', sortable: true },
   { key: 'memory', label: 'Memory', sortable: true },
-  { key: 'utilization', label: 'Utilization', sortable: true, render: (v) => <span className="text-emerald-600 font-semibold">{v}</span> },
+  { key: 'utilization', label: 'Utilization', sortable: true, render: (v: any) => <span className="text-emerald-600 font-semibold">{v}</span> },
   { key: 'temperature', label: 'Temp', sortable: true },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const data = [

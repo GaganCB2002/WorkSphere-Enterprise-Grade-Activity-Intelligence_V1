@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -25,7 +24,7 @@ const dbColumns = [
   { key: 'engine', label: 'Engine' },
   { key: 'size', label: 'Size' },
   { key: 'connections', label: 'Connections' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'replication', label: 'Replication' },
 ];
 

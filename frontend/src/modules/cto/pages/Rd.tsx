@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -24,8 +23,8 @@ const columns = [
   { key: 'name', label: 'Project', sortable: true },
   { key: 'lead', label: 'Lead', sortable: true },
   { key: 'budget', label: 'Budget', sortable: true },
-  { key: 'spent', label: 'Spent', sortable: true, render: (v) => <span className="text-blue-600 font-semibold">{v}</span> },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'spent', label: 'Spent', sortable: true, render: (v: any) => <span className="text-blue-600 font-semibold">{v}</span> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'phase', label: 'Phase', sortable: true },
   { key: 'timeline', label: 'Timeline' },
 ];

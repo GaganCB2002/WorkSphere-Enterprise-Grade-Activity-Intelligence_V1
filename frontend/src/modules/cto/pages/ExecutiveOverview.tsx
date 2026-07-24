@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
@@ -55,17 +54,17 @@ const activityFeed = [
 const incidentColumns = [
   { key: 'id', label: 'Incident ID' },
   { key: 'service', label: 'Service' },
-  { key: 'severity', label: 'Severity', render: (v) => <StatusBadge status={v} /> },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'severity', label: 'Severity', render: (v: any) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'detected', label: 'Detected' },
   { key: 'duration', label: 'Duration' },
   { key: 'owner', label: 'Owner' },
 ];
 
-const ActivityIcon = ({ type }) => {
-  const icons = { deploy: Zap, pr: GitMerge, system: Server, security: ShieldAlert, db: HardDrive };
+const ActivityIcon = ({ type }: { type: string }) => {
+  const icons: Record<string, any> = { deploy: Zap, pr: GitMerge, system: Server, security: ShieldAlert, db: HardDrive };
   const Icon = icons[type] || Activity;
-  const colors = { deploy: 'text-blue-500 bg-blue-50', pr: 'text-purple-500 bg-purple-50', system: 'text-slate-500 bg-slate-50', security: 'text-emerald-500 bg-emerald-50', db: 'text-amber-500 bg-amber-50' };
+  const colors: Record<string, string> = { deploy: `text-blue-500 bg-blue-50`, pr: `text-purple-500 bg-purple-50`, system: `text-slate-500 bg-slate-50`, security: `text-emerald-500 bg-emerald-50`, db: `text-amber-500 bg-amber-50` };
   const [text, bg] = colors[type]?.split(' ') || ['text-slate-500', 'bg-slate-50'];
   return (
     <div className={`w-8 h-8 rounded-lg ${bg} dark:bg-slate-800 flex items-center justify-center border border-slate-200 dark:border-slate-700`}>
@@ -195,6 +194,7 @@ const ExecutiveOverview = () => {
 
 export default ExecutiveOverview;
 export { StatusBadge } from '../../../components/common/DataTable/DataTable';
+
 
 
 

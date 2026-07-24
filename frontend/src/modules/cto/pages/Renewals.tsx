@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, AlertTriangle, DollarSign } from 'lucide-react';
@@ -15,10 +14,10 @@ const kpis = [
 const columns = [
   { key: 'contract', label: 'Contract', sortable: true },
   { key: 'vendor', label: 'Vendor', sortable: true },
-  { key: 'value', label: 'Value', sortable: true, render: (v) => <span className="text-blue-600 font-semibold">{v}</span> },
+  { key: 'value', label: 'Value', sortable: true, render: (v: any) => <span className="text-blue-600 font-semibold">{v}</span> },
   { key: 'currentEnd', label: 'Current End' },
   { key: 'newEnd', label: 'Proposed End' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'action', label: 'Action Needed' },
 ];
 

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -49,7 +48,7 @@ const fileColumns = [
   { key: 'linesTotal', label: 'Total Lines' },
   { key: 'branches', label: 'Branches' },
   { key: 'functions', label: 'Functions' },
-  { key: 'coverage', label: 'Coverage %', render: (v) => (
+  { key: 'coverage', label: 'Coverage %', render: (v: any) => (
     <div className="flex items-center gap-2">
       <div className="w-16 bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
         <div className={`h-1.5 rounded-full ${v >= 85 ? 'bg-emerald-500' : v >= 75 ? 'bg-amber-500' : 'bg-rose-500'}`} style={{ width: `${v}%` }} />

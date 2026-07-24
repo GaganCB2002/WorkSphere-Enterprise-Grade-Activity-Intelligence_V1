@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
@@ -26,7 +25,7 @@ const columns = [
   { key: 'version', label: 'Version' },
   { key: 'service', label: 'Service' },
   { key: 'environment', label: 'Environment' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'deployedBy', label: 'Deployed By' },
   { key: 'date', label: 'Date' },
   { key: 'rollback', label: 'Rollback' },

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -27,7 +26,7 @@ const columns = [
   { key: 'size', label: 'Size', sortable: true },
   { key: 'connections', label: 'Connections', sortable: true },
   { key: 'qps', label: 'Queries/sec', sortable: true },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const data = [

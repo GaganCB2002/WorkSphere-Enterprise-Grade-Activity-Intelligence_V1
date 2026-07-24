@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
@@ -23,7 +22,7 @@ const timelineByQuarter = [
 const columns = [
   { key: 'initiative', label: 'Initiative' },
   { key: 'quarter', label: 'Quarter' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'progress', label: 'Progress' },
   { key: 'owner', label: 'Owner' },
 ];

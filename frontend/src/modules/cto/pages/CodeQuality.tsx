@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
@@ -20,7 +19,7 @@ const issuesBySeverity = [
   { severity: 'Minor', count: 89 }, { severity: 'Info', count: 156 },
 ];
 
-const severityColors = { Critical: '#ef4444', Major: '#f59e0b', Minor: '#3b82f6', Info: '#94a3b8' };
+const severityColors: Record<string, string> = { Critical: '#ef4444', Major: '#f59e0b', Minor: '#3b82f6', Info: '#94a3b8' };
 
 const qualityData = [
   { project: 'core-api', coverage: 87, duplication: 3.2, maintainability: 'A', security: 0, status: 'Passed' },
@@ -34,15 +33,15 @@ const qualityData = [
 
 const qualityColumns = [
   { key: 'project', label: 'Project' },
-  { key: 'coverage', label: 'Coverage %', render: (v) => `${v}%` },
-  { key: 'duplication', label: 'Duplication %', render: (v) => `${v}%` },
+  { key: 'coverage', label: 'Coverage %', render: (v: any) => `${v}%` },
+  { key: 'duplication', label: 'Duplication %', render: (v: any) => `${v}%` },
   { key: 'maintainability', label: 'Maintainability' },
   { key: 'security', label: 'Security Hotspots' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
-const IssueTypeIcon = ({ type, count }) => {
-  const icons = { Critical: AlertCircle, Major: AlertTriangle, Minor: Info, Info: FileText };
+const IssueTypeIcon = ({ type, count }: { type: string; count: number }) => {
+  const icons: Record<string, any> = { Critical: AlertCircle, Major: AlertTriangle, Minor: Info, Info: FileText };
   const Icon = icons[type] || Info;
   return (
     <div className="flex items-center gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
@@ -116,5 +115,7 @@ const CodeQuality = () => (
 );
 
 export default CodeQuality;
+
+
 
 

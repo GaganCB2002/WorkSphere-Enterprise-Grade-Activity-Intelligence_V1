@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -50,7 +49,7 @@ const prColumns = [
   { key: 'title', label: 'Title' },
   { key: 'repo', label: 'Repository' },
   { key: 'author', label: 'Author' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'reviews', label: 'Reviews' },
   { key: 'created', label: 'Created' },
 ];

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
@@ -24,8 +23,8 @@ const columns = [
   { key: 'name', label: 'Project Name' },
   { key: 'budget', label: 'Budget' },
   { key: 'spent', label: 'Spent' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
-  { key: 'health', label: 'Health', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
+  { key: 'health', label: 'Health', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'timeline', label: 'Timeline' },
 ];
 

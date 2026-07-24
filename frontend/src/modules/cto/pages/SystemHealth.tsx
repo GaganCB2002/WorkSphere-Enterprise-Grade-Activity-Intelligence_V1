@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Activity, Server, Zap, AlertCircle, Cpu, HardDrive as Memory, AlertTriangle } from 'lucide-react';

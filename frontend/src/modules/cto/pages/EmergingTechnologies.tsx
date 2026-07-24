@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Radar, Zap, FlaskConical, CheckCircle2 } from 'lucide-react';
@@ -15,10 +14,10 @@ const kpis = [
 const columns = [
   { key: 'name', label: 'Technology', sortable: true },
   { key: 'category', label: 'Category', sortable: true },
-  { key: 'maturity', label: 'Maturity', sortable: true, render: (v) => <StatusBadge status={v} /> },
-  { key: 'impact', label: 'Impact', sortable: true, render: (v) => <StatusBadge status={v} /> },
+  { key: 'maturity', label: 'Maturity', sortable: true, render: (v: any) => <StatusBadge status={v} /> },
+  { key: 'impact', label: 'Impact', sortable: true, render: (v: any) => <StatusBadge status={v} /> },
   { key: 'timeline', label: 'Timeline' },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
 ];
 
 const data = [

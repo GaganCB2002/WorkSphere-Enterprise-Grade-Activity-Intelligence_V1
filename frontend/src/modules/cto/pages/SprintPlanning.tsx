@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GitPullRequest, BarChart3, Users, Target } from 'lucide-react';
@@ -16,8 +15,8 @@ const columns = [
   { key: 'task', label: 'Task', sortable: true },
   { key: 'assignee', label: 'Assignee', sortable: true },
   { key: 'points', label: 'Points', sortable: true },
-  { key: 'priority', label: 'Priority', render: (v) => <StatusBadge status={v} /> },
-  { key: 'status', label: 'Status', render: (v) => <StatusBadge status={v} /> },
+  { key: 'priority', label: 'Priority', render: (v: any) => <StatusBadge status={v} /> },
+  { key: 'status', label: 'Status', render: (v: any) => <StatusBadge status={v} /> },
   { key: 'sprint', label: 'Sprint' },
 ];
 
