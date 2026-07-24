@@ -50,7 +50,7 @@ export default function CompletedTasks() {
     { label: 'Total Completed', value: completedTasks.length, icon: Trophy, color: 'text-emerald-600 bg-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400' },
   ];
 
-  let filtered = completedTasks.filter(t => {
+  const filtered = completedTasks.filter(t => {
     const matchSearch = t.title.toLowerCase().includes(search.toLowerCase()) || t.id.toLowerCase().includes(search.toLowerCase()) || t.project.toLowerCase().includes(search.toLowerCase());
     if (!matchSearch) return false;
     const d = new Date(t.completedDate);

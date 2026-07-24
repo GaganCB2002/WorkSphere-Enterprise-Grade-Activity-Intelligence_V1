@@ -76,7 +76,7 @@ export default function MyTasks() {
     { label: 'Overdue', value: myTasks.filter(t => new Date(t.dueDate) < new Date() && t.status !== 'Done').length, icon: AlertTriangle, color: 'text-red-600 bg-red-100 dark:bg-red-500/10 dark:text-red-400', trend: 'Needs attention', trendUp: false },
   ];
 
-  let filtered = myTasks.filter(t => t.title.toLowerCase().includes(search.toLowerCase()) || t.id.toLowerCase().includes(search.toLowerCase()));
+  const filtered = myTasks.filter(t => t.title.toLowerCase().includes(search.toLowerCase()) || t.id.toLowerCase().includes(search.toLowerCase()));
 
   filtered.sort((a, b) => {
     const dir = sortDir === 'asc' ? 1 : -1;

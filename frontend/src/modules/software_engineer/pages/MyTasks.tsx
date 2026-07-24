@@ -46,7 +46,7 @@ export const MyTasks = () => {
     if (sortKey === key) { setSortDir(d => d === 'asc' ? 'desc' : 'asc'); } else { setSortKey(key); setSortDir('asc'); }
   };
 
-  let filtered = allTasks.filter(t => {
+  const filtered = allTasks.filter(t => {
     if (filter.status !== 'All' && t.status !== filter.status) return false;
     if (filter.priority !== 'All' && t.priority !== filter.priority) return false;
     if (filter.sprint !== 'All' && t.sprint !== filter.sprint) return false;
@@ -83,7 +83,7 @@ export const MyTasks = () => {
 
   const FilterSelect = ({ label, options, value, onChange }) => (
     <div className="relative">
-      <select value={value} onChange={e => { onChange(e.target.value); setPage(1); }} className="appearance-none bg-[#1E293B] text-slate-200 text-xs px-3 py-2 pr-8 rounded-xl border border-slate-700/60 focus:outline-none focus:border-indigo-500/50 cursor-pointer">
+      <select value={value} onChange={e => { onChange(e.target.value); }} className="appearance-none bg-[#1E293B] text-slate-200 text-xs px-3 py-2 pr-8 rounded-xl border border-slate-700/60 focus:outline-none focus:border-indigo-500/50 cursor-pointer">
         <option value="All">All {label}</option>
         {options.map(o => <option key={o} value={o}>{o}</option>)}
       </select>
@@ -102,9 +102,9 @@ export const MyTasks = () => {
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <FilterSelect label="Status" options={['To Do', 'In Progress', 'In Review', 'Done', 'Blocked']} value={filter.status} onChange={v => setFilter({...filter, status: v})} />
-        <FilterSelect label="Priority" options={['Critical', 'High', 'Medium', 'Low']} value={filter.priority} onChange={v => setFilter({...filter, priority: v})} />
-        <FilterSelect label="Sprint" options={['Sprint 42', 'Sprint 43', 'Sprint 44']} value={filter.sprint} onChange={v => setFilter({...filter, sprint: v})} />
+        <FilterSelect label="Status" options={['To Do', 'In Progress', 'In Review', 'Done', 'Blocked']} value={filter.status} onChange={v => { setFilter({...filter, status: v}); setPage(1); }} />
+        <FilterSelect label="Priority" options={['Critical', 'High', 'Medium', 'Low']} value={filter.priority} onChange={v => { setFilter({...filter, priority: v}); setPage(1); }} />
+        <FilterSelect label="Sprint" options={['Sprint 42', 'Sprint 43', 'Sprint 44']} value={filter.sprint} onChange={v => { setFilter({...filter, sprint: v}); setPage(1); }} />
         <div className="flex-1" />
         <div className="text-xs text-slate-400">{filtered.length} tasks shown</div>
       </div>

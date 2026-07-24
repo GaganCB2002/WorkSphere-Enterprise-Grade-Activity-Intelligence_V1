@@ -31,7 +31,7 @@ export const Calendar = () => {
     const result = [];
     const firstDay = 1;
     const daysInMonth = 31;
-    let startPadding = 3;
+    const startPadding = 3;
     for (let i = 0; i < startPadding; i++) result.push(null);
     for (let i = 1; i <= daysInMonth; i++) result.push(i);
     return result;

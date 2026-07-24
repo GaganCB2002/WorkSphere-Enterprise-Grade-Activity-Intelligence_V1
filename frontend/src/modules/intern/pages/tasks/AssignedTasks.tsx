@@ -75,7 +75,7 @@ export default function AssignedTasks() {
     { label: 'Overdue', value: assignedTasks.filter(t => t.status === 'Overdue').length, icon: AlertTriangle, color: 'text-red-600 bg-red-100 dark:bg-red-500/10 dark:text-red-400', trend: 'Needs attention', trendUp: false },
   ];
 
-  let filtered = assignedTasks.filter(t => {
+  const filtered = assignedTasks.filter(t => {
     const matchSearch = t.title.toLowerCase().includes(search.toLowerCase()) || t.id.toLowerCase().includes(search.toLowerCase()) || t.project.toLowerCase().includes(search.toLowerCase());
     const matchPriority = filterPriority === 'All' || t.priority === filterPriority;
     const matchStatus = filterStatus === 'All' || t.status === filterStatus;

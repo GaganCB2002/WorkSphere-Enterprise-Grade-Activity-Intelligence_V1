@@ -51,7 +51,7 @@ export default function PendingTasks() {
     { label: 'Due This Week', value: pendingTasks.filter(t => { const d = new Date(t.dueDate); return d >= now && d <= weekLater; }).length, icon: CalendarDays, color: 'text-violet-600 bg-violet-100 dark:bg-violet-500/10 dark:text-violet-400', trend: 'Plan ahead', trendUp: true },
   ];
 
-  let filtered = pendingTasks.filter(t =>
+  const filtered = pendingTasks.filter(t =>
     t.title.toLowerCase().includes(search.toLowerCase()) || t.id.toLowerCase().includes(search.toLowerCase())
   );
 
